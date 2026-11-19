@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How this course was checked | Molecular Dynamics: a course</title>
+<meta name="description" content="An honest account of what was verified, how, what was found wrong and corrected, and what still rests on unverified knowledge.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="sources">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li class="current"><a href="sources.html">How it was checked</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><h1>How this course was checked</h1><p class="lede">An honest account of what was verified, how, what was found wrong and corrected, and what still rests on unverified knowledge.</p></div>
+
+<article>
+<p>This course was written by an AI system (Claude) for one student, and then checked in several independent ways. You should know exactly how far the checking went.</p>
+<h2 id="the-lesson-text">The lesson text</h2>
+<p>Modules 1 to 17 were first written from general knowledge, without consulting the papers. They were then checked twice.</p>
+<p><strong>1. Three independent technical referees.</strong> Each read six modules, re-derived the main equations, recomputed every worked number and "check yourself" answer, ran the code, and checked software statements against the GROMACS and OpenMM documentation. They found <strong>39 problems: 5 wrong, 6 misleading, 28 imprecise</strong>. All were corrected. The most serious:</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What was wrong</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module 1</td>
+<td>"<span class="math-inline">\(10^{11}\)</span> steps per day at best"</td>
+<td>About <span class="math-inline">\(5\times10^8\)</span> (the old figure was 200 times too high)</td>
+</tr>
+<tr>
+<td>Module 1</td>
+<td>SHAKE listed under the 1980s</td>
+<td>1977</td>
+</tr>
+<tr>
+<td>Module 13</td>
+<td>Sign of the restraint term in the absolute binding free energy</td>
+<td>Enters with a minus sign (the error was worth about 14 kcal/mol)</td>
+</tr>
+<tr>
+<td>Module 3</td>
+<td>Mean force and binding-constant formulas mixed two definitions of the radial PMF</td>
+<td>The two definitions are now stated and kept apart</td>
+</tr>
+<tr>
+<td>Module 10</td>
+<td>OpenMM <code>padding=1.2 nm</code> presented as equal to GROMACS <code>-d 1.2</code></td>
+<td><code>padding=2.4 nm</code>, since OpenMM's padding is the distance between periodic copies</td>
+</tr>
+<tr>
+<td>Projects</td>
+<td>Check for Project 4 said <span class="math-inline">\(\ln k\)</span> against <span class="math-inline">\(h\)</span> has slope <span class="math-inline">\(-1\)</span></td>
+<td><span class="math-inline">\(\ln(k/h)\)</span> has slope <span class="math-inline">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. The cited papers, read in full.</strong> Of the 144 papers in the main reference list, 58 could be obtained legally and were read: 55 from first line to last and 3 in part. Fifty of them are open-access articles, PubMed Central full text or arXiv preprints that a program can fetch. Eight more are free on PubMed Central but only in a browser, and they were read there, two of them (Gilson et al. 1997 and Huber and Kim 1996) from scanned page images. In four of the browser-read papers the displayed equations are pictures and were read only through the surrounding text, which is why Woo and Roux (2005) is labelled read in part. Against the 58 papers, <strong>572 statements of the course were checked: 2 were wrong and 116 imprecise</strong>, and the substantive ones were corrected. The two wrong ones:</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What the course said</th>
+<th>What the paper says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module 6</td>
+<td>ff19SB was fitted with OPC water</td>
+<td>It was fitted to quantum-mechanical energy surfaces in implicit solvent; OPC is only recommended with it (Tian et al. 2020)</td>
+</tr>
+<tr>
+<td>Module 6</td>
+<td>CHARMM36m re-fitted selected Lennard-Jones pairs and the water model</td>
+<td>It changed the backbone CMAP term and one pair-specific term, and kept CHARMM-modified TIP3P (Huang et al. 2017)</td>
+</tr>
+</tbody>
+</table>
+<p>In the reference lists, a paper that was read carries the label <span class="tag read">read in full</span> or <span class="tag read">read in part</span>, with a line on what it is for and what to read in it.</p>
+<p><strong>What this does not cover.</strong> The other 86 papers could not be read: most are behind a paywall, and two open-access ones (the GROMACS and LAMMPS reference papers) sit on a publisher site that turns automated readers away. For those, only the bibliographic details were verified. Statements in the lessons about what those papers did (for example the original Verlet, SHAKE, Nosé, Hoover and Ewald papers) rest on textbook knowledge and on the referees' checks, not on a reading of the paper. Where a text was read as a preprint, the published article may differ.</p>
+<p><strong>Module 18</strong> was written the other way round: from evidence files built by reading the literature first, with a page reference for every number.</p>
+<h2 id="the-references">The references</h2>
+<ul>
+<li><strong>Papers.</strong> Every DOI was looked up in Crossref twice, by two separate programs, and title, year and first author compared: 144 of 144 match. PubMed Central links were checked to point at the same DOI. The 60 references of Module 18 were checked against Crossref or the arXiv record.</li>
+<li><strong>Books.</strong> Publisher or author pages were confirmed to load, and ISBN check digits are valid. An automatic catalogue lookup by ISBN was not available at the time, so editions and years rely on the publisher pages.</li>
+<li><strong>Lecture notes and tutorials.</strong> Each link was requested and returned a page; five publisher or university pages answer programs with a challenge page and were confirmed by hand.</li>
+</ul>
+<h2 id="the-videos">The videos</h2>
+<ul>
+<li>Each of the 141 catalogue entries was confirmed against YouTube twice. Title and channel are YouTube's own.</li>
+<li>Durations, and the list of lectures inside each playlist, were read from the YouTube pages: 837 individual lectures are known this way.</li>
+<li>Lectures were attached to sections of the lessons according to their <strong>title and the uploader's description</strong>. Nobody watched them from start to end for this course. If a lecture turns out not to match its section, that is where the error came from.</li>
+<li>Three entries were removed after reading their descriptions (two student presentations and one with no description).</li>
+</ul>
+<h2 id="the-simulations-in-the-pages">The simulations in the pages</h2>
+<p>The 17 in-page simulations were each started and checked for errors in a browser, on a wide and a narrow screen. The umbrella-sampling demo recovers the exact potential to about 0.2 <span class="math-inline">\(k_BT\)</span>, the Liouville demo conserves area to about a percent, and the free-energy demo reproduces the exact answer with the acceptance-ratio estimator. They are teaching toys in reduced units, not research code.</p>
+<h2 id="where-the-records-are">Where the records are</h2>
+<p>In the repository: the referees' reports (<code>research/review_part1.md</code> to <code>review_part3.md</code>), the lists the pages are built from, and the short annotation of each paper that was read (<code>research/paper_notes.json</code>).</p>
+<p>Kept offline with the course sources, not published: the full reading note for each paper (<code>research/paper_notes/</code>) and the evidence files behind Module 18 (<code>research/sota_partA.md</code>, <code>sota_partB.md</code>). They quote the papers at length, and those passages belong to the publishers.</p>
+<p>If you find an error, it is most likely in a statement about a paper that could not be read. Check the paper.</p>
+</article>
+
+<div class="prevnext"></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+<script defer src="demos2.js"></script>
+</body>
+</html>

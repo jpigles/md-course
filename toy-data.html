@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toy data to play with | Molecular Dynamics: a course</title>
+<meta name="description" content="Every module has a small simulation that runs in the page. Each one makes its own data, and most let you download it as a CSV file to analyse yourself.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="toy-data">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li class="current"><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><h1>Toy data to play with</h1><p class="lede">Every module has a small simulation that runs in the page. Each one makes its own data, and most let you download it as a CSV file to analyse yourself.</p></div>
+
+<article>
+<p>Nothing here needs an installation: the simulations run in your browser. Change the sliders, break things, and when a button says "Download", take the numbers into Python. The data are generated on your machine at the moment you press the button, so every download is a little different, which is the point: do the analysis twice and see how much the answer moves.</p>
+<h2 id="what-is-in-each-module">What is in each module</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Playground</th>
+<th>What you can change</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-what-is-md.html">1</a></td>
+<td>A live 2D Lennard-Jones fluid</td>
+<td>Time step, thermostat on or off, temperature</td>
+<td><code>toy_lj_energies.csv</code>: time, kinetic, potential and total energy per particle</td>
+</tr>
+<tr>
+<td><a href="02-classical-mechanics.html">2</a></td>
+<td>A cloud of initial conditions in phase space</td>
+<td>System (oscillator, pendulum, double well), friction</td>
+<td>none (watch the area)</td>
+</tr>
+<tr>
+<td><a href="03-statistical-mechanics.html">3</a></td>
+<td>A particle building the Boltzmann distribution</td>
+<td>Potential, temperature</td>
+<td><code>boltzmann_samples.csv</code>: sample, x, U/k_BT</td>
+</tr>
+<tr>
+<td><a href="04-integrators.html">4</a></td>
+<td>Three integrators on one spring</td>
+<td>Time step</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="05-force-field-form.html">5</a></td>
+<td>Lennard-Jones and Coulomb pair energy</td>
+<td>ε, σ, charge product</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="06-force-field-parameters.html">6</a></td>
+<td>Fitting torsion parameters to a toy quantum scan</td>
+<td>k₁, k₂, k₃, or a least-squares fit</td>
+<td><code>toy_torsion_scan.csv</code>: dihedral angle, energy</td>
+</tr>
+<tr>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+<td>The Ewald split of 1/r</td>
+<td>α, cutoff</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+<td>What each thermostat does to temperature fluctuations</td>
+<td>Thermostat, coupling time</td>
+<td><code>thermostat_temperature.csv</code>: time, instantaneous temperature</td>
+</tr>
+<tr>
+<td><a href="09-constraints.html">9</a></td>
+<td>Flexible bonds against SHAKE</td>
+<td>Time step</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="10-running-a-simulation.html">10</a></td>
+<td>System-size calculator</td>
+<td>Protein size, padding, box shape, salt, run length</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="11-analysis-statistics.html">11</a></td>
+<td>Correlated data and block averaging</td>
+<td>Correlation time, number of frames</td>
+<td><code>toy_rg_series.csv</code>: frame, toy radius of gyration</td>
+</tr>
+<tr>
+<td><a href="12-free-energy-pmf.html">12</a></td>
+<td>Umbrella sampling and WHAM on a double well</td>
+<td>Barrier, number of windows, spring constant</td>
+<td><code>toy_umbrella_windows.csv</code>: window centre, spring constant, bin, count</td>
+</tr>
+<tr>
+<td><a href="13-alchemical-free-energy.html">13</a></td>
+<td>Free-energy perturbation against BAR</td>
+<td>Shift and stiffness of the second state, sample size</td>
+<td><code>toy_fep_samples.csv</code>: state, x, ΔU/k_BT</td>
+</tr>
+<tr>
+<td><a href="14-enhanced-sampling.html">14</a></td>
+<td>Well-tempered metadynamics</td>
+<td>Barrier, bias factor, hill height and width</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="15-coarse-grained.html">15</a></td>
+<td>Contact potentials and salt screening</td>
+<td>Ionic strength, dielectric constant</td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="16-kinetics-msm.html">16</a></td>
+<td>A Markov state model from a toy trajectory</td>
+<td>Well depth, trajectory length</td>
+<td><code>toy_three_well_trajectory.csv</code>: frame, time, x</td>
+</tr>
+<tr>
+<td><a href="17-machine-learning.html">17</a></td>
+<td>A neural network fitted to toy energies</td>
+<td>Training range, number of points</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="six-things-to-do-with-the-downloads">Six things to do with the downloads</h2>
+<p>All of these need only NumPy. <code>np.loadtxt(name, delimiter=",", skiprows=1)</code> reads any of the files (for the FEP file, which has a text column, use <code>np.genfromtxt(..., dtype=None, encoding=None, names=True)</code>).</p>
+<h3 id="1-check-energy-conservation-module-1-and-4">1. Check energy conservation (Module 1 and 4)</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;toy_lj_energies.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;total energy: mean </span><span class="si">%.4f</span><span class="s2">, standard deviation </span><span class="si">%.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">e</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kinetic energy standard deviation is </span><span class="si">%.0f</span><span class="s2"> times larger&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="n">e</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</code></pre></div>
+
+<p>Download once with a time step of 0.005 and once with 0.02, thermostat off. The standard deviation of the total energy should grow by about 16 (the square of the ratio of the time steps).</p>
+<h3 id="2-recover-a-potential-from-samples-module-3">2. Recover a potential from samples (Module 3)</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;boltzmann_samples.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">h</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">centres</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">h</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>                    <span class="c1"># free energy in units of k_BT</span>
+<span class="n">F</span> <span class="o">-=</span> <span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">centres</span><span class="p">[</span><span class="n">h</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">],</span> <span class="n">F</span><span class="p">][::</span><span class="mi">6</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Compare <code>F</code> with the potential you chose. Then repeat at a low temperature, where the particle never crossed: the right-hand well is simply missing.</p>
+<h3 id="3-fit-the-torsion-yourself-module-6">3. Fit the torsion yourself (Module 6)</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">phi</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;toy_torsion_scan.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">r</span><span class="p">)]</span>
+<span class="n">coef</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;offset, k1, k2, k3 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">coef</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot; RMS error =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">coef</span> <span class="o">-</span> <span class="n">E</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>This is the least-squares button of the demo. The RMS error should come out close to the 0.35 kJ/mol of noise that was added.</p>
+<h3 id="4-find-the-real-error-bar-module-11">4. Find the real error bar (Module 11)</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">frame</span><span class="p">,</span> <span class="n">rg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;toy_rg_series.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="k">for</span> <span class="n">nb</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">320</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rg</span><span class="p">)</span> <span class="o">//</span> <span class="n">nb</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">rg</span><span class="p">[:</span> <span class="n">m</span> <span class="o">*</span> <span class="n">nb</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;block length </span><span class="si">%6d</span><span class="s2">  standard error </span><span class="si">%.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">means</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nb</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;naive standard error       </span><span class="si">%.5f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rg</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rg</span><span class="p">))))</span>
+</code></pre></div>
+
+<p>The block estimate rises with block length and flattens. Where it flattens is the error bar, and it is far larger than the naive one.</p>
+<h3 id="5-write-your-own-wham-module-12">5. Write your own WHAM (Module 12)</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;toy_umbrella_windows.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">centres</span><span class="p">,</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centres</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>             <span class="c1"># counts: one row per window</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bias</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">centres</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centres</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">bias</span> <span class="o">-</span> <span class="n">f</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">f_new</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">P</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">bias</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">f_new</span> <span class="o">-</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">1e-7</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f_new</span>
+<span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="n">P</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]);</span> <span class="n">F</span> <span class="o">-=</span> <span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="n">P</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">],</span> <span class="n">F</span><span class="p">][::</span><span class="mi">6</span><span class="p">])</span>
+</code></pre></div>
+
+<p>These are the two boxed equations of Module 12, iterated until they stop changing. Compare <code>F</code> with <code>h * (xs**2 - 1)**2</code> for the barrier you set.</p>
+<h3 id="6-three-free-energy-estimators-module-13">6. Three free-energy estimators (Module 13)</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;toy_fep_samples.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">dA</span><span class="p">,</span> <span class="n">dB</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;dU_over_kBT&quot;</span><span class="p">][</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sampled_in_state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;dU_over_kBT&quot;</span><span class="p">][</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;sampled_in_state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="n">fwd</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dA</span><span class="p">)))</span>
+<span class="n">rev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dB</span><span class="p">)))</span>
+<span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="o">-</span><span class="mf">60.0</span><span class="p">,</span> <span class="mf">60.0</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">):</span>                              <span class="c1"># bisection on the BAR equation</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="n">hi</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dA</span> <span class="o">-</span> <span class="n">C</span><span class="p">)))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dB</span> <span class="o">-</span> <span class="n">C</span><span class="p">))))</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span> <span class="k">if</span> <span class="n">g</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FEP from A </span><span class="si">%.2f</span><span class="s2">   FEP from B </span><span class="si">%.2f</span><span class="s2">   BAR </span><span class="si">%.2f</span><span class="s2">   (units of k_BT)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fwd</span><span class="p">,</span> <span class="n">rev</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="n">hi</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>The exact answer is half the logarithm of the stiffness you set. Download with a large shift and few samples and watch the two one-sided estimates disagree while BAR stays close.</p>
+<h2 id="building-a-transition-matrix-module-16">Building a transition matrix (Module 16)</h2>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">frame</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;toy_three_well_trajectory.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>             <span class="c1"># three states: left, middle, right</span>
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="p">(</span><span class="n">states</span><span class="p">[:</span><span class="o">-</span><span class="n">lag</span><span class="p">],</span> <span class="n">states</span><span class="p">[</span><span class="n">lag</span><span class="p">:]),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">C</span> <span class="o">+</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>                          <span class="c1"># enforce detailed balance</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lag </span><span class="si">%4d</span><span class="s2">  slowest implied time scale </span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lag</span><span class="p">,</span> <span class="o">-</span><span class="n">lag</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ev</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+</code></pre></div>
+
+<p>With only three states the time scale keeps rising with the lag: three states are too coarse to be Markovian at short lags. Use thirty bins instead and it levels off sooner, as in the demo.</p>
+</article>
+
+<div class="prevnext"></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+<script defer src="demos2.js"></script>
+</body>
+</html>

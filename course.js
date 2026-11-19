@@ -117,6 +117,11 @@
       g.save(); g.translate(13, m.t + ph / 2); g.rotate(-Math.PI / 2); g.textBaseline = 'middle'; g.fillText(this.o.yLabel, 0, 0); g.restore();
       g.save(); g.beginPath(); g.rect(m.l, m.t, pw, ph); g.clip();
       this.series.forEach(s => {
+        if (s.points) {                                   // scatter: data points, not a line
+          g.fillStyle = cssv(s.color); g.strokeStyle = cssv('--surface'); g.lineWidth = 1.5; g.globalAlpha = s.alpha || 1;
+          for (let i = 0; i < s.x.length; i++) { if (!isFinite(s.y[i])) continue; g.beginPath(); g.arc(X(s.x[i]), Y(s.y[i]), s.r || 4, 0, 6.2832); g.fill(); if ((s.r || 4) >= 3) g.stroke(); }
+          g.globalAlpha = 1; return;
+        }
         g.strokeStyle = cssv(s.color); g.lineWidth = s.width || 2; g.lineJoin = 'round'; g.globalAlpha = s.alpha || 1;
         g.setLineDash(s.dash || []); g.beginPath(); let pen = false;
         for (let i = 0; i < s.x.length; i++) {
@@ -129,7 +134,7 @@
       });
       g.setLineDash([]); g.globalAlpha = 1; g.restore();
       const named = this.series.filter(s => s.name);
-      this.legend.innerHTML = named.length > 1 ? named.map(s => `<span><i style="background:${cssv(s.color)}"></i>${s.name}</span>`).join('') : '';
+      this.legend.innerHTML = named.length > 1 ? named.map(s => `<span><i style="background:${cssv(s.color)}${s.points ? ';width:8px;height:8px;border-radius:50%' : ''}"></i>${s.name}</span>`).join('') : '';
       if (this.hover && this.o.hover && named.length) {
         const hx = this.hover.px; if (hx < m.l || hx > m.l + pw) { this.tip.style.display = 'none'; return; }
         const xv = xr[0] + (hx - m.l) / pw * (xr[1] - xr[0]);
@@ -299,6 +304,8 @@
     }
     bRun.addEventListener('click', () => { if (dead) reset(); running = !running; bRun.textContent = running ? 'Pause' : 'Start'; if (running) requestAnimationFrame(frame); });
     bReset.addEventListener('click', () => { running = false; bRun.textContent = 'Start'; reset(); });
+    const bD = button(c, 'Download energies (CSV)');
+    bD.addEventListener('click', () => downloadCSV('toy_lj_energies.csv', ['time', 'kinetic_per_particle', 'potential_per_particle', 'total_per_particle'], hist.t.map((tt, i) => [+tt.toFixed(4), hist.k[i], hist.u[i], hist.e[i]])));
     sel.addEventListener('change', () => { e0 = null; tSum = 0; tN = 0; });
     window.addEventListener('mdc-redraw', () => drawAll());
     reset();
@@ -363,6 +370,8 @@
         i++; if (i >= 2) umb.F = wham(umb.win.slice(0, i), h); draw(); if (i < M) requestAnimationFrame(chunk);
       })();
     }
+    const bD = button(c, 'Download windows (CSV)');
+    bD.addEventListener('click', () => { if (!umb) return; const rows = []; umb.win.forEach(wn => { for (let j = 0; j < NB; j++) rows.push([+wn.c.toFixed(4), wn.k, +xc[j].toFixed(4), wn.H[j]]); }); downloadCSV('toy_umbrella_windows.csv', ['window_centre', 'spring_k', 'x_bin_centre', 'count'], rows); });
     bP.addEventListener('click', runPlain); bU.addEventListener('click', runUmb);
     bC.addEventListener('click', () => { job++; plain = null; umb = null; draw(); });
     sH.addEventListener('input', () => { job++; plain = null; umb = null; draw(); });
@@ -370,9 +379,36 @@
     host.append(el('div', 'w-cap', 'Things to try: (1) h = 8: plain MD usually stays in the left well, so its free energy is wrong or missing on the right. (2) h = 3: plain MD crosses often and works. (3) Umbrella with only 5 windows and k = 120: the histograms stop overlapping and WHAM cannot connect them. (4) Soft springs (k = 5) on a high barrier: the windows slide off the barrier top.'));
   }
 
+  /* ---------- helpers shared with demos2.js ---------- */
+  function downloadCSV(name, header, rows) {
+    const text = header.join(',') + '\n' + rows.map(r => r.map(v => (typeof v === 'number' ? (Number.isInteger(v) ? v : +v.toPrecision(7)) : v)).join(',')).join('\n') + '\n';
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'text/csv' })); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  function steps(edges, counts) {                         // histogram outline as a line: x and y arrays
+    const x = [], y = []; for (let i = 0; i < counts.length; i++) { x.push(edges[i], edges[i + 1]); y.push(counts[i], counts[i]); } return { x, y };
+  }
+  /* section videos: play a lecture inside the page */
+  function initVideos() {
+    document.addEventListener('click', ev => {
+      const a = ev.target.closest('a.sv[data-yt]'); if (!a || ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
+      ev.preventDefault();
+      const box = a.closest('.secvideos'); let pl = box.querySelector('.sv-player');
+      const same = pl && pl.dataset.yt === a.dataset.yt;
+      if (pl) pl.remove(); box.querySelectorAll('a.sv').forEach(x => x.classList.remove('playing'));
+      if (same) return;
+      pl = el('div', 'sv-player'); pl.dataset.yt = a.dataset.yt;
+      const start = a.dataset.start ? '&start=' + a.dataset.start : '';
+      pl.innerHTML = `<div class="sv-frame"><iframe src="https://www.youtube-nocookie.com/embed/${a.dataset.yt}?rel=0${start}" title="${a.textContent.replace(/"/g, '')}" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div><div class="sv-under"><a href="${a.href}" target="_blank" rel="noopener">Open on YouTube</a> · <a href="#" class="sv-close">close</a></div>`;
+      box.appendChild(pl); a.classList.add('playing');
+      pl.querySelector('.sv-close').addEventListener('click', e => { e.preventDefault(); pl.remove(); a.classList.remove('playing'); });
+    });
+  }
+
   const WIDGETS = { lj: wLJ, integrators: wIntegrators, md2d: wMD2D, umbrella: wUmbrella };
+  window.MDC = { el, $, $$, cssv, fmt, Plot, slider, button, gauss, linspace, steps, downloadCSV, widgets: WIDGETS };
   document.addEventListener('DOMContentLoaded', () => {
-    renderMath(); initChrome();
+    renderMath(); initChrome(); initVideos();
     $$('.widget[data-widget]').forEach(h => { const f = WIDGETS[h.dataset.widget]; if (f) { try { f(h); } catch (e) { h.textContent = 'This demo could not start: ' + e.message; } } });
   });
 })();
