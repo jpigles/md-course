@@ -169,10 +169,12 @@ def books_block(books, tags, limit=7):
 
 def paper_li(p):
     oa = ""
-    if p.get("oa_url"):
-        oa = f' <a class="tag free" href="{E(p["oa_url"])}" target="_blank" rel="noopener">open access</a>'
-    if p.get("preprint_url"):
-        oa += f' <a class="tag free" href="{E(p["preprint_url"])}" target="_blank" rel="noopener">arXiv preprint</a>'
+    oa_url = p.get("oa_url") or ""
+    pre = p.get("preprint_url") or (oa_url if "arxiv.org" in oa_url else "")
+    if oa_url and "arxiv.org" not in oa_url:
+        oa = f' <a class="tag free" href="{E(oa_url)}" target="_blank" rel="noopener">open access</a>'
+    if pre:
+        oa += f' <a class="tag free" href="{E(pre)}" target="_blank" rel="noopener">arXiv preprint</a>'
     vol = p.get("volume")
     pages = p.get("pages")
     cite = E(p.get("journal"))
