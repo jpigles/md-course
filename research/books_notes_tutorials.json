@@ -1,0 +1,1524 @@
+{
+ "books": [
+  {
+   "authors": "Daan Frenkel, Berend Smit",
+   "title": "Understanding Molecular Simulation: From Algorithms to Applications",
+   "edition_year": "3rd ed., 2023",
+   "publisher_or_host": "Academic Press (Elsevier)",
+   "isbn_or_doi": "ISBN 9780323902922",
+   "url": "https://shop.elsevier.com/books/understanding-molecular-simulation/frenkel/978-0-323-90292-2",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech",
+    "integrators",
+    "thermostats-barostats",
+    "electrostatics-ewald",
+    "free-energy",
+    "enhanced-sampling",
+    "analysis-errors"
+   ],
+   "best_chapters": "Ch. 2 Thermodynamics and Statistical Mechanics; Ch. 4 Molecular Dynamics Simulations; Ch. 5 Computer Experiments; Ch. 7 Molecular Dynamics in Various Ensembles; Ch. 8 Free Energy Calculations; Ch. 11 Long-Ranged Interactions; Ch. 15 Rare Events; Appendix G Statistical Errors; Appendix H Integration Schemes",
+   "why": "The standard algorithm-level reference connecting statistical mechanics to working MD, free-energy and rare-event methods.",
+   "verified": true
+  },
+  {
+   "authors": "Michael P. Allen, Dominic J. Tildesley",
+   "title": "Computer Simulation of Liquids",
+   "edition_year": "2nd ed., 2017",
+   "publisher_or_host": "Oxford University Press",
+   "isbn_or_doi": "ISBN 9780198803195 (retailers also list 9780198803201 for the paperback); DOI 10.1093/oso/9780198803195.001.0001",
+   "url": "https://global.oup.com/booksites/content/9780198803195/",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech",
+    "integrators",
+    "pbc-cutoffs",
+    "electrostatics-ewald",
+    "thermostats-barostats",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Classic practical MD/MC text with an official companion site of Fortran and Python example programs (also on GitHub).",
+   "verified": true
+  },
+  {
+   "authors": "Mark E. Tuckerman",
+   "title": "Statistical Mechanics: Theory and Molecular Simulation",
+   "edition_year": "2nd ed., 2023",
+   "publisher_or_host": "Oxford University Press",
+   "isbn_or_doi": "ISBN 9780198825562; DOI 10.1093/oso/9780198825562.001.0001",
+   "url": "https://global.oup.com/academic/product/statistical-mechanics-theory-and-molecular-simulation-9780198825562",
+   "free": false,
+   "free_url": "",
+   "level": "advanced",
+   "covers": [
+    "classical-mechanics",
+    "stat-mech",
+    "integrators",
+    "thermostats-barostats",
+    "constraints",
+    "free-energy",
+    "enhanced-sampling",
+    "ml-potentials"
+   ],
+   "best_chapters": "Ch. 17 covers machine learning (new in the 2nd edition).",
+   "why": "Rigorous derivation of ensembles, extended-system thermostats/barostats, reversible integrators and enhanced sampling from Hamiltonian mechanics.",
+   "verified": true
+  },
+  {
+   "authors": "Andrew R. Leach",
+   "title": "Molecular Modelling: Principles and Applications",
+   "edition_year": "2nd ed., 2001",
+   "publisher_or_host": "Prentice Hall (Pearson)",
+   "isbn_or_doi": "ISBN 9780582382107",
+   "url": "https://books.google.com/books?vid=ISBN9780582382107",
+   "free": false,
+   "free_url": "",
+   "level": "intro",
+   "covers": [
+    "force-fields",
+    "pbc-cutoffs",
+    "practical-setup",
+    "biomolecules",
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Broad, readable introduction to force fields, energy minimisation, MD and Monte Carlo with biomolecular examples.",
+   "verified": true
+  },
+  {
+   "authors": "D. C. Rapaport",
+   "title": "The Art of Molecular Dynamics Simulation",
+   "edition_year": "2nd ed., 2004",
+   "publisher_or_host": "Cambridge University Press",
+   "isbn_or_doi": "ISBN 9780521825689",
+   "url": "https://www.cambridge.org/gb/universitypress/subjects/physics/mathematical-methods/art-molecular-dynamics-simulation-2nd-edition",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "integrators",
+    "pbc-cutoffs",
+    "analysis-errors",
+    "constraints"
+   ],
+   "best_chapters": "",
+   "why": "Case-study book that builds MD programs step by step, good for students who want to write their own code.",
+   "verified": true
+  },
+  {
+   "authors": "Tamar Schlick",
+   "title": "Molecular Modeling and Simulation: An Interdisciplinary Guide",
+   "edition_year": "2nd ed., 2010",
+   "publisher_or_host": "Springer",
+   "isbn_or_doi": "ISBN 9781441963505 (print); DOI 10.1007/978-1-4419-6351-2",
+   "url": "https://doi.org/10.1007/978-1-4419-6351-2",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "force-fields",
+    "integrators",
+    "biomolecules",
+    "electrostatics-ewald",
+    "enhanced-sampling"
+   ],
+   "best_chapters": "",
+   "why": "Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.",
+   "verified": true
+  },
+  {
+   "authors": "Ben Leimkuhler, Charles Matthews",
+   "title": "Molecular Dynamics: With Deterministic and Stochastic Numerical Methods",
+   "edition_year": "2015",
+   "publisher_or_host": "Springer",
+   "isbn_or_doi": "ISBN 9783319163741 (print); DOI 10.1007/978-3-319-16375-8",
+   "url": "https://doi.org/10.1007/978-3-319-16375-8",
+   "free": false,
+   "free_url": "",
+   "level": "advanced",
+   "covers": [
+    "classical-mechanics",
+    "integrators",
+    "thermostats-barostats",
+    "constraints",
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "The mathematically careful treatment of symplectic integrators, Langevin dynamics, thermostats and constraints.",
+   "verified": true
+  },
+  {
+   "authors": "David Chandler",
+   "title": "Introduction to Modern Statistical Mechanics",
+   "edition_year": "1987",
+   "publisher_or_host": "Oxford University Press",
+   "isbn_or_doi": "ISBN 9780195042771",
+   "url": "https://global.oup.com/academic/product/introduction-to-modern-statistical-mechanics-9780195042771",
+   "free": false,
+   "free_url": "",
+   "level": "intro",
+   "covers": [
+    "stat-mech",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Short, clear first course in statistical mechanics aimed at chemists, including Monte Carlo and time correlation functions.",
+   "verified": true
+  },
+  {
+   "authors": "Daniel M. Zuckerman",
+   "title": "Statistical Physics of Biomolecules: An Introduction",
+   "edition_year": "1st ed., 2010",
+   "publisher_or_host": "CRC Press (Taylor & Francis)",
+   "isbn_or_doi": "ISBN 9781420073782",
+   "url": "https://www.routledge.com/Statistical-Physics-of-Biomolecules-An-Introduction/Zuckerman/p/book/9781420073782",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech",
+    "analysis-errors",
+    "free-energy",
+    "enhanced-sampling",
+    "biomolecules"
+   ],
+   "best_chapters": "Ch. 12, A Statistical Perspective on Biomolecular Simulation.",
+   "why": "Biomolecule-oriented statistical mechanics with a dedicated chapter on sampling and simulation, pitched at life-science students.",
+   "verified": true
+  },
+  {
+   "authors": "Ken A. Dill, Sarina Bromberg",
+   "title": "Molecular Driving Forces: Statistical Thermodynamics in Biology, Chemistry, Physics, and Nanoscience",
+   "edition_year": "2nd ed., 2010",
+   "publisher_or_host": "Garland Science (Taylor & Francis)",
+   "isbn_or_doi": "ISBN 9780815344308",
+   "url": "https://www.taylorfrancis.com/books/mono/10.4324/9780203809075/molecular-driving-forces-ken-dill-sarina-bromberg",
+   "free": false,
+   "free_url": "",
+   "level": "intro",
+   "covers": [
+    "stat-mech",
+    "biomolecules",
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Intuitive, example-driven statistical thermodynamics for biophysics students with little physics background.",
+   "verified": true
+  },
+  {
+   "authors": "Christophe Chipot, Andrew Pohorille (eds.)",
+   "title": "Free Energy Calculations: Theory and Applications in Chemistry and Biology",
+   "edition_year": "2007",
+   "publisher_or_host": "Springer",
+   "isbn_or_doi": "ISBN 9783540384472 (print); DOI 10.1007/978-3-540-38448-9",
+   "url": "https://doi.org/10.1007/978-3-540-38448-9",
+   "free": false,
+   "free_url": "",
+   "level": "advanced",
+   "covers": [
+    "free-energy",
+    "enhanced-sampling",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "Edited volume with the theory behind FEP, TI, umbrella sampling and related methods, written by the method developers.",
+   "verified": true
+  },
+  {
+   "authors": "Donald A. McQuarrie",
+   "title": "Statistical Mechanics",
+   "edition_year": "2000",
+   "publisher_or_host": "University Science Books",
+   "isbn_or_doi": "ISBN 9781891389153",
+   "url": "https://books.google.com/books?vid=ISBN9781891389153",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Thorough classical reference for ensembles, partition functions and liquid-state theory.",
+   "verified": true
+  },
+  {
+   "authors": "Ernst Hairer, Christian Lubich, Gerhard Wanner",
+   "title": "Geometric Numerical Integration: Structure-Preserving Algorithms for Ordinary Differential Equations",
+   "edition_year": "2nd ed., 2006",
+   "publisher_or_host": "Springer",
+   "isbn_or_doi": "ISBN 9783540306634 (from the print ISBN-10 3540306633 in Crossref); DOI 10.1007/3-540-30666-8",
+   "url": "https://doi.org/10.1007/3-540-30666-8",
+   "free": false,
+   "free_url": "",
+   "level": "advanced",
+   "covers": [
+    "integrators",
+    "classical-mechanics"
+   ],
+   "best_chapters": "",
+   "why": "Definitive mathematics of symplectic and time-reversible integrators and backward error analysis, the theory behind velocity Verlet.",
+   "verified": true
+  },
+  {
+   "authors": "Herbert Goldstein, Charles P. Poole, John L. Safko",
+   "title": "Classical Mechanics",
+   "edition_year": "3rd ed., 2002",
+   "publisher_or_host": "Pearson / Addison-Wesley",
+   "isbn_or_doi": "ISBN 9780201657029",
+   "url": "https://www.pearson.com/en-us/subject-catalog/p/classical-mechanics/P200000006425/9780321188977",
+   "free": false,
+   "free_url": "",
+   "level": "intermediate",
+   "covers": [
+    "classical-mechanics"
+   ],
+   "best_chapters": "",
+   "why": "Standard graduate source for Lagrangian and Hamiltonian mechanics and canonical transformations.",
+   "verified": true
+  },
+  {
+   "authors": "James P. Sethna",
+   "title": "Statistical Mechanics: Entropy, Order Parameters, and Complexity",
+   "edition_year": "2nd ed., 2021",
+   "publisher_or_host": "Oxford University Press (free PDF hosted by the author)",
+   "isbn_or_doi": "ISBN 9780198865247 (hardback), 9780198865254 (paperback); DOI 10.1093/oso/9780198865247.001.0001",
+   "url": "https://sethna.lassp.cornell.edu/StatMech/",
+   "free": true,
+   "free_url": "https://sethna.lassp.cornell.edu/StatMech/EntropyOrderParametersComplexity20.pdf",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Modern, computation-friendly statistical mechanics text with a legal free PDF on the author's page.",
+   "verified": true
+  }
+ ],
+ "notes_courses": [
+  {
+   "authors": "M. Scott Shell",
+   "title": "CHE210D: Principles of modern molecular simulation methods (UCSB lecture notes, F19)",
+   "edition_year": "Fall 2019",
+   "publisher_or_host": "UC Santa Barbara, Chemical Engineering",
+   "isbn_or_doi": "",
+   "url": "https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html",
+   "free": true,
+   "free_url": "https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech",
+    "force-fields",
+    "integrators",
+    "pbc-cutoffs",
+    "free-energy",
+    "enhanced-sampling",
+    "coarse-graining",
+    "analysis-errors"
+   ],
+   "best_chapters": "Lecture notes: Classical force fields; Molecular dynamics; Computing properties; Simulations of bulk phases; Advanced molecular dynamics techniques; Free energies along reaction coordinates and biased sampling; Macroscopic free energies and reweighting; Advanced sampling; Coarse-graining and multiscale techniques; and the reading on simulation best practices.",
+   "why": "Complete, free lecture-note set (18 lectures plus readings and Python/Fortran codes) that follows Frenkel and Smit.",
+   "verified": true
+  },
+  {
+   "authors": "Mark E. Tuckerman",
+   "title": "CHEM-GA 2600 Statistical Mechanics (NYU; formerly G25.2651) course page and lecture notes",
+   "edition_year": "current course page",
+   "publisher_or_host": "New York University",
+   "isbn_or_doi": "",
+   "url": "https://wp.nyu.edu/tuckerman_group/teaching/",
+   "free": true,
+   "free_url": "http://www.nyu.edu/classes/tuckerman/stat.mech",
+   "level": "advanced",
+   "covers": [
+    "classical-mechanics",
+    "stat-mech",
+    "integrators",
+    "thermostats-barostats",
+    "free-energy",
+    "enhanced-sampling"
+   ],
+   "best_chapters": "Topics: Lagrangian and Hamiltonian mechanics, phase space and the Liouville theorem; ensembles; molecular dynamics, thermostats and barostats; Monte Carlo; enhanced sampling for free energies; linear response, Green-Kubo and Langevin equations.",
+   "why": "Author-hosted notes that derive MD algorithms, thermostats and barostats from first principles; linked from Tuckerman's own teaching page.",
+   "verified": true
+  },
+  {
+   "authors": "MIT OpenCourseWare",
+   "title": "3.320 Atomistic Computer Modeling of Materials (SMA 5107), Spring 2005 lecture notes",
+   "edition_year": "Spring 2005",
+   "publisher_or_host": "MIT OpenCourseWare (CC BY-NC-SA 4.0)",
+   "isbn_or_doi": "",
+   "url": "https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/",
+   "free": true,
+   "free_url": "https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/pages/lecture-notes/",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech",
+    "integrators",
+    "force-fields"
+   ],
+   "best_chapters": "",
+   "why": "Graduate atomistic-modelling course with 25 lectures of notes; materials-oriented rather than biomolecular, so use selectively.",
+   "verified": true
+  },
+  {
+   "authors": "MIT OpenCourseWare",
+   "title": "5.60 Thermodynamics & Kinetics, Spring 2008",
+   "edition_year": "Spring 2008",
+   "publisher_or_host": "MIT OpenCourseWare",
+   "isbn_or_doi": "",
+   "url": "https://ocw.mit.edu/courses/5-60-thermodynamics-kinetics-spring-2008/",
+   "free": true,
+   "free_url": "https://ocw.mit.edu/courses/5-60-thermodynamics-kinetics-spring-2008/pages/lecture-notes/",
+   "level": "intro",
+   "covers": [
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Undergraduate-level refresher on thermodynamics and statistical mechanics for chemists.",
+   "verified": true
+  },
+  {
+   "authors": "MIT OpenCourseWare",
+   "title": "8.333 Statistical Mechanics I: Statistical Mechanics of Particles, Fall 2013",
+   "edition_year": "Fall 2013",
+   "publisher_or_host": "MIT OpenCourseWare",
+   "isbn_or_doi": "",
+   "url": "https://ocw.mit.edu/courses/8-333-statistical-mechanics-i-statistical-mechanics-of-particles-fall-2013/",
+   "free": true,
+   "free_url": "https://ocw.mit.edu/courses/8-333-statistical-mechanics-i-statistical-mechanics-of-particles-fall-2013/pages/lecture-notes/",
+   "level": "advanced",
+   "covers": [
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Graduate statistical mechanics with full lecture notes, for the theory depth behind ensembles and fluctuations.",
+   "verified": true
+  },
+  {
+   "authors": "Ron Dror (Stanford)",
+   "title": "CS279: Structure and Organization of Biomolecules and Cells (course page and public slides)",
+   "edition_year": "2026 edition",
+   "publisher_or_host": "Stanford University",
+   "isbn_or_doi": "",
+   "url": "https://web.stanford.edu/class/cs279/",
+   "free": true,
+   "free_url": "https://web.stanford.edu/class/cs279/lectures/lecture%20MD__2026_v2.pdf",
+   "level": "intermediate",
+   "covers": [
+    "force-fields",
+    "biomolecules",
+    "ml-potentials",
+    "practical-setup"
+   ],
+   "best_chapters": "The slide sets on energy functions and on molecular dynamics simulation.",
+   "why": "Public slides give a biomolecule-centred MD overview with current ML-force-field readings; the course is now titled 'Structure and Organization of Biomolecules and Cells' and lecture videos are enrolled-only.",
+   "verified": true
+  },
+  {
+   "authors": "David Tong",
+   "title": "Classical Dynamics (Cambridge lecture notes)",
+   "edition_year": "author's notes",
+   "publisher_or_host": "University of Cambridge (author site; old damtp.cam.ac.uk/user/tong/dynamics.html now redirects here)",
+   "isbn_or_doi": "",
+   "url": "https://davidtong.org/teaching/classical-dynamics/",
+   "free": true,
+   "free_url": "https://davidtong.org/teaching/classical-dynamics/",
+   "level": "intermediate",
+   "covers": [
+    "classical-mechanics"
+   ],
+   "best_chapters": "",
+   "why": "Free, clear notes on Lagrangian and Hamiltonian mechanics, the foundation for the integrator and thermostat theory.",
+   "verified": true
+  },
+  {
+   "authors": "David Tong",
+   "title": "Statistical Physics (Cambridge lecture notes)",
+   "edition_year": "author's notes",
+   "publisher_or_host": "University of Cambridge (author site; old damtp.cam.ac.uk/user/tong/statphys.html now redirects here)",
+   "isbn_or_doi": "",
+   "url": "https://davidtong.org/teaching/statistical-physics/",
+   "free": true,
+   "free_url": "https://davidtong.org/teaching/statistical-physics/",
+   "level": "intermediate",
+   "covers": [
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Free, well-written notes on ensembles, partition functions and thermodynamics.",
+   "verified": true
+  },
+  {
+   "authors": "David Tong",
+   "title": "Kinetic Theory (Cambridge lecture notes)",
+   "edition_year": "author's notes",
+   "publisher_or_host": "University of Cambridge (author site; old damtp.cam.ac.uk/user/tong/kinetic.html now redirects here)",
+   "isbn_or_doi": "",
+   "url": "https://davidtong.org/teaching/kinetic-theory/",
+   "free": true,
+   "free_url": "https://davidtong.org/teaching/kinetic-theory/",
+   "level": "advanced",
+   "covers": [
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Free notes on Boltzmann equation and transport, background for diffusion and Langevin-type descriptions.",
+   "verified": true
+  },
+  {
+   "authors": "Daniel M. Zuckerman",
+   "title": "Physical Lens on the Cell (online book)",
+   "edition_year": "online, ongoing",
+   "publisher_or_host": "physicallensonthecell.org (author)",
+   "isbn_or_doi": "",
+   "url": "https://www.physicallensonthecell.org/",
+   "free": true,
+   "free_url": "https://www.physicallensonthecell.org/",
+   "level": "intro",
+   "covers": [
+    "stat-mech",
+    "msm-kinetics",
+    "biomolecules"
+   ],
+   "best_chapters": "Chemical Physics (states and kinetics, equilibrium and detailed balance, free energy, diffusion, Markov models); Physical and Molecular Processes; Energy Economy; Molecular Machinery.",
+   "why": "Free online book from the author's lab on the physics of biomolecular processes, with a chemical-physics section on kinetics, free energy and Markov models.",
+   "verified": true
+  },
+  {
+   "authors": "David L. Mobley, Michael R. Shirts and collaborators (per the course brief)",
+   "title": "alchemistry.org wiki (alchemical free energy calculations)",
+   "edition_year": "wiki, ongoing",
+   "publisher_or_host": "alchemistry.org",
+   "isbn_or_doi": "",
+   "url": "https://alchemistry.org/wiki/Main_Page",
+   "free": true,
+   "free_url": "https://alchemistry.org/wiki/Main_Page",
+   "level": "intermediate",
+   "covers": [
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Wiki that explains alchemical free-energy methods, with worked recommendations.",
+   "verified": true
+  },
+  {
+   "authors": "Efrem Braun, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, Daniel M. Zuckerman",
+   "title": "Best Practices for Foundations in Molecular Simulations",
+   "edition_year": "2018, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.1.5957",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5957",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5957",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "force-fields",
+    "pbc-cutoffs",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "First-stop checklist for setting up and reporting a simulation correctly.",
+   "verified": true
+  },
+  {
+   "authors": "Alan Grossfield, Paul N. Patrone, Daniel R. Roe, Andrew J. Schultz, Daniel Siderius, Daniel M. Zuckerman",
+   "title": "Best Practices for Quantification of Uncertainty and Sampling Quality in Molecular Simulations",
+   "edition_year": "2019, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.1.5067",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5067",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5067",
+   "level": "intermediate",
+   "covers": [
+    "analysis-errors",
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Standard reference for block averaging, autocorrelation, effective sample size and honest error bars.",
+   "verified": true
+  },
+  {
+   "authors": "Justin A. Lemkul",
+   "title": "From Proteins to Perturbed Hamiltonians: A Suite of Tutorials for the GROMACS-2018 Molecular Simulation Package",
+   "edition_year": "2018, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.1.5068",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5068",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5068",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules",
+    "free-energy",
+    "enhanced-sampling"
+   ],
+   "best_chapters": "",
+   "why": "Peer-reviewed version of the GROMACS tutorial series, covering lysozyme, umbrella sampling and free energy.",
+   "verified": true
+  },
+  {
+   "authors": "Antonia S.J.S. Mey, Bryce K. Allen, Hannah E. Bruce Macdonald, John D. Chodera, David F. Hahn, Maximilian Kuhn, Julien Michel, David L. Mobley, Levi N. Naden, Samarjeet Prasad, Andrea Rizzi, Jenke Scheen, Michael R. Shirts, Gary Tresadern, Haufeng Xu",
+   "title": "Best Practices for Alchemical Free Energy Calculations",
+   "edition_year": "2020, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.2.1.18378",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v2i1e18378",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v2i1e18378",
+   "level": "intermediate",
+   "covers": [
+    "free-energy",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Practical guide to designing, running and analysing alchemical free-energy calculations.",
+   "verified": true
+  },
+  {
+   "authors": "Jérôme Hénin, Tony Lelièvre, Michael R. Shirts, Omar Valsson, Lucie Delemotte",
+   "title": "Enhanced Sampling Methods for Molecular Dynamics Simulations",
+   "edition_year": "2022, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.4.1.1583",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v4i1e1583",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v4i1e1583",
+   "level": "advanced",
+   "covers": [
+    "enhanced-sampling",
+    "free-energy",
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "Authoritative review of umbrella sampling, metadynamics, replica exchange and related methods.",
+   "verified": true
+  },
+  {
+   "authors": "Edward J. Maginn, Richard A. Messerly, Daniel J. Carlson, Daniel R. Roe, J. Richard Elliot",
+   "title": "Best Practices for Computing Transport Properties 1. Self-Diffusivity and Viscosity from Equilibrium Molecular Dynamics",
+   "edition_year": "2018, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.1.6324",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e6324",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e6324",
+   "level": "intermediate",
+   "covers": [
+    "analysis-errors",
+    "stat-mech"
+   ],
+   "best_chapters": "",
+   "why": "The LiveCoMS transport-properties paper (Maginn et al., not Wang et al.), for diffusion and viscosity from MD.",
+   "verified": true
+  },
+  {
+   "authors": "Christoph Wehmeyer, Martin K. Scherer, Tim Hempel, Brooke E. Husic, Simon Olsson, Frank Noé",
+   "title": "Introduction to Markov state modeling with the PyEMMA software",
+   "edition_year": "2019, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.1.5965",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5965",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5965",
+   "level": "intermediate",
+   "covers": [
+    "msm-kinetics",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Notebook-style introduction to building and validating Markov state models.",
+   "verified": true
+  },
+  {
+   "authors": "Daniel Markthaler, Sven Jakobtorweihen, Niels Hansen",
+   "title": "Lessons Learned from the Calculation of One-Dimensional Potentials of Mean Force",
+   "edition_year": "2019, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.2.11073",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i2e11073",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i2e11073",
+   "level": "intermediate",
+   "covers": [
+    "free-energy",
+    "enhanced-sampling",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Practical pitfalls of umbrella sampling and PMF calculations.",
+   "verified": true
+  },
+  {
+   "authors": "David J. Smith, Jeffery B. Klauda, Alexander J. Sodt",
+   "title": "Simulation Best Practices for Lipid Membranes",
+   "edition_year": "2018, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.1.5966",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5966",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5966",
+   "level": "intermediate",
+   "covers": [
+    "practical-setup",
+    "force-fields",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "Best practices for membrane simulations (ensemble, force field, equilibration).",
+   "verified": true
+  },
+  {
+   "authors": "Anthony T. Bogetti, Barmak Mostofian, Alex Dickson, A. J. Pratt, Ali S. Saglam, Page O. Harrison, Max Dudek, Paul A. Torrillo, Alex J. DeGrave, Upendra Adhikari, Matthew C. Zweir, Daniel M. Zuckerman, Lillian T. Chong",
+   "title": "A Suite of Tutorials for the WESTPA Rare-Events Sampling Software",
+   "edition_year": "2019, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.1.2.10607",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i2e10607",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v1i2e10607",
+   "level": "advanced",
+   "covers": [
+    "enhanced-sampling",
+    "msm-kinetics"
+   ],
+   "best_chapters": "",
+   "why": "Hands-on weighted-ensemble tutorials for rate and pathway estimation.",
+   "verified": true
+  },
+  {
+   "authors": "David Hahn, Christopher Bayly, Melissa L. Boby, Hannah Bruce Macdonald, John Chodera, Vytautas Gapsys, Antonia Mey, David Mobley, Laura Perez Benito, Christina Schindler, Gary Tresadern, Gregory Warren",
+   "title": "Best Practices for Constructing, Preparing, and Evaluating Protein-Ligand Binding Affinity Benchmarks",
+   "edition_year": "2022, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.4.1.1497",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v4i1e1497",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v4i1e1497",
+   "level": "intermediate",
+   "covers": [
+    "free-energy",
+    "analysis-errors",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "How to build and judge binding-affinity benchmarks, useful when validating free-energy workflows.",
+   "verified": true
+  },
+  {
+   "authors": "Luis Vollmers, Shu-Yu Chen, Maria Reif, Tristan Alexander Mauck, Martin Zacharias",
+   "title": "Molecular Dynamics: From Basics to Application",
+   "edition_year": "2025, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.6.1.3797",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3797",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3797",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules",
+    "force-fields"
+   ],
+   "best_chapters": "",
+   "why": "Recent introductory LiveCoMS tutorial that walks from MD basics to a biomolecular application.",
+   "verified": true
+  },
+  {
+   "authors": "Andrew D. White",
+   "title": "Deep Learning for Molecules and Materials",
+   "edition_year": "2022, Article v1.0",
+   "publisher_or_host": "Living Journal of Computational Molecular Science (LiveCoMS, open access)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.3.1.1499",
+   "url": "https://livecomsjournal.org/index.php/livecoms/article/view/v3i1e1499",
+   "free": true,
+   "free_url": "https://livecomsjournal.org/index.php/livecoms/article/view/v3i1e1499",
+   "level": "intermediate",
+   "covers": [
+    "ml-potentials"
+   ],
+   "best_chapters": "",
+   "why": "Open book (also at dmol.pub, CC BY-NC 3.0) on graph and equivariant neural networks for molecular property and energy prediction.",
+   "verified": true
+  },
+  {
+   "authors": "Andrew D. White",
+   "title": "Deep Learning for Molecules & Materials (online book, dmol.pub)",
+   "edition_year": "online",
+   "publisher_or_host": "dmol.pub (author)",
+   "isbn_or_doi": "DOI 10.33011/livecoms.3.1.1499",
+   "url": "https://dmol.pub/",
+   "free": true,
+   "free_url": "https://dmol.pub/",
+   "level": "intermediate",
+   "covers": [
+    "ml-potentials"
+   ],
+   "best_chapters": "Chapters named on the overview page: 5 Kernel Learning; 8 Graph Neural Networks; 9 Input Data & Equivariances; 10 Equivariant Neural Networks; 16 Modern Molecular NNs; 19 Equivariant Neural Network for Predicting Trajectories",
+   "why": "Free web version of the LiveCoMS article, the best open starting point for ML potentials.",
+   "verified": true
+  },
+  {
+   "authors": "Florian Marquardt",
+   "title": "Machine Learning for Physicists (lecture course)",
+   "edition_year": "2024 version uses JAX",
+   "publisher_or_host": "University of Erlangen-Nuremberg (course site)",
+   "isbn_or_doi": "",
+   "url": "https://machine-learning-for-physicists.org/",
+   "free": true,
+   "free_url": "https://machine-learning-for-physicists.org/",
+   "level": "intro",
+   "covers": [
+    "ml-potentials"
+   ],
+   "best_chapters": "",
+   "why": "General neural-network course with slides, homework and code; it does not cover interatomic potentials specifically, so treat as ML background only.",
+   "verified": true
+  },
+  {
+   "authors": "BioExcel",
+   "title": "BioExcel training catalogue (lecture plus hands-on modules, summer schools, webinars)",
+   "edition_year": "ongoing",
+   "publisher_or_host": "BioExcel Centre of Excellence",
+   "isbn_or_doi": "",
+   "url": "https://bioexcel.eu/services/training/",
+   "free": true,
+   "free_url": "https://bioexcel.eu/services/training/",
+   "level": "intermediate",
+   "covers": [
+    "practical-setup",
+    "free-energy",
+    "enhanced-sampling",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "Free GROMACS training material in beginner, intermediate and advanced modules.",
+   "verified": true
+  },
+  {
+   "authors": "CECAM",
+   "title": "Computational Biochemistry school: 'Lesson 4-1. Enhanced sampling techniques' slides (2024)",
+   "edition_year": "2024",
+   "publisher_or_host": "CECAM",
+   "isbn_or_doi": "",
+   "url": "https://members.cecam.org/storage/presentation/Lesson_4-1-1712603221.pdf",
+   "free": true,
+   "free_url": "https://www.cecam.org/workshop-details/computational-biochemistry-efficient-tools-to-fight-diseases-1511",
+   "level": "intermediate",
+   "covers": [
+    "enhanced-sampling",
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Publicly reachable slides on umbrella sampling and the timescale problem; CECAM mostly hosts slides and booklets rather than full notes.",
+   "verified": true
+  },
+  {
+   "authors": "MolSSI",
+   "title": "MolSSI Education (python-data-analysis and molecular-mechanics tools lessons)",
+   "edition_year": "ongoing",
+   "publisher_or_host": "Molecular Sciences Software Institute",
+   "isbn_or_doi": "",
+   "url": "https://education.molssi.org/",
+   "free": true,
+   "free_url": "https://education.molssi.org/mm-tools/",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Free self-paced lessons on molecular mechanics tools and on Python data analysis.",
+   "verified": true
+  }
+ ],
+ "tutorials_docs": [
+  {
+   "authors": "GROMACS development team",
+   "title": "GROMACS Reference Manual: molecular dynamics algorithms",
+   "edition_year": "current",
+   "publisher_or_host": "manual.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://manual.gromacs.org/current/reference-manual/algorithms/molecular-dynamics.html",
+   "free": true,
+   "free_url": "https://manual.gromacs.org/current/reference-manual/algorithms/molecular-dynamics.html",
+   "level": "intermediate",
+   "covers": [
+    "integrators",
+    "thermostats-barostats",
+    "constraints"
+   ],
+   "best_chapters": "",
+   "why": "Authoritative description of leap-frog/velocity Verlet, thermostats, barostats and constraints as implemented.",
+   "verified": true
+  },
+  {
+   "authors": "GROMACS development team",
+   "title": "GROMACS Reference Manual: bonded interactions (force-field functional forms)",
+   "edition_year": "current",
+   "publisher_or_host": "manual.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://manual.gromacs.org/current/reference-manual/functions/bonded-interactions.html",
+   "free": true,
+   "free_url": "https://manual.gromacs.org/current/reference-manual/functions/bonded-interactions.html",
+   "level": "intermediate",
+   "covers": [
+    "force-fields"
+   ],
+   "best_chapters": "",
+   "why": "Explicit equations for bond, angle, dihedral and improper terms.",
+   "verified": true
+  },
+  {
+   "authors": "GROMACS development team",
+   "title": "GROMACS Reference Manual: non-bonded interactions",
+   "edition_year": "current",
+   "publisher_or_host": "manual.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://manual.gromacs.org/current/reference-manual/functions/nonbonded-interactions.html",
+   "free": true,
+   "free_url": "https://manual.gromacs.org/current/reference-manual/functions/nonbonded-interactions.html",
+   "level": "intermediate",
+   "covers": [
+    "force-fields",
+    "pbc-cutoffs",
+    "water-models"
+   ],
+   "best_chapters": "",
+   "why": "Lennard-Jones, Coulomb, cutoff and combination-rule definitions.",
+   "verified": true
+  },
+  {
+   "authors": "GROMACS development team",
+   "title": "GROMACS Reference Manual: long-range electrostatics (Ewald, PME)",
+   "edition_year": "current",
+   "publisher_or_host": "manual.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://manual.gromacs.org/current/reference-manual/functions/long-range-electrostatics.html",
+   "free": true,
+   "free_url": "https://manual.gromacs.org/current/reference-manual/functions/long-range-electrostatics.html",
+   "level": "intermediate",
+   "covers": [
+    "electrostatics-ewald"
+   ],
+   "best_chapters": "",
+   "why": "Concise derivation and practical notes on Ewald and particle-mesh Ewald.",
+   "verified": true
+  },
+  {
+   "authors": "GROMACS development team",
+   "title": "GROMACS Reference Manual: free-energy implementation",
+   "edition_year": "current",
+   "publisher_or_host": "manual.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://manual.gromacs.org/current/reference-manual/special/free-energy-implementation.html",
+   "free": true,
+   "free_url": "https://manual.gromacs.org/current/reference-manual/special/free-energy-implementation.html",
+   "level": "advanced",
+   "covers": [
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "How lambda coupling, soft-core and BAR/TI estimators are implemented.",
+   "verified": true
+  },
+  {
+   "authors": "GROMACS development team",
+   "title": "GROMACS Reference Manual (index)",
+   "edition_year": "current",
+   "publisher_or_host": "manual.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://manual.gromacs.org/current/reference-manual/index.html",
+   "free": true,
+   "free_url": "https://manual.gromacs.org/current/reference-manual/index.html",
+   "level": "intermediate",
+   "covers": [
+    "force-fields",
+    "integrators",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "Entry page to all reference-manual sections.",
+   "verified": true
+  },
+  {
+   "authors": "GROMACS development team and BioExcel",
+   "title": "GROMACS tutorials suite (Jupyter-based)",
+   "edition_year": "current",
+   "publisher_or_host": "tutorials.gromacs.org",
+   "isbn_or_doi": "",
+   "url": "https://tutorials.gromacs.org/",
+   "free": true,
+   "free_url": "https://tutorials.gromacs.org/",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules",
+    "free-energy",
+    "enhanced-sampling"
+   ],
+   "best_chapters": "",
+   "why": "Official notebook tutorials from basic MD up to free energies and enhanced sampling.",
+   "verified": true
+  },
+  {
+   "authors": "Justin A. Lemkul",
+   "title": "GROMACS Tutorials (mdtutorials.com/gmx)",
+   "edition_year": "current",
+   "publisher_or_host": "mdtutorials.com",
+   "isbn_or_doi": "",
+   "url": "http://www.mdtutorials.com/gmx/",
+   "free": true,
+   "free_url": "http://www.mdtutorials.com/gmx/",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules",
+    "free-energy",
+    "enhanced-sampling"
+   ],
+   "best_chapters": "",
+   "why": "The most used step-by-step GROMACS tutorials (lysozyme in water, umbrella sampling and more).",
+   "verified": true
+  },
+  {
+   "authors": "OpenMM developers",
+   "title": "OpenMM User Guide",
+   "edition_year": "current",
+   "publisher_or_host": "docs.openmm.org",
+   "isbn_or_doi": "",
+   "url": "https://docs.openmm.org/latest/userguide/",
+   "free": true,
+   "free_url": "https://docs.openmm.org/latest/userguide/",
+   "level": "intermediate",
+   "covers": [
+    "practical-setup",
+    "integrators",
+    "force-fields"
+   ],
+   "best_chapters": "Theory chapters: standard forces, custom forces, integrators.",
+   "why": "User guide with a theory section that gives the equations behind each force and integrator.",
+   "verified": true
+  },
+  {
+   "authors": "OpenMM developers",
+   "title": "OpenMM Cookbook",
+   "edition_year": "current",
+   "publisher_or_host": "openmm.github.io",
+   "isbn_or_doi": "",
+   "url": "https://openmm.github.io/openmm-cookbook/latest/",
+   "free": true,
+   "free_url": "https://openmm.github.io/openmm-cookbook/latest/",
+   "level": "intermediate",
+   "covers": [
+    "practical-setup",
+    "free-energy",
+    "enhanced-sampling",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Recipes and notebooks for common OpenMM tasks.",
+   "verified": true
+  },
+  {
+   "authors": "AMBER developers",
+   "title": "AMBER tutorials",
+   "edition_year": "current",
+   "publisher_or_host": "ambermd.org",
+   "isbn_or_doi": "",
+   "url": "https://ambermd.org/tutorials/",
+   "free": true,
+   "free_url": "https://ambermd.org/tutorials/",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules",
+    "force-fields"
+   ],
+   "best_chapters": "",
+   "why": "Official step-by-step tutorials for Amber setup and simulation.",
+   "verified": true
+  },
+  {
+   "authors": "AMBER developers",
+   "title": "Amber 2024 Reference Manual (PDF)",
+   "edition_year": "2024",
+   "publisher_or_host": "ambermd.org",
+   "isbn_or_doi": "",
+   "url": "https://ambermd.org/doc12/Amber24.pdf",
+   "free": true,
+   "free_url": "https://ambermd.org/doc12/Amber24.pdf",
+   "level": "intermediate",
+   "covers": [
+    "force-fields",
+    "practical-setup",
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Complete manual including force-field and free-energy options.",
+   "verified": true
+  },
+  {
+   "authors": "CHARMM-GUI team",
+   "title": "CHARMM-GUI (web service, demo and lecture material)",
+   "edition_year": "current",
+   "publisher_or_host": "charmm-gui.org",
+   "isbn_or_doi": "",
+   "url": "https://www.charmm-gui.org/?doc=lecture",
+   "free": true,
+   "free_url": "https://www.charmm-gui.org/?doc=lecture",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules",
+    "force-fields"
+   ],
+   "best_chapters": "",
+   "why": "System-building web tool with free lecture and demo pages; use of the tool needs an account, which this catalogue does not require you to create.",
+   "verified": true
+  },
+  {
+   "authors": "Theoretical and Computational Biophysics Group (UIUC)",
+   "title": "NAMD / VMD tutorials",
+   "edition_year": "current",
+   "publisher_or_host": "ks.uiuc.edu",
+   "isbn_or_doi": "",
+   "url": "https://www.ks.uiuc.edu/Training/Tutorials/",
+   "free": true,
+   "free_url": "https://www.ks.uiuc.edu/Training/Tutorials/namd-index.html",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "The official NAMD and VMD tutorials.",
+   "verified": true
+  },
+  {
+   "authors": "Sandia National Laboratories and the LAMMPS developers",
+   "title": "LAMMPS documentation",
+   "edition_year": "current",
+   "publisher_or_host": "docs.lammps.org",
+   "isbn_or_doi": "",
+   "url": "https://docs.lammps.org/",
+   "free": true,
+   "free_url": "https://docs.lammps.org/",
+   "level": "intermediate",
+   "covers": [
+    "practical-setup",
+    "force-fields",
+    "coarse-graining"
+   ],
+   "best_chapters": "",
+   "why": "Full reference for the LAMMPS code and its force-field styles.",
+   "verified": true
+  },
+  {
+   "authors": "Simon Gravelle, Cecilia M. S. Alvares, Jacob R. Gissinger, Axel Kohlmeyer",
+   "title": "LAMMPS tutorials (Lennard-Jones fluid, carbon nanotube deformation, water adsorption)",
+   "edition_year": "2025 (LiveCoMS 6:3037)",
+   "publisher_or_host": "lammpstutorials.github.io",
+   "isbn_or_doi": "DOI 10.33011/livecoms.6.1.3037",
+   "url": "https://lammpstutorials.github.io/",
+   "free": true,
+   "free_url": "https://lammpstutorials.github.io/",
+   "level": "intro",
+   "covers": [
+    "practical-setup",
+    "force-fields"
+   ],
+   "best_chapters": "",
+   "why": "Three step-by-step LAMMPS tutorials, also published in LiveCoMS.",
+   "verified": true
+  },
+  {
+   "authors": "MDAnalysis developers",
+   "title": "MDAnalysis documentation",
+   "edition_year": "stable",
+   "publisher_or_host": "docs.mdanalysis.org",
+   "isbn_or_doi": "",
+   "url": "https://docs.mdanalysis.org/stable/",
+   "free": true,
+   "free_url": "https://docs.mdanalysis.org/stable/",
+   "level": "intermediate",
+   "covers": [
+    "analysis-errors",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "API reference for trajectory analysis in Python.",
+   "verified": true
+  },
+  {
+   "authors": "MDAnalysis developers",
+   "title": "MDAnalysis User Guide",
+   "edition_year": "stable",
+   "publisher_or_host": "userguide.mdanalysis.org",
+   "isbn_or_doi": "",
+   "url": "https://userguide.mdanalysis.org/stable/",
+   "free": true,
+   "free_url": "https://userguide.mdanalysis.org/stable/",
+   "level": "intro",
+   "covers": [
+    "analysis-errors",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "Narrative guide and worked examples for MDAnalysis.",
+   "verified": true
+  },
+  {
+   "authors": "MDTraj developers",
+   "title": "MDTraj documentation",
+   "edition_year": "1.9.8.dev0 docs",
+   "publisher_or_host": "mdtraj.org",
+   "isbn_or_doi": "",
+   "url": "https://www.mdtraj.org/1.9.8.dev0/index.html",
+   "free": true,
+   "free_url": "https://www.mdtraj.org/",
+   "level": "intermediate",
+   "covers": [
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Fast trajectory analysis library with examples.",
+   "verified": true
+  },
+  {
+   "authors": "PLUMED consortium",
+   "title": "PLUMED documentation (v2.9 user documentation)",
+   "edition_year": "v2.9",
+   "publisher_or_host": "plumed.org",
+   "isbn_or_doi": "",
+   "url": "https://www.plumed.org/doc-v2.9/user-doc/html/index.html",
+   "free": true,
+   "free_url": "https://www.plumed.org/doc",
+   "level": "intermediate",
+   "covers": [
+    "enhanced-sampling",
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Reference for collective variables and biasing methods.",
+   "verified": true
+  },
+  {
+   "authors": "PLUMED consortium",
+   "title": "PLUMED Masterclasses",
+   "edition_year": "ongoing",
+   "publisher_or_host": "plumed.org",
+   "isbn_or_doi": "",
+   "url": "https://www.plumed.org/masterclass",
+   "free": true,
+   "free_url": "https://www.plumed.org/masterclass",
+   "level": "intermediate",
+   "covers": [
+    "enhanced-sampling",
+    "free-energy",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Free hands-on masterclass exercises on metadynamics, umbrella sampling and analysis.",
+   "verified": true
+  },
+  {
+   "authors": "PLUMED consortium",
+   "title": "PLUMED Tutorials (plumed-tutorials.org)",
+   "edition_year": "ongoing",
+   "publisher_or_host": "plumed-tutorials.org",
+   "isbn_or_doi": "",
+   "url": "https://www.plumed-tutorials.org/",
+   "free": true,
+   "free_url": "https://www.plumed-tutorials.org/",
+   "level": "intermediate",
+   "covers": [
+    "enhanced-sampling",
+    "free-energy"
+   ],
+   "best_chapters": "",
+   "why": "Browsable lessons contributed from PLUMED schools. The PLUMED-NEST archive holds the input files of published studies.",
+   "verified": true
+  },
+  {
+   "authors": "choderalab / pymbar developers",
+   "title": "pymbar documentation (MBAR)",
+   "edition_year": "stable",
+   "publisher_or_host": "pymbar.readthedocs.io",
+   "isbn_or_doi": "",
+   "url": "https://pymbar.readthedocs.io/en/stable/",
+   "free": true,
+   "free_url": "https://pymbar.readthedocs.io/en/stable/",
+   "level": "advanced",
+   "covers": [
+    "free-energy",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Documentation and examples for the MBAR estimator.",
+   "verified": true
+  },
+  {
+   "authors": "alchemistry developers",
+   "title": "alchemlyb documentation",
+   "edition_year": "latest",
+   "publisher_or_host": "alchemlyb.readthedocs.io",
+   "isbn_or_doi": "",
+   "url": "https://alchemlyb.readthedocs.io/en/latest/",
+   "free": true,
+   "free_url": "https://alchemlyb.readthedocs.io/en/latest/",
+   "level": "intermediate",
+   "covers": [
+    "free-energy",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Python library for TI/BAR/MBAR analysis of alchemical data from several MD codes.",
+   "verified": true
+  },
+  {
+   "authors": "Martini developers",
+   "title": "Martini coarse-grained force field: tutorials",
+   "edition_year": "current",
+   "publisher_or_host": "cgmartini.nl",
+   "isbn_or_doi": "",
+   "url": "https://cgmartini.nl/docs/tutorials/",
+   "free": true,
+   "free_url": "https://cgmartini.nl/docs/tutorials/",
+   "level": "intermediate",
+   "covers": [
+    "coarse-graining",
+    "practical-setup",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "Official Martini tutorials for building and running coarse-grained systems.",
+   "verified": true
+  },
+  {
+   "authors": "SMOG developers",
+   "title": "SMOG 2 and SMOG server (structure-based models)",
+   "edition_year": "current",
+   "publisher_or_host": "smog-server.org",
+   "isbn_or_doi": "",
+   "url": "https://smog-server.org/smog2/",
+   "free": true,
+   "free_url": "https://smog-server.org/",
+   "level": "intermediate",
+   "covers": [
+    "coarse-graining",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "Tools and documentation for structure-based (Go-type) models.",
+   "verified": true
+  },
+  {
+   "authors": "KULL-Centre (Lindorff-Larsen group)",
+   "title": "CALVADOS (coarse-grained model for IDPs and multi-domain proteins) code and wiki",
+   "edition_year": "current",
+   "publisher_or_host": "GitHub",
+   "isbn_or_doi": "",
+   "url": "https://github.com/KULL-Centre/CALVADOS",
+   "free": true,
+   "free_url": "https://github.com/KULL-Centre/CALVADOS",
+   "level": "intermediate",
+   "covers": [
+    "coarse-graining",
+    "biomolecules"
+   ],
+   "best_chapters": "",
+   "why": "Reference implementation and examples for the CALVADOS model.",
+   "verified": true
+  },
+  {
+   "authors": "deeptime developers",
+   "title": "deeptime documentation",
+   "edition_year": "latest",
+   "publisher_or_host": "deeptime-ml.github.io",
+   "isbn_or_doi": "",
+   "url": "https://deeptime-ml.github.io/latest/index.html",
+   "free": true,
+   "free_url": "https://deeptime-ml.github.io/latest/index.html",
+   "level": "advanced",
+   "covers": [
+    "msm-kinetics",
+    "ml-potentials"
+   ],
+   "best_chapters": "",
+   "why": "Successor library to PyEMMA for Markov models, VAMPnets and dimensionality reduction.",
+   "verified": true
+  },
+  {
+   "authors": "PyEMMA developers",
+   "title": "PyEMMA documentation and tutorial",
+   "edition_year": "latest",
+   "publisher_or_host": "emma-project.org",
+   "isbn_or_doi": "",
+   "url": "http://www.emma-project.org/latest/tutorial.html",
+   "free": true,
+   "free_url": "http://www.emma-project.org/latest/",
+   "level": "intermediate",
+   "covers": [
+    "msm-kinetics",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Markov state model documentation and tutorials.",
+   "verified": true
+  },
+  {
+   "authors": "Open Force Field Initiative",
+   "title": "Open Force Field documentation and toolkit",
+   "edition_year": "latest",
+   "publisher_or_host": "docs.openforcefield.org",
+   "isbn_or_doi": "",
+   "url": "https://docs.openforcefield.org/en/latest/",
+   "free": true,
+   "free_url": "https://docs.openforcefield.org/projects/toolkit/en/stable/",
+   "level": "intermediate",
+   "covers": [
+    "force-fields",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "Docs for the SMIRNOFF force fields and the toolkit for parametrising small molecules.",
+   "verified": true
+  },
+  {
+   "authors": "HOOMD-blue developers",
+   "title": "HOOMD-blue documentation and tutorials",
+   "edition_year": "stable",
+   "publisher_or_host": "hoomd-blue.readthedocs.io",
+   "isbn_or_doi": "",
+   "url": "https://hoomd-blue.readthedocs.io/en/latest/tutorials.html",
+   "free": true,
+   "free_url": "https://hoomd-blue.readthedocs.io/en/stable/",
+   "level": "intermediate",
+   "covers": [
+    "practical-setup",
+    "coarse-graining",
+    "integrators"
+   ],
+   "best_chapters": "",
+   "why": "Python-scripted GPU MD engine with tutorials, well suited to coarse-grained work.",
+   "verified": true
+  },
+  {
+   "authors": "MACE developers",
+   "title": "MACE documentation (machine-learned interatomic potentials)",
+   "edition_year": "latest",
+   "publisher_or_host": "mace-docs.readthedocs.io",
+   "isbn_or_doi": "",
+   "url": "https://mace-docs.readthedocs.io/en/latest/",
+   "free": true,
+   "free_url": "https://mace-docs.readthedocs.io/en/latest/",
+   "level": "advanced",
+   "covers": [
+    "ml-potentials"
+   ],
+   "best_chapters": "",
+   "why": "Documentation for training and running MACE equivariant potentials.",
+   "verified": true
+  },
+  {
+   "authors": "Michael P. Allen, Dominic J. Tildesley",
+   "title": "Allen-Tildesley examples repository (Fortran and Python)",
+   "edition_year": "GitHub",
+   "publisher_or_host": "GitHub (Allen-Tildesley)",
+   "isbn_or_doi": "",
+   "url": "https://github.com/Allen-Tildesley/examples",
+   "free": true,
+   "free_url": "https://github.com/Allen-Tildesley/examples",
+   "level": "intermediate",
+   "covers": [
+    "integrators",
+    "pbc-cutoffs",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Official code from Computer Simulation of Liquids, 2nd ed.",
+   "verified": true
+  },
+  {
+   "authors": "pythoninchemistry",
+   "title": "Simulation and Scattering notebooks: molecular dynamics intro (Lennard-Jones, velocity Verlet)",
+   "edition_year": "GitHub",
+   "publisher_or_host": "pythoninchemistry.org",
+   "isbn_or_doi": "",
+   "url": "https://pythoninchemistry.org/sim_and_scat/",
+   "free": true,
+   "free_url": "https://github.com/pythoninchemistry/sim_and_scat",
+   "level": "intro",
+   "covers": [
+    "integrators",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "Notebook course that implements force, velocity Verlet and a small MD loop in Python.",
+   "verified": true
+  },
+  {
+   "authors": "Furst group (University of Delaware)",
+   "title": "SimpleMD: a simple Lennard-Jones MD code in Python with Jupyter notebooks",
+   "edition_year": "repo",
+   "publisher_or_host": "lem.che.udel.edu",
+   "isbn_or_doi": "",
+   "url": "https://lem.che.udel.edu/git/furst/SimpleMD",
+   "free": true,
+   "free_url": "https://lem.che.udel.edu/git/furst/SimpleMD",
+   "level": "intro",
+   "covers": [
+    "integrators",
+    "analysis-errors"
+   ],
+   "best_chapters": "",
+   "why": "Small readable code plus analysis notebooks; I did not check that it runs.",
+   "verified": true
+  },
+  {
+   "authors": "Fabian Cichos (Leipzig)",
+   "title": "Step-by-Step Development of a Molecular Dynamics Simulation (seminar)",
+   "edition_year": "course page",
+   "publisher_or_host": "fcichos.github.io",
+   "isbn_or_doi": "",
+   "url": "https://fcichos.github.io/CBPM/seminars/seminar02/md1.html",
+   "free": true,
+   "free_url": "https://fcichos.github.io/CBPM/seminars/seminar02/md1.html",
+   "level": "intro",
+   "covers": [
+    "integrators",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "Builds an MD code from one particle in free fall to a Lennard-Jones system.",
+   "verified": true
+  },
+  {
+   "authors": "LCBC (EPFL)",
+   "title": "MD simulation from scratch exercise (toy_md.py, velocity Verlet)",
+   "edition_year": "course page",
+   "publisher_or_host": "lcbc-epfl.github.io",
+   "isbn_or_doi": "",
+   "url": "https://lcbc-epfl.github.io/mdmc-public/Ex4/Exercise.html",
+   "free": true,
+   "free_url": "https://lcbc-epfl.github.io/mdmc-public/Ex4/Exercise.html",
+   "level": "intro",
+   "covers": [
+    "integrators",
+    "practical-setup"
+   ],
+   "best_chapters": "",
+   "why": "Short exercise implementing velocity Verlet in a toy MD program.",
+   "verified": true
+  }
+ ]
+}
