@@ -6,7 +6,7 @@ summary: A self-study course on how molecular dynamics simulations work: the equ
 
 <div class="cards">
 <div class="card"><b>{{N_MODULES}}</b><span>modules, about {{N_HOURS}} hours of study</span></div>
-<div class="card"><b>{{N_VIDEOS}}</b><span>videos and playlists, and {{N_LECTURES}} individual lectures, linked section by section</span></div>
+<div class="card"><b>{{N_VIDEOS}}</b><span>videos and playlists holding {{N_LECTURES}} lectures, nearly 300 of them attached to the section they teach</span></div>
 <div class="card"><b>{{N_BOOKS}} + {{N_NOTES}}</b><span>textbooks, free lecture notes and tutorials</span></div>
 <div class="card"><b>{{N_PAPERS}}</b><span>papers with verified identifiers, {{N_READ_FULL}} read in full</span></div>
 <div class="card"><b>{{N_WIDGETS}}</b><span>simulations that run in the page, with toy data to download</span></div>
