@@ -1,0 +1,766 @@
+{
+ "hollingsworth2018": {
+  "read": "full",
+  "annotation": "A practical overview for experimentalists of what MD can and cannot tell you, how simulations motivate experiments, drug-discovery uses, and an honest list of limits, with no equations.",
+  "read_guide": "Sections 'What information can MD simulations provide?' and 'Practical considerations' (limits, chaos and repeats, five-step recipe); Modules 1 and 10.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "braun2018": {
+  "read": "full",
+  "annotation": "A beginner's map of what to understand before running MD: ensembles, long-range electrostatics, thermostat and barostat choice, time step, equilibration, and when not to use MD, ending in a checklist.",
+  "read_guide": "Sec. 4.3 (equilibration, velocities), 4.4-4.5 (thermostat and barostat verdicts), 4.6.4 (time step) and the checklist on p. 23; Modules 1, 8, 10.",
+  "n_checked": 23,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "bussi2007a": {
+  "read": "full",
+  "annotation": "Shows how an exact friction-noise step around a Verlet step gives Langevin sampling error that does not depend on friction, and introduces the effective energy as a drift test for stochastic dynamics.",
+  "read_guide": "Sec. II B (Eq. 10-13, the integrator) and II C (effective energy, Eq. 20), Fig. 1-3 and Appendix A; Module 4 (stochastic integrators), Module 8 (Langevin).",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "leimkuhler2012": {
+  "read": "full",
+  "annotation": "Shows by backward error analysis that the BAOAB ordering of Langevin splitting cancels the leading step-size error in the distribution of positions, most strongly at high friction, and improves Brownian dynamics.",
+  "read_guide": "Sec. 2.1 (splitting and Appendix algorithms), Sec. 3.3 (why the dt^2 error cancels), Fig. 1 (gamma = 1 versus 50); Modules 4 and 8.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "bussi2007b": {
+  "read": "full",
+  "annotation": "Introduces stochastic velocity rescaling: Berendsen relaxation plus a noise term giving the exact canonical kinetic-energy distribution, with an effective energy that tests whether the time step gives correct sampling.",
+  "read_guide": "Sec. II A-B (Eq. 3 and 7, the thermostat), Sec. III B (Fig. 3, fluctuations against tau for Berendsen and Nose-Hoover), Sec. III C (dynamics); Module 8.",
+  "n_checked": 13,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "bernetti2020": {
+  "read": "full",
+  "annotation": "Presents stochastic cell rescaling, a first-order barostat that adds the right noise to the Berendsen update so volume fluctuations are correct, tested on fluids, water, a membrane and binding free energies.",
+  "read_guide": "Sec. II A (Eq. 2-5, derivation), Fig. 1, Sec. III B (Berendsen versus Parrinello-Rahman fluctuations, TIP3P compressibility) and Sec. IV; Module 8 (barostats).",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "pall2013": {
+  "read": "full",
+  "annotation": "Explains how grouping atoms into fixed-size spatial clusters and evaluating whole cluster pairs makes the non-bonded kernel fast on SIMD CPUs and GPUs, and how the Verlet buffer is tied to an allowed energy drift.",
+  "read_guide": "Sec. 2.2-2.3 (the M x N idea, Fig. 1-2) and Sec. 5 (Verlet buffer, extra pairs, drift versus buffer, Fig. 8, Table 3); Modules 7 and 10.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "vanommeslaeghe2010": {
+  "read": "full",
+  "annotation": "Describes how to parametrize drug-like ligands compatible with CHARMM: water-interaction charges, vibrational-spectrum force constants, torsion scans fitted last, and why mixing force-field families breaks non-bonded balance.",
+  "read_guide": "Background, Methodology, Parametrization procedure steps 1-5, pyrrolidine case study, Table 6; Module 6 (general force fields, fitting order) and Module 5.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "lindorfflarsen2010": {
+  "read": "full",
+  "annotation": "Shows one force-field refinement end to end: find poorly modelled residues against PDB statistics, fit torsions to quantum scans, then validate with microsecond NMR-compared simulations (ff99SB-ILDN).",
+  "read_guide": "Results on QM fitting and NMR validation, Boltzmann-weighted fit in Methods, Figures 1, 3, 4; Module 6 (lineage, validation) and Module 5 (torsions).",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "ponder2010": {
+  "read": "full",
+  "annotation": "Introduces AMOEBA, the induced-dipole force field with permanent multipoles, and shows how a polarizable model is validated: QM conformer energies, solvation free energies, peptide solutions, ligand binding.",
+  "read_guide": "AMOEBA force field through Electronic Polarization (Eq. 1-12), alanine tetrapeptide benchmark, solvation free energy section; Module 6 (polarizable force fields) and Module 5.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "best2012": {
+  "read": "full",
+  "annotation": "Shows how CHARMM36 was built: re-balance the CMAP helix/extended map against NMR peptide data, fit side-chain torsions to QM then to unfolded-protein couplings, validate on independent systems.",
+  "read_guide": "Backbone optimisation and helix-bias discussion, side-chain fitting with Eq. 2-3, Table 2 (AAQAA) and Table 9; Module 6 (lineage, fitting) and Module 5 (CMAP).",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "lindorfflarsen2012": {
+  "read": "full",
+  "annotation": "The standard multi-force-field benchmark: folded-protein NMR, helix and hairpin peptide balance, and folding of villin and WW show tests on folded proteins alone cannot rank force fields.",
+  "read_guide": "Results on peptides and folding, Figures 1-3, Table 1, Methods on manual scoring; Module 6 (how force fields are validated) and Module 11.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "best2014": {
+  "read": "full",
+  "annotation": "Shows that a 10 percent boost of protein-water Lennard-Jones attraction expands disordered chains and weakens sticky association while folded proteins stay stable, and how to test such a patch.",
+  "read_guide": "Parametrization Strategy, Csp M34 and ACTR sections, Table 3 (villin Kd), Discussion on transferability; Module 6 (disordered-protein problem) and Module 11 (SAXS, FRET).",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "maier2015": {
+  "read": "full",
+  "annotation": "A clear example of torsion fitting: pair-energy fitting of side chains to diverse QM dipeptide scans plus a minimal empirical backbone tweak chosen by NMR couplings and helix content (ff14SB).",
+  "read_guide": "Fitting Strategy (side chains, backbone), Eq. 1-4, Ala5 and HBSP results, limitations; Module 6 (lineage, torsions fitted last, validation) and Module 5.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "lemkul2016": {
+  "read": "full",
+  "annotation": "A review of the Drude-2013 polarizable force field: how Drude oscillators, Thole screening, an extended Lagrangian and polarizability scaling are built, and what polarization changes for water, proteins, DNA and ions.",
+  "read_guide": "Sections 3.2 (functional form, extended Lagrangian, cost) and 3.3.1 (parametrisation), then 4.1 (dipoles, helix cooperativity). Module 6 polarizable force fields; Module 5 electrostatics limits.",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "huang2017": {
+  "read": "full",
+  "annotation": "CHARMM36m shows how a force field is tuned in practice: reweighting cuts left-handed helix bias via CMAP, one salt-bridge NBFIX is added, and the paper still admits remaining over-compaction.",
+  "read_guide": "Main text on alpha_L and over-compact IDPs; Online Methods Eq. 1-4 (CMAP reweighting) and NBFIX section. Module 6 (disordered-protein problem), Module 5 (CMAP).",
+  "n_checked": 8,
+  "n_wrong": 1,
+  "n_imprecise": 3
+ },
+ "robustelli2018": {
+  "read": "full",
+  "annotation": "A benchmark of eight force fields on 21 folded and disordered proteins shows each fails somewhere, then re-tunes a99SB-ILDN/TIP4P-D into a99SB-disp via water dispersion, backbone torsions and a backbone O-H pair.",
+  "read_guide": "Benchmark composition, Figs 2 and 4, the Rg deviation paragraph, 'Optimization of a99SB-disp', score definition in Methods. Module 6 (disordered-protein problem, validation).",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "tian2020": {
+  "read": "full",
+  "annotation": "ff19SB replaces uncoupled backbone cosines with amino-acid-specific CMAP maps fitted to QM energies in implicit solvent, and shows ff14SB's helicity relied on TIP3P error cancellation, so OPC is recommended.",
+  "read_guide": "Introduction (why ff14SB fails, polarization inconsistency), Methods CMAP fitting Eq. 1-2, helical propensity and K19 results (Figs 9, 10). Module 5 (CMAP), Module 6 (torsion fitting, water pairing).",
+  "n_checked": 9,
+  "n_wrong": 1,
+  "n_imprecise": 4
+ },
+ "boothroyd2023": {
+  "read": "full",
+  "annotation": "Sage shows how a small-molecule force field is rebuilt: SMIRKS-typed parameters, Lennard-Jones refit to liquid mixture data with TIP3P fixed, valence terms refit to QM, then benchmarked on solvation and binding free energies.",
+  "read_guide": "Section 1.2 (fitting pipeline, training data), Section 2.2.1 (LJ loss, regularisation), Sections 3.2 and 3.5 (benchmarks). Module 6 (general force fields), Module 13 (binding free energies).",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "joung2008": {
+  "read": "part",
+  "annotation": "Shows why ion Lennard-Jones parameters must match the water model and mixing rule: old AMBER ions crystallised in solution, and a balanced set was fitted to hydration free energy and crystal data.",
+  "read_guide": "Introduction 'Issues and Artifacts', Rmin/epsilon hydration surface (Figs 3-4), Table 5 and the transferability conclusion; Module 6 (ions) and Module 7 (Ewald).",
+  "n_checked": 4,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "izadi2014": {
+  "read": "full",
+  "annotation": "Introduces the OPC four-site water: charges placed without geometry constraints, tuned through dipole and quadrupole to bulk properties, giving near-experimental dielectric constant, density, diffusion and hydration free energies at TIP4P cost.",
+  "read_guide": "Approach and Fig. 3 (mu-QT quality map), Table 3 and Fig. 4 (errors of water models), hydration free energy test; Module 6 water models, Modules 11 and 13.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "jarzynski1997": {
+  "read": "full",
+  "annotation": "Proves that the exponential average of work over repeated finite-speed switches equals the equilibrium free energy difference, and warns that it fails when work fluctuates by much more than kBT.",
+  "read_guide": "Eq 2 and its proof (eqs 6-8), limits eqs 4-5, cumulant result eq 12 and the page 7 and 9 warnings; Module 13 (non-equilibrium work) and Module 14 (steered MD).",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "crooks1999": {
+  "read": "full",
+  "annotation": "Derives the fluctuation theorem for driven stochastic systems and from it the work relation P_F(W)/P_R(-W) = exp(beta(W - Delta F)), which contains the Jarzynski equality.",
+  "read_guide": "Section II (microscopic reversibility, eq 5), Section III to eq 11, Fig. 2 toy-model work distributions; Module 13 (non-equilibrium work, BAR).",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "shirts2008": {
+  "read": "full",
+  "annotation": "Defines MBAR: a binless, asymptotically lowest-variance estimator that combines samples from many states, reduces to BAR and WHAM in limits, and gives uncertainties and observable averages.",
+  "read_guide": "Sections II-IV (eqs 1-13), WHAM comparison in Sec. VI, Appendix A on subsampling, Appendix E (BAR limit); Module 12 (WHAM and MBAR), Modules 11 and 13.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "gumbart2013": {
+  "read": "full",
+  "annotation": "Compares two rigorous routes to an absolute standard binding free energy of a peptide to SH3, alchemical decoupling and restrained PMF, showing both reproduce experiment once restraint terms are corrected.",
+  "read_guide": "Introduction (wandering ligand), Results eqs 1-19 (restraint bookkeeping, S*, I*, C0), Discussion comparing routes; Module 12 (PMF to Kd) and Module 13 (restraints).",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "chodera2016": {
+  "read": "full",
+  "annotation": "Gives an automatic rule for how much of a trajectory to discard as equilibration: choose the cut-off that maximises the number of effectively uncorrelated samples left, balancing bias against variance.",
+  "read_guide": "Bias-variance section, 'The essential idea' and eq 14, Figs 2-4, closing caution and practical g estimation; Module 11 (equilibration, statistical inefficiency).",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "grossfield2019": {
+  "read": "full",
+  "annotation": "A practical guide to judging sampling quality and reporting honest uncertainty: sanity checks, equilibration removal, effective sample size, block averaging, bootstrapping and 95 % confidence intervals.",
+  "read_guide": "Checklist (p. 6), Sec. 4 (tests that rule out good sampling), Sec. 5 (equilibration), Sec. 7.1-7.3 and 7.6 (error bars, N_ind, blocks, bootstrap); Module 11 and error bars in Modules 12-14.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "mey2020": {
+  "read": "full",
+  "annotation": "A practical guide to alchemical binding and hydration free energies: why thermodynamic cycles work, how to choose restraints, soft-core paths and estimators (MBAR), and how to check overlap, convergence and cycle closure.",
+  "read_guide": "Sec. 3 (why cycles work), 7.1.2 and 7.2.3 (restraints, soft-core), 8.3-8.5 (estimators, overlap, convergence), Checklist; Module 13.",
+  "n_checked": 18,
+  "n_wrong": 0,
+  "n_imprecise": 7
+ },
+ "laio2002": {
+  "read": "full",
+  "annotation": "The original metadynamics paper: a history-dependent sum of Gaussians fills free-energy wells and reveals the surface, applied to coarse-grained dynamics of a few collective coordinates (NaCl dissociation, alanine dipeptide).",
+  "read_guide": "Methodology (Eqs. 1-3, Fig. 1 well filling) and the Discussion on why the bias alone is not enough; Module 14 (Metadynamics).",
+  "n_checked": 4,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "barducci2008": {
+  "read": "full",
+  "annotation": "Introduces well-tempered metadynamics: hill heights shrink as bias builds, so the bias converges, the free energy is a rescaled bias, and DeltaT tunes how far above T the collective variables are sampled.",
+  "read_guide": "Eqs. 2-6 and the limits DeltaT = 0 and infinity (p.1-2); Fig. 1d and Fig. 2 (convergence, optimal DeltaT); Module 14 and formula sheet.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "wang2011": {
+  "read": "full",
+  "annotation": "Shows that scaling solute-water energy by the square root of the solute-solute scaling (REST2) gives better exchange and folding sampling than REST1 and needs far fewer replicas than temperature replica exchange.",
+  "read_guide": "Methodology (Eqs. 1-4, new solute-water factor), Results on Trp-cage mixing and acceptance, Appendix 2 (cost versus TREM); Module 14 (REST2).",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "tribello2014": {
+  "read": "full",
+  "annotation": "Describes PLUMED 2, the plug-in library and tool where each input line is an Action (CV, bias or output); examples include steered MD and well-tempered metadynamics with path variables.",
+  "read_guide": "Sec. 3.1 (how an input file works, Figs. 1-3) and Sec. 4.1-4.2 (steered MD, path CVs, METAD input); Module 14 and the PLUMED exercise.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "zuckerman2017": {
+  "read": "full",
+  "annotation": "A review of weighted ensemble sampling: unbiased walkers are split and merged between bins, giving rigorous rates, steady-state fluxes and pathways for rare events, with applications and the WESTPA software.",
+  "read_guide": "Theory (Huber-Kim algorithm, split/merge) and Equilibrium, Steady States and Kinetics (Hill relation); Challenges (binning, correlations); Modules 14 and 16.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "henin2022": {
+  "read": "full",
+  "annotation": "A principle-based review of enhanced sampling with unified notation, key equations (reweighting, well-tempered metadynamics, replica exchange, ABF, Jarzynski) and convergence diagnostics; shows how methods relate and how to check them.",
+  "read_guide": "Fig. 1 and Sec 1.2; Sec 2.2 (FES, PMF, reweighting); Sec 3.3-3.7; Sec 7.2.1 Eq. 65-82; Sec 7.3; Sec 8.1.1; Sec 11.1. Modules 13 and 14.",
+  "n_checked": 30,
+  "n_wrong": 0,
+  "n_imprecise": 6
+ },
+ "noel2016": {
+  "read": "full",
+  "annotation": "SMOG 2 generates structure-based Hamiltonians from a structure and templates; students see the Calpha energy function, native contacts by the Shadow map, Q as reaction coordinate, and CI2 folding.",
+  "read_guide": "Eq. 1 and the template section (p. 3-5), Table 1 of templates, CI2 free-energy profile in Fig 1. Module 15, structure-based (Go) models.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "dignon2018": {
+  "read": "full",
+  "annotation": "Dignon et al. build the HPS and Kim-Hummer residue-level models and the slab method for phase diagrams; a single fitted energy scale plus Debye-Huckel screening gives qualitative, not quantitative, condensate trends.",
+  "read_guide": "Methods Eq. 1-6 and Fig 1 (potentials), the slab-method paragraphs, and the Discussion limits (p. 16). Module 15, residue-level models for disordered proteins.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "souza2021": {
+  "read": "full",
+  "annotation": "Martini 3 rebalances bead sizes, types and interaction levels and tests packing, protein aggregation and transmembrane dimerisation; students learn what a top-down CG force field targets and its authors' own limits.",
+  "read_guide": "Results on re-parametrization, packing and protein-protein interactions; Methods 1-3 (settings, tiered validation); Discussion limits. Module 15 Martini section, Module 7 reaction field.",
+  "n_checked": 14,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "chodera2014": {
+  "read": "full",
+  "annotation": "A concise review framing a Markov state model as a discretised Markov operator; explains lag time, eigenvalue timescales, tICA, variational ideas, estimation, applications and open problems of kinetics from short trajectories.",
+  "read_guide": "Sec. 1 (Eqs. 1-3), Sec. 2 on the paradigm shift, variational approach, tICA and estimation, and Sec. 5 limits. Goes with Module 16 (Markov state models).",
+  "n_checked": 15,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "smith2017": {
+  "read": "full",
+  "annotation": "The founding ANI paper: a Behler-Parrinello style neural potential with element-resolved symmetry-function vectors, trained on 17 million normal-mode-sampled DFT energies, transferring to larger organic molecules at near-force-field scaling.",
+  "read_guide": "Sec. 2.2-2.3 (Eqs. 1-5: AEV, normal mode sampling), Sec. 4.1 and Figs. 3-4 (data size versus transfer), Sec. 4.4. Goes with Module 17, Architectures and Training.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "schutt2018": {
+  "read": "full",
+  "annotation": "SchNet shows how atom embeddings plus distance-based continuous-filter convolutions give invariant, energy-conserving neural potentials, and that training on forces as well as energies greatly cuts the data needed.",
+  "read_guide": "Sec. II A-F (Eqs. 1-5: embeddings, cfconv, filter network, forces, combined loss), Sec. III D (Tables III-IV, MD17), Sec. III E (C20 PIMD). Goes with Module 17, Message passing and Training.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "noe2019": {
+  "read": "full",
+  "annotation": "Introduces Boltzmann generators: invertible networks trained by energy and by example whose exactly known sample densities allow reweighting to unbiased equilibrium averages and free-energy differences without reaction coordinates, shown up to BPTI.",
+  "read_guide": "Main text from Boltzmann Generators to Thermodynamics between disconnected states: Eqs. 1-3 and 16, Figs. 1, 2, 6, Discussion caveats. Goes with Module 17 (Boltzmann generators), Modules 13-14.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "wang2019b": {
+  "read": "full",
+  "annotation": "Recasts force-matching coarse-graining as supervised learning, splits the loss into PMF error and irreducible noise, and shows that a regularised neural free energy (CGnet) captures multi-body effects that few-body spline CG models miss.",
+  "read_guide": "Theory section (Eqs. 2-9: thermodynamic consistency, PMF error plus noise, bias-variance), regularisation by a baseline energy, Figs. 6-7 (alanine dipeptide, Chignolin). Goes with Modules 17 and 15.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "unke2021": {
+  "read": "part",
+  "annotation": "A long review of how machine-learned force fields are built and used: invariances, kernel versus neural models, data sampling, loss, validation and limits such as locality and long-range interactions.",
+  "read_guide": "Sec. 2.3.1 invariances, Sec. 2.3.4 (Eqs. 22-25), Sec. 3.3-3.6 data, loss, validation, Sec. 5 locality and long range; module 17.",
+  "n_checked": 21,
+  "n_wrong": 0,
+  "n_imprecise": 4
+ },
+ "batzner2022": {
+  "read": "full",
+  "annotation": "NequIP shows that a potential with rotation-equivariant tensor features and force-matched training learns accurately from a few hundred configurations, with an l = 0 versus l >= 1 ablation.",
+  "read_guide": "Eqs. 2-9 and Fig. 1 (architecture, loss), Table 3 water/ice data efficiency, Fig. 5 learning curves, Discussion; module 17.",
+  "n_checked": 14,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "batatia2022": {
+  "read": "full",
+  "annotation": "MACE builds four-body equivariant messages on each atom so two message-passing layers reach top accuracy, giving smaller receptive fields, faster evaluation and easier parallelisation than deeper two-body networks.",
+  "read_guide": "Section 4 (Eqs. 7-11), Fig. 1 layers versus accuracy, Section 5.2 receptive field and cost, Table 2; module 17.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "majewski2023": {
+  "read": "full",
+  "annotation": "Shows that force-matched neural-network Calpha potentials trained on about 9 ms of all-atom data fold twelve small proteins in nanoseconds, but transfer poorly to beta-sheets and new sequences.",
+  "read_guide": "Eq. (1) and prior terms in Methods, Table 2, Fig. 3, multi-protein and mutant sections, Discussion limits; Module 17 and Module 15.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "michaudagrawal2011": {
+  "read": "full",
+  "annotation": "Introduces the MDAnalysis design (Universe, AtomGroup, selections, trajectory iterator) with worked analyses: block averaging, RMSD fitting, g(r), native contacts; a model for short Python analysis scripts.",
+  "read_guide": "Methods (architecture, units), Results: Basic use, block averaging, Distances (PBC caveat), Native contacts; Module 11.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "case2023": {
+  "read": "full",
+  "annotation": "A short tour of AmberTools23 and the prepare-simulate-analyse chain (LEaP, prmtop/inpcrd, sander/pmemd, cpptraj, MMPBSA.py); a map of the Amber tools, not a method description.",
+  "read_guide": "Overview of Amber and AmberTools, Typical Workflow with Figure 1, Free Energy sections; Modules 6, 10, 11.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "eastman2017": {
+  "read": "full",
+  "annotation": "Explains OpenMM's design (Python layer, custom forces and integrators, plugins), shows a complete script, and quantifies GPU speed, precision modes and agreement with Amber, Gromacs and CHARMM energies.",
+  "read_guide": "Listing 1, custom forces and integrators, Table 1, precision modes with Tables 4-5, input-pipeline validation; Modules 4, 9, 10.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "eastman2024": {
+  "read": "full",
+  "annotation": "Shows how OpenMM 8 runs machine-learning potentials (TorchForce, OpenMM-ML with ANI-2x, ML/MM), what they cost in a benchmark, and adds LF-Middle, metadynamics and 4 fs production settings.",
+  "read_guide": "PyTorch Model Support, OpenMM-ML, Table 3 and cost discussion, LF-Middle and metadynamics paragraphs; Modules 4, 10, 14, 17.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "husic2020cgschnet": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "charron2025": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "venturin2026": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "pasostrejo2026": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "kohler2023_flowmatching": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "arts2023_twoforone": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "kramer2023_optimalforce": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "durumeric2023_review": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "durumeric2026_forcesnoise": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "klein2025_operatorforces": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "park2026_meanforce": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "ani2x_2020": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "aimnet2_2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "maceoff_2025": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "so3lr_2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "ai2bmd2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "gems2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "allegro_sc23": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "fu2023forces": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "stocker2022": {
+  "read": "",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "omol25": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "zaverkin2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "mlipaudit2025": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "espaloma2022": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "espaloma03": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "grappa2025": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "byteff2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "byteffpol2026": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "misato_2024": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "dynaformer_2024": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "protmd_2022": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "plas20k_2024": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "neuralmd_2024": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "mdts_2026": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "gu_2023": {
+  "read": "",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "boltz2": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "atlas": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "mdcath": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "flexpert": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "pegasus": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "backflip2": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "hybindnn": {
+  "read": "full",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "dynaprot": {
+  "read": "",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "alphaflow2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "mdgen2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "timewarp2023": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "ito2023": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "equijump2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "dig2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "tbg2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "asam2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "str2str2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "confdiff2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "idpgan2023": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "idpsam2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "idpfold2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "bbflow2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "dynamicpdb2024": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "gpcrmd2020": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "bhasin2025": {
+  "read": "part",
+  "annotation": "",
+  "read_guide": ""
+ },
+ "woo2005": {
+  "read": "part",
+  "annotation": "Derives the absolute binding constant from a restrained radial PMF (conformation, orientation, position restraints), avoiding double decoupling for a charged peptide; Lck SH2 result -8.8 kcal/mol, MM/PB-SA about -80.",
+  "read_guide": "Theoretical Developments (Eqs. 4-13, Fig. 2) and the Results discussion of the PMFs and of double decoupling versus the PMF route; Modules 12 and 13.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "karanicolas2002": {
+  "read": "full",
+  "annotation": "Calpha Go model for protein L and G with Miyazawa-Jernigan side-chain contacts, a 12-10-6 desolvation-barrier potential and statistical dihedrals; hairpin order follows from sequence energetics plus chain entropy, not topology alone.",
+  "read_guide": "Materials and Methods (Eq. 1, contact definitions, energy-scale Eqs. 2-4, dihedral potential) and Tables 1-2 with Fig. 2c; Module 15.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "tesei2021": {
+  "read": "full",
+  "annotation": "Bayesian optimisation of the 20 hydrophobicity values of a one-bead HPS model on Rg and PRE data of 45 IDPs; the best set (M1, later CALVADOS 1) predicts condensate concentrations and net-charge effects.",
+  "read_guide": "Results (optimisation, tests of M1-M3 on LLPS, Fig. 6, net charge per residue) and the Methods parameter-learning steps; Module 15. The SI Appendix holds the force field.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "phillips2020": {
+  "read": "full",
+  "annotation": "Reference paper for NAMD: Charm++ patch decomposition, GPU-resident integration, multiple time stepping, PME, Langevin piston, Colvars, alchemical FEP, constant-pH and QM/MM. A software review, not a force-field validation.",
+  "read_guide": "Sections III (GPU performance), IV (integrators, thermostats, Langevin piston), V (PME) and IX (alchemical methods); goes with Modules 4, 7, 8 and 13.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "case2005": {
+  "read": "full",
+  "annotation": "Overview of the 2005 Amber suite: prmtop and LEaP preparation, sander and pmemd, PME and SPME derivation, GB and PB implicit solvent, LES, REMD, mm-pbsa and ptraj. Describes Amber 8, not current Amber.",
+  "read_guide": "Explicit Solvent Models (Ewald, PME, SPME) for Module 7; Table 1 and the lists of dropped features for Modules 10 and 13; Implicit Solvent Models for the GB paragraph of Module 15.",
+  "n_checked": 15,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "mcgibbon2015": {
+  "read": "full",
+  "annotation": "Software note on MDTraj, a Python library that reads trajectories from all major MD programs into NumPy arrays and provides fast RMSD, DSSP, SASA, hydrogen-bond and contact analysis.",
+  "read_guide": "Capabilities and implementation and Table 1 (file formats); goes with Module 11 (analysis tools) and Module 10 (output formats).",
+  "n_checked": 3,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "huber1996": {
+  "read": "full",
+  "annotation": "Introduces weighted-ensemble sampling: Brownian walkers carry weights, are split and merged within bins along a reaction coordinate, and the steady flux gives a rate, tested at 14,000-fold and 1600-fold speed-ups.",
+  "read_guide": "Theory and Eq. 1 (p. 97-99), splitting and merging rules (p. 99), Eq. 2 efficiency, 1-D results Figs. 5-6, protein association Figs. 7-8, Appendix A (no bias) and Appendix C (bin placement).",
+  "n_checked": 16,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "gilson1997": {
+  "read": "full",
+  "annotation": "Derives the standard binding free energy from configuration integrals with explicit C°, 8pi^2 and symmetry numbers, and turns double annihilation into restrained double decoupling with an analytical standard-state correction.",
+  "read_guide": "Statistical thermodynamics of binding (pp. 1048-1052, Eqs. 3-13, Fig. 1), the standard free energy of binding section with Figs. 2-3 and Eq. 28 (pp. 1052-1056), and Eqs. 49 and 58. Goes with Modules 3, 12 and 13.",
+  "n_checked": 15,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ }
+}
