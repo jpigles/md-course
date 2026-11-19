@@ -1,0 +1,135 @@
+{
+ "leimkuhler2012": {
+  "arxiv": "1203.5428",
+  "abs": "https://arxiv.org/abs/1203.5428",
+  "title": "Rational Construction of Stochastic Numerical Methods for Molecular Sampling",
+  "ratio": 1.0,
+  "file": "leimkuhler2012_rational_construction_of_arxiv.pdf"
+ },
+ "bussi2007a": {
+  "arxiv": "0803.4083",
+  "abs": "https://arxiv.org/abs/0803.4083",
+  "title": "Accurate sampling using Langevin dynamics",
+  "ratio": 1.0,
+  "file": "bussi2007a_accurate_sampling_using_arxiv.pdf"
+ },
+ "bussi2007b": {
+  "arxiv": "0803.4060",
+  "abs": "https://arxiv.org/abs/0803.4060",
+  "title": "Canonical sampling through velocity-rescaling",
+  "ratio": 1.0,
+  "file": "bussi2007b_canonical_sampling_through_arxiv.pdf"
+ },
+ "bernetti2020": {
+  "arxiv": "2006.09250",
+  "abs": "https://arxiv.org/abs/2006.09250",
+  "title": "Pressure control using stochastic cell rescaling",
+  "ratio": 1.0,
+  "file": "bernetti2020_pressure_control_using_arxiv.pdf"
+ },
+ "pall2013": {
+  "arxiv": "1306.1737",
+  "abs": "https://arxiv.org/abs/1306.1737",
+  "title": "A flexible algorithm for calculating pair interactions on SIMD architectures",
+  "ratio": 1.0,
+  "file": "pall2013_a_flexible_algorithm_arxiv.pdf"
+ },
+ "izadi2014": {
+  "arxiv": "1408.1679",
+  "abs": "https://arxiv.org/abs/1408.1679",
+  "title": "Building Water Models, A Different Approach",
+  "ratio": 1.0,
+  "file": "izadi2014_building_water_models_arxiv.pdf"
+ },
+ "shirts2008": {
+  "arxiv": "0801.1426",
+  "abs": "https://arxiv.org/abs/0801.1426",
+  "title": "Statistically optimal analysis of samples from multiple equilibrium states",
+  "ratio": 1.0,
+  "file": "shirts2008_statistically_optimal_analysis_arxiv.pdf"
+ },
+ "jarzynski1997": {
+  "arxiv": "cond-mat/9610209",
+  "abs": "https://arxiv.org/abs/cond-mat/9610209",
+  "title": "A nonequilibrium equality for free energy differences",
+  "ratio": 0.981,
+  "file": "jarzynski1997_nonequilibrium_equality_for_arxiv.pdf"
+ },
+ "crooks1999": {
+  "arxiv": "cond-mat/9901352",
+  "abs": "https://arxiv.org/abs/cond-mat/9901352",
+  "title": "The Entropy Production Fluctuation Theorem and the Nonequilibrium Work Relation for Free Energy Differences",
+  "ratio": 0.981,
+  "file": "crooks1999_entropy_production_fluctuation_arxiv.pdf"
+ },
+ "laio2002": {
+  "arxiv": "cond-mat/0208352",
+  "abs": "https://arxiv.org/abs/cond-mat/0208352",
+  "title": "Escaping free-energy minima",
+  "ratio": 1.0,
+  "file": "laio2002_escaping_free_energy_arxiv.pdf"
+ },
+ "barducci2008": {
+  "arxiv": "0803.3861",
+  "abs": "https://arxiv.org/abs/0803.3861",
+  "title": "Well-Tempered Metadynamics: A Smoothly Converging and Tunable Free-Energy Method",
+  "ratio": 1.0,
+  "file": "barducci2008_well_tempered_metadynamics_arxiv.pdf"
+ },
+ "tribello2014": {
+  "arxiv": "1310.0980",
+  "abs": "https://arxiv.org/abs/1310.0980",
+  "title": "PLUMED 2: New feathers for an old bird",
+  "ratio": 1.0,
+  "file": "tribello2014_plumed_2_new_arxiv.pdf"
+ },
+ "smith2017": {
+  "arxiv": "1610.08935",
+  "abs": "https://arxiv.org/abs/1610.08935",
+  "title": "ANI-1: An extensible neural network potential with DFT accuracy at force field computational cost",
+  "ratio": 1.0,
+  "file": "smith2017_ani_1_an_arxiv.pdf"
+ },
+ "schutt2018": {
+  "arxiv": "1712.06113",
+  "abs": "https://arxiv.org/abs/1712.06113",
+  "title": "SchNet - a deep learning architecture for molecules and materials",
+  "ratio": 1.0,
+  "file": "schutt2018_schnet_a_deep_arxiv.pdf"
+ },
+ "batatia2022": {
+  "arxiv": "2206.07697",
+  "abs": "https://arxiv.org/abs/2206.07697",
+  "title": "MACE: Higher Order Equivariant Message Passing Neural Networks for Fast and Accurate Force Fields",
+  "ratio": 1.0,
+  "file": "batatia2022_mace_higher_order_arxiv.pdf"
+ },
+ "unke2021": {
+  "arxiv": "2010.07067",
+  "abs": "https://arxiv.org/abs/2010.07067",
+  "title": "Machine Learning Force Fields",
+  "ratio": 1.0,
+  "file": "unke2021_machine_learning_force_arxiv.pdf"
+ },
+ "noe2019": {
+  "arxiv": "1812.01729",
+  "abs": "https://arxiv.org/abs/1812.01729",
+  "title": "Boltzmann Generators -- Sampling Equilibrium States of Many-Body Systems with Deep Learning",
+  "ratio": 1.0,
+  "file": "noe2019_boltzmann_generators_sampling_arxiv.pdf"
+ },
+ "wang2019b": {
+  "arxiv": "1812.01736",
+  "abs": "https://arxiv.org/abs/1812.01736",
+  "title": "Machine Learning of coarse-grained Molecular Dynamics Force Fields",
+  "ratio": 1.0,
+  "file": "wang2019b_machine_learning_of_arxiv.pdf"
+ },
+ "eastman2024": {
+  "arxiv": "2310.03121",
+  "abs": "https://arxiv.org/abs/2310.03121",
+  "title": "OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials",
+  "ratio": 1.0,
+  "file": "eastman2024_openmm_8_molecular_arxiv.pdf"
+ }
+}
