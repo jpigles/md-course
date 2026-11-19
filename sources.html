@@ -71,7 +71,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>2. The cited papers, read in full.</strong> Of the 144 papers in the main reference list, 58 could be obtained legally and were read: 55 from first line to last and 3 in part. Fifty of them are open-access articles, PubMed Central full text or arXiv preprints that a program can fetch. Eight more are free on PubMed Central but only in a browser, and they were read there, two of them (Gilson et al. 1997 and Huber and Kim 1996) from scanned page images. In four of the browser-read papers the displayed equations are pictures and were read only through the surrounding text, which is why Woo and Roux (2005) is labelled read in part. Against the 58 papers, <strong>572 statements of the course were checked: 2 were wrong and 116 imprecise</strong>, and the substantive ones were corrected. The two wrong ones:</p>
+<p><strong>2. The cited papers, read in full.</strong> Of the 144 papers in the main reference list, 124 were obtained legally and read: 119 from first line to last and 5 in part (long reviews, a long software paper, and papers of which a section or the equations could not be read). They came from three sources. Fifty are open-access articles, PubMed Central full text or arXiv preprints that a program can fetch. Eight are free on PubMed Central but only in a browser, two of them (Gilson et al. 1997 and Huber and Kim 1996) as scanned page images. Sixty-six are publisher PDFs obtained through a university library subscription. For those, the equations, tables and numbers the course depends on were checked on images of the printed pages, because the text layer of a PDF garbles them. Against the 124 papers, <strong>1,202 statements of the course were checked: 2 were wrong and 227 imprecise</strong>, and the substantive ones were corrected. The two wrong ones:</p>
 <table>
 <thead>
 <tr>
@@ -93,8 +93,50 @@
 </tr>
 </tbody>
 </table>
+<p>The 66 library papers are mostly the original papers of the methods the course derives: Verlet, velocity Verlet, RESPA, SHAKE, RATTLE, LINCS, the Andersen, Berendsen, Nosé, Hoover and Parrinello-Rahman schemes, Nosé-Hoover chains, particle-mesh Ewald, thermodynamic integration, free-energy perturbation, the Bennett acceptance ratio, umbrella sampling, the Boresch restraints, replica exchange, generalised Born, and Kramers theory in the review of Hänggi, Talkner and Borkovec. Every equation of the course that comes from one of them was compared with the printed equation term by term, and none had to be changed. What changed were statements about the papers: who introduced what, what a paper actually showed, and numbers quoted from memory. Some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What the course said</th>
+<th>What the paper says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module 12</td>
+<td>Umbrella sampling with a spring along a coordinate, attributed to Torrie and Valleau (1977)</td>
+<td>They introduced non-Boltzmann sampling with exact reweighting for Monte Carlo free-energy differences; the spring along a coordinate came later</td>
+</tr>
+<tr>
+<td>Module 7</td>
+<td>The PME of Darden et al. (1993) described with B-splines</td>
+<td>The 1993 paper interpolated with Lagrange polynomials; B-splines are from Essmann et al. (1995)</td>
+</tr>
+<tr>
+<td>Module 8</td>
+<td>Andersen's piston presented as a constant-temperature and pressure method</td>
+<td>On its own it gives constant enthalpy; NPT needs his stochastic collisions as well</td>
+</tr>
+<tr>
+<td>Module 14</td>
+<td>Replica-exchange acceptance of "about 30 %"</td>
+<td>The original simulation had about 15 %; 20 to 30 % is later practice</td>
+</tr>
+<tr>
+<td>Module 16</td>
+<td>Levelling-off of implied time scales presented as validation of a Markov model</td>
+<td>It guides the choice of lag time; the Chapman-Kolmogorov test validates (Prinz et al. 2011)</td>
+</tr>
+<tr>
+<td>Module 1</td>
+<td>The first protein simulation (1977) was "in vacuum"</td>
+<td>Four buried water molecules were included</td>
+</tr>
+</tbody>
+</table>
 <p>In the reference lists, a paper that was read carries the label <span class="tag read">read in full</span> or <span class="tag read">read in part</span>, with a line on what it is for and what to read in it.</p>
-<p><strong>What this does not cover.</strong> The other 86 papers could not be read: most are behind a paywall, and two open-access ones (the GROMACS and LAMMPS reference papers) sit on a publisher site that turns automated readers away. For those, only the bibliographic details were verified. Statements in the lessons about what those papers did (for example the original Verlet, SHAKE, Nosé, Hoover and Ewald papers) rest on textbook knowledge and on the referees' checks, not on a reading of the paper. Where a text was read as a preprint, the published article may differ.</p>
+<p><strong>What this does not cover.</strong> Twenty papers could not be read. Eleven are in American Chemical Society journals, whose site stopped serving files after the first dozen (it limits how many articles one reader may fetch in a short time): the Martini papers, force matching (Izvekov and Voth 2005), GROMACS 4, g_wham, Lennard-Jones PME, hydrogen mass repartitioning, TIP4P-D, FEP+ and the Markov-model review of Husic and Pande. Three are in Science, which the library proxy does not cover (the Anton simulations and the published BioEmu paper, whose preprint was read for Module 18). For six the library has no online copy or the publisher page offered no file: Ewald (1921), Kramers (1940), Kumar et al. (1992, WHAM), Miyamoto and Kollman (1992, SETTLE), Izrailev et al. (1999) and Dror et al. (2012). For these 20 only the bibliographic details were verified, and what the lessons say about them rests on textbook knowledge and on the referees' checks. Where a text was read as a preprint, the published article may differ.</p>
 <p><strong>Module 18</strong> was written the other way round: from evidence files built by reading the literature first, with a page reference for every number.</p>
 <h2 id="the-references">The references</h2>
 <ul>
@@ -113,7 +155,7 @@
 <p>The 17 in-page simulations were each started and checked for errors in a browser, on a wide and a narrow screen. The umbrella-sampling demo recovers the exact potential to about 0.2 <span class="math-inline">\(k_BT\)</span>, the Liouville demo conserves area to about a percent, and the free-energy demo reproduces the exact answer with the acceptance-ratio estimator. They are teaching toys in reduced units, not research code.</p>
 <h2 id="where-the-records-are">Where the records are</h2>
 <p>In the repository: the referees' reports (<code>research/review_part1.md</code> to <code>review_part3.md</code>), the lists the pages are built from, and the short annotation of each paper that was read (<code>research/paper_notes.json</code>).</p>
-<p>Kept offline with the course sources, not published: the full reading note for each paper (<code>research/paper_notes/</code>) and the evidence files behind Module 18 (<code>research/sota_partA.md</code>, <code>sota_partB.md</code>). They quote the papers at length, and those passages belong to the publishers.</p>
+<p>Kept offline with the course sources, not published: the full reading note for each paper (<code>research/paper_notes/</code>), the evidence files behind Module 18 (<code>research/sota_partA.md</code>, <code>sota_partB.md</code>), and the papers themselves. The notes quote the papers, and those passages and files belong to the publishers.</p>
 <p>If you find an error, it is most likely in a statement about a paper that could not be read. Check the paper.</p>
 </article>
 
