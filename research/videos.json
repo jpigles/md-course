@@ -6,7 +6,7 @@
   "title": "MIT 3.320 Atomistic Computer Modeling of Materials",
   "channel": "MIT OpenCourseWare",
   "lecturer": "MIT OpenCourseWare (3.320)",
-  "n_videos": null,
+  "n_videos": 19,
   "duration_min": null,
   "level": "intermediate",
   "why": "Full MIT graduate course on atomistic modelling that covers MD, Monte Carlo, statistical mechanics and free energies with a rigorous foundation.",
@@ -19,7 +19,7 @@
   "title": "Molecular Biophysics - all lectures as concepts",
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl (KTH/Stockholm Univ.)",
-  "n_videos": null,
+  "n_videos": 298,
   "duration_min": null,
   "level": "intro",
   "why": "Complete molecular biophysics course in short concept videos covering force fields, integration, ensembles, PBC, PME and free energy by the GROMACS lead developer.",
@@ -32,7 +32,7 @@
   "title": "Introduction to Molecular Simulation and Statistical Mechanics (University of Utah, Fall 2023)",
   "channel": "Brennon Shanks",
   "lecturer": "Brennon Shanks (University of Utah)",
-  "n_videos": null,
+  "n_videos": 15,
   "duration_min": null,
   "level": "intermediate",
   "why": "Semester-long course combining statistical mechanics with hands-on MD derivations such as velocity Verlet, thermostats and sampling.",
@@ -45,7 +45,7 @@
   "title": "Molecular Dynamics / Monte Carlo",
   "channel": "TMP Chem",
   "lecturer": "TMP Chem",
-  "n_videos": null,
+  "n_videos": 13,
   "duration_min": null,
   "level": "intro",
   "why": "Clear short lectures that build molecular dynamics and Monte Carlo from energy gradients up to practical algorithms.",
@@ -58,7 +58,7 @@
   "title": "Molecular simulations | Molecular dynamics MD and Monte carlo MC",
   "channel": "The Computational Chemist",
   "lecturer": "The Computational Chemist",
-  "n_videos": null,
+  "n_videos": 18,
   "duration_min": null,
   "level": "intermediate",
   "why": "Concise concept videos on MD and Monte Carlo covering Ewald, replica exchange, PBC, alchemical methods and free energies.",
@@ -71,7 +71,7 @@
   "title": "Computational Chemistry and Classical Molecular Dynamics",
   "channel": "NPTEL IIT Bombay",
   "lecturer": "NPTEL / IIT Bombay",
-  "n_videos": null,
+  "n_videos": 41,
   "duration_min": null,
   "level": "intermediate",
   "why": "Full NPTEL course on computational chemistry and classical molecular dynamics with a weekly lecture structure.",
@@ -84,7 +84,7 @@
   "title": "Advanced Thermodynamics and Molecular Simulations",
   "channel": "IIT Roorkee July 2018",
   "lecturer": "NPTEL / IIT Roorkee",
-  "n_videos": null,
+  "n_videos": 61,
   "duration_min": null,
   "level": "intermediate",
   "why": "Long NPTEL series on advanced thermodynamics and molecular simulation including MD implementation, thermostats and barostats.",
@@ -97,7 +97,7 @@
   "title": "Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras",
   "channel": "SWAYAM Prabha IIT Madras Channels",
   "lecturer": "Prof. Ethayaraja Mani (IIT Madras)",
-  "n_videos": null,
+  "n_videos": 32,
   "duration_min": null,
   "level": "intro",
   "why": "Dedicated course on the principles of molecular dynamics simulation from basic theory to analysis.",
@@ -110,7 +110,7 @@
   "title": "Molecular Dynamics Simulations of Biomolecules",
   "channel": "Videos Used in Teaching at SDU, Odense",
   "lecturer": "SDU Odense (biomolecular simulation)",
-  "n_videos": null,
+  "n_videos": 19,
   "duration_min": null,
   "level": "intro",
   "why": "Short teaching videos on biomolecular MD from a basic introduction to constraints and block error analysis.",
@@ -123,7 +123,7 @@
   "title": "Course on Simulation of Biological Systems",
   "channel": "MoBioChem",
   "lecturer": "MoBioChem school",
-  "n_videos": null,
+  "n_videos": 8,
   "duration_min": null,
   "level": "intermediate",
   "why": "Multi-day school on simulating biological systems, from equations of motion and force fields to enhanced sampling and QM/MM.",
@@ -136,7 +136,7 @@
   "title": "PLUMED Masterclass 21",
   "channel": "Plumed Org",
   "lecturer": "PLUMED consortium",
-  "n_videos": null,
+  "n_videos": 14,
   "duration_min": null,
   "level": "intermediate",
   "why": "PLUMED Masterclass 2021, a hands-on series on enhanced sampling and free energy analysis with PLUMED.",
@@ -149,7 +149,7 @@
   "title": "2021 BioExcel Summer School on Biomolecular Simulations",
   "channel": "BioExcel CoE",
   "lecturer": "BioExcel",
-  "n_videos": null,
+  "n_videos": 13,
   "duration_min": null,
   "level": "intermediate",
   "why": "BioExcel summer school lectures on biomolecular simulation methods and tools.",
@@ -162,7 +162,7 @@
   "title": "Foundations of Computational Materials Modelling | IIT Madras",
   "channel": "NPTEL-NOC IITM",
   "lecturer": "NPTEL / IIT Madras",
-  "n_videos": null,
+  "n_videos": 34,
   "duration_min": null,
   "level": "intro",
   "why": "Computational materials modelling course that includes MD and LAMMPS fundamentals.",
@@ -176,7 +176,7 @@
   "channel": "Molecular Simulations Lab @ JNCASR",
   "lecturer": "Daan Frenkel",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 70,
   "level": "intermediate",
   "why": "Long conversation with the author of Understanding Molecular Simulation about the history and ideas behind molecular simulation.",
   "verified": true
@@ -189,7 +189,7 @@
   "channel": "Brennon Shanks",
   "lecturer": "Brennon Shanks",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 47,
   "level": "intro",
   "why": "High level view of what molecular simulations are and why we run them, a good first lecture.",
   "verified": true
@@ -201,7 +201,7 @@
   "title": "Lecture Collection | Classical Mechanics (Fall 2011)",
   "channel": "Stanford",
   "lecturer": "Leonard Susskind (Stanford)",
-  "n_videos": null,
+  "n_videos": 10,
   "duration_min": null,
   "level": "intermediate",
   "why": "Susskind Theoretical Minimum classical mechanics course covering Lagrangians, Hamiltonians and phase space.",
@@ -215,7 +215,7 @@
   "channel": "Stanford",
   "lecturer": "Leonard Susskind (Stanford)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 107,
   "level": "intermediate",
   "why": "Susskind lecture on Hamiltonian mechanics, phase space and Liouville's theorem.",
   "verified": true
@@ -228,7 +228,7 @@
   "channel": "Stanford",
   "lecturer": "Leonard Susskind (Stanford)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 110,
   "level": "intermediate",
   "why": "Lecture in the Theoretical Minimum classical mechanics course on Lagrangian formalism.",
   "verified": true
@@ -241,7 +241,7 @@
   "channel": "Alexander Maloney",
   "lecturer": "Alexander Maloney (McGill)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 76,
   "level": "intermediate",
   "why": "University lecture on Hamiltonian mechanics and phase space.",
   "verified": true
@@ -254,7 +254,7 @@
   "channel": "Dr. Jorge S. Diaz",
   "lecturer": "Jorge S. Diaz",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 22,
   "level": "intro",
   "why": "Visual lecture on the phase space geometry of Hamiltonian mechanics.",
   "verified": true
@@ -266,7 +266,7 @@
   "title": "Statistical Mechanics (Spring 2013)",
   "channel": "Susskind Lectures",
   "lecturer": "Leonard Susskind (Stanford)",
-  "n_videos": null,
+  "n_videos": 10,
   "duration_min": null,
   "level": "intermediate",
   "why": "Susskind statistical mechanics lectures from entropy and the Boltzmann distribution to ensembles and partition functions.",
@@ -279,7 +279,7 @@
   "title": "MIT 8.333 Statistical Mechanics I: Statistical Mechanics of Particles, Fall 2013",
   "channel": "MIT OpenCourseWare",
   "lecturer": "Mehran Kardar (MIT)",
-  "n_videos": null,
+  "n_videos": 26,
   "duration_min": null,
   "level": "advanced",
   "why": "Rigorous graduate course on statistical mechanics of particles with ensembles, kinetic theory and phase space.",
@@ -292,7 +292,7 @@
   "title": "Lecture Collection | Modern Physics: Statistical Mechanics",
   "channel": "Stanford",
   "lecturer": "Leonard Susskind (Stanford)",
-  "n_videos": null,
+  "n_videos": 10,
   "duration_min": null,
   "level": "intermediate",
   "why": "Stanford Continuing Studies statistical mechanics lecture collection (2009).",
@@ -306,7 +306,7 @@
   "channel": "MIT OpenCourseWare",
   "lecturer": "MIT 5.60 teaching staff",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 51,
   "level": "intro",
   "why": "MIT physical chemistry thermodynamics and kinetics lecture, part of a course that builds up the partition function.",
   "verified": true
@@ -319,7 +319,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 4,
   "level": "intro",
   "why": "Short concept video on the partition function for biomolecular simulation.",
   "verified": true
@@ -332,7 +332,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 12,
   "level": "intro",
   "why": "Derives the Boltzmann distribution in the general case.",
   "verified": true
@@ -345,7 +345,7 @@
   "channel": "e-PG Pathshala",
   "lecturer": "e-PG Pathshala",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 45,
   "level": "intermediate",
   "why": "Lecture on ensemble theory, Liouville's theorem and ergodicity.",
   "verified": true
@@ -358,7 +358,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 8,
   "level": "intro",
   "why": "Short video on NVE, NVT and NPT simulation ensembles.",
   "verified": true
@@ -371,7 +371,7 @@
   "channel": "Rob Berger",
   "lecturer": "Rob Berger (WWU)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 15,
   "level": "intro",
   "why": "Boltzmann factors and partition functions in a concise chemistry lecture.",
   "verified": true
@@ -384,7 +384,7 @@
   "channel": "Brennon Shanks",
   "lecturer": "Brennon Shanks",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 28,
   "level": "intermediate",
   "why": "Derives the velocity Verlet method as used in MD codes.",
   "verified": true
@@ -397,7 +397,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 6,
   "level": "intro",
   "why": "Explains leap-frog integration updating positions and velocities as in GROMACS.",
   "verified": true
@@ -410,7 +410,7 @@
   "channel": "LearnWithVinay",
   "lecturer": "LearnWithVinay",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 13,
   "level": "intro",
   "why": "Walk through of the velocity Verlet algorithm for MD.",
   "verified": true
@@ -423,7 +423,7 @@
   "channel": "Leios",
   "lecturer": "Leios",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 3,
   "level": "intro",
   "why": "Short visual introduction to Verlet integration.",
   "verified": true
@@ -436,7 +436,7 @@
   "channel": "MoBioChem",
   "lecturer": "MoBioChem",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 29,
   "level": "intro",
   "why": "Chapter on force fields in a molecular dynamics lecture series.",
   "verified": true
@@ -449,7 +449,7 @@
   "channel": "NPTEL-NOC IITM",
   "lecturer": "NPTEL-NOC IITM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 31,
   "level": "intro",
   "why": "Lecture on molecular mechanics and force field terms.",
   "verified": true
@@ -462,7 +462,7 @@
   "channel": "NPTEL-NOC IITM",
   "lecturer": "NPTEL-NOC IITM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 22,
   "level": "intro",
   "why": "Explains the components of force fields.",
   "verified": true
@@ -475,7 +475,7 @@
   "channel": "Chris Cramer",
   "lecturer": "Chris Cramer (University of Minnesota)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 21,
   "level": "intermediate",
   "why": "University lecture on MM force fields and how they drive MC and MD.",
   "verified": true
@@ -488,7 +488,7 @@
   "channel": "SimbiosOpenMM",
   "lecturer": "SimbiosOpenMM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "intermediate",
   "why": "How to use AMOEBA polarizable force fields in OpenMM.",
   "verified": true
@@ -501,7 +501,7 @@
   "channel": "Classical Mechanics Videos",
   "lecturer": "Classical Mechanics Videos",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 15,
   "level": "intro",
   "why": "Lennard-Jones potential and its use in MD simulations.",
   "verified": true
@@ -514,7 +514,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 5,
   "level": "intro",
   "why": "Short concept video on periodic boundary conditions.",
   "verified": true
@@ -527,7 +527,7 @@
   "channel": "The Computational Chemist",
   "lecturer": "The Computational Chemist",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 8,
   "level": "intro",
   "why": "Periodic boundary conditions in MD and Monte Carlo.",
   "verified": true
@@ -540,7 +540,7 @@
   "channel": "MoBioChem",
   "lecturer": "MoBioChem",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 32,
   "level": "intro",
   "why": "Chapter on PBC, temperature and pressure in MD.",
   "verified": true
@@ -553,7 +553,7 @@
   "channel": "The MD Guy",
   "lecturer": "The MD Guy",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 5,
   "level": "intro",
   "why": "Visual short video on the geometry of periodic boundary conditions.",
   "verified": true
@@ -566,7 +566,7 @@
   "channel": "LearnWithVinay",
   "lecturer": "LearnWithVinay",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "intro",
   "why": "Longer walk through of PBC in molecular simulations.",
   "verified": true
@@ -579,22 +579,9 @@
   "channel": "The Computational Chemist",
   "lecturer": "The Computational Chemist",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 21,
   "level": "intermediate",
   "why": "Ewald method and PME variants for long-range electrostatics.",
-  "verified": true
- },
- {
-  "topic": 7,
-  "kind": "video",
-  "url": "https://www.youtube.com/watch?v=sFHwqD0m1Do",
-  "title": "Ewald summation method",
-  "channel": "SONU KUMAR RAO",
-  "lecturer": "Sonu Kumar Rao",
-  "n_videos": null,
-  "duration_min": null,
-  "level": "intermediate",
-  "why": "Ewald summation lecture.",
   "verified": true
  },
  {
@@ -605,7 +592,7 @@
   "channel": "ESPResSo Simulation Package",
   "lecturer": "ESPResSo Simulation Package",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 53,
   "level": "advanced",
   "why": "Longer lecture on electrostatic algorithms including Ewald and mesh methods.",
   "verified": true
@@ -618,22 +605,9 @@
   "channel": "Charm++",
   "lecturer": "David Hardy (Charm++ Workshop)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 28,
   "level": "advanced",
   "why": "Talk on fast electrostatics algorithms and their GPU implementation in NAMD.",
-  "verified": true
- },
- {
-  "topic": 8,
-  "kind": "video",
-  "url": "https://www.youtube.com/watch?v=gWbT5BELJzg",
-  "title": "Lecture 1 2 ThermostatBarostat",
-  "channel": "Haochuan Ma",
-  "lecturer": "Haochuan Ma",
-  "n_videos": null,
-  "duration_min": null,
-  "level": "intermediate",
-  "why": "Lecture on thermostats and barostats in MD.",
   "verified": true
  },
  {
@@ -644,7 +618,7 @@
   "channel": "nanohubtechtalks",
   "lecturer": "nanoHUB-U Atoms to Materials",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "intro",
   "why": "Isothermal and isobaric MD simulations explained.",
   "verified": true
@@ -657,7 +631,7 @@
   "channel": "IIT Roorkee July 2018",
   "lecturer": "NPTEL / IIT Roorkee",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 30,
   "level": "intermediate",
   "why": "Numerical implementation of MD with thermostat and barostat.",
   "verified": true
@@ -670,7 +644,7 @@
   "channel": "LearnWithVinay",
   "lecturer": "LearnWithVinay",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 16,
   "level": "intro",
   "why": "Thermostats for canonical ensemble simulations.",
   "verified": true
@@ -683,7 +657,7 @@
   "channel": "Physics Through Computation",
   "lecturer": "Physics Through Computation",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 50,
   "level": "intermediate",
   "why": "Theory and code of Berendsen, Andersen and velocity rescaling thermostats.",
   "verified": true
@@ -696,7 +670,7 @@
   "channel": "PhysicsOfLifeLMU",
   "lecturer": "PhysicsOfLifeLMU",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 44,
   "level": "intermediate",
   "why": "Langevin equation and fluctuation-dissipation theorem, the basis of Langevin thermostats.",
   "verified": true
@@ -709,7 +683,7 @@
   "channel": "Videos Used in Teaching at SDU, Odense",
   "lecturer": "SDU Odense",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 12,
   "level": "intermediate",
   "why": "Short lecture on constraint algorithms in MD.",
   "verified": true
@@ -722,7 +696,7 @@
   "channel": "Materials Cloud",
   "lecturer": "J.P. Ryckaert and G. Ciccotti (CECAM-MARVEL)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 160,
   "level": "advanced",
   "why": "Talk by the SHAKE authors on molecular dynamics under holonomic constraints.",
   "verified": true
@@ -734,7 +708,7 @@
   "title": "Sep2012 OpenMM Workshop -- September 6-7, 2012",
   "channel": "SimbiosOpenMM",
   "lecturer": "OpenMM developers (Stanford Simbios)",
-  "n_videos": null,
+  "n_videos": 9,
   "duration_min": null,
   "level": "intermediate",
   "why": "2012 OpenMM workshop with introductions and hands-on sessions.",
@@ -747,7 +721,7 @@
   "title": "Mar2014 OpenMM Workshop - March 30 - April 1, 2014",
   "channel": "SimbiosOpenMM",
   "lecturer": "OpenMM developers (Stanford Simbios)",
-  "n_videos": null,
+  "n_videos": 10,
   "duration_min": null,
   "level": "intermediate",
   "why": "2014 OpenMM workshop covering MD workflows and analysis.",
@@ -760,7 +734,7 @@
   "title": "GROMACS: Molecular Dynamics Simulations from Start to Finish",
   "channel": "Dr. H Ismail",
   "lecturer": "Dr. H Ismail",
-  "n_videos": null,
+  "n_videos": 19,
   "duration_min": null,
   "level": "intro",
   "why": "Series from install to production and analysis of GROMACS simulations.",
@@ -774,7 +748,7 @@
   "channel": "GROMACS",
   "lecturer": "GROMACS",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 33,
   "level": "intro",
   "why": "Official GROMACS lysozyme in water tutorial.",
   "verified": true
@@ -787,7 +761,7 @@
   "channel": "SimbiosOpenMM",
   "lecturer": "SimbiosOpenMM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 28,
   "level": "intro",
   "why": "Introduction to MD workflows and tools with OpenMM.",
   "verified": true
@@ -800,7 +774,7 @@
   "channel": "SimbiosOpenMM",
   "lecturer": "SimbiosOpenMM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 19,
   "level": "intro",
   "why": "How to run simulations with OpenMM.",
   "verified": true
@@ -813,7 +787,7 @@
   "channel": "Gianmarc Grazioli",
   "lecturer": "Gianmarc Grazioli",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 110,
   "level": "intro",
   "why": "Long introduction to running MD with NAMD.",
   "verified": true
@@ -826,7 +800,7 @@
   "channel": "Omixium",
   "lecturer": "Omixium",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 37,
   "level": "intermediate",
   "why": "Protein-membrane setup with CHARMM-GUI feeding GROMACS.",
   "verified": true
@@ -839,7 +813,7 @@
   "channel": "Dr. H Ismail",
   "lecturer": "Dr. H Ismail",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "intermediate",
   "why": "Ligand parameterisation with CHARMM-GUI.",
   "verified": true
@@ -852,7 +826,7 @@
   "channel": "Dr. H Ismail",
   "lecturer": "Dr. H Ismail",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 32,
   "level": "intro",
   "why": "Running GROMACS or OpenMM MD on free Colab GPUs.",
   "verified": true
@@ -865,7 +839,7 @@
   "channel": "Neurosnap",
   "lecturer": "Neurosnap",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 7,
   "level": "intermediate",
   "why": "OpenMM with Martini 3 for coarse-grained protein simulations.",
   "verified": true
@@ -878,7 +852,7 @@
   "channel": "Narogen",
   "lecturer": "Narogen",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 17,
   "level": "intro",
   "why": "NAMD tutorial on simulating a simple protein.",
   "verified": true
@@ -891,7 +865,7 @@
   "channel": "mdanalysis",
   "lecturer": "MDAnalysis team",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 101,
   "level": "intermediate",
   "why": "Official 1.5 h intro to trajectory analysis with MDAnalysis.",
   "verified": true
@@ -904,7 +878,7 @@
   "channel": "SimbiosOpenMM",
   "lecturer": "SimbiosOpenMM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 25,
   "level": "intermediate",
   "why": "Exercise on analysis with MDTraj.",
   "verified": true
@@ -917,7 +891,7 @@
   "channel": "Videos Used in Teaching at SDU, Odense",
   "lecturer": "SDU Odense",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 8,
   "level": "intermediate",
   "why": "Block averaging error calculations in simulations.",
   "verified": true
@@ -930,7 +904,7 @@
   "channel": "Gareth Tribello",
   "lecturer": "Gareth Tribello",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 20,
   "level": "intermediate",
   "why": "Block averages for statistical errors in ensemble averages.",
   "verified": true
@@ -943,7 +917,7 @@
   "channel": "NPTEL IIT Guwahati",
   "lecturer": "NPTEL IIT Guwahati",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 58,
   "level": "intermediate",
   "why": "Radial distribution function lecture.",
   "verified": true
@@ -956,7 +930,7 @@
   "channel": "Bioinformatics Insights",
   "lecturer": "Bioinformatics Insights",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "intro",
   "why": "Practical RMSD, RMSF and radius of gyration plots from a trajectory.",
   "verified": true
@@ -969,7 +943,7 @@
   "channel": "Eugene's Science Archive",
   "lecturer": "Eugene's Science Archive",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 7,
   "level": "intro",
   "why": "MDAnalysis tutorial on RMSD calculations.",
   "verified": true
@@ -982,7 +956,7 @@
   "channel": "Mohamed shehata",
   "lecturer": "Mohamed shehata",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 9,
   "level": "intro",
   "why": "MDTraj tutorial on RMSD analysis.",
   "verified": true
@@ -995,7 +969,7 @@
   "channel": "MoBioChem",
   "lecturer": "MoBioChem",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 21,
   "level": "intermediate",
   "why": "Chapter on umbrella sampling.",
   "verified": true
@@ -1008,7 +982,7 @@
   "channel": "SIRAH ForceField",
   "lecturer": "Max Bonomi",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 41,
   "level": "advanced",
   "why": "Theory of umbrella sampling and steered MD.",
   "verified": true
@@ -1021,7 +995,7 @@
   "channel": "MyCMTS CCI",
   "lecturer": "MyCMTS CCI",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 86,
   "level": "advanced",
   "why": "Treatment of rare events with umbrella sampling and reactive flux.",
   "verified": true
@@ -1034,7 +1008,7 @@
   "channel": "Michael Shirts: Science and Engineering Videos!",
   "lecturer": "Michael Shirts",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "advanced",
   "why": "Bayesian inference of potentials of mean force, an alternative to histograms.",
   "verified": true
@@ -1047,7 +1021,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 5,
   "level": "intro",
   "why": "Alchemical transformations for binding free energy.",
   "verified": true
@@ -1060,7 +1034,7 @@
   "channel": "The Computational Chemist",
   "lecturer": "The Computational Chemist",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 8,
   "level": "intermediate",
   "why": "Alchemical transformations and free energy estimates.",
   "verified": true
@@ -1073,7 +1047,7 @@
   "channel": "SchrödingerTV",
   "lecturer": "SchrodingerTV",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 7,
   "level": "intro",
   "why": "Fundamental concepts of relative binding FEP.",
   "verified": true
@@ -1086,7 +1060,7 @@
   "channel": "ICAM - I2CAM",
   "lecturer": "Chris Jarzynski",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 74,
   "level": "advanced",
   "why": "Nonequilibrium statistical mechanics lecture by the author of the Jarzynski equality.",
   "verified": true
@@ -1099,22 +1073,9 @@
   "channel": "TAUVOD",
   "lecturer": "",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 115,
   "level": "advanced",
   "why": "Lecture on the Jarzynski formula and work identities.",
-  "verified": true
- },
- {
-  "topic": 17,
-  "kind": "video",
-  "url": "https://www.youtube.com/watch?v=HW4R7f1AfAk",
-  "title": "Jarzynski's Equality in a Simple Steered System",
-  "channel": "Matthew McSweeney",
-  "lecturer": "Matthew McSweeney",
-  "n_videos": null,
-  "duration_min": null,
-  "level": "intermediate",
-  "why": "Jarzynski equality in a simple steered system.",
   "verified": true
  },
  {
@@ -1124,7 +1085,7 @@
   "title": "Free Energy Workshop 2023",
   "channel": "Chodera lab",
   "lecturer": "Chodera lab workshop (Michael Shirts et al.)",
-  "n_videos": null,
+  "n_videos": 32,
   "duration_min": null,
   "level": "advanced",
   "why": "Free Energy Workshop 2023 talks on the state of free energy methods.",
@@ -1137,7 +1098,7 @@
   "title": "PLUMED Masterclass 22",
   "channel": "Plumed Org",
   "lecturer": "PLUMED consortium",
-  "n_videos": null,
+  "n_videos": 29,
   "duration_min": null,
   "level": "intermediate",
   "why": "PLUMED Masterclass 2022 on enhanced sampling and analysis.",
@@ -1150,7 +1111,7 @@
   "title": "Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation",
   "channel": "TCBG UIUC",
   "lecturer": "TCBG UIUC",
-  "n_videos": null,
+  "n_videos": 7,
   "duration_min": null,
   "level": "advanced",
   "why": "Urbana 2018 workshop on enhanced sampling and free energy calculation.",
@@ -1163,7 +1124,7 @@
   "title": "Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations",
   "channel": "TCBG UIUC",
   "lecturer": "TCBG UIUC",
-  "n_videos": null,
+  "n_videos": 11,
   "duration_min": null,
   "level": "advanced",
   "why": "Urbana 2017 workshop on enhanced sampling and free energy calculations.",
@@ -1177,7 +1138,7 @@
   "channel": "MoBioChem",
   "lecturer": "MoBioChem",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 36,
   "level": "intermediate",
   "why": "Chapter on replica exchange molecular dynamics.",
   "verified": true
@@ -1190,7 +1151,7 @@
   "channel": "The Computational Chemist",
   "lecturer": "The Computational Chemist",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "intermediate",
   "why": "Replica exchange and parallel tempering.",
   "verified": true
@@ -1203,7 +1164,7 @@
   "channel": "SIRAH ForceField",
   "lecturer": "Massimiliano Bonomi",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 62,
   "level": "advanced",
   "why": "Theory of simulated tempering and replica exchange.",
   "verified": true
@@ -1216,7 +1177,7 @@
   "channel": "SIRAH ForceField",
   "lecturer": "Giovanni Bussi",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 71,
   "level": "advanced",
   "why": "Metadynamics from direct to well-tempered and flexible hills.",
   "verified": true
@@ -1229,7 +1190,7 @@
   "channel": "MoBioChem",
   "lecturer": "MoBioChem",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 9,
   "level": "intermediate",
   "why": "Chapter on metadynamics.",
   "verified": true
@@ -1242,7 +1203,7 @@
   "channel": "dan z",
   "lecturer": "Daniel Zuckerman",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 31,
   "level": "intermediate",
   "why": "Introduction to weighted ensemble simulation.",
   "verified": true
@@ -1255,7 +1216,7 @@
   "channel": "TheHITSters",
   "lecturer": "Lillian Chong (HITS)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 42,
   "level": "advanced",
   "why": "Weighted ensemble simulations colloquium.",
   "verified": true
@@ -1268,7 +1229,7 @@
   "channel": "miaolab",
   "lecturer": "Yinglong Miao lab",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 348,
   "level": "intermediate",
   "why": "Long GaMD workshop on Gaussian accelerated MD.",
   "verified": true
@@ -1281,7 +1242,7 @@
   "channel": "The Qualcomm Institute",
   "lecturer": "Yinglong Miao",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 58,
   "level": "advanced",
   "why": "Unconstrained enhanced sampling of biomolecules.",
   "verified": true
@@ -1294,7 +1255,7 @@
   "channel": "TCBG UIUCTalk",
   "lecturer": "TCBG UIUC",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 85,
   "level": "advanced",
   "why": "Introduction and examples of steered molecular dynamics.",
   "verified": true
@@ -1307,7 +1268,7 @@
   "channel": "BioExcel CoE",
   "lecturer": "Siewert-Jan Marrink",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 80,
   "level": "intermediate",
   "why": "BioExcel webinar giving a perspective on the Martini force field.",
   "verified": true
@@ -1320,7 +1281,7 @@
   "channel": "The MD Guy",
   "lecturer": "The MD Guy",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 8,
   "level": "intro",
   "why": "What coarse-grained models in molecular simulation are.",
   "verified": true
@@ -1333,7 +1294,7 @@
   "channel": "TheHITSters",
   "lecturer": "Robert Best (HITS)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 61,
   "level": "advanced",
   "why": "Simulations of intrinsically disordered proteins.",
   "verified": true
@@ -1346,7 +1307,7 @@
   "channel": "BioExcel CoE",
   "lecturer": "BioExcel",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 63,
   "level": "advanced",
   "why": "Conformational ensembles of IDRs and IDPs.",
   "verified": true
@@ -1359,7 +1320,7 @@
   "channel": "Protein Folding and Dynamics Webinar",
   "lecturer": "Kresten Lindorff-Larsen",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 87,
   "level": "advanced",
   "why": "Interpreting experiments using simulations, including coarse-grained IDP work.",
   "verified": true
@@ -1372,7 +1333,7 @@
   "channel": "MyCMTS CCI",
   "lecturer": "MyCMTS CCI",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 30,
   "level": "intermediate",
   "why": "Basics of implicit solvent models.",
   "verified": true
@@ -1385,7 +1346,7 @@
   "channel": "Steven Blaber",
   "lecturer": "Steven Blaber",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 40,
   "level": "intermediate",
   "why": "Langevin and Fokker-Planck descriptions of stochastic dynamics.",
   "verified": true
@@ -1398,20 +1359,20 @@
   "channel": "Theoretical Biophysics Lab @ Kyoto U",
   "lecturer": "Theoretical Biophysics Lab Kyoto",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 1,
   "level": "intro",
   "why": "Go model folding of the src SH3 domain.",
   "verified": true
  },
  {
-  "topic": 14,
+  "topic": 16,
   "kind": "video",
   "url": "https://www.youtube.com/watch?v=oZZumtlUXag",
   "title": "Energy-Based Models of Protein Structure, Dynamics, and Folding",
   "channel": "Boston Protein Design and Modeling Club",
   "lecturer": "Boston Protein Design and Modeling Club",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 78,
   "level": "advanced",
   "why": "Energy based models of protein structure, dynamics and folding.",
   "verified": true
@@ -1423,7 +1384,7 @@
   "title": "Markov state models [PyEMMA 2018]",
   "channel": "Yunier Perera Sardiña",
   "lecturer": "PyEMMA workshop (Noe group)",
-  "n_videos": null,
+  "n_videos": 11,
   "duration_min": null,
   "level": "intermediate",
   "why": "PyEMMA 2018 workshop lectures on Markov state models.",
@@ -1437,7 +1398,7 @@
   "channel": "MarkovModel",
   "lecturer": "PyEMMA workshop (Noe group)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 45,
   "level": "intermediate",
   "why": "PyEMMA 2021 MSM theory.",
   "verified": true
@@ -1450,7 +1411,7 @@
   "channel": "MarkovModel",
   "lecturer": "PyEMMA workshop",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 54,
   "level": "intro",
   "why": "PyEMMA 2021 introduction talk.",
   "verified": true
@@ -1463,7 +1424,7 @@
   "channel": "MarkovModel",
   "lecturer": "PyEMMA workshop",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 69,
   "level": "intro",
   "why": "PyEMMA 2017 overview.",
   "verified": true
@@ -1476,7 +1437,7 @@
   "channel": "Chodera lab",
   "lecturer": "Frank Noe",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 37,
   "level": "advanced",
   "why": "Noe talk on kinetics and MSMs in drug design.",
   "verified": true
@@ -1489,7 +1450,7 @@
   "channel": "Chodera lab",
   "lecturer": "Greg Bowman",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 33,
   "level": "advanced",
   "why": "Bowman talk on MSMs in drug design.",
   "verified": true
@@ -1502,7 +1463,7 @@
   "channel": "SimbiosOpenMM",
   "lecturer": "SimbiosOpenMM",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 20,
   "level": "intermediate",
   "why": "Introduction to MSMs for trajectory analysis.",
   "verified": true
@@ -1515,7 +1476,7 @@
   "channel": "Pietro Faccioli",
   "lecturer": "Pietro Faccioli",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 107,
   "level": "advanced",
   "why": "Markov state models from concept to construction.",
   "verified": true
@@ -1528,7 +1489,7 @@
   "channel": "Christian Seitz",
   "lecturer": "Christian Seitz",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 68,
   "level": "intermediate",
   "why": "MSM tutorial with pyEMMA.",
   "verified": true
@@ -1541,7 +1502,7 @@
   "channel": "Erik Lindahl",
   "lecturer": "Erik Lindahl",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 2,
   "level": "intro",
   "why": "Short concept video on MSMs.",
   "verified": true
@@ -1554,7 +1515,7 @@
   "channel": "Valence Labs",
   "lecturer": "Ilyes Batatia (Valence Labs)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 83,
   "level": "advanced",
   "why": "MACE talk on equivariant message passing force fields.",
   "verified": true
@@ -1567,7 +1528,7 @@
   "channel": "Valence Labs",
   "lecturer": "Simon Batzner and Albert Musaelian",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 87,
   "level": "advanced",
   "why": "NequIP and Allegro equivariant potentials.",
   "verified": true
@@ -1580,7 +1541,7 @@
   "channel": "Atoms to Materials",
   "lecturer": "Atoms to Materials",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 56,
   "level": "intermediate",
   "why": "Crash course on ML interatomic potentials in MD.",
   "verified": true
@@ -1593,7 +1554,7 @@
   "channel": "Valence Labs",
   "lecturer": "Gianni De Fabritiis",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 57,
   "level": "advanced",
   "why": "De Fabritiis (TorchMD) on machine learning for molecules.",
   "verified": true
@@ -1606,7 +1567,7 @@
   "channel": "Frank Noe",
   "lecturer": "Frank Noe",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 23,
   "level": "advanced",
   "why": "Boltzmann generators.",
   "verified": true
@@ -1619,7 +1580,7 @@
   "channel": "Institute for Pure & Applied Mathematics (IPAM)",
   "lecturer": "Frank Noe",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 59,
   "level": "advanced",
   "why": "Advancing molecular simulation with deep learning.",
   "verified": true
@@ -1632,7 +1593,7 @@
   "channel": "Valence Labs",
   "lecturer": "Valence Labs",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 77,
   "level": "advanced",
   "why": "BioEmu protein equilibrium ensembles with generative deep learning.",
   "verified": true
@@ -1645,7 +1606,7 @@
   "channel": "Microsoft Research",
   "lecturer": "Microsoft Research",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 7,
   "level": "intermediate",
   "why": "Short BioEmu overview.",
   "verified": true
@@ -1658,7 +1619,7 @@
   "channel": "NC State",
   "lecturer": "D. E. Shaw Research (Anton)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 81,
   "level": "intermediate",
   "why": "Anton special-purpose machine for biomolecular simulation.",
   "verified": true
@@ -1671,7 +1632,7 @@
   "channel": "UW Video",
   "lecturer": "UW Video",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 58,
   "level": "intermediate",
   "why": "High speed protein simulations with Anton.",
   "verified": true
@@ -1684,7 +1645,7 @@
   "channel": "FoldingAtHome",
   "lecturer": "Vijay Pande",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 50,
   "level": "intro",
   "why": "History of Folding@home.",
   "verified": true
@@ -1697,7 +1658,7 @@
   "channel": "Israel Institute for Advanced Studies",
   "lecturer": "Ron Dror",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 69,
   "level": "advanced",
   "why": "Atomic-level simulation of GPCR signalling.",
   "verified": true
@@ -1710,7 +1671,7 @@
   "channel": "Uppsala universitet",
   "lecturer": "Michael Levitt",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 38,
   "level": "intermediate",
   "why": "Nobel lecture by Michael Levitt in Uppsala.",
   "verified": true
@@ -1723,7 +1684,7 @@
   "channel": "The Royal Swedish Academy of Sciences",
   "lecturer": "Royal Swedish Academy of Sciences",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 32,
   "level": "intermediate",
   "why": "Birth and future of multi-scale modelling of biological macromolecules.",
   "verified": true
@@ -1736,7 +1697,7 @@
   "channel": "Nobel Prize",
   "lecturer": "Martin Karplus",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 4,
   "level": "intro",
   "why": "Clip of the 2013 Nobel lecture of Karplus.",
   "verified": true
@@ -1749,7 +1710,7 @@
   "channel": "Stanford",
   "lecturer": "Leonard Susskind (Stanford)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 89,
   "level": "intermediate",
   "why": "First lecture of the Theoretical Minimum classical mechanics course, a gentle start before Lagrangians and Hamiltonians.",
   "verified": true
@@ -1762,7 +1723,7 @@
   "channel": "Jos Thijssen",
   "lecturer": "Jos Thijssen",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 31,
   "level": "intermediate",
   "why": "University lecture on Liouville's theorem, the basis of phase space volume preservation in MD.",
   "verified": true
@@ -1775,7 +1736,7 @@
   "channel": "Sabetta Talks Math",
   "lecturer": "Sabetta Talks Math",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 11,
   "level": "intro",
   "why": "Short visual explanation of phase space and Liouville's theorem.",
   "verified": true
@@ -1788,7 +1749,7 @@
   "channel": "Advanced Physics",
   "lecturer": "Advanced Physics",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 53,
   "level": "intermediate",
   "why": "Statistical mechanics lecture on the classical version of Liouville's theorem.",
   "verified": true
@@ -1801,7 +1762,7 @@
   "channel": "Stanford",
   "lecturer": "Leonard Susskind (Stanford)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 108,
   "level": "intermediate",
   "why": "First lecture of the Susskind statistical mechanics course.",
   "verified": true
@@ -1814,7 +1775,7 @@
   "channel": "Steve Spicklemire",
   "lecturer": "Steve Spicklemire",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 28,
   "level": "intermediate",
   "why": "Compares RK4 with symplectic methods and shows the energy drift difference.",
   "verified": true
@@ -1827,7 +1788,7 @@
   "channel": "Melvin Leok",
   "lecturer": "Melvin Leok",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 18,
   "level": "advanced",
   "why": "Why symplectic methods conserve a nearby energy over long times, which explains stable MD time steps.",
   "verified": true
@@ -1840,7 +1801,7 @@
   "channel": "Melvin Leok",
   "lecturer": "Melvin Leok",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 13,
   "level": "advanced",
   "why": "Mathematical lecture on the SHAKE method for holonomic constraints.",
   "verified": true
@@ -1853,7 +1814,7 @@
   "channel": "Soumyashree Das Adhikari",
   "lecturer": "Soumyashree Das Adhikari",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 8,
   "level": "intro",
   "why": "Short practical explanation of SHAKE in LAMMPS.",
   "verified": true
@@ -1866,7 +1827,7 @@
   "channel": "Flatiron Institute",
   "lecturer": "Michele Parrinello (Flatiron Institute)",
   "n_videos": null,
-  "duration_min": null,
+  "duration_min": 39,
   "level": "advanced",
   "why": "Parrinello on machine learning and molecular dynamics, from neural network potentials to enhanced sampling.",
   "verified": true

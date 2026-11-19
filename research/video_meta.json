@@ -1,0 +1,8092 @@
+{
+"https://www.youtube.com/playlist?list=PL13CB8C2EDA4453ED": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "tynCH4dosA8",
+"title": "Lec 1 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4430
+},
+{
+"id": "kHdqdTe7G44",
+"title": "Lec 2 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4619
+},
+{
+"id": "HcQ7bdBGbEs",
+"title": "Lec 3 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4936
+},
+{
+"id": "3HXG1kxmYVs",
+"title": "Lec 5 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4797
+},
+{
+"id": "U5SKba2lCuw",
+"title": "Lec 6 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4925
+},
+{
+"id": "-B96m5X2xCM",
+"title": "Lec 7 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4746
+},
+{
+"id": "egK3Cih11J4",
+"title": "Lec 8 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4806
+},
+{
+"id": "WAc7fQ1qzAc",
+"title": "Lec 9 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4947
+},
+{
+"id": "zyId5iqW6Ig",
+"title": "Lec 11 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4401
+},
+{
+"id": "gQ1YPzcHZqo",
+"title": "Lec 13 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 5011
+},
+{
+"id": "_CTZDDFaE5A",
+"title": "Lec 14 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4913
+},
+{
+"id": "LInWiab7q6Q",
+"title": "Lec 15 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4909
+},
+{
+"id": "3FumIu7Qito",
+"title": "Lec 17 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4472
+},
+{
+"id": "ZsqPyPe7B5w",
+"title": "Lec 18 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4528
+},
+{
+"id": "TqHS4tpujnw",
+"title": "Lec 19 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4610
+},
+{
+"id": "K8qD73y8jag",
+"title": "Lec 20 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4800
+},
+{
+"id": "yYAHcATzuno",
+"title": "Lec 22 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4753
+},
+{
+"id": "SbtqjZk80Qc",
+"title": "Lec 23 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 4253
+},
+{
+"id": "qOTTNo9iXJc",
+"title": "Lec 25 | MIT 3.320 Atomistic Computer Modeling of Materials",
+"seconds": 3712
+}
+],
+"n_videos": 19
+},
+"https://www.youtube.com/playlist?list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "TDzzvKoDOuQ",
+"title": "Lecture 01, class introduction: From life to molecular biophysics",
+"seconds": 1309
+},
+{
+"id": "6RzCFya08iE",
+"title": "Lecture 01, concept 01: The special properties of water",
+"seconds": 286
+},
+{
+"id": "LGksAg3n5cA",
+"title": "Lecture 01, concept 02: From data and models to DNA structure",
+"seconds": 234
+},
+{
+"id": "hZxyo9_kZdE",
+"title": "Lecture 01, concept 03: The components of DNA",
+"seconds": 149
+},
+{
+"id": "_knNXg3zTHY",
+"title": "Lecture 01, concept 04: Chargaff's ratio - Watson & Crick's key to DNA structure",
+"seconds": 191
+},
+{
+"id": "Q2aKY2e92yM",
+"title": "Lecture 01, concept 05: Base stacking stabilizes DNA",
+"seconds": 102
+},
+{
+"id": "oZJQRDy63mo",
+"title": "Lecture 01, concept 06: Watson-Crick base pairing",
+"seconds": 37
+},
+{
+"id": "zFjMoE4y1jQ",
+"title": "Lecture 01, concept 07: Information contents in DNA",
+"seconds": 131
+},
+{
+"id": "Nr8RUNsFwkQ",
+"title": "Lecture 01, concept 08: Size of genomes in bases & protein genes",
+"seconds": 121
+},
+{
+"id": "zB5O-VA3BbA",
+"title": "Lecture 01, concept 09: RNA structure",
+"seconds": 149
+},
+{
+"id": "0OEUsIlkOpk",
+"title": "Lecture 01, concept 10: Three forms of RNA - mRNA",
+"seconds": 238
+},
+{
+"id": "i4uI0GnfgYc",
+"title": "Lecture 01, concept 11: Three forms of RNA - rRNA & tRNA",
+"seconds": 78
+},
+{
+"id": "E6LHoKe-zRU",
+"title": "Lecture 01, concept 12: The central dogma of molecular biology",
+"seconds": 87
+},
+{
+"id": "wbCQTqgoaTk",
+"title": "Lecture 01, concept 13: Replication",
+"seconds": 100
+},
+{
+"id": "1y9eSY-Te7o",
+"title": "Lecture 01, concept 14: Transcription",
+"seconds": 64
+},
+{
+"id": "NFAT7-eICbc",
+"title": "Lecture 01, concept 15: Translation",
+"seconds": 136
+},
+{
+"id": "ingfv26uGuk",
+"title": "Lecture 01, concept 16: The genetic code",
+"seconds": 170
+},
+{
+"id": "CViLhxiPq1k",
+"title": "Lecture 01, concept 17: Structure of proteins",
+"seconds": 244
+},
+{
+"id": "4HZoDjJ4A2k",
+"title": "Lecture 01, concept 18: Protein structure determination - X-ray crystallography & Cryo-EM",
+"seconds": 447
+},
+{
+"id": "iBV67yamqlA",
+"title": "Lecture 01, concept 19: Proteins are polypeptides of amino acids",
+"seconds": 226
+},
+{
+"id": "bl5t1n4zaYs",
+"title": "Lecture 01: Reading suggestions & study questions",
+"seconds": 141
+},
+{
+"id": "4uloreO4qHA",
+"title": "Lecture 02, concept 01: Modeling molecules with computers",
+"seconds": 196
+},
+{
+"id": "nO4c0CfZx3k",
+"title": "Lecture 02, concept 02: Molecular interactions are due to electrons",
+"seconds": 332
+},
+{
+"id": "D3kHLAj8ozI",
+"title": "Lecture 02, concept 03: Induced dipole-dipole interactions",
+"seconds": 438
+},
+{
+"id": "qnDkRUaz57g",
+"title": "Lecture 02, concept 04: Do we need quantum chemistry here?",
+"seconds": 197
+},
+{
+"id": "1yAba9WBSS4",
+"title": "Lecture 02, concept 05: Semi-empiric interaction models",
+"seconds": 270
+},
+{
+"id": "7yEGYWIqSdU",
+"title": "Lecture 02, concept 06: Bonds and approximating potentials",
+"seconds": 400
+},
+{
+"id": "CVZ1VlNnWJ8",
+"title": "Lecture02, concept 07: Energy units",
+"seconds": 170
+},
+{
+"id": "baRZYahRmSc",
+"title": "Lecture 02, concept 08: Angles",
+"seconds": 117
+},
+{
+"id": "H-NiSB-2bmo",
+"title": "Lecture 02, concept 09: Torsions or dihedrals",
+"seconds": 248
+},
+{
+"id": "KmuYjxL0Kfw",
+"title": "Lecture 02, concept 10: Periodic torsion potentials",
+"seconds": 292
+},
+{
+"id": "fst8oSeAQ98",
+"title": "Lecture 02, concept 11: Phi/psi torsions, Ramachandran diagrams",
+"seconds": 286
+},
+{
+"id": "ZdZXckzHktM",
+"title": "Lecture 02, concept 12: Nonbonded interactions and their strengths",
+"seconds": 336
+},
+{
+"id": "_CElNDa1hoI",
+"title": "Lecture 02, concept 13: Partial charges on atoms in molecules",
+"seconds": 167
+},
+{
+"id": "EuwL12-5pXY",
+"title": "Lecture 02, concept 14: Van der Waals interaction forms: Buckingham & Lennard-Jones",
+"seconds": 355
+},
+{
+"id": "OBg5wtvNuv4",
+"title": "Lecture 02, concept 15: A complete potential function",
+"seconds": 253
+},
+{
+"id": "5z8IWRDqgy8",
+"title": "Lecture 02, concept 16: Hydrogen bonds - orbitals, donors and acceptor",
+"seconds": 298
+},
+{
+"id": "a6svCx29ELY",
+"title": "Lecture 02, concept 17: Hydrogen bonds stabilise biomolecules",
+"seconds": 279
+},
+{
+"id": "AsKi8lXJWyM",
+"title": "Lecture 02, concept 18: H-bonds in folding & Energy landscapes",
+"seconds": 559
+},
+{
+"id": "vwlQBR4HBP8",
+"title": "Lecture 02: Study questions",
+"seconds": 49
+},
+{
+"id": "wpLZm3qS1PE",
+"title": "Lecture 03, concept 01: Interactions and their role for flexibility in amino acids",
+"seconds": 139
+},
+{
+"id": "HPQjT1X_9GQ",
+"title": "Lecture 03, concept 02: Peaks & valleys in energy landscapes",
+"seconds": 53
+},
+{
+"id": "KthbNCxnj2g",
+"title": "Lecture 03, concept 03: The Maxwell-Boltzmann velocity distribution",
+"seconds": 162
+},
+{
+"id": "_6AFgt2gkr0",
+"title": "Lecture 03, concept 04: Deriving the Boltzmann distribution (a special case)",
+"seconds": 539
+},
+{
+"id": "3XyGqsgBpIM",
+"title": "Lecture 03, concept 05: Relative populations in states",
+"seconds": 348
+},
+{
+"id": "Lq8GwTlJ9Z8",
+"title": "Lecture 03, concept 06: Entropy and free energy - accounting for multiplicity/volume",
+"seconds": 573
+},
+{
+"id": "lKyrJhN8MFY",
+"title": "Lecture 03, concept 07: Microstates vs. Macrostates (multiplicity vs. disorder)",
+"seconds": 386
+},
+{
+"id": "fWaKu493R20",
+"title": "Lecture 03, concept 08: The hydrophobic effect is entropic in nature",
+"seconds": 40
+},
+{
+"id": "qV8v9gVsGyA",
+"title": "Lecture 03, concept 09: The laws of thermodynamics",
+"seconds": 174
+},
+{
+"id": "BznPadIkfKM",
+"title": "Lecture 03, concept 10: Helmholtz vs. Gibbs free energy",
+"seconds": 322
+},
+{
+"id": "O0-wao_8NFs",
+"title": "Lecture 03, concept 11: The thermodynamic definition of temperature",
+"seconds": 307
+},
+{
+"id": "NITMgwZgohI",
+"title": "Lecture 03, concept 12: Phase transitions from entropy-enthalpy balance",
+"seconds": 244
+},
+{
+"id": "yHx94ZryTHI",
+"title": "Lecture 03, concept 13: Polywater - learn to reason using free energy",
+"seconds": 386
+},
+{
+"id": "yFRrd60Nc5w",
+"title": "Lecture 03, concept 14: The multiple ice phases of water",
+"seconds": 95
+},
+{
+"id": "CR7rfTyNpdo",
+"title": "Lecture 03, concept 15: Hydrogen bond formation in water interpreted with entropy/enthalpy",
+"seconds": 412
+},
+{
+"id": "u8FVetwpB08",
+"title": "Lecture 03: Study questions",
+"seconds": 49
+},
+{
+"id": "-aRskm-kFhI",
+"title": "Lecture 04, concept 01: Hydrogen bond formation in a protein",
+"seconds": 277
+},
+{
+"id": "Srj-ZqBzNv4",
+"title": "Lecture 04, concept 02: Calculating free energies from experiments",
+"seconds": 197
+},
+{
+"id": "4aiHc67nqZw",
+"title": "Lecture 04, concept 03: Solving for S and H from G",
+"seconds": 261
+},
+{
+"id": "Qwa8tQePNfw",
+"title": "Lecture 04, concept 04: Comparing G, H & S for liquid vs. aqueous phase",
+"seconds": 227
+},
+{
+"id": "NtnygsANVjw",
+"title": "Lecture 04, concept 05: The hydrophobic effect",
+"seconds": 282
+},
+{
+"id": "ztIzvUfUZzA",
+"title": "Lecture 04, concept 06: Temperature dependence of the hydrophobic effect",
+"seconds": 201
+},
+{
+"id": "D4NCXVwzJ3E",
+"title": "Lecture 04, concept 07: Packing is simple once phases have separated",
+"seconds": 148
+},
+{
+"id": "4fbcS3tzxH0",
+"title": "Lecture 04, concept 08: Protein folding is initially a hydrophobic collapse",
+"seconds": 122
+},
+{
+"id": "mg9JWntdfyE",
+"title": "Lecture 04, concept 09: Enthalpy and entropy in energy landscapes",
+"seconds": 218
+},
+{
+"id": "rFavri_VYfk",
+"title": "Lecture 04, concept 10: Populations and transitions in energy landscapes",
+"seconds": 66
+},
+{
+"id": "OWqE2Iljy_Y",
+"title": "Lecture 04, concept 11: Statistical mechanics connects microstates to macrostates",
+"seconds": 45
+},
+{
+"id": "tDKjLzbXYQI",
+"title": "Lecture 04, concept 12: Deriving the Boltzmann distribution - general case",
+"seconds": 726
+},
+{
+"id": "UxJCRnNJCPw",
+"title": "Lecture 04, concept 13: The partition function",
+"seconds": 226
+},
+{
+"id": "RX4uZ3wwQ2c",
+"title": "Lecture 04, concept 14: Entropy of systems / states - Shannon entropy",
+"seconds": 543
+},
+{
+"id": "lxC_514XT9w",
+"title": "Lecture 04, concept 15: Entropy vs. energy describes stability of systems",
+"seconds": 189
+},
+{
+"id": "XVM3e0889mM",
+"title": "Lecture 04, concept 16: Understanding (phase) transitions from S(E)",
+"seconds": 406
+},
+{
+"id": "balC-1gTQro",
+"title": "Lecture 04, concept 17: Kinetics of transitions is governed by energy barriers",
+"seconds": 510
+},
+{
+"id": "UFbqZrRuRIQ",
+"title": "Lecture 04, concept 18: Introduction to stability in the alpha helix",
+"seconds": 137
+},
+{
+"id": "60CJDvT9hqY",
+"title": "Lecture 04, concept 19: Introduction to stability in the beta sheet",
+"seconds": 106
+},
+{
+"id": "bvcG6QQwMtw",
+"title": "Lecture 04, concept 20: Electrostatics inside proteins",
+"seconds": 217
+},
+{
+"id": "eUnXRJbXiq0",
+"title": "Lecture 04, concept 21: Alpha helix capping with charges",
+"seconds": 220
+},
+{
+"id": "jfu8C12QTB8",
+"title": "Lecture 04: Study questions",
+"seconds": 62
+},
+{
+"id": "GJ8Cw4rlvF4",
+"title": "Lecture 05, concept 01: Amino acids are chiral zwitterions",
+"seconds": 271
+},
+{
+"id": "idOTRtbfvaA",
+"title": "Lecture 05, concept 02: Amino acid classifications & protein size diversity",
+"seconds": 190
+},
+{
+"id": "qwsyHd6QuhA",
+"title": "Lecture 05, concept 03: Anfinsen's dogma (the thermodynamic hypothesis)",
+"seconds": 161
+},
+{
+"id": "hPU0dDqINQw",
+"title": "Lecture 05, concept 04: Torsions in amino acids - phi, psi, omega, chi",
+"seconds": 285
+},
+{
+"id": "Hswu1iakD8M",
+"title": "lecture 05, concept 05: Levinthal's paradox",
+"seconds": 196
+},
+{
+"id": "7Fhs-cvhplU",
+"title": "Lecture 05, concept 06: Primary to quaternary structure",
+"seconds": 116
+},
+{
+"id": "bax7-coexNA",
+"title": "Lecture 05, concept 07: Helices & sheets in proteins",
+"seconds": 132
+},
+{
+"id": "rdkXOxLHDws",
+"title": "Lecture 05, concept 08: The alpha helix is right-handed due to L amino acids",
+"seconds": 95
+},
+{
+"id": "H9TfWRl1QJc",
+"title": "Lecture 05, concept 09: Specific properties of amino acid side chains",
+"seconds": 107
+},
+{
+"id": "2J3JnYf9vtM",
+"title": "Lecture 05, concept 10: Alanine & glycine are small & simple side chains",
+"seconds": 145
+},
+{
+"id": "TRzy2mcjens",
+"title": "Lecture 05, concept 11: Larger & hydrophobic side chains",
+"seconds": 56
+},
+{
+"id": "hDjMq_Ggtg4",
+"title": "Lecture 05, concept 12: Tryptophan is a big & bulky side chain",
+"seconds": 263
+},
+{
+"id": "Hu4iCgGATuc",
+"title": "Lecture 05, concept 13: Cysteine can form disulfide bridges",
+"seconds": 244
+},
+{
+"id": "rIeUzoCZeP0",
+"title": "Lecture 05, concept 14: Proline has a ring and breaks helices",
+"seconds": 78
+},
+{
+"id": "HD2G84G4caQ",
+"title": "Lecture 05, concept 15: Alpha, 3_10 and pi helices",
+"seconds": 158
+},
+{
+"id": "-YxVLsnpfJ8",
+"title": "Lecture 05, concept 16: Helix packing - ridges and valleys",
+"seconds": 135
+},
+{
+"id": "FfoA-p1Lzcg",
+"title": "Lecture 05, concept 17: Free energy of alpha helix formation",
+"seconds": 472
+},
+{
+"id": "87KKmxI5cZk",
+"title": "Lecture 05, concept 18: The helix-coil transition",
+"seconds": 253
+},
+{
+"id": "1h4k1mJ9Kzo",
+"title": "Lecture 05, concept 19: The alpha helix initiation barrier",
+"seconds": 317
+},
+{
+"id": "kbzTNDjRpmg",
+"title": "Lecture 05, concept 20: Kinetics of alpha helix formation",
+"seconds": 179
+},
+{
+"id": "sZUqNbsgaCs",
+"title": "Lecture 05, concept 21: Sheets are antiparallel or parallel, and can have hydrophobic moment",
+"seconds": 199
+},
+{
+"id": "_L38A8cjC3s",
+"title": "Lecture 05, concept 22: Beta sheet stability and initiation barrier",
+"seconds": 564
+},
+{
+"id": "c1GWKvIwMFQ",
+"title": "Lecture 05, concept 23: Kinetics of beta sheet formation",
+"seconds": 227
+},
+{
+"id": "KZTZBmCMRd8",
+"title": "Lecture 05, concept 24: The slow beta sheet formation can explain misfolding - prions",
+"seconds": 411
+},
+{
+"id": "UqeK_ZpbDJg",
+"title": "Lecture 05, concept 25: Properties (size) of the coil",
+"seconds": 404
+},
+{
+"id": "2oiEF6bAVZ8",
+"title": "Lecture 05: Study questions",
+"seconds": 39
+},
+{
+"id": "O3YgILmo5V8",
+"title": "Lecture 06, concept 01: From static structures to simulations",
+"seconds": 151
+},
+{
+"id": "XrLfl_b4X5k",
+"title": "Lecture 06, concept 02: Molecular dynamics as prediction of motion - challenges",
+"seconds": 213
+},
+{
+"id": "GUASx0_NyEE",
+"title": "Lecture 06, concept 03: Molecular dynamics as sampling is a more sound approach",
+"seconds": 503
+},
+{
+"id": "_CYsaBhAEeA",
+"title": "Lecture 06, concept 04: Molecular dynamics simulations of real proteins",
+"seconds": 124
+},
+{
+"id": "81eCO97pKTY",
+"title": "Lecture 06, concept 05: Don't mistake models for reality",
+"seconds": 109
+},
+{
+"id": "4zhx74oR_dM",
+"title": "Lecture 06, concept 06: Molecular dynamics compared to experiments - different strengths",
+"seconds": 190
+},
+{
+"id": "ryJFDd0dF44",
+"title": "Lecture 06, concept 07: Timescales in experiments and simulations",
+"seconds": 201
+},
+{
+"id": "mnod-G0tPF4",
+"title": "Lecture 06, concept 08: Molecular mechanics uses semi-empiric models",
+"seconds": 184
+},
+{
+"id": "pVudb6-_FaM",
+"title": "Lecture 06, concept 09: Integration using the leap-frog algorithm updates x & v",
+"seconds": 375
+},
+{
+"id": "TEg1Nx4yGjc",
+"title": "Lecture 06, concept 10: Flowchart of a typical simulation - femtosecond steps",
+"seconds": 188
+},
+{
+"id": "XHo6X__XwIY",
+"title": "Lecture 06, concept 11: Small fractions of states can still approximate the partition function well",
+"seconds": 254
+},
+{
+"id": "5LALoxDs0ic",
+"title": "Lecture 06, concept 12: Simulation ensembles (NVE, NVT, NPT) define what properties are constant",
+"seconds": 468
+},
+{
+"id": "bTOMeK2X30E",
+"title": "Lecture 06, concept 13: Examples of systems & timescales to target",
+"seconds": 238
+},
+{
+"id": "k8odscYxAWc",
+"title": "Lecture 06, concept 14: Biomolecules need to be solvated (e.g. in water)",
+"seconds": 140
+},
+{
+"id": "gVVqjmTAJGI",
+"title": "Lecture 06, concept 15: Periodic boundary conditions",
+"seconds": 330
+},
+{
+"id": "Y_IAolv3ZZg",
+"title": "Lecture 06, concept 16: Energy minimisation avoids clashes, which avoids crashes",
+"seconds": 271
+},
+{
+"id": "1QE-kECRbtw",
+"title": "Lecture 06, concept 17: The contents of a PDB structure file",
+"seconds": 153
+},
+{
+"id": "TFed47bdfJE",
+"title": "Lecture 06, concept 18: Example biological problems we can target",
+"seconds": 429
+},
+{
+"id": "xNjQatR2rRU",
+"title": "Lecture 06, concept 19: Markov state models - slow processes from many short simulations",
+"seconds": 150
+},
+{
+"id": "upLHN5z9TEg",
+"title": "Lecture 06, concept 20: Potential of mean force - free energy along a reaction coordinate",
+"seconds": 275
+},
+{
+"id": "ov0mMvR3wrM",
+"title": "Lecture 06, concept 21: Calculating binding free energy - alchemical transformation",
+"seconds": 289
+},
+{
+"id": "LJOmgrwncY0",
+"title": "Lecture 06, concept 22: Binding free energy - the free energy cycle & DDG values",
+"seconds": 425
+},
+{
+"id": "MzVk6VO5dyc",
+"title": "Lecture 06, concept 23: Common simulation & visualisation tools",
+"seconds": 400
+},
+{
+"id": "7pnAnr9BHio",
+"title": "Lecture 06: Study questions",
+"seconds": 40
+},
+{
+"id": "tDW935LuM3o",
+"title": "Lecture 07, concept 01: Fibrous, globular and membrane proteins - the building blocks of life",
+"seconds": 193
+},
+{
+"id": "YxSEQUvi3N0",
+"title": "Lecture 07, concept 02: Fibrous proteins are large building blocks that can reach macroscopic size",
+"seconds": 363
+},
+{
+"id": "XEflrk_hPl4",
+"title": "Lecture 07, concept 03: Collagen is a special proline helix (bone, teeth, parts of skin)",
+"seconds": 350
+},
+{
+"id": "Cvza5Q6JUzY",
+"title": "Lecture 07, concept 04: Elastin is a polymer with lysine links (blood vessels)",
+"seconds": 317
+},
+{
+"id": "3VAPsHFOoaE",
+"title": "Lecture 07, concept 05: Coiled-coil helices form extended structures (e.g. myosin in muscles)",
+"seconds": 461
+},
+{
+"id": "dFdLDL8npI0",
+"title": "Lecture 07, concept 06: Leucine zippers & disulfide bridges stabilise coiled coils",
+"seconds": 137
+},
+{
+"id": "2-o5_s5UqzQ",
+"title": "Lecture 07, concept 07: Alpha-keratin (hair, wool, etc.)",
+"seconds": 249
+},
+{
+"id": "Thcused_SEg",
+"title": "Lecture 07, concept 08: Non-biological fibrous structures can sometimes be modified with proteins",
+"seconds": 168
+},
+{
+"id": "pfHhA8cYZxo",
+"title": "Lecture 07, concept 09: Globular proteins are soluble in water",
+"seconds": 165
+},
+{
+"id": "0lJPv7I2AY8",
+"title": "Lecture 07, concept 10: All-beta-sheet globular proteins",
+"seconds": 433
+},
+{
+"id": "Y-XJYtZ0oNs",
+"title": "Lecture 07, concept 11: Packing of beta sheets - orthogonal/aligned strands, and beta meanders",
+"seconds": 199
+},
+{
+"id": "WuskgVBko3k",
+"title": "Lecture 07, concept 12: Immunoglobulin fold - example of aligned beta strands",
+"seconds": 153
+},
+{
+"id": "O-MUHcqK66k",
+"title": "Lecture 07, concept 13: Gamma crystallin has more complex loops",
+"seconds": 115
+},
+{
+"id": "4xaN6yG7ovs",
+"title": "Lecture 07, concept 14: The Greek Key supersecondary structure motif",
+"seconds": 245
+},
+{
+"id": "xQfvlMUa7kA",
+"title": "Lecture 07, concept 15: Most sheets are meanders or Greek Keys, but there are exceptions",
+"seconds": 230
+},
+{
+"id": "uAQFN7E_44c",
+"title": "Lecture 07, concept 16: Beta sheets can drive oligomerization (multiuser formation)",
+"seconds": 261
+},
+{
+"id": "QUhNY13L8o0",
+"title": "Lecture 07, concept 17: All-alpha-helical globular proteins are diverse in structure",
+"seconds": 99
+},
+{
+"id": "UMky8KbjtGo",
+"title": "Lecture 07, concept 18: Four-helix bundles - examples of simple alpha helix structures",
+"seconds": 80
+},
+{
+"id": "4lJxWwge7h0",
+"title": "Lecture 07, concept 19: Cytochrome C",
+"seconds": 165
+},
+{
+"id": "LBz5YFlz4Kw",
+"title": "Lecture 07, concept 20: The tobacco mosaic virus coat protein",
+"seconds": 218
+},
+{
+"id": "e1OYy62yUIg",
+"title": "Lecture 07, concept 21: Hemerythrin",
+"seconds": 174
+},
+{
+"id": "R7NDh4iTVH4",
+"title": "Lecture 07, concept 22: Design of four-helix bundles",
+"seconds": 380
+},
+{
+"id": "0C_57SsZCs0",
+"title": "Lecture 07, concept 23: The globin fold - hemoglobin & myoglobin",
+"seconds": 540
+},
+{
+"id": "uT1SpYW-wIo",
+"title": "Lecture 07, concept 24: Mixed helix/sheet - alternating (a/b) or separated (a+b) elements",
+"seconds": 68
+},
+{
+"id": "6odG3G8zBL8",
+"title": "Lecture 07, concept 25: a/b folds - The TIM barrel",
+"seconds": 299
+},
+{
+"id": "6_cCouHnMe4",
+"title": "Lecture 07, concept 26: The Rossman fold - one sheet surrounded by helices",
+"seconds": 251
+},
+{
+"id": "u3kbkSD5W4M",
+"title": "Lecture 07, concept 27: Parallel vs. antiparallel sheets are correlated with a/b vs. a+b",
+"seconds": 94
+},
+{
+"id": "8oN3E04dBbo",
+"title": "Lecture 07, concept 28: DNA-binding a+b structures - zinc finger & TATA-binding protein",
+"seconds": 157
+},
+{
+"id": "W-21p8Eped0",
+"title": "Lecture 07, concept 29: Disordered protein structures (think function)",
+"seconds": 139
+},
+{
+"id": "LzrnQjDX06E",
+"title": "Lecture 07, concept 30: A thousand folds for the molecular biologist",
+"seconds": 348
+},
+{
+"id": "fHkIee7LgWc",
+"title": "Lecture 07: Study questions",
+"seconds": 83
+},
+{
+"id": "Xb_mxQ-5eTk",
+"title": "Lecture 08, concept 01: The main component of a membrane is a lipid bilayer",
+"seconds": 189
+},
+{
+"id": "EppTfDo7E2U",
+"title": "Lecture 08, concept 02: Lipids are amphiphatic, often zwitterions, and aggregate into bilayers",
+"seconds": 426
+},
+{
+"id": "ZJAYAX_mGc8",
+"title": "Lecture 08, concept 03: The internal structure of the lipid bilayer",
+"seconds": 492
+},
+{
+"id": "bO5fTFh4Wlk",
+"title": "Lecture 08, concept 04: The fluid mosaic model of cellular membranes",
+"seconds": 207
+},
+{
+"id": "geyc4kUkPtY",
+"title": "Lecture 08, concept 05: Membrane proteins were crystallized by solubilisation in detergent",
+"seconds": 232
+},
+{
+"id": "whYaSpA0QvY",
+"title": "Lecture 08, concept 06: The first membrane protein structure - bacteriorhodopsin",
+"seconds": 114
+},
+{
+"id": "syhGWG6SHZg",
+"title": "Lecture 08, concept 07: Interactions between membrane proteins and lipids",
+"seconds": 192
+},
+{
+"id": "QpNDYNiuf2E",
+"title": "Lecture 08, concept 08: Membrane proteins insert through the translocon",
+"seconds": 369
+},
+{
+"id": "3-WveL5dyr0",
+"title": "Lecture 08, concept 09: Membrane protein helix packing & the GXXXG motif",
+"seconds": 195
+},
+{
+"id": "d6f-6IgcfK8",
+"title": "Lecture 08, concept 10: Membrane protein topology - the von Heijne \"positive inside\" rule",
+"seconds": 250
+},
+{
+"id": "lpbtsL-vkrs",
+"title": "Lecture 08, concept 11: Membrane transport - passive vs. active & non-mediated vs. mediated",
+"seconds": 363
+},
+{
+"id": "-jLLa4BG5Kw",
+"title": "Lecture 08, concept 12: Ion channels",
+"seconds": 263
+},
+{
+"id": "3vkWnVwrcWw",
+"title": "Lecture 08, concept 13: The KcsA bacterial K+ ion channel",
+"seconds": 377
+},
+{
+"id": "xtQWZeZpnuk",
+"title": "Lecture 08, concept 14: The Kv voltage-gated K+ ion channel(s) in vertebrates",
+"seconds": 420
+},
+{
+"id": "Q9kSBUiEo4Y",
+"title": "Lecture 08, concept 15: The aquaporin water channel",
+"seconds": 141
+},
+{
+"id": "qTu8yDKRBMg",
+"title": "Lecture 08, concept 16: Ligand-gated ion channels mediate signals in the nervous system",
+"seconds": 412
+},
+{
+"id": "SuYDcu0wDeU",
+"title": "Lecture 08, concept 17: The NKA (Na/K ATPase) pump maintains the ion imbalance by using ATP",
+"seconds": 529
+},
+{
+"id": "1JGU2LbPAfQ",
+"title": "Lecture 08, concept 18: Signaling - G-protein coupled receptors (GPCRs)",
+"seconds": 313
+},
+{
+"id": "zp1_rs-DowY",
+"title": "Lecture 08, concept 19: Signaling - Receptor Tyrosine Kinases (RTKs)",
+"seconds": 266
+},
+{
+"id": "zhmtuSa8_P8",
+"title": "Lecture 08, concept 20: Viral fusion membrane proteins",
+"seconds": 574
+},
+{
+"id": "OmbBCaixY88",
+"title": "Lecture 08, concept 21: Lipid Nanoparticles (LNPs) for mRNA vaccine delivery",
+"seconds": 171
+},
+{
+"id": "8oPxnmqZp0c",
+"title": "Lecture 08: Study questions",
+"seconds": 66
+},
+{
+"id": "nJVkwdNm_HY",
+"title": "Lecture 09, concept 01: Most sequences end up in a small fraction of folds",
+"seconds": 214
+},
+{
+"id": "1ljeUscKE9Y",
+"title": "Lecture 09, concept 02: Why are proteins similar - evolution or physics?",
+"seconds": 202
+},
+{
+"id": "wWHtcbAnOmQ",
+"title": "Lecture 09, concept 03: Classification of protein folds",
+"seconds": 76
+},
+{
+"id": "Wz6Ugn7BZjg",
+"title": "Lecture 09, concept 04: Fold databases - CATH",
+"seconds": 152
+},
+{
+"id": "mb898MT3eLc",
+"title": "Lecture 09, concept 05: Fold databases - SCOP",
+"seconds": 207
+},
+{
+"id": "5hXV8GJ4gRA",
+"title": "Lecture 09, concept 06: Evolution of protein structures - hemoglobin",
+"seconds": 254
+},
+{
+"id": "eEARwnVxKUk",
+"title": "Lecture 09, concept 07: Bacterial vs. eukaryotic/vertebrate proteins",
+"seconds": 150
+},
+{
+"id": "eEfA48mVvvU",
+"title": "Lecture 09, concept 08: Evolution can happen fast - tomcod PCB resistance",
+"seconds": 173
+},
+{
+"id": "BkC9DDysydY",
+"title": "Lecture 09, concept 09: What features make for stable folds?",
+"seconds": 125
+},
+{
+"id": "R_bOsiEmPQc",
+"title": "Lecture 09, concept 10: Most folds consist of 2-4 layers",
+"seconds": 257
+},
+{
+"id": "cJzlcXwsrFQ",
+"title": "Lecture 09, concept 11: Patterns we see occur because the are stable and avoid defects",
+"seconds": 120
+},
+{
+"id": "KRUa6BhZ1Ks",
+"title": "Lecture 09, concept 12: Even small defects can destabilize an entire fold",
+"seconds": 178
+},
+{
+"id": "v1a20hkzw1c",
+"title": "Lecture 09, concept 13: The multitude principle - Common folds can accept many sequences",
+"seconds": 46
+},
+{
+"id": "KbdoJW-O2DY",
+"title": "Lecture 09, concept 14: Sizes of helices/sheets are limited due to sequence pattern probabilities",
+"seconds": 743
+},
+{
+"id": "N8F-Fru7BIQ",
+"title": "Lecture 09, concept 15: Recap - secondary structure elements can't be too small or large",
+"seconds": 68
+},
+{
+"id": "qHI9tbzgTKI",
+"title": "Lecture 09, concept 16: Small defects are bad because much fewer sequences will fit the fold",
+"seconds": 313
+},
+{
+"id": "nAGFnjrVheE",
+"title": "Lecture 09, concept 17: Stability distribution comes from interaction randomness, not Boltzmann",
+"seconds": 665
+},
+{
+"id": "BJlApXf-tKg",
+"title": "Lecture 09, concept 18: Most random sequences will not fold into proteins",
+"seconds": 278
+},
+{
+"id": "fqFd0BEmMDg",
+"title": "Lecture 09, concept 19: It is rarer with helices than sheets inside proteins",
+"seconds": 171
+},
+{
+"id": "5Qck158g5Ms",
+"title": "Lecture 09, concept 20: Green Fluorescent Protein (GFP)",
+"seconds": 199
+},
+{
+"id": "TJeVOImqBoU",
+"title": "Lecture 09, concept 21: Conformational transitions - induced & selected fit",
+"seconds": 215
+},
+{
+"id": "wEUZ8KL29XQ",
+"title": "Lecture 09, concept 22: The allosteric transition of hemoglobin is critical for O2 transport",
+"seconds": 153
+},
+{
+"id": "rtIwiXgBfJI",
+"title": "Lecture 09, concept 23: CD spectroscopy is useful to study unfolding",
+"seconds": 276
+},
+{
+"id": "SBWsCPPZ9QI",
+"title": "Lecture 09, concept 24: Folding of small domains is an all-or-none transition",
+"seconds": 937
+},
+{
+"id": "YIFaengESwk",
+"title": "Lecture 09, concept 25: Proteins will unfold at either high or low temperature",
+"seconds": 291
+},
+{
+"id": "a8HUfuZdKGU",
+"title": "Lecture 09: Study questions",
+"seconds": 10
+},
+{
+"id": "yyXK58a3sCY",
+"title": "Lecture 10, concept 01: Denaturation into molten globule or all the way to coil",
+"seconds": 227
+},
+{
+"id": "B_AeQhecOO4",
+"title": "Lecture 10, concept 02: Properties of real molten globules",
+"seconds": 320
+},
+{
+"id": "hfLG8daUtSs",
+"title": "Lecture 10, concept 03: Clouds of particles collapse into a phase transition, but not polymers!",
+"seconds": 809
+},
+{
+"id": "LbeRTrCumro",
+"title": "Lecture 10, concept 04: Proteins are heteropolymers - side chain packing leads to phase transition",
+"seconds": 252
+},
+{
+"id": "hRpUif7C4Ek",
+"title": "Lecture 10, concept 05: E & S decrease in balance during folding, but create a free energy barrier",
+"seconds": 214
+},
+{
+"id": "Rn_arcdl6eA",
+"title": "Lecture 10, concept 06: Proteins have an energy gap to a single most-stable native state",
+"seconds": 302
+},
+{
+"id": "aMKvvydieo4",
+"title": "Lecture 10, concept 07: Some proteins get help from chaperonins to fold, but how can others fold?",
+"seconds": 196
+},
+{
+"id": "WA_bDzcoNv0",
+"title": "Lecture 10, concept 08: Potential models of protein folding to explain Levinthal's paradox",
+"seconds": 48
+},
+{
+"id": "Rta0jM9SEK0",
+"title": "Lecture 10, concept 09: The diffusion-collision model - secondary structures form first",
+"seconds": 178
+},
+{
+"id": "SGKn4QDINg4",
+"title": "Lecture 10, concept 10: The hydrophobic collapse model - secondary structure forming at the end",
+"seconds": 81
+},
+{
+"id": "D83PKkxNEp0",
+"title": "Lecture 10, concept 11: The nucleation-condensation model - residues gradually expanding a core",
+"seconds": 136
+},
+{
+"id": "g9rhCwIM7E8",
+"title": "Lecture 10, concept 12: Kinetics of protein folding and unfolding",
+"seconds": 233
+},
+{
+"id": "BBzhAHwzutM",
+"title": "Lecture 10, concept 13: Arrhenius plots reveal relative E for unfolded, transition and folded states",
+"seconds": 403
+},
+{
+"id": "evwUy0Fky20",
+"title": "Lecture 10, concept 14: Obtaining S for unfolded, transition and folded states (like Arrhenius)",
+"seconds": 131
+},
+{
+"id": "fvrB-WVOOgM",
+"title": "Lecture 10, concept 15: Folding barrier is entropy, unfolding is enthalpy",
+"seconds": 130
+},
+{
+"id": "rz61AYRt7XM",
+"title": "Lecture 10, concept 16: Apparent rates (approach to equilibrium) are easier to measure",
+"seconds": 220
+},
+{
+"id": "YBP5y-sqifY",
+"title": "Lecture 10, concept 17: Chevron plots reveal molecular details of folding & unfolding",
+"seconds": 367
+},
+{
+"id": "6TS50kM3WNo",
+"title": "Lecture 10, concept 18: Phi-value analysis from Chevron plots identifies transition state residues",
+"seconds": 210
+},
+{
+"id": "mQg1mPC5Tug",
+"title": "Lecture 10, concept 19: Protein folding slows down when misfolded states become too stable",
+"seconds": 189
+},
+{
+"id": "jGR7L5UiPd0",
+"title": "Lecture 10, concept 20: Proteins need both thermodynamic stability and fast folding pathways",
+"seconds": 98
+},
+{
+"id": "w-lewbu6ZDQ",
+"title": "Lecture 10, concept 21: The nucleation-condensation transition state explains Levinthal's paradox",
+"seconds": 470
+},
+{
+"id": "qp13-23l5gI",
+"title": "Lecture 10, concept 22: Life is essentially physics & information",
+"seconds": 282
+},
+{
+"id": "cB37YbDpCo4",
+"title": "Lecture 10: Study questions",
+"seconds": 17
+},
+{
+"id": "6C04LARCopo",
+"title": "Lecture 11, concept 01: Bioinformatics focuses on evolution and data",
+"seconds": 136
+},
+{
+"id": "yNfI6Xs5f6Y",
+"title": "Lecture 11, concept 02: Obtaining DNA from samples - Polymerase Chain Reaction (PCR)",
+"seconds": 342
+},
+{
+"id": "s-hACbPX97o",
+"title": "Lecture 11, concept 03: Detection of nucleic acids & SNPs with molecular beacons and microarrays",
+"seconds": 250
+},
+{
+"id": "ceWQG52CiKU",
+"title": "Lecture 11, concept 04: Example of genetic tests for disease - BRCA",
+"seconds": 124
+},
+{
+"id": "howYAmFKUIw",
+"title": "Lecture 11, concept 05: Chain termination (Sanger) sequencing",
+"seconds": 304
+},
+{
+"id": "1KvRLKusozw",
+"title": "Lecture 11, concept 06: Shotgun sequencing",
+"seconds": 264
+},
+{
+"id": "0fdlSlXGWiE",
+"title": "Lecture 11, concept 07: Sequencing produces more and cheaper data than any other scientific method",
+"seconds": 388
+},
+{
+"id": "9hoQ2ei9vCo",
+"title": "Lecture 11, concept 08: From DNA to proteins - open reading frames",
+"seconds": 207
+},
+{
+"id": "095xFOnIpGo",
+"title": "Lecture 11, concept 09: Single-site vs. recombinant mutations",
+"seconds": 186
+},
+{
+"id": "rl-VagT9EtI",
+"title": "Lecture 11, concept 10: Homologs, orthologs & paralogs",
+"seconds": 233
+},
+{
+"id": "eaKnOoeF7Fw",
+"title": "Lecture 11, concept 11: Detecting relationship from similarity - dot plots",
+"seconds": 133
+},
+{
+"id": "EEXpainRyWQ",
+"title": "Lecture 11, concept 12: Amino acid sequence is more conserved than DNA",
+"seconds": 73
+},
+{
+"id": "QYMlxAc0eJA",
+"title": "Lecture 11, concept 13: The extreme growth of biological sequence & structure databases",
+"seconds": 182
+},
+{
+"id": "FsNCXFZVW_Y",
+"title": "Lecture 11, concept 14: Protein sequence similarity: From mutation probabilities to scoring matrices",
+"seconds": 449
+},
+{
+"id": "t4oH0ckd238",
+"title": "Lecture 11, concept 15: Phylogenetic trees",
+"seconds": 371
+},
+{
+"id": "M37fh5uq8Ho",
+"title": "Lecture 11, concept 16: Sequencing will rapidly & cheaply tell us where structures mutate - variants",
+"seconds": 123
+},
+{
+"id": "0cnPzJs8Ctw",
+"title": "Lecture 11, concept 17: Protein structure RMSD vs. sequence identity",
+"seconds": 477
+},
+{
+"id": "O59dfR6L1xE",
+"title": "Lecture 11, concept 18: E-values indicate how statistically significant matches are",
+"seconds": 255
+},
+{
+"id": "X0flDzC3FnA",
+"title": "Lecture 11, Concept 19: Position-specific scoring matrices add more biological information",
+"seconds": 342
+},
+{
+"id": "n1mf1DCH5ck",
+"title": "Lecture 11, concept 20: Hard predictions are turning easy, impossible ones are becoming tractable",
+"seconds": 203
+},
+{
+"id": "lr1ZXKnTucs",
+"title": "Lecture 11, concept 21: Secondary structure prediction",
+"seconds": 183
+},
+{
+"id": "AOg8QQ50Z-Q",
+"title": "Lecture 11, concept 22: Homology modeling",
+"seconds": 200
+},
+{
+"id": "pDcf3Aw41fo",
+"title": "Lecture 11, concept 23: Homology modeling depends on good alignments and databases - use web servers",
+"seconds": 147
+},
+{
+"id": "zwyaWiDKhFg",
+"title": "Lecture 11, concept 24: Fragment-based ab initio prediction with ROSETTA",
+"seconds": 363
+},
+{
+"id": "7wVkzbV2lgY",
+"title": "Lecture 11, concept 25: Co-evolution (correlated mutations) improves ab initio prediction",
+"seconds": 285
+},
+{
+"id": "SvwfjwQTvrY",
+"title": "Lecture 11, concept 26: Deep learning ab initio prediction of protein structure with Alphafold",
+"seconds": 465
+},
+{
+"id": "j-mp5NASFlI",
+"title": "Lecture 11: Study questions",
+"seconds": 92
+},
+{
+"id": "h7Y9DYwvDcQ",
+"title": "Lecture 12, concept 01: Discover drugs by targeting proteins",
+"seconds": 190
+},
+{
+"id": "Lp09g5HMS1g",
+"title": "Lecture 12, concept 02: Understand your drug target - SARS-CoV-2 as an example",
+"seconds": 439
+},
+{
+"id": "QqSNSa5SDWY",
+"title": "Lecture 12, concept 03: From biology to target proteins to binding sites",
+"seconds": 123
+},
+{
+"id": "DzNL0HKZWrY",
+"title": "Lecture 12, concept 04: Ligand bind into pockets of receptors",
+"seconds": 106
+},
+{
+"id": "zcmGpYqWP70",
+"title": "Lecture 12, concept 05: Membrane proteins are some of the most common drug targets",
+"seconds": 85
+},
+{
+"id": "Rcc25WrwG1c",
+"title": "Lecture 12, concept 06: Affinity vs. efficacy & agonists vs. antagonists vs. inverse agonists",
+"seconds": 368
+},
+{
+"id": "Ba96w0O5VKs",
+"title": "Lecture 12, concept 07: ADME / Tox",
+"seconds": 372
+},
+{
+"id": "ulPPr0knauc",
+"title": "Lecture 12, concept 08: Lipinski's rule(s) of 5",
+"seconds": 442
+},
+{
+"id": "6sOSlRt3ycM",
+"title": "Lecture 12, concept 09: Fantastic drugs and where to find them",
+"seconds": 186
+},
+{
+"id": "PTsyOM6QahU",
+"title": "Lecture 12, concept 10: Steps in the drug discovery process",
+"seconds": 364
+},
+{
+"id": "tCxzDniyyxQ",
+"title": "Lecture 12, concept 11: From preclinical through phase I, II, & III trials to regulatory approval",
+"seconds": 397
+},
+{
+"id": "J7kebhv9q1w",
+"title": "Lecture 12, concept 12: The omeprazole drug was carefully optimised and made billions for Astra",
+"seconds": 129
+},
+{
+"id": "CBN2niuGQGo",
+"title": "Lecture 12, concept 13: Hit identification",
+"seconds": 206
+},
+{
+"id": "K9p_oaxjulE",
+"title": "Lecture 12, concept 14: Experimental high-throughput screening to test 500,000 molecules",
+"seconds": 214
+},
+{
+"id": "dOi8KwcecoM",
+"title": "Lecture 12, concept 15: Quantitative structure-activity relationship (QSAR) tries to predict drugs",
+"seconds": 269
+},
+{
+"id": "e27ycBwv-RI",
+"title": "Lecture 12, concept 16: A pharmacophore is a profile of a drug's average properties",
+"seconds": 113
+},
+{
+"id": "ME9yr2qCYwc",
+"title": "Lecture 12, concept 17: An example pharmacophore",
+"seconds": 158
+},
+{
+"id": "FPIggXA72NU",
+"title": "Lecture 12, concept 18: Docking is virtual (computational) high-throughput screening",
+"seconds": 243
+},
+{
+"id": "m7Q23R_Cbbc",
+"title": "Lecture 12, concept 19: Docking methods - find best ways to put two molecules together",
+"seconds": 215
+},
+{
+"id": "1WQDNoujnWs",
+"title": "Lecture 12, concept 20: Docking has limited accuracy, but achieves extreme throughput",
+"seconds": 332
+},
+{
+"id": "4caQ5bQGwfM",
+"title": "Lecture 12, concept 21: Fragment-based drug design tries to build a drug into a pocket",
+"seconds": 105
+},
+{
+"id": "7mcBQPsgB98",
+"title": "Lecture 12, concept 22: Docking scoring functions can be physical, empirical, or knowledge-based",
+"seconds": 209
+},
+{
+"id": "IYctCmtIKzc",
+"title": "Lecture 12, concept 23: Knowledge-based (statistical) scoring on a grid is very fast",
+"seconds": 43
+},
+{
+"id": "femLNxnpc-0",
+"title": "Lecture 12, concept 24: Allowing ligand flexibility and producing a final ranked list",
+"seconds": 108
+},
+{
+"id": "cJchATPyeM4",
+"title": "Lecture 12, concept 25: Experimental vs. virtual (docking) high-throughput screening",
+"seconds": 86
+},
+{
+"id": "sC-9U_oxDt0",
+"title": "Lecture 12, concept 26: Docking quality depends on the input structure or homology model quality",
+"seconds": 170
+},
+{
+"id": "ugGJ3Sjs8Tc",
+"title": "Lecture 12, concept 27: Validation with experimental co-crystal structure determination",
+"seconds": 137
+},
+{
+"id": "AGIdtV49IrA",
+"title": "Lecture 12, concept 28: Improving affinity - lead optimization",
+"seconds": 155
+},
+{
+"id": "uYTBjsg6GKc",
+"title": "Lecture 12, concept 29: Lead optimization for the HIV-1 protease inhibitor",
+"seconds": 196
+},
+{
+"id": "dr6i9RiDZFo",
+"title": "Lecture 12: Study questions",
+"seconds": 47
+},
+{
+"id": "rgN9noKQoVg",
+"title": "Lecture 13, concept 01: Free energy calculation provides good relative binding free energies",
+"seconds": 271
+},
+{
+"id": "NOHVd_VgAD0",
+"title": "Lecture 13, concept 02: Full simulations of binding reveal kinetics & barriers",
+"seconds": 311
+},
+{
+"id": "sVVNLTj0NH0",
+"title": "Lecture 13, concept 03: Designing a helix to selectively bind a membrane protein",
+"seconds": 276
+},
+{
+"id": "Z3vMmMZrPMI",
+"title": "Lecture 13, concept 04: Strengths/weaknesses of protein/peptide drugs (biologicals)",
+"seconds": 226
+},
+{
+"id": "kE0lordwmBU",
+"title": "Lecture 13, concept 05: Liraglutide - a biological used to treat type-II diabetes",
+"seconds": 184
+},
+{
+"id": "oexZaaIV32U",
+"title": "Lecture 13, concept 06: Allosteric modulation of igand-gated ion channels with different drugs",
+"seconds": 213
+},
+{
+"id": "Xf8sPtnUKjM",
+"title": "Lecture 13, concept 07: Poly-unsaturated fatty acids (PUFAs) can rescue mutated voltage sensors",
+"seconds": 334
+},
+{
+"id": "veSmkgrXkRA",
+"title": "Lecture 13, concept 08: A disaster in phase I trials for a new biological - TGN1412",
+"seconds": 268
+},
+{
+"id": "qkSBWRlHKfE",
+"title": "Lecture 13, concept 09: Computational design of new protein folds",
+"seconds": 396
+},
+{
+"id": "C3arRX66Lz0",
+"title": "Lecture 13: Study questions",
+"seconds": 27
+},
+{
+"id": "6Obhc_gwgOA",
+"title": "Lecture 13: Finishing up - recap of lecture themes",
+"seconds": 265
+}
+],
+"n_videos": 298
+},
+"https://www.youtube.com/playlist?list=PLmVLYa8E5SDff-uE7ehWBsX5sQzVRYiG6": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "dEmAnuO8RhQ",
+"title": "Lecture 1: A High Level View of Molecular Simulations",
+"seconds": 2833
+},
+{
+"id": "H0BCYDXEDco",
+"title": "Lecture 2: Newton’s Equation of Motion, Work, Potential and Kinetic Energy",
+"seconds": 2936
+},
+{
+"id": "ii-N61PeeQU",
+"title": "Lecture 3: The Velocity-Verlet Method",
+"seconds": 1680
+},
+{
+"id": "OpqJjKDPJBA",
+"title": "Lecture 4: Hamiltons Principle and Lagrangian Mechanics",
+"seconds": 2367
+},
+{
+"id": "HLr5ZeQUrBk",
+"title": "Lecture 5: Conservation Laws in Classical Mechanics",
+"seconds": 1763
+},
+{
+"id": "61CWqyocuOM",
+"title": "Lecture 6: Hamilton’s Equations of Motion",
+"seconds": 2348
+},
+{
+"id": "Ig1JXPcgv80",
+"title": "Lecture 7: A Postulate Approach to Thermodynamics",
+"seconds": 2555
+},
+{
+"id": "Krwwis0z7U0",
+"title": "Lecture 8: Fundamental Relations, Equations of State, and Deriving the Gibbs-Duhem Relation",
+"seconds": 2212
+},
+{
+"id": "y8yZNhulGcw",
+"title": "Lecture 9: Free Energies as Legendre Transforms of Internal Energy",
+"seconds": 2507
+},
+{
+"id": "t2-ITCzWgjw",
+"title": "Lecture 10: Thermodynamic Derivatives with Jacobian Transformations",
+"seconds": 1242
+},
+{
+"id": "HDl63ZSFVwM",
+"title": "Lecture 11: Phase Space and Statistical Ensembles",
+"seconds": 2700
+},
+{
+"id": "XiFEXVWNlpg",
+"title": "Lecture 12: Louiville’s Theorem and the Canonical Ensemble",
+"seconds": 3411
+},
+{
+"id": "aFEovHmSvQk",
+"title": "Lecture 13: Physical Motivation for the Canonical Ensemble",
+"seconds": 982
+},
+{
+"id": "uoieTQ3Qb3M",
+"title": "Lecture 14: The Maxwell-Boltzmann Distribution and Equipartition Theorem",
+"seconds": 1688
+},
+{
+"id": "2finZu0m6WM",
+"title": "Lecture 15: Quantum Corrections to Statistical Ensembles",
+"seconds": 2031
+}
+],
+"n_videos": 15
+},
+"https://www.youtube.com/playlist?list=PLm8ZSArAXicKIzMfkR0Y0GVx9AA1zge-P": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "BnT6Onll1eQ",
+"title": "Computational Chemistry 3.1 - Energy Gradient",
+"seconds": 325
+},
+{
+"id": "OCcxxddYrDg",
+"title": "Computational Chemistry 3.2 - Energy Minimization",
+"seconds": 509
+},
+{
+"id": "WvkSCxLqkxY",
+"title": "Computational Chemistry 3.3 - Steepest Descent",
+"seconds": 409
+},
+{
+"id": "AyFXfAhwVBQ",
+"title": "Computational Chemistry 3.4 - Conjugate Gradient",
+"seconds": 293
+},
+{
+"id": "rBni87N8cBs",
+"title": "Computational Chemistry 3.5 - Ensemble Properties",
+"seconds": 537
+},
+{
+"id": "b8n1k3Iob0Q",
+"title": "Computational Chemistry 3.6 - Thermal Energy",
+"seconds": 572
+},
+{
+"id": "J3aB9xp1YIE",
+"title": "Computational Chemistry 3.7 - Boundary Conditions",
+"seconds": 392
+},
+{
+"id": "QiZk_uT-40E",
+"title": "Computational Chemistry 3.8 - Molecular Dynamics",
+"seconds": 678
+},
+{
+"id": "kvJ1siWcBfM",
+"title": "Computational Chemistry 3.9 - MD Program",
+"seconds": 831
+},
+{
+"id": "mW9Tbdp1yCs",
+"title": "Computational Chemistry 3.10 - Monte Carlo",
+"seconds": 406
+},
+{
+"id": "xVvUFB5Hk-g",
+"title": "Computational Chemistry 3.11 - Metropolis Monte Carlo",
+"seconds": 588
+},
+{
+"id": "bZSrVUZlSp4",
+"title": "Computational Chemistry 3.12 - MC Program",
+"seconds": 738
+},
+{
+"id": "z4F3X0_G4eo",
+"title": "Computational Chemistry 3.13 - Simulated Annealing",
+"seconds": 336
+}
+],
+"n_videos": 13
+},
+"https://www.youtube.com/playlist?list=PLMRj3zlKNpjHHBYdUWZ_mjsWgT8xHnpcF": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "MunxDbHBGsc",
+"title": "Molecular simulations (introduction) Molecular dynamics MD Monte carlo MC",
+"seconds": 501
+},
+{
+"id": "keXmqiGN1Qc",
+"title": "Atom modeling for molecular simulations | Lennard-Jones & Coulomb potentials | MD MC",
+"seconds": 799
+},
+{
+"id": "1oQlCIUm0Bo",
+"title": "Introduction to Force Fields FF for Molecular Dynamics and Monte Carlo",
+"seconds": 564
+},
+{
+"id": "LLA7FduhorY",
+"title": "Monte Carlo techniques (introduction) | Random sampling & Importance sampling",
+"seconds": 908
+},
+{
+"id": "3wb15oj777U",
+"title": "Markov Chain Monte Carlo ( Metropolis Monte Carlo & Barker Monte Carlo ) for molecular simulations",
+"seconds": 1184
+},
+{
+"id": "1kER3-3x8VI",
+"title": "MD time propagation algorithm & Velocity Verlet | Molecular simulations",
+"seconds": 995
+},
+{
+"id": "IlwC3PSyZ0Q",
+"title": "Molecular Dynamics MD (introduction) | Molecular simulations",
+"seconds": 701
+},
+{
+"id": "5OZO5GPuSJY",
+"title": "Liouville Formalism for Molecular Dynamics MD | Molecular Simulations",
+"seconds": 833
+},
+{
+"id": "CRbC_-iGnZM",
+"title": "Multi time step algorithms with the Liouville formalism for molecular dynamics",
+"seconds": 869
+},
+{
+"id": "x20QP1x3U7c",
+"title": "Periodic Boundary Conditions PBC for Molecular Dynamics MD & Molecular Monte Carlo MC",
+"seconds": 495
+},
+{
+"id": "SSmIMof0KvA",
+"title": "Ewald Method | PME PPPME SPME | Molecular Dynamics MD | Molecular Monte Carlo MC",
+"seconds": 1285
+},
+{
+"id": "qITm4laxhtk",
+"title": "Replica Exchange Method REM | Parallel Tempering | TREM HREM",
+"seconds": 1057
+},
+{
+"id": "ypg1doAqVPM",
+"title": "Alchemical Transformations (introduction) | Free energy estimates | Molecular Dynamics MD",
+"seconds": 500
+},
+{
+"id": "nI3pHiPbxeg",
+"title": "Non equilibrium transformations | Crooks & Jarzynski theorem for free energy calculations | MD",
+"seconds": 786
+},
+{
+"id": "pjT7waGUGDI",
+"title": "Landau Free Energy (quick and dirty introduction) | Molecular simulations MD MC",
+"seconds": 159
+},
+{
+"id": "PkTCrc0P_Xs",
+"title": "Non Boltzmann sampling Molecular Dynamics MD & Monte Carlo MC",
+"seconds": 738
+},
+{
+"id": "NeGjghk0im4",
+"title": "FSDAM vDSSB Non Equilibrium Binding Free Energy | Alchemical Transformations | Protein Ligand System",
+"seconds": 1627
+},
+{
+"id": "QP5F83g1G0E",
+"title": "Metadynamics (introduction) | A history dependent non-Boltzmann sampling technique | MD",
+"seconds": 944
+}
+],
+"n_videos": 18
+},
+"https://www.youtube.com/playlist?list=PLOzRYVm0a65fCJJQendwEEcSrC8iwvgBn": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "najTlj2_lN8",
+"title": "Week 1-Lecture 1",
+"seconds": 1676
+},
+{
+"id": "B7uz4wFa4sM",
+"title": "Week 1-Lecture 2",
+"seconds": 1790
+},
+{
+"id": "2uXwo491KT4",
+"title": "Week 1-Lecture 3",
+"seconds": 1703
+},
+{
+"id": "_Ni6b2_JPUU",
+"title": "Week 1-Lecture 4",
+"seconds": 1791
+},
+{
+"id": "Ub5N-Ugg6qo",
+"title": "Week 1-Lecture 5",
+"seconds": 1724
+},
+{
+"id": "LwoSWhtBSGM",
+"title": "Week 2-Lecture 6",
+"seconds": 1688
+},
+{
+"id": "3l3J6nl9i-0",
+"title": "Week 2-Lecture 7",
+"seconds": 1622
+},
+{
+"id": "p9okCSNSly8",
+"title": "Week 2-Lecture 8",
+"seconds": 1668
+},
+{
+"id": "wUOmyKjqayY",
+"title": "Week 2-Lecture 9",
+"seconds": 1715
+},
+{
+"id": "Qd7Tqb8psWA",
+"title": "Week 2-Lecture 10",
+"seconds": 1713
+},
+{
+"id": "zVlZxHKP1e0",
+"title": "Week 3-Lecture 11",
+"seconds": 1854
+},
+{
+"id": "HCpjAViYbAI",
+"title": "Week 3-Lecture 12",
+"seconds": 1765
+},
+{
+"id": "Gd1pJ6XxrAU",
+"title": "Week 3-Lecture 13",
+"seconds": 1970
+},
+{
+"id": "0aLNXfLGtDs",
+"title": "Week 3-Lecture 14",
+"seconds": 1787
+},
+{
+"id": "kqhGI9DBjIM",
+"title": "Week 3-Lecture 15",
+"seconds": 2010
+},
+{
+"id": "kF8snScxaLI",
+"title": "Week 4-Lecture 16",
+"seconds": 1675
+},
+{
+"id": "55Vh2_UcP9I",
+"title": "Week 4-Lecture 17",
+"seconds": 1803
+},
+{
+"id": "alakPzk8Teo",
+"title": "Week 4-Lecture 18",
+"seconds": 1859
+},
+{
+"id": "i0s2TTuLNRs",
+"title": "Week 4-Lecture 19",
+"seconds": 1757
+},
+{
+"id": "mx-cjoIXeTA",
+"title": "Week 4-Lecture 20",
+"seconds": 1897
+},
+{
+"id": "IC_Fmf1o2n0",
+"title": "Week 5-Lecture 21",
+"seconds": 1685
+},
+{
+"id": "1NeT-P7MXEc",
+"title": "Week 5-Lecture 22",
+"seconds": 1926
+},
+{
+"id": "AUIGlxRXAc0",
+"title": "Week 5-Lecture 23",
+"seconds": 1599
+},
+{
+"id": "6Z1tb3wcWTI",
+"title": "Week 5-Lecture 24",
+"seconds": 1642
+},
+{
+"id": "MimGyjSRqAw",
+"title": "Week 5-Lecture 25",
+"seconds": 1714
+},
+{
+"id": "wWbqhgosQ7k",
+"title": "Week 6-Lecture 26",
+"seconds": 1753
+},
+{
+"id": "tuuFyOJPD-g",
+"title": "Week 6-Lecture 27",
+"seconds": 1739
+},
+{
+"id": "dKHkkETE97M",
+"title": "Week 6-Lecture 28",
+"seconds": 1736
+},
+{
+"id": "L2qEWQb11oc",
+"title": "Week 6-Lecture 29",
+"seconds": 1764
+},
+{
+"id": "dOpKIWFDW0s",
+"title": "Week 6-Lecture 30",
+"seconds": 1726
+},
+{
+"id": "DMQifMiY_oI",
+"title": "Week 7-Lecture 31",
+"seconds": 1659
+},
+{
+"id": "U-nUr9xof5Y",
+"title": "Week 7-Lecture 32",
+"seconds": 1900
+},
+{
+"id": "nKYrzrwaRmc",
+"title": "Week 7-Lecture 33",
+"seconds": 1706
+},
+{
+"id": "BWv1B5S1fGw",
+"title": "Week 7-Lecture 34",
+"seconds": 1823
+},
+{
+"id": "MoRXFKqQPIk",
+"title": "Week 7-Lecture 35",
+"seconds": 1546
+},
+{
+"id": "zCTGd5xYwoQ",
+"title": "Week 8-Lecture 36",
+"seconds": 1675
+},
+{
+"id": "fw6feNSZ4jE",
+"title": "Week 8-Lecture 37",
+"seconds": 1935
+},
+{
+"id": "CcJFMcmP9Xs",
+"title": "Week 8-Lecture 38",
+"seconds": 1902
+},
+{
+"id": "hih5bMhz0k0",
+"title": "Week 8-Lecture 39",
+"seconds": 1359
+},
+{
+"id": "sSVME8caRCM",
+"title": "Week 8-Lecture 40",
+"seconds": 1669
+},
+{
+"id": "zodHyKUyUbM",
+"title": "Week 8-Lecture 41",
+"seconds": 1863
+}
+],
+"n_videos": 41
+},
+"https://www.youtube.com/playlist?list=PLLy_2iUCG87BAsKeYnI-N5zL2B2LE2mdR": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "JdbUr6RIUrs",
+"title": "Advanced Thermodynamics and Molecular Simulations",
+"seconds": 130
+},
+{
+"id": "nncX9CTwby0",
+"title": "Lecture 01-Introduction to the course",
+"seconds": 1361
+},
+{
+"id": "4Xn54YPdlJc",
+"title": "Lecture 02: Molecular basis of energy and entropy",
+"seconds": 1819
+},
+{
+"id": "OqO8zToZ_i0",
+"title": "Lecture 03: Probability and probability distributions",
+"seconds": 1930
+},
+{
+"id": "Zb3RkTF4hnM",
+"title": "Lecture 04: Probability distributions and thermodynamic equilibrium",
+"seconds": 2096
+},
+{
+"id": "Lk4HxQk2mdM",
+"title": "Lecture 05: Energy distribution in molecular systems",
+"seconds": 1843
+},
+{
+"id": "FOcQuyF-CcE",
+"title": "Lecture 06: First and second law of thermodynamics",
+"seconds": 2199
+},
+{
+"id": "w1PQBFY9C6A",
+"title": "Lecture 07- Reversible and irreversible processes; third law; legendre transformation...",
+"seconds": 2131
+},
+{
+"id": "PQnrOoLo91U",
+"title": "Lecture 08- Thermodynamic functions for multi-component systems; chemical potential...",
+"seconds": 2259
+},
+{
+"id": "H_E3T4gGA80",
+"title": "Lecture 09-Extensive and intensive variables; gibbs duhem relation; euler theorem; maxwell relations",
+"seconds": 2259
+},
+{
+"id": "luEuDBR88fA",
+"title": "Lecture 10- Discrete and continuous probabilities; stirling approximation",
+"seconds": 2267
+},
+{
+"id": "zRZ4hU2QqmY",
+"title": "Lecture 11- Binomial distribution approaches gaussian distribution for large n...",
+"seconds": 2166
+},
+{
+"id": "HFM-9n8rduY",
+"title": "Lecture 12- Solution of drunkard walk; lagrange multipliers",
+"seconds": 1893
+},
+{
+"id": "lL6IxQRf3ZQ",
+"title": "Lecture 13: Energy distribution in molecular system revisited",
+"seconds": 1814
+},
+{
+"id": "Q7GM0RXJ4aY",
+"title": "Lecture 14: Canonical ensemble: most probable distribution, partition function",
+"seconds": 2383
+},
+{
+"id": "nB319t4zGDg",
+"title": "Lecture 15: Definition of temperature; third law of thermodynamics",
+"seconds": 1482
+},
+{
+"id": "_ErxZOHwtaA",
+"title": "Lecture 16: Canonical ensemble: Helmholtz free energy, averages and fluctuations, specific heat",
+"seconds": 2181
+},
+{
+"id": "R47VOX1RivA",
+"title": "Lecture 17: Partition function of a dense gas; grand canonical ensemble: partition function",
+"seconds": 2076
+},
+{
+"id": "T4qlQ6G_jPk",
+"title": "Lecture 18: Computing properties in grand canonical ensemble",
+"seconds": 1859
+},
+{
+"id": "yoOg82dTho0",
+"title": "Lecture 19: Isothermal isobaric ensemble",
+"seconds": 2082
+},
+{
+"id": "1xGJNemPCKA",
+"title": "Lecture 20: Summary of thermodynamic ensembles; partition function of an ideal gas",
+"seconds": 2195
+},
+{
+"id": "L1aGkxllBd8",
+"title": "Lecture 21: Mixing and phase separation, phase equilibrium of a multiphase multicomponent system",
+"seconds": 2553
+},
+{
+"id": "q3rvVxnEkGU",
+"title": "Lecture 22: Pure component phase diagram; Solution thermodynamics: Helmholtz free energy density",
+"seconds": 2086
+},
+{
+"id": "zdjhBh-32kU",
+"title": "Lecture 23: Characterizing mixing and phase separation using Helmholtz free energy density",
+"seconds": 1788
+},
+{
+"id": "KhPi5uBklb0",
+"title": "Lecture 24: Common tangent construction, definition of binodal, spinodal, and critical point",
+"seconds": 2004
+},
+{
+"id": "PAV66MfkpMM",
+"title": "Lecture 25: Osmotic pressure and chemical potential",
+"seconds": 2445
+},
+{
+"id": "9vgU0eqN7nM",
+"title": "Lecture 26: Lattice model of liquid solutions I",
+"seconds": 2170
+},
+{
+"id": "q8BL59fSjog",
+"title": "Lecture 27: Lattice model of liquid solutions II",
+"seconds": 2320
+},
+{
+"id": "JBctAN7vAf0",
+"title": "Lecture 28: Lattice model of liquid solutions III",
+"seconds": 1480
+},
+{
+"id": "Caz3YTu5f-8",
+"title": "Lecture 29: Critical review of Lattice model, theoretical basis of molecular dynamics simulation",
+"seconds": 2070
+},
+{
+"id": "-VqRrnOKaPQ",
+"title": "Lecture 30: Theoretical basis of molecular dynamics simulation",
+"seconds": 2009
+},
+{
+"id": "qqVfocYqwj0",
+"title": "Lecture 31: Interaction energy and force field",
+"seconds": 1720
+},
+{
+"id": "FAqIw45buLk",
+"title": "Lecture 32: Liouiville theorem; theoretical basis of Monte Carlo simulation",
+"seconds": 2167
+},
+{
+"id": "Kv8tPOljcaQ",
+"title": "Lecture 33: Introduction to Monte Carlo simulation method",
+"seconds": 2005
+},
+{
+"id": "PmQNLhxoPZA",
+"title": "Lecture 34: Markov chain algorithm, condition for equilibrium and detailed balance",
+"seconds": 2284
+},
+{
+"id": "AyfZuJ7oDjE",
+"title": "Lecture 35: Metropolis algorithm, periodic boundary condition",
+"seconds": 2746
+},
+{
+"id": "cfwm43wCpN4",
+"title": "Lecture 36: Numerical implementation of Monte Carlo simulation: python examples I",
+"seconds": 2506
+},
+{
+"id": "croKMft9ses",
+"title": "Lecture 37: Numerical implementation of Monte Carlo simulation: python examples II",
+"seconds": 1788
+},
+{
+"id": "-lPmUz-ORfg",
+"title": "Lecture 38: Numerical implementation of Monte Carlo simulation: python examples III",
+"seconds": 2306
+},
+{
+"id": "jWgIJFI_HSM",
+"title": "Lecture 39: Numerical implementation of Monte Carlo simulation: python examples IV",
+"seconds": 2172
+},
+{
+"id": "YROQsK_GPQI",
+"title": "Lecture 40: Numerical implementation of Monte Carlo simulation: python examples V",
+"seconds": 2675
+},
+{
+"id": "5MyIMng0GYs",
+"title": "Lecture 41: Particle simulations: comparison with quantum chemical and continuum simulations",
+"seconds": 1534
+},
+{
+"id": "zNiUrSxZdsQ",
+"title": "Lecture 42: Pair potentials",
+"seconds": 1957
+},
+{
+"id": "hi7gvv-I-0o",
+"title": "Lecture 43: Saving CPU time: short range and long range interactions",
+"seconds": 2162
+},
+{
+"id": "iOwqaCrJbs0",
+"title": "Lecture 44: Bonded and nonbonded interactions, force fields",
+"seconds": 1732
+},
+{
+"id": "HPk5SiEqFIM",
+"title": "Lecture 45: Practical aspects of molecular simulations",
+"seconds": 1931
+},
+{
+"id": "pCm2i6kQs4E",
+"title": "lecture 46: Numerical implementation of MD; thermostat and barostat",
+"seconds": 1825
+},
+{
+"id": "EsKsPEdYksE",
+"title": "Lecture 47: MD simulations - efficiency and parallelization, sampling and averaging",
+"seconds": 2633
+},
+{
+"id": "s9FbZWFiETI",
+"title": "Lecture 48: MD simulations - analysis of simulation trajectories (continued), case studies I",
+"seconds": 2458
+},
+{
+"id": "xU8kse8_dNY",
+"title": "Lecture 49: MD simulations - case studies II",
+"seconds": 1794
+},
+{
+"id": "05Z5YMIAbp0",
+"title": "Lecture 50: MD simulations - case studies III",
+"seconds": 1927
+},
+{
+"id": "evbweNn_hTE",
+"title": "Lecture 51: Free energies and phase behavior; extension of canonical ensemble monte carlo...",
+"seconds": 1863
+},
+{
+"id": "r5qOSxEYIus",
+"title": "Lecture 52: Extension of canonical ensemble monte carlo to other ensembles (continued)",
+"seconds": 2036
+},
+{
+"id": "8LqVN8a7MOY",
+"title": "Lecture 53: Monte carlo in gibbs ensemble and semi-grand canonical ensemble...",
+"seconds": 1478
+},
+{
+"id": "iCzHM5Lb_m8",
+"title": "Lecture 54: Thermodynamic integration (continued); widom's particle insertion...",
+"seconds": 1818
+},
+{
+"id": "V1RCMp4wM2k",
+"title": "Lecture 55: Multiple histogram method; umbrella sampling; thermodynamic cycle...",
+"seconds": 1465
+},
+{
+"id": "fMhN-25Wetw",
+"title": "Lecture 56:Tackling time scale issues (continued); nonequilibrium molecular dynamics...",
+"seconds": 2098
+},
+{
+"id": "0NJxWb-sXg8",
+"title": "Lecture 57: Multiparticle collision dynamics; lattice boltzmann method; coarse-graining",
+"seconds": 1828
+},
+{
+"id": "QBbCrNDjQDM",
+"title": "Lecture 58: Case studies",
+"seconds": 1910
+},
+{
+"id": "KFzhVBAiHEI",
+"title": "Lecture 59: Simulations of chemical reactions using kinetic monte carlo simulations",
+"seconds": 2055
+},
+{
+"id": "nIQ_N6QBCdA",
+"title": "Lecture 60: Reactive force fields; ab initio molecular dynamics and other advanced methods ...",
+"seconds": 1707
+}
+],
+"n_videos": 61
+},
+"https://www.youtube.com/playlist?list=PLJoALJA_KMOCTXDqNRn0N2W2RuhC_oBwL": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "GcGClviieOU",
+"title": "Lec 01: Introduction to Molecular Dynamics Simulation",
+"seconds": 2495
+},
+{
+"id": "25VhTIyCe7w",
+"title": "Lec 02: Model systems and interaction potentials",
+"seconds": 2866
+},
+{
+"id": "-EVNaaA6hYk",
+"title": "Lec 03: Building model potentials",
+"seconds": 2340
+},
+{
+"id": "Tcj3y9xhR_s",
+"title": "Lec 04: MD Simulation of Small Systems",
+"seconds": 3058
+},
+{
+"id": "2BrgH96ntYk",
+"title": "Lec 05: A brief introduction to Statistical Mechanics",
+"seconds": 2702
+},
+{
+"id": "4LUntyI8PgE",
+"title": "Lec 06: Statistical Ensembles and Thermodynamic Potentials",
+"seconds": 3034
+},
+{
+"id": "Iq9ZxMRbpmc",
+"title": "Lec 07: Thermodynamic Averages",
+"seconds": 2851
+},
+{
+"id": "AhNHsYpemII",
+"title": "Lec 08: Fluctuations",
+"seconds": 2794
+},
+{
+"id": "UvH-h9i03rM",
+"title": "Lec 09: Structural Quantities",
+"seconds": 2543
+},
+{
+"id": "nuAs_GlCdDU",
+"title": "Lec 10: Dynamical Properties",
+"seconds": 1731
+},
+{
+"id": "y-jUCgk4rCI",
+"title": "Lec 11: Trunctation of Potentials",
+"seconds": 2390
+},
+{
+"id": "j7EhVxPHLFY",
+"title": "Lec 12: Equations of Motion",
+"seconds": 2327
+},
+{
+"id": "PuDproV-17s",
+"title": "Lec 13: Symmetries and Conservation laws",
+"seconds": 1819
+},
+{
+"id": "ld5VABtBkF0",
+"title": "Lec 14: Numerical Methods-II",
+"seconds": 2723
+},
+{
+"id": "PIDfWuDBkz0",
+"title": "Lec 15: Numerical Methods-II",
+"seconds": 2379
+},
+{
+"id": "-6QUI57indo",
+"title": "Lec 16: Constraint Dynamics",
+"seconds": 3221
+},
+{
+"id": "fueOYcMgFfQ",
+"title": "Lec 17: Constraint Dynamics - Water As An Example",
+"seconds": 2251
+},
+{
+"id": "kMPqm37WiKo",
+"title": "Lec 18: Molecular Dynamics of Hard Spheres",
+"seconds": 2667
+},
+{
+"id": "OURKkL8XqDo",
+"title": "Lec 19: Neighbour List",
+"seconds": 2600
+},
+{
+"id": "DnOTgjUZxbE",
+"title": "Lec 20: Electrostatic Interactions",
+"seconds": 2541
+},
+{
+"id": "WU_8wdSSZC8",
+"title": "Lec 21: MD Initialization of Positions, Velocities",
+"seconds": 1638
+},
+{
+"id": "3T5-m-FNR8Y",
+"title": "Lec 22: MD Equilibration",
+"seconds": 1262
+},
+{
+"id": "FqqPhoyRCCM",
+"title": "Lec 23: Calculation of Radial Distribution Function, TCF",
+"seconds": 2397
+},
+{
+"id": "e3Ygft3fjRg",
+"title": "Lec 24: Estimation of Errors in Thermodynamic Quantities",
+"seconds": 2491
+},
+{
+"id": "8Y9dgl6jsBo",
+"title": "Lec 25: Estimation of Errors in Structural and Dynamical Quantities",
+"seconds": 2088
+},
+{
+"id": "HiZ7gvtmDbk",
+"title": "Lec 26: Constant Temperature MD (NVT)",
+"seconds": 1878
+},
+{
+"id": "rGOyUWV0fX0",
+"title": "Lec 27: Constant Pressure & Temperature MD (NPT)",
+"seconds": 2086
+},
+{
+"id": "5IL26m1zqjA",
+"title": "Lec 28: Non-Equilibrium MD (NEMD)",
+"seconds": 2128
+},
+{
+"id": "zI59R9TlfW0",
+"title": "Lec 29: NEMD SLLOD Algorithm",
+"seconds": 1617
+},
+{
+"id": "0XZ8tAwNHdE",
+"title": "Lec 30: Coarse-Grained MD",
+"seconds": 1776
+},
+{
+"id": "VxkQn3H_Q3k",
+"title": "Lec 31: Dissipative Particle Dynamics (DPD)",
+"seconds": 2394
+},
+{
+"id": "R4OdT1cwpBI",
+"title": "Lec 32: Summary of the Course",
+"seconds": 2168
+}
+],
+"n_videos": 32
+},
+"https://www.youtube.com/playlist?list=PL4GectRFDznPpbS98Ppu8zfEL1tahmZtv": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "tcTmOEk8cc4",
+"title": "00_1 Very Basic Introduction to Stat. Mech. 1",
+"seconds": 490
+},
+{
+"id": "lLhUpB6oOr8",
+"title": "00_2 Very Basic Introduction to Stat. Mech. 2",
+"seconds": 560
+},
+{
+"id": "AtExb5EprvE",
+"title": "01 Introduction to Molecular Dynamics Simulations",
+"seconds": 1037
+},
+{
+"id": "HK5RU-tAqBU",
+"title": "02 Umami",
+"seconds": 740
+},
+{
+"id": "8oZSa0zlnIc",
+"title": "03 Molecular Mechanics, Force field",
+"seconds": 1035
+},
+{
+"id": "uLlWNqoPNA0",
+"title": "03_1 Description of the GROMACS topology (.itp .top) file for ethanol",
+"seconds": 986
+},
+{
+"id": "JQPHMpR37Co",
+"title": "04 Non-bonded Cutoffs (switch, shift, plain)",
+"seconds": 668
+},
+{
+"id": "N2Lf-U8aIgM",
+"title": "05 Constraint algorithms in MD simulations",
+"seconds": 731
+},
+{
+"id": "pzM7ju9DNtM",
+"title": "06 Periodic Boundary Conditions and Minimum Image Convention",
+"seconds": 470
+},
+{
+"id": "AbidqaoH7Wo",
+"title": "07 Algorithm for Periodic Boundary Conditions",
+"seconds": 102
+},
+{
+"id": "3b6ZM21PmPU",
+"title": "08 Calculation of Transport Coefficients",
+"seconds": 302
+},
+{
+"id": "BACN9Ydiw5I",
+"title": "09 Block Error Calculations in Simulations",
+"seconds": 491
+},
+{
+"id": "rWoV7HoufdA",
+"title": "10 Correlation functions",
+"seconds": 575
+},
+{
+"id": "Mm1WfLi86-0",
+"title": "11 Time Correlation Functions",
+"seconds": 306
+},
+{
+"id": "TlKg7luoRmY",
+"title": "12 Order Parameters",
+"seconds": 385
+},
+{
+"id": "7q5eD9J6-3c",
+"title": "13 About Lipid Membranes",
+"seconds": 1819
+},
+{
+"id": "j3RbMtp4kWo",
+"title": "14_2 Lipid Phases",
+"seconds": 414
+},
+{
+"id": "qcfV1z_UZLE",
+"title": "15 Short Note on Principal Components Analysis of Simulation Trajectories",
+"seconds": 674
+},
+{
+"id": "KU9LNWsk4ec",
+"title": "16 Using batch jobs on UCLOUD",
+"seconds": 206
+}
+],
+"n_videos": 19
+},
+"https://www.youtube.com/playlist?list=PLUTWmWVeT0zYgsmFORDkNz-K3_8GZmt8G": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "bSnwWyzOP4c",
+"title": "Day 1 - Theory: Equations of Motion and Force Fields",
+"seconds": 9935
+},
+{
+"id": "g_wrYUKNyc4",
+"title": "Day 2 - Theory: Periodic Boundary Conditions. Introduction to Enhanced-Sampling Approaches.",
+"seconds": 11220
+},
+{
+"id": "A3SxYkoKlnM",
+"title": "Day 3 - Umbrella Sampling and Replica Exchange",
+"seconds": 10916
+},
+{
+"id": "lgezhl719no",
+"title": "Day 4 - Theory: QM/MM and Research Examples",
+"seconds": 10180
+},
+{
+"id": "cHpqEkMru3A",
+"title": "Day 5 - Computer Exercise: Classical Molecular Dynamics",
+"seconds": 10045
+},
+{
+"id": "dvo6noErrbc",
+"title": "Day 6 - Computer Exercise: Umbrella Sampling",
+"seconds": 8585
+},
+{
+"id": "NRpnKUJXA7E",
+"title": "Day 7 - Computer Exercise: Computation of Redox Potentials",
+"seconds": 11678
+},
+{
+"id": "IsR5i8Na1wg",
+"title": "Day 8 - Computer Exercise: Computation of Absorption Spectra",
+"seconds": 7975
+}
+],
+"n_videos": 8
+},
+"https://www.youtube.com/playlist?list=PLmdKEn2znJEld8l6Hp9PXf4EursC4-8nC": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "2eGhMSdIJEs",
+"title": "PLUMED Masterclass 21-1.1",
+"seconds": 3166
+},
+{
+"id": "TzSxBnX4uDk",
+"title": "PLUMED Masterclass 21-1.2",
+"seconds": 6777
+},
+{
+"id": "dJKajNwbJ74",
+"title": "PLUMED Masterclass 21-2.1",
+"seconds": 2531
+},
+{
+"id": "XKqislC2GYA",
+"title": "PLUMED Masterclass 21-2.2",
+"seconds": 5201
+},
+{
+"id": "gHXXGYIgasE",
+"title": "PLUMED Masterclass 21-3.1",
+"seconds": 3856
+},
+{
+"id": "SuHcOYqIOrY",
+"title": "PLUMED Masterclass 21-3.2",
+"seconds": 6966
+},
+{
+"id": "q0RHlFAk544",
+"title": "PLUMED Masterclass 21-4.1",
+"seconds": 2731
+},
+{
+"id": "UgTIGQxJtOc",
+"title": "PLUMED Masterclass 21-4.2",
+"seconds": 7306
+},
+{
+"id": "v_CCLyjQ3yI",
+"title": "PLUMED Masterclass 21-5.1",
+"seconds": 3701
+},
+{
+"id": "0o9rV2cWiJU",
+"title": "PLUMED Masterclass 21-5.2",
+"seconds": 5151
+},
+{
+"id": "EoErcfzwtA8",
+"title": "PLUMED Masterclass 21-6.1",
+"seconds": 4459
+},
+{
+"id": "PJovdFGb8KQ",
+"title": "PLUMED Masterclass 21-6.2",
+"seconds": 3818
+},
+{
+"id": "2k7RacpoIBk",
+"title": "PLUMED Masterclass 21-7.1",
+"seconds": 2409
+},
+{
+"id": "RftHvdwrEEk",
+"title": "PLUMED Masterclass 21-7.2",
+"seconds": 6566
+}
+],
+"n_videos": 14
+},
+"https://www.youtube.com/playlist?list=PLzLqYW5ci-2fhEKTFQHmXdXkJyQcWRvBV": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "N2Sr4qtRKhs",
+"title": "Integrative modelling of biomolecular complexes - Part 1",
+"seconds": 2763
+},
+{
+"id": "qpx6bQZhWrU",
+"title": "Integrative modelling of biomolecular complexes - Part 2",
+"seconds": 2596
+},
+{
+"id": "NItXk8epkNM",
+"title": "Basis of molecular dynamics simulations - Part I",
+"seconds": 1844
+},
+{
+"id": "ZKNUR5Uz2r0",
+"title": "Basis of molecular dynamics simulations - Part II",
+"seconds": 2069
+},
+{
+"id": "I7ZxRBhYO3E",
+"title": "Computational biomolecular simulation workflows with BioExcel Building Blocks - Part 1",
+"seconds": 1763
+},
+{
+"id": "ou1DOGNs0xM",
+"title": "Computational biomolecular simulation workflows with BioExcel Building Blocks - Part 2",
+"seconds": 1877
+},
+{
+"id": "V2_ppEF5whA",
+"title": "Introduction to QM/MM - Part 1",
+"seconds": 1823
+},
+{
+"id": "YQ8eRyScuyk",
+"title": "Constant pH molecular dynamics in GROMACS",
+"seconds": 1145
+},
+{
+"id": "9JiorFETCTo",
+"title": "Modeling molecular recognition through enhanced-sampling methods -  Part I",
+"seconds": 2834
+},
+{
+"id": "EwGZ39PS1qk",
+"title": "Modeling molecular recognition through enhanced-sampling methods - Part 2",
+"seconds": 2158
+},
+{
+"id": "iweSKUD2YBI",
+"title": "Alchemical free energy calculations using pmx",
+"seconds": 2659
+},
+{
+"id": "_TDKfKX4kwM",
+"title": "Molecular dynamics meet docking: A use case on antibody design",
+"seconds": 1113
+},
+{
+"id": "BYvsNThvXlk",
+"title": "Accelerating sampling in GROMACS with the Accelerated Weight Histogram method",
+"seconds": 1258
+}
+],
+"n_videos": 13
+},
+"https://www.youtube.com/playlist?list=PLyqSpQzTE6M9Mu0bFYvQtXEjN0DhCNJDC": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "yvxuzZ_Jz3s",
+"title": "#1 Introduction to the Course | Foundations of Computational Materials Modelling",
+"seconds": 1785
+},
+{
+"id": "ych8-wfTysU",
+"title": "#2 Some Applications of MD Simulations | Foundations of Computational Materials Modelling",
+"seconds": 1509
+},
+{
+"id": "421gi_ygNO8",
+"title": "#3 Introduction to Bravais Lattices & Constructing Simple Crystals with MATLAB",
+"seconds": 3122
+},
+{
+"id": "AmS1ZlUGEYQ",
+"title": "#4 Introduction to Symmetry | Part 1 | Foundations of Computational Materials Modelling",
+"seconds": 610
+},
+{
+"id": "CybsM6hPaJk",
+"title": "#5 Symmetry Elements | Part 1 | Foundations of Computational Materials Modelling",
+"seconds": 1756
+},
+{
+"id": "zMepFjqmE6w",
+"title": "#6 Symmetry Elements | Part 2 | Foundations of Computational Materials Modelling",
+"seconds": 764
+},
+{
+"id": "prSEa_zH1dQ",
+"title": "#7 Plane Groups & their Hermann Maugin (HM) Symbols",
+"seconds": 2916
+},
+{
+"id": "FyBCEFUBWdw",
+"title": "#8 Glide reflection | Examples of Writing Point Group symbols | Wyckoff Positions",
+"seconds": 2941
+},
+{
+"id": "yW3M9W5VzUQ",
+"title": "#9 Generating 2D crystal with MATLAB using Bilbao Crystallography Website",
+"seconds": 2175
+},
+{
+"id": "vssmtZhWcCk",
+"title": "#10 Symmetry of Space Groups | Foundations of Computational Materials Modelling",
+"seconds": 2278
+},
+{
+"id": "VKGQykKh2lI",
+"title": "#11 Hernann Maugin Symbols of Space Groups | Foundations of Computational Materials Modelling",
+"seconds": 633
+},
+{
+"id": "J6syySnyl58",
+"title": "#12 Translational Symmetry Operators | Foundations of Computational Materials Modelling",
+"seconds": 1791
+},
+{
+"id": "JhDg96WKarY",
+"title": "#13 The Space Groups | Foundations of Computational Materials Modelling",
+"seconds": 1967
+},
+{
+"id": "zhiYW0KPwYU",
+"title": "#14 Generation of Crystals | Foundations of Computational Materials Modelling",
+"seconds": 3201
+},
+{
+"id": "aSkwtd5Qtn8",
+"title": "#15 Generation of Monoclinic Lattice | Foundations of Computational Materials Modelling",
+"seconds": 1827
+},
+{
+"id": "EmCDCzGaQms",
+"title": "#16 Introduction to Statistical Mechanics | Part 1 | Foundations of Computational MaterialsModelling",
+"seconds": 2314
+},
+{
+"id": "H8sl83RzJzc",
+"title": "#17 Introduction to Statistical Mechanics | Part 2 | Foundations of Computational MaterialsModelling",
+"seconds": 827
+},
+{
+"id": "ZT1X-rhqbg8",
+"title": "#18 Introduction to Statistical Mechanics | Part 3 | Foundations of Computational MaterialsModelling",
+"seconds": 1561
+},
+{
+"id": "PFrixYo6jg0",
+"title": "#19 Statistical Mechanics | Part 1 | Foundations of Computational MaterialsModelling",
+"seconds": 2352
+},
+{
+"id": "oP5VTHBbG7k",
+"title": "#20 Statistical Mechanics | Part 2 | Foundations of Computational MaterialsModelling",
+"seconds": 2574
+},
+{
+"id": "031AX4AsueA",
+"title": "#21 Basic Introduction to Mechanics | Foundations of Computational MaterialsModelling",
+"seconds": 2429
+},
+{
+"id": "yV25sV3rAlo",
+"title": "#22 Introduction to Phase Space | Foundations of Computational MaterialsModelling",
+"seconds": 3237
+},
+{
+"id": "WneHzwWh0Ws",
+"title": "#23 Introduction to Phase Average & Time Average | Foundations of Computational MaterialsModelling",
+"seconds": 2848
+},
+{
+"id": "34OuWjAwI8w",
+"title": "#24 Canonical Ensemble | Partition Function | Foundations of Computational MaterialsModelling",
+"seconds": 1904
+},
+{
+"id": "1WPVsfUUCgI",
+"title": "#25 Basic Introduction to MD | Foundations of Computational MaterialsModelling",
+"seconds": 2679
+},
+{
+"id": "f0yONeNwzwQ",
+"title": "#26 Input Script for LAMMPS | Part 1 | Foundations of Computational MaterialsModelling",
+"seconds": 2792
+},
+{
+"id": "qsZQ2WPnScI",
+"title": "#27 Input Script for LAMMPS | Part 2 | Foundations of Computational MaterialsModelling",
+"seconds": 2768
+},
+{
+"id": "dc6XSERs2M8",
+"title": "#28 Input Script for LAMMPS | Part 3 | Foundations of Computational MaterialsModelling",
+"seconds": 2145
+},
+{
+"id": "z0lOlEB3iiw",
+"title": "#29 Input Script for LAMMPS | Part 4 | Foundations of Computational MaterialsModelling",
+"seconds": 3051
+},
+{
+"id": "MgXFqsTm6Tc",
+"title": "#30 LAMMPS Exercises | Part 1 | Foundations of Computational MaterialsModelling",
+"seconds": 1842
+},
+{
+"id": "coM5AxiMIIw",
+"title": "#31 LAMMPS Exercises | Part 2 | Foundations of Computational MaterialsModelling",
+"seconds": 2100
+},
+{
+"id": "bP9max9VVx8",
+"title": "#32 LAMMPS Exercises | Part 3 | Foundations of Computational MaterialsModelling",
+"seconds": 1615
+},
+{
+"id": "d5Feak3cMyk",
+"title": "#33 LAMMPS Exercises | Part 4 | Foundations of Computational MaterialsModelling",
+"seconds": 2166
+},
+{
+"id": "iuaQvus4E8A",
+"title": "#34 LAMMPS Exercises | Part 5 | Foundations of Computational MaterialsModelling",
+"seconds": 2940
+}
+],
+"n_videos": 34
+},
+"https://www.youtube.com/watch?v=SgH_GcFhQf8": {
+"ok": true,
+"kind": "video",
+"seconds": 4211,
+"published": "2020-06-01",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction and career goals"
+},
+{
+"t": 308,
+"title": "Passion for molecular research"
+},
+{
+"t": 579,
+"title": "Influences and career advice"
+},
+{
+"t": 967,
+"title": "Interdisciplinary learning"
+},
+{
+"t": 1386,
+"title": "Writing and publishing"
+},
+{
+"t": 1535,
+"title": "Scientific methodology"
+},
+{
+"t": 1880,
+"title": "Career longevity and impact"
+},
+{
+"t": 2054,
+"title": "Science in society"
+},
+{
+"t": 2440,
+"title": "Responsibilities of scientists"
+},
+{
+"t": 3005,
+"title": "Communicating science to public"
+},
+{
+"t": 3181,
+"title": "Future of computational science"
+},
+{
+"t": 3430,
+"title": "Understanding and entropy"
+}
+]
+},
+"https://www.youtube.com/watch?v=dEmAnuO8RhQ": {
+"ok": true,
+"kind": "video",
+"seconds": 2832,
+"published": "2023-08-29",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to modeling"
+},
+{
+"t": 97,
+"title": "Modeling branches"
+},
+{
+"t": 453,
+"title": "What are molecular simulations?"
+},
+{
+"t": 573,
+"title": "Physics of simulations"
+},
+{
+"t": 828,
+"title": "Goals and applications"
+},
+{
+"t": 1483,
+"title": "Foundational assumptions"
+},
+{
+"t": 1975,
+"title": "Pairwise interaction models"
+},
+{
+"t": 2495,
+"title": "Simulation workflow"
+}
+]
+},
+"https://www.youtube.com/playlist?list=PL47F408D36D4CF129": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "ApUFtLCrU90",
+"title": "Classical Mechanics | Lecture 1",
+"seconds": 5351
+},
+{
+"id": "mYDrufxpW9E",
+"title": "Classical Mechanics | Lecture 2",
+"seconds": 5944
+},
+{
+"id": "3apIZCpmdls",
+"title": "Classical Mechanics | Lecture 3",
+"seconds": 6587
+},
+{
+"id": "ojEwHlyty4Q",
+"title": "Classical Mechanics | Lecture 4",
+"seconds": 6949
+},
+{
+"id": "lW9GJ0aiaNc",
+"title": "Classical Mechanics | Lecture 5",
+"seconds": 7333
+},
+{
+"id": "7SiW_x3cUBo",
+"title": "Classical Mechanics | Lecture 6",
+"seconds": 6482
+},
+{
+"id": "lQIbcV6dQzw",
+"title": "Classical Mechanics | Lecture 7",
+"seconds": 6437
+},
+{
+"id": "oePbj7yrzUQ",
+"title": "Classical Mechanics | Lecture 8",
+"seconds": 5887
+},
+{
+"id": "WJn6h-6MMa8",
+"title": "Classical Mechanics | Lecture 9",
+"seconds": 5686
+},
+{
+"id": "bn5lKYHenSQ",
+"title": "Classical Mechanics | Lecture 10",
+"seconds": 5872
+}
+],
+"n_videos": 10
+},
+"https://www.youtube.com/watch?v=lQIbcV6dQzw": {
+"ok": true,
+"kind": "video",
+"seconds": 6437,
+"published": "2011-12-15",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to Liouville's theorem"
+},
+{
+"t": 366,
+"title": "Hamilton's equations and phase space"
+},
+{
+"t": 1100,
+"title": "The concept of phase space flow"
+},
+{
+"t": 1550,
+"title": "Fluid incompressibility and divergence"
+},
+{
+"t": 2252,
+"title": "Reversibility and flow conservation"
+},
+{
+"t": 2519,
+"title": "Proof of Liouville's theorem"
+},
+{
+"t": 3443,
+"title": "Dynamics and topological integrity"
+},
+{
+"t": 4199,
+"title": "Non-conservative systems"
+},
+{
+"t": 5701,
+"title": "Introduction to Poisson brackets"
+}
+]
+},
+"https://www.youtube.com/watch?v=3apIZCpmdls": {
+"ok": true,
+"kind": "video",
+"seconds": 6586,
+"published": "2011-12-15",
+"chapters": [
+{
+"t": 0,
+"title": "Principle of least action"
+},
+{
+"t": 656,
+"title": "Variational calculus"
+},
+{
+"t": 1230,
+"title": "Mechanics problems"
+},
+{
+"t": 1781,
+"title": "Lagrangian formulation"
+},
+{
+"t": 2026,
+"title": "Euler-Lagrange equation"
+},
+{
+"t": 3025,
+"title": "Newtonian mechanics"
+},
+{
+"t": 3503,
+"title": "Coordinate transformations"
+},
+{
+"t": 3768,
+"title": "Rotating frames"
+},
+{
+"t": 4939,
+"title": "Polar coordinates"
+},
+{
+"t": 5602,
+"title": "Quantum mechanics and laws"
+}
+]
+},
+"https://www.youtube.com/watch?v=hk4fOXsSJzM": {
+"ok": true,
+"kind": "video",
+"seconds": 4546,
+"published": "2014-12-08",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to Hamilton"
+},
+{
+"t": 121,
+"title": "Philosophy and context"
+},
+{
+"t": 298,
+"title": "Quantum mechanics connection"
+},
+{
+"t": 443,
+"title": "Deriving the Hamiltonian"
+},
+{
+"t": 634,
+"title": "Hamilton's equations"
+},
+{
+"t": 804,
+"title": "The Hamiltonian recipe"
+},
+{
+"t": 977,
+"title": "Common mistakes and pitfalls"
+},
+{
+"t": 1260,
+"title": "Equivalence to Lagrangian"
+},
+{
+"t": 1561,
+"title": "Phase space and gradients"
+},
+{
+"t": 1848,
+"title": "Hamiltonian flow"
+},
+{
+"t": 2326,
+"title": "Symplectic structure"
+},
+{
+"t": 2773,
+"title": "Mathematical perspective"
+},
+{
+"t": 3268,
+"title": "Pendulum example"
+},
+{
+"t": 3563,
+"title": "Bead on a wire example"
+},
+{
+"t": 3941,
+"title": "Geometrical dynamics"
+},
+{
+"t": 4173,
+"title": "Conclusion and Q&A"
+}
+]
+},
+"https://www.youtube.com/watch?v=IVQRfHAgLxk": {
+"ok": true,
+"kind": "video",
+"seconds": 1340,
+"published": "2025-12-27",
+"chapters": [
+{
+"t": 0,
+"title": "Phase space introduction"
+},
+{
+"t": 37,
+"title": "Hamiltonian mechanics"
+},
+{
+"t": 107,
+"title": "Visualizing phase space"
+},
+{
+"t": 208,
+"title": "Free particle example"
+},
+{
+"t": 303,
+"title": "Harmonic oscillator flow"
+},
+{
+"t": 440,
+"title": "Jacobi and Liouville"
+},
+{
+"t": 510,
+"title": "Mathematical Liouville"
+},
+{
+"t": 575,
+"title": "Jacobe's reformulation"
+},
+{
+"t": 784,
+"title": "Volume conservation theorem"
+},
+{
+"t": 863,
+"title": "Boltzmann and jacobians"
+},
+{
+"t": 1030,
+"title": "Proving the theorem"
+},
+{
+"t": 1118,
+"title": "Theorem attribution"
+},
+{
+"t": 1150,
+"title": "History of phase space"
+},
+{
+"t": 1232,
+"title": "Statistical mechanics"
+}
+]
+},
+"https://www.youtube.com/playlist?list=PLpi18tMShZSAQFNTb8Ji7EgCFP9lXbkOe": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "D1RzvXDXyqA",
+"title": "Statistical Mechanics Lecture 1",
+"seconds": 6459
+},
+{
+"id": "MCRHXHskWnE",
+"title": "Statistical Mechanics Lecture 2",
+"seconds": 3253
+},
+{
+"id": "EmM1jOV1uSY",
+"title": "Statistical Mechanics Lecture 3",
+"seconds": 6807
+},
+{
+"id": "rhFkYjaM5kE",
+"title": "Statistical Mechanics Lecture 4",
+"seconds": 6155
+},
+{
+"id": "2BJYXuZZK3c",
+"title": "Statistical Mechanics Lecture 5",
+"seconds": 5745
+},
+{
+"id": "bW30Rj6w8VI",
+"title": "Statistical Mechanics Lecture 6",
+"seconds": 7410
+},
+{
+"id": "sg15UClUY48",
+"title": "Statistical Mechanics Lecture 7",
+"seconds": 6627
+},
+{
+"id": "3hh0lJZbUfo",
+"title": "Statistical Mechanics Lecture 8",
+"seconds": 5326
+},
+{
+"id": "AT4_S9vQJgc",
+"title": "Statistical Mechanics Lecture 9",
+"seconds": 6068
+},
+{
+"id": "IWtcFAP3ju4",
+"title": "Statistical Mechanics Lecture 10",
+"seconds": 7465
+}
+],
+"n_videos": 10
+},
+"https://www.youtube.com/playlist?list=PLUl4u3cNGP60gl3fdUTKRrt5t_GPx2sRg": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "4RX_lpoGRBg",
+"title": "1. Thermodynamics Part 1",
+"seconds": 5185
+},
+{
+"id": "EQB2Pw0lWRU",
+"title": "2. Thermodynamics Part 2",
+"seconds": 5018
+},
+{
+"id": "JaEqS1ozlHY",
+"title": "3. Thermodynamics Part 3",
+"seconds": 5024
+},
+{
+"id": "__tGxUu5BTc",
+"title": "4. Thermodynamics Part 4",
+"seconds": 4733
+},
+{
+"id": "w_I0AkvbWFc",
+"title": "5. Probability Part 1",
+"seconds": 4890
+},
+{
+"id": "I_LcUur7quE",
+"title": "6. Probability Part 2",
+"seconds": 5093
+},
+{
+"id": "BhVyiU_dWps",
+"title": "7. Kinetic Theory of Gases Part 1",
+"seconds": 4719
+},
+{
+"id": "8woIHrY6eM0",
+"title": "8. Kinetic Theory of Gases Part 2",
+"seconds": 4556
+},
+{
+"id": "t7pTpwMjQ5I",
+"title": "9. Kinetic Theory of Gases Part 3",
+"seconds": 5136
+},
+{
+"id": "ybCsMYk5xMg",
+"title": "10. Kinetic Theory of Gases Part 4",
+"seconds": 5118
+},
+{
+"id": "QmV7FOXijMo",
+"title": "11. Kinetic Theory of Gases Part 5",
+"seconds": 4943
+},
+{
+"id": "ckUyxmwaC5E",
+"title": "12. Classical Statistical Mechanics Part 1",
+"seconds": 5138
+},
+{
+"id": "Lt8FtWsq0q0",
+"title": "13. Classical Statistical Mechanics Part 2",
+"seconds": 4955
+},
+{
+"id": "tCxonq5r-O8",
+"title": "14. Classical Statistical Mechanics Part 3",
+"seconds": 5117
+},
+{
+"id": "Y59FgktB4uQ",
+"title": "15. Interacting Particles Part 1",
+"seconds": 5142
+},
+{
+"id": "TDnfhpAZBqs",
+"title": "16. Interacting Particles Part 2",
+"seconds": 4926
+},
+{
+"id": "TSjJlJJ2aoI",
+"title": "17. Interacting Particles Part 3",
+"seconds": 4998
+},
+{
+"id": "l2Q31eoy_rY",
+"title": "18. Interacting Particles Part 4",
+"seconds": 5062
+},
+{
+"id": "hl4c1P9D8IY",
+"title": "19. Interacting Particles Part 5",
+"seconds": 4758
+},
+{
+"id": "b1P0hurY6UE",
+"title": "20. Quantum Statistical Mechanics Part 1",
+"seconds": 5012
+},
+{
+"id": "34lmLIYpkYQ",
+"title": "21. Quantum Statistical Mechanics Part 2",
+"seconds": 5028
+},
+{
+"id": "hRHzPaDpgu0",
+"title": "22. Ideal Quantum Gases Part 1",
+"seconds": 4831
+},
+{
+"id": "8kNP_VWmfFs",
+"title": "23. Ideal Quantum Gases Part 2",
+"seconds": 5022
+},
+{
+"id": "FmylhZqFXNk",
+"title": "24. Ideal Quantum Gases Part 3",
+"seconds": 5022
+},
+{
+"id": "6rn4q9mv4jQ",
+"title": "25. Ideal Quantum Gases Part 4",
+"seconds": 4975
+},
+{
+"id": "6gMgNriK1Nk",
+"title": "26. Ideal Quantum Gases Part 5",
+"seconds": 4865
+}
+],
+"n_videos": 26
+},
+"https://www.youtube.com/playlist?list=PLB72416C707D85AB0": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "H1Zbp6__uNw",
+"title": "Lecture 1 | Modern Physics: Statistical Mechanics",
+"seconds": 7252
+},
+{
+"id": "UeVm6U3tMFM",
+"title": "Lecture 2 | Modern Physics: Statistical Mechanics",
+"seconds": 2809
+},
+{
+"id": "SmmGDn8OnTA",
+"title": "Lecture 3 | Modern Physics: Statistical Mechanics",
+"seconds": 6950
+},
+{
+"id": "jny9W7NtlK4",
+"title": "Lecture 4 | Modern Physics: Statistical Mechanics",
+"seconds": 5747
+},
+{
+"id": "uEZWml2XYeo",
+"title": "Lecture 5 | Modern Physics: Statistical Mechanics",
+"seconds": 6464
+},
+{
+"id": "DaDeF21kmMo",
+"title": "Lecture 6 | Modern Physics: Statistical Mechanics",
+"seconds": 4378
+},
+{
+"id": "cU7bj4dNMwY",
+"title": "Lecture 7 | Modern Physics: Statistical Mechanics",
+"seconds": 5995
+},
+{
+"id": "830_4EVNu5M",
+"title": "Lecture 8 | Modern Physics: Statistical Mechanics",
+"seconds": 5852
+},
+{
+"id": "ViKa9xZoMfo",
+"title": "Lecture 9 | Modern Physics: Statistical Mechanics",
+"seconds": 5552
+},
+{
+"id": "YeS_eRfKSpU",
+"title": "Lecture 10 | Modern Physics: Statistical Mechanics",
+"seconds": 6045
+}
+],
+"n_videos": 10
+},
+"https://www.youtube.com/watch?v=RT_v0PhXP5E": {
+"ok": true,
+"kind": "video",
+"seconds": 3086,
+"published": "2008-12-15",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to partition"
+},
+{
+"t": 189,
+"title": "Free energy and partition"
+},
+{
+"t": 371,
+"title": "Thermodynamics and microstate"
+},
+{
+"t": 575,
+"title": "Entropy formula derivation"
+},
+{
+"t": 750,
+"title": "Boltzmann entropy formula"
+},
+{
+"t": 1032,
+"title": "Entropy in probability"
+},
+{
+"t": 1332,
+"title": "Boltzmann and system entropy"
+},
+{
+"t": 1506,
+"title": "Partition function separation"
+},
+{
+"t": 1765,
+"title": "Independent particle systems"
+},
+{
+"t": 2062,
+"title": "Molecular degree of freedom"
+},
+{
+"t": 2311,
+"title": "Polymer configurational model"
+},
+{
+"t": 2540,
+"title": "Ideal gas partition"
+},
+{
+"t": 2940,
+"title": "Calculating entropy change"
+}
+]
+},
+"https://www.youtube.com/watch?v=UxJCRnNJCPw": {
+"ok": true,
+"kind": "video",
+"seconds": 225,
+"published": "2021-01-28",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=tDKjLzbXYQI": {
+"ok": true,
+"kind": "video",
+"seconds": 725,
+"published": "2021-01-28",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to derivation"
+},
+{
+"t": 48,
+"title": "Defining the system"
+},
+{
+"t": 141,
+"title": "Probability of states"
+},
+{
+"t": 224,
+"title": "Introducing entropy"
+},
+{
+"t": 294,
+"title": "Series expansion"
+},
+{
+"t": 416,
+"title": "Deriving the distribution"
+},
+{
+"t": 574,
+"title": "Finalizing the distribution"
+},
+{
+"t": 646,
+"title": "Understanding temperature"
+}
+]
+},
+"https://www.youtube.com/watch?v=zLThrnoAfXA": {
+"ok": true,
+"kind": "video",
+"seconds": 2710,
+"published": "2021-04-07",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=5LALoxDs0ic": {
+"ok": true,
+"kind": "video",
+"seconds": 468,
+"published": "2021-02-02",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=J-qTchJh4Ok": {
+"ok": true,
+"kind": "video",
+"seconds": 909,
+"published": "2020-11-28",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=ii-N61PeeQU": {
+"ok": true,
+"kind": "video",
+"seconds": 1679,
+"published": "2023-09-01",
+"chapters": [
+{
+"t": 0,
+"title": "Numerical integration basics"
+},
+{
+"t": 605,
+"title": "Limits of the Euler method"
+},
+{
+"t": 775,
+"title": "Velocity verlet derivation"
+},
+{
+"t": 1233,
+"title": "Implementing velocity verlet"
+},
+{
+"t": 1621,
+"title": "Future lecture preview"
+}
+]
+},
+"https://www.youtube.com/watch?v=pVudb6-_FaM": {
+"ok": true,
+"kind": "video",
+"seconds": 374,
+"published": "2021-02-02",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=qT8pxV53FA4": {
+"ok": true,
+"kind": "video",
+"seconds": 753,
+"published": "2020-09-14",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 138,
+"title": "Algorithms"
+},
+{
+"t": 179,
+"title": "Velocity Verlet Algorithm"
+},
+{
+"t": 459,
+"title": "Velocity Barret Algorithm"
+}
+]
+},
+"https://www.youtube.com/watch?v=g55QvpAev0I": {
+"ok": true,
+"kind": "video",
+"seconds": 170,
+"published": "2017-09-02",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 10,
+"title": "Kinematic Equation"
+},
+{
+"t": 126,
+"title": "Velocity for Lay"
+}
+]
+},
+"https://www.youtube.com/watch?v=vpqo0q3zvJU": {
+"ok": true,
+"kind": "video",
+"seconds": 1722,
+"published": "2020-04-22",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=gP6HfBQ_LkI": {
+"ok": true,
+"kind": "video",
+"seconds": 1884,
+"published": "2019-05-06",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 11,
+"title": "COMPUTER AIDED DRUG DESIGN"
+},
+{
+"t": 643,
+"title": "Angle Bend Term"
+},
+{
+"t": 796,
+"title": "Cross Terms interaction terms between stretch, bend and torsion"
+},
+{
+"t": 887,
+"title": "Out-of-Plane Bending Term"
+},
+{
+"t": 920,
+"title": "Non-Bonded Energy repulsion, van der Waals"
+},
+{
+"t": 1070,
+"title": "Partial charges are created due to the asymmetric distribution of electrons in chemical bonds. (Mulliken charge) polar covalent bond like HCl, the shared electron oscillates between the bonded atoms"
+},
+{
+"t": 1300,
+"title": "Hydrogen Bonding Interactions"
+},
+{
+"t": 1345,
+"title": "Non-Bonded Interaction"
+},
+{
+"t": 1525,
+"title": "Effect of distance"
+},
+{
+"t": 1615,
+"title": "PARAMETERS"
+}
+]
+},
+"https://www.youtube.com/watch?v=kglSEWaMGyU": {
+"ok": true,
+"kind": "video",
+"seconds": 1345,
+"published": "2022-10-12",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 22,
+"title": "Molecular potential energy"
+},
+{
+"t": 364,
+"title": "The Amber force field library"
+},
+{
+"t": 820,
+"title": "Parameter development"
+},
+{
+"t": 1038,
+"title": "Amino acid databases"
+},
+{
+"t": 1181,
+"title": "Z-matrix representation"
+}
+]
+},
+"https://www.youtube.com/watch?v=MK5BrpgUMUM": {
+"ok": true,
+"kind": "video",
+"seconds": 1263,
+"published": "2014-06-03",
+"chapters": [
+{
+"t": 0,
+"title": "Molecular simulations"
+},
+{
+"t": 86,
+"title": "Analyzing reaction paths"
+},
+{
+"t": 281,
+"title": "Finding global minima"
+},
+{
+"t": 540,
+"title": "Understanding phase space"
+},
+{
+"t": 974,
+"title": "Simulating trajectories"
+}
+]
+},
+"https://www.youtube.com/watch?v=Y2ixvZBrM8Q": {
+"ok": true,
+"kind": "video",
+"seconds": 1067,
+"published": "2013-02-21",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 28,
+"title": "Overview"
+},
+{
+"t": 36,
+"title": "Electronic Polarization"
+},
+{
+"t": 140,
+"title": "AMOEBA"
+},
+{
+"t": 231,
+"title": "How does AMOEBA treat electrostatics"
+},
+{
+"t": 358,
+"title": "Interaction terms"
+},
+{
+"t": 538,
+"title": "Openmm"
+},
+{
+"t": 547,
+"title": "Literature"
+},
+{
+"t": 736,
+"title": "Speed"
+},
+{
+"t": 739,
+"title": "Computational Cost"
+},
+{
+"t": 826,
+"title": "Timings"
+},
+{
+"t": 891,
+"title": "Simulations"
+}
+]
+},
+"https://www.youtube.com/watch?v=mzocP2rd0kk": {
+"ok": true,
+"kind": "video",
+"seconds": 896,
+"published": "2021-01-30",
+"chapters": [
+{
+"t": 0,
+"title": "Lennard-Jones particles"
+},
+{
+"t": 97,
+"title": "Molecular Dynamics Simulations"
+},
+{
+"t": 207,
+"title": "Initial conditions & temperature"
+},
+{
+"t": 297,
+"title": "Velocity Verlet Integration"
+},
+{
+"t": 505,
+"title": "Boundary Conditions"
+},
+{
+"t": 685,
+"title": "Measuring the physics"
+}
+]
+},
+"https://www.youtube.com/watch?v=gVVqjmTAJGI": {
+"ok": true,
+"kind": "video",
+"seconds": 329,
+"published": "2021-02-02",
+"chapters": [
+{
+"t": 0,
+"title": "Simulating periodic systems"
+},
+{
+"t": 101,
+"title": "Box size and constraints"
+},
+{
+"t": 176,
+"title": "Risks of small simulations"
+},
+{
+"t": 256,
+"title": "Periodic boundary conditions"
+}
+]
+},
+"https://www.youtube.com/watch?v=x20QP1x3U7c": {
+"ok": true,
+"kind": "video",
+"seconds": 495,
+"published": "2021-01-31",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 30,
+"title": "Bulk interactions"
+},
+{
+"t": 110,
+"title": "Spurious behavior"
+}
+]
+},
+"https://www.youtube.com/watch?v=IpdTtx98AWQ": {
+"ok": true,
+"kind": "video",
+"seconds": 1891,
+"published": "2020-05-06",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=Wbzopzywt-Q": {
+"ok": true,
+"kind": "video",
+"seconds": 318,
+"published": "2026-05-23",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=2jONY8utsZo": {
+"ok": true,
+"kind": "video",
+"seconds": 1106,
+"published": "2022-02-24",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 395,
+"title": "Periodic Images"
+},
+{
+"t": 590,
+"title": "Interactions"
+},
+{
+"t": 870,
+"title": "Periodic Boundary Condition"
+}
+]
+},
+"https://www.youtube.com/watch?v=SSmIMof0KvA": {
+"ok": true,
+"kind": "video",
+"seconds": 1284,
+"published": "2021-02-08",
+"chapters": [
+{
+"t": 0,
+"title": "The problem of long-range"
+},
+{
+"t": 96,
+"title": "The Ewald summation approach"
+},
+{
+"t": 272,
+"title": "Poisson equation in Fourier"
+},
+{
+"t": 432,
+"title": "Solving for the electric field"
+},
+{
+"t": 652,
+"title": "Benefits of reciprocal space"
+},
+{
+"t": 814,
+"title": "Mesh-based optimization"
+},
+{
+"t": 935,
+"title": "Periodic boundary conditions"
+}
+]
+},
+"https://www.youtube.com/watch?v=sFHwqD0m1Do": {
+"ok": true,
+"kind": "video",
+"seconds": 926,
+"published": "2021-11-27",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=YPryFf7MQTg": {
+"ok": true,
+"kind": "video",
+"seconds": 3168,
+"published": "2020-12-16",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=VWsMUaA7UWw": {
+"ok": true,
+"kind": "video",
+"seconds": 1675,
+"published": "2017-04-24",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 78,
+"title": "Motivation for multilevel summation method (MSM)"
+},
+{
+"t": 115,
+"title": "Best features of MSM"
+},
+{
+"t": 232,
+"title": "Comparing MSM with PME MSM"
+},
+{
+"t": 436,
+"title": "MSM computation"
+},
+{
+"t": 570,
+"title": "NAMD hybrid decomposition for short-range"
+},
+{
+"t": 733,
+"title": "MSM decomposition for grid interactions Hybrid spatial work decomposition similar to short-range"
+},
+{
+"t": 796,
+"title": "MSM use of Charm++"
+},
+{
+"t": 932,
+"title": "Some Charm++ coding paradigms"
+},
+{
+"t": 1013,
+"title": "Static load balancing"
+},
+{
+"t": 1154,
+"title": "MSM scaling results"
+},
+{
+"t": 1295,
+"title": "Clustering grid points"
+},
+{
+"t": 1358,
+"title": "Performance of MSM vs. FMM"
+},
+{
+"t": 1485,
+"title": "Acknowledgments"
+}
+]
+},
+"https://www.youtube.com/watch?v=gWbT5BELJzg": {
+"ok": true,
+"kind": "video",
+"seconds": 1260,
+"published": "2021-03-24",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=ey1tv0yoyGc": {
+"ok": true,
+"kind": "video",
+"seconds": 1065,
+"published": "2014-02-10",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=pCm2i6kQs4E": {
+"ok": true,
+"kind": "video",
+"seconds": 1824,
+"published": "2021-01-23",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 41,
+"title": "Last lecture"
+},
+{
+"t": 89,
+"title": "Conservation equations"
+},
+{
+"t": 165,
+"title": "ST scheme"
+},
+{
+"t": 198,
+"title": "Time steps"
+},
+{
+"t": 267,
+"title": "Basic idea"
+},
+{
+"t": 458,
+"title": "Velocity wallet"
+},
+{
+"t": 749,
+"title": "Temperature control"
+},
+{
+"t": 1403,
+"title": "nose hoover thermostat"
+}
+]
+},
+"https://www.youtube.com/watch?v=l-uZaSvlycY": {
+"ok": true,
+"kind": "video",
+"seconds": 937,
+"published": "2021-10-27",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=X3K5A96-U4E": {
+"ok": true,
+"kind": "video",
+"seconds": 2982,
+"published": "2021-02-07",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=jonJHFcYTso": {
+"ok": true,
+"kind": "video",
+"seconds": 2636,
+"published": "2025-05-28",
+"chapters": [
+{
+"t": 0,
+"title": "Review of stochastic dynamics"
+},
+{
+"t": 439,
+"title": "Introduction to Langevin"
+},
+{
+"t": 965,
+"title": "Deriving noise correlations"
+},
+{
+"t": 1625,
+"title": "Fluctuation-dissipation"
+},
+{
+"t": 2171,
+"title": "Brownian particle analysis"
+}
+]
+},
+"https://www.youtube.com/watch?v=N2Lf-U8aIgM": {
+"ok": true,
+"kind": "video",
+"seconds": 731,
+"published": "2024-10-02",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=_zwgPkBeO_I": {
+"ok": true,
+"kind": "video",
+"seconds": 9617,
+"published": "2021-04-08",
+"chapters": [
+{
+"t": 0,
+"title": "Welcome and introduction"
+},
+{
+"t": 658,
+"title": "Jean-Paul Ryckaert: Mechanics under constraints"
+},
+{
+"t": 4079,
+"title": "Giovanni Ciccotti: Statistical mechanics under constraints"
+},
+{
+"t": 7107,
+"title": "Interview and recollections"
+}
+]
+},
+"https://www.youtube.com/playlist?list=PLGL4XGw8noUxYZ-JrAob4hpVGCAhKGesk": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "hbQ_dfgWPc8",
+"title": "Introduction to Running Simulations with OpenMM",
+"seconds": 1117
+},
+{
+"id": "XZ0A_L_2pnI",
+"title": "Exercises: Running Simulations with OpenMM",
+"seconds": 1255
+},
+{
+"id": "yLnjbjtRgdg",
+"title": "Introduction to the OpenMM API",
+"seconds": 2080
+},
+{
+"id": "71snkHHku1c",
+"title": "Customizing Forces and Integrators with OpenMM",
+"seconds": 1190
+},
+{
+"id": "Y2ixvZBrM8Q",
+"title": "Using AMOEBA Polarizable Force Fields",
+"seconds": 1067
+},
+{
+"id": "VIDmDKvgglg",
+"title": "Validation of OpenMM",
+"seconds": 907
+},
+{
+"id": "QCE6eyHWx6Y",
+"title": "Force Field Parameterization",
+"seconds": 1660
+},
+{
+"id": "bMvzvlqVqzU",
+"title": "Free Energy Calculations and OpenMM",
+"seconds": 1056
+},
+{
+"id": "0pB3pUXULmo",
+"title": "Introduction to Markov State Models for Trajectory Analysis",
+"seconds": 1193
+}
+],
+"n_videos": 9
+},
+"https://www.youtube.com/playlist?list=PLGL4XGw8noUwrh16gsC9H_D03fED3IcHo": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "_TiQYNWJwYg",
+"title": "Introduction to Molecular Dynamics",
+"seconds": 2279
+},
+{
+"id": "EFtbEkuJ9tk",
+"title": "Introduction to Molecular Dynamics Workflows and Tools",
+"seconds": 1671
+},
+{
+"id": "AlWsbbdUNC0",
+"title": "Introduction to Running Simulations with OpenMM",
+"seconds": 784
+},
+{
+"id": "jKhy6v_jsyI",
+"title": "Exercise: Heating and Constraining Particles to Simulate a Protein-Ligand System",
+"seconds": 796
+},
+{
+"id": "HlZjvw-DJIg",
+"title": "Introduction to Molecular Dynamics Trajectory Analysis and Markov State Models (MSM)",
+"seconds": 1978
+},
+{
+"id": "x39p_SrJLY4",
+"title": "Exercise: Performing Analysis with MDTraj",
+"seconds": 1491
+},
+{
+"id": "VIDmDKvgglg",
+"title": "Validation of OpenMM",
+"seconds": 907
+},
+{
+"id": "D6GPJyH7WMo",
+"title": "Exercise: Advanced OpenMM Features",
+"seconds": 1837
+},
+{
+"id": "Y2ixvZBrM8Q",
+"title": "Using AMOEBA Polarizable Force Fields",
+"seconds": 1067
+},
+{
+"id": "JmRSUEeqS0s",
+"title": "The Future of Molecular Dynamics",
+"seconds": 1788
+}
+],
+"n_videos": 10
+},
+"https://www.youtube.com/playlist?list=PLIQSdwcnidzDEmO9AI7JDZi9bG2u1IvYv": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "stJpqGwpESU",
+"title": "AMBER MD Simulation on Windows 11-WSL2 | Full Tutorial | Automated Script | Protein Ligand Analysis",
+"seconds": 2545
+},
+{
+"id": "5mFLE7pB2CE",
+"title": "MD Parameterization of Metal Complexes & Nanoparticles Using CHARMM-GUI (Nanoinformatics Workflow)",
+"seconds": 530
+},
+{
+"id": "4Xbwll8O4kw",
+"title": "HEME Parameterization for MD Simulations Using CHARMM-GUI | HEME-Protein Topology Generation for MD",
+"seconds": 589
+},
+{
+"id": "ND9ad53Kg4E",
+"title": "How to Run MD Simulation in GROMACS After CHARMM-GUI Ligand Parameterization Output (Full Workflow)",
+"seconds": 1216
+},
+{
+"id": "Ck7EMuIStpM",
+"title": "Ligand Parameterization for MD using CHARMM-GUI | Ligand Topology Generation | AmberTools | GROMACS",
+"seconds": 1078
+},
+{
+"id": "dG5Qgcxcpx4",
+"title": "Protein–DNA Molecular Dynamics Simulation in GROMACS | Complete Step-by-Step Tutorial (Free Tools)",
+"seconds": 2001
+},
+{
+"id": "RvvSvC8YyVo",
+"title": "Master Molecular Modeling: Complete Guide to Building DNA, RNA, Lipids, Proteins & More in Avogadro",
+"seconds": 1381
+},
+{
+"id": "J7F2aguxTXs",
+"title": "Umbrella Sampling for Free Energy Calculations (PMF Analysis) | GROMACS Tutorial Part 10",
+"seconds": 3833
+},
+{
+"id": "fWl2VKz2u8c",
+"title": "KALP15 in DPPC | Membrane Protein MD Simulation Using GROMACS Tutorial Part 9",
+"seconds": 5181
+},
+{
+"id": "OrfOZ1wmElo",
+"title": "How to Create Ligand Topologies | Ligand Parameterization | AmberTools GAFF, GROMACS, OPLS, CHARMM",
+"seconds": 1200
+},
+{
+"id": "yt6-v3jZals",
+"title": "How to Generate Free Energy Landscape (FEL) from GROMACS MD Trajectory | PCA Analysis | Python",
+"seconds": 1395
+},
+{
+"id": "Kbq6Gf9m2T8",
+"title": "Lysozyme in Water using GROMACS on Windows (WSL) | MD Simulation Tutorial for Beginners: Part 8",
+"seconds": 2581
+},
+{
+"id": "0pK0EWyinVo",
+"title": "GROMACS Tutorial Part 7 | PCA (Principal Component Analysis) of MD Trajectory | Essential Dynamics",
+"seconds": 1127
+},
+{
+"id": "Hy-Cc7nn2MY",
+"title": "GROMACS Tutorial Part 6 | MMPBSA & MMGBSA Binding Free Energy Calculations (Step-by-Step)",
+"seconds": 2064
+},
+{
+"id": "whO1h7rAMSs",
+"title": "GROMACS Tutorial Part 5 | RMSD, RMSF, SASA, Rg & Hydrogen Bond Analysis Step-by-Step",
+"seconds": 1158
+},
+{
+"id": "8ZhNuhBXB0o",
+"title": "GROMACS Tutorial Part 4 | MD Simulation Analysis in VMD | RMSD Calculation & Visualization",
+"seconds": 1067
+},
+{
+"id": "vHiQgf1PZJE",
+"title": "GROMACS Tutorial Part 3 | Protein-Ligand MD Simulation Analysis",
+"seconds": 1287
+},
+{
+"id": "P9pyJmbK3tM",
+"title": "GROMACS Tutorial Part 2 | Protein-Ligand Complex MD Simulations Step-by-Step",
+"seconds": 2487
+},
+{
+"id": "0m5Wx_gM0lM",
+"title": "GROMACS Tutorial Part 1 | Windows Installation with Ubuntu (WSL)",
+"seconds": 916
+}
+],
+"n_videos": 19
+},
+"https://www.youtube.com/watch?v=8oGZn1NdvbY": {
+"ok": true,
+"kind": "video",
+"seconds": 1985,
+"published": "2022-04-18",
+"chapters": [
+{
+"t": 0,
+"title": "Gromacs introduction"
+},
+{
+"t": 103,
+"title": "Protein preparation"
+},
+{
+"t": 277,
+"title": "Processing PDB file"
+},
+{
+"t": 538,
+"title": "Defining the simulation box"
+},
+{
+"t": 683,
+"title": "Solvating the system"
+},
+{
+"t": 834,
+"title": "Adding and neutralizing ions"
+},
+{
+"t": 1147,
+"title": "Energy minimization"
+},
+{
+"t": 1361,
+"title": "Equilibration phase"
+},
+{
+"t": 1597,
+"title": "Production run"
+},
+{
+"t": 1888,
+"title": "Visualization results"
+}
+]
+},
+"https://www.youtube.com/watch?v=EFtbEkuJ9tk": {
+"ok": true,
+"kind": "video",
+"seconds": 1670,
+"published": "2014-05-09",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 32,
+"title": "The dream: simulating molecular d"
+},
+{
+"t": 67,
+"title": "The nightmare: long time sca"
+},
+{
+"t": 162,
+"title": "OpenMM suite of applicati"
+},
+{
+"t": 245,
+"title": "History of OpenMM 2005"
+},
+{
+"t": 378,
+"title": "OpenMM roadmap"
+},
+{
+"t": 470,
+"title": "Comparing two approaches"
+},
+{
+"t": 581,
+"title": "Comparison to other met!"
+},
+{
+"t": 792,
+"title": "Short trajectories vs long times"
+},
+{
+"t": 885,
+"title": "Key stages in MSM constr"
+},
+{
+"t": 961,
+"title": "MSM vs long trajectory..."
+},
+{
+"t": 1375,
+"title": "Formalization of lumping"
+},
+{
+"t": 1406,
+"title": "MSMs reach long timescal"
+},
+{
+"t": 1626,
+"title": "The cloud looks a lot like Folding"
+}
+]
+},
+"https://www.youtube.com/watch?v=hbQ_dfgWPc8": {
+"ok": true,
+"kind": "video",
+"seconds": 1116,
+"published": "2013-02-20",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 38,
+"title": "What is OpenMM"
+},
+{
+"t": 216,
+"title": "Who Uses OpenMM"
+},
+{
+"t": 299,
+"title": "How to Run Simulations"
+},
+{
+"t": 350,
+"title": "No Programming Experience Required"
+},
+{
+"t": 413,
+"title": "Python Script Walkthrough"
+}
+]
+},
+"https://www.youtube.com/watch?v=xS4r2bLATvo": {
+"ok": true,
+"kind": "video",
+"seconds": 6604,
+"published": "2021-01-22",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=GRH81ABCq54": {
+"ok": true,
+"kind": "video",
+"seconds": 2243,
+"published": "2025-08-09",
+"chapters": [
+{
+"t": 0,
+"title": "Account registration"
+},
+{
+"t": 26,
+"title": "Membrane builder setup"
+},
+{
+"t": 220,
+"title": "Ligand parameterization"
+},
+{
+"t": 322,
+"title": "PDB manipulation options"
+},
+{
+"t": 606,
+"title": "Protein orientation"
+},
+{
+"t": 716,
+"title": "Lipid bilayer placement"
+},
+{
+"t": 842,
+"title": "System size determination"
+},
+{
+"t": 1025,
+"title": "Membrane packing"
+},
+{
+"t": 1150,
+"title": "Solvent and ion assembly"
+},
+{
+"t": 1334,
+"title": "Input file generation"
+},
+{
+"t": 1692,
+"title": "Download and check files"
+},
+{
+"t": 2026,
+"title": "Running the simulation"
+}
+]
+},
+"https://www.youtube.com/watch?v=Ck7EMuIStpM": {
+"ok": true,
+"kind": "video",
+"seconds": 1078,
+"published": "2026-03-01",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to CHARMM-GUI"
+},
+{
+"t": 74,
+"title": "Account registration"
+},
+{
+"t": 213,
+"title": "System preparation"
+},
+{
+"t": 315,
+"title": "Protein and ligand setup"
+},
+{
+"t": 435,
+"title": "Force field parameterization"
+},
+{
+"t": 627,
+"title": "Solvation and ion addition"
+},
+{
+"t": 722,
+"title": "PBC and system constraints"
+},
+{
+"t": 797,
+"title": "Input file generation"
+},
+{
+"t": 869,
+"title": "Download and file structure"
+},
+{
+"t": 1001,
+"title": "Job retrieval and conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=F-SsbOw2YrM": {
+"ok": true,
+"kind": "video",
+"seconds": 1907,
+"published": "2025-04-20",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=EVcw-w-Lcnk": {
+"ok": true,
+"kind": "video",
+"seconds": 412,
+"published": "2026-09-02",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=IArpsQsZ95U": {
+"ok": true,
+"kind": "video",
+"seconds": 1000,
+"published": "2020-05-04",
+"chapters": [
+{
+"t": 0,
+"title": "Downloading NAMD"
+},
+{
+"t": 40,
+"title": "Editing Environment Variables"
+},
+{
+"t": 300,
+"title": "NAMD Script"
+},
+{
+"t": 750,
+"title": "Post Simulation"
+}
+]
+},
+"https://www.youtube.com/watch?v=p3OUUnHXQjU": {
+"ok": true,
+"kind": "video",
+"seconds": 6034,
+"published": "2024-05-30",
+"chapters": [
+{
+"t": 0,
+"title": "Session 3: Analysis Tools"
+},
+{
+"t": 2605,
+"title": "Break"
+},
+{
+"t": 2632,
+"title": "Session 4: Advanced Tips and Requests"
+},
+{
+"t": 2700,
+"title": "Adding Properties to a Universe"
+},
+{
+"t": 2861,
+"title": "Selecting Hydrophobic and Hydrophilic Groups"
+},
+{
+"t": 2944,
+"title": "Tutorial 4: Advanced Universe Creation and Attributes"
+},
+{
+"t": 3665,
+"title": "Merging Topology Files"
+},
+{
+"t": 4031,
+"title": "Separating a Universe"
+},
+{
+"t": 4972,
+"title": "Using NGLview to Visualize Properties"
+},
+{
+"t": 5494,
+"title": "Final Announcements"
+}
+]
+},
+"https://www.youtube.com/watch?v=x39p_SrJLY4": {
+"ok": true,
+"kind": "video",
+"seconds": 1490,
+"published": "2014-05-09",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to md-traj"
+},
+{
+"t": 276,
+"title": "Demo and setup"
+},
+{
+"t": 570,
+"title": "Loading trajectory data"
+},
+{
+"t": 794,
+"title": "Combining trajectories"
+},
+{
+"t": 855,
+"title": "Geometric analysis"
+},
+{
+"t": 1263,
+"title": "Advanced tools and wrap up"
+}
+]
+},
+"https://www.youtube.com/watch?v=BACN9Ydiw5I": {
+"ok": true,
+"kind": "video",
+"seconds": 490,
+"published": "2024-10-02",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=0KqCK0yG9T0": {
+"ok": true,
+"kind": "video",
+"seconds": 1208,
+"published": "2017-05-01",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 63,
+"title": "Collective variables"
+},
+{
+"t": 100,
+"title": "The central limit theorem"
+},
+{
+"t": 242,
+"title": "Correlated random variables"
+},
+{
+"t": 392,
+"title": "Stationarity"
+},
+{
+"t": 607,
+"title": "Why do we need these quantities?"
+},
+{
+"t": 669,
+"title": "The effect on the autocorrelation function"
+},
+{
+"t": 750,
+"title": "Bringing it all together"
+},
+{
+"t": 909,
+"title": "The final result"
+},
+{
+"t": 1092,
+"title": "Summary"
+}
+]
+},
+"https://www.youtube.com/watch?v=X0vdXv7aTvk": {
+"ok": true,
+"kind": "video",
+"seconds": 3486,
+"published": "2024-03-20",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to rdf"
+},
+{
+"t": 65,
+"title": "Configurational energy"
+},
+{
+"t": 1278,
+"title": "Pressure and compressibility"
+},
+{
+"t": 2592,
+"title": "Coordination number analysis"
+}
+]
+},
+"https://www.youtube.com/watch?v=42-bolWBrBM": {
+"ok": true,
+"kind": "video",
+"seconds": 1072,
+"published": "2026-04-18",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction and setup"
+},
+{
+"t": 94,
+"title": "Preparing Google Colab"
+},
+{
+"t": 232,
+"title": "Configuring the environment"
+},
+{
+"t": 355,
+"title": "Loading trajectory data"
+},
+{
+"t": 508,
+"title": "Calculating and plotting RMSD"
+},
+{
+"t": 707,
+"title": "Analyzing RMSF with mutation"
+},
+{
+"t": 936,
+"title": "ROG analysis and conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=_v3WU0RAfRM": {
+"ok": true,
+"kind": "video",
+"seconds": 402,
+"published": "2026-03-22",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to Analysis module and RMSD calculations"
+},
+{
+"t": 132,
+"title": "Writing code in Jupyter Notebook"
+},
+{
+"t": 230,
+"title": "Ploting RMSD graphs"
+},
+{
+"t": 384,
+"title": "we are done"
+}
+]
+},
+"https://www.youtube.com/watch?v=Tso29WxWWHg": {
+"ok": true,
+"kind": "video",
+"seconds": 565,
+"published": "2021-02-21",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=1tMd68ankiA": {
+"ok": true,
+"kind": "video",
+"seconds": 1275,
+"published": "2020-09-01",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=LVxFGBxgrLo": {
+"ok": true,
+"kind": "video",
+"seconds": 2432,
+"published": "2012-09-07",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=c-dKO66Sx9A": {
+"ok": true,
+"kind": "video",
+"seconds": 5162,
+"published": "2013-06-19",
+"chapters": [
+{
+"t": 0,
+"title": "Rare molecular events"
+},
+{
+"t": 64,
+"title": "Ion channel phenomenology"
+},
+{
+"t": 178,
+"title": "Rate theories"
+},
+{
+"t": 224,
+"title": "Two-state problem"
+},
+{
+"t": 355,
+"title": "Computing rates"
+},
+{
+"t": 489,
+"title": "Potential of mean force"
+},
+{
+"t": 611,
+"title": "Umbrella sampling"
+},
+{
+"t": 839,
+"title": "Channel application"
+},
+{
+"t": 1072,
+"title": "Reactive trajectories"
+},
+{
+"t": 1200,
+"title": "Order parameters"
+},
+{
+"t": 1400,
+"title": "Langevin dynamics"
+},
+{
+"t": 1560,
+"title": "Advanced sampling"
+},
+{
+"t": 1711,
+"title": "Path sampling"
+},
+{
+"t": 1925,
+"title": "Detailed balance"
+},
+{
+"t": 2124,
+"title": "Path probabilities"
+},
+{
+"t": 2380,
+"title": "Rate calculation"
+},
+{
+"t": 2539,
+"title": "Interface sampling"
+},
+{
+"t": 2743,
+"title": "String method"
+},
+{
+"t": 2930,
+"title": "Path optimization"
+},
+{
+"t": 3139,
+"title": "Protein signaling"
+},
+{
+"t": 3229,
+"title": "Reaction coordinates"
+},
+{
+"t": 3434,
+"title": "Multi-scale modeling"
+},
+{
+"t": 3606,
+"title": "ATP hydrolysis"
+},
+{
+"t": 3766,
+"title": "QM/MM approaches"
+},
+{
+"t": 4621,
+"title": "Method limitations"
+}
+]
+},
+"https://www.youtube.com/watch?v=5tKnjRdVz3E": {
+"ok": true,
+"kind": "video",
+"seconds": 1064,
+"published": "2020-11-13",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 23,
+"title": "What does it mean to compute a free energy surface?"
+},
+{
+"t": 150,
+"title": "Umbrella sampling improves the computation of free energy surface F(8)"
+},
+{
+"t": 234,
+"title": "WHAM introduces biases in free energy surfaces"
+},
+{
+"t": 335,
+"title": "Better: Find the weights, then find the best function consistent with the weights"
+},
+{
+"t": 406,
+"title": "Direct determination of weights has some clear advantages for free energy surfaces"
+},
+{
+"t": 454,
+"title": "A better way to think about the problem: What do we actually collect when we simul"
+},
+{
+"t": 541,
+"title": "What do we collect when we perform a simulation with biases?"
+},
+{
+"t": 673,
+"title": "How do we generate a continuous distribution close to this thing?"
+},
+{
+"t": 786,
+"title": "There is also a maximum likelihood interpretation"
+},
+{
+"t": 836,
+"title": "Two different choices for which empirical distribution to use"
+},
+{
+"t": 882,
+"title": "If there is a maximum likelihood interpretation, there is a Bayesian interpretation"
+},
+{
+"t": 924,
+"title": "We can investigate the uncertainty of methods using MCMC in model space"
+},
+{
+"t": 1003,
+"title": "Gaussian mixture models easily generalize into multiple dimensions"
+},
+{
+"t": 1014,
+"title": "CONCLUSIONS"
+}
+]
+},
+"https://www.youtube.com/watch?v=ov0mMvR3wrM": {
+"ok": true,
+"kind": "video",
+"seconds": 288,
+"published": "2021-02-02",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 50,
+"title": "Potential functions"
+},
+{
+"t": 95,
+"title": "New potential"
+},
+{
+"t": 140,
+"title": "Free energy"
+},
+{
+"t": 210,
+"title": "State variables"
+}
+]
+},
+"https://www.youtube.com/watch?v=ypg1doAqVPM": {
+"ok": true,
+"kind": "video",
+"seconds": 499,
+"published": "2021-03-22",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to alchemical"
+},
+{
+"t": 46,
+"title": "Scaling interactions"
+},
+{
+"t": 100,
+"title": "Practical implementation"
+},
+{
+"t": 167,
+"title": "Avoiding instabilities"
+},
+{
+"t": 220,
+"title": "Handling charges"
+},
+{
+"t": 273,
+"title": "Calculating free energy"
+},
+{
+"t": 351,
+"title": "Calculating alchemical work"
+},
+{
+"t": 469,
+"title": "Conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=D_We9YYxpkM": {
+"ok": true,
+"kind": "video",
+"seconds": 394,
+"published": "2024-03-27",
+"chapters": [
+{
+"t": 0,
+"title": "Welcome"
+},
+{
+"t": 12,
+"title": "What is FEP?"
+},
+{
+"t": 39,
+"title": "The purpose of delta G calculations"
+},
+{
+"t": 76,
+"title": "Alchemical transformations"
+},
+{
+"t": 103,
+"title": "Calculating binding affinity"
+},
+{
+"t": 190,
+"title": "Relative binding FEP demonstration"
+},
+{
+"t": 225,
+"title": "Free energy landscapes and lambda windows"
+},
+{
+"t": 254,
+"title": "Dual topology"
+},
+{
+"t": 281,
+"title": "Schrödinger's FEP+ technology"
+},
+{
+"t": 293,
+"title": "Single-edge(SE) and cycle-closure(CC) FEP"
+},
+{
+"t": 341,
+"title": "FEP+ methods, workflows, and applications"
+},
+{
+"t": 358,
+"title": "Further learning and video summary"
+}
+]
+},
+"https://www.youtube.com/watch?v=LXcQx6Bu3OQ": {
+"ok": true,
+"kind": "video",
+"seconds": 4425,
+"published": "2016-04-26",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to lectures"
+},
+{
+"t": 208,
+"title": "Macroscopic thermodynamics"
+},
+{
+"t": 601,
+"title": "Laws of thermodynamics"
+},
+{
+"t": 1051,
+"title": "Clausius inequality"
+},
+{
+"t": 1301,
+"title": "Cyclic processes"
+},
+{
+"t": 1724,
+"title": "Conjugate processes"
+},
+{
+"t": 2237,
+"title": "Microscopic fluctuations"
+},
+{
+"t": 2904,
+"title": "Defining free energy"
+},
+{
+"t": 3171,
+"title": "Microscopic foundations"
+}
+]
+},
+"https://www.youtube.com/watch?v=gsq3irAz8Ok": {
+"ok": true,
+"kind": "video",
+"seconds": 6929,
+"published": "2018-12-03",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=HW4R7f1AfAk": {
+"ok": true,
+"kind": "video",
+"seconds": 890,
+"published": "2025-03-07",
+"chapters": []
+},
+"https://www.youtube.com/playlist?list=PLmmuclhRK8_CViS4NRheSOTCkdF2bsuSr": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "fhMjOYvnGcY",
+"title": "Michael Shirts - Free energies: What we’ve learned about how to estimate them",
+"seconds": 1813
+},
+{
+"id": "LPYzLZ1WmG4",
+"title": "David Minh - Binding pose prediction using absolute binding free energy calculations",
+"seconds": 1405
+},
+{
+"id": "4PqPUycJUpI",
+"title": "Hugo Gutierrez de Teran - QFEP: combining ligand SAR and in silico mutagenesis for ligand design",
+"seconds": 1676
+},
+{
+"id": "WwKUGk1D2d8",
+"title": "Ana Silveira - On the use of high-throughput BFE simulations in design cycles for drug discovery",
+"seconds": 1984
+},
+{
+"id": "WhUEc5YMT2Q",
+"title": "Gianni De Fabritiis - Relative binding affinity calculations towards accuracy and scalability",
+"seconds": 1457
+},
+{
+"id": "HSh4AzzhGKM",
+"title": "Derek Lowe - FEP and Drug Discovery: Where We've Been and Where We'd Like to Go",
+"seconds": 2109
+},
+{
+"id": "a2axeq_E3RQ",
+"title": "William Jorgensen - Free Energy Calculations from Butane to COVID-19",
+"seconds": 2193
+},
+{
+"id": "fxPNNVkSIWo",
+"title": "David Hahn - Impacting drug discovery with open source free energy calculation tools",
+"seconds": 1656
+},
+{
+"id": "aZVIc6BzlDs",
+"title": "Michael Schnieders - An Alchemical Pipeline for Polymorph Discovery and Optimization",
+"seconds": 1476
+},
+{
+"id": "id5D_9PC1mA",
+"title": "Julien Michel - Engineering FEP science in the open",
+"seconds": 1878
+},
+{
+"id": "cQQM1DTLR5g",
+"title": "Darrin York - Enhancing Precision and Accuracy in Alchemical Free Energy Simulations",
+"seconds": 1577
+},
+{
+"id": "I2zm3hAO-eI",
+"title": "Jay Ponder - Accuracy of the AMOEBA Force Field in Binding Free Energy Simulations",
+"seconds": 1824
+},
+{
+"id": "bRX2yxa3laA",
+"title": "Xin (Cindy) Yan - Promises and Limitations: Free Energy Methods in Drug Discovery Projects",
+"seconds": 1612
+}
+],
+"n_videos": 32
+},
+"https://www.youtube.com/playlist?list=PLmdKEn2znJEmCw1OfLLhv43TXl-QDvkUO": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "7nHU4S5uCnA",
+"title": "PLUMED Masterclass 22-0",
+"seconds": 182
+},
+{
+"id": "HCI_FtnSnck",
+"title": "PLUMED Masterclass 22-1.1",
+"seconds": 4785
+},
+{
+"id": "ZL81ZxN_eo0",
+"title": "PLUMED Masterclass 22-1.2",
+"seconds": 8196
+},
+{
+"id": "T8a-kP6V3_g",
+"title": "PLUMED Masterclass 22-2.1",
+"seconds": 3679
+},
+{
+"id": "q1D39A_LQag",
+"title": "PLUMED Masterclass 22-2.2",
+"seconds": 6595
+},
+{
+"id": "1XYGfA4kJ1c",
+"title": "PLUMED Masterclass 22-3.1",
+"seconds": 3497
+},
+{
+"id": "Rn5JgItgKX4",
+"title": "PLUMED Masterclass 22-3.2",
+"seconds": 5794
+},
+{
+"id": "XsRBGl1wWAU",
+"title": "PLUMED Masterclass 22-5.1",
+"seconds": 4081
+},
+{
+"id": "veSnKC9hmWo",
+"title": "PLUMED Masterclass 22-5.2",
+"seconds": 5165
+},
+{
+"id": "A7mOOXZvqbQ",
+"title": "PLUMED Masterclass 22-6.1",
+"seconds": 2905
+},
+{
+"id": "o4IMzRr04AY",
+"title": "PLUMED Masterclass 22-6.2",
+"seconds": 2527
+},
+{
+"id": "vsN_Ff3bluU",
+"title": "PLUMED Masterclass 22-7.1",
+"seconds": 3293
+},
+{
+"id": "b2_1LccKj9c",
+"title": "PLUMED Masterclass 22-7.2",
+"seconds": 3228
+},
+{
+"id": "_WBRLitZZY8",
+"title": "PLUMED Masterclass 22-8.1",
+"seconds": 3046
+},
+{
+"id": "H1nFtEf96-M",
+"title": "PLUMED Masterclass 22-8.2",
+"seconds": 3906
+},
+{
+"id": "ADXJErS9vgs",
+"title": "PLUMED Masterclass 22-9.1",
+"seconds": 5860
+},
+{
+"id": "m5eTgR232V4",
+"title": "PLUMED Masterclass 22-9.2",
+"seconds": 7729
+},
+{
+"id": "LexZoELjR5c",
+"title": "PLUMED Masterclass 22-10.1",
+"seconds": 3309
+},
+{
+"id": "xAWhtFk5cMM",
+"title": "PLUMED Masterclass 22-10.2",
+"seconds": 4403
+},
+{
+"id": "Cmw_v2Y8o9k",
+"title": "PLUMED Masterclass 22-11.1",
+"seconds": 3284
+},
+{
+"id": "rVFEF4YNLnk",
+"title": "PLUMED Masterclass 22-11.2",
+"seconds": 4212
+},
+{
+"id": "tPHxDmNW7to",
+"title": "PLUMED Masterclass 22-12.1",
+"seconds": 3278
+},
+{
+"id": "H1KfRU8aEFY",
+"title": "PLUMED Masterclass 22-12.2",
+"seconds": 2749
+},
+{
+"id": "ViI55NckukI",
+"title": "PLUMED Masterclass 22-13.1",
+"seconds": 3207
+},
+{
+"id": "TeiEeR3jwd0",
+"title": "PLUMED Masterclass 22-13.2",
+"seconds": 3341
+},
+{
+"id": "1GSKhM57lo0",
+"title": "PLUMED Masterclass 22-15.1",
+"seconds": 1569
+},
+{
+"id": "JjpKSzb9kJM",
+"title": "PLUMED Masterclass 22-15.2",
+"seconds": 3022
+},
+{
+"id": "6zGBxlx0qeE",
+"title": "PLUMED Masterclass 22-17.1",
+"seconds": 2816
+},
+{
+"id": "srZfm_TIgwc",
+"title": "PLUMED Masterclass 22-17.2",
+"seconds": 2570
+}
+],
+"n_videos": 29
+},
+"https://www.youtube.com/playlist?list=PL8XC6Vx8S1GDuJtKeIe8muGmQURVQnl_m": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "3hCaeFF05Jc",
+"title": "Exploring Complex Reaction Pathways Part II - Mahmoud Moradi",
+"seconds": 4698
+},
+{
+"id": "PDB1a7wR8KQ",
+"title": "TCBG UIUC Live Stream",
+"seconds": 4548
+},
+{
+"id": "st5XKYuJHQE",
+"title": "Specialized Algorithms for Enhanced Ergodic Sampling, Chris Chipot",
+"seconds": 4434
+},
+{
+"id": "5w6rRqq2Dhg",
+"title": "Accelerating Convergence of Free-Energy Calculation with Replica Exchange Solute Tempering,Wei Jiang",
+"seconds": 3671
+},
+{
+"id": "ax74TgWY3wA",
+"title": "Exploring Complex Reaction Pathways Part I - Mahmoud Moradi",
+"seconds": 4711
+},
+{
+"id": "z2C6siB6Qqo",
+"title": "Geometrical Free-Energy Methods: Strengths and Limitations, Jérôme Hénin",
+"seconds": 4703
+}
+],
+"n_videos": 7
+},
+"https://www.youtube.com/playlist?list=PL8XC6Vx8S1GAtcF0p2-m0FbQT7gHM86TN": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "3GNlNfF7KW8",
+"title": "Applications of Enhanced Sampling and Free Energy Calculation Methods - Emad Tajkhorshid",
+"seconds": 1920
+},
+{
+"id": "LCKtsR1ijsA",
+"title": "Introduction to Free Energy Calculations - Chris Chipot",
+"seconds": 3369
+},
+{
+"id": "ziRedoLEb2o",
+"title": "Transition Path Sampling and Free Energy Calculations - Chris Chipot",
+"seconds": 5384
+},
+{
+"id": "hBHge1cU3FE",
+"title": "Constant pH Molecular Dynamics with NAMD - Brian Radak",
+"seconds": 2980
+},
+{
+"id": "iLw7acCoCrs",
+"title": "Geometrical Free Energy Methods - Giacomo Fiorin",
+"seconds": 8735
+},
+{
+"id": "TYz9W8d54zM",
+"title": "Designing Implementing and Optimzing Collective Variables in VMD and NAMD - Giacomo Fiorin",
+"seconds": 3499
+},
+{
+"id": "D4PKI6fV6iY",
+"title": "Specialized Algorithims for Enhanced Ergodic Sampling - Chris Chipot",
+"seconds": 5048
+},
+{
+"id": "Duq09xMTzgc",
+"title": "Accelerating Convergence of Free Energy Calculations - Wei Jiang",
+"seconds": 4287
+},
+{
+"id": "NoCwrBz7CFU",
+"title": "Adaptive Multilevel Splitting Method Isomerization - Laura Lopes",
+"seconds": 2049
+},
+{
+"id": "68qbwQyz5WY",
+"title": "Exploring Complex Reaction Pathways I - Mahmoud Moradi",
+"seconds": 5060
+},
+{
+"id": "x8qIwFJTnVI",
+"title": "Exploring Complex Reaction Pathways II - Mahmoud Moradi",
+"seconds": 4910
+}
+],
+"n_videos": 11
+},
+"https://www.youtube.com/watch?v=ktkmgiFJSGQ": {
+"ok": true,
+"kind": "video",
+"seconds": 2159,
+"published": "2021-09-03",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=qITm4laxhtk": {
+"ok": true,
+"kind": "video",
+"seconds": 1057,
+"published": "2021-02-14",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 82,
+"title": "Replica Exchange Methods"
+},
+{
+"t": 1027,
+"title": "Outro"
+}
+]
+},
+"https://www.youtube.com/watch?v=5upvgbp_elI": {
+"ok": true,
+"kind": "video",
+"seconds": 3750,
+"published": "2012-09-07",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to Sampling"
+},
+{
+"t": 206,
+"title": "Simulated Annealing"
+},
+{
+"t": 699,
+"title": "Simulated Tempering"
+},
+{
+"t": 1282,
+"title": "Replica Exchange Method"
+},
+{
+"t": 1785,
+"title": "Solute Tempering Example"
+},
+{
+"t": 2204,
+"title": "Molecular Dynamics Implementation"
+},
+{
+"t": 2878,
+"title": "Optimal Exchange Strategy"
+}
+]
+},
+"https://www.youtube.com/watch?v=bZZggbV2r5E": {
+"ok": true,
+"kind": "video",
+"seconds": 4256,
+"published": "2012-09-11",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=b8aViZKaKFs": {
+"ok": true,
+"kind": "video",
+"seconds": 526,
+"published": "2022-07-21",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 221,
+"title": "When to stop"
+},
+{
+"t": 272,
+"title": "Welltempered Method"
+},
+{
+"t": 352,
+"title": "Intermediate Approach"
+},
+{
+"t": 413,
+"title": "Remarks"
+},
+{
+"t": 485,
+"title": "Summary"
+}
+]
+},
+"https://www.youtube.com/watch?v=EMZu-n4WCH0": {
+"ok": true,
+"kind": "video",
+"seconds": 1874,
+"published": "2021-05-06",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=ShtrAD-tT7c": {
+"ok": true,
+"kind": "video",
+"seconds": 2514,
+"published": "2021-04-27",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=f4faPQU58oA": {
+"ok": true,
+"kind": "video",
+"seconds": 20888,
+"published": "2024-10-31",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=cc_5q6Od6XU": {
+"ok": true,
+"kind": "video",
+"seconds": 3450,
+"published": "2015-10-14",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 116,
+"title": "Molecular Dynamics (MD)"
+},
+{
+"t": 269,
+"title": "Umbrella Sampling"
+},
+{
+"t": 338,
+"title": "Metadynamics"
+},
+{
+"t": 427,
+"title": "Adaptive Biasing Force (ABF) Simulation Add an adaptive bising force in the"
+},
+{
+"t": 475,
+"title": "CV-biasing Methods"
+},
+{
+"t": 619,
+"title": "Replica Exchange/Parallel Tempering"
+},
+{
+"t": 687,
+"title": "Self-guided Molecular Langevin Dynamics"
+},
+{
+"t": 760,
+"title": "Accelerated Molecular Dynamics (AMD) • Add a bus potential to decrease politial energy"
+},
+{
+"t": 805,
+"title": "aMD is Great for Enhanced Sampling"
+},
+{
+"t": 843,
+"title": "But Large Noise for Reweighting"
+},
+{
+"t": 1063,
+"title": "How to determine GaMD parameters?"
+},
+{
+"t": 1354,
+"title": "Dihedral, Total and Dual-boost"
+},
+{
+"t": 1457,
+"title": "How to reweight GaMD simulations?"
+},
+{
+"t": 1586,
+"title": "How to implement GaMD?"
+},
+{
+"t": 2045,
+"title": "What can GaMD do?"
+},
+{
+"t": 2141,
+"title": "GaMD: Alanine Dipeptide"
+},
+{
+"t": 2257,
+"title": "GaMD: Protein Folding"
+},
+{
+"t": 2981,
+"title": "4 more independent simulations"
+},
+{
+"t": 3068,
+"title": "GaMD: Protein-Ligand Binding Intermediate 2 (12)"
+},
+{
+"t": 3225,
+"title": "Conclusions: Enhanced Sampling"
+}
+]
+},
+"https://www.youtube.com/watch?v=RJMQ70K8UmA": {
+"ok": true,
+"kind": "video",
+"seconds": 5071,
+"published": "2011-11-12",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=Yq1f8vDfPe4": {
+"ok": true,
+"kind": "video",
+"seconds": 4786,
+"published": "2018-04-19",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 44,
+"title": "Agenda"
+},
+{
+"t": 64,
+"title": "BioExcel activities"
+},
+{
+"t": 203,
+"title": "Questions"
+},
+{
+"t": 250,
+"title": "Speaker Introduction"
+},
+{
+"t": 385,
+"title": "Martini Basics"
+},
+{
+"t": 443,
+"title": "Webinar Outline"
+},
+{
+"t": 474,
+"title": "Martini Model"
+},
+{
+"t": 829,
+"title": "Validation"
+},
+{
+"t": 877,
+"title": "Martini Model Overview"
+},
+{
+"t": 1012,
+"title": "What is Martini"
+},
+{
+"t": 1148,
+"title": "LancomeJones Interactions"
+},
+{
+"t": 1223,
+"title": "Interaction Matrix"
+},
+{
+"t": 1326,
+"title": "Partitioning"
+},
+{
+"t": 1379,
+"title": "Martini Bible"
+},
+{
+"t": 1425,
+"title": "Rings"
+},
+{
+"t": 1521,
+"title": "Bonded interactions"
+},
+{
+"t": 1588,
+"title": "Proteins"
+},
+{
+"t": 1669,
+"title": "Elementin"
+},
+{
+"t": 1855,
+"title": "Martini Versions"
+},
+{
+"t": 1959,
+"title": "Martini 3 Release"
+},
+{
+"t": 2057,
+"title": "High throughput tools"
+},
+{
+"t": 2127,
+"title": "Validate models"
+},
+{
+"t": 2181,
+"title": "Lipid phase behavior"
+},
+{
+"t": 2542,
+"title": "Limitations"
+},
+{
+"t": 2585,
+"title": "Properties"
+},
+{
+"t": 2657,
+"title": "Directionality"
+},
+{
+"t": 2684,
+"title": "Gold Martini Network"
+},
+{
+"t": 2719,
+"title": "Kinetics"
+},
+{
+"t": 2775,
+"title": "Friction"
+},
+{
+"t": 2887,
+"title": "Implicit Screening"
+},
+{
+"t": 2930,
+"title": "Polarizable Model"
+},
+{
+"t": 2966,
+"title": "Martini Applications"
+}
+]
+},
+"https://www.youtube.com/watch?v=yBnn567JXdo": {
+"ok": true,
+"kind": "video",
+"seconds": 453,
+"published": "2026-07-12",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=jFmGNUUVHzg": {
+"ok": true,
+"kind": "video",
+"seconds": 3667,
+"published": "2020-11-24",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to IDP simulation"
+},
+{
+"t": 272,
+"title": "Force field improvements"
+},
+{
+"t": 682,
+"title": "Interpreting experimental data"
+},
+{
+"t": 1403,
+"title": "Modelling protein complexes"
+},
+{
+"t": 2032,
+"title": "DNA chaperone interactions"
+},
+{
+"t": 2320,
+"title": "Phase separation of IDPs"
+},
+{
+"t": 2870,
+"title": "Atomistic insights and conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=_6iAcwmknek": {
+"ok": true,
+"kind": "video",
+"seconds": 3779,
+"published": "2026-05-27",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=a15IlXIhz1k": {
+"ok": true,
+"kind": "video",
+"seconds": 5220,
+"published": "2021-11-01",
+"chapters": [
+{
+"t": 0,
+"title": "Meeting introduction"
+},
+{
+"t": 30,
+"title": "Speaker background"
+},
+{
+"t": 214,
+"title": "Professional journey"
+},
+{
+"t": 268,
+"title": "Discussion rules and future"
+},
+{
+"t": 345,
+"title": "Webinar commencement"
+},
+{
+"t": 376,
+"title": "Integrating data and models"
+},
+{
+"t": 669,
+"title": "Ensemble interpretation"
+},
+{
+"t": 791,
+"title": "Bayesian refinement methods"
+},
+{
+"t": 1204,
+"title": "Alpha-synuclein analysis"
+},
+{
+"t": 1376,
+"title": "Dynamical data integration"
+},
+{
+"t": 1662,
+"title": "Martini force field tweak"
+},
+{
+"t": 1971,
+"title": "Systematic force field design"
+},
+{
+"t": 2389,
+"title": "Simulating IDP dimerization"
+},
+{
+"t": 2555,
+"title": "Condensate phase properties"
+},
+{
+"t": 2857,
+"title": "Conclusion and workshop"
+},
+{
+"t": 2901,
+"title": "Q&A session"
+}
+]
+},
+"https://www.youtube.com/watch?v=2yf__V4EhGI": {
+"ok": true,
+"kind": "video",
+"seconds": 1810,
+"published": "2012-12-10",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 317,
+"title": "Potential Mean Force"
+},
+{
+"t": 1165,
+"title": "Delta functions"
+},
+{
+"t": 1288,
+"title": "Bohr model"
+},
+{
+"t": 1543,
+"title": "Poisson punishment"
+},
+{
+"t": 1655,
+"title": "Free energy"
+},
+{
+"t": 1719,
+"title": "Takehome message"
+}
+]
+},
+"https://www.youtube.com/watch?v=AzCzDYLimvc": {
+"ok": true,
+"kind": "video",
+"seconds": 2410,
+"published": "2025-03-28",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to dynamics"
+},
+{
+"t": 280,
+"title": "Diffusion in water"
+},
+{
+"t": 452,
+"title": "The Langevin equation"
+},
+{
+"t": 608,
+"title": "Modeling random forces"
+},
+{
+"t": 887,
+"title": "Solving Langevin equations"
+},
+{
+"t": 1220,
+"title": "Numerical simulations"
+},
+{
+"t": 1539,
+"title": "Probability distributions"
+},
+{
+"t": 1713,
+"title": "Fokker-Planck equation"
+},
+{
+"t": 2116,
+"title": "Linear potential example"
+},
+{
+"t": 2318,
+"title": "Applications in research"
+}
+]
+},
+"https://www.youtube.com/watch?v=tRVeUbgcGVY": {
+"ok": true,
+"kind": "video",
+"seconds": 51,
+"published": "2013-06-05",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=oZZumtlUXag": {
+"ok": true,
+"kind": "video",
+"seconds": 4697,
+"published": "2026-07-09",
+"chapters": []
+},
+"https://www.youtube.com/playlist?list=PL5GA9U-KFnqLWf2xfoPtpDc_SSjiYduGN": {
+"ok": true,
+"kind": "playlist",
+"items": [
+{
+"id": "YXppP_QTut8",
+"title": "[PyEMMA 2018] Introduction to Markov state models",
+"seconds": 4055
+},
+{
+"id": "mgdvHYI6FMc",
+"title": "[PyEMMA 2018] The PyEMMA software package",
+"seconds": 1715
+},
+{
+"id": "pVl7TPFuHwk",
+"title": "[PyEMMA 2018] MSM estimation and validation",
+"seconds": 3700
+},
+{
+"id": "kKC4ccoUHGU",
+"title": "[PyEMMA 2018] MSM theory",
+"seconds": 2884
+},
+{
+"id": "u4ec4EYsgkQ",
+"title": "[PyEMMA 2018] MSM coarse graining with PCCA++",
+"seconds": 2418
+},
+{
+"id": "aO_DmbqHWYs",
+"title": "[PyEMMA 2018] How to analyze Markov state models",
+"seconds": 1011
+},
+{
+"id": "A3AUWXqqONc",
+"title": "[PyEMMA 2018] The variational approach",
+"seconds": 1945
+},
+{
+"id": "QHQBVmVq-Vo",
+"title": "[PyEMMA 2018] How to select models with the VAMP score",
+"seconds": 1278
+},
+{
+"id": "jXMaCSSOSgg",
+"title": "[PyEMMA 2018] VAMPnets",
+"seconds": 1784
+},
+{
+"id": "JW23py5kOgM",
+"title": "[PyEMMA 2018] Hidden Markov models",
+"seconds": 639
+},
+{
+"id": "HfTdS-kgG70",
+"title": "[PyEMMA 2018] How to estimate multi-ensemble Markov models",
+"seconds": 2513
+}
+],
+"n_videos": 11
+},
+"https://www.youtube.com/watch?v=gSR2xp2NFIc": {
+"ok": true,
+"kind": "video",
+"seconds": 2671,
+"published": "2021-03-29",
+"chapters": [
+{
+"t": 0,
+"title": "Markov State Models"
+},
+{
+"t": 83,
+"title": "Motivation"
+},
+{
+"t": 381,
+"title": "What is meta-stability?"
+},
+{
+"t": 519,
+"title": "Molecular simulations (2)"
+},
+{
+"t": 628,
+"title": "An illustration of the transition density"
+},
+{
+"t": 641,
+"title": "Assumptions about the full dynamics"
+},
+{
+"t": 944,
+"title": "Ensemble view of dynamics"
+},
+{
+"t": 1022,
+"title": "Example dynamics"
+},
+{
+"t": 1111,
+"title": "Propagator depends on lag time"
+},
+{
+"t": 1244,
+"title": "Implied time-scales"
+},
+{
+"t": 1582,
+"title": "What do you mean by processes?"
+},
+{
+"t": 1670,
+"title": "Discretization of Ω"
+},
+{
+"t": 1785,
+"title": "Count matrix"
+},
+{
+"t": 1839,
+"title": "Maximum likelihood estimator"
+},
+{
+"t": 1930,
+"title": "Analytical solution for Non- reversible case We enforce the constraint that the transition probability matrix is row-stochastic"
+},
+{
+"t": 1969,
+"title": "Reversible estimator"
+},
+{
+"t": 1985,
+"title": "Bayesian inference of MSMS"
+},
+{
+"t": 2142,
+"title": "Augmented Markov models • Enables integration of external information into the estimation of Markov"
+},
+{
+"t": 2184,
+"title": "Analysis of our estimate"
+},
+{
+"t": 2233,
+"title": "Increasing the lag-time"
+},
+{
+"t": 2253,
+"title": "Projection/discretization error"
+},
+{
+"t": 2382,
+"title": "Known problems"
+},
+{
+"t": 2445,
+"title": "Chapman-Kolmogorov test"
+},
+{
+"t": 2562,
+"title": "Common properties"
+},
+{
+"t": 2609,
+"title": "Summary"
+}
+]
+},
+"https://www.youtube.com/watch?v=VJHKiqTQhQE": {
+"ok": true,
+"kind": "video",
+"seconds": 3242,
+"published": "2021-03-29",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 84,
+"title": "Protein dynamics and Markov modeling"
+},
+{
+"t": 440,
+"title": "Boltzmann statistics"
+},
+{
+"t": 549,
+"title": "Expectation values / sampling problems"
+},
+{
+"t": 745,
+"title": "The Markov model trick"
+},
+{
+"t": 1135,
+"title": "Conformation Dynamics / Markov models"
+},
+{
+"t": 1203,
+"title": "focus on metastable states"
+},
+{
+"t": 1754,
+"title": "Generation 2: understanding spectral properties of MSM"
+},
+{
+"t": 1785,
+"title": "Generation 2: focus on discretizing transfer operator"
+},
+{
+"t": 1872,
+"title": "Variational Approach!"
+},
+{
+"t": 2078,
+"title": "Variational approach for Markov processes: Linear variation"
+},
+{
+"t": 2303,
+"title": "Time-lagged independent component analysis (TICA)"
+},
+{
+"t": 2342,
+"title": "MSM estimation"
+},
+{
+"t": 2421,
+"title": "Coarse-graining"
+},
+{
+"t": 2505,
+"title": "HIV protease"
+},
+{
+"t": 2606,
+"title": "Theory of molecular kinetics"
+},
+{
+"t": 3167,
+"title": "Boltzmann Generator"
+}
+]
+},
+"https://www.youtube.com/watch?v=7s8-r7qFc-I": {
+"ok": true,
+"kind": "video",
+"seconds": 4158,
+"published": "2017-02-20",
+"chapters": [
+{
+"t": 0,
+"title": "Protein dynamics and markov modeling"
+},
+{
+"t": 203,
+"title": "Proteins"
+},
+{
+"t": 315,
+"title": "Protein-Protein binding"
+},
+{
+"t": 415,
+"title": "50 K atom system (all atom, explicit solvent)"
+},
+{
+"t": 1032,
+"title": "Boltzmann statistics"
+},
+{
+"t": 1123,
+"title": "Expectation values / sampling problems"
+},
+{
+"t": 1375,
+"title": "The Markov model trick"
+},
+{
+"t": 1701,
+"title": "Conformation Dynamics / Markov models"
+},
+{
+"t": 1950,
+"title": "focus on metastable states"
+},
+{
+"t": 2510,
+"title": "Generation 2: understanding spectral properties of MSMS"
+},
+{
+"t": 2572,
+"title": "Generation 2: focus on discretizing transfer operator"
+},
+{
+"t": 2740,
+"title": "new developments"
+},
+{
+"t": 2773,
+"title": "Principal component analysis (PCA)"
+},
+{
+"t": 3152,
+"title": "Reaction coordinates?"
+},
+{
+"t": 3275,
+"title": "Variational Approach for Conformation Dynamics"
+},
+{
+"t": 3452,
+"title": "Time-lagged independent component analysis (TICA)"
+}
+]
+},
+"https://www.youtube.com/watch?v=Fuai8_MSxaw": {
+"ok": true,
+"kind": "video",
+"seconds": 2233,
+"published": "2018-05-18",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 46,
+"title": "Tools"
+},
+{
+"t": 68,
+"title": "Molecular Dynamics"
+},
+{
+"t": 225,
+"title": "Protein Systems"
+},
+{
+"t": 262,
+"title": "Adaptive Sampling"
+},
+{
+"t": 330,
+"title": "Aggregate Sampling"
+},
+{
+"t": 404,
+"title": "Crystal Structure"
+},
+{
+"t": 534,
+"title": "Native Substrates"
+},
+{
+"t": 581,
+"title": "dissociation events"
+},
+{
+"t": 612,
+"title": "what can we do about this"
+},
+{
+"t": 618,
+"title": "a pointer"
+},
+{
+"t": 670,
+"title": "augmented map"
+},
+{
+"t": 736,
+"title": "deep learning"
+},
+{
+"t": 870,
+"title": "Mark of modeling"
+},
+{
+"t": 902,
+"title": "Variational approach"
+},
+{
+"t": 962,
+"title": "Linear method"
+},
+{
+"t": 1189,
+"title": "Examples"
+},
+{
+"t": 1250,
+"title": "Number of States"
+},
+{
+"t": 1390,
+"title": "Limitations"
+},
+{
+"t": 1463,
+"title": "generative machine learning"
+},
+{
+"t": 1551,
+"title": "latent space"
+},
+{
+"t": 1619,
+"title": "state model"
+},
+{
+"t": 1707,
+"title": "data distribution"
+},
+{
+"t": 1752,
+"title": "data removal"
+},
+{
+"t": 1841,
+"title": "IBM Long Program"
+},
+{
+"t": 1871,
+"title": "Minibatch Methods"
+},
+{
+"t": 2171,
+"title": "Root Mean Square"
+},
+{
+"t": 2177,
+"title": "Native Complex"
+}
+]
+},
+"https://www.youtube.com/watch?v=B8uo60u9TqI": {
+"ok": true,
+"kind": "video",
+"seconds": 1962,
+"published": "2018-05-17",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 31,
+"title": "Fatal Enzymes"
+},
+{
+"t": 165,
+"title": "Markov State Models"
+},
+{
+"t": 216,
+"title": "Betalactamase"
+},
+{
+"t": 235,
+"title": "Cooperative opening events"
+},
+{
+"t": 284,
+"title": "Labeling"
+},
+{
+"t": 317,
+"title": "Labeling Experiments"
+},
+{
+"t": 384,
+"title": "Beta Lactamase"
+},
+{
+"t": 396,
+"title": "Boltzmann Document"
+},
+{
+"t": 577,
+"title": "Potential Applications"
+},
+{
+"t": 653,
+"title": "Protein Interactions"
+},
+{
+"t": 875,
+"title": "G Proteins"
+},
+{
+"t": 1097,
+"title": "Meta Dynamics"
+},
+{
+"t": 1386,
+"title": "Sundar"
+},
+{
+"t": 1425,
+"title": "Dynamic Heterogeneity"
+},
+{
+"t": 1889,
+"title": "Enriching Proofs"
+}
+]
+},
+"https://www.youtube.com/watch?v=0pB3pUXULmo": {
+"ok": true,
+"kind": "video",
+"seconds": 1193,
+"published": "2013-02-20",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 64,
+"title": "Protein folding"
+},
+{
+"t": 153,
+"title": "RNA conformation"
+},
+{
+"t": 214,
+"title": "Molecular dynamics"
+},
+{
+"t": 230,
+"title": "My wish list"
+},
+{
+"t": 355,
+"title": "Markov State Model"
+},
+{
+"t": 468,
+"title": "Building a Markov State Model"
+},
+{
+"t": 573,
+"title": "Transition Matrix"
+},
+{
+"t": 665,
+"title": "Ensembles"
+},
+{
+"t": 728,
+"title": "Eigenvalues"
+},
+{
+"t": 797,
+"title": "Timescales"
+},
+{
+"t": 837,
+"title": "Experimental Output"
+},
+{
+"t": 927,
+"title": "Markov State Models"
+},
+{
+"t": 1135,
+"title": "Requirements"
+}
+]
+},
+"https://www.youtube.com/watch?v=opx_wViFlTs": {
+"ok": true,
+"kind": "video",
+"seconds": 6437,
+"published": "2026-05-11",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=CNYreswqJAQ": {
+"ok": true,
+"kind": "video",
+"seconds": 4094,
+"published": "2023-01-31",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction and overview"
+},
+{
+"t": 2253,
+"title": "Model validation tests"
+},
+{
+"t": 3313,
+"title": "Project timeline and resources"
+},
+{
+"t": 3745,
+"title": "Advanced topics and Q&A"
+}
+]
+},
+"https://www.youtube.com/watch?v=xNjQatR2rRU": {
+"ok": true,
+"kind": "video",
+"seconds": 149,
+"published": "2021-02-02",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=I9Y2le9e74A": {
+"ok": true,
+"kind": "video",
+"seconds": 4975,
+"published": "2022-10-07",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 136,
+"title": "Representations of clouds of particles in interaction"
+},
+{
+"t": 488,
+"title": "The case of O93) for chemistry"
+},
+{
+"t": 1311,
+"title": "MACE: Message expansion"
+},
+{
+"t": 2595,
+"title": "Efficient machine learning on point clouds"
+},
+{
+"t": 3698,
+"title": "Q+A and Discussion"
+}
+]
+},
+"https://www.youtube.com/watch?v=ZR1NTBPBDOo": {
+"ok": true,
+"kind": "video",
+"seconds": 5202,
+"published": "2022-05-05",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to speaker"
+},
+{
+"t": 75,
+"title": "Molecular dynamics overview"
+},
+{
+"t": 382,
+"title": "Machine learning potentials"
+},
+{
+"t": 536,
+"title": "Geometric symmetries in ML"
+},
+{
+"t": 805,
+"title": "Equivariance and tensors"
+},
+{
+"t": 1406,
+"title": "Tensor products in NNs"
+},
+{
+"t": 1886,
+"title": "Limitations of message passing"
+},
+{
+"t": 2047,
+"title": "Allegro architecture design"
+},
+{
+"t": 2323,
+"title": "The density trick"
+},
+{
+"t": 2613,
+"title": "Discussion on locality"
+},
+{
+"t": 3536,
+"title": "MD17 and QM9 benchmarks"
+},
+{
+"t": 3931,
+"title": "Transferability results"
+},
+{
+"t": 4146,
+"title": "Practical applications"
+},
+{
+"t": 4336,
+"title": "Computational scaling"
+},
+{
+"t": 4673,
+"title": "Scalability and conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=tWeBrPTrSDE": {
+"ok": true,
+"kind": "video",
+"seconds": 3386,
+"published": "2025-07-04",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 53,
+"title": "MD examples: wire-breaking, brazing, impact, self-assembly, catalysis"
+},
+{
+"t": 182,
+"title": "Fundamentals of MD: interatomic potentials"
+},
+{
+"t": 237,
+"title": "Accuracy vs speed and multiscale modeling techniques"
+},
+{
+"t": 394,
+"title": "Classical pair potentials: Lennard-Jones (LJ), Morse potential"
+},
+{
+"t": 644,
+"title": "Many body potentials: Stillinger-Weber, Embedded Atom Method (EAM)"
+},
+{
+"t": 993,
+"title": "Early neural networks: Behler-Parrinello"
+},
+{
+"t": 1416,
+"title": "Descriptor-based ML methods: Gaussian Approximation Potentials (GAP)"
+},
+{
+"t": 1882,
+"title": "Graph neural networks: Crystal Graph Neural Networks (CGCNN)"
+},
+{
+"t": 2390,
+"title": "Equivariant neural networks: NequIP"
+},
+{
+"t": 2762,
+"title": "Universal potentials: M3GNet"
+},
+{
+"t": 3127,
+"title": "What’s next for ML potentials?"
+}
+]
+},
+"https://www.youtube.com/watch?v=106sdeDF1oc": {
+"ok": true,
+"kind": "video",
+"seconds": 3430,
+"published": "2023-04-26",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 269,
+"title": "Deep Learning Molecular Structures"
+},
+{
+"t": 542,
+"title": "Generative Models of Structures"
+},
+{
+"t": 666,
+"title": "LigDream: Variational Autoencoders"
+},
+{
+"t": 769,
+"title": "Diffusion Models"
+},
+{
+"t": 898,
+"title": "PlayMolecules: Acting on Drugs to Discover"
+},
+{
+"t": 1097,
+"title": "TorchMD: Machine Learning Chemistry"
+},
+{
+"t": 1308,
+"title": "TorchMD Deep Dive"
+},
+{
+"t": 1725,
+"title": "TorchMD-Net"
+},
+{
+"t": 2176,
+"title": "Machine Learning Proteins"
+},
+{
+"t": 2567,
+"title": "Conclusions"
+},
+{
+"t": 2722,
+"title": "Q+A"
+}
+]
+},
+"https://www.youtube.com/watch?v=WuXJRswYIaA": {
+"ok": true,
+"kind": "video",
+"seconds": 1359,
+"published": "2020-09-26",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=JZjeFBH0Jl4": {
+"ok": true,
+"kind": "video",
+"seconds": 3512,
+"published": "2023-01-23",
+"chapters": [
+{
+"t": 0,
+"title": "Intro"
+},
+{
+"t": 40,
+"title": "AI for Science"
+},
+{
+"t": 240,
+"title": "How do we do things"
+},
+{
+"t": 405,
+"title": "Problems with multiscale systems"
+},
+{
+"t": 533,
+"title": "Schrodinger equation"
+},
+{
+"t": 678,
+"title": "Quantum chemistry"
+},
+{
+"t": 1057,
+"title": "Machine learning force fields"
+},
+{
+"t": 1194,
+"title": "Machine learning functionals"
+},
+{
+"t": 1324,
+"title": "Quantum Monte Carlo"
+},
+{
+"t": 1578,
+"title": "Exchange Antisymmetry"
+},
+{
+"t": 1783,
+"title": "Paulinet"
+},
+{
+"t": 1872,
+"title": "Electronic cusps"
+},
+{
+"t": 1944,
+"title": "Artifact"
+},
+{
+"t": 2017,
+"title": "Functional Flexibility"
+},
+{
+"t": 2064,
+"title": "Industrial Factor"
+},
+{
+"t": 2324,
+"title": "Benzene"
+},
+{
+"t": 2487,
+"title": "Sampling"
+},
+{
+"t": 2684,
+"title": "Markov State Models"
+},
+{
+"t": 2784,
+"title": "Why Machine Learning"
+},
+{
+"t": 2869,
+"title": "Normalizing Flows"
+},
+{
+"t": 3054,
+"title": "Boltzmann Generators"
+},
+{
+"t": 3109,
+"title": "Stochastic Normalization"
+}
+]
+},
+"https://www.youtube.com/watch?v=zaZAAWUISGE": {
+"ok": true,
+"kind": "video",
+"seconds": 4622,
+"published": "2025-01-14",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction and motivation"
+},
+{
+"t": 129,
+"title": "The challenge of scale"
+},
+{
+"t": 431,
+"title": "BioEmu architecture"
+},
+{
+"t": 654,
+"title": "Training stage I: Pre-training"
+},
+{
+"t": 1045,
+"title": "Multi-conformational benchmarks"
+},
+{
+"t": 1870,
+"title": "Emulating molecular dynamics"
+},
+{
+"t": 2521,
+"title": "Experimental data integration"
+},
+{
+"t": 3492,
+"title": "Discussion and future plans"
+}
+]
+},
+"https://www.youtube.com/watch?v=LStKhWcL0VE": {
+"ok": true,
+"kind": "video",
+"seconds": 405,
+"published": "2025-07-10",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 63,
+"title": "Protein function"
+},
+{
+"t": 197,
+"title": "BioEmu"
+},
+{
+"t": 267,
+"title": "BioEmu predictions"
+},
+{
+"t": 297,
+"title": "Energy landscape"
+},
+{
+"t": 340,
+"title": "Conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=PGqCeSjNuTY": {
+"ok": true,
+"kind": "video",
+"seconds": 4834,
+"published": "2012-04-19",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 158,
+"title": "What is the Shaw Research"
+},
+{
+"t": 393,
+"title": "Structure of Proteins"
+},
+{
+"t": 741,
+"title": "Algorithm Overview"
+},
+{
+"t": 1140,
+"title": "Why do this"
+},
+{
+"t": 1201,
+"title": "Simulation Length"
+},
+{
+"t": 1235,
+"title": "Protein Folding"
+},
+{
+"t": 1429,
+"title": "What is Anton"
+},
+{
+"t": 1462,
+"title": "Anton is very brittle"
+},
+{
+"t": 1485,
+"title": "Anton was designed for justice"
+},
+{
+"t": 1506,
+"title": "We built 13 machines"
+},
+{
+"t": 1526,
+"title": "We run millisecondscale simulations"
+},
+{
+"t": 1544,
+"title": "dihydrofolate reductase"
+},
+{
+"t": 1588,
+"title": "long single simulations"
+},
+{
+"t": 1630,
+"title": "Vijay Pandey"
+},
+{
+"t": 2024,
+"title": "Computer Scientists"
+},
+{
+"t": 2132,
+"title": "GPW"
+},
+{
+"t": 2275,
+"title": "WS Folding"
+},
+{
+"t": 2656,
+"title": "Potassium Channel"
+},
+{
+"t": 2726,
+"title": "Ion Channel"
+},
+{
+"t": 2753,
+"title": "Gleevec"
+},
+{
+"t": 2967,
+"title": "Experimental Collaboration"
+},
+{
+"t": 3056,
+"title": "What Keeping Cham did"
+},
+{
+"t": 3198,
+"title": "A Different Representation"
+},
+{
+"t": 3278,
+"title": "I should have done this earlier"
+},
+{
+"t": 3305,
+"title": "Codesign"
+},
+{
+"t": 3357,
+"title": "Algorithms"
+}
+]
+},
+"https://www.youtube.com/watch?v=ceQ6Kqz8VoY": {
+"ok": true,
+"kind": "video",
+"seconds": 3509,
+"published": "2014-07-08",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to David Shaw"
+},
+{
+"t": 92,
+"title": "D. E. Shaw Research mission"
+},
+{
+"t": 215,
+"title": "Biochemical background"
+},
+{
+"t": 375,
+"title": "Molecular dynamics overview"
+},
+{
+"t": 788,
+"title": "Anton and computational speed"
+},
+{
+"t": 976,
+"title": "Computational lab collaboration"
+},
+{
+"t": 1343,
+"title": "Protein folding simulations"
+},
+{
+"t": 1722,
+"title": "Testing folding hypotheses"
+},
+{
+"t": 2189,
+"title": "Drug binding analysis"
+},
+{
+"t": 2566,
+"title": "Architecture and co-design"
+},
+{
+"t": 3101,
+"title": "Applications in disease research"
+},
+{
+"t": 3375,
+"title": "Future perspectives"
+}
+]
+},
+"https://www.youtube.com/watch?v=Iyfr2A2i2aM": {
+"ok": true,
+"kind": "video",
+"seconds": 3020,
+"published": "2021-01-04",
+"chapters": [
+{
+"t": 0,
+"title": "Countdown"
+},
+{
+"t": 9,
+"title": "Together, we are powerful"
+},
+{
+"t": 69,
+"title": "The history of Folding@home"
+},
+{
+"t": 3000,
+"title": "Outro"
+}
+]
+},
+"https://www.youtube.com/watch?v=gExgG4qfEQI": {
+"ok": true,
+"kind": "video",
+"seconds": 4123,
+"published": "2016-01-12",
+"chapters": [
+{
+"t": 0,
+"title": "Revealing the structural basis of GPCR signaling through atomic-level simulation"
+},
+{
+"t": 742,
+"title": "Bound pose agrees with mutagenesis data"
+},
+{
+"t": 873,
+"title": "Experimental validation of new predictions Mutagenesis predictions"
+},
+{
+"t": 885,
+"title": "What is the basis of allosteric modulation?"
+},
+{
+"t": 1099,
+"title": "Mechanism 1: Electrostatic interaction"
+},
+{
+"t": 1163,
+"title": "change of orthosteric and allosteric sites"
+},
+{
+"t": 1233,
+"title": "Mechanism 2: Coupled conformational"
+},
+{
+"t": 1348,
+"title": "G protein-coupled receptor (GPCR) signaling"
+},
+{
+"t": 1381,
+"title": "Spontaneous inactivation in unbiased simulation"
+},
+{
+"t": 1543,
+"title": "Three key regions in allosteric network: each adopts multiple states"
+},
+{
+"t": 1619,
+"title": "Comparing activation mechanisms across GPCRs • Different GPCRs bind vastly different ligands but undergo similar structural changes on activation • Do these ligands cause activation in similar"
+},
+{
+"t": 1769,
+"title": "How does a GPCR trigger G protein signaling?"
+},
+{
+"t": 1822,
+"title": "Structure of GPCR-G protein complex nature"
+},
+{
+"t": 1906,
+"title": "How does a receptor (GPCR) cause GDP release? • Does the receptor cause the domains to separate allowing the GOP to escape? Or does the receptor force out the GDP with loss of nucleotide then causing domain separation?"
+},
+{
+"t": 2019,
+"title": "Domain separation is not sufficient for rapid"
+},
+{
+"t": 2101,
+"title": "Domain separation is necessary for rapid"
+},
+{
+"t": 2152,
+"title": "Nucleotide removal leads to greater domain separation roughly matching the receptor bound crystal structure"
+},
+{
+"t": 2189,
+"title": "How does the GPCR actually accelerate nucleotide release? • Our results suggest that to cause rapid GDP release, the GPCR need only weaken GOP'S contacts with the Ga Ras domain"
+},
+{
+"t": 2489,
+"title": "GDP removal and receptor binding cause the same conformational change in a5 helix"
+},
+{
+"t": 2571,
+"title": "Forcing a5 conformational change causes GDP unbinding"
+},
+{
+"t": 2655,
+"title": "Proposed model of GDP release"
+},
+{
+"t": 2710,
+"title": "Experimental validation (DEER spectroscopy)"
+},
+{
+"t": 2797,
+"title": "Experimental validation (Exchange kinetics of engineered protein)"
+},
+{
+"t": 2892,
+"title": "Automatic detection of important conformational changes"
+},
+{
+"t": 3090,
+"title": "Detection of simultaneous change points"
+},
+{
+"t": 3121,
+"title": "Simultaneous penalized likelihood estimation (SIMPLE) change point detection"
+}
+]
+},
+"https://www.youtube.com/watch?v=eNuV8pYd-is": {
+"ok": true,
+"kind": "video",
+"seconds": 2306,
+"published": "2014-01-10",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction and background"
+},
+{
+"t": 90,
+"title": "Giants of the field"
+},
+{
+"t": 208,
+"title": "Career path and inspirations"
+},
+{
+"t": 366,
+"title": "Working with Arieh Warshel"
+},
+{
+"t": 499,
+"title": "Force fields and methods"
+},
+{
+"t": 691,
+"title": "Multiscale modeling concepts"
+},
+{
+"t": 868,
+"title": "Protein dynamics and water"
+},
+{
+"t": 1048,
+"title": "Technical challenges and movies"
+},
+{
+"t": 1403,
+"title": "Current multiscale research"
+},
+{
+"t": 1616,
+"title": "Applications and patents"
+},
+{
+"t": 1868,
+"title": "Life as a scientist"
+},
+{
+"t": 2029,
+"title": "Conclusion and acknowledgments"
+}
+]
+},
+"https://www.youtube.com/watch?v=9tBw8h7dnLM": {
+"ok": true,
+"kind": "video",
+"seconds": 1916,
+"published": "2013-12-18",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=C5mpmPZGChA": {
+"ok": true,
+"kind": "video",
+"seconds": 229,
+"published": "2013-12-18",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=ApUFtLCrU90": {
+"ok": true,
+"kind": "video",
+"seconds": 5350,
+"published": "2011-12-15",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 124,
+"title": "Initial Conditions"
+},
+{
+"t": 202,
+"title": "Law of Motion"
+},
+{
+"t": 932,
+"title": "Conservation Law"
+},
+{
+"t": 1529,
+"title": "Allowable Rules"
+},
+{
+"t": 1628,
+"title": "Laws of Motion"
+},
+{
+"t": 1864,
+"title": "Limits on Predictability"
+}
+]
+},
+"https://www.youtube.com/watch?v=ddKRdrf9iqI": {
+"ok": true,
+"kind": "video",
+"seconds": 1884,
+"published": "2014-09-17",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction"
+},
+{
+"t": 36,
+"title": "macroscopic systems"
+},
+{
+"t": 187,
+"title": "phase space"
+},
+{
+"t": 323,
+"title": "firstorder equations"
+},
+{
+"t": 532,
+"title": "phasespace"
+},
+{
+"t": 591,
+"title": "mapping"
+},
+{
+"t": 840,
+"title": "expansion"
+},
+{
+"t": 1204,
+"title": "levels theorem"
+}
+]
+},
+"https://www.youtube.com/watch?v=MFqA1nePCNg": {
+"ok": true,
+"kind": "video",
+"seconds": 659,
+"published": "2023-10-26",
+"chapters": [
+{
+"t": 0,
+"title": "Hamiltonian dynamics"
+},
+{
+"t": 182,
+"title": "Phase space visualization"
+},
+{
+"t": 269,
+"title": "Orbit uniqueness"
+},
+{
+"t": 332,
+"title": "Flow of neighborhoods"
+},
+{
+"t": 404,
+"title": "Divergence theorem"
+},
+{
+"t": 567,
+"title": "Liouville's theorem"
+}
+]
+},
+"https://www.youtube.com/watch?v=8w4az6IQsNc": {
+"ok": true,
+"kind": "video",
+"seconds": 3191,
+"published": "2023-04-16",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=D1RzvXDXyqA": {
+"ok": true,
+"kind": "video",
+"seconds": 6458,
+"published": "2013-04-16",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to statistics"
+},
+{
+"t": 113,
+"title": "Limits of predictability"
+},
+{
+"t": 268,
+"title": "Role of probability theory"
+},
+{
+"t": 614,
+"title": "Mathematical preliminaries"
+},
+{
+"t": 958,
+"title": "Averaging physical quantities"
+},
+{
+"t": 1204,
+"title": "Symmetry and measurements"
+},
+{
+"t": 1454,
+"title": "Laws of motion and cycles"
+},
+{
+"t": 2015,
+"title": "Conservation laws"
+},
+{
+"t": 2436,
+"title": "Conservation of information"
+},
+{
+"t": 2935,
+"title": "Entropy and ignorance"
+},
+{
+"t": 3270,
+"title": "Understanding entropy"
+},
+{
+"t": 3500,
+"title": "Phase space and Liouville"
+},
+{
+"t": 4038,
+"title": "The first law"
+},
+{
+"t": 4275,
+"title": "Additive energy"
+},
+{
+"t": 4380,
+"title": "Temperature and entropy"
+},
+{
+"t": 4543,
+"title": "General entropy formula"
+},
+{
+"t": 5012,
+"title": "Entropy examples"
+},
+{
+"t": 5270,
+"title": "Units of entropy"
+},
+{
+"t": 5542,
+"title": "Continuous entropy"
+},
+{
+"t": 5886,
+"title": "Q&A on information"
+}
+]
+},
+"https://www.youtube.com/watch?v=zLnIWwvfuo4": {
+"ok": true,
+"kind": "video",
+"seconds": 1681,
+"published": "2014-02-06",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to ODE solvers"
+},
+{
+"t": 33,
+"title": "Runge-Kutta solver family"
+},
+{
+"t": 174,
+"title": "Fourth-order Runge-Kutta"
+},
+{
+"t": 230,
+"title": "Hamiltonian systems"
+},
+{
+"t": 482,
+"title": "Symplectic area preservation"
+},
+{
+"t": 625,
+"title": "Symplectic Euler method"
+},
+{
+"t": 792,
+"title": "Simulating a harmonic oscillator"
+},
+{
+"t": 1327,
+"title": "Algorithm energy conservation"
+},
+{
+"t": 1410,
+"title": "Modeling orbital mechanics"
+},
+{
+"t": 1530,
+"title": "Asteroid belt project"
+}
+]
+},
+"https://www.youtube.com/watch?v=Uyg9asVcMOc": {
+"ok": true,
+"kind": "video",
+"seconds": 1093,
+"published": "2020-12-25",
+"chapters": []
+},
+"https://www.youtube.com/watch?v=9Vj7h1TJePw": {
+"ok": true,
+"kind": "video",
+"seconds": 763,
+"published": "2020-12-25",
+"chapters": [
+{
+"t": 0,
+"title": "Numerical constraint methods"
+},
+{
+"t": 111,
+"title": "Introduction to shake/rattle"
+},
+{
+"t": 224,
+"title": "Störmer-Verlet and leapfrog"
+},
+{
+"t": 444,
+"title": "Shake algorithm formulation"
+},
+{
+"t": 667,
+"title": "From shake to rattle"
+}
+]
+},
+"https://www.youtube.com/watch?v=--zH0AJjVqk": {
+"ok": true,
+"kind": "video",
+"seconds": 470,
+"published": "2026-06-12",
+"chapters": [
+{
+"t": 0,
+"title": "Introduction to SHAKE"
+},
+{
+"t": 46,
+"title": "Command syntax overview"
+},
+{
+"t": 153,
+"title": "Implementing the command"
+},
+{
+"t": 395,
+"title": "Benefits and conclusion"
+}
+]
+},
+"https://www.youtube.com/watch?v=8DPSLDUsqbA": {
+"ok": true,
+"kind": "video",
+"seconds": 2330,
+"published": "2024-12-10",
+"chapters": []
+}
+}

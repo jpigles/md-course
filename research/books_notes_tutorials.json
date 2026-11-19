@@ -1124,7 +1124,7 @@
   },
   {
    "authors": "Simon Gravelle, Cecilia M. S. Alvares, Jacob R. Gissinger, Axel Kohlmeyer",
-   "title": "LAMMPS tutorials (Lennard-Jones fluid, carbon nanotube deformation, water adsorption)",
+   "title": "A Set of Tutorials for the LAMMPS Simulation Package",
    "edition_year": "2025 (LiveCoMS 6:3037)",
    "publisher_or_host": "lammpstutorials.github.io",
    "isbn_or_doi": "DOI 10.33011/livecoms.6.1.3037",
