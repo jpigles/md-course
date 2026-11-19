@@ -762,5 +762,533 @@
   "n_checked": 15,
   "n_wrong": 0,
   "n_imprecise": 3
+ },
+ "alder1957": {
+  "read": "full",
+  "annotation": "Two-page letter reporting the first event-driven molecular dynamics equation of state for 32 and 108 hard spheres, with two pressure branches that strongly suggested a first-order fluid-solid transition.",
+  "read_guide": "The whole letter: the paragraph on the two branches and why 32 particles cannot hold two phases. For Module 1 (history) and Module 7 (periodic boundaries).",
+  "n_checked": 3,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "alder1959": {
+  "read": "full",
+  "annotation": "The founding methods paper of molecular dynamics: event-driven exact collisions for hard-sphere and square-well particles, periodic boundaries, cost and size limits, and the case for dynamics over Monte Carlo.",
+  "read_guide": "Limitations (periodic boundaries, 1/N error) and Description of the method (collision cycles). For Module 1 (history) and Module 7 (boundaries, neighbour search).",
+  "n_checked": 3,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "rahman1964": {
+  "read": "full",
+  "annotation": "First simulation of liquid argon with a continuous Lennard-Jones potential on 864 atoms: g(r) and diffusion close to experiment, a negative velocity autocorrelation, and a better Van Hove approximation.",
+  "read_guide": "Section II (model numbers), Section III (g(r), D, velocity autocorrelation) and the Appendix (reduced equations of motion, predictor-corrector). For Module 1 and Module 4.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "verlet1967": {
+  "read": "full",
+  "annotation": "864 Lennard-Jones particles integrated with the simple position recursion and a periodically rebuilt neighbour table that saved a factor of ten, showing that argon's equilibrium state follows from a two-body potential.",
+  "read_guide": "Section II (units, Eq. 3 to 7: recursion, velocity formula, neighbour table and its condition) and Section III A to D (temperature, Eq. 8 pressure, comparison with argon). For Module 4 and Module 7.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "rahman1971": {
+  "read": "full",
+  "annotation": "First MD of liquid water: 216 rigid molecules with a four-charge effective pair potential and about 2 ps of averaging, showing a random strained hydrogen-bond network and continuous cooperative diffusion.",
+  "read_guide": "Sections II and III (model, rigid rotors, cutoff, time step) and Sec. VII (energy rescaling). Modules 1, 5 and 6.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "mccammon1977": {
+  "read": "full",
+  "annotation": "First MD of a folded protein, BPTI, for 8.8 ps with merged hydrogens and no bulk solvent, showing correlated torsion fluctuations, picosecond relaxation and a fluid-like interior.",
+  "read_guide": "Methods paragraph on page 1, fluctuation section, Fig. 4 and the Discussion (heat capacity, limitations). Modules 1, 4 and 9.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "karplus2002": {
+  "read": "full",
+  "annotation": "Review of 25 years of biomolecular MD: the 9.2 ps vacuum BPTI start, growth to 10 ns and 10^4 to 10^6 atoms, and case studies where simulation explained function.",
+  "read_guide": "Page 1 (first simulation) and the sections on why MD is important and MD today (page 2). Module 1.",
+  "n_checked": 4,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "swope1982": {
+  "read": "full",
+  "annotation": "A cluster-thermodynamics paper whose appendix gives the velocity form of Verlet, with direct position and velocity updates that make inserting stochastic thermostat collisions easy; the integrator is incidental to the paper.",
+  "read_guide": "Only the Appendix (pages 648 to 649) for Module 4, and Sec. III.A (stochastic collisions combined with Hamiltonian dynamics) for Module 8.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "tuckerman1992": {
+  "read": "full",
+  "annotation": "Derives velocity Verlet and reversible multiple time step (RESPA) integrators from symmetric Trotter splittings of the Liouville operator, and shows nested splittings are more stable than non-reversible RESPA; symplecticity is not discussed.",
+  "read_guide": "Sec. II (Eqs. 2.1 to 2.22) for the Liouville and Trotter derivation in Module 4; Sec. III (Eqs. 3.2 to 3.8, Fig. 2, Appendix B) for multiple time steps.",
+  "n_checked": 16,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "ryckaert1977": {
+  "read": "full",
+  "annotation": "The original constraint paper: Lagrange-multiplier dynamics in Cartesian coordinates with constraints exact at every step, a matrix method first, and the iterative SHAKE procedure as the cheaper alternative for large molecules, tested on liquid butane.",
+  "read_guide": "Sections 2 and 3 (Eq. 2.1 to 2.10, 3.3 to 3.5) and Section 5 (Eq. 5.2 to 5.6, cost comparison). Goes with Module 9 (Lagrange multipliers, SHAKE) and the Module 1 timeline.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "andersen1983": {
+  "read": "full",
+  "annotation": "RATTLE rebuilds SHAKE on velocity Verlet by using two constraint-force approximations per step, one for positions and one for velocities, so both satisfy the constraints and no previous step is needed.",
+  "read_guide": "Section II (the inconsistency in Eq. 2.5 and 2.6 and its resolution in 2.7 and 2.8) and Appendix C (the two iteration loops). Goes with Module 9 (RATTLE) and Module 4 (velocity Verlet).",
+  "n_checked": 4,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "hess1997": {
+  "read": "full",
+  "annotation": "LINCS solves bond constraints by a matrix projection on the old bond directions, inverts the sparse coupling matrix with a short power series, and adds a length correction; it is 3 to 4 times faster than SHAKE and parallelises easily.",
+  "read_guide": "Projection Method and Constrained Leap-Frog Algorithm (Eq. 10 to 19), the Implementation section (Eq. 20 to 22 and the eigenvalue limits), and Table I with Figure 2. Goes with Module 9 (LINCS expansion, tolerance and order).",
+  "n_checked": 13,
+  "n_wrong": 0,
+  "n_imprecise": 4
+ },
+ "andersen1980": {
+  "read": "full",
+  "annotation": "Original extended-Lagrangian piston barostat and stochastic-collision thermostat, with proofs that the first gives constant-enthalpy averages and the second canonical averages when the chain is irreducible.",
+  "read_guide": "Sec. III (Eqs. 3.2 to 3.14 and the piston-mass discussion), Sec. IV (Eqs. 4.1 to 4.12) and Sec. V. Module 8.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "parrinello1981": {
+  "read": "full",
+  "annotation": "Extends the extended-Lagrangian barostat so the whole cell matrix is dynamical under any applied stress, generating a constant-enthalpy ensemble, and shows fcc to hcp transitions in model nickel.",
+  "read_guide": "Sec. II (Eqs. 2.3 to 2.25) for the cell Lagrangian and equation of motion. Module 8.",
+  "n_checked": 4,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "berendsen1984": {
+  "read": "full",
+  "annotation": "Introduces weak coupling to a temperature and pressure bath by first-order scaling of velocities and coordinates, tested on 216 SPC waters, and admits the generated ensemble is unproven.",
+  "read_guide": "Sec. II (Eqs. 7 to 21), Sec. III algorithm and notes on step order, Sec. IV with Table I and Figs. 1 and 2. Module 8.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "nose1984": {
+  "read": "full",
+  "annotation": "Derives constant temperature MD from an extended Hamiltonian with a time-scaling variable, proves it gives the canonical distribution, shows isokinetic constraint methods follow from it, and extends it to constant pressure.",
+  "read_guide": "Sec. II (Eqs. 2.5 to 2.22), Sec. V (choice of g and Q) and Table III. Module 8.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "hoover1985": {
+  "read": "full",
+  "annotation": "Hoover's three-page note rewrites Nosé's thermostat without time scaling, proves the canonical density stationary with a Gaussian friction variable, and shows a single oscillator is not ergodic under it.",
+  "read_guide": "Sec. II (Eqs. 1 to 6), Sec. III (Eqs. 7 and 8, stationarity proof) and Sec. IV with Fig. 1; Module 8, Nosé-Hoover and exercise 2.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "martyna1992": {
+  "read": "full",
+  "annotation": "Thermostatting the thermostat variable itself, in a chain, restores canonical sampling for a harmonic oscillator and a free particle where plain Nosé-Hoover fails; the paper gives the chain equations and mass rule.",
+  "read_guide": "Sec. II (chain equations, mass choice, Hoover holes), Sec. III with Figs. 1 to 3 and 5, Appendix B for masses; Module 8, chains and exercise 2.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "martyna1994": {
+  "read": "full",
+  "annotation": "Corrects earlier constant-pressure dynamics so that isotropic and flexible-cell equations of motion generate the isothermal-isobaric ensemble, adds thermostat chains and mass rules, and tests them on a 1D model and C60.",
+  "read_guide": "Sec. II A (what goes wrong in Hoover's equations, virial argument), II E and II F (chains, masses), Appendix B (virial theorems); Module 8, barostats.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "feller1995": {
+  "read": "full",
+  "annotation": "Replaces the deterministic piston of Andersen with a Langevin equation, gives the NPT ensemble without ringing at a suitable collision frequency, and shows that weak-coupling barostats distort volume fluctuations and heat water against octane.",
+  "read_guide": "Sec. I (Eqs. 1 and 2), Sec. II (Eqs. 3 and 4), Figs. 1 to 6, Sec. IV dissipation argument; Module 8, why Berendsen is for equilibration only.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "darden1993": {
+  "read": "full",
+  "annotation": "The original particle mesh Ewald letter: direct Ewald sum within a fixed cutoff, reciprocal sum approximated by Lagrange interpolation on a grid and an FFT, giving N log N cost.",
+  "read_guide": "Introduction and Method (Eqs. 2 to 7, error bound) and Table I for the accuracy and cost trade-off with grid spacing and order. Goes with Module 7, Particle-mesh Ewald.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "essmann1995": {
+  "read": "full",
+  "annotation": "Recasts particle mesh Ewald as B-spline interpolation of structure factors, so forces are analytic derivatives of a smooth energy, accuracy is tunable independent of size, and dispersion and virial follow.",
+  "read_guide": "Sec. II (Eqs. 2.1 to 2.5), Sec. IV (Eqs. 4.1 to 4.9), Sec. VI (beta, cutoff, grid, order; Fig. 1, Table II) and Appendix C. Goes with Module 7, Ewald summation and Particle-mesh Ewald.",
+  "n_checked": 18,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "tironi1995": {
+  "read": "full",
+  "annotation": "Extends the reaction field method to a continuum with salt by solving the linearised Poisson-Boltzmann equation in the cutoff sphere, and shows on 1 M NaCl that it removes cutoff artefacts at no extra cost.",
+  "read_guide": "Introduction, the Eq. 22 and 23 section with the limits after Eq. 23, and Sec. IV on cutoff artefacts in Fig. 1. Goes with Module 7, Reaction field.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "lifson1968": {
+  "read": "full",
+  "annotation": "Founding paper of force-field fitting: one set of energy functions is tuned by weighted least squares to reproduce alkane geometries, vibrational frequencies and enthalpies together, with Urey-Bradley and Lennard-Jones terms.",
+  "read_guide": "Eqs. 1 to 8 (energy expansion, normal modes), Eqs. 13 to 16 (least-squares fit), and the Urey-Bradley and Lennard-Jones section with Eqs. 30 and 31. For Modules 5 and 6.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "weiner1984": {
+  "read": "full",
+  "annotation": "The first AMBER force field: harmonic, cosine, Lennard-Jones and Coulomb energy plus a 10-12 hydrogen-bond term, ESP-fitted charges and 0.5 scaling of 1-4 terms, tested on nucleosides, dipeptides and insulin.",
+  "read_guide": "General Perspective (Eq. 1), Torsional Parameters, the 1-4 scaling argument in the tetrahydrofuran and methyl ethyl ether section, and the Discussion. For Modules 5 and 6.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "bayly1993": {
+  "read": "full",
+  "annotation": "Introduces RESP: a hyperbolic restraint on non-hydrogen charges (weights 0.0005 and 0.001) and a two-stage fit that makes electrostatic-potential charges less conformation-dependent while keeping the polar region accurate.",
+  "read_guide": "Introduction (why buried charges fail), the Methods equations 5 to 13, the model 3 and two-stage paragraphs, and Tables V and X. For Module 6.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "cornell1995": {
+  "read": "full",
+  "annotation": "The second-generation AMBER force field: RESP charges at 6-31G*, Lennard-Jones fitted to liquids, 1-4 factors 1/1.2 (Coulomb) and 1/2 (van der Waals), minimalist dihedrals plus fitted phi and psi terms.",
+  "read_guide": "General Description of the Model (Eq. 1), the dihedral, van der Waals and electrostatic sections, and the Discussion with Table 13. For Modules 5 and 6.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "jorgensen1996": {
+  "read": "full",
+  "annotation": "The original OPLS-AA paper: torsions fitted to RHF/6-31G* scans, charges and Lennard-Jones terms tuned on 34 simulated pure liquids to match heats of vaporisation and densities, with 1,4 factors of one half.",
+  "read_guide": "Computational Methods (Eqs. 1 to 5) and Fitting Procedures for the form and torsion fitting; Liquid Properties for the liquid-based charge fitting. Goes with Modules 5 and 6.",
+  "n_checked": 16,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "mackerell1998": {
+  "read": "full",
+  "annotation": "The CHARMM22 all-atom protein force field: charges fitted to HF/6-31G(d) water complexes with TIP3P, Urey-Bradley and improper terms added for spectra, and phi and psi tuned against crystal simulations of myoglobin.",
+  "read_guide": "Section II (Eq. 1, 1-4 treatment, water model choice, charge fitting with the 1.16 scale factor) and Section IV.a.1 on phi and psi tuning with Tables 5 to 7. Goes with Modules 5 and 6.",
+  "n_checked": 23,
+  "n_wrong": 0,
+  "n_imprecise": 4
+ },
+ "ponder2003": {
+  "read": "full",
+  "annotation": "A 2003 review of Class I protein force fields: how Amber, CHARMM and OPLS charges and torsions were derived, what fixed point charges cannot do, polarizable models, and continuum solvent including generalized Born.",
+  "read_guide": "Section II A to C (pp. 30-39) for fitting of charges, Lennard-Jones and torsions; Table III and Fig. 5 for force-field disagreement; Section III A, D and Table IV for polarization (Modules 5 and 6); Section IV B for generalized Born (Module 15).",
+  "n_checked": 32,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "oostenbrink2004": {
+  "read": "full",
+  "annotation": "Describes the GROMOS functional form and derives 53A5 and 53A6 by fitting liquids and cyclohexane solvation, then re-tuning only the charges to hydration free enthalpies, because one charge set cannot serve both phases.",
+  "read_guide": "Functional Form (Eqs. 8 to 19) and the Results and Discussion section on why 53A5 and 53A6 differ, for Modules 5 and 6.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "wang2004": {
+  "read": "full",
+  "annotation": "GAFF assigns 35 basic and 22 special atom types from structure, reuses Amber Lennard-Jones values, computes force constants by formulas, uses RESP or AM1-BCC charges and fits torsions last to QM scans; tested only in gas phase.",
+  "read_guide": "Generation of Parameters (atom types, charges, Eqs. 2 to 6, torsion strategy) and the Summary, for Modules 6 and 13; skip the long tables.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "nerenberg2018": {
+  "read": "full",
+  "annotation": "A 2018 review of fixed-charge and polarisable force fields that diagnoses over-compact disordered proteins and unfavourable amino-acid hydration, and lists the torsion, water, charge and Bayesian fixes then under way.",
+  "read_guide": "Protein force fields (with Figure 1 on histatin 5) and Small molecule force fields, for Module 6; Future directions for Module 17.",
+  "n_checked": 16,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "jorgensen1983": {
+  "read": "full",
+  "annotation": "Monte Carlo comparison of six rigid water models at 25 C and 1 atm, giving the TIP3P and TIP4P parameters and showing that 3-site models lose structure beyond the first shell.",
+  "read_guide": "Section II with Tables I and II, Table III (density, energy, compressibility) and Section IV.C on g_OO, for Module 6.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "berendsen1987": {
+  "read": "full",
+  "annotation": "Shows that effective pair potentials omit the self-energy of induced dipoles, derives E_pol = (mu - mu0)^2 / 2 alpha and refits SPC to get SPC/E, improving density and diffusion.",
+  "read_guide": "Equations 13 to 17 and page 3 (Table I, SPC/E definition) for the missing-term box in Module 6.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "kirkwood1935": {
+  "read": "full",
+  "annotation": "Introduces coupling parameters that switch one molecule's interactions on, giving the chemical potential as an integral over the mean interaction energy, and defines the potential of mean force with its mean-force property.",
+  "read_guide": "Section II, Eqs. 7-22 and 26-28 (printed pages 301-304); skip Sections IV-V. Goes with Module 13 (thermodynamic integration) and Modules 3 and 12 (potential of mean force).",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "zwanzig1954": {
+  "read": "full",
+  "annotation": "Derives the exact identity exp(-beta Delta A) = <exp(-beta Delta U)> over the reference ensemble and its high-temperature cumulant series, then applies the first-order term to argon and nitrogen.",
+  "read_guide": "Section II, Eqs. 2-16 (printed pages 1421-1422): the identity and the cumulant expansion; skip the rest. Goes with Module 13 (free-energy perturbation).",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "bennett1976": {
+  "read": "full",
+  "annotation": "Derives the optimal two-ensemble acceptance ratio estimator with a Fermi function and a self-consistent shift, shows it beats one-sided perturbation by large factors, and adds an interpolation method for poor overlap.",
+  "read_guide": "Section II (Eqs. 2-12) for the BAR estimator and Section IV (Eqs. 22-24) for its relation to perturbation, the Gibbs-Bogoliubov bound and integration. Goes with Module 13 (BAR) and Module 12 (MBAR).",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "torrie1977": {
+  "read": "full",
+  "annotation": "Introduces umbrella sampling: Monte Carlo with an arbitrary weight on the energy difference, exact reweighting to unbiased averages, and overlapping runs, tested by computing Lennard-Jones free energies.",
+  "read_guide": "Section 2 (Eqs. 1-7, pages 188-190), the trial-and-error weights discussion (page 198) and the block-error remark (page 197). Goes with Module 12 (umbrella sampling and unbiasing).",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "flyvbjerg1989": {
+  "read": "full",
+  "annotation": "Original description of blocking: repeatedly halving a correlated series leaves the mean and its variance unchanged and makes the naive error estimate rise to a plateau, giving the true error with a known uncertainty.",
+  "read_guide": "Sections II to IV (Eqs. 5, 14, 20-28), then Sec. VII with Figs. 2-4 and Sec. VIII with Table I, for Module 11.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "beutler1994": {
+  "read": "full",
+  "annotation": "Introduces soft-core Lennard-Jones and Coulomb potentials for creating or removing atoms: a squared lambda shift in the denominator removes the divergence of the lambda derivative and the MD time-step instability.",
+  "read_guide": "Section 2 (Fig. 1), Section 3 (Eqs. 7-8), Section 4 (Eq. 9, Figs. 2-3) and Appendix A (n >= 4 criterion), for Module 13.",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "hess2000": {
+  "read": "full",
+  "annotation": "Proves that PCA of high-dimensional random diffusion gives cosine components with eigenvalues falling as 1/k^2, so short protein simulations give cosine-like leading modes that reflect poor sampling, not collective motion.",
+  "read_guide": "Analysis of random diffusion (Eqs. 1-27), Validation (Figs. 1-4), the OMPf and HPr examples and the Discussion, for Module 11.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "hess2002": {
+  "read": "full",
+  "annotation": "Defines the cosine content and a covariance-matrix overlap, tests them on 40 ns protein runs and a harmonic diffusion model, and concludes that cosine content is only a negative indicator of convergence.",
+  "read_guide": "Section II (Eqs. 1-12, Fig. 8), Section V (Figs. 10-11) and the Discussion, for Module 11.",
+  "n_checked": 4,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "boresch2003": {
+  "read": "full",
+  "annotation": "Derives the exact analytic free energy of releasing six harmonic restraints (one distance, two angles, three dihedrals), enabling converged double-decoupling binding free energies with a defined standard state, and tests it on lysozyme and tyrosine models.",
+  "read_guide": "Section 2.1 (eq 7-14, Figure 2) and Section 2.2 (eq 26-32), then Table 5 and Section 5.3 on the restraint free energy versus entropy loss. For Module 13.",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "yeh2004": {
+  "read": "full",
+  "annotation": "Shows that periodic images make simulated diffusion coefficients too small by an amount proportional to 1/L, derives the correction 2.837 kT/(6 pi eta L) for cubic boxes and verifies it on water and simple fluids.",
+  "read_guide": "Section II (eq 9-12 and the extrapolation advice), Section III with Table 1 and Figure 2, and the electrostatic caveat in the conclusions. For Module 11.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "sugita1999": {
+  "read": "full",
+  "annotation": "The original molecular dynamics version of temperature replica exchange: velocity rescaling by the square root of the temperature ratio, Metropolis swaps on potential energy, tested on gas-phase Met-enkephalin with 8 replicas and reweighting.",
+  "read_guide": "Section 2 (Eqs. 5-17: permutation labels, momentum rescaling, acceptance criterion) and Section 3 (Table 1, the three checks for a good ladder, Figs. 3 and 5) for module 14.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "isralewitz2001": {
+  "read": "full",
+  "annotation": "Review of steered MD in the context of AFM force spectroscopy: pulling protocols (moving spring, constant force), avidin-biotin and titin I27 case studies, and nonequilibrium analysis by Jarzynski and PMF reconstruction.",
+  "read_guide": "Pages 4-6 (variations of steering forces, analysis of SMD) for module 14 steered MD; Fig. 1 and the avidin-biotin section for the loading-rate idea; the 41 pN = 1 kBT remark on page 1.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "taketomi1975": {
+  "read": "full",
+  "annotation": "The founding structure-based model: a 49-unit chain on a square lattice where only native-contact pairs attract, sampled by Metropolis Monte Carlo, showing that specific interactions make folding all-or-none.",
+  "read_guide": "Section I (three specificities, Fig. 1) and Section III (Figs. 6, 8, 11, case B). Module 15, structure-based models.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "ermak1978": {
+  "read": "full",
+  "annotation": "Derives the Brownian dynamics step from the Fokker-Planck and Langevin equations, with diffusion tensor, drift term and correlated noise for hydrodynamic interactions, tested on dimers and trimers.",
+  "read_guide": "Sections II and III (Eqs. 2 to 5, 14) for the overdamped step and noise; Section IV (Eqs. 15 to 20) for hydrodynamics. Modules 8 and 15.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "still1990": {
+  "read": "full",
+  "annotation": "Defines the GB/SA continuum model for molecular mechanics: Born plus Coulomb interpolated by f_GB, numerically computed Born radii and a surface-area term, validated against free energy perturbation.",
+  "read_guide": "The whole two-page communication: Eqs. 3 to 5, the f_GB limits paragraph, Table I. Module 15, implicit solvent.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "miyazawa1996": {
+  "read": "full",
+  "annotation": "Re-derives residue-pair contact energies from 1168 crystal structures with a lattice quasi-chemical model, adds a repulsive packing term, and shows the combination ranks native folds lowest in threading.",
+  "read_guide": "Methods (Eqs. 14 to 31) and Table 3; Discussion on units and potentials of mean force. Module 15, statistical contact potentials.",
+  "n_checked": 6,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "clementi2000": {
+  "read": "full",
+  "annotation": "Introduces the C-alpha Go Hamiltonian with 12-10 native contacts and shows that on five small proteins native topology alone reproduces experimental transition states and most intermediates, but not barrier heights.",
+  "read_guide": "Appendix (Eq. A1, parameters, contact definition, WHAM); phi-value Eqs 1-5; CI2, SH3 and CheY results (Figs 1, 2, 9, 10). For Module 15.",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 5
+ },
+ "onufriev2004": {
+  "read": "full",
+  "annotation": "Replaces the Hawkins-Cramer-Truhlar effective Born radius with a tanh-rescaled burial function (GB-OBC, two parameter sets), removing most of the bias of GB toward compact native structures relative to Poisson-Boltzmann.",
+  "read_guide": "Eqs 1-8, Figs 1-3 and Table I, then Methods on protocol and parameter sets. For Module 15.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "hanggi1990": {
+  "read": "part",
+  "annotation": "Authoritative review of reaction-rate theory: transition-state theory, Kramers' rates at weak, moderate and strong friction, the turnover, Grote-Hynes memory friction, mean first-passage times and reactive-flux numerics, with all prefactors derived.",
+  "read_guide": "Sections III.A, III.C, IV.A to IV.E, IV.G, VI.A, VI.B and X (journal pp. 261 to 274, 278, 286 to 289, 323 to 324) for Module 16; Section VII.C.1 for the first-passage exercises.",
+  "n_checked": 22,
+  "n_wrong": 0,
+  "n_imprecise": 6
+ },
+ "behler2007": {
+  "read": "full",
+  "annotation": "Introduces the atom-by-atom neural-network potential: symmetry functions describe each atom's neighbourhood within a cutoff, identical subnets give atomic energies that sum to the total, demonstrated on bulk silicon against DFT.",
+  "read_guide": "Whole 4-page Letter: Eqs. 2-5 (atomic energy sum, cutoff, radial and angular symmetry functions) and the silicon results on page 3-4; goes with Module 17.",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "jo2008": {
+  "read": "full",
+  "annotation": "Describes the first web interface that builds CHARMM inputs: PDB reading, solvation and ions, a standard equilibration setup, membranes, Poisson-Boltzmann and implicit solvent modules, with its default settings.",
+  "read_guide": "PDB Reader, Solvator (Eq. 1 for ion numbers) and Quick MD Simulator sections, pages 2-4; goes with Module 10 (setup) and Module 7 (PME settings).",
+  "n_checked": 5,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "abraham2015": {
+  "read": "full",
+  "annotation": "Software paper for GROMACS 5: simulation capabilities, cluster-pair Verlet lists, SIMD and GPU offload, domain decomposition, triclinic boxes, Lennard-Jones PME, with benchmarks on membrane proteins.",
+  "read_guide": "Sections 2 (capabilities), 3 (Verlet scheme, boxes, PME) and 5 with Figs. 5-6; goes with Modules 7, 9 and 10.",
+  "n_checked": 16,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "thompson2022": {
+  "read": "part",
+  "annotation": "Overview of LAMMPS for materials: spatial decomposition, neighbour lists, PPPM, flexible style-based design, GPU and scaling results, many-body, coarse-grained and machine-learned potentials, units and multi-replica methods.",
+  "read_guide": "Sections 3.3 and 3.4 (neighbour lists, PPPM), 6.3 (machine-learned potentials), 6.6 and 6.7 (replica methods, PLUMED, unit styles); goes with Modules 7, 14 and 17.",
+  "n_checked": 7,
+  "n_wrong": 0,
+  "n_imprecise": 0
+ },
+ "horn2004": {
+  "read": "full",
+  "annotation": "TIP4P-Ew re-fits TIP4P to density and enthalpy of vaporisation over 235 to 400 K with Ewald electrostatics, shows a density maximum near 274 K, and documents the vaporisation corrections.",
+  "read_guide": "Methods A-D and E.4 (Eqs. 19-26), Tables I, V, VI for Module 6; Appendix for the virtual M site in Module 9.",
+  "n_checked": 10,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "abascal2005": {
+  "read": "full",
+  "annotation": "TIP4P/2005 refits the TIP4P form to the density maximum, ice densities and ice III stability, and shows the trade-off with melting point and dielectric constant.",
+  "read_guide": "Sec. III B, Tables I to III, Sec. IV G and Conclusions for Module 6 water models.",
+  "n_checked": 12,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "darve2001": {
+  "read": "full",
+  "annotation": "Derives the exact free-energy derivative as the mean instantaneous force plus a geometric term, in constrained or free runs, and names the adaptive force method that grew into ABF.",
+  "read_guide": "Introduction, Eq. 11 and Eq. 35 with discussion, and the Discussion section (journal page 9178) for the adaptive force idea. Goes with Module 14, and Modules 3 and 12.",
+  "n_checked": 8,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "hamelberg2004": {
+  "read": "full",
+  "annotation": "Introduces the smooth boost (E - V)^2/(alpha + E - V) below a threshold, reweights by exp(beta dV), and tests it on alanine peptides in implicit solvent with the boost on dihedral terms only.",
+  "read_guide": "Theory (Eq. 1 to 10, Fig. 2 and 3), parameter advice alpha near E - V_min, and the dihedral-only version (Eq. 12 to 14). Goes with Module 14.",
+  "n_checked": 9,
+  "n_wrong": 0,
+  "n_imprecise": 2
+ },
+ "noid2008": {
+  "read": "full",
+  "annotation": "Defines consistency between atomistic and coarse-grained ensembles, shows the exact CG potential is the many-body potential of mean force, and proves that force matching minimises a functional uniquely minimised by its mean force.",
+  "read_guide": "Section II D-E (Eqs. 18-28), Section III A (Eqs. 33-39) and the seven-step recipe in Section IV; for Module 15 and Modules 17-18.",
+  "n_checked": 11,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "shell2008": {
+  "read": "full",
+  "annotation": "Shows that the relative entropy between a target and a model ensemble is a log-likelihood measure whose minimum, for a coarse-grained model, is the projected free energy surface, and gives update rules for parameters.",
+  "read_guide": "Sections II and III (Eqs. 1-12, 16-17, 21-22); the water case study can be skipped; for the relative-entropy bullet of Module 15.",
+  "n_checked": 3,
+  "n_wrong": 0,
+  "n_imprecise": 1
+ },
+ "noid2013": {
+  "read": "full",
+  "annotation": "A 2013 survey of top-down, native-structure-based and bottom-up coarse-graining, built around the many-body potential of mean force, with the open problems of mapping, representability and transferability.",
+  "read_guide": "Sections III and V (philosophies, PMF), VII A-B (Boltzmann inversion, relative entropy, MS-CG) and IX D-E (representability, transferability); for Module 15.",
+  "n_checked": 13,
+  "n_wrong": 0,
+  "n_imprecise": 3
+ },
+ "prinz2011": {
+  "read": "full",
+  "annotation": "Reviews Markov state models of molecular kinetics: transfer operator spectrum, an error bound showing non-metastable states near barriers help, a reversible estimator, uncertainties, and the Chapman-Kolmogorov validation test.",
+  "read_guide": "Sec. II B (Eqs. 5-19, implied time scales), Sec. III C-E (error bound, Figs. 5-8), Sec. IV D-F (Eq. 53, Algorithm 1, Chapman-Kolmogorov test Eqs. 60-65) for Module 16.",
+  "n_checked": 23,
+  "n_wrong": 0,
+  "n_imprecise": 6
  }
 }
