@@ -35,6 +35,8 @@ Fixing the bond lengths removes them and allows 2 fs: twice the simulation for t
 
 ## Constrained equations of motion
 
+<div data-videos="N2Lf-U8aIgM -6QUI57indo"></div>
+
 A bond constraint between atoms $i$ and $j$ is a **holonomic constraint**, an equation between coordinates:
 
 $$
@@ -51,7 +53,9 @@ $\mathbf G_i$ is the **constraint force**. For a bond constraint $\nabla_i\sigma
 
 ## SHAKE
 
-Ryckaert, Ciccotti and Berendsen (1977). Take a normal, unconstrained Verlet step to positions $\mathbf r'$, then add the displacement caused by the constraint forces, which are evaluated along the bond directions at the *start* of the step:
+<div data-videos="9Vj7h1TJePw --zH0AJjVqk _zwgPkBeO_I"></div>
+
+[Ryckaert, Ciccotti and Berendsen (1977)](cite:ryckaert1977). Take a normal, unconstrained Verlet step to positions $\mathbf r'$, then add the displacement caused by the constraint forces, which are evaluated along the bond directions at the *start* of the step:
 
 $$
 \mathbf r_i(t+\Delta t) = \mathbf r_i' - \frac{\Delta t^2}{m_i}\sum_k\lambda_k\,\nabla_i\sigma_k\big(\mathbf r(t)\big).
@@ -78,15 +82,17 @@ $$
 
 **Many constraints.** Atoms share constraints (a CH$_3$ group has three), so the equations are coupled. SHAKE treats them one at a time: apply the single-constraint correction to each in turn, and sweep through the list repeatedly until every bond length is within a relative tolerance (typically $10^{-4}$ to $10^{-8}$) of its target. This is a Gauss-Seidel iteration. It is simple and general, but its sequential nature makes it awkward to parallelise, and convergence slows when many constraints are coupled.
 
-**RATTLE** (Andersen 1983) is the version for velocity Verlet. It also removes the component of the velocities along each bond, enforcing the time derivative of the constraint, $\dot\sigma_k = 2\,\mathbf r_{ij}\cdot\mathbf v_{ij} = 0$, so that positions and velocities are both consistent at each step.
+**RATTLE** ([Andersen 1983](cite:andersen1983)) is the version for velocity Verlet. It also removes the component of the velocities along each bond, enforcing the time derivative of the constraint, $\dot\sigma_k = 2\,\mathbf r_{ij}\cdot\mathbf v_{ij} = 0$, so that positions and velocities are both consistent at each step.
 
 ## SETTLE
 
-For a rigid three-site water molecule there are exactly three constraints on three atoms, and the problem can be solved analytically: Miyamoto and Kollman (1992) find the rotated position of the rigid triangle directly. No iteration and no tolerance. Since most atoms in a simulation are water, every major code uses SETTLE or an equivalent for water and a general algorithm for the solute.
+<div data-videos="fueOYcMgFfQ"></div>
+
+For a rigid three-site water molecule there are exactly three constraints on three atoms, and the problem can be solved analytically: [Miyamoto and Kollman (1992)](cite:miyamoto1992) find the rotated position of the rigid triangle directly. No iteration and no tolerance. Since most atoms in a simulation are water, every major code uses SETTLE or an equivalent for water and a general algorithm for the solute.
 
 ## LINCS
 
-Hess, Bekker, Berendsen and Fraaije (1997); the default for non-water constraints in GROMACS. Write all constraints at once in matrix form. With $\mathbf B$ the matrix of normalised bond directions at time $t$ and $\mathbf M$ the diagonal mass matrix, the constrained positions are a projection of the unconstrained ones:
+[Hess, Bekker, Berendsen and Fraaije (1997)](cite:hess1997); the default for non-water constraints in GROMACS. Write all constraints at once in matrix form. With $\mathbf B$ the matrix of normalised bond directions at time $t$ and $\mathbf M$ the diagonal mass matrix, the constrained positions are a projection of the unconstrained ones:
 
 $$
 \mathbf r(t+\Delta t) = \mathbf r' - \mathbf M^{-1}\mathbf B^{T}\left(\mathbf B\mathbf M^{-1}\mathbf B^{T}\right)^{-1}\left(\mathbf B\mathbf r' - \mathbf d\right).
@@ -101,6 +107,8 @@ $$
 truncated after a few terms (`lincs-order = 4`). Because the projection uses the old bond directions, the new bonds come out slightly too long after rotation. A final correction step fixes the length (`lincs-iter = 1`).
 
 LINCS is non-iterative, fast and easy to parallelise (P-LINCS). The series only converges when the eigenvalues of $\mathbf A$ are below 1, which holds for bond constraints in molecules but **not** for coupled angle constraints, so LINCS cannot be used for rigid triangles other than through special handling. When a simulation becomes unstable, the first symptom in GROMACS is usually a "LINCS warning": a bond has rotated by more than 30° in one step. The constraint algorithm is reporting the problem, and is rarely the cause. Look for bad contacts, a time step that is too large, or a system that was not equilibrated.
+
+<div class="widget" data-widget="shake"></div>
 
 ## Consequences for the statistics
 
@@ -124,7 +132,7 @@ After constraining bonds to hydrogen, the fastest remaining motions involve hydr
 
 Increase the mass of each hydrogen (for example from 1 to 3 or 4 u) and subtract the same amount from the heavy atom it is bonded to. The total mass of every group is unchanged. Frequencies of hydrogen motions fall by $\sqrt{m_H'/m_H}$, a factor of up to 2, which allows $\Delta t$ = 4 fs with bonds to hydrogen constrained.
 
-Why it is legitimate: the equilibrium distribution of positions does not depend on masses (Module 3), so thermodynamics is unchanged. Dynamics are slightly altered, mainly rates that involve the light atoms. Hopkins et al. (2015) validated it for proteins. Water is usually not repartitioned, because it is rigid already and changing its hydrogen masses would change its rotational dynamics and viscosity.
+Why it is legitimate: without constraints the equilibrium distribution of positions does not depend on masses at all (Module 3), and with bond constraints the only mass dependence is the small metric-tensor factor mentioned above, which is negligible for bonds to hydrogen. Thermodynamics is therefore unchanged to an excellent approximation. Dynamics are slightly altered, mainly rates that involve the light atoms. [Hopkins et al. (2015)](cite:hopkins2015) validated it for proteins. Water is usually not repartitioned, because it is rigid already and changing its hydrogen masses would change its rotational dynamics and viscosity.
 
 ### Virtual sites
 
@@ -141,7 +149,7 @@ It is parallel to $\nabla\sigma$, and the constraint $\sigma=0$ for all time imp
 </details>
 
 <details markdown="1"><summary>3. Does hydrogen mass repartitioning change the free energy difference between two conformations?</summary>
-No. Configurational free energies depend only on $U(\mathbf r)$. Only kinetic quantities such as rates and diffusion constants change.
+No, to an excellent approximation. Without constraints, configurational free energies depend only on $U(\mathbf r)$. With bond constraints a small mass-dependent factor (the Fixman determinant) appears, which is negligible for bonds to hydrogen. Only kinetic quantities such as rates and diffusion constants change appreciably.
 </details>
 
 <details markdown="1"><summary>4. GROMACS prints LINCS warnings and then crashes at step 12 of the first NVT run. What do you do?</summary>

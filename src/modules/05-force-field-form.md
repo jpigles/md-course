@@ -26,6 +26,8 @@ tags: force-fields
 
 ## The functional form
 
+<div data-videos="OBg5wtvNuv4 1oQlCIUm0Bo 8oZSa0zlnIc vpqo0q3zvJU MK5BrpgUMUM L2qEWQb11oc"></div>
+
 A classical (Class I, additive) force field writes the potential energy as a sum of simple terms:
 
 $$
@@ -46,6 +48,8 @@ The first four sums are the **bonded** terms. They run over lists that are fixed
 
 ## Bond stretching
 
+<div data-videos="7yEGYWIqSdU"></div>
+
 $$
 U_b = \tfrac12 k_b\,(r-r_0)^2
 $$
@@ -64,6 +68,8 @@ Bonds fluctuate by about 2 % of their length. They carry almost no conformationa
 
 ## Angle bending
 
+<div data-videos="baRZYahRmSc"></div>
+
 $$
 U_\theta = \tfrac12 k_\theta\,(\theta-\theta_0)^2
 $$
@@ -71,6 +77,8 @@ $$
 Typical $k_\theta$ is 300 to 700 kJ mol$^{-1}$ rad$^{-2}$, giving fluctuations of $\sqrt{2.494/500} \approx 0.07$ rad, about 4°. CHARMM adds a **Urey-Bradley** term, a harmonic spring between atoms 1 and 3 of the angle, to improve vibrational spectra. GROMOS uses a harmonic function of $\cos\theta$, which is cheaper and avoids a singularity at 180°.
 
 ## Torsions (proper dihedrals)
+
+<div data-videos="H-NiSB-2bmo KmuYjxL0Kfw fst8oSeAQ98"></div>
 
 The dihedral angle $\phi$ of four bonded atoms i-j-k-l is the angle between the planes (i,j,k) and (j,k,l). Rotation about the central bond is periodic, so the energy is a short Fourier series:
 
@@ -99,6 +107,8 @@ An improper keeps four atoms in a plane (the peptide bond, aromatic rings, carbo
 
 ## Lennard-Jones: repulsion and dispersion
 
+<div data-videos="D3kHLAj8ozI EuwL12-5pXY keXmqiGN1Qc zNiUrSxZdsQ"></div>
+
 $$
 U_{LJ}(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^{6}\right]
 = \frac{C_{12}}{r^{12}}-\frac{C_6}{r^6},\qquad C_6 = 4\varepsilon\sigma^6,\; C_{12} = 4\varepsilon\sigma^{12}.
@@ -120,11 +130,13 @@ Force fields store $\sigma_i$ and $\varepsilon_i$ per atom type and build pair p
 | Lorentz-Berthelot | $\tfrac12(\sigma_i+\sigma_j)$ | $\sqrt{\varepsilon_i\varepsilon_j}$ | AMBER, CHARMM |
 | Geometric | $\sqrt{\sigma_i\sigma_j}$ | $\sqrt{\varepsilon_i\varepsilon_j}$ | OPLS, GROMOS (on $C_6$, $C_{12}$) |
 
-The rules are approximations. Where they fail badly, force fields override them for specific pairs (**NBFIX** in CHARMM, for example for ion-carboxylate pairs).
+The rules are approximations. Where they fail badly, force fields override them for specific pairs (**NBFIX** in CHARMM, for example for ions with carboxylates and, in CHARMM36m, for arginine with carboxylates).
 
 <div class="widget" data-widget="lj"></div>
 
 ## Electrostatics
+
+<div data-videos="_CElNDa1hoI ZdZXckzHktM 5z8IWRDqgy8"></div>
 
 $$
 U_C = \frac{q_iq_j}{4\pi\varepsilon_0\,r_{ij}} = 138.935\ \frac{q_iq_j}{r_{ij}}\ \text{kJ/mol}\quad(q \text{ in } e,\ r \text{ in nm}).
@@ -154,6 +166,8 @@ The torsion parameters are fitted together with a particular 1-4 scaling. This i
 
 ## From energy to force
 
+<div data-videos="BnT6Onll1eQ"></div>
+
 MD needs $\mathbf F_i = -\partial U/\partial\mathbf r_i$ for every term. For any term that depends on the distance between two atoms (bonds, Lennard-Jones, Coulomb), Module 2 gave
 
 $$
@@ -168,7 +182,7 @@ $$
 \mathbf F_i = \frac{24\varepsilon}{r^2}\left[2\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]\mathbf r_{ij}.
 $$
 
-Only $r^2$ appears, never $r$ itself, so no square root is needed. This is the real reason for the 12-6 form. For Coulomb, $\mathbf F_i = 138.935\,q_iq_j\,\mathbf r_{ij}/r^3$.
+Only even powers of $r$ appear, so the Lennard-Jones term on its own needs no square root, which was a real saving in early codes. (In a biomolecular simulation the Coulomb term for the same pair needs $r$ anyway.) For Coulomb, $\mathbf F_i = 138.935\,q_iq_j\,\mathbf r_{ij}/r^3$.
 
 For angles and dihedrals, use the chain rule through the internal coordinate, $\mathbf F_i = -\dfrac{dU}{d\theta}\dfrac{\partial\theta}{\partial\mathbf r_i}$. For an angle i-j-k with $\cos\theta = \hat{\mathbf r}_{ji}\cdot\hat{\mathbf r}_{jk}$,
 
@@ -185,14 +199,16 @@ with the analogous expression for $k$, and $\mathbf F_j = -\mathbf F_i-\mathbf F
 
 ## How many terms?
 
-For a protein in water with $N$ atoms there are about $N$ bonds, $2N$ angles and $3N$ dihedrals, all cheap. The non-bonded sum has $N(N-1)/2$ pairs, about $5\times10^9$ for 100,000 atoms. Reducing that to the roughly $2\times10^7$ pairs inside a cutoff, while still treating the long-range part correctly, is the subject of Module 7.
+A protein with $N_p$ atoms has about $N_p$ bonds, $2N_p$ angles and $3N_p$ dihedrals, all cheap (rigid water adds none). The non-bonded sum over a solvated system of $N$ atoms has $N(N-1)/2$ pairs, about $5\times10^9$ for 100,000 atoms. Reducing that to the roughly $2\times10^7$ pairs inside a cutoff, while still treating the long-range part correctly, is the subject of Module 7.
 
 ## What this model leaves out
 
-- **Electronic polarisation.** Charges are fixed, so a molecule has the same charge distribution in water, in a protein interior and at a membrane. Force fields compensate on average by using charges that are larger than in the gas phase. The water models have dipole moments of 2.2 to 2.4 D, against 1.85 D for an isolated water molecule. Polarizable force fields (Module 6) address this at higher cost.
+<div data-videos="nO4c0CfZx3k"></div>
+
+- **Electronic polarisation.** Charges are fixed, so a molecule has the same charge distribution in water, in a protein interior and at a membrane. Force fields compensate on average by using charges that are larger than in the gas phase. The common rigid water models have dipole moments of about 2.2 to 2.5 D (SPC 2.27, TIP3P and SPC/E 2.35, OPC 2.48 D), against 1.85 D for an isolated water molecule. Polarizable force fields (Module 6) address this at higher cost.
 - **Charge transfer and bond breaking.** No chemistry.
 - **Many-body dispersion and anisotropy.** Atom-centred charges cannot represent lone pairs, $\pi$ clouds or $\sigma$-holes (halogen bonds) unless extra sites are added.
-- **Coupling between terms.** Class II force fields (for materials) add cross terms such as bond-angle coupling. Biomolecular force fields mostly do not.
+- **Coupling between terms.** Class II force fields (for materials) add cross terms such as bond-angle coupling. Biomolecular force fields mostly do not (the polarizable AMOEBA force field, which has a bond-angle cross term and anharmonic bonds, is an exception).
 
 Each omission is absorbed, as far as possible, into the fitted parameters. That makes the parameters **effective**: they work as a set, in the conditions they were fitted for.
 

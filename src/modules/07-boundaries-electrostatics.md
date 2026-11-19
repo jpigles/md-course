@@ -26,9 +26,13 @@ tags: pbc-cutoffs, electrostatics-ewald
 
 ## Periodic boundary conditions
 
+<div data-videos="gVVqjmTAJGI x20QP1x3U7c J3aB9xp1YIE Wbzopzywt-Q IpdTtx98AWQ"></div>
+
 A simulation box holds $10^4$ to $10^6$ atoms. If it had walls, a large fraction of the molecules would sit at a surface: in a cube of 10,000 water molecules about a quarter are in the outermost molecular layer. To imitate bulk solution we remove the surface by making the box **periodic**: it is surrounded by an infinite lattice of identical copies. A particle that leaves through one face enters through the opposite face with the same velocity.
 
 ### The minimum-image convention
+
+<div data-videos="pzM7ju9DNtM AbidqaoH7Wo"></div>
 
 Each particle interacts with the **nearest image** of every other particle. For a rectangular box with edges $L_x,L_y,L_z$:
 
@@ -64,6 +68,8 @@ Periodicity does have artefacts: no fluctuation with a wavelength longer than th
 
 ## Cutting off short-range interactions
 
+<div data-videos="JQPHMpR37Co y-jUCgk4rCI hi7gvv-I-0o"></div>
+
 The Lennard-Jones attraction falls as $r^{-6}$, fast enough to truncate at $r_c$ = 0.9 to 1.2 nm. Three issues arise.
 
 **1. The jump at the cutoff.** Plain truncation makes $U$ discontinuous at $r_c$, so the force has a delta-function spike and energy is not conserved. Remedies:
@@ -84,10 +90,12 @@ There is a matching correction to the pressure. It is negative (the missing attr
 
 ### Neighbour lists
 
-- **Verlet list.** For each atom keep a list of all atoms within $r_l = r_c + \delta$, where $\delta$ is the "skin" or buffer. Use the list for many steps. It stays valid until some atom has moved more than $\delta/2$, because only then can a pair that was outside $r_l$ come inside $r_c$.
+<div data-videos="OURKkL8XqDo"></div>
+
+- **Verlet list.** For each atom keep a list of all atoms within $r_l = r_c + \delta$, where $\delta$ is the "skin" or buffer. Use the list for many steps. It is guaranteed to stay valid until some atom has moved more than $\delta/2$, because only then can a pair that was outside $r_l$ come inside $r_c$.
 - **Cell list.** Divide the box into cells of edge at least $r_l$. Neighbours of an atom can only be in its own cell or the 26 around it. Building the Verlet list this way costs $O(N)$.
 
-Modern codes combine both, group atoms into small spatial clusters so that SIMD instructions or a GPU can process them together, and choose the buffer automatically from the temperature and the allowed energy drift (GROMACS: `verlet-buffer-tolerance`). You rarely set this by hand, but you should recognise that a too-small buffer or too-infrequent update shows up as energy drift.
+Modern codes build on these ideas. GROMACS sorts the atoms on a grid into small clusters of fixed size and keeps a buffered list of cluster pairs, so that SIMD instructions or a GPU can process whole clusters together ([Páll and Hess 2013](cite:pall2013)). It chooses the buffer automatically from the temperature and the allowed energy drift (`verlet-buffer-tolerance`). You rarely set this by hand, but you should recognise that a too-small buffer or too-infrequent update shows up as energy drift.
 
 ## Why electrostatics cannot be cut off
 
@@ -96,6 +104,8 @@ The Coulomb energy falls as $1/r$, while the number of charges in a shell at dis
 Two approaches are used. **Reaction field** treats everything beyond the cutoff as a dielectric continuum (see the end of this module). **Ewald summation** computes the full periodic sum exactly, and is the standard for atomistic simulation.
 
 ## Ewald summation
+
+<div data-videos="SSmIMof0KvA DnOTgjUZxbE YPryFf7MQTg"></div>
 
 We want the electrostatic energy of $N$ charges in a box of volume $V$ with all periodic images $\mathbf n$ (in units where $1/4\pi\varepsilon_0=1$; multiply by 138.935 for kJ/mol with nm and $e$):
 
@@ -124,6 +134,8 @@ $$
 
 because $q\,\mathrm{erf}(\alpha r)/r$ is the potential of a Gaussian charge cloud.
 
+<div class="widget" data-widget="ewald"></div>
+
 **Real-space term.** The screened interaction, summed over pairs within the cutoff:
 
 $$
@@ -136,7 +148,7 @@ $$
 S(\mathbf k) = \sum_{j=1}^Nq_j\,e^{i\mathbf k\cdot\mathbf r_j},\qquad \mathbf k = 2\pi\left(\frac{n_x}{L_x},\frac{n_y}{L_y},\frac{n_z}{L_z}\right).
 $$
 
-Poisson's equation $\nabla^2\phi = -4\pi\rho$ is algebraic in Fourier space, $\tilde\phi(\mathbf k) = 4\pi\tilde\rho(\mathbf k)/k^2$. The energy $\tfrac12\int\rho\,\phi$ of the clouds then becomes
+Poisson's equation $\nabla^2\phi = -4\pi\rho$ is algebraic in Fourier space, $\tilde\phi(\mathbf k) = 4\pi\tilde\rho(\mathbf k)/k^2$, which gives the potential $\phi_G$ of the smooth clouds. The energy of the point charges in that potential, $\tfrac12\sum_iq_i\,\phi_G(\mathbf r_i)$, then becomes
 
 $$
 U_{recip} = \frac{2\pi}{V}\sum_{\mathbf k\neq0}\frac{e^{-k^2/4\alpha^2}}{k^2}\,\big|S(\mathbf k)\big|^2 .
@@ -144,7 +156,7 @@ $$
 
 The Gaussian factor makes the sum converge after a modest number of $\mathbf k$ vectors.
 
-**Self term.** The reciprocal sum includes the interaction of each Gaussian cloud with itself, which is not physical. Remove it:
+**Self term.** The reciprocal sum includes the interaction of each point charge with its own Gaussian cloud, which is not physical. Remove it:
 
 $$
 U_{self} = -\frac{\alpha}{\sqrt\pi}\sum_iq_i^2 .
@@ -162,7 +174,9 @@ The result does not depend on $\alpha$. A large $\alpha$ (narrow Gaussians) make
 
 ### Particle-mesh Ewald
 
-Computing $S(\mathbf k)$ directly costs $N$ operations for each of many $\mathbf k$ vectors. **PME** (Darden, York and Pedersen 1993; the smooth version by Essmann et al. 1995 is the one in use) replaces it:
+<div data-videos="VWsMUaA7UWw"></div>
+
+Computing $S(\mathbf k)$ directly costs $N$ operations for each of many $\mathbf k$ vectors. **PME** ([Darden, York and Pedersen 1993](cite:darden1993); the smooth version by [Essmann et al. 1995](cite:essmann1995) is the one in use) replaces it:
 
 1. Spread each charge onto a regular 3D grid using B-spline interpolation (order 4 touches $4^3=64$ grid points per charge).
 2. Fast Fourier transform the gridded charge density: $O(M\log M)$ for $M$ grid points.

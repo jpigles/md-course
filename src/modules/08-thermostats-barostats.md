@@ -26,6 +26,8 @@ tags: thermostats-barostats
 
 ## Why control temperature at all
 
+<div data-videos="5LALoxDs0ic"></div>
+
 Newtonian MD conserves energy and samples the microcanonical (NVE) ensemble. We usually want the canonical (NVT) or isothermal-isobaric (NPT) ensemble because:
 
 - experiments are done at fixed temperature and pressure;
@@ -40,11 +42,13 @@ $$
 
 ## Thermostats
 
+<div data-videos="l-uZaSvlycY ey1tv0yoyGc HiZ7gvtmDbk pCm2i6kQs4E X3K5A96-U4E"></div>
+
 ### Simple velocity scaling, and Berendsen
 
 The crudest method multiplies all velocities each step by $\lambda=\sqrt{T_0/T_{inst}}$. This fixes the kinetic energy exactly, which is the wrong distribution.
 
-The **Berendsen** thermostat (1984) relaxes the temperature towards the target with a time constant $\tau_T$, as if the system were weakly coupled to a bath:
+The **Berendsen** thermostat ([1984](cite:berendsen1984)) relaxes the temperature towards the target with a time constant $\tau_T$, as if the system were weakly coupled to a bath:
 
 $$
 \frac{dT}{dt} = \frac{T_0-T}{\tau_T}
@@ -52,23 +56,25 @@ $$
 \lambda^2 = 1+\frac{\Delta t}{\tau_T}\left(\frac{T_0}{T_{inst}}-1\right).
 $$
 
-It is stable and brings a system to the target temperature quickly and smoothly. It does **not** generate the canonical ensemble: it suppresses the fluctuations of the kinetic energy, and in doing so it slowly transfers energy from high-frequency internal motions into low-frequency ones. The extreme case is the "flying ice cube", where kinetic energy ends up in the translation of the whole system. Use it for equilibration only.
+It is stable and brings a system to the target temperature quickly and smoothly. It does **not** generate the canonical ensemble: it suppresses the fluctuations of the kinetic energy, and in doing so it slowly transfers energy from high-frequency internal motions into low-frequency ones. The extreme case is the "flying ice cube", where kinetic energy ends up in the translation of the whole system. If you use it at all, use it for equilibration only: current best-practice guides ([Braun et al. 2018](cite:braun2018)) recommend a thermostat that samples the correct ensemble even there.
 
 ### Stochastic velocity rescaling
 
-Bussi, Donadio and Parrinello (2007) kept the idea of a global rescaling but made the target kinetic energy itself a random variable with the correct canonical distribution. The kinetic energy follows
+[Bussi, Donadio and Parrinello (2007)](cite:bussi2007b) kept the idea of a global rescaling but made the target kinetic energy itself a random variable with the correct canonical distribution. The kinetic energy follows
 
 $$
 dK = \left(\bar K - K\right)\frac{dt}{\tau_T} + 2\sqrt{\frac{K\bar K}{N_{df}\,\tau_T}}\;dW,\qquad \bar K = \tfrac12N_{df}k_BT_0,
 $$
 
-where $dW$ is a Wiener noise. The first term is Berendsen. The second supplies exactly the fluctuations Berendsen removes. The result samples the canonical ensemble, has first-order (non-oscillating) relaxation, disturbs the dynamics very little because it acts on all velocities with one scale factor, and has a conserved energy-like quantity that can be monitored. This is `tcoupl = V-rescale` in GROMACS and a good default.
+where $dW$ is a Wiener noise. The first term is Berendsen. The second supplies exactly the fluctuations Berendsen removes. The result samples the canonical ensemble and has first-order (non-oscillating) relaxation. Because it acts on all velocities with one scale factor, it leaves constraints and the centre-of-mass motion untouched, and with a coupling time that is not too short (0.1 ps or more) it disturbs the dynamics very little. It also has an energy-like quantity that should stay nearly constant along a run: a drift in it means the time step is too large. This is `tcoupl = V-rescale` in GROMACS and a good default.
 
 ### Andersen
 
 At random times, with collision frequency $\nu$, a particle's velocity is replaced by a fresh draw from the Maxwell-Boltzmann distribution. This samples the canonical ensemble rigorously. The collisions decorrelate velocities, so diffusion and other dynamical properties are altered. It is useful when dynamics do not matter.
 
 ### Langevin dynamics
+
+<div data-videos="AzCzDYLimvc jonJHFcYTso"></div>
 
 Add a friction force and a random force to each particle:
 
@@ -131,7 +137,7 @@ $$
 
 So $e^{-\beta H}$ times a Gaussian in $\xi$ is stationary. The dynamics are smooth and time-reversible and conserve an extended energy.
 
-Two caveats. The proof shows the canonical density is *a* stationary state, not that the dynamics reach it: for small or stiff systems (a single harmonic oscillator is the textbook case) Nosé-Hoover is not ergodic. **Nosé-Hoover chains** (Martyna, Klein and Tuckerman 1992), where the thermostat variable is itself thermostatted by a second, and so on, fix this. And the temperature approaches its target with oscillations, so it is a poor choice for equilibrating a system that starts far from the target.
+Two caveats. The proof shows the canonical density is *a* stationary state, not that the dynamics reach it: for small or stiff systems (a single harmonic oscillator is the textbook case) Nosé-Hoover is not ergodic. **Nosé-Hoover chains** ([Martyna, Klein and Tuckerman 1992](cite:martyna1992)), where the thermostat variable is itself thermostatted by a second, and so on, fix this. And the temperature approaches its target with oscillations, so it is a poor choice for equilibrating a system that starts far from the target.
 
 ### Summary of thermostats
 
@@ -144,6 +150,8 @@ Two caveats. The proof shows the canonical density is *a* stationary state, not 
 | Nosé-Hoover (chains) | Yes | Little | Production of well-equilibrated systems |
 
 **Practical points.** Use $\tau_T$ of 0.1 to 1 ps for velocity rescaling and Nosé-Hoover, and $\gamma\approx1$ ps$^{-1}$ for Langevin in explicit solvent. Thermostat the protein and the solvent as separate groups only if each group is large; coupling very small groups separately creates artefacts. Remove centre-of-mass motion.
+
+<div class="widget" data-widget="thermostats"></div>
 
 ## Pressure
 
@@ -167,6 +175,8 @@ and a correct barostat must reproduce this.
 
 ## Barostats
 
+<div data-videos="rGOyUWV0fX0"></div>
+
 All barostats change the volume by scaling the box and the particle coordinates. They differ in how the scaling factor is determined.
 
 ### Berendsen
@@ -182,33 +192,33 @@ with coordinates and box edges scaled by $\mu$ each step. Robust and non-oscilla
 
 ### Extended-system barostats: Andersen, Parrinello-Rahman, MTTK
 
-Andersen (1980) made the volume a dynamical variable with a fictitious mass $W$ and a "kinetic energy", driven by the imbalance between internal and external pressure:
+[Andersen (1980)](cite:andersen1980) made the volume a dynamical variable with a fictitious mass $W$ and a "kinetic energy", driven by the imbalance between internal and external pressure:
 
 $$
 W\,\ddot V = P_{inst}-P_0 .
 $$
 
-Parrinello and Rahman (1981) generalised this to the full box matrix $\mathbf h$, so that the box can change shape as well as size, which is needed for crystals and membranes. Martyna, Tobias, Klein and Tuckerman corrected the equations so that they sample the exact NPT ensemble (MTTK). These methods are correct for a well-equilibrated system. Like Nosé-Hoover they are second-order: far from equilibrium the box oscillates and can become unstable. Do not start an NPT run with Parrinello-Rahman from an unequilibrated density.
+[Parrinello and Rahman (1981)](cite:parrinello1981) generalised this to the full box matrix $\mathbf h$, so that the box can change shape as well as size, which is needed for crystals and membranes. [Martyna, Tobias and Klein (1994)](cite:martyna1994), and later the same authors with Tuckerman (MTTK), derived extended-system equations that sample the exact NPT ensemble. Parrinello-Rahman, the form most used in GROMACS, gives correct averages for a well-equilibrated system, but its volume fluctuations are not guaranteed to be exactly those of NPT: use MTTK, stochastic cell rescaling or a Monte Carlo barostat when the fluctuations themselves matter. Like Nosé-Hoover, all these methods are second-order: far from equilibrium the box oscillates and can become unstable. Do not start an NPT run with Parrinello-Rahman from an unequilibrated density.
 
 ### Stochastic cell rescaling
 
-Bernetti and Bussi (2020) did for pressure what velocity rescaling did for temperature: Berendsen's first-order relaxation plus a noise term of exactly the right size,
+[Bernetti and Bussi (2020)](cite:bernetti2020) did for pressure what velocity rescaling did for temperature: Berendsen's first-order relaxation plus a noise term of exactly the right size,
 
 $$
 d\varepsilon = -\frac{\kappa_T}{\tau_P}\left(P_0-P_{inst}\right)dt + \sqrt{\frac{2k_BT\,\kappa_T}{V\,\tau_P}}\;dW,\qquad \varepsilon = \ln\frac{V}{V_0}.
 $$
 
-It samples the correct NPT ensemble, does not oscillate, and can be used from the start of equilibration through production. In GROMACS it is `pcoupl = C-rescale`.
+It samples the correct NPT ensemble, does not oscillate, and can be used from the start of equilibration through production, provided the coupling time $\tau_P$ is not too short and the pressure coupling is applied often enough (the original paper found errors with very small $\tau_P$ and with coupling only every ten steps or more). In GROMACS it is `pcoupl = C-rescale`.
 
 ### Monte Carlo barostat
 
 Every few steps, propose a random volume change $V\to V'$, scale the coordinates of molecular centres, and accept with probability
 
 $$
-P_{acc} = \min\left\{1,\ \exp\left[-\beta\left(\Delta U + P_0\,\Delta V\right) + N\ln\frac{V'}{V}\right]\right\}.
+P_{acc} = \min\left\{1,\ \exp\left[-\beta\left(\Delta U + P_0\,\Delta V\right) + N_{mol}\ln\frac{V'}{V}\right]\right\},
 $$
 
-It needs no virial, which is convenient for GPU codes and unusual potentials, and it samples NPT exactly. This is OpenMM's `MonteCarloBarostat` and an option in AMBER. No instantaneous pressure is reported.
+where $N_{mol}$ is the number of independently scaled centres (molecules, when each molecule is moved as a rigid body) and the trial volume is drawn uniformly in $V$. It needs no virial, which is convenient for GPU codes and unusual potentials, and it samples NPT exactly. This is OpenMM's `MonteCarloBarostat` and an option in AMBER. The barostat does not use the instantaneous pressure, though OpenMM can compute it on request (`computeCurrentPressure`).
 
 ### Coupling types
 
@@ -237,7 +247,7 @@ During equilibration the goal is to reach the target state quickly and stably, a
 </details>
 
 <details markdown="1"><summary>3. In an implicit-solvent Langevin simulation you lower γ from 50 ps⁻¹ to 1 ps⁻¹ and conformational transitions become ten times faster. Did the free-energy landscape change?</summary>
-No. The stationary distribution of Langevin dynamics is $e^{-\beta H}$ for every $\gamma>0$. Only the kinetics changed. Populations are comparable between the two runs; rates and times are not.
+No. The stationary distribution of Langevin dynamics is $e^{-\beta H}$ for every $\gamma>0$ (exactly for the continuous equations; an integrator with a finite time step samples a slightly different distribution, with an error that depends on $\Delta t$ and hardly on $\gamma$). Only the kinetics changed. Populations are comparable between the two runs; rates and times are not.
 </details>
 
 <details markdown="1"><summary>4. The average pressure over 100 ps is −14 bar with a target of 1 bar. Is the barostat broken?</summary>
@@ -246,10 +256,10 @@ Not necessarily. With fluctuations of a few hundred bar and a correlation time o
 
 ## Exercises
 
-1. Add a Langevin thermostat (BAOAB) to the Python code of Module 1. Verify that the average temperature matches the target and that the kinetic energy histogram matches the gamma distribution.
+1. Add a Langevin thermostat (BAOAB) to the Python code of Module 1. Verify that the average temperature matches the target and that the kinetic energy histogram matches the gamma distribution (up to an error of order $\Delta t^2$, which shrinks as you reduce the time step).
 2. Simulate a single harmonic oscillator with a Nosé-Hoover thermostat and plot the $(x,p)$ points visited. Compare with the Gaussian you expect. Then add a second thermostat in a chain and repeat.
 3. Add a Berendsen thermostat to the same code and compare the variance of the kinetic energy with the canonical value $\tfrac12N_{df}(k_BT)^2$ for several values of $\tau_T$.
-4. From an NPT simulation of water, compute the isothermal compressibility from the volume fluctuations, once with a Berendsen barostat and once with stochastic cell rescaling. Compare with $4.5\times10^{-5}$ bar$^{-1}$.
+4. From an NPT simulation of water, compute the isothermal compressibility from the volume fluctuations, once with a Berendsen barostat and once with stochastic cell rescaling. Compare with the experimental $4.5\times10^{-5}$ bar$^{-1}$ and with the value of your water model itself (TIP3P gives about $6\times10^{-5}$ bar$^{-1}$).
 
 ## Read
 

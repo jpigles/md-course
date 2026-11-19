@@ -25,6 +25,8 @@ tags: classical-mechanics
 
 ## Newton's formulation
 
+<div data-videos="H0BCYDXEDco 031AX4AsueA mYDrufxpW9E"></div>
+
 For $N$ particles, Newton's second law is $m_i \ddot{\mathbf r}_i = \mathbf F_i$. A force is **conservative** if it is the negative gradient of a function of positions only:
 
 $$
@@ -52,6 +54,8 @@ The second relation is Newton's third law. It means each pair is computed once a
 
 ## Lagrange's formulation
 
+<div data-videos="OpqJjKDPJBA 3apIZCpmdls"></div>
+
 Newton's law is awkward when the natural coordinates are not Cartesian, for example bond lengths, angles and torsions, or when there are constraints. Lagrangian mechanics works in any set of **generalised coordinates** $q_1,\dots,q_n$. Define
 
 $$
@@ -78,6 +82,8 @@ For Cartesian coordinates $L = \sum \tfrac12 m\dot x^2 - U$, so $\partial L/\par
 
 ## Hamilton's formulation
 
+<div data-videos="61CWqyocuOM hk4fOXsSJzM"></div>
+
 Define the **generalised momentum** conjugate to each coordinate, $p_k = \partial L/\partial \dot q_k$, and the Hamiltonian by a Legendre transform:
 
 $$
@@ -100,9 +106,13 @@ For the Cartesian Hamiltonian these read $\dot{\mathbf r}_i = \mathbf p_i/m_i$ a
 
 ### Phase space
 
+<div data-videos="IVQRfHAgLxk yV25sV3rAlo"></div>
+
 The state of the system at one instant is the full set of positions and momenta, a single point $\Gamma = (\mathbf r_1,\dots,\mathbf r_N,\mathbf p_1,\dots,\mathbf p_N)$ in a $6N$-dimensional space called **phase space**. A trajectory is a curve in phase space. Because Hamilton's equations are first order, one curve passes through each point: trajectories never cross. For a one-dimensional harmonic oscillator the trajectory is an ellipse in the $(x,p)$ plane, and its area is $2\pi E/\omega$.
 
 ### Time evolution of any observable
+
+<div data-videos="5OZO5GPuSJY"></div>
 
 For a function $A(q,p)$ with no explicit time dependence,
 
@@ -127,6 +137,8 @@ Keep this splitting in mind. In Module 4 the velocity Verlet algorithm falls out
 
 ## Conservation laws
 
+<div data-videos="HLr5ZeQUrBk PuDproV-17s ojEwHlyty4Q"></div>
+
 A quantity $A$ is conserved when $\{A,H\}=0$. Each conservation law comes from a symmetry of $H$ (Noether's theorem):
 
 | Symmetry of $H$ | Conserved quantity | In an MD simulation |
@@ -138,6 +150,8 @@ A quantity $A$ is conserved when $\{A,H\}=0$. Each conservation law comes from a
 The number of conserved quantities affects the number of degrees of freedom used to compute the temperature (Module 3): $3N - 3$ in a periodic box with no constraints.
 
 ## Liouville's theorem
+
+<div data-videos="MFqA1nePCNg ddKRdrf9iqI XiFEXVWNlpg 8w4az6IQsNc lQIbcV6dQzw"></div>
 
 Consider not one system but a cloud of systems with slightly different initial conditions, described by a density $\rho(\Gamma,t)$ in phase space. The cloud moves with "velocity" $\dot\Gamma = (\dot q,\dot p)$. The divergence of this velocity field is
 
@@ -155,9 +169,13 @@ $$
 Two consequences matter for simulation:
 
 1. **Any density that depends on $\Gamma$ only through $H$ is stationary**, since then $\{\rho(H),H\}=0$. The microcanonical density $\delta(H-E)$ and the canonical density $e^{-\beta H}$ are both of this kind. This is why Hamiltonian dynamics is compatible with the equilibrium ensembles.
-2. **A good integrator should also preserve phase-space volume.** Integrators with this property are called symplectic. Those without it (for example forward Euler or Runge-Kutta) make the cloud grow or shrink steadily, which shows up as an energy drift.
+2. **A good integrator should also preserve the Hamiltonian structure of phase space.** Integrators that do are called symplectic. They preserve phase-space volume, and they preserve more than that (the sum of the oriented areas $dq_k\,dp_k$), and it is this stronger property that gives them a conserved "shadow" energy (Module 4). Integrators without it (for example forward Euler or the classical explicit Runge-Kutta methods) make the cloud grow or shrink steadily, which shows up as an energy drift.
+
+<div class="widget" data-widget="liouville"></div>
 
 ## Time reversibility
+
+<div data-videos="sg15UClUY48"></div>
 
 Hamilton's equations are symmetric under $t\to -t$, $\mathbf p \to -\mathbf p$. If you stop a simulation, flip all velocities and continue, an exact solution retraces its path. Velocity Verlet has the same symmetry in exact arithmetic. In practice round-off error and chaos destroy the retracing after a few hundred steps, but the symmetry of the algorithm still protects it from systematic drift. It also matters for Monte Carlo schemes that use MD moves (hybrid Monte Carlo), which need a reversible, volume-preserving integrator to satisfy detailed balance.
 
@@ -188,7 +206,7 @@ Many-particle systems are chaotic: two trajectories that start a tiny distance $
 - A simulated trajectory is **not** the true trajectory from those initial conditions beyond a few picoseconds. Running the same input on two machines, or on a different number of processors, gives different trajectories.
 - This does not matter for what MD is used for. We want statistical properties, and a numerical trajectory stays close to *some* true trajectory of a slightly modified Hamiltonian (the "shadow" Hamiltonian of Module 4). Averages over long trajectories are reproducible even though individual trajectories are not.
 
-In practice, chaos is useful: starting copies of a system with different random velocities gives statistically independent runs within a short time.
+In practice, chaos is useful: starting copies of a system with different random velocities gives runs whose fast motions are statistically independent within a short time. Copies started from the same structure still share its conformational basin, so for slow motions independent runs should also start from different structures.
 
 ## Check yourself
 

@@ -25,6 +25,8 @@ tags: integrators
 
 ## The problem
 
+<div data-videos="dOpKIWFDW0s _CTZDDFaE5A"></div>
+
 We need $\mathbf r(t+\Delta t)$ and $\mathbf v(t+\Delta t)$ from $\mathbf r(t)$, $\mathbf v(t)$ and the forces. What makes MD different from most numerical ODE problems:
 
 - the force evaluation is by far the most expensive part, so a method should need **one force evaluation per step**;
@@ -32,6 +34,8 @@ We need $\mathbf r(t+\Delta t)$ and $\mathbf v(t+\Delta t)$ from $\mathbf r(t)$,
 - the system is chaotic, so reproducing the exact trajectory is impossible anyway (Module 2). What we need is correct statistics.
 
 ## Verlet from Taylor series
+
+<div data-videos="g55QvpAev0I qT8pxV53FA4 ld5VABtBkF0"></div>
 
 Expand the position forward and backward in time:
 
@@ -52,7 +56,9 @@ This is the original **Verlet** algorithm (1967). The error of one step is $O(\D
 
 ### Velocity Verlet
 
-The form used in practice carries positions and velocities at the same time (Swope, Andersen, Berens and Wilson, 1982):
+<div data-videos="ii-N61PeeQU 1kER3-3x8VI"></div>
+
+The form used in practice carries positions and velocities at the same time ([Swope, Andersen, Berens and Wilson, 1982](cite:swope1982)):
 
 $$
 \begin{aligned}
@@ -66,6 +72,8 @@ To see that it is the same algorithm, write the drift for two consecutive steps 
 
 ### Leap-frog
 
+<div data-videos="pVudb6-_FaM"></div>
+
 Merge the second half kick of one step with the first half kick of the next:
 
 $$
@@ -77,7 +85,9 @@ Positions live on integer steps and velocities on half steps, "leaping" over eac
 
 ## Velocity Verlet from the Liouville operator
 
-The Taylor derivation hides *why* the method is so good. The operator derivation (Tuckerman, Berne and Martyna, 1992) shows it. From Module 2, the state evolves as $\Gamma(t) = e^{iLt}\Gamma(0)$ with
+<div data-videos="5OZO5GPuSJY Uyg9asVcMOc"></div>
+
+The Taylor derivation hides *why* the method is so good. The operator derivation ([Tuckerman, Berne and Martyna, 1992](cite:tuckerman1992)) shows it. From Module 2, the state evolves as $\Gamma(t) = e^{iLt}\Gamma(0)$ with
 
 $$
 iL = iL_r + iL_p,\qquad iL_r = \sum_i \mathbf v_i\cdot\frac{\partial}{\partial\mathbf r_i},\qquad iL_p = \sum_i \frac{\mathbf F_i}{m_i}\cdot\frac{\partial}{\partial\mathbf v_i}.
@@ -95,7 +105,7 @@ Read from right to left: half kick, drift, half kick. That is velocity Verlet. T
 
 **1. Time-reversible.** The product is symmetric, so applying it with $-\Delta t$ exactly undoes a step.
 
-**2. Symplectic (volume-preserving).** A drift changes $\mathbf r$ by a function of $\mathbf v$ only, and a kick changes $\mathbf v$ by a function of $\mathbf r$ only. Each is a shear in phase space with Jacobian determinant exactly 1. So the numerical map preserves phase-space volume exactly, as the true dynamics does (Liouville's theorem).
+**2. Symplectic.** A drift is the exact flow of the Hamiltonian $K$ alone, and a kick is the exact flow of $U$ alone. Each is therefore a symplectic map, and a composition of symplectic maps is symplectic. One visible consequence: a drift changes $\mathbf r$ by a function of $\mathbf v$ only, and a kick changes $\mathbf v$ by a function of $\mathbf r$ only, so each is a shear in phase space with Jacobian determinant exactly 1, and the numerical map preserves phase-space volume exactly, as the true dynamics does (Liouville's theorem). Symplectic is the stronger property: every symplectic map preserves volume, but not every volume-preserving map is symplectic.
 
 **3. A conserved shadow Hamiltonian.** Each sub-step is the exact flow of a Hamiltonian ($K$ or $U$ alone). The Baker-Campbell-Hausdorff formula then shows that the product is the exact flow of a nearby Hamiltonian
 
@@ -148,9 +158,11 @@ Stability is not accuracy. Real potentials are anharmonic, and energy must also 
 | After hydrogen mass repartitioning (H mass about 3 to 4 u) or virtual-site hydrogens | about 30 to 40 fs | 4 fs |
 | Coarse-grained beads (Martini) | hundreds of fs | 20 fs |
 
-**How to test your own choice.** Run NVE (no thermostat) for a few hundred picoseconds and measure the drift of the total energy. Express it per degree of freedom, in units of $k_BT$ per nanosecond, and compare it with what the documentation of your MD program says to expect for its default settings: a drift of a small fraction of a percent of $k_BT$ per nanosecond per degree of freedom is harmless once a thermostat is on. The fluctuation of the energy should fall by a factor of four when you halve the time step. If it does not, something other than the integrator (a cutoff discontinuity, loose constraint tolerance, neighbour-list buffer) is the source.
+**How to test your own choice.** Run NVE (no thermostat) for a few hundred picoseconds and measure the drift of the total energy. Express it per atom, in units of $k_BT$ per nanosecond, and compare it with what the developers of your MD program consider acceptable: the designers of the GROMACS pair-list scheme, for example, accept about 0.1 $k_BT$ per nanosecond per atom ([Páll and Hess 2013](cite:pall2013)), which is harmless once a thermostat is on. The fluctuation of the energy should fall by a factor of four when you halve the time step. If it does not, something other than the integrator (a cutoff discontinuity, loose constraint tolerance, neighbour-list buffer) is the source.
 
 ## Why not a higher-order method?
+
+<div data-videos="zLnIWwvfuo4"></div>
 
 - **Runge-Kutta 4** needs four force evaluations per step. For the same cost you could take four Verlet steps. It is not symplectic: the energy drifts monotonically, as the demo shows.
 - **Gear predictor-corrector** methods use one force evaluation and are more accurate than Verlet at small $\Delta t$, but they are neither reversible nor symplectic and drift at the step sizes used in practice. They were common in the 1970s and 1980s and have disappeared from biomolecular codes.
@@ -159,6 +171,8 @@ Stability is not accuracy. Real potentials are anharmonic, and energy must also 
 The stiffness of bond vibrations limits $\Delta t$ by stability, not by accuracy, so a higher order buys nothing.
 
 ## Multiple time steps
+
+<div data-videos="CRbC_-iGnZM"></div>
 
 Forces differ in how fast they change. Bonded forces change on the 10 fs scale, short-range non-bonded forces on the 100 fs scale, and the long-range (reciprocal-space) electrostatics more slowly still. Split $iL_p = iL_p^{fast} + iL_p^{slow}$ and nest the Trotter splitting (r-RESPA):
 
@@ -170,7 +184,7 @@ The cheap fast forces are evaluated every inner step, the expensive slow forces 
 
 ## Stochastic integrators
 
-With a Langevin thermostat (Module 8) the equations of motion gain a friction term and a random force. The same splitting idea applies, with three pieces: B (kick), A (drift), O (the friction-plus-noise part, which can be solved exactly). Leimkuhler and Matthews showed that the ordering **BAOAB** gives much smaller errors in configurational averages than the alternatives at the same $\Delta t$. OpenMM's `LangevinMiddleIntegrator` is of this type.
+With a Langevin thermostat (Module 8) the equations of motion gain a friction term and a random force. The same splitting idea applies, with three pieces: B (kick), A (drift), O (the friction-plus-noise part, which can be solved exactly). [Leimkuhler and Matthews](cite:leimkuhler2012) showed that the ordering **BAOAB** cancels the leading $\Delta t^2$ error in averages of functions of the positions. At high friction its configurational error is up to two orders of magnitude smaller than that of the alternatives at the same $\Delta t$; at low friction the methods behave similarly. OpenMM's `LangevinMiddleIntegrator` uses a closely related "middle" discretisation with the same advantage.
 
 ## Check yourself
 
@@ -187,7 +201,7 @@ Leap-frog has velocities at half steps. The kinetic energy at step $t$ is comput
 </details>
 
 <details markdown="1"><summary>4. Your NVE test shows the energy rising linearly, and halving Δt does not change the slope. What do you suspect?</summary>
-Not the integrator, whose error scales with $\Delta t^2$. Likely causes: a truncated potential with a jump at the cutoff, a neighbour list updated too rarely (particles enter the cutoff unnoticed), too loose a constraint tolerance, or single-precision round-off in a very large system.
+Not the integrator, whose error scales with $\Delta t^2$. Likely causes: a truncated potential with a jump at the cutoff, a neighbour list updated too rarely (particles enter the cutoff unnoticed), too loose a constraint tolerance, or single-precision arithmetic (the OpenMM developers measured a clear drift in single precision for a system of only 24,000 atoms, which mixed precision removed).
 </details>
 
 ## Exercises

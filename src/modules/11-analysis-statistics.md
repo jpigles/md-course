@@ -29,6 +29,8 @@ Two bookkeeping steps come first. **Make molecules whole and centre the solute**
 
 ## Structural observables
 
+<div data-videos="whO1h7rAMSs 42-bolWBrBM UvH-h9i03rM"></div>
+
 **RMSD**, the root mean square deviation from a reference structure after optimal superposition:
 
 $$
@@ -53,6 +55,8 @@ The main observable for disordered proteins, directly comparable with SAXS.
 
 ### Radial distribution function
 
+<div data-videos="FqqPhoyRCCM X0vdXv7aTvk DMQifMiY_oI fw6feNSZ4jE"></div>
+
 For particles of types A and B, $g_{AB}(r)$ is the density of B at distance $r$ from an A, divided by the bulk density of B:
 
 $$
@@ -63,6 +67,8 @@ It tends to 1 at large $r$. Peaks are solvation shells. The integral up to the f
 
 ## Dynamical observables
 
+<div data-videos="3b6ZM21PmPU rWoV7HoufdA Mm1WfLi86-0 nuAs_GlCdDU"></div>
+
 **Diffusion.** The mean squared displacement grows linearly at long times (Einstein relation):
 
 $$
@@ -71,7 +77,7 @@ $$
 
 Fit the linear part, not the short-time ballistic part. Equivalently, by the Green-Kubo relation, $D = \tfrac13\int_0^\infty\langle\mathbf v(0)\cdot\mathbf v(t)\rangle\,dt$. Use unwrapped coordinates.
 
-Diffusion in a periodic box is slowed by hydrodynamic interaction with the periodic images. For a cubic box of edge $L$ and solvent viscosity $\eta$ (Yeh and Hummer 2004):
+Diffusion in a periodic box is slowed by hydrodynamic interaction with the periodic images. For a cubic box of edge $L$ and solvent viscosity $\eta$ ([Yeh and Hummer 2004](cite:yeh2004)):
 
 $$
 D_\infty = D_{PBC} + \frac{2.837\,k_BT}{6\pi\eta L}.
@@ -83,24 +89,28 @@ For water in a 3 nm box the correction is more than 10 %.
 
 ## Statistical error: the part most often done wrong
 
+<div data-videos="e3Ygft3fjRg 8Y9dgl6jsBo"></div>
+
 A trajectory of $N$ frames is not $N$ independent measurements. Frames close in time are similar. The quantity that tells you how similar is the normalised autocorrelation function
 
 $$
 c(t) = \frac{\langle\delta A(0)\,\delta A(t)\rangle}{\langle\delta A^2\rangle},
 $$
 
-which starts at 1 and decays to 0. Its integral is the **integrated autocorrelation time** $\tau_{int}=\int_0^\infty c(t)\,dt$. With frames saved every $\Delta t_s$, define the **statistical inefficiency**
+which starts at 1 and decays to 0. With frames saved every $\Delta t_s$, the **integrated autocorrelation time** is the sum over the saved lags, $\tau_{int}=\Delta t_s\sum_{k\ge1}c(k\,\Delta t_s)$ (for $\tau_{int}\gg\Delta t_s$ this is the integral $\int_0^\infty c(t)\,dt$). Define the **statistical inefficiency**
 
 $$
-g = 1+\frac{2\tau_{int}}{\Delta t_s},\qquad N_{eff} = \frac{N}{g},\qquad
+g = 1+2\sum_{k\ge1}c(k\,\Delta t_s) = 1+\frac{2\tau_{int}}{\Delta t_s},\qquad N_{eff} = \frac{N}{g},\qquad
 \boxed{\mathrm{SE}(\bar A) = \frac{\sigma_A}{\sqrt{N_{eff}}}\approx\sigma_A\sqrt{\frac{2\tau_{int}}{T_{sim}}}}
 $$
 
-The last form shows what matters: the error depends on the simulated time in units of the correlation time, not on how many frames you saved. A 100 ns trajectory of an observable with $\tau_{int}$ = 10 ns contains about five independent samples, whether you stored 1,000 frames or 1,000,000.
+(For a series of finite length $N$ each term of the sum is weighted by $1-k/N$, as in the code below.) The last form shows what matters: the error depends on the simulated time in units of the correlation time, not on how many frames you saved. A 100 ns trajectory of an observable with $\tau_{int}$ = 10 ns contains about five independent samples, whether you stored 1,000 frames or 1,000,000.
 
 ### Block averaging
 
-The practical method (Flyvbjerg and Petersen 1989). Cut the series into $M$ consecutive blocks, average within each block, and treat the block averages as independent:
+<div data-videos="BACN9Ydiw5I 0KqCK0yG9T0"></div>
+
+The practical method ([Flyvbjerg and Petersen 1989](cite:flyvbjerg1989)). Cut the series into $M$ consecutive blocks, average within each block, and treat the block averages as independent:
 
 $$
 \mathrm{SE}_{block} = \frac{s(\text{block means})}{\sqrt M}.
@@ -122,7 +132,8 @@ def block_average(a, n_blocks_list=(5, 10, 20, 40, 80, 160)):
     return out                                    # list of (block length, standard error)
 
 def statistical_inefficiency(a):
-    """g = 1 + 2 tau / dt, summing the autocorrelation function up to its first zero."""
+    """g = 1 + 2 tau / dt. Sums the autocorrelation function until it first turns negative,
+    a simple rule; pymbar uses a faster and more robust estimator of the same quantity."""
     a = np.asarray(a, float) - np.mean(a)
     n, var, g = len(a), np.var(a), 1.0
     for t in range(1, n // 2):
@@ -133,19 +144,23 @@ def statistical_inefficiency(a):
     return g
 ```
 
+<div class="widget" data-widget="blockavg"></div>
+
 ### Independent repeats
 
-The most reliable error bar comes from several independent simulations: compute the observable in each, and report the mean and the standard error across runs. Repeats also catch something no single-trajectory analysis can: a run that is trapped in a different state. If three runs give 12.1, 12.3 and 17.8, you have learned that there are at least two long-lived states and that none of the runs has sampled the transition between them.
+The most reliable error bar comes from several independent simulations: compute the observable in each, and report the mean and the standard error across runs. Repeats also catch something no single-trajectory analysis can: a run that is trapped in a different state. With few repeats, report a confidence interval and not only a standard error: for $n$ independent values the 95 % interval is the mean $\pm\,t_{n-1}\,s/\sqrt n$, and the factor $t$ is large when $n$ is small (4.3 for three repeats, 2.6 for six). With fewer than about ten values, show the individual points as well. If three runs give 12.1, 12.3 and 17.8, you have learned that there are at least two long-lived states and that none of the runs has sampled the transition between them.
 
 ### Equilibration: what to discard
 
-The start of a production run still remembers its preparation. Including it biases the average. Discarding too much wastes data. A principled choice (Chodera 2016): for each candidate cut-off time $t_0$, compute the number of effectively independent samples $N_{eff}(t_0)$ in the remainder, and choose the $t_0$ that maximises it. In practice also look at the time series, and check that the result does not change when you discard twice as much.
+The start of a production run still remembers its preparation. Including it biases the average. Discarding too much wastes data. A principled choice ([Chodera 2016](cite:chodera2016)): for each candidate cut-off time $t_0$, compute the number of effectively independent samples $N_{eff}(t_0)$ in the remainder, and choose the $t_0$ that maximises it. In practice also look at the time series, and check that the result does not change when you discard twice as much.
 
 <div class="box warn" markdown="1">
 **You cannot prove convergence.** Every test above detects correlation on time scales shorter than the trajectory. A process slower than the trajectory is invisible: all observables look flat and well converged within one state. Protect yourself with independent repeats from *different* starting structures, with physical knowledge of what the slow processes are likely to be, and by stating clearly what the simulation length can and cannot support.
 </div>
 
 ## Collective motions: principal component analysis
+
+<div data-videos="qcfV1z_UZLE 0pK0EWyinVo"></div>
 
 After fitting to a reference, build the covariance matrix of atomic positions,
 
@@ -155,22 +170,26 @@ $$
 
 and diagonalise it. The eigenvectors with the largest eigenvalues are the directions of largest fluctuation, and a handful usually account for most of the motion ("essential dynamics"). Projecting the trajectory on the first two gives a map of the conformations visited.
 
-The pitfall: a random walk in high dimensions, that is an unconverged simulation, produces first principal components that look like smooth half-cosines in time, and a projection that looks like a meaningful U-shaped pathway. Hess (2000, 2002) showed this and proposed the cosine content as a test. If your first component is a cosine of period twice the trajectory length, you are looking at diffusion, not at a functional motion.
+The pitfall: a random walk in high dimensions, that is an unconverged simulation, produces first principal components that look like smooth half-cosines in time, and a projection that looks like a meaningful U-shaped pathway. Hess ([2000](cite:hess2000), [2002](cite:hess2002)) showed this and proposed the cosine content as a test. If your first component is a cosine of period twice the trajectory length, you are looking at diffusion, not at a functional motion.
 
 Time-lagged independent component analysis (TICA, Module 16) is the related method that finds the *slowest* rather than the largest motions.
 
 ## Free-energy surfaces from histograms
 
+<div data-videos="yt6-v3jZals"></div>
+
 If a trajectory samples the equilibrium distribution, the free energy along any coordinate is $F(\xi) = -k_BT\ln P(\xi)$, from a histogram. This is only valid where transitions between the regions have been sampled many times. A beautiful two-dimensional free-energy map made from a single trajectory that crossed the barrier once is a picture of one trajectory. Modules 12 and 14 give the methods for the case that matters.
 
 ## Comparing with experiment
 
+<div data-videos="TlKg7luoRmY a15IlXIhz1k"></div>
+
 | Experiment | What to compute |
 |---|---|
-| NMR scalar couplings $^3J$ | Karplus relation $J(\phi) = A\cos^2\theta+B\cos\theta+C$ averaged over the trajectory |
+| NMR scalar couplings $^3J$ | Karplus relation $^3J(\theta) = A\cos^2\theta+B\cos\theta+C$ averaged over the trajectory (for the backbone coupling $^3J_{HNH\alpha}$, $\theta=\phi-60°$; $A$, $B$, $C$ depend on the coupling) |
 | NMR relaxation, order parameters $S^2$ | Long-time limit of the bond-vector rotational correlation function |
 | NMR chemical shifts | Empirical predictors (SPARTA+, SHIFTX2) applied per frame, then averaged |
-| NOE distances | $\langle r^{-6}\rangle^{-1/6}$, which is dominated by the shortest distances |
+| NOE distances | $\langle r^{-6}\rangle^{-1/6}$ when the internal motion is slower than overall tumbling, $\langle r^{-3}\rangle^{-1/3}$ when it is faster; both are dominated by the shortest distances |
 | SAXS | Scattering curve per frame (CRYSOL, Pepsi-SAXS), then averaged; or $R_g$ |
 | FRET efficiency | Average of $1/[1+(r/R_0)^6]$ over the distance distribution |
 | Crystallographic B-factors | RMSF (remembering that crystals also contain static disorder) |
@@ -178,6 +197,8 @@ If a trajectory samples the equilibrium distribution, the free energy along any 
 Average the **observable**, not the structure: experimental signals are non-linear in the coordinates.
 
 ## Tools
+
+<div data-videos="_v3WU0RAfRM Tso29WxWWHg x39p_SrJLY4 8ZhNuhBXB0o p3OUUnHXQjU MzVk6VO5dyc"></div>
 
 ```python
 import MDAnalysis as mda
@@ -192,7 +213,7 @@ ca = u.select_atoms("name CA")
 rg = [ca.radius_of_gyration() for ts in u.trajectory]
 ```
 
-MDAnalysis and MDTraj are the two general Python libraries. The GROMACS tools (`gmx rms`, `rmsf`, `gyrate`, `rdf`, `hbond`, `msd`, `energy`, `analyze -ee` for block averaging) and AMBER's `cpptraj` cover the standard analyses. VMD, PyMOL, ChimeraX and NGLview display trajectories: always watch the trajectory before trusting any number computed from it.
+MDAnalysis and MDTraj are two widely used general Python libraries. The GROMACS tools (`gmx rms`, `rmsf`, `gyrate`, `rdf`, `hbond`, `msd`, `energy`, `analyze -ee` for block averaging) and AMBER's `cpptraj` cover the standard analyses. VMD, PyMOL, ChimeraX and NGLview display trajectories: always watch the trajectory before trusting any number computed from it.
 
 ## Check yourself
 
@@ -205,7 +226,7 @@ It shows only that the distance from the starting structure stopped increasing. 
 </details>
 
 <details markdown="1"><summary>3. Why should you compute a NOE-derived distance as ⟨r⁻⁶⟩^(−1/6) and not as ⟨r⟩?</summary>
-The NOE intensity is proportional to $r^{-6}$, and the experiment averages the intensity. Two protons that are close for 10 % of the time give a strong NOE even if their mean distance is large.
+The NOE intensity is proportional to $r^{-6}$, and the experiment averages the intensity (for motions slower than the tumbling of the molecule; for faster internal motion the average is over $r^{-3}$). Two protons that are close for 10 % of the time give a strong NOE even if their mean distance is large.
 </details>
 
 <details markdown="1"><summary>4. Block averaging gives standard errors of 0.8, 1.5, 2.6 and 3.9 kJ/mol for blocks of 1, 5, 20 and 50 ns in a 200 ns run. What do you conclude?</summary>

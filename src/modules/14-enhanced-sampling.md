@@ -26,33 +26,41 @@ tags: enhanced-sampling
 
 ## The problem in one formula
 
+<div data-videos="PkTCrc0P_Xs 9JiorFETCTo EwGZ39PS1qk"></div>
+
 The rate of crossing a free-energy barrier $\Delta F^\ddagger$ is roughly
 
 $$
 k\approx k_0\,e^{-\beta\Delta F^\ddagger},
 $$
 
-with a prefactor $k_0$ of about $10^{9}$ to $10^{12}$ s$^{-1}$ for molecular motions in solution. Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. A barrier of 40 kJ/mol gives waiting times of microseconds to milliseconds, and 60 kJ/mol gives milliseconds to seconds. Plain MD spends almost all its time vibrating inside one basin.
+with a prefactor $k_0$ of about $10^{9}$ to $10^{12}$ s$^{-1}$ for molecular motions in solution. Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. A barrier of 40 kJ/mol gives waiting times of microseconds to milliseconds, and 60 kJ/mol gives tens of milliseconds to tens of seconds. Plain MD spends almost all its time vibrating inside one basin.
 
-Enhanced sampling methods change the simulation so that barriers are crossed often, in a way that still allows the unbiased equilibrium distribution to be recovered. They fall into three families:
+Enhanced sampling methods change the simulation so that barriers are crossed often, in a way that still allows the unbiased equilibrium distribution, or at least a free-energy difference, to be recovered. They fall into five families (the classification follows the review of [Hénin et al. 2022](cite:henin2022)):
 
 | Family | What is changed | Examples | Needs collective variables? |
 |---|---|---|---|
-| Bias along chosen coordinates | A potential is added as a function of a few CVs | Umbrella sampling, metadynamics, adaptive biasing force, steered MD | Yes |
-| Tempering | Temperature or the whole Hamiltonian is scaled, usually across exchanging replicas | Temperature replica exchange, REST2, Hamiltonian replica exchange, simulated tempering, accelerated MD | No (or only loosely) |
+| Bias along chosen coordinates | A potential is added as a function of a few CVs, fixed in advance or built up during the run | Umbrella sampling, metadynamics, adaptive biasing force | Yes |
+| Boost of the potential energy | The potential energy, or a part of it such as the dihedral terms, is raised wherever it is low | Accelerated MD, Gaussian accelerated MD | No |
+| Tempering | Temperature or part of the Hamiltonian is scaled, usually across exchanging replicas | Temperature replica exchange, REST2, Hamiltonian replica exchange, simulated tempering | No |
+| Driving out of equilibrium | The system is pulled along a coordinate in a finite time. It does not sample an equilibrium ensemble; free energies come from averaging the work | Steered MD, non-equilibrium switching | Yes |
 | Trajectory ensembles | Many unbiased trajectories are managed so that rare ones are kept | Weighted ensemble, milestoning, transition path sampling, adaptive sampling with Markov models | A progress coordinate |
 
 ## Collective variables
+
+<div data-videos="TYz9W8d54zM"></div>
 
 A collective variable $s(\mathbf r)$ is a function of the coordinates that describes the process in few dimensions: a distance, an angle, a coordination number, an RMSD, the fraction of native contacts, a path variable. A good CV:
 
 1. **distinguishes** the initial, final and intermediate states;
 2. **includes the slow motions**. Any slow motion not in the CV set is not accelerated, and the bias then pushes the system over the wrong ridge, producing hysteresis and wrong free energies;
-3. is **few in number**: the cost of filling a free-energy landscape grows exponentially with the number of CVs, and two or three is the practical limit for most CV-based methods.
+3. is **few in number**: the cost of filling a free-energy landscape grows exponentially with the number of CVs, and three or four is the practical limit for most CV-based methods.
 
 Finding good CVs is the hard part of this whole subject. Machine-learning approaches (time-lagged independent components, autoencoders, classifiers trained on end states) are increasingly used to propose them from preliminary simulations.
 
 ## Replica exchange (parallel tempering)
+
+<div data-videos="qITm4laxhtk ktkmgiFJSGQ 5upvgbp_elI 5w6rRqq2Dhg"></div>
 
 Run $M$ copies of the system at temperatures $T_1<T_2<\dots<T_M$ simultaneously. The hot replicas cross barriers easily. At intervals, attempt to **swap configurations** between neighbouring temperatures, so that structures found at high temperature can reach the temperature of interest.
 
@@ -70,15 +78,15 @@ $$
 M\propto\sqrt{N_{df}}\;\ln\frac{T_{max}}{T_{min}} .
 $$
 
-A geometric ladder, $T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}$, gives roughly uniform acceptance when the heat capacity is constant; aim for 20 to 30 %. A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.
+A geometric ladder, $T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}$, gives roughly uniform acceptance when the heat capacity is constant; aim for an exchange acceptance of about 30 %. A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.
 
-**REST2** (replica exchange with solute tempering; Wang, Friesner and Berne 2011). All replicas run at the same temperature $T_0$, but the potential energy is scaled so that only the solute is effectively heated:
+**REST2** (replica exchange with solute tempering; [Wang, Friesner and Berne 2011](cite:wang2011)). All replicas run at the same temperature $T_0$, but the potential energy is scaled so that only the solute is effectively heated:
 
 $$
 U_m = \lambda_m\,U_{pp}+\sqrt{\lambda_m}\,U_{pw}+U_{ww},\qquad\lambda_m = \frac{T_0}{T_m}\le1,
 $$
 
-with solute-solute (pp), solute-water (pw) and water-water (ww) terms. The solute sees an effective temperature $T_m$ while the water stays cold. Since only the solute's degrees of freedom enter the exchange criterion, a handful to a dozen replicas suffice.
+with solute-solute (pp), solute-water (pw) and water-water (ww) terms. The solute sees an effective temperature $T_m$ while the water stays cold. The water-water energy cancels from the exchange criterion, leaving only the solute-solute and solute-water energies, so the number of replicas grows with the number of degrees of freedom of the solute, not with the number of water molecules. A handful to a dozen replicas suffice for peptides and small proteins. In practice only the solute's dihedral terms, charges and Lennard-Jones well depths are scaled: scaling its bonds and angles does not help ([Wang, Friesner and Berne 2011](cite:wang2011)).
 
 **Hamiltonian replica exchange.** In general the replicas can differ in any parameter of the Hamiltonian: the $\lambda$ of an alchemical transformation, or the centre of an umbrella window. For two replicas with bias potentials $w_i$ and $w_j$ at the same temperature, holding $\mathbf x_i$ and $\mathbf x_j$:
 
@@ -92,7 +100,9 @@ A limit to remember: tempering helps with *enthalpic* barriers. A barrier that i
 
 ## Metadynamics
 
-Laio and Parrinello (2002). Instead of fixing the bias in advance, build it during the run. At regular intervals deposit a small Gaussian hill at the current value of the CVs:
+<div data-videos="QP5F83g1G0E b8aViZKaKFs bZZggbV2r5E BYvsNThvXlk"></div>
+
+[Laio and Parrinello (2002)](cite:laio2002) introduced the idea of a history-dependent bias made of Gaussians (in their paper it acts on a coarse-grained dynamics of the CVs driven by mean forces). In the form used today the bias is added directly to an MD run. Instead of fixing the bias in advance, build it during the run: at regular intervals deposit a small Gaussian hill at the current value of the CVs:
 
 $$
 V(s,t) = \sum_{t'<t}w\,\exp\left(-\frac{\big(s-s(t')\big)^2}{2\sigma^2}\right).
@@ -100,7 +110,7 @@ $$
 
 The accumulated hills push the system away from where it has already been. Wells are filled, the system spills over the lowest barrier into the next well, and eventually the whole landscape along $s$ is flat. At that point the bias is the negative of the free energy, $V(s,t\to\infty)\approx-F(s)+C$.
 
-In this original form the bias never converges: hills keep being added and $V$ fluctuates around $-F$ with an error set by the hill height. **Well-tempered metadynamics** (Barducci, Bussi and Parrinello 2008) lets the hill height decrease where bias has already accumulated:
+In this original form the bias never converges: hills keep being added and $V$ fluctuates around $-F$ with an error that grows with the rate at which bias is deposited (as the square root of the hill height divided by the deposition interval). **Well-tempered metadynamics** ([Barducci, Bussi and Parrinello 2008](cite:barducci2008)) lets the hill height decrease where bias has already accumulated:
 
 $$
 w(t') = w_0\,\exp\left(-\frac{V\big(s(t'),t'\big)}{k_B\,\Delta T}\right),
@@ -110,11 +120,15 @@ $$
 
 The bias converges smoothly to a fraction of $-F$, and the CVs are sampled as if at the higher temperature $T+\Delta T$. The **bias factor** $\gamma=(T+\Delta T)/T$ is the main parameter: $\gamma=1$ is unbiased MD, $\gamma\to\infty$ is standard metadynamics, and typical values are 5 to 20, chosen so that the highest relevant barrier divided by $\gamma$ is a few $k_BT$. The free energy is $F(s)=-\frac{\gamma}{\gamma-1}V(s)$, and other observables can be recovered by reweighting each frame with $e^{\beta[V(s,t)-c(t)]}$.
 
-Practical choices: the Gaussian width $\sigma$ should be about the standard deviation of the CV in an unbiased basin; hills every 1 ps or so; initial height around 1 kJ/mol. **Convergence** means the system has gone back and forth between the basins many times and the free-energy difference between them has stopped changing. One crossing each way is not convergence. Variants: multiple walkers (several simulations sharing one bias), bias-exchange and parallel-tempering metadynamics, and on-the-fly probability enhanced sampling (OPES). The standard implementation is the PLUMED library, which plugs into GROMACS, AMBER, NAMD, LAMMPS and OpenMM.
+Practical choices: the Gaussian width $\sigma$ should be about the standard deviation of the CV in an unbiased basin; hills every 1 ps or so; initial height around 1 kJ/mol. **Convergence** means the system has gone back and forth between the basins many times and the free-energy difference between them has stopped changing. One crossing each way is not convergence. Variants: multiple walkers (several simulations sharing one bias), bias-exchange and parallel-tempering metadynamics, and on-the-fly probability enhanced sampling (OPES). The standard implementation is the PLUMED library, which plugs into GROMACS, AMBER, NAMD, LAMMPS and other MD programs (its manual has the current list).
 
-**Adaptive biasing force** (Darve and Pohorille 2001) is the force-based relative: accumulate a running estimate of the mean force $-dF/ds$ in bins along the CV, and apply its negative. Once the estimate is good the system diffuses freely along $s$, and $F$ is the integral of the estimated mean force.
+**Adaptive biasing force** ([Darve and Pohorille 2001](cite:darve2001)) is the force-based relative: accumulate a running estimate of the mean force $-dF/ds$ in bins along the CV, and apply its negative. Once the estimate is good the system diffuses freely along $s$, and $F$ is the integral of the estimated mean force.
+
+<div class="widget" data-widget="metad"></div>
 
 ## Steered MD
+
+<div data-videos="RJMQ70K8UmA"></div>
 
 Attach a harmonic spring to a CV and move its centre at constant speed $v$:
 
@@ -128,7 +142,9 @@ Getting a free energy from it uses Jarzynski's equality (Module 13) with the acc
 
 ## Accelerated MD
 
-Hamelberg, Mongan and McCammon (2004). Raise the bottoms of all wells without choosing CVs. When the potential energy $V$ is below a threshold $E$, add a boost:
+<div data-videos="cc_5q6Od6XU f4faPQU58oA SbtqjZk80Qc"></div>
+
+[Hamelberg, Mongan and McCammon (2004)](cite:hamelberg2004). Raise the bottoms of all wells without choosing CVs. When the potential energy $V$ is below a threshold $E$, add a boost:
 
 $$
 \Delta V(\mathbf r) = \frac{\big(E-V(\mathbf r)\big)^2}{\alpha+E-V(\mathbf r)}\quad\text{for }V<E,\qquad\Delta V=0\text{ otherwise}.
@@ -138,11 +154,15 @@ Barriers shrink and transitions speed up by orders of magnitude. Recovering unbi
 
 ## Weighted ensemble
 
-Huber and Kim (1996). No bias on the potential at all. Divide a progress coordinate into bins. Run many short unbiased trajectories ("walkers"), each carrying a statistical weight. After each short interval, **split** walkers in bins that have too few (the copies share the weight) and **merge** walkers in bins that have too many (the survivor takes the combined weight). Computer time is thereby concentrated on rare regions, while the total weight flowing from one state to another remains statistically exact.
+<div data-videos="EMZu-n4WCH0 ShtrAD-tT7c ziRedoLEb2o"></div>
 
-Because the dynamics are unbiased, the method gives **rates** and pathways as well as populations, which bias-based methods do not give directly. The costs are many trajectories, correlated walkers, and slow relaxation to steady state. WESTPA is the usual software. Milestoning, forward flux sampling and transition path sampling are related methods that also work with ensembles of unbiased trajectory fragments.
+[Huber and Kim (1996)](cite:huber1996) introduced the method for Brownian dynamics of two model proteins (rigid spheres that diffuse and associate), not for all-atom MD. No bias on the potential at all. Divide a progress coordinate into bins. Run many short unbiased trajectories ("walkers"), each carrying a statistical weight. After each short interval (in the original paper, after every Brownian time step), **split** walkers in bins that have too few (the copies share the weight) and **merge** walkers in bins that have too many (the survivor takes the combined weight). Computer time is thereby concentrated on rare regions, while the total weight flowing from one state to another remains statistically exact.
+
+Because the dynamics are unbiased, the method gives **rates** (from the flux of weight into the target state once a steady state has been reached; in the original method each walker that arrives is put back in the starting state, and the steady flux is the inverse of the mean first-passage time) and pathways, which bias-based methods do not give directly. It is less well suited to equilibrium populations. The costs are many trajectories, correlated walkers, and slow relaxation to steady state. WESTPA is the usual software. Milestoning, forward flux sampling and transition path sampling are related methods that also work with ensembles of unbiased trajectory fragments.
 
 ## Choosing
+
+<div data-videos="st5XKYuJHQE"></div>
 
 | Situation | Reasonable first choice |
 |---|---|
@@ -170,7 +190,7 @@ No. The depth of the bound well can be estimated only when the system has visite
 </details>
 
 <details markdown="1"><summary>4. Why do weighted ensemble simulations give rates while metadynamics does not, at least not directly?</summary>
-Weighted ensemble trajectories follow the unmodified dynamics, and the splitting and merging only redistribute statistical weight, so the flux of weight into the target state is the true rate. In metadynamics the forces themselves are altered, so the time axis is no longer physical. (Rates can be recovered under extra assumptions when no bias is deposited on the transition state: "infrequent metadynamics".)
+Weighted ensemble trajectories follow the unmodified dynamics, and the splitting and merging only redistribute statistical weight, so the steady-state flux of weight into the target state is the true rate. In metadynamics the forces themselves are altered, so the time axis is no longer physical. (Rates can be recovered under extra assumptions when no bias is deposited on the transition state: "infrequent metadynamics".)
 </details>
 
 ## Exercises

@@ -26,6 +26,8 @@ tags: practical-setup
 
 ## The workflow at a glance
 
+<div data-videos="EFtbEkuJ9tk ZKNUR5Uz2r0 HPk5SiEqFIM _CYsaBhAEeA"></div>
+
 | Step | What you do | Why | Module |
 |---|---|---|---|
 | 1 | Get and clean the structure | The model must be chemically complete and sensible | this one |
@@ -40,6 +42,8 @@ tags: practical-setup
 
 ## Step 1: the starting structure
 
+<div data-videos="YQ8eRyScuyk RvvSvC8YyVo"></div>
+
 A simulation can only be as good as its starting model. Go through this list every time.
 
 - **Source.** A crystal or cryo-EM structure, an NMR model, or a prediction (AlphaFold and similar). For a predicted complex, the interface may be wrong in ways that MD will not repair on accessible time scales.
@@ -51,6 +55,8 @@ A simulation can only be as good as its starting model. Go through this list eve
 - **Ligands, cofactors, ions, structural waters.** Keep those that matter and get parameters for anything non-standard from a compatible general force field (Module 6). Metal sites need special care.
 
 ## Steps 2 to 4: topology, box, water, ions
+
+<div data-videos="8oGZn1NdvbY Kbq6Gf9m2T8 GRH81ABCq54 nKYrzrwaRmc zCTGd5xYwoQ"></div>
 
 With GROMACS (a force field that ships with every version is used here; current ones such as ff14SB, ff19SB and CHARMM36m are available as ports):
 
@@ -71,7 +77,11 @@ gmx genion -s ions.tpr -o ions.gro -p topol.top -pname NA -nname CL -neutral -co
 
 **How many ions?** A concentration of 0.15 mol/L is $0.15\times0.6022 = 0.0903$ ion pairs per nm$^3$. A box of 500 nm$^3$ needs 45 Na$^+$ and 45 Cl$^-$, plus counter-ions for the net charge of the solute. Equivalently, one ion pair per $55.5/0.15 = 370$ water molecules. In small boxes the number of ions is small, so the realised concentration is coarse-grained: one ion pair more or less in a 100 nm$^3$ box changes it by 17 mM.
 
+<div class="widget" data-widget="syscalc"></div>
+
 ## Step 5: energy minimisation
+
+<div data-videos="OCcxxddYrDg WvkSCxLqkxY AyFXfAhwVBQ Y_IAolv3ZZg"></div>
 
 The freshly built system has overlapping atoms: water placed too close to the protein, hydrogens added in idealised positions. The Lennard-Jones repulsion there is enormous, and the first MD step would give those atoms huge velocities. Minimisation moves the system downhill to the nearest local minimum of $U$.
 
@@ -94,6 +104,8 @@ rvdw          = 1.0
 
 ## Steps 6 and 7: equilibration
 
+<div data-videos="WU_8wdSSZC8 3T5-m-FNR8Y"></div>
+
 The minimised system is at 0 K with a density that is slightly wrong and water that is not adapted to the solute. Equilibration brings it to the target temperature and pressure without damaging the structure you prepared.
 
 **Position restraints.** During equilibration the heavy atoms of the solute are tied to their starting positions with harmonic springs, $U_{restr} = \tfrac12k|\mathbf r-\mathbf r_{ref}|^2$ with $k$ = 1,000 kJ mol$^{-1}$ nm$^{-2}$ (fluctuations of about 0.05 nm). The solvent relaxes around the solute while the solute keeps its shape.
@@ -111,7 +123,9 @@ gmx grompp -f md.mdp  -c npt.gro -t npt.cpt -p topol.top -o md.tpr           && 
 
 ## Step 8: production, an annotated input file
 
-Every line below refers to a module of this course. Settings are for an AMBER-family force field; a CHARMM force field needs `rvdw = 1.2`, `rvdw-switch = 1.0`, `vdw-modifier = Force-switch`, `rcoulomb = 1.2` and no dispersion correction.
+<div data-videos="P9pyJmbK3tM xS4r2bLATvo IArpsQsZ95U sSVME8caRCM"></div>
+
+Every line below refers to a module of this course. Settings are for an AMBER-family force field; a CHARMM force field needs `rvdw = 1.2`, `rvdw-switch = 1.0`, `vdw-modifier = Force-switch`, `rcoulomb = 1.2` and, following the GROMACS recommendation for CHARMM36, `DispCorr = no`.
 
 ```
 ; md.mdp : production, NPT, 100 ns
@@ -156,6 +170,8 @@ gen-vel                 = no            ; velocities come from the checkpoint
 
 ### The same workflow in OpenMM
 
+<div data-videos="hbQ_dfgWPc8 AlWsbbdUNC0 yLnjbjtRgdg 71snkHHku1c"></div>
+
 ```python
 import openmm as mm
 from openmm import app, unit
@@ -165,7 +181,9 @@ ff = app.ForceField("amber14-all.xml", "amber14/tip3pfb.xml")
 
 model = app.Modeller(pdb.topology, pdb.positions)
 model.addHydrogens(ff, pH=7.0)
-model.addSolvent(ff, padding=1.2 * unit.nanometer,
+# In OpenMM, padding is the guaranteed distance between the solute and its nearest
+# periodic copy, so 2.4 nm here builds the same box as "gmx editconf -d 1.2".
+model.addSolvent(ff, padding=2.4 * unit.nanometer,
                  ionicStrength=0.15 * unit.molar, boxShape="dodecahedron")
 
 system = ff.createSystem(model.topology,
@@ -196,8 +214,10 @@ This short script skips the restrained equilibration stages. For real work add p
 
 ## Planning: length, repeats, output, cost
 
+<div data-videos="EsKsPEdYksE F-SsbOw2YrM"></div>
+
 - **How long?** Long enough to see the slowest process relevant to your question many times, which you often do not know in advance. Start by listing the time scales (Module 1) and deciding what you can and cannot claim.
-- **Repeats.** Three to five independent runs from different initial velocities are worth more than one run of the same total length: they give an honest error bar and reveal dependence on the starting state (Module 11).
+- **Repeats.** Three to five independent runs from different initial velocities are worth more than one run of the same total length: they give an honest error bar (Module 11). To find out whether the result depends on the starting structure, start some of the runs from different conformations.
 - **Output frequency.** Saving every 10 to 100 ps is enough for most structural analysis. Saving more often than the correlation time of your observable only fills disks. If you do not need the water, save only the solute (`compressed-x-grps` in GROMACS).
 - **Benchmark first.** Run 5 minutes and read the performance in ns/day from the log before submitting a long job. Size the job's time limit from the measured speed.
 - **Checkpoints.** Long runs must be restartable: `gmx mdrun -cpi` continues exactly from the last checkpoint, and OpenMM's checkpoint reporter does the same. Chain short jobs if the cluster favours them.

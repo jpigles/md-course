@@ -27,6 +27,8 @@ Start with one of the whole-course playlists below. You do not need to finish it
 
 ## The idea in one paragraph
 
+<div data-videos="dEmAnuO8RhQ GcGClviieOU O3YgILmo5V8 GUASx0_NyEE"></div>
+
 A molecular dynamics (MD) simulation takes a set of particles, a rule that gives the potential energy $U(\mathbf r_1,\dots,\mathbf r_N)$ for any arrangement of them, and Newton's second law. It then moves the particles forward in time in very small steps. The output is a **trajectory**: the positions and velocities of every particle at each saved step. Everything else you will ever report from MD (a free energy, a diffusion constant, an RMSD plot, a binding affinity) is a statistic computed from one or more trajectories.
 
 There are three ingredients, and the course follows them:
@@ -39,13 +41,15 @@ There are three ingredients, and the course follows them:
 
 ## The algorithm
 
+<div data-videos="IlwC3PSyZ0Q QiZk_uT-40E AtExb5EprvE NItXk8epkNM TEg1Nx4yGjc gQ1YPzcHZqo"></div>
+
 For particle $i$ with mass $m_i$ and position $\mathbf r_i$, Newton's second law is
 
 $$
 m_i \frac{d^2 \mathbf r_i}{dt^2} = \mathbf F_i = -\frac{\partial U}{\partial \mathbf r_i}.
 $$
 
-There is no closed-form solution for more than two interacting particles, so we solve it numerically. The most common scheme, velocity Verlet (derived in Module 4), is:
+In general there is no closed-form solution for three or more interacting particles, so we solve it numerically. The most common scheme, velocity Verlet (derived in Module 4), is:
 
 $$
 \begin{aligned}
@@ -65,11 +69,13 @@ In words:
 5. Compute the forces at the new positions and finish the velocity update.
 6. Every so often, write positions and energies to disk. Go to 3.
 
-Step 5, the force calculation, takes more than 90 % of the computer time. The rest of the "engine" part of this course (cutoffs, neighbour lists, particle-mesh Ewald, constraints) exists to make that step cheaper or to allow a larger $\Delta t$.
+Step 5, the force calculation, takes most of the computer time (the pair interactions alone take more than half). The rest of the "engine" part of this course (cutoffs, neighbour lists, particle-mesh Ewald, constraints) exists to make that step cheaper or to allow a larger $\Delta t$.
 
 <div class="widget" data-widget="md2d"></div>
 
 ### The same thing in 35 lines of Python
+
+<div data-videos="kvJ1siWcBfM"></div>
 
 Read this code line by line. It is a complete simulation of a Lennard-Jones fluid (a good model of liquid argon) in reduced units. Every production MD program is this loop with a more elaborate force routine.
 
@@ -110,9 +116,11 @@ for step in range(2001):
         print(f"step {step:5d}  T = {2 * k / (3 * N - 3):.3f}  E/N = {(k + u) / N:.5f}")
 ```
 
-The total energy per particle printed in the last column should stay constant to about four decimal places. The temperature does not stay at its starting value of 1.0: as the lattice melts, kinetic and potential energy are exchanged, and the temperature settles a little lower and keeps fluctuating. That is equilibration, which you will meet again in Module 10.
+The total energy per particle printed in the last column should stay constant to about three decimal places (it wanders by a few $10^{-4}$, because the force still has a small jump at the cutoff), while the temperature changes by several percent. The temperature does not stay at its starting value of 1.0: as the lattice melts, kinetic and potential energy are exchanged, and the temperature settles a little lower and keeps fluctuating. That is equilibration, which you will meet again in Module 10.
 
 ## Which physics is kept, and which is dropped
+
+<div data-videos="4uloreO4qHA qnDkRUaz57g"></div>
 
 The exact description of a molecule is the time-dependent Schrödinger equation for all nuclei and electrons. MD makes two approximations to get from there to Newton's law.
 
@@ -134,7 +142,7 @@ A second test is to compare the vibrational quantum $\hbar\omega$ with the therm
 
 ## Units and the numbers worth memorising
 
-Most biomolecular codes use one of two unit systems. GROMACS uses nm, ps, atomic mass units (u), kJ/mol and elementary charges. These are consistent: 1 u nm$^2$ ps$^{-2}$ = 1 kJ/mol, so no conversion factors appear in Newton's law. AMBER, CHARMM and NAMD use Å, kcal/mol and an internal time unit.
+Most biomolecular codes use one of two unit systems. GROMACS uses nm, ps, atomic mass units (u), kJ/mol and elementary charges. These are consistent: 1 u nm$^2$ ps$^{-2}$ = 1 kJ/mol, so no conversion factors appear in Newton's law. AMBER, CHARMM and NAMD use Å and kcal/mol. With Å, u and kcal/mol the consistent time unit is about 48.9 fs, so these programs convert internally, and you give the time step in ps (AMBER, CHARMM) or in fs (NAMD).
 
 | Quantity | Value |
 |---|---|
@@ -148,35 +156,42 @@ Most biomolecular codes use one of two unit systems. GROMACS uses nm, ps, atomic
 
 ## Time and length scales
 
+<div data-videos="_TiQYNWJwYg ryJFDd0dF44"></div>
+
 The time step must resolve the fastest motion in the system, and the fastest motion is a bond vibration with a period of about 10 fs. Everything interesting in biology is slower by many orders of magnitude:
 
 | Process | Typical time | Steps at 2 fs |
 |---|---|---|
 | Bond stretch (C-H) | 10 fs | 5 |
-| Water reorientation, hydrogen-bond lifetime | 1 to 10 ps | $10^3$ |
-| Side-chain rotamer flips at the surface | 10 ps to 1 ns | $10^4$ to $10^6$ |
-| Loop motions, helix formation | 1 ns to 1 µs | $10^6$ to $10^9$ |
-| Fast protein folding, small-ligand binding | 1 µs to 1 ms | $10^9$ to $10^{12}$ |
-| Unbinding of a nanomolar complex | seconds to hours | $10^{15}$ or more |
+| Water reorientation, hydrogen-bond lifetime | 1 to 10 ps | $5\times10^2$ to $5\times10^3$ |
+| Side-chain rotamer flips at the surface | 10 ps to 1 ns | $5\times10^3$ to $5\times10^5$ |
+| Loop motions, helix formation | 1 ns to 1 µs | $5\times10^5$ to $5\times10^8$ |
+| Fast protein folding, small-ligand binding | 1 µs to 1 ms | $5\times10^8$ to $5\times10^{11}$ |
+| Unbinding of a nanomolar complex | seconds to hours | $5\times10^{14}$ or more |
 
-A single GPU today gives roughly 100 to 1,000 ns per day for a solvated protein of 50,000 to 100,000 atoms (the exact figure depends on the hardware, the system and the settings, so measure it for your own system). That is $10^{11}$ steps per day at best. The special-purpose machine Anton reached one millisecond for a small protein in 2010. Seconds are far outside the range of direct simulation, and this gap is the reason Modules 12 to 16 exist: free-energy methods, enhanced sampling, coarse-graining and kinetic models are all ways to answer questions about slow processes without simulating them directly.
+A single GPU today gives roughly 100 to 1,000 ns per day for a solvated protein of 50,000 to 100,000 atoms (the exact figure depends on the hardware, the system and the settings, so measure it for your own system). That is about $5\times10^8$ steps per day at best: one microsecond per day. The special-purpose machine Anton reached one millisecond for a small protein in 2010. Seconds are far outside the range of direct simulation, and this gap is the reason Modules 12 to 16 exist: free-energy methods, enhanced sampling, coarse-graining and kinetic models are all ways to answer questions about slow processes without simulating them directly.
 
 Cost per step is set by the number of pair interactions. With about 100 atoms per nm$^3$ and a 1 nm cutoff, each atom has $\tfrac{4}{3}\pi (1\,\text{nm})^3 \times 100 \approx 420$ neighbours. A 100,000-atom system therefore evaluates about $2\times10^7$ pair interactions per step (each pair counted once), plus the long-range electrostatics.
 
 ## A short history
 
-- **1957, Alder and Wainwright.** First MD simulation: hard spheres, showing a fluid-solid transition.
-- **1964, Rahman.** 864 argon atoms with a Lennard-Jones potential: the first simulation with a continuous potential, and agreement with experiment on the structure and diffusion of the liquid.
-- **1967, Verlet.** The integrator and the neighbour list that are still in use.
-- **1971, Rahman and Stillinger.** Liquid water, 216 molecules.
-- **1977, McCammon, Gelin and Karplus.** First protein simulation: the 58-residue inhibitor BPTI, in vacuum, for less than 10 ps. The lasting result was qualitative: the interior of a protein is fluid-like, not rigid.
-- **1980s.** Thermostats and barostats (Andersen, Berendsen, Nosé, Hoover, Parrinello and Rahman), constraints (SHAKE), free-energy perturbation applied to biomolecules, the first AMBER, CHARMM, GROMOS and OPLS force fields.
+<div data-videos="PGqCeSjNuTY eNuV8pYd-is SgH_GcFhQf8"></div>
+
+- **1957, [Alder and Wainwright](cite:alder1957).** First MD simulation: hard spheres, showing a fluid-solid transition.
+- **1964, [Rahman](cite:rahman1964).** 864 argon atoms with a Lennard-Jones potential: the first simulation with a continuous potential, and agreement with experiment on the structure and diffusion of the liquid.
+- **1967, [Verlet](cite:verlet1967).** The integrator and the neighbour list that are still in use.
+- **1971, [Rahman and Stillinger](cite:rahman1971).** Liquid water, 216 molecules.
+- **1977, [McCammon, Gelin and Karplus](cite:mccammon1977).** First protein simulation: the 58-residue inhibitor BPTI, in vacuum, for less than 10 ps. The lasting result was qualitative: the interior of a protein is fluid-like, not rigid.
+- **1977, [Ryckaert, Ciccotti and Berendsen](cite:ryckaert1977).** SHAKE: bond constraints, which allow a larger time step.
+- **1980s.** Thermostats and barostats (Andersen, Berendsen, Nosé, Hoover, Parrinello and Rahman), free-energy perturbation applied to biomolecules, the first AMBER, CHARMM, GROMOS and OPLS force fields.
 - **1993 to 1995.** Particle-mesh Ewald makes proper long-range electrostatics affordable.
-- **2010 to 2011, Shaw and co-workers.** Millisecond simulation of BPTI and reversible folding of twelve small proteins on Anton.
+- **2010 to 2011, [Shaw and co-workers](cite:shaw2010).** Millisecond simulation of BPTI and reversible folding of twelve small proteins on Anton.
 - **2013.** Nobel Prize in Chemistry to Karplus, Levitt and Warshel for multiscale models of complex chemical systems.
 - **Since about 2015.** GPUs make microsecond simulations routine; machine-learned potentials and generative models of ensembles appear (Module 17).
 
 ## What you get out, and the three kinds of error
+
+<div data-videos="XrLfl_b4X5k 4zhx74oR_dM"></div>
 
 MD gives three classes of result:
 

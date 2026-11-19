@@ -26,6 +26,8 @@ tags: msm-kinetics
 
 ## Thermodynamics is not kinetics
 
+<div data-videos="rFavri_VYfk balC-1gTQro hRpUif7C4Ek NOHVd_VgAD0"></div>
+
 For two states A and B with rate constants $k_{AB}$ and $k_{BA}$,
 
 $$
@@ -41,6 +43,8 @@ $$
 Association rates of proteins are typically $10^5$ to $10^7$ M$^{-1}$s$^{-1}$, bounded above by diffusion at about $10^9$ to $10^{10}$. For a 10 nM complex with $k_{on}=10^6$ M$^{-1}$s$^{-1}$, $k_{off}=10^{-2}$ s$^{-1}$: the complex lives for 100 seconds on average. Two complexes with the same $K_d$ can differ by orders of magnitude in residence time, and for drug efficacy residence time often matters more.
 
 ## Transition state theory
+
+<div data-videos="c-dKO66Sx9A"></div>
 
 Divide configuration space into reactant and product by a surface at the top of the barrier, at $\xi=\xi^\ddagger$. TST assumes that every trajectory crossing the surface towards products goes on to become product, and that reactants are in equilibrium. The rate is the equilibrium flux through the surface:
 
@@ -60,7 +64,7 @@ TST is an **upper bound**. Real trajectories recross the surface: they are knock
 
 ## Kramers theory
 
-Kramers (1940) treated barrier crossing as Brownian motion of a particle in a potential with friction $\gamma$. With well frequency $\omega_0$, barrier frequency $\omega_b$ (from the negative curvature at the top) and barrier height $\Delta W^\ddagger$, the high-friction result is
+[Kramers (1940)](cite:kramers1940) treated barrier crossing as Brownian motion of a particle in a potential with friction $\gamma$. With well frequency $\omega_0$, barrier frequency $\omega_b$ (from the negative curvature at the top) and barrier height $\Delta W^\ddagger$, the high-friction result is
 
 $$
 k_{Kramers}=\frac{\omega_0\,\omega_b}{2\pi\gamma}\,e^{-\beta\Delta W^\ddagger}\qquad(\gamma\gg\omega_b).
@@ -78,17 +82,23 @@ $$
 
 ## The committor and what makes a good reaction coordinate
 
+<div data-videos="ziRedoLEb2o"></div>
+
 For any configuration $\mathbf x$, the **committor** $p_B(\mathbf x)$ is the probability that a trajectory started from $\mathbf x$ with random Maxwell-Boltzmann velocities reaches state B before state A. It is 0 in A, 1 in B, and the true **transition state ensemble** is the set of configurations with $p_B=\tfrac12$.
 
-The committor is the ideal reaction coordinate: it says exactly how far a configuration has progressed. A collective variable $\xi$ is a good reaction coordinate to the extent that it is a function of the committor. The test: collect configurations at the barrier top of your PMF, shoot many short trajectories from each, and histogram their committor values. A peak near $\tfrac12$ means $\xi$ captures the mechanism. A bimodal histogram with peaks near 0 and 1 means that the configurations at the "barrier top" already belong to one side or the other: an important coordinate is missing, the barrier in the PMF is lower than the true one, and a rate computed from it will be too high.
+The committor is the ideal reaction coordinate: it says exactly how far a configuration has progressed. A collective variable $\xi$ is a good reaction coordinate to the extent that the committor is a function of it, $p_B(\mathbf x)\approx g\big(\xi(\mathbf x)\big)$ with $g$ monotonic, so that every surface of constant $\xi$ is a surface of constant committor. The test: collect configurations at the barrier top of your PMF, shoot many short trajectories from each, and histogram their committor values. A peak near $\tfrac12$ means $\xi$ captures the mechanism. A bimodal histogram with peaks near 0 and 1 means that the configurations at the "barrier top" already belong to one side or the other: an important coordinate is missing, the barrier in the PMF is lower than the true one, and a rate computed from it will be too high.
 
 This is why barrier heights read from a PMF along a convenient coordinate should not be quoted as activation free energies without such a check.
 
 ## Markov state models
 
+<div data-videos="xNjQatR2rRU 0pB3pUXULmo YXppP_QTut8"></div>
+
 The alternative to choosing a coordinate in advance: describe the dynamics as jumps between many small states, and estimate the jump probabilities from simulation. An MSM turns many short trajectories, which can be run in parallel and started from different points, into a model of long-time kinetics.
 
 ### The model
+
+<div data-videos="kKC4ccoUHGU gSR2xp2NFIc"></div>
 
 Partition configuration space into $n$ discrete states. Choose a **lag time** $\tau$. The model is the transition probability matrix
 
@@ -100,15 +110,19 @@ and the assumption is that the process is **Markovian** at lag $\tau$: the next 
 
 ### Estimation
 
-Count transitions at lag $\tau$ along all trajectories: $C_{ij}$ is the number of times the system was in $i$ at time $t$ and in $j$ at $t+\tau$. The maximum-likelihood transition matrix is the row-normalised count matrix,
+<div data-videos="pVl7TPFuHwk"></div>
+
+Count transitions at lag $\tau$ along all trajectories: $C_{ij}$ is the number of times the system was in $i$ at time $t$ and in $j$ at $t+\tau$. The simplest estimate of the transition matrix is the row-normalised count matrix,
 
 $$
 \hat T_{ij}=\frac{C_{ij}}{\sum_kC_{ik}} .
 $$
 
-At equilibrium the dynamics obey detailed balance, $\pi_iT_{ij}=\pi_jT_{ji}$, and estimators that enforce it are more accurate. Bayesian estimators sample the distribution of transition matrices compatible with the counts and give error bars for everything derived from the model.
+At equilibrium the dynamics obey detailed balance, $\pi_iT_{ij}=\pi_jT_{ji}$, and current practice is to restrict the model to the largest connected set of states and to use a maximum-likelihood estimator that enforces detailed balance. Bayesian estimators sample the distribution of transition matrices compatible with the counts and give error bars for everything derived from the model.
 
 ### What the eigenvalues mean
+
+<div data-videos="opx_wViFlTs"></div>
 
 Diagonalise $\mathbf T$. The eigenvalues satisfy $1=\lambda_1>\lambda_2\ge\lambda_3\ge\dots$
 
@@ -116,12 +130,14 @@ Diagonalise $\mathbf T$. The eigenvalues satisfy $1=\lambda_1>\lambda_2\ge\lambd
 - Each further eigenvector describes a **relaxation process**, an exchange of population between the regions where it is positive and negative, decaying with the **implied time scale**
 
 $$
-t_i=-\frac{\tau}{\ln\lambda_i(\tau)} .
+t_i=-\frac{\tau}{\ln|\lambda_i(\tau)|} .
 $$
 
 A gap in the spectrum (a few slow processes well separated from the rest) indicates metastable states.
 
 ### The pipeline
+
+<div data-videos="A3AUWXqqONc QHQBVmVq-Vo u4ec4EYsgkQ jXMaCSSOSgg CNYreswqJAQ"></div>
 
 1. **Featurise.** Convert each frame into internal coordinates that do not depend on overall rotation: backbone dihedrals, distances between residues, contacts.
 2. **Reduce dimension with TICA.** Time-lagged independent component analysis finds the linear combinations of features that decorrelate most slowly, by solving the generalised eigenvalue problem
@@ -137,13 +153,19 @@ The variational principle (VAMP) gives a score that measures how well a choice o
 
 ### Validation
 
+<div data-videos="aO_DmbqHWYs"></div>
+
 - **Implied time scales against lag time.** Compute $t_i(\tau)$ for increasing $\tau$. If the model is Markovian, a true relaxation time does not depend on the lag used to measure it. Choose the smallest $\tau$ at which the slow time scales have levelled off. Time scales that keep rising with $\tau$ mean the discretisation is too coarse or the data insufficient. No process faster than $\tau$ can be resolved.
 - **Chapman-Kolmogorov test.** Check that $\mathbf T(k\tau)\approx\mathbf T(\tau)^k$: the model estimated at lag $\tau$ must predict, within error, the transition probabilities estimated directly from the data at longer lags.
 - **Connectivity and statistics.** Every state kept must be reversibly connected to the rest, with transitions observed in both directions more than a few times. A state entered once and never left makes the model meaningless for that state.
 
+<div class="widget" data-widget="msm"></div>
+
 ### Sampling for a Markov model
 
-Because only local equilibrium within states is needed, the data can be many short trajectories from distributed computing or many GPUs. **Adaptive sampling** runs in rounds: build a preliminary model, start new trajectories from states that are poorly sampled or newly discovered, and repeat. Markov models have been used to describe protein folding at millisecond time scales and the binding and unbinding of ligands and of protein partners, including dissociation events that no single trajectory spans.
+<div data-videos="B8uo60u9TqI Fuai8_MSxaw HfTdS-kgG70"></div>
+
+Because only local equilibrium within states is needed, the data can be many short trajectories from distributed computing or many GPUs. **Adaptive sampling** runs in rounds: build a preliminary model, start new trajectories from states that are poorly sampled or newly discovered, and repeat (doing this fully automatically and reliably for complex systems is still an open problem). Markov models have been used to describe protein folding at millisecond time scales and the binding and unbinding of ligands and of protein partners, including dissociation events that no single trajectory spans.
 
 Limits: the model is only as good as the features (a slow motion that the features cannot see is absent from the model), rare states remain statistically weak, and the result depends on modelling choices, which is why the validation steps are not optional. The underlying trajectories must come from dynamics whose kinetics you are prepared to defend (Module 8).
 
