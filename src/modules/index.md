@@ -6,10 +6,10 @@ summary: A self-study course on how molecular dynamics simulations work: the equ
 
 <div class="cards">
 <div class="card"><b>{{N_MODULES}}</b><span>modules, about {{N_HOURS}} hours of study</span></div>
-<div class="card"><b>{{N_VIDEOS}}</b><span>lecture videos and playlists, each link checked</span></div>
+<div class="card"><b>{{N_VIDEOS}}</b><span>videos and playlists, and {{N_LECTURES}} individual lectures, linked section by section</span></div>
 <div class="card"><b>{{N_BOOKS}} + {{N_NOTES}}</b><span>textbooks, free lecture notes and tutorials</span></div>
-<div class="card"><b>{{N_PAPERS}}</b><span>key papers with DOIs</span></div>
-<div class="card"><b>4</b><span>simulations that run in this page</span></div>
+<div class="card"><b>{{N_PAPERS}}</b><span>papers with verified identifiers, {{N_READ_FULL}} read in full</span></div>
+<div class="card"><b>{{N_WIDGETS}}</b><span>simulations that run in the page, with toy data to download</span></div>
 </div>
 
 ## What this course is
@@ -21,9 +21,9 @@ This course goes through all of it in order, with the derivations written out. I
 Each module has the same layout:
 
 1. **Goals**: what you will be able to do at the end.
-2. **Watch first**: lectures on YouTube for that topic, from full university courses down to short explainers.
+2. **Watch first**: lectures on YouTube for that topic, from full university courses down to short explainers. Inside the lesson, most sections also carry a strip called **Watch for this part**: the specific lectures that teach that section. Click one and it plays in the page.
 3. **The lesson**: the ideas and the mathematics, step by step, with worked numbers.
-4. **Try it**: in four modules, a simulation that runs in the page.
+4. **Try it**: in every module from 1 to 17, a simulation that runs in the page. Most of them let you download the data they generate, and the [toy data page](toy-data.html) shows what to do with it.
 5. **Check yourself**: short questions with answers hidden until you click.
 6. **Exercises**: things to derive, code and run.
 7. **Read** and **Key papers**: where to go deeper, with free sources marked.
@@ -51,7 +51,7 @@ About eight to ten hours a week. Do the exercises: the derivations only stick wh
 | 9 | 12 | You have written WHAM and converted a free-energy profile to a dissociation constant |
 | 10 | 13, 14 | You have computed a hydration free energy and run a replica-exchange or metadynamics simulation |
 | 11 | 15, 16 | You have run a coarse-grained model and built a small Markov state model |
-| 12 | 17, projects | You have completed one of the capstone projects |
+| 12 | 17, 18, projects | You know what current machine-learning models were trained on, and you have completed one of the capstone projects |
 
 ## Whole courses on video
 
@@ -63,8 +63,10 @@ If you prefer to follow one lecturer from start to finish, pick one of these and
 
 Four books cover almost everything here at greater depth, and they complement each other: Frenkel and Smit, *Understanding Molecular Simulation* (algorithms and why they work); Tuckerman, *Statistical Mechanics: Theory and Molecular Simulation* (the rigorous derivations); Allen and Tildesley, *Computer Simulation of Liquids* (practical detail and code); and Leach, *Molecular Modelling* (force fields and applications). Free alternatives that go a long way: M. Scott Shell's lecture notes for his UCSB simulation course, David Tong's Cambridge notes on classical dynamics and statistical physics, the GROMACS reference manual, and the best-practice articles of the Living Journal of Computational Molecular Science. All are listed with links in the [library](library.html).
 
-## About the sources
+## How far you can trust this
 
-The video, book and paper lists were compiled in November 2026. Every YouTube link was checked to resolve and its title and channel recorded from YouTube itself; every paper's bibliographic details were taken from the Crossref record for its DOI. The one-line descriptions of videos were written from their titles and course pages, not from watching each one in full, so treat them as a guide. Books are linked to publisher or author pages. A resource marked <span class="tag free">free</span> is free from its author, publisher or an open repository.
+The lessons were written by an AI system and then checked. Three independent referees re-derived the equations and recomputed the numbers, and every cited paper whose full text could be obtained legally (58 of the 144 in the main list) was read and compared with what the course says about it. Together they found 7 statements that were wrong and about 150 that were imprecise, and these were corrected. Papers that could not be read are not labelled as read. The full account, including what is still unverified, is on the page [How this course was checked](sources.html).
 
-The lesson text is original and is meant to be read alongside those sources, not instead of them. If you find an error, the source files for every page are in the repository.
+Module 18 was written differently: from the papers first, with a source for every number.
+
+The video, book and paper lists were compiled in November 2026. Linked videos, books and papers belong to their authors and publishers.

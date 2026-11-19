@@ -45,7 +45,7 @@ Reading derivations builds familiarity. Building the thing builds understanding.
 - Compare with the Kramers high-friction formula and with the mean first-passage time integral.
 - Build a Markov state model from many short trajectories for $h=8\,k_BT$, where direct counting is too slow, and predict the rate. Validate with implied time scales.
 
-**Check.** A plot of $\ln k$ against $h$ is a straight line of slope $-1$, and the three estimates agree where they overlap.
+**Check.** For this potential the Kramers prefactor is itself proportional to $h$ (the curvatures at the well and at the barrier top are $8h$ and $4h$), so $k\propto h\,e^{-h}$. A plot of $\ln(k/h)$ against $h$, with $h$ in units of $k_BT$, is a straight line of slope $-1$; a plot of $\ln k$ alone is curved, with slope $-1+1/h$. The three estimates agree where they overlap.
 
 ## Project 5. A protein in water, done properly
 

@@ -81,7 +81,7 @@ U_{tail}=\tfrac83\pi N\rho\varepsilon\sigma^3\left[\tfrac13\left(\tfrac{\sigma}{
 $$
 
 $$
-U_{Ewald}=\frac12\sum_{\mathbf n}{}^{'}\sum_{i,j}q_iq_j\frac{\mathrm{erfc}(\alpha r)}{r}+\frac{2\pi}{V}\sum_{\mathbf k\ne0}\frac{e^{-k^2/4\alpha^2}}{k^2}|S(\mathbf k)|^2-\frac{\alpha}{\sqrt\pi}\sum_iq_i^2,\qquad S(\mathbf k)=\sum_jq_je^{i\mathbf k\cdot\mathbf r_j}
+U_{Ewald}=\frac{1}{4\pi\varepsilon_0}\left[\frac12\sum_{\mathbf n}{}^{'}\sum_{i,j}q_iq_j\frac{\mathrm{erfc}(\alpha|\mathbf r_{ij}+\mathbf n|)}{|\mathbf r_{ij}+\mathbf n|}+\frac{2\pi}{V}\sum_{\mathbf k\ne0}\frac{e^{-k^2/4\alpha^2}}{k^2}|S(\mathbf k)|^2-\frac{\alpha}{\sqrt\pi}\sum_iq_i^2\right],\qquad S(\mathbf k)=\sum_jq_je^{i\mathbf k\cdot\mathbf r_j}
 $$
 
 ## Thermostats and barostats (Module 8)
@@ -101,7 +101,7 @@ $$
 $$
 
 $$
-\text{Monte Carlo barostat: }P_{acc}=\min\{1,\exp[-\beta(\Delta U+P_0\Delta V)+N\ln(V'/V)]\}
+\text{Monte Carlo barostat: }P_{acc}=\min\{1,\exp[-\beta(\Delta U+P_0\Delta V)+N_{mol}\ln(V'/V)]\}
 $$
 
 ## Constraints (Module 9)
@@ -119,7 +119,7 @@ D_\infty=D_{PBC}+\frac{2.837\,k_BT}{6\pi\eta L}
 $$
 
 $$
-g_{stat}=1+\frac{2\tau_{int}}{\Delta t_s}\qquad N_{eff}=\frac{N}{g_{stat}}\qquad\mathrm{SE}=\frac{\sigma}{\sqrt{N_{eff}}}\approx\sigma\sqrt{\frac{2\tau_{int}}{T_{sim}}}
+g_{stat}=1+2\sum_{k\ge1}c(k\Delta t_s)=1+\frac{2\tau_{int}}{\Delta t_s}\qquad N_{eff}=\frac{N}{g_{stat}}\qquad\mathrm{SE}=\frac{\sigma}{\sqrt{N_{eff}}}\approx\sigma\sqrt{\frac{2\tau_{int}}{T_{sim}}}
 $$
 
 ## Free energy (Modules 12 and 13)
@@ -135,7 +135,7 @@ $$
 $$
 
 $$
-K_a=4\pi\int_{bound}r^2e^{-\beta W(r)}dr\qquad\Delta G^\circ=-k_BT\ln(K_aC^\circ)\qquad K_d=1/K_a
+K_a=4\pi\int_{bound}r^2e^{-\beta W(r)}dr\ \ \big(W(r\to\infty)=0,\ \text{Jacobian removed}\big)\qquad\Delta G^\circ=-k_BT\ln(K_aC^\circ)\qquad K_d=1/K_a
 $$
 
 $$
@@ -146,7 +146,8 @@ $$
 
 $$
 \text{Jarzynski: }\langle e^{-\beta W}\rangle=e^{-\beta\Delta A}\qquad\text{Crooks: }\frac{P_F(W)}{P_R(-W)}=e^{\beta(W-\Delta A)}\qquad
-\Delta\Delta G_{bind}=\Delta G_{complex}^{A\to B}-\Delta G_{free}^{A\to B}
+\Delta\Delta G_{bind}=\Delta G_{complex}^{A\to B}-\Delta G_{free}^{A\to B}\qquad
+\Delta G^\circ_{bind}=\Delta G_{decouple}^{solvent}-\Delta G_{decouple}^{site}-\Delta G_{restr}^{\circ,\,release}
 $$
 
 ## Enhanced sampling (Module 14)
@@ -179,7 +180,7 @@ k_{Kramers}=\frac{\omega_0\omega_b}{2\pi\gamma}e^{-\beta\Delta W^\ddagger}
 $$
 
 $$
-\hat T_{ij}(\tau)=\frac{C_{ij}}{\sum_kC_{ik}}\qquad t_i=-\frac{\tau}{\ln\lambda_i(\tau)}\qquad\mathbf T(k\tau)\approx\mathbf T(\tau)^k\qquad
+\hat T_{ij}(\tau)=\frac{C_{ij}}{\sum_kC_{ik}}\qquad t_i=-\frac{\tau}{\ln|\lambda_i(\tau)|}\qquad\mathbf T(k\tau)\approx\mathbf T(\tau)^k\qquad
 \mathbf C(\tau)\mathbf v=\lambda\,\mathbf C(0)\mathbf v
 $$
 

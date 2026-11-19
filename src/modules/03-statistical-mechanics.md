@@ -25,6 +25,8 @@ tags: stat-mech
 
 ## Microstates, macrostates, ensembles
 
+<div data-videos="lKyrJhN8MFY tcTmOEk8cc4 lLhUpB6oOr8 5LALoxDs0ic HDl63ZSFVwM D1RzvXDXyqA zyId5iqW6Ig"></div>
+
 A **microstate** is one point in phase space, $\Gamma=(\mathbf r,\mathbf p)$: every position and momentum. A **macrostate** is what an experiment controls or measures: number of particles $N$, volume $V$, energy $E$, temperature $T$, pressure $P$. An enormous number of microstates is compatible with one macrostate. An **ensemble** is the probability distribution over microstates that corresponds to a macrostate.
 
 | Ensemble | Fixed | Probability density of a microstate | Thermodynamic potential | MD realisation |
@@ -37,6 +39,8 @@ A **microstate** is one point in phase space, $\Gamma=(\mathbf r,\mathbf p)$: ev
 Here $\beta = 1/k_BT$. Most biomolecular simulation is NPT, matching a test tube at 1 bar.
 
 ## Where the Boltzmann factor comes from
+
+<div data-videos="_6AFgt2gkr0 tDKjLzbXYQI aFEovHmSvQk J-qTchJh4Ok EmM1jOV1uSY rhFkYjaM5kE SmmGDn8OnTA"></div>
 
 **Postulate (equal a priori probabilities).** For an isolated system with energy $E$, all accessible microstates are equally likely. The number of them is $\Omega(N,V,E)$, and Boltzmann's entropy is $S = k_B\ln\Omega$.
 
@@ -62,6 +66,8 @@ This is the canonical (Boltzmann) distribution, and $Q$ is the **partition funct
 
 ### The classical partition function
 
+<div data-videos="UxJCRnNJCPw 34OuWjAwI8w RT_v0PhXP5E"></div>
+
 For classical particles the sum over states becomes an integral over phase space:
 
 $$
@@ -76,9 +82,11 @@ $$
 Q = \frac{1}{N!\,\Lambda^{3N}}\underbrace{\int d\mathbf r^N e^{-\beta U(\mathbf r)}}_{Z},\qquad \Lambda = \frac{h}{\sqrt{2\pi mk_BT}}.
 $$
 
-$Z$ is the **configurational integral**. This factorisation has a practical meaning: in classical statistical mechanics, **the distribution of positions does not depend on the masses**, and the momenta always follow the Maxwell-Boltzmann distribution regardless of the forces. All the difficulty, and all the chemistry, is in $Z$. It is also why hydrogen mass repartitioning (Module 9) does not change equilibrium properties.
+$Z$ is the **configurational integral**. (The formula is written for identical particles of one mass. With several species, each atom contributes its own $\Lambda_i^3$ and each species $s$ its own $N_s!$: $Q = Z/\big[\prod_sN_s!\,\prod_i\Lambda_i^3\big]$. Nothing below depends on this.) This factorisation has a practical meaning: in classical statistical mechanics, **the distribution of positions does not depend on the masses**, and the momenta always follow the Maxwell-Boltzmann distribution regardless of the forces. All the difficulty, and all the chemistry, is in $Z$. It is also why hydrogen mass repartitioning (Module 9) does not change equilibrium properties.
 
 ## From the partition function to thermodynamics
+
+<div data-videos="_ErxZOHwtaA AhNHsYpemII bW30Rj6w8VI"></div>
 
 Everything follows from $Q$:
 
@@ -101,6 +109,8 @@ This is a general pattern: **response functions are fluctuations**. The heat cap
 
 ## Equipartition and temperature
 
+<div data-videos="KthbNCxnj2g b8n1k3Iob0Q uoieTQ3Qb3M MCRHXHskWnE"></div>
+
 For any degree of freedom that appears in $H$ as a quadratic term $a x^2$,
 
 $$
@@ -119,6 +129,8 @@ The velocity of each atom follows the Maxwell-Boltzmann distribution: each Carte
 
 ## Pressure and the virial
 
+<div data-videos="2BJYXuZZK3c jny9W7NtlK4"></div>
+
 Using $P = k_BT\,\partial\ln Q/\partial V$ and scaling the coordinates with the box gives the **virial equation**:
 
 $$
@@ -129,6 +141,8 @@ $$
 The first term is the ideal-gas pressure. The second, the virial, is the contribution of the interactions: attractive forces lower the pressure, repulsive ones raise it. The pair form on the right is the one to use with periodic boundaries.
 
 ## Why a time average equals an ensemble average
+
+<div data-videos="rBni87N8cBs WneHzwWh0Ws Iq9ZxMRbpmc"></div>
 
 An experiment measures a time average over a huge number of molecules. Statistical mechanics gives the ensemble average
 
@@ -146,7 +160,11 @@ This is the single most important equation for using MD, and its weak point is t
 
 Note what is *not* required: the trajectory does not need to be the true physical trajectory. Any dynamics that visits microstates with the right probability gives correct equilibrium averages. That is why thermostats that perturb the dynamics, Monte Carlo moves, and replica exchange are all legitimate for thermodynamics, while kinetic quantities need more care.
 
+<div class="widget" data-widget="boltzmann"></div>
+
 ## Free energy
+
+<div data-videos="3XyGqsgBpIM Lq8GwTlJ9Z8 BznPadIkfKM mg9JWntdfyE"></div>
 
 The Helmholtz free energy $A = -k_BT\ln Q = \langle E\rangle - TS$ counts states, weighted by their Boltzmann factors. The most useful form of this statement is about the relative probability of two **macrostates** A and B (two regions of configuration space, for example "bound" and "unbound", or "folded" and "unfolded"):
 
@@ -169,6 +187,8 @@ an average dominated by the *high*-energy configurations that a Boltzmann-weight
 
 ### The potential of mean force
 
+<div data-videos="pjT7waGUGDI"></div>
+
 Often we care about one coordinate $\xi(\mathbf r)$, a distance, an angle, or a fraction of native contacts, and want the free energy as a function of it. Its probability density is obtained by integrating out everything else:
 
 $$
@@ -177,14 +197,24 @@ P(\xi') = \frac{1}{Z}\int d\mathbf r\;\delta\big(\xi(\mathbf r)-\xi'\big)\,e^{-\
 W(\xi') = -k_BT\ln P(\xi') + \text{const}.
 $$
 
-$W(\xi)$ is the **potential of mean force (PMF)**. The name comes from the fact that its slope is the average force along $\xi$: $-dW/d\xi = \langle F_\xi\rangle_\xi$. Its barriers and wells are free energies: they contain the entropy of all the other degrees of freedom, including the solvent. The simplest example is the pair distribution function of a liquid, $g(r) = e^{-\beta w(r)}$.
+$W(\xi)$ is the **potential of mean force (PMF)**. The name comes from the fact that, for a Cartesian-like coordinate, its slope is the average force along $\xi$: $-dW/d\xi = \langle F_\xi\rangle_\xi$. Its barriers and wells are free energies: they contain the entropy of all the other degrees of freedom, including the solvent.
+
+For a curvilinear coordinate there is an extra geometric (Jacobian) term. The important case is a distance $r$: the volume available grows as $4\pi r^2$, so $P(r)\propto r^2 g(r)$, where $g(r)$ is the pair distribution function. Two "PMFs" along a distance are therefore in use, and they differ by $2k_BT\ln r$:
+
+$$
+w(r) = -k_BT\ln g(r)\qquad\text{and}\qquad W(r) = -k_BT\ln P(r) = w(r) - 2k_BT\ln r + \text{const}.
+$$
+
+$w(r)$ is the one whose slope is exactly the mean force between the two particles and which goes to zero at large separation. Always check which of the two a paper or a program reports (Module 12).
 
 ### Binding constants
 
-For $\text{P} + \text{L}\rightleftharpoons \text{PL}$, the association constant is a ratio of partition functions. If $W(r)$ is the PMF along the separation of the two partners, with $W\to0$ at large distance, then to a good approximation
+<div data-videos="Srj-ZqBzNv4"></div>
+
+For $\text{P} + \text{L}\rightleftharpoons \text{PL}$, the association constant is a ratio of partition functions. If $w(r) = -k_BT\ln g_{PL}(r)$ is the radial PMF along the separation of the two partners (the $g(r)$-type PMF defined above, with $w\to0$ at large distance), then to a good approximation
 
 $$
-K_a = \frac{[\text{PL}]}{[\text{P}][\text{L}]} = 4\pi\int_{bound} r^2\,e^{-\beta W(r)}\,dr,
+K_a = \frac{[\text{PL}]}{[\text{P}][\text{L}]} = 4\pi\int_{bound} r^2\,e^{-\beta w(r)}\,dr,
 \qquad
 \Delta G^\circ_{bind} = -k_BT\ln\big(K_a C^\circ\big),\qquad K_d = 1/K_a .
 $$

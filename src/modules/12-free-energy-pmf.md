@@ -26,6 +26,8 @@ tags: free-energy
 
 ## The potential of mean force, again
 
+<div data-videos="pjT7waGUGDI LCKtsR1ijsA upLHN5z9TEg"></div>
+
 From Module 3: for a coordinate $\xi(\mathbf r)$, called a **collective variable** (CV) or reaction coordinate,
 
 $$
@@ -46,7 +48,9 @@ Check which convention your software uses. Many tools output $-k_BT\ln P(r)$ wit
 
 ## Umbrella sampling
 
-Torrie and Valleau (1977). Add a **bias potential** $w_i(\xi)$ that holds the system near a chosen value $\xi_i$, most often a harmonic spring:
+<div data-videos="1tMd68ankiA LVxFGBxgrLo c-dKO66Sx9A"></div>
+
+[Torrie and Valleau (1977)](cite:torrie1977). Add a **bias potential** $w_i(\xi)$ that holds the system near a chosen value $\xi_i$, most often a harmonic spring:
 
 $$
 U_i^{b}(\mathbf r) = U(\mathbf r)+w_i\big(\xi(\mathbf r)\big),\qquad w_i(\xi) = \tfrac12k\,(\xi-\xi_i)^2 .
@@ -73,7 +77,9 @@ Within one window everything on the right is known except the constant $F_i$, th
 
 ## WHAM: joining the windows optimally
 
-The weighted histogram analysis method (Kumar et al. 1992). Bin $\xi$. Let $n_i(\xi)$ be the number of samples from window $i$ in the bin at $\xi$ and $N_i$ the total number of samples in window $i$. Each window gives its own estimate of the unbiased distribution, $P(\xi)\approx\frac{n_i(\xi)}{N_i}e^{+\beta[w_i(\xi)-F_i]}$. Combine them as a weighted average with weights chosen to minimise the statistical variance of the result. The answer is
+<div data-videos="V1RCMp4wM2k"></div>
+
+The weighted histogram analysis method ([Kumar et al. 1992](cite:kumar1992)). Bin $\xi$. Let $n_i(\xi)$ be the number of samples from window $i$ in the bin at $\xi$ and $N_i$ the total number of samples in window $i$. Each window gives its own estimate of the unbiased distribution, $P(\xi)\approx\frac{n_i(\xi)}{N_i}e^{+\beta[w_i(\xi)-F_i]}$. Combine them as a weighted average with weights chosen to minimise the statistical variance of the result. The answer is
 
 $$
 \boxed{P(\xi) = \frac{\sum_{i=1}^{S}n_i(\xi)}{\sum_{i=1}^{S}N_i\,e^{-\beta[w_i(\xi)-F_i]}}}
@@ -90,13 +96,15 @@ Requirements:
 
 ## MBAR: the binless limit
 
-The multistate Bennett acceptance ratio (Shirts and Chodera 2008) removes the histogram. Let $u_k(\mathbf x) = \beta[U(\mathbf x)+w_k(\xi(\mathbf x))]$ be the reduced potential of state $k$, and pool all samples $\mathbf x_n$ from all windows, $n=1,\dots,N$. The dimensionless free energies $f_i=\beta F_i$ satisfy
+<div data-videos="5tKnjRdVz3E fhMjOYvnGcY"></div>
+
+The multistate Bennett acceptance ratio ([Shirts and Chodera 2008](cite:shirts2008)) removes the histogram. Let $u_k(\mathbf x) = \beta[U(\mathbf x)+w_k(\xi(\mathbf x))]$ be the reduced potential of state $k$, and pool all samples $\mathbf x_n$ from all windows, $n=1,\dots,N$. The dimensionless free energies $f_i=\beta F_i$ satisfy
 
 $$
 f_i = -\ln\sum_{n=1}^{N}\frac{e^{-u_i(\mathbf x_n)}}{\sum_{k=1}^{S}N_k\,e^{f_k-u_k(\mathbf x_n)}} .
 $$
 
-This is the WHAM equation with bins of zero width, one per sample. Its advantages: no binning error, a proven minimum-variance estimator with an analytical uncertainty, and each sample gets a weight
+This is the WHAM equation with bins of zero width, one per sample. Its advantages: no binning error; in the limit of many samples, the lowest variance of any estimator of its family, with an analytical uncertainty that assumes uncorrelated samples; and each sample gets a weight
 
 $$
 W_n = \frac{e^{-u_0(\mathbf x_n)}}{\sum_kN_k\,e^{f_k-u_k(\mathbf x_n)}}
@@ -105,6 +113,8 @@ $$
 for the unbiased state $u_0=\beta U$ (normalise the $W_n$ to sum to 1), so that the unbiased average of **any** observable, including a PMF along a different coordinate, is $\langle A\rangle = \sum_nW_nA(\mathbf x_n)$. MBAR also handles states that differ in temperature or in the Hamiltonian (Module 13). The `pymbar` package implements it. Feed it decorrelated samples.
 
 ## Designing an umbrella sampling calculation
+
+<div data-videos="J7F2aguxTXs A3SxYkoKlnM dvo6noErrbc"></div>
 
 **The coordinate.** It must distinguish the states of interest and, ideally, follow the slowest motion. For binding, the distance between the centres of mass of the two binding sites is the standard choice. For folding or coupled folding and binding, the fraction of native contacts $Q$ is common. The method assumes that all coordinates *orthogonal* to $\xi$ equilibrate within each window. If a slow motion is not captured by $\xi$ (a side chain that must flip, a loop that must open, a rotation of the ligand), neighbouring windows sit in different states of that hidden variable and the PMF is wrong, typically showing up as a dependence on the starting configurations.
 
@@ -131,6 +141,8 @@ Where the PMF is steep, the window does not sit at its centre: the mean is displ
 
 ## From a PMF to a binding constant
 
+<div data-videos="z2C6siB6Qqo iLw7acCoCrs"></div>
+
 Let $W(r)$ be the PMF along the separation of two molecules, **with** the Jacobian removed, shifted so that $W\to0$ at large $r$ where the molecules do not interact. The equilibrium constant for association is the ratio of the bound-state configurational integral to that of the two free molecules at unit concentration:
 
 $$
@@ -151,7 +163,7 @@ Notice that the well depth (50) and $\Delta G^\circ$ (49.3) are not the same qua
 
 Three complications in real systems:
 
-- **The coordinate is one of six.** Two rigid molecules have six relative degrees of freedom: one distance, two angles for the direction, three for the orientation. The simple formula assumes that at each $r$ the simulation samples all orientations and lateral positions correctly. For a protein-protein or protein-peptide complex that is rarely true once the partners separate. The rigorous route (Woo and Roux 2005; Gumbart, Roux and Chipot 2013) adds restraints on orientation and conformation, computes the PMF along $r$ with them in place, and adds the free energies of imposing each restraint in the bound state and releasing it in bulk, where the release term is analytical.
+- **The coordinate is one of six.** Two rigid molecules have six relative degrees of freedom: one distance, two angles for the direction, three for the orientation. The simple formula assumes that at each $r$ the simulation samples all orientations and lateral positions correctly. For a protein-protein or protein-peptide complex that is rarely true once the partners separate. The rigorous route ([Woo and Roux 2005](cite:woo2005); [Gumbart, Roux and Chipot 2013](cite:gumbart2013)) adds three kinds of restraint: on the ligand's conformation (RMSD to its bound structure), on its orientation (three angles), and on the direction of the separation vector (two angles that keep the ligand on an axis). It computes the PMF along $r$ with them in place, and adds the free energies of imposing each restraint in the bound state and releasing it in bulk. (The paper describes the same cycle in the binding direction: restrain the free ligand, bring it in, release the restraints in the site.) The bulk terms for direction and orientation need no simulation, because in an isotropic solvent they reduce to integrals of the restraint's Boltzmann factor over angles. The same terms in the bound state do need a simulation (free energy perturbation in the paper). The conformational (RMSD) restraint has to be computed by simulation, for the bound and for the free molecule.
 - **Other coordinates need their own standard-state treatment.** If the CV is not a distance, for example $Q$ or an RMSD, the "unbound" end of the profile does not correspond to a defined concentration. The free-energy difference between the two basins of such a profile is a property of *that simulation box*: it depends on the box volume. You must relate the unbound state to a volume to obtain $K_d$, for example through the box volume or a separate distance-based calculation.
 - **Finite box.** The PMF must reach its plateau inside the box. With charged partners and slowly decaying interactions this can require a long path.
 
