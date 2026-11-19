@@ -55,6 +55,7 @@ PAPER_GROUPS = {
     "K": "Kinetics and Markov models",
     "L": "Machine-learned potentials",
     "M": "Software",
+    "N": "Machine-learning models trained on MD data",
 }
 
 # ----------------------------------------------------------------------------
@@ -94,7 +95,48 @@ def load_papers():
             h = arx.get(r["key"])
             if h:
                 r["preprint_url"] = h["abs"]
+    extra = RESEARCH / "papers_ml.csv"          # the papers read for Module 18
+    if extra.exists():
+        with open(extra, encoding="utf-8", newline="") as fh:
+            rows += [{k: (v or "").strip() for k, v in r.items()} for r in csv.DictReader(fh)]
+    notes = load_paper_notes()
+    for r in rows:
+        n = notes.get(r["key"], {})
+        r["read"] = n.get("read", r.get("read", ""))
+        r["annotation"] = n.get("annotation", r.get("annotation", ""))
+        r["read_guide"] = n.get("read_guide", r.get("read_guide", ""))
     return rows
+
+
+def load_paper_notes():
+    """What was learned from reading each paper: {key: {read, annotation, read_guide}} (research/paper_notes.json)."""
+    f = RESEARCH / "paper_notes.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
+def load_video_registry(videos):
+    """Every YouTube video the site may link to: the catalogued single videos and every lecture
+    listed inside a catalogued playlist (read from YouTube by research/video_metadata.py)."""
+    reg = {}
+    f = RESEARCH / "video_meta.json"
+    meta = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+    for v in videos:
+        who = v.get("lecturer") or v.get("channel") or ""
+        if v.get("kind") == "playlist":
+            for it in meta.get(v["url"], {}).get("items", []):
+                reg.setdefault(it["id"], {"title": it["title"], "seconds": it.get("seconds"), "by": who, "course": v["title"]})
+        else:
+            m = re.search(r"[?&]v=([A-Za-z0-9_-]{11})", v["url"])
+            if m:
+                reg[m.group(1)] = {"title": v["title"], "seconds": meta.get(v["url"], {}).get("seconds"), "by": who, "course": ""}
+    return reg
+
+
+def minutes(seconds):
+    if not seconds:
+        return ""
+    m = round(seconds / 60)
+    return f"{m // 60} h {m % 60:02d} min" if m >= 60 else f"{max(1, m)} min"
 
 
 E = lambda s: html.escape(str(s if s is not None else ""), quote=True)
@@ -182,10 +224,21 @@ def paper_li(p):
         cite += f" <b>{E(vol)}</b>"
     if pages:
         cite += f", {E(pages)}"
+    badge = ""
+    if p.get("read") == "full":
+        badge = ' <span class="tag read" title="The full text of this paper was read while checking the course">read in full</span>'
+    elif p.get("read") == "part":
+        badge = ' <span class="tag read" title="Parts of this paper were read while checking the course">read in part</span>'
+    note = ""
+    if p.get("annotation"):
+        note += f'<span class="res-why">{E(p["annotation"])}</span>'
+    if p.get("read_guide"):
+        note += f'<span class="res-why"><b>What to read in it:</b> {E(p["read_guide"])}</span>'
+    link = p.get("url") or ("https://doi.org/" + p["doi"] if p.get("doi") else "")
     return (
-        f'<li class="res"><span class="res-auth">{E(p.get("authors"))} ({E(p.get("year"))}).</span> '
-        f'<a href="https://doi.org/{E(p["doi"])}" target="_blank" rel="noopener">{E(p.get("title"))}</a>. '
-        f'<i>{cite}</i>.{oa}</li>'
+        f'<li class="res" id="ref-{E(p["key"])}"><span class="res-auth">{E(p.get("authors"))} ({E(p.get("year"))}).</span> '
+        f'<a href="{E(link)}" target="_blank" rel="noopener">{E(p.get("title"))}</a>. '
+        f'<i>{cite}</i>.{oa}{badge}{note}</li>'
     )
 
 
@@ -310,6 +363,7 @@ PAGE = """<!doctype html>
 <script defer src="{katex}/katex.min.js"></script>
 <script defer src="{katex}/contrib/auto-render.min.js"></script>
 <script defer src="course.js"></script>
+<script defer src="demos2.js"></script>
 </body>
 </html>
 """
@@ -325,7 +379,9 @@ def build():
         meta.setdefault("slug", p.stem)
         (mods if meta.get("num") else extras).append(meta)
     mods.sort(key=lambda m: int(m["num"]))
-    order = {"index": 0, "projects": 1, "formula-sheet": 2, "library": 3}
+    order = {"index": 0, "toy-data": 1, "projects": 2, "formula-sheet": 3, "library": 4, "sources": 5}
+    registry = load_video_registry(videos)
+    by_key = {p["key"]: p for p in papers}
     extras.sort(key=lambda m: order.get(m["slug"], 9))
 
     def nav_html(current):
@@ -405,13 +461,44 @@ def build():
         "N_PAPERS": str(len(papers)),
         "N_MODULES": str(len(mods)),
         "N_HOURS": str(sum(int(m.get("hours", 0) or 0) for m in mods)),
+        "N_WIDGETS": str(sum(m["raw"].count('data-widget="') for m in mods)),
+        "N_LECTURES": str(len(registry)),
+        "N_READ_FULL": str(sum(1 for p in papers if p.get("read") == "full")),
+        "N_READ_PART": str(sum(1 for p in papers if p.get("read") == "part")),
+        "N_NOT_READ": str(sum(1 for p in papers if p.get("read") not in ("full", "part"))),
     }
+
+    used_videos = set()
+
+    def section_videos(match):
+        ids = re.findall(r"[A-Za-z0-9_-]{11}", match.group(1))
+        items = []
+        for vid in ids:
+            if vid not in registry:
+                raise SystemExit(f"a section names a video that is not in the verified list: {vid}")
+            r = registry[vid]
+            used_videos.add(vid)
+            meta = " · ".join(x for x in (minutes(r["seconds"]), r["by"]) if x)
+            items.append(
+                f'<a class="sv" data-yt="{vid}" href="https://www.youtube.com/watch?v={vid}" target="_blank" rel="noopener" '
+                f'title="{E(r["course"])}"><span class="sv-play">&#9654;</span><span class="sv-t">{E(r["title"])}</span>'
+                f'<span class="sv-m">{E(meta)}</span></a>')
+        return '<div class="secvideos"><span class="sv-label">Watch for this part</span>' + "".join(items) + "</div>"
+
+    def cite_link(match):
+        key = match.group(1)
+        if key not in by_key:
+            raise SystemExit(f"citation to a paper that is not in the verified list: {key}")
+        p = by_key[key]
+        link = p.get("url") or "https://doi.org/" + p["doi"]
+        tip = f'{p["authors"]} ({p["year"]}). {p["title"]}. {p["journal"]}'
+        return f'href="{E(link)}" class="cite" target="_blank" rel="noopener" title="{E(tip)}"'
 
     allpages = mods + extras
     for m in allpages:
         raw = m["raw"]
         vt = [int(x) for x in re.findall(r"\d+", m.get("videos", ""))]
-        pg = [x for x in re.findall(r"[A-M]", m.get("papers", ""))]
+        pg = [x for x in re.findall(r"[A-Z]", m.get("papers", ""))]
         tags = [x.strip() for x in m.get("tags", "").split(",") if x.strip()]
         body, toc_tokens = md_to_html(raw)
         blocks = {
@@ -429,6 +516,11 @@ def build():
         blocks.update(counts)
         for k, v in blocks.items():
             body = body.replace("<p>{{" + k + "}}</p>", v).replace("{{" + k + "}}", v)
+        body = re.sub(r'<div data-videos="([^"]*)"></div>', section_videos, body)
+        body = re.sub(r'href="cite:([A-Za-z0-9_-]+)"', cite_link, body)
+        left = re.findall(r"\{\{[A-Z_]+[:}]", body)
+        if left:
+            raise SystemExit(f"unfilled placeholder in {m['slug']}: {left[:3]}")
 
         is_mod = bool(m.get("num"))
         if is_mod:
@@ -457,11 +549,12 @@ def build():
         )
         (SITE / f'{m["slug"]}.html').write_text(page, encoding="utf-8", newline="\n")
 
-    for f in ("style.css", "course.js"):
+    for f in ("style.css", "course.js", "demos2.js"):
         shutil.copyfile(SRC / f, SITE / f)
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
     print(f"built {len(allpages)} pages; videos={len(videos)} books={len(books['books'])} "
-          f"notes={len(books['notes_courses'])} tutorials={len(books['tutorials_docs'])} papers={len(papers)}")
+          f"notes={len(books['notes_courses'])} tutorials={len(books['tutorials_docs'])} papers={len(papers)}; "
+          f"lectures placed in sections: {len(used_videos)} of {len(registry)} known")
 
 
 if __name__ == "__main__":

@@ -144,6 +144,22 @@ details > :not(summary) { margin-left: 14px; margin-right: 14px; }
 .tag { display: inline-block; font-size: 12px; padding: 0 7px; border-radius: 10px; border: 1px solid var(--line); color: var(--ink2); margin-left: 6px; text-decoration: none; }
 .tag.free { border-color: var(--s3); color: var(--good); }
 .count { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 6px; }
+.tag.read { border-color: var(--s1); color: var(--accent); }
+a.cite { text-decoration-style: dotted; }
+
+/* lectures attached to a section */
+.secvideos { margin: .2em 0 1.2em; padding: 8px 12px 10px; border-left: 3px solid var(--s2); background: var(--surface); border-radius: 0 8px 8px 0; }
+.sv-label { display: block; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 4px; }
+a.sv { display: flex; align-items: baseline; gap: 8px; padding: 3px 4px; border-radius: 5px; text-decoration: none; font-size: 15px; line-height: 1.4; }
+a.sv:hover, a.sv.playing { background: var(--accent-soft); }
+.sv-play { color: var(--s2); font-size: 11px; flex: none; }
+.sv-t { color: var(--accent); }
+.sv-m { color: var(--muted); font-size: 13.5px; margin-left: auto; padding-left: 10px; white-space: nowrap; }
+.sv-player { margin-top: 8px; }
+.sv-frame { position: relative; width: 100%; max-width: 720px; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; overflow: hidden; }
+.sv-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.sv-under { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+@media (max-width: 700px) { a.sv { flex-wrap: wrap; } .sv-m { margin-left: 19px; padding-left: 0; white-space: normal; } }
 
 .donebox { margin: 2.5em 0 1em; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-weight: 600; }
 .donebox input { width: 18px; height: 18px; vertical-align: -3px; margin-right: 8px; accent-color: var(--s3); }
