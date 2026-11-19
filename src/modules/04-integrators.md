@@ -101,7 +101,7 @@ $$
 e^{iL\Delta t} = e^{iL_p\Delta t/2}\;e^{iL_r\Delta t}\;e^{iL_p\Delta t/2} + O(\Delta t^3).
 $$
 
-Read from right to left: half kick, drift, half kick. That is velocity Verlet. The derivation gives three properties for free.
+Read from right to left: half kick, drift, half kick. That is velocity Verlet. The derivation gives three properties for free. (Tuckerman, Berne and Martyna state the first, reversibility. The other two are standard results for integrators built from exact flows and are not discussed in their paper.)
 
 **1. Time-reversible.** The product is symmetric, so applying it with $-\Delta t$ exactly undoes a step.
 
@@ -180,7 +180,7 @@ $$
 e^{iL\Delta t} \approx e^{iL_p^{slow}\Delta t/2}\Big[e^{iL_p^{fast}\delta t/2}\,e^{iL_r\delta t}\,e^{iL_p^{fast}\delta t/2}\Big]^{n}e^{iL_p^{slow}\Delta t/2},\qquad \delta t = \Delta t/n .
 $$
 
-The cheap fast forces are evaluated every inner step, the expensive slow forces once per outer step. The scheme stays reversible and symplectic. The catch is **resonance**: the slow force is applied as periodic impulses, and when the outer step approaches half the period of the fastest motion the impulses pump energy into it. With constrained bonds to hydrogen this limits the outer step to about 4 to 5 fs. GROMACS, NAMD, OpenMM and Desmond all offer some version of this (for example evaluating PME every second or third step).
+The cheap fast forces are evaluated every inner step, the expensive slow forces once per outer step. The scheme stays reversible and symplectic. Tuckerman, Berne and Martyna showed the reversibility, and showed on Lennard-Jones test systems that the scheme is more stable at large steps than the earlier, non-reversible RESPA. The resonance limit described next was worked out later. The catch is **resonance**: the slow force is applied as periodic impulses, and when the outer step approaches half the period of the fastest motion the impulses pump energy into it. With constrained bonds to hydrogen this limits the outer step to about 4 to 5 fs. GROMACS, NAMD, OpenMM and Desmond all offer some version of this (for example evaluating PME every second or third step).
 
 ## Stochastic integrators
 

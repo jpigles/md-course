@@ -110,13 +110,13 @@ $$
 
 <div data-videos="BACN9Ydiw5I 0KqCK0yG9T0"></div>
 
-The practical method ([Flyvbjerg and Petersen 1989](cite:flyvbjerg1989)). Cut the series into $M$ consecutive blocks, average within each block, and treat the block averages as independent:
+The practical method, described in detail by [Flyvbjerg and Petersen (1989)](cite:flyvbjerg1989), who note that it was already part of the folklore of the simulation community. Cut the series into $M$ consecutive blocks, average within each block, and treat the block averages as independent:
 
 $$
 \mathrm{SE}_{block} = \frac{s(\text{block means})}{\sqrt M}.
 $$
 
-Repeat for increasing block length. While blocks are shorter than the correlation time, the estimate rises. When it reaches a plateau, the blocks are independent and the plateau value is the standard error. **If there is no plateau before you run out of blocks, the simulation is too short to give an error estimate**, and the mean itself cannot be trusted.
+Repeat for increasing block length. While blocks are shorter than the correlation time, the estimate rises. When it reaches a plateau, the blocks are independent and the plateau value is the standard error. **If there is no plateau before you run out of blocks, the simulation is too short to give an error estimate**: the largest value reached is only a lower bound on the true standard error, so the mean cannot be trusted either.
 
 ```python
 import numpy as np
@@ -168,9 +168,9 @@ $$
 C_{ab} = \big\langle(x_a-\langle x_a\rangle)(x_b-\langle x_b\rangle)\big\rangle,
 $$
 
-and diagonalise it. The eigenvectors with the largest eigenvalues are the directions of largest fluctuation, and a handful usually account for most of the motion ("essential dynamics"). Projecting the trajectory on the first two gives a map of the conformations visited.
+and diagonalise it. The eigenvectors with the largest eigenvalues are the directions of largest fluctuation, and a handful usually account for most of the motion ("essential dynamics"). That alone does not show that they are collective motions: for pure random diffusion in many dimensions the first three components already hold more than 80 % of the variance ([Hess 2000](cite:hess2000)). Projecting the trajectory on the first two gives a map of the conformations visited.
 
-The pitfall: a random walk in high dimensions, that is an unconverged simulation, produces first principal components that look like smooth half-cosines in time, and a projection that looks like a meaningful U-shaped pathway. Hess ([2000](cite:hess2000), [2002](cite:hess2002)) showed this and proposed the cosine content as a test. If your first component is a cosine of period twice the trajectory length, you are looking at diffusion, not at a functional motion.
+The pitfall: a random walk in high dimensions, that is an unconverged simulation, produces first principal components that look like smooth half-cosines in time, and a projection that looks like a meaningful U-shaped pathway. Hess ([2000](cite:hess2000)) derived this for random diffusion and showed that cosine-shaped components appear in protein simulations that are too short. Hess ([2002](cite:hess2002)) defined the cosine content of a component, from 0 (no cosine) to 1 (a perfect one). It is a negative indicator only: if your first component is a cosine of period twice the trajectory length, you are looking at diffusion, not at a functional motion, but a low cosine content proves nothing. A better check is to split the trajectory into parts and compare their principal components.
 
 Time-lagged independent component analysis (TICA, Module 16) is the related method that finds the *slowest* rather than the largest motions.
 

@@ -133,7 +133,7 @@ states = np.digitize(x, [-0.7, 0.7])             # three states: left, middle, r
 for lag in (1, 10, 100):
     C = np.zeros((3, 3))
     np.add.at(C, (states[:-lag], states[lag:]), 1)
-    C = 0.5 * (C + C.T)                          # enforce detailed balance
+    C = 0.5 * (C + C.T)                          # symmetrise the counts (a simple reversible estimate)
     T = C / C.sum(axis=1, keepdims=True)
     ev = np.sort(np.linalg.eigvals(T).real)[::-1]
     dt = t[1] - t[0]

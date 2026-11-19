@@ -177,12 +177,12 @@ Cost per step is set by the number of pair interactions. With about 100 atoms pe
 
 <div data-videos="PGqCeSjNuTY eNuV8pYd-is SgH_GcFhQf8"></div>
 
-- **1957, [Alder and Wainwright](cite:alder1957).** First MD simulation: hard spheres, showing a fluid-solid transition.
-- **1964, [Rahman](cite:rahman1964).** 864 argon atoms with a Lennard-Jones potential: the first simulation with a continuous potential, and agreement with experiment on the structure and diffusion of the liquid.
-- **1967, [Verlet](cite:verlet1967).** The integrator and the neighbour list that are still in use.
+- **1957, [Alder and Wainwright](cite:alder1957).** The first published molecular dynamics simulation: 32 and 108 hard spheres, followed collision by collision. The pressure showed two branches, which pointed to a fluid-solid transition. The method is described in full in [Alder and Wainwright (1959)](cite:alder1959).
+- **1964, [Rahman](cite:rahman1964).** 864 argon atoms with a Lennard-Jones potential, a continuous interaction in place of hard spheres and square wells. The pair distribution function agreed well with experiment, and the self-diffusion constant came out within about 20 percent of the measured value.
+- **1967, [Verlet](cite:verlet1967).** 864 Lennard-Jones particles, integrated with the simple position recursion that now carries his name, and a table of neighbours, rebuilt every few steps, that cut the cost about tenfold. Velocity Verlet and today's buffered neighbour lists descend from both.
 - **1971, [Rahman and Stillinger](cite:rahman1971).** Liquid water, 216 molecules.
-- **1977, [McCammon, Gelin and Karplus](cite:mccammon1977).** First protein simulation: the 58-residue inhibitor BPTI, in vacuum, for less than 10 ps. The lasting result was qualitative: the interior of a protein is fluid-like, not rigid.
-- **1977, [Ryckaert, Ciccotti and Berendsen](cite:ryckaert1977).** SHAKE: bond constraints, which allow a larger time step.
+- **1977, [McCammon, Gelin and Karplus](cite:mccammon1977).** First protein simulation: the 58-residue inhibitor BPTI, without solvent apart from four buried water molecules and with hydrogens merged into the heavy atoms, for less than 10 ps. The lasting result was qualitative: the interior of a protein is fluid-like, not rigid.
+- **1977, [Ryckaert, Ciccotti and Berendsen](cite:ryckaert1977).** SHAKE: an iterative way to keep bond lengths (and, in the paper, angles) fixed at every step. Freezing the fastest motions is what later allowed 2 fs time steps; the paper itself kept the usual step.
 - **1980s.** Thermostats and barostats (Andersen, Berendsen, Nosé, Hoover, Parrinello and Rahman), free-energy perturbation applied to biomolecules, the first AMBER, CHARMM, GROMOS and OPLS force fields.
 - **1993 to 1995.** Particle-mesh Ewald makes proper long-range electrostatics affordable.
 - **2010 to 2011, [Shaw and co-workers](cite:shaw2010).** Millisecond simulation of BPTI and reversible folding of twelve small proteins on Anton.

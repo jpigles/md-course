@@ -82,11 +82,11 @@ $$
 \boxed{\Delta A = \int_0^1\left\langle\frac{\partial U}{\partial\lambda}\right\rangle_\lambda d\lambda}
 $$
 
-This is thermodynamic integration, which goes back to [Kirkwood (1935)](cite:kirkwood1935). Compute the average of $\partial U/\partial\lambda$ at each $\lambda$ and integrate numerically (the trapezoid rule is the usual recommendation, because it works with any spacing of the $\lambda$ values). TI has no exponential average and is robust, but it has a quadrature error that depends on how smooth the integrand is, and it needs enough $\lambda$ points where the curve bends.
+This is thermodynamic integration. It goes back to [Kirkwood (1935)](cite:kirkwood1935), who switched on the interaction of one molecule with the rest of a fluid through a coupling parameter and wrote its chemical potential as an integral of the mean interaction energy over that parameter. Compute the average of $\partial U/\partial\lambda$ at each $\lambda$ and integrate numerically (the trapezoid rule is the usual recommendation, because it works with any spacing of the $\lambda$ values). TI has no exponential average and is robust, but it has a quadrature error that depends on how smooth the integrand is, and it needs enough $\lambda$ points where the curve bends.
 
 ## The Bennett acceptance ratio
 
-FEP uses samples from one end only. With samples from both A and B, [Bennett (1976)](cite:bennett1976) asked for the estimator with the lowest variance. Start from an identity that holds for any function $f$ satisfying $f(x)/f(-x)=e^{-x}$; the Fermi function $f(x)=1/(1+e^{x})$ is the optimal choice:
+FEP uses samples from one end only. With samples from both A and B, [Bennett (1976)](cite:bennett1976) asked for the estimator with the lowest variance, and showed that the one below is optimal for large samples. Start from an identity that holds for any function $f$ satisfying $f(x)/f(-x)=e^{-x}$; the Fermi function $f(x)=1/(1+e^{x})$ is the optimal choice:
 
 $$
 \frac{Q_B}{Q_A}=\frac{\big\langle f\big(\beta(\Delta U-C)\big)\big\rangle_A}{\big\langle f\big(-\beta(\Delta U-C)\big)\big\rangle_B}\,e^{-\beta C} .
@@ -104,7 +104,7 @@ Each configuration from A is weighted by how plausible it would be as a member o
 
 ## Making atoms appear and disappear: soft-core potentials
 
-With linear scaling, a disappearing atom at $\lambda$ close to 1 is nearly non-interacting, so other atoms can sit right on top of it, where its $r^{-12}$ repulsion, though scaled by a small factor, is still infinite. $\langle\partial U/\partial\lambda\rangle$ diverges at the end point. The fix ([Beutler et al. 1994](cite:beutler1994)) is a **soft-core** Lennard-Jones potential in which $\lambda$ also shifts the distance. A widely used form (the GROMACS variant with `sc-power = 1`; the original paper uses different powers of $\lambda$) is:
+With linear scaling, a disappearing atom at $\lambda$ close to 1 is nearly non-interacting, so other atoms can sit right on top of it, where its $r^{-12}$ repulsion, though scaled by a small factor, is still infinite. $\langle\partial U/\partial\lambda\rangle$ diverges at the end point. The fix ([Beutler et al. 1994](cite:beutler1994)) is a **soft-core** Lennard-Jones potential in which $\lambda$ also shifts the distance. A widely used form (the GROMACS variant with `sc-power = 1`) is given below. The original paper runs $\lambda$ the other way, uses a prefactor $\lambda^n$ and a shift proportional to $\alpha(1-\lambda)^2$, and softens the Coulomb term in the same way:
 
 $$
 U_{sc}(r,\lambda) = 4\varepsilon\,(1-\lambda)\left[\frac{1}{\big(\alpha\lambda+(r/\sigma)^6\big)^2}-\frac{1}{\alpha\lambda+(r/\sigma)^6}\right].
@@ -160,7 +160,7 @@ $$
 \Delta G_{restr}^\circ = -k_BT\ln\left[\frac{8\pi^2V^\circ\sqrt{K_rK_{\theta_A}K_{\theta_B}K_{\phi_A}K_{\phi_B}K_{\phi_C}}}{r_0^2\,\sin\theta_{A,0}\,\sin\theta_{B,0}\,(2\pi k_BT)^3}\right],
 $$
 
-with $K$ the force constants and $r_0$, $\theta_{A,0}$, $\theta_{B,0}$ the reference values. For typical restraints the argument of the logarithm is about $10^5$, so $\Delta G_{restr}^\circ\approx-28$ kJ/mol ($-6.8$ kcal/mol). Sign conventions for this term differ between papers and programs (some report the free energy of *imposing* the restraints, which is the same number with the opposite sign and then enters with a plus), so check which direction your software reports. Absolute calculations are harder than relative ones: the errors of two large numbers do not cancel, and the protein must relax between the bound and the empty state.
+with $K$ the force constants and $r_0$, $\theta_{A,0}$, $\theta_{B,0}$ the reference values. For typical restraints the argument of the logarithm is about $10^5$, so $\Delta G_{restr}^\circ\approx-28$ kJ/mol ($-6.8$ kcal/mol). It grows in size with the force constants: Boresch et al. tabulate $-6.3$ to $-10.4$ kcal/mol ($-26$ to $-43$ kJ/mol) for force constants from 5 to 50 kcal/mol per Å$^2$ or rad$^2$. The formula assumes restraint energies of the form $\tfrac12K(\zeta-\zeta_0)^2$; a program that writes $K(\zeta-\zeta_0)^2$ needs $2K$ in it. Sign conventions for this term differ between papers and programs (some report the free energy of *imposing* the restraints, which is the same number with the opposite sign and then enters with a plus), so check which direction your software reports. Absolute calculations are harder than relative ones: the errors of two large numbers do not cancel, and the protein must relax between the bound and the empty state.
 
 ## Non-equilibrium work relations
 

@@ -39,7 +39,7 @@ The reference data are of two kinds:
 - **Quantum chemistry** on small model compounds: optimised geometries, vibrational frequencies, the electrostatic potential around the molecule, energy scans along torsions, interaction energies of dimers.
 - **Experiment**, mostly on pure liquids and solutions: density, heat of vaporisation, hydration free energy, and for proteins NMR observables.
 
-The terms are fitted in a fixed order, because each depends on the ones before:
+The terms are fitted roughly in the order below, because each depends on the ones before. The order is not strict. The cycle is repeated until the parameters stop changing, since a change of charges forces a refit of the torsions (OPLS-AA and CHARMM22 were built this way), and in the original AMBER work the torsions were tuned together with the non-bonded terms:
 
 1. **Equilibrium bond lengths and angles** from crystal structures and QM geometries; **force constants** from vibrational frequencies.
 2. **Partial charges** from the QM electrostatic potential or from interactions with water.
@@ -58,7 +58,7 @@ $$
 \chi^2_{ESP} = \sum_k\Big[V^{QM}(\mathbf r_k) - \sum_i\frac{q_i}{4\pi\varepsilon_0|\mathbf r_k-\mathbf r_i|}\Big]^2 + \lambda\Big(\sum_iq_i-Q_{tot}\Big).
 $$
 
-Setting $\partial\chi^2/\partial q_j=0$ gives a linear system, solved in one step. The problem is that charges on buried atoms (a carbon surrounded by hydrogens) are poorly determined: the potential outside barely depends on them, so they come out large and conformation-dependent. **RESP** (restrained ESP; [Bayly et al. 1993](cite:bayly1993)) adds a hyperbolic penalty that pulls poorly determined charges towards zero:
+Setting $\partial\chi^2/\partial q_j=0$ gives a linear system, solved in one step. The problem is that charges on buried atoms (a carbon surrounded by hydrogens) are poorly determined: the potential outside barely depends on them, so they come out large and unstable from one molecule to the next. A second, separate problem is that even well-determined charges depend on the conformation used for the fit, because fixed charges cannot follow electronic polarisation; AMBER ff94 fitted charges to several conformations at once to average this. **RESP** (restrained ESP; [Bayly et al. 1993](cite:bayly1993)) adds a hyperbolic penalty that pulls poorly determined charges towards zero:
 
 $$
 \chi^2_{RESP} = \chi^2_{ESP} + a\sum_{i\,\in\,\text{heavy atoms}}\left(\sqrt{q_i^2+b^2}-b\right).
@@ -66,9 +66,9 @@ $$
 
 The penalty acts on the non-hydrogen atoms only. Hydrogens sit at the surface of the molecule, where the potential determines their charges well.
 
-AMBER deliberately uses a low level of theory, HF/6-31G\*, for this step. It overestimates dipole moments by 10 to 20 %, which roughly mimics the polarisation a molecule experiences in water. This is how a fixed-charge model includes average polarisation.
+AMBER deliberately uses a low level of theory, HF/6-31G\*, for this step. It overestimates gas-phase dipole moments, typically by 10 to 20 % (Cornell et al. compare this with the roughly 20 % by which the TIP3P and SPC models enhance the dipole of water), which roughly mimics the polarisation a molecule experiences in water. This is how a fixed-charge model includes average polarisation. The over-polarisation is a rough device and varies between chemical groups, which is why AMBER ff15ipq instead uses charges halfway between gas-phase and aqueous values ([Nerenberg and Head-Gordon 2018](cite:nerenberg2018)).
 
-The other families use different philosophies for the same goal. CHARMM adjusts charges to reproduce QM interaction energies and geometries of the molecule with individual water molecules. OPLS fits charges and Lennard-Jones parameters together to liquid properties. GROMOS fits to free energies of solvation and partitioning.
+The other families use different philosophies for the same goal. CHARMM adjusts charges to reproduce QM interaction energies and geometries of the molecule with individual water molecules. OPLS fits charges and Lennard-Jones parameters together to liquid properties. GROMOS (sets 53A5 and 53A6) fits first to pure-liquid densities and heats of vaporisation and to solvation free enthalpies in cyclohexane, and then re-adjusts the charges of polar groups to hydration free enthalpies, so that partitioning between water and non-polar media comes out right ([Oostenbrink et al. 2004](cite:oostenbrink2004)).
 
 ## The protein force-field families
 
@@ -78,15 +78,15 @@ The other families use different philosophies for the same goal. CHARMM adjusts 
 |---|---|---|---|---|
 | AMBER | ff14SB, ff19SB | All-atom | RESP charges from QM; torsions fitted to QM energy scans, with the ff14SB backbone adjusted empirically against NMR data | TIP3P (ff14SB); OPC is recommended with ff19SB |
 | CHARMM | CHARMM36m | All-atom | Charges from interactions with individual water molecules; CMAP backbone correction and side-chain torsions re-fitted to QM and NMR data | CHARMM-modified TIP3P |
-| OPLS | OPLS-AA/M (open), OPLS4 (commercial) | All-atom | Liquid-state properties | TIP3P, TIP4P |
-| GROMOS | 54A7 | United-atom (non-polar H merged into C) | Solvation and partition free energies | SPC |
+| OPLS | OPLS-AA/M (open), OPLS4 (commercial) | All-atom | Charges and Lennard-Jones parameters fitted to liquid properties (heats of vaporisation, densities); torsions fitted to QM energy scans | TIP3P, TIP4P |
+| GROMOS | 53A6 (2004), 54A7 | United-atom (non-polar H merged into C) | Pure-liquid density and heat of vaporisation, then charges re-fitted to hydration and solvation free energies | SPC |
 
-The lineage is worth knowing because papers cite specific versions. In AMBER: ff94 ([Cornell et al. 1995](cite:cornell1995)), ff99, ff99SB (backbone fix, 2006), ff99SB-ILDN (side chains of Ile, Leu, Asp, Asn; [Lindorff-Larsen et al. 2010](cite:lindorfflarsen2010)), ff14SB ([Maier et al. 2015](cite:maier2015)), ff19SB (an amino-acid-specific CMAP backbone fitted to QM energy surfaces computed in implicit solvent, and recommended with OPC water although it was not fitted with it; [Tian et al. 2020](cite:tian2020)). In CHARMM: CHARMM22 ([MacKerell et al. 1998](cite:mackerell1998)), CHARMM22/CMAP (2004), CHARMM36 ([Best et al. 2012](cite:best2012)), CHARMM36m ([Huang et al. 2017](cite:huang2017)).
+The lineage is worth knowing because papers cite specific versions. In AMBER: the united-atom force field of [Weiner et al. (1984)](cite:weiner1984), with a 10-12 hydrogen-bond term and 1-4 factors of 0.5; the all-atom force field of [Cornell et al. (1995)](cite:cornell1995), usually called ff94, with RESP charges and a 1-4 Coulomb factor of 1/1.2; ff99, ff99SB (backbone fix, 2006), ff99SB-ILDN (side chains of Ile, Leu, Asp, Asn; [Lindorff-Larsen et al. 2010](cite:lindorfflarsen2010)), ff14SB ([Maier et al. 2015](cite:maier2015)), ff19SB (an amino-acid-specific CMAP backbone fitted to QM energy surfaces computed in implicit solvent, and recommended with OPC water although it was not fitted with it; [Tian et al. 2020](cite:tian2020)). In CHARMM: CHARMM22 ([MacKerell et al. 1998](cite:mackerell1998)), CHARMM22/CMAP (2004), CHARMM36 ([Best et al. 2012](cite:best2012)), CHARMM36m ([Huang et al. 2017](cite:huang2017)).
 
 For anything that is not a standard residue you need a **general force field** designed to be compatible with the protein one: GAFF/GAFF2 with AMBER, CGenFF with CHARMM, and the Open Force Field series (Parsley, Sage), which assigns bonded and Lennard-Jones parameters by chemical substructure patterns (the charges come from the AM1-BCC model), is distributed in an open format, and is validated together with AMBER protein force fields.
 
 <div class="box warn" markdown="1">
-**Rules that save months.** (1) Use the protein force field with the water model and ion parameters it was validated with. (2) Use the cutoff scheme it was developed with (CHARMM: force switch from 1.0 to 1.2 nm). (3) Never combine protein parameters from one family with ligand parameters from another. (4) Read the force field's own paper for the recommended combination; do not rely on a tutorial's defaults.
+**Rules that save months.** (1) Use the protein force field with the water model and ion parameters it was validated with. (2) Use the cutoff scheme it was developed with (CHARMM36: force switch from 1.0 to 1.2 nm; the original CHARMM22 paper used atom-based shifting and switching functions, and stresses that the cutoff scheme is part of the model). (3) Never combine protein parameters from one family with ligand parameters from another. (4) Read the force field's own paper for the recommended combination; do not rely on a tutorial's defaults.
 </div>
 
 ## Water models
@@ -97,14 +97,14 @@ Water is 80 to 90 % of the atoms in a simulation, and its model decides hydratio
 
 | Model | Sites | Idea | Strength | Known weakness |
 |---|---|---|---|---|
-| SPC, SPC/E | 3 | Charges on O and H, one Lennard-Jones site on O. SPC/E adds a polarisation self-energy correction. | SPC/E: good diffusion and structure | Dielectric constant somewhat low |
-| TIP3P | 3 | Same layout, fitted to density and heat of vaporisation ([Jorgensen et al. 1983](cite:jorgensen1983)) | Default of AMBER and CHARMM; huge validation history | Diffuses about twice too fast; too little structure beyond the first shell |
-| TIP4P-Ew, TIP4P/2005 | 4 | Negative charge moved off the oxygen to a massless site M on the bisector | TIP4P/2005: excellent phase diagram, density and dynamics | Dielectric constant too low (about 60) |
+| SPC, SPC/E | 3 | Charges on O and H, one Lennard-Jones site on O. SPC/E is SPC refitted with slightly larger charges ($q_H=+0.4238$ instead of $+0.41$), chosen after the polarisation self-energy is subtracted from the target energy. | SPC/E: good diffusion and structure | Dielectric constant somewhat low |
+| TIP3P | 3 | Same three-site layout, but with the real water geometry (OH 0.09572 nm, HOH 104.52 degrees) instead of the tetrahedral SPC angle, and reparametrised to improve the energy and density of the liquid ([Jorgensen et al. 1983](cite:jorgensen1983)) | Default of AMBER and CHARMM; huge validation history | Diffuses about twice too fast; too little structure beyond the first shell |
+| TIP4P-Ew, TIP4P/2005 | 4 | Negative charge moved off the oxygen to a massless site M on the bisector | TIP4P-Ew: TIP4P re-fitted for Ewald electrostatics. TIP4P/2005: excellent phase diagram, density and dynamics | Dielectric constant too low (about 60); TIP4P/2005 melts about 20 K too low |
 | OPC | 4 | Three charges on four sites, placed without the usual bond-length and angle constraints so as to best reproduce six bulk properties ([Izadi et al. 2014](cite:izadi2014)) | Very good dielectric constant, density and diffusion together | 4-site cost |
 | TIP4P-D, a99SB-disp water | 4 | Dispersion ($C_6$) increased | Reduces the over-compaction of disordered proteins | On its own it destabilises helices and some folded proteins, which is why a99SB-disp also re-fitted protein terms |
-| TIP5P | 5 | Explicit lone-pair sites | Density maximum at 4 °C | Cost; less used with proteins |
+| TIP5P | 5 | Explicit lone-pair sites | Designed to give the density maximum at 4 °C (with Ewald electrostatics it shifts to about 285 K) | Cost; less used with proteins |
 
-Rough numbers to anchor the table, at about 298 K: experimental water has a self-diffusion coefficient of $2.3\times10^{-5}$ cm$^2$/s and a dielectric constant of 78. TIP3P gives a diffusion coefficient above $5\times10^{-5}$ cm$^2$/s and a dielectric constant in the 90s. SPC/E and OPC are close to experiment for diffusion. The exact values reported depend on cutoffs and system size, so take them from the original papers when you need them.
+Rough numbers to anchor the table, at about 298 K: experimental water has a self-diffusion coefficient of $2.3\times10^{-5}$ cm$^2$/s and a dielectric constant of 78. TIP3P gives a diffusion coefficient above $5\times10^{-5}$ cm$^2$/s and a dielectric constant in the 90s. SPC/E and OPC are close to experiment for diffusion. The exact values reported depend on cutoffs and system size. The original TIP3P and SPC/E papers report no dielectric constants, and the 1983 TIP3P paper gives no diffusion coefficient for TIP3P, so take these numbers from later systematic comparisons of water models.
 
 Two consequences for protein simulations: with TIP3P, everything that depends on solvent viscosity (diffusion, some conformational rates) is too fast by a factor of 2 to 3; and the balance between protein-water and protein-protein interactions, which decides whether a disordered chain is expanded or collapsed, depends strongly on the water model.
 
@@ -122,7 +122,7 @@ Ion parameters are specific to the water model ([Joung and Cheatham 2008](cite:j
 
 This matters if you work with intrinsically disordered proteins or regions (IDPs, IDRs).
 
-Force fields up to about 2014 were developed mostly with folded proteins and short peptides in mind. When simulated with them, disordered proteins and unfolded states collapsed into compact globules, with radii of gyration well below SAXS and FRET measurements. The cause was a general imbalance: protein-protein interactions were too favourable compared with protein-water interactions. Two explanations were proposed, and each led to a fix: protein-water Lennard-Jones attraction that is too weak ([Best, Zheng and Mittal 2014](cite:best2014)), and water models that underestimate dispersion ([Piana et al. 2015](cite:piana2015)). The fixes took three routes:
+Force fields up to about 2014 were developed mostly with folded proteins and short peptides in mind. When simulated with them, disordered proteins and unfolded states collapsed into compact globules, with radii of gyration well below SAXS and FRET measurements. The cause was a general imbalance: protein-protein interactions were too favourable compared with protein-water interactions. Two explanations were proposed, and each led to a fix: protein-water Lennard-Jones attraction that is too weak ([Best, Zheng and Mittal 2014](cite:best2014)), and water models that underestimate dispersion ([Piana et al. 2015](cite:piana2015)). The fixes took several routes (the table lists four; a fifth, weakening the protein-protein attraction to match osmotic coefficients, is described by [Nerenberg and Head-Gordon 2018](cite:nerenberg2018)):
 
 | Approach | Example | What was changed |
 |---|---|---|
@@ -140,10 +140,10 @@ The usual choices for systems with both folded and disordered parts are a99SB-di
 In a polarizable model the charge distribution responds to the local electric field $\mathbf E$.
 
 - **Drude oscillator** (CHARMM Drude): each heavy atom carries an auxiliary charged particle attached by a spring with constant $k_D$. In a field the particle is displaced by $d = q_DE/k_D$, giving an induced dipole $\mu=q_Dd$ and a polarisability $\alpha = q_D^2/k_D$. It is run with an extended Lagrangian in which the Drude particles are kept cold, and needs a 1 fs step.
-- **Induced point dipoles** (AMOEBA): each atom has a polarisability, and its induced dipole $\boldsymbol\mu_i = \alpha_i\,\mathbf E_i$ depends on the field from permanent charges *and* from all other induced dipoles, which requires a self-consistent iteration every step. AMOEBA also replaces point charges by permanent multipoles up to quadrupoles.
+- **Induced point dipoles** (AMOEBA): each atom has a polarisability, and its induced dipole $\boldsymbol\mu_i = \alpha_i\,\mathbf E_i$ depends on the field from permanent charges *and* from all other induced dipoles, which requires a self-consistent solution every step (by iteration, by direct solution of the linear equations, or with an extended Lagrangian). AMOEBA also replaces point charges by permanent multipoles up to quadrupoles.
 - **Fluctuating charges**: charges flow between atoms to equalise electronegativity.
 
-The cost is a few times that of a fixed-charge simulation: the Drude model costs about twice as much per step and, with its 1 fs time step, about four times overall, and induced-dipole models cost more. They do better for ions, for molecules that move between very different environments (membranes, interfaces) and for solvation free energies. For routine protein simulation they have not yet displaced the additive models, which have had far more tuning.
+The cost is a few times that of a fixed-charge simulation: the Drude model costs about twice as much per step and, with its 1 fs time step, about four times overall, and induced-dipole models cost more. They can adapt to molecules that move between very different environments (ions, membranes, interfaces). Whether they are more accurate overall is still open: a 2018 review judged that AMOEBA needed more development before it would beat the best fixed-charge force fields for solvation and binding free energies, and that multivalent ions with nucleic acids remained hard for the Drude model ([Nerenberg and Head-Gordon 2018](cite:nerenberg2018)). For routine protein simulation they have not yet displaced the additive models, which have had far more tuning.
 
 ## How force fields are validated
 
@@ -181,7 +181,7 @@ Rotating about a bond also changes the 1-4 Coulomb and Lennard-Jones energies an
 </details>
 
 <details markdown="1"><summary>2. You find a ligand parameterised with GAFF and want to simulate it with a CHARMM36m protein. Is that acceptable?</summary>
-No. The charge models (RESP against water-interaction), 1-4 scaling (0.833 and 0.5 against 1.0) and the Lennard-Jones balance differ. Use CGenFF for the ligand with CHARMM36m, or switch the protein to an AMBER force field with GAFF2 or OpenFF.
+No. The charge models (RESP at HF/6-31G\* or AM1-BCC in GAFF, against charges fitted to water-interaction energies in CHARMM), 1-4 scaling (0.833 and 0.5 against 1.0) and the Lennard-Jones balance differ. Use CGenFF for the ligand with CHARMM36m, or switch the protein to an AMBER force field with GAFF2 or OpenFF.
 </details>
 
 <details markdown="1"><summary>3. A disordered region collapses onto the folded domain within 200 ns in ff14SB/TIP3P. What do you check before believing it?</summary>

@@ -176,14 +176,14 @@ The result does not depend on $\alpha$. A large $\alpha$ (narrow Gaussians) make
 
 <div data-videos="VWsMUaA7UWw"></div>
 
-Computing $S(\mathbf k)$ directly costs $N$ operations for each of many $\mathbf k$ vectors. **PME** ([Darden, York and Pedersen 1993](cite:darden1993); the smooth version by [Essmann et al. 1995](cite:essmann1995) is the one in use) replaces it:
+Computing $S(\mathbf k)$ directly costs $N$ operations for each of many $\mathbf k$ vectors. **PME** replaces it. The original method of [Darden, York and Pedersen 1993](cite:darden1993) interpolated the reciprocal-space pair potential and its gradient with Lagrange polynomials on a grid. The smooth version of [Essmann et al. 1995](cite:essmann1995) is the one in use today, and it interpolates the structure factor itself with B-splines:
 
 1. Spread each charge onto a regular 3D grid using B-spline interpolation (order 4 touches $4^3=64$ grid points per charge).
 2. Fast Fourier transform the gridded charge density: $O(M\log M)$ for $M$ grid points.
 3. Multiply by the influence function $e^{-k^2/4\alpha^2}/k^2$, corrected for the B-spline spreading.
-4. Transform back to get the potential on the grid, and interpolate the forces at the atom positions with the same B-splines.
+4. Transform back to get the potential on the grid, and obtain the forces by differentiating the same B-splines analytically. The reciprocal force is then the exact gradient of the approximate energy, so energy is conserved, but momentum is conserved only to within the force error (one reason why codes remove centre-of-mass motion).
 
-The cost is $O(N\log N)$, and on current hardware PME is typically a quarter to a third of the run time. The settings that matter:
+The cost is $O(N\log N)$, and on current hardware PME is typically a sizeable part of the run time (how large depends on what is offloaded to the GPU). The settings that matter:
 
 | Setting (GROMACS name) | Typical value | Meaning |
 |---|---|---|

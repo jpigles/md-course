@@ -58,7 +58,7 @@ $$
 G_i^{rad}=\sum_{j\ne i}e^{-\eta\,(r_{ij}-r_s)^2}\,f_c(r_{ij}),
 $$
 
-for a set of widths $\eta$ and shifts $r_s$ (ANI uses one narrow $\eta$ and many evenly spaced $r_s$), where $f_c$ goes smoothly to zero at the cutoff, plus angular functions built from triples of atoms. Feed the vector to a small neural network, one per element, that outputs $E_i$. **ANI** ([Smith, Isayev and Roitberg 2017](cite:smith2017)) used a heavily modified version of this design, with neighbours resolved by element and shifted angular functions, for organic molecules made of H, C, N and O, trained on about 17 million conformations. Gaussian approximation potentials use related local-environment descriptors (the bispectrum originally, later SOAP) with kernel regression in place of a network.
+for a set of widths $\eta$ and shifts $r_s$ (ANI uses one narrow $\eta$ and many evenly spaced $r_s$), where $f_c$ goes smoothly to zero at the cutoff, plus angular functions built from triples of atoms. Feed the vector to a small neural network that outputs $E_i$, the same network for every atom of one element (the 2007 paper treated only silicon, so a single network served all atoms). **ANI** ([Smith, Isayev and Roitberg 2017](cite:smith2017)) used a heavily modified version of this design, with neighbours resolved by element and shifted angular functions, for organic molecules made of H, C, N and O, trained on about 17 million conformations. Gaussian approximation potentials use related local-environment descriptors (the bispectrum originally, later SOAP) with kernel regression in place of a network.
 
 ### Message passing
 

@@ -56,7 +56,7 @@ $$
 \lambda^2 = 1+\frac{\Delta t}{\tau_T}\left(\frac{T_0}{T_{inst}}-1\right).
 $$
 
-It is stable and brings a system to the target temperature quickly and smoothly. It does **not** generate the canonical ensemble: it suppresses the fluctuations of the kinetic energy, and in doing so it slowly transfers energy from high-frequency internal motions into low-frequency ones. The extreme case is the "flying ice cube", where kinetic energy ends up in the translation of the whole system. If you use it at all, use it for equilibration only: current best-practice guides ([Braun et al. 2018](cite:braun2018)) recommend a thermostat that samples the correct ensemble even there.
+It is stable and brings a system to the target temperature quickly and smoothly. It does **not** generate the canonical ensemble (the 1984 paper did not claim that it does, and the point was settled later): it suppresses the fluctuations of the kinetic energy, and in doing so it slowly transfers energy from high-frequency internal motions into low-frequency ones. The extreme case is the "flying ice cube", where kinetic energy ends up in the translation of the whole system. If you use it at all, use it for equilibration only: current best-practice guides ([Braun et al. 2018](cite:braun2018)) recommend a thermostat that samples the correct ensemble even there.
 
 ### Stochastic velocity rescaling
 
@@ -70,7 +70,7 @@ where $dW$ is a Wiener noise. The first term is Berendsen. The second supplies e
 
 ### Andersen
 
-At random times, with collision frequency $\nu$, a particle's velocity is replaced by a fresh draw from the Maxwell-Boltzmann distribution. This samples the canonical ensemble rigorously. The collisions decorrelate velocities, so diffusion and other dynamical properties are altered. It is useful when dynamics do not matter.
+At random times, with collision frequency $\nu$, a particle's velocity is replaced by a fresh draw from the Maxwell-Boltzmann distribution. [Andersen (1980)](cite:andersen1980) showed that this samples the canonical ensemble, provided the collisions let the system reach all of its configurations. The averages do not depend on $\nu$, but the dynamics do: the collisions decorrelate velocities, so diffusion and other dynamical properties are altered. It is useful when dynamics do not matter.
 
 ### Langevin dynamics
 
@@ -120,7 +120,7 @@ $$
 \dot\xi = \frac{1}{Q}\left(\sum_i\frac{\mathbf p_i^2}{m_i} - N_{df}k_BT_0\right).
 $$
 
-When the system is too hot the bracket is positive, $\xi$ grows and the friction cools the system. When it is too cold, $\xi$ becomes negative and heats it. The "mass" $Q$ sets the response time: $Q = N_{df}k_BT_0\,\tau_T^2$ up to a numerical factor, where $\tau_T$ is the period of the temperature oscillations.
+When the system is too hot the bracket is positive, $\xi$ grows and the friction cools the system. When it is too cold, $\xi$ becomes negative and heats it. The "mass" $Q$ sets the response time: $Q = N_{df}k_BT_0\,\tau_T^2$, where $\tau_T$ is the period of the temperature oscillations up to a numerical factor. [Martyna, Klein and Tuckerman (1992)](cite:martyna1992) suggest $\tau_T = 1/\omega$, with $\omega$ a characteristic frequency of the system, and call it a rough estimate.
 
 **Proof that this is canonical.** The flow is no longer incompressible. Its divergence is
 
@@ -137,7 +137,7 @@ $$
 
 So $e^{-\beta H}$ times a Gaussian in $\xi$ is stationary. The dynamics are smooth and time-reversible and conserve an extended energy.
 
-Two caveats. The proof shows the canonical density is *a* stationary state, not that the dynamics reach it: for small or stiff systems (a single harmonic oscillator is the textbook case) Nosé-Hoover is not ergodic. **Nosé-Hoover chains** ([Martyna, Klein and Tuckerman 1992](cite:martyna1992)), where the thermostat variable is itself thermostatted by a second, and so on, fix this. And the temperature approaches its target with oscillations, so it is a poor choice for equilibrating a system that starts far from the target.
+Two caveats. The proof shows the canonical density is *a* stationary state, not that the dynamics reach it: for small or stiff systems (a single harmonic oscillator is the textbook case) Nosé-Hoover is not ergodic. **Nosé-Hoover chains** ([Martyna, Klein and Tuckerman 1992](cite:martyna1992)), where the thermostat variable is itself thermostatted by a second, and so on, restore the canonical distribution in the test cases where one thermostat fails (a harmonic oscillator needed two thermostats, a free particle three). This was shown numerically, not proved. And the temperature approaches its target with oscillations, so it is a poor choice for equilibrating a system that starts far from the target.
 
 ### Summary of thermostats
 
@@ -198,7 +198,7 @@ $$
 W\,\ddot V = P_{inst}-P_0 .
 $$
 
-[Parrinello and Rahman (1981)](cite:parrinello1981) generalised this to the full box matrix $\mathbf h$, so that the box can change shape as well as size, which is needed for crystals and membranes. [Martyna, Tobias and Klein (1994)](cite:martyna1994), and later the same authors with Tuckerman (MTTK), derived extended-system equations that sample the exact NPT ensemble. Parrinello-Rahman, the form most used in GROMACS, gives correct averages for a well-equilibrated system, but its volume fluctuations are not guaranteed to be exactly those of NPT: use MTTK, stochastic cell rescaling or a Monte Carlo barostat when the fluctuations themselves matter. Like Nosé-Hoover, all these methods are second-order: far from equilibrium the box oscillates and can become unstable. Do not start an NPT run with Parrinello-Rahman from an unequilibrated density.
+On its own this piston samples the constant-enthalpy ensemble $(N,P,H)$; Andersen obtained NPT by adding the stochastic collisions of his thermostat. [Parrinello and Rahman (1981)](cite:parrinello1981), building on their 1980 letter, generalised the piston to the full box matrix $\mathbf h$, so that the box can change shape as well as size. They needed this for structural transitions in crystals, and it is also what anisotropic systems such as membranes require. Their equations too must be combined with a thermostat to give NPT. [Martyna, Tobias and Klein (1994)](cite:martyna1994), and later the same authors with Tuckerman (MTTK), derived extended-system equations that generate the exact NPT ensemble, provided the dynamics is ergodic (Hoover's earlier constant-pressure equations did not give exactly that ensemble). Parrinello-Rahman, the form most used in GROMACS, gives correct averages for a well-equilibrated system, but its volume fluctuations are not guaranteed to be exactly those of NPT: use MTTK, stochastic cell rescaling or a Monte Carlo barostat when the fluctuations themselves matter. Like Nosé-Hoover, all these methods are second-order: far from equilibrium the box oscillates and can become unstable. Do not start an NPT run with Parrinello-Rahman from an unequilibrated density.
 
 ### Stochastic cell rescaling
 

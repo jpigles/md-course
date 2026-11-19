@@ -50,7 +50,7 @@ Check which convention your software uses. Many tools output $-k_BT\ln P(r)$ wit
 
 <div data-videos="1tMd68ankiA LVxFGBxgrLo c-dKO66Sx9A"></div>
 
-[Torrie and Valleau (1977)](cite:torrie1977). Add a **bias potential** $w_i(\xi)$ that holds the system near a chosen value $\xi_i$, most often a harmonic spring:
+Umbrella sampling was introduced by [Torrie and Valleau (1977)](cite:torrie1977) for Monte Carlo estimates of free-energy differences: they sampled with a non-Boltzmann weight that widened the range of configurations visited, and recovered unbiased averages exactly by reweighting. The form used in molecular dynamics today, with a harmonic restraint along a coordinate, came later. Add a **bias potential** $w_i(\xi)$ that holds the system near a chosen value $\xi_i$, most often a harmonic spring:
 
 $$
 U_i^{b}(\mathbf r) = U(\mathbf r)+w_i\big(\xi(\mathbf r)\big),\qquad w_i(\xi) = \tfrac12k\,(\xi-\xi_i)^2 .

@@ -73,7 +73,7 @@ For Cartesian coordinates $L = \sum \tfrac12 m\dot x^2 - U$, so $\partial L/\par
 **Why you need this for MD.** Three later topics are written in Lagrangian language:
 
 - constraints (Module 9) are added to $L$ with Lagrange multipliers;
-- the Nosé-Hoover thermostat and the Parrinello-Rahman barostat (Module 8) are "extended Lagrangians", where a thermostat variable or the box itself is given a fictitious mass and a kinetic energy;
+- the Nosé thermostat and the Andersen and Parrinello-Rahman barostats (Module 8) start from "extended Lagrangians", where a thermostat variable or the box itself is given a fictitious mass and a kinetic energy (the Nosé-Hoover equations used in practice are a non-Hamiltonian rewriting of Nosé's, with a conserved extended energy);
 - Car-Parrinello ab initio MD does the same for the electronic orbitals.
 
 <div class="box key" markdown="1">

@@ -61,10 +61,10 @@ This is the **many-body potential of mean force** of the CG sites: the PMF of Mo
 
 Fit the CG model to an atomistic simulation.
 
-- **Boltzmann inversion.** For a single coordinate $q$ with distribution $P(q)$ from the atomistic reference, use $U(q)=-k_BT\ln\big[P(q)/J(q)\big]$, where $J$ is the Jacobian of the coordinate: $J=r^2$ for a bond length, $J=\sin\theta$ for a bond angle, $J=1$ for a dihedral. (Without it the potential picks up a spurious $-2k_BT\ln r$ or $-k_BT\ln\sin\theta$, which is badly wrong for angles near 180°.) Adequate for bonds and angles, which are nearly independent of the rest.
+- **Boltzmann inversion.** For a single coordinate $q$ with distribution $P(q)$ from the atomistic reference, use $U(q)=-k_BT\ln\big[P(q)/J(q)\big]$, where $J$ is the Jacobian of the coordinate: $J=r^2$ for a bond length, $J=\sin\theta$ for a bond angle, $J=1$ for a dihedral. (Without it the potential picks up a spurious $-2k_BT\ln r$ or $-k_BT\ln\sin\theta$, which is badly wrong for angles near 180°.) Adequate for a coordinate that is nearly independent of the rest, such as a stiff bond or angle. For coupled coordinates (non-bonded pairs in a dense liquid) it gives only the pair PMF $-k_BT\ln g(r)$, which does not reproduce the target distribution.
 - **Iterative Boltzmann inversion.** For non-bonded pair potentials, correct the potential until the CG simulation reproduces the target radial distribution function: $U_{n+1}(r)=U_n(r)+k_BT\ln\big[g_n(r)/g_{target}(r)\big]$.
-- **Force matching** (multiscale coarse-graining; [Izvekov and Voth 2005](cite:izvekov2005)). Choose the CG force field whose forces best match the atomistic forces projected onto the CG sites, minimising $\chi^2=\big\langle\sum_I|\mathbf F_I^{CG}(\mathbf M(\mathbf r))-\mathbf f_I(\mathbf r)|^2\big\rangle$. It can be shown ([Noid et al. 2008](cite:noid2008)) that, for a linear mapping in which each atom contributes to at most one site, the force field that minimises $\chi^2$ over all possible force fields is the mean force, $\mathbf F^{CG}=-\nabla U_{CG}$, with $U_{CG}$ the many-body PMF.
-- **Relative entropy** ([Shell 2008](cite:shell2008)). Minimise $S_{rel}=\sum p_{AA}\ln(p_{AA}/p_{CG})$, the information lost when the CG model stands in for the atomistic ensemble.
+- **Force matching** (multiscale coarse-graining; [Izvekov and Voth 2005](cite:izvekov2005)). Choose the CG force field whose forces best match the atomistic forces projected onto the CG sites, minimising $\chi^2=\big\langle\sum_I|\mathbf F_I^{CG}(\mathbf M(\mathbf r))-\mathbf f_I(\mathbf r)|^2\big\rangle$. It can be shown ([Noid et al. 2008](cite:noid2008)) that, for a linear mapping in which each atom contributes to at most one site (the usual case; the paper's condition is slightly weaker), the force field that minimises $\chi^2$ over all possible force fields is the mean force, $\mathbf F^{CG}=-\nabla U_{CG}$, with $U_{CG}$ the many-body PMF.
+- **Relative entropy** ([Shell 2008](cite:shell2008)). Minimise $S_{rel}=\sum_{\mathbf R}p_{AA}(\mathbf R)\ln\big[p_{AA}(\mathbf R)/p_{CG}(\mathbf R)\big]$, where $p_{AA}(\mathbf R)$ is the atomistic distribution mapped onto the CG coordinates. It measures how unlikely the atomistic configurations are under the CG model, it is zero only for a perfect match, and with a fully flexible potential its minimum is the many-body PMF.
 
 ### Top-down parameterisation
 
@@ -107,7 +107,7 @@ U={}&\sum_{bonds}K_r\,(r-r_0)^2+\sum_{angles}K_\theta\,(\theta-\theta_0)^2
 \end{aligned}
 $$
 
-Every reference value ($r_0$, $\theta_0$, $\phi_0$, $\sigma_{ij}$) is measured in the native structure. The 12-10 contact term has its minimum of depth $-\varepsilon$ exactly at the native distance $\sigma_{ij}$. Native contacts are found from the structure with a cutoff or a shadow-map algorithm. All other pairs only repel. In the original model every contact has the same $\varepsilon$, and energies and temperatures are in units of $\varepsilon$.
+Every reference value ($r_0$, $\theta_0$, $\phi_0$, $\sigma_{ij}$) is measured in the native structure. The 12-10 contact term has its minimum of depth $-\varepsilon$ exactly at the native distance $\sigma_{ij}$. Native contacts are found from the structure: with the CSU contact program in the original paper (pairs fewer than four residues apart are left out), with a distance cutoff or a shadow-map algorithm in later implementations. All other pairs only repel. In the original model every native contact has the same $\varepsilon$, with $K_r=100\varepsilon$, $K_\theta=20\varepsilon$, $K_\phi=\varepsilon$ and $\sigma_{rep}=0.4$ nm (the paper gives the non-native repulsion its own constant, which the formula above simply sets to $\varepsilon$), and energies and temperatures are in units of $\varepsilon$. The first model of this kind, the two-dimensional lattice model of [Taketomi, Ueda and Gō (1975)](cite:taketomi1975), also used one energy for all native pairs.
 
 **Variants.**
 
@@ -117,11 +117,11 @@ Every reference value ($r_0$, $\theta_0$, $\phi_0$, $\sigma_{ij}$) is measured i
 - **Electrostatics.** Charged residues interact through a Debye-Hückel term (below), which adds non-native, sequence-dependent interactions and salt dependence.
 - **Multi-basin models** combine the contact maps of two or more structures to simulate conformational change.
 
-**Statistical contact potentials.** The Miyazawa-Jernigan matrix gives an effective contact energy for each of the 210 residue pairs, derived from how often the pair is found in contact in known structures compared with a reference state, in the spirit of $e_{ij}\sim-k_BT\ln(\text{observed}/\text{expected})$. It is a knowledge-based potential of mean force, not a physical energy, and its values are in units of $k_BT$ at an effective temperature.
+**Statistical contact potentials.** The Miyazawa-Jernigan matrix gives an effective contact energy for each of the 210 residue pairs, derived from how often the pair is found in contact in known crystal structures (side-chain centres within 6.5 Å), compared with a reference state in which residues and solvent are randomly mixed, in the spirit of $e_{ij}\sim-k_BT\ln(\text{observed}/\text{expected})$. It is a knowledge-based potential of mean force, not a physical energy (the statistical basis of such potentials is debated, and they depend on the choice of reference state), and its values are dimensionless, in units of $RT$ (the authors take $RT=0.6$ kcal/mol).
 
 **What Gō models are good for.** Folding mechanisms, transition states and their dependence on topology (and, with sequence-weighted contacts, on sequence: the model of [Karanicolas and Brooks 2002](cite:karanicolas2002) reproduces the different folding routes of proteins L and G, which share one topology); coupled folding and binding of disordered proteins when the bound structure is known; mechanical unfolding; large conformational transitions. The fraction of native contacts $Q$ is the natural reaction coordinate and usually a good one.
 
-**What they cannot do.** They cannot predict a structure, a non-native intermediate or a misfolded state, because non-native attraction is absent by construction. They do not give absolute stabilities or affinities: the energy scale is calibrated per system, and a model built from a predicted complex inherits every error of that prediction and will stabilise it regardless. Comparisons are most meaningful between closely related systems treated identically.
+**What they cannot do.** They cannot predict a structure, or any intermediate that depends on non-native contacts, because non-native attraction is absent by construction. Intermediates and kinetic traps built from native contacts alone can still appear. They do not give absolute stabilities or affinities: the energy scale is calibrated per system, and a model built from a predicted complex inherits every error of that prediction and will stabilise it regardless. Comparisons are most meaningful between closely related systems treated identically.
 
 ## Residue-level models for disordered proteins and condensates
 
@@ -166,7 +166,7 @@ $$
 
 Accurate within the continuum picture, but too slow to solve at every MD step.
 
-**Generalised Born** ([Still et al. 1990](cite:still1990)). An analytical approximation to the Poisson solution that is fast enough for MD:
+**Generalised Born** ([Still et al. 1990](cite:still1990)). A fast approximation to the Poisson solution. The pair function below is Still's; in the 1990 paper the Born radii were still computed numerically, and analytical recipes for them came later:
 
 $$
 \Delta G_{pol}=-\frac{1}{8\pi\varepsilon_0}\left(\frac{1}{\varepsilon_{in}}-\frac{1}{\varepsilon_{out}}\right)\sum_{i,j}\frac{q_iq_j}{f_{GB}},\qquad
@@ -175,7 +175,7 @@ $$
 
 $R_i$ is the effective **Born radius** of atom $i$, a measure of how deeply it is buried. For $i=j$ the term reduces to the Born formula for the solvation of an ion of radius $R_i$. For distant atoms, the GB pair term added to the direct Coulomb interaction (computed with $\varepsilon_{in}$) gives Coulomb's law with the solvent dielectric constant. A non-polar term proportional to the solvent-accessible surface area, $\gamma\cdot\mathrm{SASA}$, is added for cavity formation and dispersion (GB/SA). Implicit solvent removes the cost of water and the viscosity that slows conformational change. It loses specific water molecules (bridging waters, the structure of the first hydration shell), and tends to over-stabilise salt bridges and helices, depending on the variant.
 
-**Dynamics.** With no explicit solvent there are no collisions, so CG and implicit-solvent models are run with Langevin or Brownian dynamics (Module 8), which supply friction and thermal noise. The friction coefficient then sets the time scale.
+**Dynamics.** With no explicit solvent there are no collisions, so CG and implicit-solvent models are usually run with Langevin or Brownian dynamics (Module 8), which supply friction and thermal noise. The friction coefficient then sets the time scale.
 
 ## Check yourself
 

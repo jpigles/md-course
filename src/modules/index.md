@@ -65,7 +65,7 @@ Four books cover almost everything here at greater depth, and they complement ea
 
 ## How far you can trust this
 
-The lessons were written by an AI system and then checked. Three independent referees re-derived the equations and recomputed the numbers, and every cited paper whose full text could be obtained legally (58 of the 144 in the main list) was read and compared with what the course says about it. Together they found 7 statements that were wrong and about 150 that were imprecise, and these were corrected. Papers that could not be read are not labelled as read. The full account, including what is still unverified, is on the page [How this course was checked](sources.html).
+The lessons were written by an AI system and then checked. Three independent referees re-derived the equations and recomputed the numbers, and every cited paper whose full text could be obtained legally (124 of the 144 in the main list) was read and compared with what the course says about it, equations included. Together they found 7 statements that were wrong and about 260 that were imprecise, and these were corrected. Papers that could not be read are not labelled as read. The full account, including what is still unverified, is on the page [How this course was checked](sources.html).
 
 Module 18 was written differently: from the papers first, with a source for every number.
 

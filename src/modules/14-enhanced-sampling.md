@@ -78,7 +78,7 @@ $$
 M\propto\sqrt{N_{df}}\;\ln\frac{T_{max}}{T_{min}} .
 $$
 
-A geometric ladder, $T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}$, gives roughly uniform acceptance when the heat capacity is constant; aim for an exchange acceptance of about 30 %. A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.
+A geometric ladder, $T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}$, gives roughly uniform acceptance when the heat capacity is constant; aim for roughly equal acceptance between all neighbouring pairs, commonly 20 to 30 % (the original eight-replica peptide simulation had about 15 %, and its authors considered anything above 10 % sufficient). A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.
 
 **REST2** (replica exchange with solute tempering; [Wang, Friesner and Berne 2011](cite:wang2011)). All replicas run at the same temperature $T_0$, but the potential energy is scaled so that only the solute is effectively heated:
 
@@ -122,7 +122,7 @@ The bias converges smoothly to a fraction of $-F$, and the CVs are sampled as if
 
 Practical choices: the Gaussian width $\sigma$ should be about the standard deviation of the CV in an unbiased basin; hills every 1 ps or so; initial height around 1 kJ/mol. **Convergence** means the system has gone back and forth between the basins many times and the free-energy difference between them has stopped changing. One crossing each way is not convergence. Variants: multiple walkers (several simulations sharing one bias), bias-exchange and parallel-tempering metadynamics, and on-the-fly probability enhanced sampling (OPES). The standard implementation is the PLUMED library, which plugs into GROMACS, AMBER, NAMD, LAMMPS and other MD programs (its manual has the current list).
 
-**Adaptive biasing force** ([Darve and Pohorille 2001](cite:darve2001)) is the force-based relative: accumulate a running estimate of the mean force $-dF/ds$ in bins along the CV, and apply its negative. Once the estimate is good the system diffuses freely along $s$, and $F$ is the integral of the estimated mean force.
+**Adaptive biasing force** ([Darve and Pohorille 2001](cite:darve2001)) is the force-based relative: accumulate a running estimate of the mean force $-dF/ds$ in bins along the CV, and apply its negative. Once the estimate is good the system diffuses freely along $s$, and $F$ is the integral of the estimated mean force. The quantity averaged in each bin is the instantaneous force along the coordinate plus a geometric (Jacobian) correction. The 2001 paper derives this formula; the adaptive algorithm itself appeared in a later paper by the same authors.
 
 <div class="widget" data-widget="metad"></div>
 
@@ -138,7 +138,7 @@ $$
 
 This imitates an atomic-force-microscope or optical-tweezer experiment, at pulling speeds millions of times faster (0.1 to 10 nm/ns against micrometres per second). It is used to explore unbinding and unfolding pathways, to generate starting structures for umbrella windows, and to compare forces between related systems.
 
-Getting a free energy from it uses Jarzynski's equality (Module 13) with the accumulated work $W=\int F_{pull}\,v\,dt$. At practical speeds the process is far from equilibrium and most of the work is dissipated, so the exponential average does not converge. Rupture forces and work values depend on the pulling speed, roughly logarithmically, and comparisons are only meaningful at equal speed and spring constant.
+Getting a free energy from it uses Jarzynski's equality (Module 13) with the accumulated work $W=\int F_{pull}\,v\,dt$. At practical speeds the process is far from equilibrium and most of the work is dissipated, so the exponential average does not converge. Rupture forces and work values depend on the pulling speed (in force spectroscopy the rupture force rises roughly linearly with the logarithm of the loading rate), and comparisons are only meaningful at equal speed and spring constant.
 
 ## Accelerated MD
 
@@ -150,7 +150,7 @@ $$
 \Delta V(\mathbf r) = \frac{\big(E-V(\mathbf r)\big)^2}{\alpha+E-V(\mathbf r)}\quad\text{for }V<E,\qquad\Delta V=0\text{ otherwise}.
 $$
 
-Barriers shrink and transitions speed up by orders of magnitude. Recovering unbiased averages needs the weights $e^{\beta\Delta V}$, and because $\Delta V$ is tens to hundreds of $k_BT$ for a solvated protein, those weights are dominated by a few frames: the reweighted result is very noisy. **Gaussian accelerated MD** uses a harmonic boost whose distribution is close to Gaussian, so the reweighting factor can be approximated by a second-order cumulant expansion. These methods are good for exploration; treat their free energies with caution.
+The wells are raised, so barriers shrink and escapes become faster (the 2004 paper applied the boost to the dihedral terms of small peptides in implicit solvent). Recovering unbiased averages needs the weights $e^{\beta\Delta V}$, and because $\Delta V$ can be tens to hundreds of $k_BT$ for a solvated protein, those weights are dominated by a few frames: the reweighted result is very noisy. **Gaussian accelerated MD** uses a harmonic boost whose distribution is close to Gaussian, so the reweighting factor can be approximated by a second-order cumulant expansion. These methods are good for exploration; treat their free energies with caution.
 
 ## Weighted ensemble
 

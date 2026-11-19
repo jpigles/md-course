@@ -64,15 +64,15 @@ TST is an **upper bound**. Real trajectories recross the surface: they are knock
 
 ## Kramers theory
 
-[Kramers (1940)](cite:kramers1940) treated barrier crossing as Brownian motion of a particle in a potential with friction $\gamma$. With well frequency $\omega_0$, barrier frequency $\omega_b$ (from the negative curvature at the top) and barrier height $\Delta W^\ddagger$, the high-friction result is
+[Kramers (1940)](cite:kramers1940) treated barrier crossing as Brownian motion of a particle in a potential with friction $\gamma$. With angular well frequency $\omega_0$ and angular barrier frequency $\omega_b$ (each $\sqrt{|W''|/m}$, taken at the minimum and at the barrier top), friction rate $\gamma$ (in 1/time, as in Module 8) and barrier height $\Delta W^\ddagger$, the high-friction result is
 
 $$
 k_{Kramers}=\frac{\omega_0\,\omega_b}{2\pi\gamma}\,e^{-\beta\Delta W^\ddagger}\qquad(\gamma\gg\omega_b).
 $$
 
-The rate is inversely proportional to friction: in the overdamped regime that applies to conformational changes of proteins in water, crossing the barrier top is a slow diffusion and the system recrosses many times. At very low friction the rate falls again because the particle cannot gain or lose energy fast enough, giving the "Kramers turnover" in between.
+The rate is inversely proportional to friction: in the overdamped regime that applies to conformational changes of proteins in water, crossing the barrier top is a slow diffusion and the system recrosses many times. At very low friction the rate falls again, now in proportion to $\gamma$, because the particle cannot gain or lose energy fast enough. The rate therefore has a maximum at an intermediate friction, the "Kramers turnover" ([Hänggi, Talkner and Borkovec 1990](cite:hanggi1990)). For moderate friction Kramers' formula is $k=\kappa\,k_{TST}$ with $\kappa=\sqrt{1+(\gamma/2\omega_b)^2}-\gamma/2\omega_b$, which reduces to the high-friction result when $\gamma\gg\omega_b$.
 
-Two lessons for simulation. First, anything that changes the effective friction (the thermostat's $\gamma$, a water model that is too fluid, a coarse-grained or implicit-solvent model) changes the rates without changing the free energies. Second, the prefactor is not universal: it depends on the curvature and on the diffusion coefficient along the coordinate, so a barrier height alone does not give a rate.
+Two lessons for simulation. First, anything that changes the effective friction (the thermostat's $\gamma$, a water model that is too fluid, a coarse-grained or implicit-solvent model) changes the rates without changing the free energies. The direction depends on the regime: more friction lowers the rate when the motion is overdamped and raises it at very weak friction. Second, the prefactor is not universal: it depends on the curvature and on the diffusion coefficient along the coordinate (with $D=k_BT/m\gamma$ the high-friction formula reads $k=D\sqrt{W''_{min}\,|W''_{top}|}\;e^{-\beta\Delta W^\ddagger}/2\pi k_BT$), so a barrier height alone does not give a rate.
 
 For diffusive motion along a coordinate with free energy $W(x)$ and position-dependent diffusion coefficient $D(x)$, the mean first-passage time from $a$ to $b$ is exact:
 
@@ -106,7 +106,7 @@ $$
 T_{ij}(\tau)=P\big(\text{in state }j\text{ at }t+\tau\ \big|\ \text{in state }i\text{ at }t\big),
 $$
 
-and the assumption is that the process is **Markovian** at lag $\tau$: the next state depends only on the current state, not on the history. Then the populations evolve as $\mathbf p^T(t+k\tau)=\mathbf p^T(t)\,\mathbf T^k(\tau)$. The assumption holds when the states are small enough, and $\tau$ long enough, that the system forgets within one lag time where inside a state it was.
+and the assumption is that the process is **Markovian** at lag $\tau$: the next state depends only on the current state, not on the history. Then the model assumes that the populations evolve as $\mathbf p^T(t+k\tau)=\mathbf p^T(t)\,\mathbf T^k(\tau)$. The assumption is never exactly true for a discretised process, because the position inside a state is lost. The error shrinks when the states are fine, above all near barriers where the slow processes change fastest, and when $\tau$ is long enough that the system forgets within one lag time where inside a state it was.
 
 ### Estimation
 
@@ -155,7 +155,7 @@ The variational principle (VAMP) gives a score that measures how well a choice o
 
 <div data-videos="aO_DmbqHWYs"></div>
 
-- **Implied time scales against lag time.** Compute $t_i(\tau)$ for increasing $\tau$. If the model is Markovian, a true relaxation time does not depend on the lag used to measure it. Choose the smallest $\tau$ at which the slow time scales have levelled off. Time scales that keep rising with $\tau$ mean the discretisation is too coarse or the data insufficient. No process faster than $\tau$ can be resolved.
+- **Implied time scales against lag time.** Compute $t_i(\tau)$ for increasing $\tau$. If the model is Markovian, a true relaxation time does not depend on the lag used to measure it. Choose the smallest $\tau$ at which the slow time scales have levelled off. Levelling off is necessary but not sufficient for a Markovian model, so it guides the choice of $\tau$ and does not validate the model; the Chapman-Kolmogorov test below does. Time scales that keep rising with $\tau$ mean the discretisation is too coarse: discretisation error always underestimates the slow time scales, which approach their true values from below. Too little data is a separate, statistical problem. No process faster than $\tau$ can be resolved.
 - **Chapman-Kolmogorov test.** Check that $\mathbf T(k\tau)\approx\mathbf T(\tau)^k$: the model estimated at lag $\tau$ must predict, within error, the transition probabilities estimated directly from the data at longer lags.
 - **Connectivity and statistics.** Every state kept must be reversibly connected to the rest, with transitions observed in both directions more than a few times. A state entered once and never left makes the model meaningless for that state.
 
@@ -176,7 +176,7 @@ $k_{off}=K_d\,k_{on}=10^{-9}\times10^6=10^{-3}$ s$^{-1}$, a residence time of 1,
 </details>
 
 <details markdown="1"><summary>2. Your PMF along a distance has a 30 kJ/mol barrier. Using k = (k_BT/h) exp(−βΔG‡) you get a rate. Give two reasons it may be wrong by orders of magnitude.</summary>
-(1) The prefactor $k_BT/h$ is a gas-phase estimate. In solution the motion over the barrier is diffusive and the prefactor depends on friction and curvature, often being $10^2$ to $10^4$ times smaller. (2) The distance may not be the reaction coordinate: if another slow variable is involved, the true barrier is higher than the one seen in the projection, and the transmission coefficient is small.
+(1) The prefactor $k_BT/h$ is the transition-state-theory value, an upper bound. In solution the motion over the barrier is diffusive and the prefactor depends on friction and curvature, often being $10^2$ to $10^4$ times smaller. (2) The distance may not be the reaction coordinate: if another slow variable is involved, the true barrier is higher than the one seen in the projection, and the transmission coefficient is small.
 </details>
 
 <details markdown="1"><summary>3. At lag time 10 ns the second eigenvalue of a Markov model is 0.95. What is the slowest relaxation time?</summary>
@@ -189,7 +189,7 @@ The model is not Markovian at these lags with this state definition. Improve the
 
 ## Exercises
 
-1. Simulate overdamped Langevin dynamics on the one-dimensional double well for several barrier heights. Measure the mean time between crossings and compare with the Kramers formula and with the mean first-passage time integral.
+1. Simulate overdamped Langevin dynamics on the one-dimensional double well for several barrier heights. Measure the mean time between crossings and compare with the Kramers formula and with the mean first-passage time integral. Count well-to-well transitions, not crossings of the barrier top: the mean first-passage time to the top itself is half the inverse rate.
 2. For the same system, pick points at $x=0$ and compute the committor by shooting 200 short trajectories. Then compute it for points at $x=0.3$.
 3. Discretise your double-well trajectory into 20 bins, build $\mathbf T(\tau)$ for several lag times with NumPy, and plot the implied time scales. Compare the slowest with the crossing time from exercise 1.
 4. Work through the alanine dipeptide tutorial of PyEMMA or deeptime: features, TICA, clustering, implied time scales, Chapman-Kolmogorov test, PCCA+. Report the populations and exchange times of the main basins.

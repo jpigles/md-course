@@ -54,7 +54,7 @@ $$
 U_b = \tfrac12 k_b\,(r-r_0)^2
 $$
 
-The true bond energy is closer to a Morse curve $D_e[1-e^{-a(r-r_0)}]^2$, which allows dissociation. At room temperature a bond explores only the very bottom of its well, where the harmonic term is an adequate fit.
+The true bond energy is closer to a Morse curve $D_e[1-e^{-a(r-r_0)}]^2$, which allows dissociation. At room temperature a bond explores only the very bottom of its well, where the harmonic term is an adequate fit. GROMOS writes the bond term as a quartic in the length, $\tfrac14K_b(b^2-b_0^2)^2$, to save square roots; in the physical range it is practically the same as a harmonic term with $k=2K_bb_0^2$ ([Oostenbrink et al. 2004](cite:oostenbrink2004)).
 
 How stiff is it? In the canonical ensemble a harmonic coordinate has variance $k_BT/k$:
 
@@ -103,7 +103,7 @@ $$
 U_\omega = \tfrac12 k_\omega\,(\omega-\omega_0)^2\quad\text{(CHARMM, GROMOS)}\qquad\text{or}\qquad k\,[1+\cos(2\omega-180°)]\quad\text{(AMBER)}
 $$
 
-An improper keeps four atoms in a plane (the peptide bond, aromatic rings, carboxylates) or, in united-atom force fields, preserves the chirality of a carbon whose hydrogen is not represented.
+An improper keeps four atoms in a plane (the peptide bond, aromatic rings, carboxylates) or, in united-atom force fields, preserves the chirality of a carbon whose hydrogen is not represented. CHARMM writes the improper as $K_{imp}(\omega-\omega_0)^2$ without the ½, as it does for bonds and angles.
 
 ## Lennard-Jones: repulsion and dispersion
 
@@ -157,7 +157,7 @@ Atoms separated by one bond (1-2) or two bonds (1-3) are **excluded** from the n
 
 | Force field | 1-4 Lennard-Jones | 1-4 Coulomb |
 |---|---|---|
-| AMBER | × 0.5 | × 1/1.2 = 0.833 |
+| AMBER (Cornell et al. 1995 and later; the 1984 force field used 0.5 for both) | × 0.5 | × 1/1.2 = 0.833 |
 | OPLS-AA | × 0.5 | × 0.5 |
 | CHARMM | × 1 (special 1-4 parameters for some types) | × 1 |
 | GROMOS | separate 1-4 parameter list | × 1 |

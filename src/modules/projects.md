@@ -43,9 +43,9 @@ Reading derivations builds familiarity. Building the thing builds understanding.
 
 - Measure the crossing rate directly by counting transitions in long runs for $h$ = 3, 4, 5, 6 $k_BT$.
 - Compare with the Kramers high-friction formula and with the mean first-passage time integral.
-- Build a Markov state model from many short trajectories for $h=8\,k_BT$, where direct counting is too slow, and predict the rate. Validate with implied time scales.
+- Build a Markov state model from many short trajectories for $h=8\,k_BT$, where direct counting is too slow, and predict the rate. Choose the lag time from the implied time scales and validate the model with the Chapman-Kolmogorov test.
 
-**Check.** For this potential the Kramers prefactor is itself proportional to $h$ (the curvatures at the well and at the barrier top are $8h$ and $4h$), so $k\propto h\,e^{-h}$. A plot of $\ln(k/h)$ against $h$, with $h$ in units of $k_BT$, is a straight line of slope $-1$; a plot of $\ln k$ alone is curved, with slope $-1+1/h$. The three estimates agree where they overlap.
+**Check.** For this potential the Kramers prefactor is itself proportional to $h$ (the curvatures at the well and at the barrier top are $8h$ and $4h$), so $k\propto h\,e^{-h}$. For large $h$ a plot of $\ln(k/h)$ against $h$, with $h$ in units of $k_BT$, is a straight line of slope $-1$; a plot of $\ln k$ alone is curved, with slope $-1+1/h$. The Kramers formula is the leading term of an expansion in $k_BT/\Delta W^\ddagger$ ([Hänggi, Talkner and Borkovec 1990](cite:hanggi1990)), so for barriers of only a few $k_BT$ the exact rate lies somewhat below it and the line bends slightly. The three estimates agree where they overlap, within these corrections.
 
 ## Project 5. A protein in water, done properly
 
