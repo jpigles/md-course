@@ -32,7 +32,7 @@ $$
 k\approx k_0\,e^{-\beta\Delta F^\ddagger},
 $$
 
-with a prefactor $k_0$ of about $10^{9}$ to $10^{12}$ s$^{-1}$ for molecular motions in solution. Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. A barrier of 40 kJ/mol gives waiting times of microseconds, 60 kJ/mol gives milliseconds or more. Plain MD spends almost all its time vibrating inside one basin.
+with a prefactor $k_0$ of about $10^{9}$ to $10^{12}$ s$^{-1}$ for molecular motions in solution. Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. A barrier of 40 kJ/mol gives waiting times of microseconds to milliseconds, and 60 kJ/mol gives milliseconds to seconds. Plain MD spends almost all its time vibrating inside one basin.
 
 Enhanced sampling methods change the simulation so that barriers are crossed often, in a way that still allows the unbiased equilibrium distribution to be recovered. They fall into three families:
 
