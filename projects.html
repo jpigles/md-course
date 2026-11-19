@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone projects | Molecular Dynamics: a course</title>
+<meta name="description" content="Eight projects, from a molecular dynamics program you write yourself to a binding free energy, each with a concrete deliverable and a way to check the answer.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="projects">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li class="current"><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><h1>Capstone projects</h1><p class="lede">Eight projects, from a molecular dynamics program you write yourself to a binding free energy, each with a concrete deliverable and a way to check the answer.</p></div>
+
+<article>
+<p>Reading derivations builds familiarity. Building the thing builds understanding. Each project below states what to produce and how you will know it is right. The first four need only Python and NumPy. The last four need an MD package and a GPU or a cluster allocation.</p>
+<h2 id="project-1-your-own-md-engine">Project 1. Your own MD engine</h2>
+<p><strong>Modules 1, 4, 7, 8.</strong> Extend the 35-line program of Module 1 into a small but complete code for a Lennard-Jones fluid in three dimensions.</p>
+<ul>
+<li>Add a cell list or Verlet neighbour list.</li>
+<li>Add a Langevin (BAOAB) thermostat, with the option to switch it off.</li>
+<li>Compute temperature, pressure (from the virial) and the radial distribution function.</li>
+</ul>
+<p><strong>Check.</strong> In NVE, the fluctuation of the total energy must scale as <span class="math-inline">\(\Delta t^2\)</span>. In NVT at reduced temperature 1.0 and density 0.8, the mean potential energy per particle and the pressure must match published values for the truncated Lennard-Jones fluid (tables are in Frenkel and Smit and in the NIST reference simulation data). The first peak of <span class="math-inline">\(g(r)\)</span> should be near <span class="math-inline">\(r=1.1\,\sigma\)</span> with a height close to 2.7.</p>
+<h2 id="project-2-three-integrators-one-pendulum">Project 2. Three integrators, one pendulum</h2>
+<p><strong>Modules 2, 4.</strong> For the non-linear pendulum, implement forward Euler, velocity Verlet and fourth-order Runge-Kutta.</p>
+<ul>
+<li>Plot energy against time over 10,000 periods for each, at equal cost (four Verlet steps per Runge-Kutta step).</li>
+<li>Plot the phase portrait of each.</li>
+<li>For velocity Verlet on the harmonic oscillator, verify numerically that <span class="math-inline">\(\tfrac12v^2+\tfrac12\omega^2(1-\tfrac14\omega^2\Delta t^2)x^2\)</span> is conserved to round-off.</li>
+</ul>
+<p><strong>Check.</strong> Euler's energy grows without bound, Runge-Kutta's drifts monotonically, Verlet's oscillates within a fixed band.</p>
+<h2 id="project-3-umbrella-sampling-and-wham-from-scratch">Project 3. Umbrella sampling and WHAM from scratch</h2>
+<p><strong>Modules 8, 11, 12.</strong> One particle in the double well <span class="math-inline">\(U(x)=h(x^2-1)^2\)</span> with overdamped Langevin dynamics.</p>
+<ul>
+<li>Run plain dynamics and show the histogram-based free energy fails for <span class="math-inline">\(h=10\,k_BT\)</span>.</li>
+<li>Run umbrella windows, write WHAM yourself (the two boxed equations of Module 12, iterated), and recover <span class="math-inline">\(U(x)\)</span>.</li>
+<li>Estimate error bars by repeating the whole calculation ten times with different seeds.</li>
+<li>Repeat the analysis with <code>pymbar</code>.</li>
+</ul>
+<p><strong>Check.</strong> The recovered profile agrees with the exact potential within your error bars everywhere, and the error bars shrink as <span class="math-inline">\(1/\sqrt{\text{run length}}\)</span>.</p>
+<h2 id="project-4-rates-three-ways">Project 4. Rates three ways</h2>
+<p><strong>Modules 14, 16.</strong> Same double well.</p>
+<ul>
+<li>Measure the crossing rate directly by counting transitions in long runs for <span class="math-inline">\(h\)</span> = 3, 4, 5, 6 <span class="math-inline">\(k_BT\)</span>.</li>
+<li>Compare with the Kramers high-friction formula and with the mean first-passage time integral.</li>
+<li>Build a Markov state model from many short trajectories for <span class="math-inline">\(h=8\,k_BT\)</span>, where direct counting is too slow, and predict the rate. Validate with implied time scales.</li>
+</ul>
+<p><strong>Check.</strong> A plot of <span class="math-inline">\(\ln k\)</span> against <span class="math-inline">\(h\)</span> is a straight line of slope <span class="math-inline">\(-1\)</span>, and the three estimates agree where they overlap.</p>
+<h2 id="project-5-a-protein-in-water-done-properly">Project 5. A protein in water, done properly</h2>
+<p><strong>Modules 6, 10, 11.</strong> Choose a small, well-studied protein (ubiquitin, lysozyme, the GB1 domain).</p>
+<ul>
+<li>Prepare, solvate, neutralise, minimise, equilibrate and run three repeats of 100 ns or more.</li>
+<li>Report backbone RMSD, per-residue RMSF against crystallographic B-factors, radius of gyration, and secondary structure over time.</li>
+<li>Give every average with a standard error from block averaging and from the three repeats, and compare the two.</li>
+<li>Write a methods section that meets the reporting list of Module 10.</li>
+</ul>
+<p><strong>Check.</strong> The three repeats agree within their error bars for global observables. If they do not, find out why: that is the result.</p>
+<h2 id="project-6-hydration-free-energy-of-a-small-molecule">Project 6. Hydration free energy of a small molecule</h2>
+<p><strong>Module 13.</strong> Compute the hydration free energy of ethanol or of another neutral small molecule by alchemical decoupling.</p>
+<ul>
+<li>Use about 20 <span class="math-inline">\(\lambda\)</span> windows, charges first, then Lennard-Jones with soft-core.</li>
+<li>Analyse with thermodynamic integration, BAR and MBAR.</li>
+<li>Show the overlap matrix and a forward-and-reverse convergence plot.</li>
+</ul>
+<p><strong>Check.</strong> The three estimators agree within their uncertainties, and the result is within about 4 kJ/mol of the experimental value (ethanol: about <span class="math-inline">\(-21\)</span> kJ/mol). The FreeSolv database has experimental and reference calculated values for hundreds of molecules.</p>
+<h2 id="project-7-binding-free-energy-profile-of-a-small-complex">Project 7. Binding free-energy profile of a small complex</h2>
+<p><strong>Modules 12, 14.</strong> Choose a small host-guest pair or a short peptide bound to a protein domain.</p>
+<ul>
+<li>Generate starting configurations by pulling the partners apart slowly.</li>
+<li>Run umbrella sampling along the centre-of-mass distance, with exchange between windows if your software supports it.</li>
+<li>Remove the Jacobian, integrate the profile to obtain <span class="math-inline">\(K_d\)</span> with the 1 M standard state, and state exactly which restraints were or were not applied.</li>
+<li>Estimate uncertainty from independent repeats, and check hysteresis by also generating windows in the association direction.</li>
+</ul>
+<p><strong>Check.</strong> The profile is flat at large separation. The result does not change beyond its error bar when the first half of each window is discarded. Compare with experiment and discuss which of the three kinds of error (Module 1) is most likely to dominate the difference.</p>
+<h2 id="project-8-one-system-at-three-resolutions">Project 8. One system at three resolutions</h2>
+<p><strong>Modules 15, 17.</strong> Take one short disordered peptide or a small fast-folding protein.</p>
+<ul>
+<li>Simulate it all-atom in explicit water.</li>
+<li>Simulate it with a coarse-grained model suited to it: a C<span class="math-inline">\(\alpha\)</span> structure-based model for the folder, or a residue-level model such as CALVADOS for the disordered peptide.</li>
+<li>Generate an ensemble with a machine-learned ensemble emulator.</li>
+<li>Compare the radius of gyration distribution, the contact map and one experimental observable across the three.</li>
+</ul>
+<p><strong>Check.</strong> You can state, with numbers and error bars, what each resolution gets right, what it gets wrong, and what it cost in computer time.</p>
+</article>
+
+<div class="prevnext"></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

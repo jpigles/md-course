@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Force fields II, where the parameters come from and which to use | Molecular Dynamics: a course</title>
+<meta name="description" content="Understand how charges, Lennard-Jones and torsion parameters are fitted, how the main protein force fields and water models differ, and what was changed to make them work for disordered proteins.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="06-force-field-parameters">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li class="current" data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 6 of 17 &middot; about 6 hours</div><h1>Force fields II, where the parameters come from and which to use</h1><p class="lede">Understand how charges, Lennard-Jones and torsion parameters are fitted, how the main protein force fields and water models differ, and what was changed to make them work for disordered proteins.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#parameterisation-is-a-fitting-problem">Parameterisation is a fitting problem</a></li><li><a href="#the-protein-force-field-families">The protein force-field families</a></li><li><a href="#water-models">Water models</a></li><li><a href="#the-disordered-protein-problem">The disordered-protein problem</a></li><li><a href="#beyond-fixed-charges-polarizable-force-fields">Beyond fixed charges: polarizable force fields</a></li><li><a href="#how-force-fields-are-validated">How force fields are validated</a></li><li><a href="#what-a-topology-file-contains">What a topology file contains</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>describe the fitting pipeline of a force field and the order in which terms are fitted;</li>
+<li>write the RESP charge-fitting problem as a constrained least-squares problem;</li>
+<li>compare AMBER, CHARMM, OPLS and GROMOS, and the common water models, and choose a tested combination;</li>
+<li>explain why older force fields made disordered proteins too compact and what fixed it;</li>
+<li>say what polarizable force fields add and what they cost.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<h4>Force-field parameterisation and polarizable models</h4>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=gP6HfBQ_LkI" target="_blank" rel="noopener">Lecture 16 Molecular Mechanics / Force Field</a><span class="res-meta">NPTEL-NOC IITM &middot; Video, intro</span><span class="res-why">Lecture on molecular mechanics and force field terms.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=kglSEWaMGyU" target="_blank" rel="noopener">#79 Understanding Force Fields</a><span class="res-meta">NPTEL-NOC IITM &middot; Video, intro</span><span class="res-why">Explains the components of force fields.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Y2ixvZBrM8Q" target="_blank" rel="noopener">Using AMOEBA Polarizable Force Fields</a><span class="res-meta">SimbiosOpenMM &middot; Video, intermediate</span><span class="res-why">How to use AMOEBA polarizable force fields in OpenMM.</span></li></ul>
+<h4>Force fields and water models</h4>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=vpqo0q3zvJU" target="_blank" rel="noopener">Molecular Dynamics - chapter 2: Force Fields</a><span class="res-meta">MoBioChem &middot; Video, intro</span><span class="res-why">Chapter on force fields in a molecular dynamics lecture series.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=mzocP2rd0kk" target="_blank" rel="noopener">Week 4 Video 3: Lennard-Jones potentials &amp; MD simulations</a><span class="res-meta">Classical Mechanics Videos &middot; Video, intro</span><span class="res-why">Lennard-Jones potential and its use in MD simulations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=MK5BrpgUMUM" target="_blank" rel="noopener">CompChem02.06 Simulations with MM Force Fields — Monte Carlo and Molecular Dynamics Part I</a><span class="res-meta">Chris Cramer (University of Minnesota) &middot; channel: Chris Cramer &middot; Video, intermediate</span><span class="res-why">University lecture on MM force fields and how they drive MC and MD.</span></li></ul>
+<h2 id="parameterisation-is-a-fitting-problem">Parameterisation is a fitting problem</h2>
+<p>A force field has thousands of parameters. They are found by minimising a weighted sum of squared deviations from reference data:</p>
+<p><span class="math-display">\[\chi^2(\mathbf p) = \sum_{k} w_k\,\big[A_k^{calc}(\mathbf p) - A_k^{ref}\big]^2 .\]</span></p>
+<p>The reference data are of two kinds:</p>
+<ul>
+<li><strong>Quantum chemistry</strong> on small model compounds: optimised geometries, vibrational frequencies, the electrostatic potential around the molecule, energy scans along torsions, interaction energies of dimers.</li>
+<li><strong>Experiment</strong>, mostly on pure liquids and solutions: density, heat of vaporisation, hydration free energy, and for proteins NMR observables.</li>
+</ul>
+<p>The terms are fitted in a fixed order, because each depends on the ones before:</p>
+<ol>
+<li><strong>Equilibrium bond lengths and angles</strong> from crystal structures and QM geometries; <strong>force constants</strong> from vibrational frequencies.</li>
+<li><strong>Partial charges</strong> from the QM electrostatic potential or from interactions with water.</li>
+<li><strong>Lennard-Jones parameters</strong> from liquid densities and heats of vaporisation, since those depend on how tightly molecules pack and how strongly they attract.</li>
+<li><strong>Torsions last</strong>, as a correction: <span class="math-inline">\(U_{tors}(\phi) \approx E_{QM}(\phi) - E_{MM}^{\,no\ tors}(\phi)\)</span>. The torsion term is the difference between a QM energy scan and what all the other terms already give.</li>
+</ol>
+<p>Because torsions are a residual, they are specific to the charges, 1-4 scaling and Lennard-Jones set they were fitted with. Parameters are not transferable between families.</p>
+<h3 id="fitting-charges-esp-and-resp">Fitting charges: ESP and RESP</h3>
+<p>Compute the QM electrostatic potential <span class="math-inline">\(V^{QM}(\mathbf r_k)\)</span> on a few thousand points <span class="math-inline">\(k\)</span> around the molecule, outside the van der Waals surface. Choose atom-centred charges whose Coulomb potential reproduces it, with the total charge fixed by a Lagrange multiplier <span class="math-inline">\(\lambda\)</span>:</p>
+<p><span class="math-display">\[\chi^2_{ESP} = \sum_k\Big[V^{QM}(\mathbf r_k) - \sum_i\frac{q_i}{4\pi\varepsilon_0|\mathbf r_k-\mathbf r_i|}\Big]^2 + \lambda\Big(\sum_iq_i-Q_{tot}\Big).\]</span></p>
+<p>Setting <span class="math-inline">\(\partial\chi^2/\partial q_j=0\)</span> gives a linear system, solved in one step. The problem is that charges on buried atoms (a carbon surrounded by hydrogens) are poorly determined: the potential outside barely depends on them, so they come out large and conformation-dependent. <strong>RESP</strong> (restrained ESP; Bayly et al. 1993) adds a hyperbolic penalty that pulls poorly determined charges towards zero:</p>
+<p><span class="math-display">\[\chi^2_{RESP} = \chi^2_{ESP} + a\sum_i\left(\sqrt{q_i^2+b^2}-b\right).\]</span></p>
+<p>AMBER deliberately uses a low level of theory, HF/6-31G*, for this step. It overestimates dipole moments by 10 to 20 %, which roughly mimics the polarisation a molecule experiences in water. This is how a fixed-charge model includes average polarisation.</p>
+<p>The other families use different philosophies for the same goal. CHARMM adjusts charges to reproduce QM interaction energies and geometries of the molecule with individual water molecules. OPLS fits charges and Lennard-Jones parameters together to liquid properties. GROMOS fits to free energies of solvation and partitioning.</p>
+<h2 id="the-protein-force-field-families">The protein force-field families</h2>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Typical current choice for proteins</th>
+<th>Atom resolution</th>
+<th>Fitting philosophy</th>
+<th>Native water</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMBER</td>
+<td>ff14SB, ff19SB</td>
+<td>All-atom</td>
+<td>RESP charges from QM; torsions from high-level QM, then adjusted to NMR data</td>
+<td>TIP3P (ff14SB), OPC (ff19SB)</td>
+</tr>
+<tr>
+<td>CHARMM</td>
+<td>CHARMM36m</td>
+<td>All-atom</td>
+<td>Water-interaction charges; CMAP backbone correction; target experimental data</td>
+<td>CHARMM-modified TIP3P</td>
+</tr>
+<tr>
+<td>OPLS</td>
+<td>OPLS-AA/M (open), OPLS4 (commercial)</td>
+<td>All-atom</td>
+<td>Liquid-state properties</td>
+<td>TIP3P, TIP4P</td>
+</tr>
+<tr>
+<td>GROMOS</td>
+<td>54A7</td>
+<td>United-atom (non-polar H merged into C)</td>
+<td>Solvation and partition free energies</td>
+<td>SPC</td>
+</tr>
+</tbody>
+</table>
+<p>The lineage is worth knowing because papers cite specific versions. In AMBER: ff94 (Cornell et al. 1995), ff99, ff99SB (backbone fix, 2006), ff99SB-ILDN (side chains of Ile, Leu, Asp, Asn; Lindorff-Larsen et al. 2010), ff14SB (Maier et al. 2015), ff19SB (CMAP-style backbone, fitted with OPC water; Tian et al. 2020). In CHARMM: CHARMM22 (MacKerell et al. 1998), CHARMM22/CMAP (2004), CHARMM36 (Best et al. 2012), CHARMM36m (Huang et al. 2017).</p>
+<p>For anything that is not a standard residue you need a <strong>general force field</strong> designed to be compatible with the protein one: GAFF/GAFF2 with AMBER, CGenFF with CHARMM, and the Open Force Field series (Parsley, Sage), which assigns parameters by chemical substructure patterns and is distributed in an open format.</p>
+<div class="box warn">
+<p><strong>Rules that save months.</strong> (1) Use the protein force field with the water model and ion parameters it was validated with. (2) Use the cutoff scheme it was developed with (CHARMM: force switch from 1.0 to 1.2 nm). (3) Never combine protein parameters from one family with ligand parameters from another. (4) Read the force field's own paper for the recommended combination; do not rely on a tutorial's defaults.</p>
+</div>
+<h2 id="water-models">Water models</h2>
+<p>Water is 80 to 90 % of the atoms in a simulation, and its model decides hydration, screening and diffusion. The common models are rigid, with fixed charges:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Sites</th>
+<th>Idea</th>
+<th>Strength</th>
+<th>Known weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPC, SPC/E</td>
+<td>3</td>
+<td>Charges on O and H, one Lennard-Jones site on O. SPC/E adds a polarisation self-energy correction.</td>
+<td>SPC/E: good diffusion and structure</td>
+<td>Dielectric constant somewhat low</td>
+</tr>
+<tr>
+<td>TIP3P</td>
+<td>3</td>
+<td>Same layout, fitted to density and heat of vaporisation (Jorgensen et al. 1983)</td>
+<td>Default of AMBER and CHARMM; huge validation history</td>
+<td>Diffuses about twice too fast; too little structure beyond the first shell</td>
+</tr>
+<tr>
+<td>TIP4P-Ew, TIP4P/2005</td>
+<td>4</td>
+<td>Negative charge moved off the oxygen to a massless site M on the bisector</td>
+<td>TIP4P/2005: excellent phase diagram, density and dynamics</td>
+<td>Dielectric constant too low (about 60)</td>
+</tr>
+<tr>
+<td>OPC</td>
+<td>4</td>
+<td>Charges and geometry optimised freely to reproduce bulk properties (Izadi et al. 2014)</td>
+<td>Very good dielectric constant, density and diffusion together</td>
+<td>4-site cost</td>
+</tr>
+<tr>
+<td>TIP4P-D, a99SB-disp water</td>
+<td>4</td>
+<td>Dispersion (<span class="math-inline">\(C_6\)</span>) increased</td>
+<td>Fixes over-compact disordered proteins</td>
+<td>Changes pure-water properties slightly</td>
+</tr>
+<tr>
+<td>TIP5P</td>
+<td>5</td>
+<td>Explicit lone-pair sites</td>
+<td>Density maximum at 4 °C</td>
+<td>Cost; less used with proteins</td>
+</tr>
+</tbody>
+</table>
+<p>Rough numbers to anchor the table, at about 298 K: experimental water has a self-diffusion coefficient of <span class="math-inline">\(2.3\times10^{-5}\)</span> cm<span class="math-inline">\(^2\)</span>/s and a dielectric constant of 78. TIP3P gives a diffusion coefficient above <span class="math-inline">\(5\times10^{-5}\)</span> cm<span class="math-inline">\(^2\)</span>/s and a dielectric constant in the 90s. SPC/E and OPC are close to experiment for diffusion. The exact values reported depend on cutoffs and system size, so take them from the original papers when you need them.</p>
+<p>Two consequences for protein simulations: with TIP3P, everything that depends on solvent viscosity (diffusion, some conformational rates) is too fast by a factor of 2 to 3; and the balance between protein-water and protein-protein interactions, which decides whether a disordered chain is expanded or collapsed, depends strongly on the water model.</p>
+<div class="box key">
+<p><strong>The "missing term" of SPC/E.</strong> A fixed-charge water has an enhanced dipole <span class="math-inline">\(\mu\)</span> compared with the gas-phase value <span class="math-inline">\(\mu_0\)</span>. Creating that induced dipole costs energy, <span class="math-inline">\(E_{pol} = (\mu-\mu_0)^2/2\alpha\)</span> with <span class="math-inline">\(\alpha\)</span> the polarisability: 3.7 kJ/mol for the SPC dipole of 2.27 D and 5.2 kJ/mol for 2.35 D. Berendsen, Grigera and Straatsma (1987) pointed out that this cost must be added when comparing the model's heat of vaporisation with experiment. Refitting with it included gave SPC/E, with slightly larger charges and much better dynamics. The same reasoning matters whenever a fixed-charge model is fitted to a transfer between phases.</p>
+</div>
+<h3 id="ions">Ions</h3>
+<p>Ion parameters are specific to the water model (Joung and Cheatham 2008 for AMBER with TIP3P, SPC/E or TIP4P-Ew). Older or mismatched parameters caused NaCl and KCl to crystallise at physiological concentration. Fixed-charge models also tend to over-stabilise salt bridges and ion-phosphate contacts; pair-specific corrections (NBFIX, or scaled ion charges in the "ECC" approach) reduce this.</p>
+<h2 id="the-disordered-protein-problem">The disordered-protein problem</h2>
+<p>This matters if you work with intrinsically disordered proteins or regions (IDPs, IDRs).</p>
+<p>Force fields up to about 2014 were tuned on folded proteins. When simulated with them, disordered proteins and unfolded states collapsed into compact globules, with radii of gyration well below SAXS and FRET measurements. The cause was a general imbalance: protein-protein interactions were too favourable compared with protein-water interactions, in part because the water models underestimate dispersion. The fixes took three routes:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Example</th>
+<th>What was changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strengthen protein-water Lennard-Jones</td>
+<td>ff03ws, ff99SBws (Best, Zheng and Mittal 2014)</td>
+<td>Protein-water <span class="math-inline">\(\varepsilon\)</span> scaled by 1.10</td>
+</tr>
+<tr>
+<td>Change the water model</td>
+<td>TIP4P-D (Piana et al. 2015)</td>
+<td>Water dispersion coefficient increased by about 50 %</td>
+</tr>
+<tr>
+<td>Re-fit protein and water together</td>
+<td>a99SB-disp (Robustelli, Piana and Shaw 2018); CHARMM36m (Huang et al. 2017)</td>
+<td>Backbone torsions, selected Lennard-Jones pairs and the water model, validated on both folded and disordered proteins</td>
+</tr>
+</tbody>
+</table>
+<p>The current practical choices for systems with both folded and disordered parts are a99SB-disp with its own water, CHARMM36m with its modified TIP3P, and ff19SB with OPC. No force field is right for every system: check against whatever experimental data exist for yours (SAXS radius of gyration, NMR chemical shifts, PRE).</p>
+<h2 id="beyond-fixed-charges-polarizable-force-fields">Beyond fixed charges: polarizable force fields</h2>
+<p>In a polarizable model the charge distribution responds to the local electric field <span class="math-inline">\(\mathbf E\)</span>.</p>
+<ul>
+<li><strong>Drude oscillator</strong> (CHARMM Drude): each heavy atom carries an auxiliary charged particle attached by a spring with constant <span class="math-inline">\(k_D\)</span>. In a field the particle is displaced by <span class="math-inline">\(d = q_DE/k_D\)</span>, giving an induced dipole <span class="math-inline">\(\mu=q_Dd\)</span> and a polarisability <span class="math-inline">\(\alpha = q_D^2/k_D\)</span>. It is run with an extended Lagrangian in which the Drude particles are kept cold, and needs a 1 fs step.</li>
+<li><strong>Induced point dipoles</strong> (AMOEBA): each atom has a polarisability, and its induced dipole <span class="math-inline">\(\boldsymbol\mu_i = \alpha_i\,\mathbf E_i\)</span> depends on the field from permanent charges <em>and</em> from all other induced dipoles, which requires a self-consistent iteration every step. AMOEBA also replaces point charges by permanent multipoles up to quadrupoles.</li>
+<li><strong>Fluctuating charges</strong>: charges flow between atoms to equalise electronegativity.</li>
+</ul>
+<p>The cost is typically 3 to 10 times that of a fixed-charge simulation. They are better for ions, for interfaces between very different environments, and for spectroscopy. For routine protein simulation they have not yet displaced the additive models, which have had far more tuning.</p>
+<h2 id="how-force-fields-are-validated">How force fields are validated</h2>
+<p>Know these tests, because they are what "this force field is good" means in a paper:</p>
+<ul>
+<li><strong>Small-molecule liquids</strong>: density, heat of vaporisation, hydration free energy (errors of about 4 kJ/mol are typical).</li>
+<li><strong>Peptides</strong>: NMR scalar couplings (<span class="math-inline">\(^3J\)</span>, via the Karplus relation to <span class="math-inline">\(\phi\)</span>), helix propensities, populations of polyproline II, β and α regions.</li>
+<li><strong>Folded proteins</strong>: stability of the native state over microseconds, NMR order parameters, residual dipolar couplings.</li>
+<li><strong>Folding</strong>: reversible folding of small fast-folding proteins to the right structure and melting temperature.</li>
+<li><strong>Disordered proteins</strong>: radius of gyration from SAXS, chemical shifts, paramagnetic relaxation enhancement.</li>
+</ul>
+<p>Lindorff-Larsen et al. (2012) and Robustelli et al. (2018) are the standard systematic comparisons.</p>
+<h2 id="what-a-topology-file-contains">What a topology file contains</h2>
+<p>The force field is applied to your molecule by a program (<code>gmx pdb2gmx</code>, <code>tleap</code>, CHARMM-GUI, OpenMM's <code>ForceField</code>) that matches residues to templates and writes a <strong>topology</strong>. Reading one is the best way to make the functional form concrete. A GROMACS topology has these sections:</p>
+<div class="code"><pre><span></span><code>[ atoms ]      ; nr  type  resnr  residue  atom  cgnr  charge    mass
+                  1   N3     1      ALA     N     1    0.1414   14.01
+[ bonds ]      ; ai  aj  funct   (r0 and kb are looked up from the atom types)
+[ pairs ]      ; the 1-4 pairs, with scaled non-bonded interactions
+[ angles ]     ; ai  aj  ak  funct
+[ dihedrals ]  ; ai  aj  ak  al  funct   (9 = proper, 4 = improper in AMBER ports)
+</code></pre></div>
+
+<p>The atom <strong>type</strong> (here <code>N3</code>) is the key into the parameter tables: two atoms with the same type have the same Lennard-Jones parameters and take part in the same bonded parameters. The <strong>charge</strong> is per atom, set by the residue template.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Why are torsion parameters fitted last?</summary>
+<p>Rotating about a bond also changes the 1-4 Coulomb and Lennard-Jones energies and slightly strains angles. The torsion term is defined as whatever is needed to make the total match the QM rotational profile, so it can only be fitted after the other terms are fixed.</p>
+</details>
+<details>
+<summary>2. You find a ligand parameterised with GAFF and want to simulate it with a CHARMM36m protein. Is that acceptable?</summary>
+<p>No. The charge models (RESP against water-interaction), 1-4 scaling (0.833 and 0.5 against 1.0) and the Lennard-Jones balance differ. Use CGenFF for the ligand with CHARMM36m, or switch the protein to an AMBER force field with GAFF2 or OpenFF.</p>
+</details>
+<details>
+<summary>3. A disordered region collapses onto the folded domain within 200 ns in ff14SB/TIP3P. What do you check before believing it?</summary>
+<p>Whether the same happens in a force field balanced for disorder (a99SB-disp, CHARMM36m, ff19SB/OPC). ff14SB with TIP3P is known to over-compact disordered chains, so the collapse may be an artefact.</p>
+</details>
+<details>
+<summary>4. Why does TIP3P water have a larger dipole moment than a real gas-phase water molecule?</summary>
+<p>In the liquid each molecule is polarised by its neighbours and its average dipole is larger than in the gas. A fixed-charge model cannot respond, so it is built with the enhanced, liquid-like dipole from the start.</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Download the ff14SB and CHARMM36m parameter files (both are distributed with GROMACS ports). Find the backbone N-CA-C angle parameters in each and convert them to the same units and convention.</li>
+<li>Set up the ESP fitting equations for a diatomic molecule with two charges and a total-charge constraint, and solve them symbolically. Show the result fixes only the dipole.</li>
+<li>Simulate 1,000 molecules of TIP3P and of OPC water for 1 ns each (Module 10 gives the workflow). Compute the density and the self-diffusion coefficient from the mean squared displacement (Module 11). Compare with experiment.</li>
+<li>Read the abstract and validation figures of Robustelli et al. 2018. List the classes of experimental data used and which force fields failed which class.</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://books.google.com/books?vid=ISBN9780582382107" target="_blank" rel="noopener">Molecular Modelling: Principles and Applications</a><span class="res-meta">Andrew R. Leach · 2nd ed., 2001 · Prentice Hall (Pearson)</span><span class="res-why">Broad, readable introduction to force fields, energy minimisation, MD and Monte Carlo with biomolecular examples.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/pages/lecture-notes/" target="_blank" rel="noopener">3.320 Atomistic Computer Modeling of Materials (SMA 5107), Spring 2005 lecture notes</a> <span class="tag free">free</span><span class="res-meta">MIT OpenCourseWare · Spring 2005 · MIT OpenCourseWare (CC BY-NC-SA 4.0)</span><span class="res-why">Graduate atomistic-modelling course with 25 lectures of notes; materials-oriented rather than biomolecular, so use selectively.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5966" target="_blank" rel="noopener">Simulation Best Practices for Lipid Membranes</a> <span class="tag free">free</span><span class="res-meta">David J. Smith, Jeffery B. Klauda, Alexander J. Sodt · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Best practices for membrane simulations (ensemble, force field, equilibration).</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3797" target="_blank" rel="noopener">Molecular Dynamics: From Basics to Application</a> <span class="tag free">free</span><span class="res-meta">Luis Vollmers, Shu-Yu Chen, Maria Reif, Tristan Alexander Mauck, Martin Zacharias · 2025, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Recent introductory LiveCoMS tutorial that walks from MD basics to a biomolecular application.</span></li><li class="res"><a href="https://web.stanford.edu/class/cs279/lectures/lecture%20MD__2026_v2.pdf" target="_blank" rel="noopener">CS279: Structure and Organization of Biomolecules and Cells (course page and public slides)</a> <span class="tag free">free</span><span class="res-meta">Ron Dror (Stanford) · 2026 edition · Stanford University</span><span class="res-why">Public slides give a biomolecule-centred MD overview with current ML-force-field readings; the course is now titled &#x27;Structure and Organization of Biomolecules and Cells&#x27; and lecture videos are enrolled-only.</span><span class="res-why"><b>Where to read:</b> The slide sets on energy functions and on molecular dynamics simulation.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5957" target="_blank" rel="noopener">Best Practices for Foundations in Molecular Simulations</a> <span class="tag free">free</span><span class="res-meta">Efrem Braun, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, Daniel M. Zuckerman · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">First-stop checklist for setting up and reporting a simulation correctly.</span></li><li class="res"><a href="https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html" target="_blank" rel="noopener">CHE210D: Principles of modern molecular simulation methods (UCSB lecture notes, F19)</a> <span class="tag free">free</span><span class="res-meta">M. Scott Shell · Fall 2019 · UC Santa Barbara, Chemical Engineering</span><span class="res-why">Complete, free lecture-note set (18 lectures plus readings and Python/Fortran codes) that follows Frenkel and Smit.</span><span class="res-why"><b>Where to read:</b> Lecture notes: Classical force fields; Molecular dynamics; Computing properties; Simulations of bulk phases; Advanced molecular dynamics techniques; Free energies along reaction coordinates and biased sampling; Macroscopic free energies and reweighting; Advanced sampling; Coarse-graining and multiscale techniques; and the reading on simulation best practices.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/functions/bonded-interactions.html" target="_blank" rel="noopener">GROMACS Reference Manual: bonded interactions (force-field functional forms)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Explicit equations for bond, angle, dihedral and improper terms.</span></li><li class="res"><a href="https://lammpstutorials.github.io/" target="_blank" rel="noopener">LAMMPS tutorials (Lennard-Jones fluid, carbon nanotube deformation, water adsorption)</a> <span class="tag free">free</span><span class="res-meta">Simon Gravelle, Cecilia M. S. Alvares, Jacob R. Gissinger, Axel Kohlmeyer · 2025 (LiveCoMS 6:3037) · lammpstutorials.github.io</span><span class="res-why">Three step-by-step LAMMPS tutorials, also published in LiveCoMS.</span></li><li class="res"><a href="https://docs.openforcefield.org/projects/toolkit/en/stable/" target="_blank" rel="noopener">Open Force Field documentation and toolkit</a> <span class="tag free">free</span><span class="res-meta">Open Force Field Initiative · latest · docs.openforcefield.org</span><span class="res-why">Docs for the SMIRNOFF force fields and the toolkit for parametrising small molecules.</span></li><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/functions/nonbonded-interactions.html" target="_blank" rel="noopener">GROMACS Reference Manual: non-bonded interactions</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Lennard-Jones, Coulomb, cutoff and combination-rule definitions.</span></li><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/index.html" target="_blank" rel="noopener">GROMACS Reference Manual (index)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Entry page to all reference-manual sections.</span></li><li class="res"><a href="https://docs.openmm.org/latest/userguide/" target="_blank" rel="noopener">OpenMM User Guide</a> <span class="tag free">free</span><span class="res-meta">OpenMM developers · current · docs.openmm.org</span><span class="res-why">User guide with a theory section that gives the equations behind each force and integrator.</span><span class="res-why"><b>Where to read:</b> Theory chapters: standard forces, custom forces, integrators.</span></li><li class="res"><a href="https://ambermd.org/tutorials/" target="_blank" rel="noopener">AMBER tutorials</a> <span class="tag free">free</span><span class="res-meta">AMBER developers · current · ambermd.org</span><span class="res-why">Official step-by-step tutorials for Amber setup and simulation.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="05-force-field-form.html">&larr; Force fields I, the energy function term by term</a><a class="next" href="07-boundaries-electrostatics.html">Periodic boundaries, cutoffs and Ewald summation &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

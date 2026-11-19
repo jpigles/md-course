@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermostats and barostats, controlling temperature and pressure | Molecular Dynamics: a course</title>
+<meta name="description" content="Understand how each thermostat and barostat modifies the equations of motion, which of them sample the correct ensemble, and which to use for equilibration and for production.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="08-thermostats-barostats">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li class="current" data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 8 of 17 &middot; about 7 hours</div><h1>Thermostats and barostats, controlling temperature and pressure</h1><p class="lede">Understand how each thermostat and barostat modifies the equations of motion, which of them sample the correct ensemble, and which to use for equilibration and for production.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#why-control-temperature-at-all">Why control temperature at all</a></li><li><a href="#thermostats">Thermostats</a></li><li><a href="#pressure">Pressure</a></li><li><a href="#barostats">Barostats</a></li><li><a href="#a-defensible-protocol">A defensible protocol</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>compute temperature and pressure from a trajectory and say how much they should fluctuate;</li>
+<li>write the equations of the Berendsen, velocity-rescale, Andersen, Langevin and Nosé-Hoover thermostats;</li>
+<li>show that Langevin dynamics and Nosé-Hoover dynamics have the canonical distribution as their stationary state;</li>
+<li>explain Berendsen, Parrinello-Rahman, Monte Carlo and stochastic cell rescaling barostats;</li>
+<li>choose a defensible combination and coupling time for your own simulation.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=ey1tv0yoyGc" target="_blank" rel="noopener">nanoHUB-U Atoms to Materials L4.5: Isothermal &amp; Isobaric MD Simulations</a><span class="res-meta">nanoHUB-U Atoms to Materials &middot; channel: nanohubtechtalks &middot; Video, intro</span><span class="res-why">Isothermal and isobaric MD simulations explained.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=l-uZaSvlycY" target="_blank" rel="noopener">Thermostats | Simulation in canonical ensemble | Molecular dynamics simulations</a><span class="res-meta">LearnWithVinay &middot; Video, intro</span><span class="res-why">Thermostats for canonical ensemble simulations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=gWbT5BELJzg" target="_blank" rel="noopener">Lecture 1 2 ThermostatBarostat</a><span class="res-meta">Haochuan Ma &middot; Video, intermediate</span><span class="res-why">Lecture on thermostats and barostats in MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=pCm2i6kQs4E" target="_blank" rel="noopener">lecture 46: Numerical implementation of MD; thermostat and barostat</a><span class="res-meta">NPTEL / IIT Roorkee &middot; channel: IIT Roorkee July 2018 &middot; Video, intermediate</span><span class="res-why">Numerical implementation of MD with thermostat and barostat.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=X3K5A96-U4E" target="_blank" rel="noopener">Molecular Dynamics Simulation with Thermostats : Theory + Code Explained : Berendsen, Andersen, Vel</a><span class="res-meta">Physics Through Computation &middot; Video, intermediate</span><span class="res-why">Theory and code of Berendsen, Andersen and velocity rescaling thermostats.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=jonJHFcYTso" target="_blank" rel="noopener">17. Langevin Equation, Brownian Particle, Fluctuation–Dissipation Theorem</a><span class="res-meta">PhysicsOfLifeLMU &middot; Video, intermediate</span><span class="res-why">Langevin equation and fluctuation-dissipation theorem, the basis of Langevin thermostats.</span></li></ul>
+<h2 id="why-control-temperature-at-all">Why control temperature at all</h2>
+<p>Newtonian MD conserves energy and samples the microcanonical (NVE) ensemble. We usually want the canonical (NVT) or isothermal-isobaric (NPT) ensemble because:</p>
+<ul>
+<li>experiments are done at fixed temperature and pressure;</li>
+<li>numerical errors (integration, cutoffs, constraints) add or remove energy slowly, and without a thermostat the temperature drifts;</li>
+<li>non-equilibrium procedures (pulling, alchemical changes, equilibration from a poor start) put work into the system that has to be removed.</li>
+</ul>
+<p>From Module 3, the instantaneous temperature is <span class="math-inline">\(T_{inst} = 2K/(N_{df}k_B)\)</span>, and in the canonical ensemble it must fluctuate with relative standard deviation <span class="math-inline">\(\sqrt{2/N_{df}}\)</span>. A thermostat's job is to make the <em>distribution</em> of kinetic energy correct, not to pin <span class="math-inline">\(T_{inst}\)</span> to a number. More precisely, the kinetic energy must follow a gamma distribution:</p>
+<p><span class="math-display">\[P(K)\propto K^{N_{df}/2-1}\,e^{-\beta K}.\]</span></p>
+<h2 id="thermostats">Thermostats</h2>
+<h3 id="simple-velocity-scaling-and-berendsen">Simple velocity scaling, and Berendsen</h3>
+<p>The crudest method multiplies all velocities each step by <span class="math-inline">\(\lambda=\sqrt{T_0/T_{inst}}\)</span>. This fixes the kinetic energy exactly, which is the wrong distribution.</p>
+<p>The <strong>Berendsen</strong> thermostat (1984) relaxes the temperature towards the target with a time constant <span class="math-inline">\(\tau_T\)</span>, as if the system were weakly coupled to a bath:</p>
+<p><span class="math-display">\[\frac{dT}{dt} = \frac{T_0-T}{\tau_T}
+\qquad\Longrightarrow\qquad
+\lambda^2 = 1+\frac{\Delta t}{\tau_T}\left(\frac{T_0}{T_{inst}}-1\right).\]</span></p>
+<p>It is stable and brings a system to the target temperature quickly and smoothly. It does <strong>not</strong> generate the canonical ensemble: it suppresses the fluctuations of the kinetic energy, and in doing so it slowly transfers energy from high-frequency internal motions into low-frequency ones. The extreme case is the "flying ice cube", where kinetic energy ends up in the translation of the whole system. Use it for equilibration only.</p>
+<h3 id="stochastic-velocity-rescaling">Stochastic velocity rescaling</h3>
+<p>Bussi, Donadio and Parrinello (2007) kept the idea of a global rescaling but made the target kinetic energy itself a random variable with the correct canonical distribution. The kinetic energy follows</p>
+<p><span class="math-display">\[dK = \left(\bar K - K\right)\frac{dt}{\tau_T} + 2\sqrt{\frac{K\bar K}{N_{df}\,\tau_T}}\;dW,\qquad \bar K = \tfrac12N_{df}k_BT_0,\]</span></p>
+<p>where <span class="math-inline">\(dW\)</span> is a Wiener noise. The first term is Berendsen. The second supplies exactly the fluctuations Berendsen removes. The result samples the canonical ensemble, has first-order (non-oscillating) relaxation, disturbs the dynamics very little because it acts on all velocities with one scale factor, and has a conserved energy-like quantity that can be monitored. This is <code>tcoupl = V-rescale</code> in GROMACS and a good default.</p>
+<h3 id="andersen">Andersen</h3>
+<p>At random times, with collision frequency <span class="math-inline">\(\nu\)</span>, a particle's velocity is replaced by a fresh draw from the Maxwell-Boltzmann distribution. This samples the canonical ensemble rigorously. The collisions decorrelate velocities, so diffusion and other dynamical properties are altered. It is useful when dynamics do not matter.</p>
+<h3 id="langevin-dynamics">Langevin dynamics</h3>
+<p>Add a friction force and a random force to each particle:</p>
+<p><span class="math-display">\[m\,\dot{\mathbf v} = \mathbf F(\mathbf r) - \gamma m\,\mathbf v + \sqrt{2\gamma m k_BT}\;\boldsymbol\eta(t),\qquad \langle\eta_a(t)\,\eta_b(t')\rangle = \delta_{ab}\,\delta(t-t').\]</span></p>
+<p>The friction removes energy and the noise adds it. The two are tied together by the <strong>fluctuation-dissipation theorem</strong>: the noise amplitude must be <span class="math-inline">\(\sqrt{2\gamma mk_BT}\)</span> for the system to settle at temperature <span class="math-inline">\(T\)</span>.</p>
+<div class="box key">
+<p><strong>Why that amplitude.</strong> Take one velocity component with no force: <span class="math-inline">\(dv = -\gamma v\,dt + \sigma\,dW\)</span>. This is an Ornstein-Uhlenbeck process with solution</p>
+<p><span class="math-display">\[v(t) = v(0)\,e^{-\gamma t} + \sigma\int_0^te^{-\gamma(t-s)}dW(s).\]</span></p>
+<p>Its mean decays to zero and its variance tends to <span class="math-inline">\(\sigma^2/2\gamma\)</span>. The Maxwell-Boltzmann distribution requires a variance of <span class="math-inline">\(k_BT/m\)</span>, so <span class="math-inline">\(\sigma^2 = 2\gamma k_BT/m\)</span>. With forces present, one can check that <span class="math-inline">\(\rho\propto e^{-\beta H}\)</span> is the stationary solution of the corresponding Fokker-Planck equation: the Hamiltonian part of the flow leaves <span class="math-inline">\(e^{-\beta H}\)</span> unchanged (Liouville, Module 2), and the friction and noise terms cancel each other exactly for a Maxwell-Boltzmann distribution of velocities.</p>
+</div>
+<p>The exact solution over one time step is what integrators use for the "O" step (Module 4):</p>
+<p><span class="math-display">\[\mathbf v \leftarrow e^{-\gamma\Delta t}\,\mathbf v + \sqrt{\frac{k_BT}{m}\left(1-e^{-2\gamma\Delta t}\right)}\;\boldsymbol\xi,\qquad \boldsymbol\xi\sim\mathcal N(0,1).\]</span></p>
+<p>Properties: canonical, local (each particle is thermostatted, so it also equilibrates poorly coupled parts of the system), and very robust. The cost is that momentum is not conserved and dynamics are slowed: the friction adds to the natural friction of the solvent. For explicit solvent <span class="math-inline">\(\gamma\)</span> = 0.1 to 1 ps<span class="math-inline">\(^{-1}\)</span> is a mild perturbation. For implicit-solvent and coarse-grained models there is no solvent friction, and <span class="math-inline">\(\gamma\)</span> becomes a parameter that sets the time scale: with low friction the dynamics are much faster than in reality, which helps sampling but means simulated time has no physical meaning.</p>
+<p>In the limit of high friction the inertial term can be dropped, giving <strong>Brownian (overdamped Langevin) dynamics</strong>:</p>
+<p><span class="math-display">\[d\mathbf r = \frac{D}{k_BT}\,\mathbf F\,dt + \sqrt{2D\,dt}\;\boldsymbol\xi,\qquad D = \frac{k_BT}{m\gamma}.\]</span></p>
+<p>The umbrella-sampling demo in Module 12 uses this equation.</p>
+<h3 id="nose-hoover">Nosé-Hoover</h3>
+<p>A deterministic alternative. Add one extra dynamical variable, a friction coefficient <span class="math-inline">\(\xi\)</span> that responds to the kinetic energy:</p>
+<p><span class="math-display">\[\dot{\mathbf r}_i = \frac{\mathbf p_i}{m_i},\qquad
+\dot{\mathbf p}_i = \mathbf F_i - \xi\,\mathbf p_i,\qquad
+\dot\xi = \frac{1}{Q}\left(\sum_i\frac{\mathbf p_i^2}{m_i} - N_{df}k_BT_0\right).\]</span></p>
+<p>When the system is too hot the bracket is positive, <span class="math-inline">\(\xi\)</span> grows and the friction cools the system. When it is too cold, <span class="math-inline">\(\xi\)</span> becomes negative and heats it. The "mass" <span class="math-inline">\(Q\)</span> sets the response time: <span class="math-inline">\(Q = N_{df}k_BT_0\,\tau_T^2\)</span> up to a numerical factor, where <span class="math-inline">\(\tau_T\)</span> is the period of the temperature oscillations.</p>
+<p><strong>Proof that this is canonical.</strong> The flow is no longer incompressible. Its divergence is</p>
+<p><span class="math-display">\[\sum_i\frac{\partial\dot{\mathbf p}_i}{\partial\mathbf p_i} = -N_{df}\,\xi .\]</span></p>
+<p>The generalised Liouville equation for a density <span class="math-inline">\(f(\mathbf r,\mathbf p,\xi)\)</span> then requires <span class="math-inline">\(d\ln f/dt = +N_{df}\,\xi\)</span> along a trajectory. Try <span class="math-inline">\(f\propto\exp\left[-\beta\left(H+\tfrac12Q\xi^2\right)\right]\)</span>:</p>
+<p><span class="math-display">\[\frac{d\ln f}{dt} = -\beta\left(\dot H + Q\xi\dot\xi\right)
+= -\beta\left(-\xi\sum_i\frac{\mathbf p_i^2}{m_i} + \xi\sum_i\frac{\mathbf p_i^2}{m_i} - \xi N_{df}k_BT_0\right) = N_{df}\,\xi .\quad\checkmark\]</span></p>
+<p>So <span class="math-inline">\(e^{-\beta H}\)</span> times a Gaussian in <span class="math-inline">\(\xi\)</span> is stationary. The dynamics are smooth and time-reversible and conserve an extended energy.</p>
+<p>Two caveats. The proof shows the canonical density is <em>a</em> stationary state, not that the dynamics reach it: for small or stiff systems (a single harmonic oscillator is the textbook case) Nosé-Hoover is not ergodic. <strong>Nosé-Hoover chains</strong> (Martyna, Klein and Tuckerman 1992), where the thermostat variable is itself thermostatted by a second, and so on, fix this. And the temperature approaches its target with oscillations, so it is a poor choice for equilibrating a system that starts far from the target.</p>
+<h3 id="summary-of-thermostats">Summary of thermostats</h3>
+<table>
+<thead>
+<tr>
+<th>Thermostat</th>
+<th>Canonical?</th>
+<th>Perturbs dynamics</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Berendsen</td>
+<td>No</td>
+<td>Little</td>
+<td>Fast, smooth equilibration only</td>
+</tr>
+<tr>
+<td>Stochastic velocity rescaling</td>
+<td>Yes</td>
+<td>Very little</td>
+<td>Equilibration and production</td>
+</tr>
+<tr>
+<td>Andersen</td>
+<td>Yes</td>
+<td>Strongly</td>
+<td>Sampling when dynamics are irrelevant</td>
+</tr>
+<tr>
+<td>Langevin</td>
+<td>Yes</td>
+<td>Depends on <span class="math-inline">\(\gamma\)</span></td>
+<td>Implicit solvent, coarse-grained models, free-energy calculations, GPU codes</td>
+</tr>
+<tr>
+<td>Nosé-Hoover (chains)</td>
+<td>Yes</td>
+<td>Little</td>
+<td>Production of well-equilibrated systems</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Practical points.</strong> Use <span class="math-inline">\(\tau_T\)</span> of 0.1 to 1 ps for velocity rescaling and Nosé-Hoover, and <span class="math-inline">\(\gamma\approx1\)</span> ps<span class="math-inline">\(^{-1}\)</span> for Langevin in explicit solvent. Thermostat the protein and the solvent as separate groups only if each group is large; coupling very small groups separately creates artefacts. Remove centre-of-mass motion.</p>
+<h2 id="pressure">Pressure</h2>
+<p>The instantaneous pressure comes from the virial (Module 3):</p>
+<p><span class="math-display">\[P_{inst} = \frac{2}{3V}\left(K - \Xi\right),\qquad \Xi = -\frac12\sum_{i&lt;j}\mathbf r_{ij}\cdot\mathbf F_{ij}.\]</span></p>
+<p>In an anisotropic system it is a tensor <span class="math-inline">\(\mathbf P = \frac{2}{V}(\mathbf K-\boldsymbol\Xi)\)</span>.</p>
+<p><strong>The pressure fluctuates enormously.</strong> Water is nearly incompressible, <span class="math-inline">\(\kappa_T = 4.5\times10^{-5}\)</span> bar<span class="math-inline">\(^{-1}\)</span>, so a relative volume fluctuation of only 0.1 % corresponds to a pressure change of about 20 bar. In a box of a few nanometres, instantaneous pressures swing by several hundred bar from step to step. This is physical. A pressure of "1.0 ± 250 bar" is normal: judge the average over a long window, and judge equilibration by the <strong>density</strong>, which converges much faster.</p>
+<p>In the NPT ensemble the volume fluctuates as</p>
+<p><span class="math-display">\[\langle\delta V^2\rangle = k_BT\,\langle V\rangle\,\kappa_T ,\]</span></p>
+<p>and a correct barostat must reproduce this.</p>
+<h2 id="barostats">Barostats</h2>
+<p>All barostats change the volume by scaling the box and the particle coordinates. They differ in how the scaling factor is determined.</p>
+<h3 id="berendsen">Berendsen</h3>
+<p>First-order relaxation of the pressure, the analogue of the Berendsen thermostat:</p>
+<p><span class="math-display">\[\frac{dP}{dt}=\frac{P_0-P}{\tau_P}\qquad\Longrightarrow\qquad
+\mu = \left[1-\frac{\kappa_T\,\Delta t}{\tau_P}\,(P_0-P_{inst})\right]^{1/3},\]</span></p>
+<p>with coordinates and box edges scaled by <span class="math-inline">\(\mu\)</span> each step. Robust and non-oscillating, but it gives the wrong volume fluctuations, so it does not sample NPT. Equilibration only.</p>
+<h3 id="extended-system-barostats-andersen-parrinello-rahman-mttk">Extended-system barostats: Andersen, Parrinello-Rahman, MTTK</h3>
+<p>Andersen (1980) made the volume a dynamical variable with a fictitious mass <span class="math-inline">\(W\)</span> and a "kinetic energy", driven by the imbalance between internal and external pressure:</p>
+<p><span class="math-display">\[W\,\ddot V = P_{inst}-P_0 .\]</span></p>
+<p>Parrinello and Rahman (1981) generalised this to the full box matrix <span class="math-inline">\(\mathbf h\)</span>, so that the box can change shape as well as size, which is needed for crystals and membranes. Martyna, Tobias, Klein and Tuckerman corrected the equations so that they sample the exact NPT ensemble (MTTK). These methods are correct for a well-equilibrated system. Like Nosé-Hoover they are second-order: far from equilibrium the box oscillates and can become unstable. Do not start an NPT run with Parrinello-Rahman from an unequilibrated density.</p>
+<h3 id="stochastic-cell-rescaling">Stochastic cell rescaling</h3>
+<p>Bernetti and Bussi (2020) did for pressure what velocity rescaling did for temperature: Berendsen's first-order relaxation plus a noise term of exactly the right size,</p>
+<p><span class="math-display">\[d\varepsilon = -\frac{\kappa_T}{\tau_P}\left(P_0-P_{inst}\right)dt + \sqrt{\frac{2k_BT\,\kappa_T}{V\,\tau_P}}\;dW,\qquad \varepsilon = \ln\frac{V}{V_0}.\]</span></p>
+<p>It samples the correct NPT ensemble, does not oscillate, and can be used from the start of equilibration through production. In GROMACS it is <code>pcoupl = C-rescale</code>.</p>
+<h3 id="monte-carlo-barostat">Monte Carlo barostat</h3>
+<p>Every few steps, propose a random volume change <span class="math-inline">\(V\to V'\)</span>, scale the coordinates of molecular centres, and accept with probability</p>
+<p><span class="math-display">\[P_{acc} = \min\left\{1,\ \exp\left[-\beta\left(\Delta U + P_0\,\Delta V\right) + N\ln\frac{V'}{V}\right]\right\}.\]</span></p>
+<p>It needs no virial, which is convenient for GPU codes and unusual potentials, and it samples NPT exactly. This is OpenMM's <code>MonteCarloBarostat</code> and an option in AMBER. No instantaneous pressure is reported.</p>
+<h3 id="coupling-types">Coupling types</h3>
+<ul>
+<li><strong>Isotropic</strong>: one scale factor. Proteins in water.</li>
+<li><strong>Semi-isotropic</strong>: <span class="math-inline">\(x\)</span> and <span class="math-inline">\(y\)</span> coupled together, <span class="math-inline">\(z\)</span> separately. Membranes, where area and thickness must adjust independently.</li>
+<li><strong>Anisotropic</strong>: full tensor. Crystals. In a liquid it lets the box deform without limit, so avoid it.</li>
+</ul>
+<h2 id="a-defensible-protocol">A defensible protocol</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Thermostat</th>
+<th>Barostat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heating and first equilibration (NVT), 100 ps</td>
+<td>Velocity rescaling or Langevin, <span class="math-inline">\(\tau_T\)</span> = 0.1 ps</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Density equilibration (NPT), 100 ps to 1 ns</td>
+<td>same</td>
+<td>Stochastic cell rescaling (or Berendsen), <span class="math-inline">\(\tau_P\)</span> = 1 to 2 ps</td>
+</tr>
+<tr>
+<td>Production (NPT)</td>
+<td>Velocity rescaling, Langevin or Nosé-Hoover chains</td>
+<td>Stochastic cell rescaling, Parrinello-Rahman (<span class="math-inline">\(\tau_P\)</span> = 2 to 5 ps) or Monte Carlo</td>
+</tr>
+</tbody>
+</table>
+<p>State the thermostat, barostat and coupling constants in your methods section. They are part of the model.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Your temperature plot is a perfectly flat line at 300.00 K. Is that good?</summary>
+<p>No. The instantaneous temperature must fluctuate with standard deviation <span class="math-inline">\(T\sqrt{2/N_{df}}\)</span>. A flat line means the kinetic energy is being pinned (isokinetic scaling or an extremely short Berendsen time constant), which is not the canonical ensemble.</p>
+</details>
+<details>
+<summary>2. Why is the Berendsen thermostat acceptable for equilibration but not for production?</summary>
+<p>During equilibration the goal is to reach the target state quickly and stably, and the ensemble is irrelevant because the data are discarded. In production the distribution of kinetic energy is too narrow, so fluctuation-based properties are wrong, and energy is redistributed unphysically between degrees of freedom over long times.</p>
+</details>
+<details>
+<summary>3. In an implicit-solvent Langevin simulation you lower γ from 50 ps⁻¹ to 1 ps⁻¹ and conformational transitions become ten times faster. Did the free-energy landscape change?</summary>
+<p>No. The stationary distribution of Langevin dynamics is <span class="math-inline">\(e^{-\beta H}\)</span> for every <span class="math-inline">\(\gamma&gt;0\)</span>. Only the kinetics changed. Populations are comparable between the two runs; rates and times are not.</p>
+</details>
+<details>
+<summary>4. The average pressure over 100 ps is −14 bar with a target of 1 bar. Is the barostat broken?</summary>
+<p>Not necessarily. With fluctuations of a few hundred bar and a correlation time of the order of a picosecond, the standard error of a 100 ps average is tens of bar. Check the density instead and average the pressure over nanoseconds.</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Add a Langevin thermostat (BAOAB) to the Python code of Module 1. Verify that the average temperature matches the target and that the kinetic energy histogram matches the gamma distribution.</li>
+<li>Simulate a single harmonic oscillator with a Nosé-Hoover thermostat and plot the <span class="math-inline">\((x,p)\)</span> points visited. Compare with the Gaussian you expect. Then add a second thermostat in a chain and repeat.</li>
+<li>Add a Berendsen thermostat to the same code and compare the variance of the kinetic energy with the canonical value <span class="math-inline">\(\tfrac12N_{df}(k_BT)^2\)</span> for several values of <span class="math-inline">\(\tau_T\)</span>.</li>
+<li>From an NPT simulation of water, compute the isothermal compressibility from the volume fluctuations, once with a Berendsen barostat and once with stochastic cell rescaling. Compare with <span class="math-inline">\(4.5\times10^{-5}\)</span> bar<span class="math-inline">\(^{-1}\)</span>.</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://doi.org/10.1007/978-3-319-16375-8" target="_blank" rel="noopener">Molecular Dynamics: With Deterministic and Stochastic Numerical Methods</a><span class="res-meta">Ben Leimkuhler, Charles Matthews · 2015 · Springer</span><span class="res-why">The mathematically careful treatment of symplectic integrators, Langevin dynamics, thermostats and constraints.</span></li><li class="res"><a href="https://global.oup.com/booksites/content/9780198803195/" target="_blank" rel="noopener">Computer Simulation of Liquids</a><span class="res-meta">Michael P. Allen, Dominic J. Tildesley · 2nd ed., 2017 · Oxford University Press</span><span class="res-why">Classic practical MD/MC text with an official companion site of Fortran and Python example programs (also on GitHub).</span></li><li class="res"><a href="https://shop.elsevier.com/books/understanding-molecular-simulation/frenkel/978-0-323-90292-2" target="_blank" rel="noopener">Understanding Molecular Simulation: From Algorithms to Applications</a><span class="res-meta">Daan Frenkel, Berend Smit · 3rd ed., 2023 · Academic Press (Elsevier)</span><span class="res-why">The standard algorithm-level reference connecting statistical mechanics to working MD, free-energy and rare-event methods.</span><span class="res-why"><b>Where to read:</b> Ch. 2 Thermodynamics and Statistical Mechanics; Ch. 4 Molecular Dynamics Simulations; Ch. 5 Computer Experiments; Ch. 7 Molecular Dynamics in Various Ensembles; Ch. 8 Free Energy Calculations; Ch. 11 Long-Ranged Interactions; Ch. 15 Rare Events; Appendix G Statistical Errors; Appendix H Integration Schemes</span></li><li class="res"><a href="https://global.oup.com/academic/product/statistical-mechanics-theory-and-molecular-simulation-9780198825562" target="_blank" rel="noopener">Statistical Mechanics: Theory and Molecular Simulation</a><span class="res-meta">Mark E. Tuckerman · 2nd ed., 2023 · Oxford University Press</span><span class="res-why">Rigorous derivation of ensembles, extended-system thermostats/barostats, reversible integrators and enhanced sampling from Hamiltonian mechanics.</span><span class="res-why"><b>Where to read:</b> Ch. 17 covers machine learning (new in the 2nd edition).</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="http://www.nyu.edu/classes/tuckerman/stat.mech" target="_blank" rel="noopener">CHEM-GA 2600 Statistical Mechanics (NYU; formerly G25.2651) course page and lecture notes</a> <span class="tag free">free</span><span class="res-meta">Mark E. Tuckerman · current course page · New York University</span><span class="res-why">Author-hosted notes that derive MD algorithms, thermostats and barostats from first principles; linked from Tuckerman&#x27;s own teaching page.</span><span class="res-why"><b>Where to read:</b> Topics: Lagrangian and Hamiltonian mechanics, phase space and the Liouville theorem; ensembles; molecular dynamics, thermostats and barostats; Monte Carlo; enhanced sampling for free energies; linear response, Green-Kubo and Langevin equations.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/algorithms/molecular-dynamics.html" target="_blank" rel="noopener">GROMACS Reference Manual: molecular dynamics algorithms</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Authoritative description of leap-frog/velocity Verlet, thermostats, barostats and constraints as implemented.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="07-boundaries-electrostatics.html">&larr; Periodic boundaries, cutoffs and Ewald summation</a><a class="next" href="09-constraints.html">Constraints, freezing the fastest motions &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integrating the equations of motion | Molecular Dynamics: a course</title>
+<meta name="description" content="Derive the Verlet family of integrators twice (from Taylor series and from the Liouville operator), and understand why a simple second-order method beats higher-order ones for molecular dynamics.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="04-integrators">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li class="current" data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 4 of 17 &middot; about 6 hours</div><h1>Integrating the equations of motion</h1><p class="lede">Derive the Verlet family of integrators twice (from Taylor series and from the Liouville operator), and understand why a simple second-order method beats higher-order ones for molecular dynamics.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-problem">The problem</a></li><li><a href="#verlet-from-taylor-series">Verlet from Taylor series</a></li><li><a href="#velocity-verlet-from-the-liouville-operator">Velocity Verlet from the Liouville operator</a></li><li><a href="#how-large-can-the-time-step-be">How large can the time step be?</a></li><li><a href="#why-not-a-higher-order-method">Why not a higher-order method?</a></li><li><a href="#multiple-time-steps">Multiple time steps</a></li><li><a href="#stochastic-integrators">Stochastic integrators</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>derive the Verlet, velocity Verlet and leap-frog schemes and show they generate the same positions;</li>
+<li>explain "symplectic", "time-reversible" and "shadow Hamiltonian" and why they matter more than the order of accuracy;</li>
+<li>compute the stability limit of the time step for a harmonic bond and justify 1, 2 and 4 fs;</li>
+<li>describe multiple-time-step integration and its limits.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=pVudb6-_FaM" target="_blank" rel="noopener">Lecture 06, concept 09: Integration using the leap-frog algorithm updates x &amp; v</a><span class="res-meta">Erik Lindahl &middot; Video, intro</span><span class="res-why">Explains leap-frog integration updating positions and velocities as in GROMACS.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=qT8pxV53FA4" target="_blank" rel="noopener">L-4 | Velocity Verlet Algorithm - Solving equations of motion | Molecular Dynamics</a><span class="res-meta">LearnWithVinay &middot; Video, intro</span><span class="res-why">Walk through of the velocity Verlet algorithm for MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=g55QvpAev0I" target="_blank" rel="noopener">Verlet Integration</a><span class="res-meta">Leios &middot; Video, intro</span><span class="res-why">Short visual introduction to Verlet integration.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=ii-N61PeeQU" target="_blank" rel="noopener">Lecture 3: The Velocity-Verlet Method</a><span class="res-meta">Brennon Shanks &middot; Video, intermediate</span><span class="res-why">Derives the velocity Verlet method as used in MD codes.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=zLnIWwvfuo4" target="_blank" rel="noopener">RK4 and Symplectic Methods of Integration</a><span class="res-meta">Steve Spicklemire &middot; Video, intermediate</span><span class="res-why">Compares RK4 with symplectic methods and shows the energy drift difference.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Uyg9asVcMOc" target="_blank" rel="noopener">Conservation of energy for symplectic methods</a><span class="res-meta">Melvin Leok &middot; Video, advanced</span><span class="res-why">Why symplectic methods conserve a nearby energy over long times, which explains stable MD time steps.</span></li></ul>
+<h2 id="the-problem">The problem</h2>
+<p>We need <span class="math-inline">\(\mathbf r(t+\Delta t)\)</span> and <span class="math-inline">\(\mathbf v(t+\Delta t)\)</span> from <span class="math-inline">\(\mathbf r(t)\)</span>, <span class="math-inline">\(\mathbf v(t)\)</span> and the forces. What makes MD different from most numerical ODE problems:</p>
+<ul>
+<li>the force evaluation is by far the most expensive part, so a method should need <strong>one force evaluation per step</strong>;</li>
+<li>we integrate for <span class="math-inline">\(10^7\)</span> to <span class="math-inline">\(10^{10}\)</span> steps, so <strong>long-time stability</strong> matters more than the accuracy of any single step;</li>
+<li>the system is chaotic, so reproducing the exact trajectory is impossible anyway (Module 2). What we need is correct statistics.</li>
+</ul>
+<h2 id="verlet-from-taylor-series">Verlet from Taylor series</h2>
+<p>Expand the position forward and backward in time:</p>
+<p><span class="math-display">\[\begin{aligned}
+\mathbf r(t+\Delta t) &amp;= \mathbf r(t) + \mathbf v(t)\Delta t + \tfrac12\mathbf a(t)\Delta t^2 + \tfrac16\mathbf b(t)\Delta t^3 + O(\Delta t^4)\\
+\mathbf r(t-\Delta t) &amp;= \mathbf r(t) - \mathbf v(t)\Delta t + \tfrac12\mathbf a(t)\Delta t^2 - \tfrac16\mathbf b(t)\Delta t^3 + O(\Delta t^4)
+\end{aligned}\]</span></p>
+<p>Here <span class="math-inline">\(\mathbf b\)</span> is the third time derivative of the position. Add the two lines. The odd terms cancel:</p>
+<p><span class="math-display">\[\boxed{\mathbf r(t+\Delta t) = 2\mathbf r(t) - \mathbf r(t-\Delta t) + \mathbf a(t)\,\Delta t^2 + O(\Delta t^4)},\qquad \mathbf a = \mathbf F/m .\]</span></p>
+<p>This is the original <strong>Verlet</strong> algorithm (1967). The error of one step is <span class="math-inline">\(O(\Delta t^4)\)</span>, and the accumulated error over a fixed time is <span class="math-inline">\(O(\Delta t^2)\)</span>: a second-order method. Velocities do not appear. If needed they come from the difference <span class="math-inline">\(\mathbf v(t) = [\mathbf r(t+\Delta t)-\mathbf r(t-\Delta t)]/2\Delta t\)</span>, one step late.</p>
+<h3 id="velocity-verlet">Velocity Verlet</h3>
+<p>The form used in practice carries positions and velocities at the same time (Swope, Andersen, Berens and Wilson, 1982):</p>
+<p><span class="math-display">\[\begin{aligned}
+\mathbf v(t+\tfrac{\Delta t}{2}) &amp;= \mathbf v(t) + \tfrac{\Delta t}{2}\,\mathbf a(t) &amp;&amp;\text{half kick}\\
+\mathbf r(t+\Delta t) &amp;= \mathbf r(t) + \Delta t\,\mathbf v(t+\tfrac{\Delta t}{2}) &amp;&amp;\text{drift}\\
+\mathbf v(t+\Delta t) &amp;= \mathbf v(t+\tfrac{\Delta t}{2}) + \tfrac{\Delta t}{2}\,\mathbf a(t+\Delta t) &amp;&amp;\text{half kick}
+\end{aligned}\]</span></p>
+<p>To see that it is the same algorithm, write the drift for two consecutive steps and subtract: you get <span class="math-inline">\(\mathbf r(t+\Delta t) - 2\mathbf r(t)+\mathbf r(t-\Delta t) = \Delta t\,[\mathbf v(t+\tfrac{\Delta t}{2}) - \mathbf v(t-\tfrac{\Delta t}{2})] = \mathbf a(t)\Delta t^2\)</span>.</p>
+<h3 id="leap-frog">Leap-frog</h3>
+<p>Merge the second half kick of one step with the first half kick of the next:</p>
+<p><span class="math-display">\[\mathbf v(t+\tfrac{\Delta t}{2}) = \mathbf v(t-\tfrac{\Delta t}{2}) + \Delta t\,\mathbf a(t),\qquad
+\mathbf r(t+\Delta t) = \mathbf r(t) + \Delta t\,\mathbf v(t+\tfrac{\Delta t}{2}).\]</span></p>
+<p>Positions live on integer steps and velocities on half steps, "leaping" over each other. This is the default <code>integrator = md</code> in GROMACS. The trajectory of positions is identical to velocity Verlet. The only difference is bookkeeping: kinetic energy at time <span class="math-inline">\(t\)</span> must be estimated from the two neighbouring half-step velocities, which slightly changes the reported temperature and how thermostats and barostats are coupled.</p>
+<h2 id="velocity-verlet-from-the-liouville-operator">Velocity Verlet from the Liouville operator</h2>
+<p>The Taylor derivation hides <em>why</em> the method is so good. The operator derivation (Tuckerman, Berne and Martyna, 1992) shows it. From Module 2, the state evolves as <span class="math-inline">\(\Gamma(t) = e^{iLt}\Gamma(0)\)</span> with</p>
+<p><span class="math-display">\[iL = iL_r + iL_p,\qquad iL_r = \sum_i \mathbf v_i\cdot\frac{\partial}{\partial\mathbf r_i},\qquad iL_p = \sum_i \frac{\mathbf F_i}{m_i}\cdot\frac{\partial}{\partial\mathbf v_i}.\]</span></p>
+<p>Each piece alone is trivial to apply exactly. Because <span class="math-inline">\(e^{c\,\partial/\partial x}f(x) = f(x+c)\)</span> (Taylor's theorem), <span class="math-inline">\(e^{iL_r\Delta t}\)</span> shifts every position by <span class="math-inline">\(\mathbf v\Delta t\)</span> with velocities fixed (a drift), and <span class="math-inline">\(e^{iL_p\Delta t}\)</span> shifts every velocity by <span class="math-inline">\(\mathbf F\Delta t/m\)</span> with positions fixed (a kick).</p>
+<p>The two operators do not commute, so <span class="math-inline">\(e^{(iL_r+iL_p)\Delta t} \ne e^{iL_r\Delta t}e^{iL_p\Delta t}\)</span>. The symmetric <strong>Trotter (Strang) splitting</strong> is accurate to second order:</p>
+<p><span class="math-display">\[e^{iL\Delta t} = e^{iL_p\Delta t/2}\;e^{iL_r\Delta t}\;e^{iL_p\Delta t/2} + O(\Delta t^3).\]</span></p>
+<p>Read from right to left: half kick, drift, half kick. That is velocity Verlet. The derivation gives three properties for free.</p>
+<p><strong>1. Time-reversible.</strong> The product is symmetric, so applying it with <span class="math-inline">\(-\Delta t\)</span> exactly undoes a step.</p>
+<p><strong>2. Symplectic (volume-preserving).</strong> A drift changes <span class="math-inline">\(\mathbf r\)</span> by a function of <span class="math-inline">\(\mathbf v\)</span> only, and a kick changes <span class="math-inline">\(\mathbf v\)</span> by a function of <span class="math-inline">\(\mathbf r\)</span> only. Each is a shear in phase space with Jacobian determinant exactly 1. So the numerical map preserves phase-space volume exactly, as the true dynamics does (Liouville's theorem).</p>
+<p><strong>3. A conserved shadow Hamiltonian.</strong> Each sub-step is the exact flow of a Hamiltonian (<span class="math-inline">\(K\)</span> or <span class="math-inline">\(U\)</span> alone). The Baker-Campbell-Hausdorff formula then shows that the product is the exact flow of a nearby Hamiltonian</p>
+<p><span class="math-display">\[\tilde H = H + \Delta t^2\,H_2 + \Delta t^4\,H_4+\dots\]</span></p>
+<p>The numerical trajectory conserves <span class="math-inline">\(\tilde H\)</span>, not <span class="math-inline">\(H\)</span> (up to effects that are exponentially small for small <span class="math-inline">\(\Delta t\)</span>). Since <span class="math-inline">\(\tilde H - H = O(\Delta t^2)\)</span> and is bounded, the true energy <strong>oscillates</strong> around a constant with amplitude <span class="math-inline">\(\propto\Delta t^2\)</span> and does not drift. A non-symplectic method has no such protection.</p>
+<div class="box key">
+<p><strong>Exact result for a harmonic oscillator.</strong> For <span class="math-inline">\(H = \tfrac12 v^2 + \tfrac12\omega^2x^2\)</span>, one velocity Verlet step is the linear map</p>
+<p><span class="math-display">\[\begin{pmatrix}x'\\ v'\end{pmatrix} = \begin{pmatrix} 1-\tfrac12\omega^2\Delta t^2 &amp; \Delta t\\ -\omega^2\Delta t\,(1-\tfrac14\omega^2\Delta t^2) &amp; 1-\tfrac12\omega^2\Delta t^2\end{pmatrix}\begin{pmatrix}x\\ v\end{pmatrix}.\]</span></p>
+<p>Its determinant is 1 (volume preserved), and you can check by substitution that it conserves exactly</p>
+<p><span class="math-display">\[\tilde H = \tfrac12 v^2 + \tfrac12\omega^2\left(1-\tfrac14\omega^2\Delta t^2\right)x^2 .\]</span></p>
+<p>The shadow Hamiltonian is an oscillator with a slightly softer spring. It only makes sense while the bracket is positive, which gives the stability limit below.</p>
+</div>
+<div class="widget" data-widget="integrators"></div>
+
+<h2 id="how-large-can-the-time-step-be">How large can the time step be?</h2>
+<p>Insert <span class="math-inline">\(x_n = e^{i\theta n}\)</span> into the Verlet recursion for the harmonic oscillator, <span class="math-inline">\(x_{n+1} - 2x_n + x_{n-1} = -\omega^2\Delta t^2 x_n\)</span>:</p>
+<p><span class="math-display">\[\cos\theta = 1 - \tfrac12\omega^2\Delta t^2 .\]</span></p>
+<p>A real <span class="math-inline">\(\theta\)</span> (a bounded oscillation) exists only if</p>
+<p><span class="math-display">\[\boxed{\omega\,\Delta t &lt; 2\qquad\Longleftrightarrow\qquad \Delta t &lt; \frac{T_{period}}{\pi}}\]</span></p>
+<p>Beyond this the solution grows exponentially. Below it, the numerical frequency is <span class="math-inline">\(\omega_{num} = \theta/\Delta t \approx \omega\,(1 + \omega^2\Delta t^2/24)\)</span>: slightly too fast.</p>
+<p>Stability is not accuracy. Real potentials are anharmonic, and energy must also flow correctly between modes, so in practice one uses 10 to 20 steps per period of the fastest motion:</p>
+<table>
+<thead>
+<tr>
+<th>Fastest motion left in the system</th>
+<th>Period</th>
+<th>Usual <span class="math-inline">\(\Delta t\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bonds to hydrogen (X-H stretch, about 3,000 cm<span class="math-inline">\(^{-1}\)</span>)</td>
+<td>11 fs</td>
+<td>0.5 to 1 fs</td>
+</tr>
+<tr>
+<td>Heavy-atom bonds and angles involving H, after constraining X-H bonds</td>
+<td>about 20 fs</td>
+<td>2 fs</td>
+</tr>
+<tr>
+<td>After hydrogen mass repartitioning (H mass about 3 to 4 u) or virtual-site hydrogens</td>
+<td>about 30 to 40 fs</td>
+<td>4 fs</td>
+</tr>
+<tr>
+<td>Coarse-grained beads (Martini)</td>
+<td>hundreds of fs</td>
+<td>20 fs</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to test your own choice.</strong> Run NVE (no thermostat) for a few hundred picoseconds and measure the drift of the total energy. Express it per degree of freedom, in units of <span class="math-inline">\(k_BT\)</span> per nanosecond, and compare it with what the documentation of your MD program says to expect for its default settings: a drift of a small fraction of a percent of <span class="math-inline">\(k_BT\)</span> per nanosecond per degree of freedom is harmless once a thermostat is on. The fluctuation of the energy should fall by a factor of four when you halve the time step. If it does not, something other than the integrator (a cutoff discontinuity, loose constraint tolerance, neighbour-list buffer) is the source.</p>
+<h2 id="why-not-a-higher-order-method">Why not a higher-order method?</h2>
+<ul>
+<li><strong>Runge-Kutta 4</strong> needs four force evaluations per step. For the same cost you could take four Verlet steps. It is not symplectic: the energy drifts monotonically, as the demo shows.</li>
+<li><strong>Gear predictor-corrector</strong> methods use one force evaluation and are more accurate than Verlet at small <span class="math-inline">\(\Delta t\)</span>, but they are neither reversible nor symplectic and drift at the step sizes used in practice. They were common in the 1970s and 1980s and have disappeared from biomolecular codes.</li>
+<li><strong>Higher-order symplectic</strong> methods (Forest-Ruth, Yoshida) exist but need several force evaluations and do not allow a larger step for stiff molecular systems.</li>
+</ul>
+<p>The stiffness of bond vibrations limits <span class="math-inline">\(\Delta t\)</span> by stability, not by accuracy, so a higher order buys nothing.</p>
+<h2 id="multiple-time-steps">Multiple time steps</h2>
+<p>Forces differ in how fast they change. Bonded forces change on the 10 fs scale, short-range non-bonded forces on the 100 fs scale, and the long-range (reciprocal-space) electrostatics more slowly still. Split <span class="math-inline">\(iL_p = iL_p^{fast} + iL_p^{slow}\)</span> and nest the Trotter splitting (r-RESPA):</p>
+<p><span class="math-display">\[e^{iL\Delta t} \approx e^{iL_p^{slow}\Delta t/2}\Big[e^{iL_p^{fast}\delta t/2}\,e^{iL_r\delta t}\,e^{iL_p^{fast}\delta t/2}\Big]^{n}e^{iL_p^{slow}\Delta t/2},\qquad \delta t = \Delta t/n .\]</span></p>
+<p>The cheap fast forces are evaluated every inner step, the expensive slow forces once per outer step. The scheme stays reversible and symplectic. The catch is <strong>resonance</strong>: the slow force is applied as periodic impulses, and when the outer step approaches half the period of the fastest motion the impulses pump energy into it. With constrained bonds to hydrogen this limits the outer step to about 4 to 5 fs. GROMACS, NAMD, OpenMM and Desmond all offer some version of this (for example evaluating PME every second or third step).</p>
+<h2 id="stochastic-integrators">Stochastic integrators</h2>
+<p>With a Langevin thermostat (Module 8) the equations of motion gain a friction term and a random force. The same splitting idea applies, with three pieces: B (kick), A (drift), O (the friction-plus-noise part, which can be solved exactly). Leimkuhler and Matthews showed that the ordering <strong>BAOAB</strong> gives much smaller errors in configurational averages than the alternatives at the same <span class="math-inline">\(\Delta t\)</span>. OpenMM's <code>LangevinMiddleIntegrator</code> is of this type.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Why does the energy in velocity Verlet oscillate but not drift?</summary>
+<p>Because the algorithm is the exact solution of a slightly different Hamiltonian <span class="math-inline">\(\tilde H = H + O(\Delta t^2)\)</span>. <span class="math-inline">\(\tilde H\)</span> is conserved, so <span class="math-inline">\(H = \tilde H - O(\Delta t^2)\)</span> varies only by a bounded amount.</p>
+</details>
+<details>
+<summary>2. A flexible water model has an O-H stretch at 3,500 cm⁻¹. What is the largest stable time step, and what would you use?</summary>
+<p>Period <span class="math-inline">\(= 1/(c\tilde\nu) = 1/(2.998\times10^{10}\,\text{cm/s}\times3500\,\text{cm}^{-1}) = 9.5\)</span> fs. Stability limit <span class="math-inline">\(T/\pi = 3.0\)</span> fs. For accuracy use 0.5 fs (19 steps per period).</p>
+</details>
+<details>
+<summary>3. Positions from leap-frog and velocity Verlet are identical. Why can the reported temperatures differ?</summary>
+<p>Leap-frog has velocities at half steps. The kinetic energy at step <span class="math-inline">\(t\)</span> is computed as the average of the kinetic energies at <span class="math-inline">\(t\pm\Delta t/2\)</span> (or from averaged velocities), which differs from the velocity Verlet on-step value by a term of order <span class="math-inline">\(\Delta t^2\)</span>.</p>
+</details>
+<details>
+<summary>4. Your NVE test shows the energy rising linearly, and halving Δt does not change the slope. What do you suspect?</summary>
+<p>Not the integrator, whose error scales with <span class="math-inline">\(\Delta t^2\)</span>. Likely causes: a truncated potential with a jump at the cutoff, a neighbour list updated too rarely (particles enter the cutoff unnoticed), too loose a constraint tolerance, or single-precision round-off in a very large system.</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Starting from the 2×2 matrix in the box above, verify that its determinant is 1 and that <span class="math-inline">\(\tilde H\)</span> is conserved. Compute its eigenvalues and show they leave the unit circle when <span class="math-inline">\(\omega\Delta t&gt;2\)</span>.</li>
+<li>Implement forward Euler, velocity Verlet and RK4 for the pendulum <span class="math-inline">\(\ddot\theta = -\sin\theta\)</span> with large amplitude (anharmonic). Plot energy against time for 1,000 periods.</li>
+<li>In the Python code from Module 1, run with <span class="math-inline">\(\Delta t\)</span> = 0.001, 0.002, 0.004 and 0.008. Measure the standard deviation of the total energy and show on a log-log plot that it scales as <span class="math-inline">\(\Delta t^2\)</span>.</li>
+<li>Show by a Taylor expansion that <span class="math-inline">\(e^{A/2}e^{B}e^{A/2} = e^{A+B+O(3)}\)</span>, where the leading error terms are the double commutators <span class="math-inline">\([B,[B,A]]\)</span> and <span class="math-inline">\([A,[A,B]]\)</span>.</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://doi.org/10.1007/3-540-30666-8" target="_blank" rel="noopener">Geometric Numerical Integration: Structure-Preserving Algorithms for Ordinary Differential Equations</a><span class="res-meta">Ernst Hairer, Christian Lubich, Gerhard Wanner · 2nd ed., 2006 · Springer</span><span class="res-why">Definitive mathematics of symplectic and time-reversible integrators and backward error analysis, the theory behind velocity Verlet.</span></li><li class="res"><a href="https://www.cambridge.org/gb/universitypress/subjects/physics/mathematical-methods/art-molecular-dynamics-simulation-2nd-edition" target="_blank" rel="noopener">The Art of Molecular Dynamics Simulation</a><span class="res-meta">D. C. Rapaport · 2nd ed., 2004 · Cambridge University Press</span><span class="res-why">Case-study book that builds MD programs step by step, good for students who want to write their own code.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li><li class="res"><a href="https://doi.org/10.1007/978-3-319-16375-8" target="_blank" rel="noopener">Molecular Dynamics: With Deterministic and Stochastic Numerical Methods</a><span class="res-meta">Ben Leimkuhler, Charles Matthews · 2015 · Springer</span><span class="res-why">The mathematically careful treatment of symplectic integrators, Langevin dynamics, thermostats and constraints.</span></li><li class="res"><a href="https://global.oup.com/booksites/content/9780198803195/" target="_blank" rel="noopener">Computer Simulation of Liquids</a><span class="res-meta">Michael P. Allen, Dominic J. Tildesley · 2nd ed., 2017 · Oxford University Press</span><span class="res-why">Classic practical MD/MC text with an official companion site of Fortran and Python example programs (also on GitHub).</span></li><li class="res"><a href="https://shop.elsevier.com/books/understanding-molecular-simulation/frenkel/978-0-323-90292-2" target="_blank" rel="noopener">Understanding Molecular Simulation: From Algorithms to Applications</a><span class="res-meta">Daan Frenkel, Berend Smit · 3rd ed., 2023 · Academic Press (Elsevier)</span><span class="res-why">The standard algorithm-level reference connecting statistical mechanics to working MD, free-energy and rare-event methods.</span><span class="res-why"><b>Where to read:</b> Ch. 2 Thermodynamics and Statistical Mechanics; Ch. 4 Molecular Dynamics Simulations; Ch. 5 Computer Experiments; Ch. 7 Molecular Dynamics in Various Ensembles; Ch. 8 Free Energy Calculations; Ch. 11 Long-Ranged Interactions; Ch. 15 Rare Events; Appendix G Statistical Errors; Appendix H Integration Schemes</span></li><li class="res"><a href="https://global.oup.com/academic/product/statistical-mechanics-theory-and-molecular-simulation-9780198825562" target="_blank" rel="noopener">Statistical Mechanics: Theory and Molecular Simulation</a><span class="res-meta">Mark E. Tuckerman · 2nd ed., 2023 · Oxford University Press</span><span class="res-why">Rigorous derivation of ensembles, extended-system thermostats/barostats, reversible integrators and enhanced sampling from Hamiltonian mechanics.</span><span class="res-why"><b>Where to read:</b> Ch. 17 covers machine learning (new in the 2nd edition).</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/pages/lecture-notes/" target="_blank" rel="noopener">3.320 Atomistic Computer Modeling of Materials (SMA 5107), Spring 2005 lecture notes</a> <span class="tag free">free</span><span class="res-meta">MIT OpenCourseWare · Spring 2005 · MIT OpenCourseWare (CC BY-NC-SA 4.0)</span><span class="res-why">Graduate atomistic-modelling course with 25 lectures of notes; materials-oriented rather than biomolecular, so use selectively.</span></li><li class="res"><a href="http://www.nyu.edu/classes/tuckerman/stat.mech" target="_blank" rel="noopener">CHEM-GA 2600 Statistical Mechanics (NYU; formerly G25.2651) course page and lecture notes</a> <span class="tag free">free</span><span class="res-meta">Mark E. Tuckerman · current course page · New York University</span><span class="res-why">Author-hosted notes that derive MD algorithms, thermostats and barostats from first principles; linked from Tuckerman&#x27;s own teaching page.</span><span class="res-why"><b>Where to read:</b> Topics: Lagrangian and Hamiltonian mechanics, phase space and the Liouville theorem; ensembles; molecular dynamics, thermostats and barostats; Monte Carlo; enhanced sampling for free energies; linear response, Green-Kubo and Langevin equations.</span></li><li class="res"><a href="https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html" target="_blank" rel="noopener">CHE210D: Principles of modern molecular simulation methods (UCSB lecture notes, F19)</a> <span class="tag free">free</span><span class="res-meta">M. Scott Shell · Fall 2019 · UC Santa Barbara, Chemical Engineering</span><span class="res-why">Complete, free lecture-note set (18 lectures plus readings and Python/Fortran codes) that follows Frenkel and Smit.</span><span class="res-why"><b>Where to read:</b> Lecture notes: Classical force fields; Molecular dynamics; Computing properties; Simulations of bulk phases; Advanced molecular dynamics techniques; Free energies along reaction coordinates and biased sampling; Macroscopic free energies and reweighting; Advanced sampling; Coarse-graining and multiscale techniques; and the reading on simulation best practices.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://github.com/pythoninchemistry/sim_and_scat" target="_blank" rel="noopener">Simulation and Scattering notebooks: molecular dynamics intro (Lennard-Jones, velocity Verlet)</a> <span class="tag free">free</span><span class="res-meta">pythoninchemistry · GitHub · pythoninchemistry.org</span><span class="res-why">Notebook course that implements force, velocity Verlet and a small MD loop in Python.</span></li><li class="res"><a href="https://lem.che.udel.edu/git/furst/SimpleMD" target="_blank" rel="noopener">SimpleMD: a simple Lennard-Jones MD code in Python with Jupyter notebooks</a> <span class="tag free">free</span><span class="res-meta">Furst group (University of Delaware) · repo · lem.che.udel.edu</span><span class="res-why">Small readable code plus analysis notebooks; I did not check that it runs.</span></li><li class="res"><a href="https://fcichos.github.io/CBPM/seminars/seminar02/md1.html" target="_blank" rel="noopener">Step-by-Step Development of a Molecular Dynamics Simulation (seminar)</a> <span class="tag free">free</span><span class="res-meta">Fabian Cichos (Leipzig) · course page · fcichos.github.io</span><span class="res-why">Builds an MD code from one particle in free fall to a Lennard-Jones system.</span></li><li class="res"><a href="https://lcbc-epfl.github.io/mdmc-public/Ex4/Exercise.html" target="_blank" rel="noopener">MD simulation from scratch exercise (toy_md.py, velocity Verlet)</a> <span class="tag free">free</span><span class="res-meta">LCBC (EPFL) · course page · lcbc-epfl.github.io</span><span class="res-why">Short exercise implementing velocity Verlet in a toy MD program.</span></li><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/algorithms/molecular-dynamics.html" target="_blank" rel="noopener">GROMACS Reference Manual: molecular dynamics algorithms</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Authoritative description of leap-frog/velocity Verlet, thermostats, barostats and constraints as implemented.</span></li><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/index.html" target="_blank" rel="noopener">GROMACS Reference Manual (index)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Entry page to all reference-manual sections.</span></li><li class="res"><a href="https://docs.openmm.org/latest/userguide/" target="_blank" rel="noopener">OpenMM User Guide</a> <span class="tag free">free</span><span class="res-meta">OpenMM developers · current · docs.openmm.org</span><span class="res-why">User guide with a theory section that gives the equations behind each force and integrator.</span><span class="res-why"><b>Where to read:</b> Theory chapters: standard forces, custom forces, integrators.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="03-statistical-mechanics.html">&larr; Statistical mechanics, the link between a trajectory and a measurement</a><a class="next" href="05-force-field-form.html">Force fields I, the energy function term by term &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

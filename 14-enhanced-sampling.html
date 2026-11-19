@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enhanced sampling, getting over barriers | Molecular Dynamics: a course</title>
+<meta name="description" content="Understand the main families of enhanced sampling (replica exchange, metadynamics, adaptive biasing, accelerated and steered MD, weighted ensemble), derive their key equations, and choose between them.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="14-enhanced-sampling">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li class="current" data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part IV · Free energy and sampling &middot; Module 14 of 17 &middot; about 8 hours</div><h1>Enhanced sampling, getting over barriers</h1><p class="lede">Understand the main families of enhanced sampling (replica exchange, metadynamics, adaptive biasing, accelerated and steered MD, weighted ensemble), derive their key equations, and choose between them.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-problem-in-one-formula">The problem in one formula</a></li><li><a href="#collective-variables">Collective variables</a></li><li><a href="#replica-exchange-parallel-tempering">Replica exchange (parallel tempering)</a></li><li><a href="#metadynamics">Metadynamics</a></li><li><a href="#steered-md">Steered MD</a></li><li><a href="#accelerated-md">Accelerated MD</a></li><li><a href="#weighted-ensemble">Weighted ensemble</a></li><li><a href="#choosing">Choosing</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>classify an enhanced-sampling method by what it modifies: the potential along chosen coordinates, the temperature or Hamiltonian, or the ensemble of trajectories;</li>
+<li>derive the replica-exchange acceptance rule and estimate how many replicas a system needs;</li>
+<li>explain how metadynamics builds its bias and what well-tempering changes;</li>
+<li>say what steered MD and accelerated MD can and cannot give;</li>
+<li>list the properties of a good collective variable.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/playlist?list=PLmdKEn2znJEmCw1OfLLhv43TXl-QDvkUO" target="_blank" rel="noopener">PLUMED Masterclass 22</a><span class="res-meta">PLUMED consortium &middot; channel: Plumed Org &middot; Playlist, intermediate</span><span class="res-why">PLUMED Masterclass 2022 on enhanced sampling and analysis.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PL8XC6Vx8S1GDuJtKeIe8muGmQURVQnl_m" target="_blank" rel="noopener">Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation</a><span class="res-meta">TCBG UIUC &middot; Playlist, advanced</span><span class="res-why">Urbana 2018 workshop on enhanced sampling and free energy calculation.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PL8XC6Vx8S1GAtcF0p2-m0FbQT7gHM86TN" target="_blank" rel="noopener">Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations</a><span class="res-meta">TCBG UIUC &middot; Playlist, advanced</span><span class="res-why">Urbana 2017 workshop on enhanced sampling and free energy calculations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=ktkmgiFJSGQ" target="_blank" rel="noopener">Enhanced Sampling Methods - chapter 3: Replica Exchange Molecular Dynamics</a><span class="res-meta">MoBioChem &middot; Video, intermediate</span><span class="res-why">Chapter on replica exchange molecular dynamics.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=qITm4laxhtk" target="_blank" rel="noopener">Replica Exchange Method REM | Parallel Tempering | TREM HREM</a><span class="res-meta">The Computational Chemist &middot; Video, intermediate</span><span class="res-why">Replica exchange and parallel tempering.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=b8aViZKaKFs" target="_blank" rel="noopener">Enhanced Sampling Methods - Chapter 4: Metadynamics</a><span class="res-meta">MoBioChem &middot; Video, intermediate</span><span class="res-why">Chapter on metadynamics.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=EMZu-n4WCH0" target="_blank" rel="noopener">DM Zuckerman - Introduction to Weighted Ensemble Simulation</a><span class="res-meta">Daniel Zuckerman &middot; channel: dan z &middot; Video, intermediate</span><span class="res-why">Introduction to weighted ensemble simulation.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=f4faPQU58oA" target="_blank" rel="noopener">Gaussian accelerated Molecular Dynamics (GaMD) Workshop 2024</a><span class="res-meta">Yinglong Miao lab &middot; channel: miaolab &middot; Video, intermediate</span><span class="res-why">Long GaMD workshop on Gaussian accelerated MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=5upvgbp_elI" target="_blank" rel="noopener">PASI 2012 - Massimiliano Bonomi: Theory of simulated tempering and replica exchange</a><span class="res-meta">Massimiliano Bonomi &middot; channel: SIRAH ForceField &middot; Video, advanced</span><span class="res-why">Theory of simulated tempering and replica exchange.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=bZZggbV2r5E" target="_blank" rel="noopener">PASI 2012 - Giovanni Bussi: Metadynamics from direct to well-tempered and flexible hills</a><span class="res-meta">Giovanni Bussi &middot; channel: SIRAH ForceField &middot; Video, advanced</span><span class="res-why">Metadynamics from direct to well-tempered and flexible hills.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=ShtrAD-tT7c" target="_blank" rel="noopener">HITS Colloquium: Lillian T. Chong on weighted ensemble simulations</a><span class="res-meta">Lillian Chong (HITS) &middot; channel: TheHITSters &middot; Video, advanced</span><span class="res-why">Weighted ensemble simulations colloquium.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=cc_5q6Od6XU" target="_blank" rel="noopener">Unconstrained Enhanced Sampling of Biomolecules - Yinglong Miao</a><span class="res-meta">Yinglong Miao &middot; channel: The Qualcomm Institute &middot; Video, advanced</span><span class="res-why">Unconstrained enhanced sampling of biomolecules.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=RJMQ70K8UmA" target="_blank" rel="noopener">TCBG Summer School 2003: Steered Molecular Dynamics of Proteins - Introduction and Examples</a><span class="res-meta">TCBG UIUC &middot; channel: TCBG UIUCTalk &middot; Video, advanced</span><span class="res-why">Introduction and examples of steered molecular dynamics.</span></li></ul>
+<h2 id="the-problem-in-one-formula">The problem in one formula</h2>
+<p>The rate of crossing a free-energy barrier <span class="math-inline">\(\Delta F^\ddagger\)</span> is roughly</p>
+<p><span class="math-display">\[k\approx k_0\,e^{-\beta\Delta F^\ddagger},\]</span></p>
+<p>with a prefactor <span class="math-inline">\(k_0\)</span> of about <span class="math-inline">\(10^{9}\)</span> to <span class="math-inline">\(10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> for molecular motions in solution. Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. A barrier of 40 kJ/mol gives waiting times of microseconds, 60 kJ/mol gives milliseconds or more. Plain MD spends almost all its time vibrating inside one basin.</p>
+<p>Enhanced sampling methods change the simulation so that barriers are crossed often, in a way that still allows the unbiased equilibrium distribution to be recovered. They fall into three families:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>What is changed</th>
+<th>Examples</th>
+<th>Needs collective variables?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bias along chosen coordinates</td>
+<td>A potential is added as a function of a few CVs</td>
+<td>Umbrella sampling, metadynamics, adaptive biasing force, steered MD</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Tempering</td>
+<td>Temperature or the whole Hamiltonian is scaled, usually across exchanging replicas</td>
+<td>Temperature replica exchange, REST2, Hamiltonian replica exchange, simulated tempering, accelerated MD</td>
+<td>No (or only loosely)</td>
+</tr>
+<tr>
+<td>Trajectory ensembles</td>
+<td>Many unbiased trajectories are managed so that rare ones are kept</td>
+<td>Weighted ensemble, milestoning, transition path sampling, adaptive sampling with Markov models</td>
+<td>A progress coordinate</td>
+</tr>
+</tbody>
+</table>
+<h2 id="collective-variables">Collective variables</h2>
+<p>A collective variable <span class="math-inline">\(s(\mathbf r)\)</span> is a function of the coordinates that describes the process in few dimensions: a distance, an angle, a coordination number, an RMSD, the fraction of native contacts, a path variable. A good CV:</p>
+<ol>
+<li><strong>distinguishes</strong> the initial, final and intermediate states;</li>
+<li><strong>includes the slow motions</strong>. Any slow motion not in the CV set is not accelerated, and the bias then pushes the system over the wrong ridge, producing hysteresis and wrong free energies;</li>
+<li>is <strong>few in number</strong>: the cost of filling a free-energy landscape grows exponentially with the number of CVs, and two or three is the practical limit for most CV-based methods.</li>
+</ol>
+<p>Finding good CVs is the hard part of this whole subject. Machine-learning approaches (time-lagged independent components, autoencoders, classifiers trained on end states) are increasingly used to propose them from preliminary simulations.</p>
+<h2 id="replica-exchange-parallel-tempering">Replica exchange (parallel tempering)</h2>
+<p>Run <span class="math-inline">\(M\)</span> copies of the system at temperatures <span class="math-inline">\(T_1&lt;T_2&lt;\dots&lt;T_M\)</span> simultaneously. The hot replicas cross barriers easily. At intervals, attempt to <strong>swap configurations</strong> between neighbouring temperatures, so that structures found at high temperature can reach the temperature of interest.</p>
+<p><strong>The acceptance rule.</strong> The joint probability of replica <span class="math-inline">\(i\)</span> holding configuration <span class="math-inline">\(\mathbf x\)</span> and replica <span class="math-inline">\(j\)</span> holding <span class="math-inline">\(\mathbf x'\)</span> is proportional to <span class="math-inline">\(e^{-\beta_iU(\mathbf x)}e^{-\beta_jU(\mathbf x')}\)</span>. After the swap it is <span class="math-inline">\(e^{-\beta_iU(\mathbf x')}e^{-\beta_jU(\mathbf x)}\)</span>. Detailed balance with the Metropolis criterion requires accepting with the ratio of the two:</p>
+<p><span class="math-display">\[\boxed{P_{acc} = \min\Big\{1,\ \exp\big[(\beta_i-\beta_j)\,\big(U(\mathbf x)-U(\mathbf x')\big)\big]\Big\}}\]</span></p>
+<p>Sanity check: if <span class="math-inline">\(i\)</span> is the colder replica (<span class="math-inline">\(\beta_i&gt;\beta_j\)</span>) and currently holds the configuration of higher energy (<span class="math-inline">\(U(\mathbf x)&gt;U(\mathbf x')\)</span>), the exponent is positive and the swap is always accepted. The low-energy configuration moves to the cold replica, as it should. After an accepted swap, velocities are rescaled by <span class="math-inline">\(\sqrt{T_{new}/T_{old}}\)</span>. Each temperature samples its own canonical ensemble exactly, so the lowest-temperature replica gives unbiased averages directly.</p>
+<p><strong>How many replicas.</strong> Swaps are accepted only if the potential-energy distributions of neighbouring temperatures overlap. The mean energy grows in proportion to the number of degrees of freedom <span class="math-inline">\(N_{df}\)</span> while the width of the distribution grows as <span class="math-inline">\(\sqrt{N_{df}}\)</span>, so the temperature spacing must shrink as <span class="math-inline">\(1/\sqrt{N_{df}}\)</span> and</p>
+<p><span class="math-display">\[M\propto\sqrt{N_{df}}\;\ln\frac{T_{max}}{T_{min}} .\]</span></p>
+<p>A geometric ladder, <span class="math-inline">\(T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}\)</span>, gives roughly uniform acceptance when the heat capacity is constant; aim for 20 to 30 %. A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.</p>
+<p><strong>REST2</strong> (replica exchange with solute tempering; Wang, Friesner and Berne 2011). All replicas run at the same temperature <span class="math-inline">\(T_0\)</span>, but the potential energy is scaled so that only the solute is effectively heated:</p>
+<p><span class="math-display">\[U_m = \lambda_m\,U_{pp}+\sqrt{\lambda_m}\,U_{pw}+U_{ww},\qquad\lambda_m = \frac{T_0}{T_m}\le1,\]</span></p>
+<p>with solute-solute (pp), solute-water (pw) and water-water (ww) terms. The solute sees an effective temperature <span class="math-inline">\(T_m\)</span> while the water stays cold. Since only the solute's degrees of freedom enter the exchange criterion, a handful to a dozen replicas suffice.</p>
+<p><strong>Hamiltonian replica exchange.</strong> In general the replicas can differ in any parameter of the Hamiltonian: the <span class="math-inline">\(\lambda\)</span> of an alchemical transformation, or the centre of an umbrella window. For two replicas with bias potentials <span class="math-inline">\(w_i\)</span> and <span class="math-inline">\(w_j\)</span> at the same temperature, holding <span class="math-inline">\(\mathbf x_i\)</span> and <span class="math-inline">\(\mathbf x_j\)</span>:</p>
+<p><span class="math-display">\[P_{acc} = \min\Big\{1,\ \exp\big(-\beta\big[w_i(\mathbf x_j)+w_j(\mathbf x_i)-w_i(\mathbf x_i)-w_j(\mathbf x_j)\big]\big)\Big\} .\]</span></p>
+<p>The bracket is the energy after the swap minus the energy before. Exchanges between umbrella windows let a configuration diffuse along the reaction coordinate and help the orthogonal degrees of freedom to relax, which reduces the hysteresis problem of Module 12 at no extra cost.</p>
+<p>A limit to remember: tempering helps with <em>enthalpic</em> barriers. A barrier that is entropic, a narrow path that must be found, is not lowered by heating.</p>
+<h2 id="metadynamics">Metadynamics</h2>
+<p>Laio and Parrinello (2002). Instead of fixing the bias in advance, build it during the run. At regular intervals deposit a small Gaussian hill at the current value of the CVs:</p>
+<p><span class="math-display">\[V(s,t) = \sum_{t'&lt;t}w\,\exp\left(-\frac{\big(s-s(t')\big)^2}{2\sigma^2}\right).\]</span></p>
+<p>The accumulated hills push the system away from where it has already been. Wells are filled, the system spills over the lowest barrier into the next well, and eventually the whole landscape along <span class="math-inline">\(s\)</span> is flat. At that point the bias is the negative of the free energy, <span class="math-inline">\(V(s,t\to\infty)\approx-F(s)+C\)</span>.</p>
+<p>In this original form the bias never converges: hills keep being added and <span class="math-inline">\(V\)</span> fluctuates around <span class="math-inline">\(-F\)</span> with an error set by the hill height. <strong>Well-tempered metadynamics</strong> (Barducci, Bussi and Parrinello 2008) lets the hill height decrease where bias has already accumulated:</p>
+<p><span class="math-display">\[w(t') = w_0\,\exp\left(-\frac{V\big(s(t'),t'\big)}{k_B\,\Delta T}\right),
+\qquad
+V(s,t\to\infty) = -\frac{\Delta T}{T+\Delta T}\,F(s)+C .\]</span></p>
+<p>The bias converges smoothly to a fraction of <span class="math-inline">\(-F\)</span>, and the CVs are sampled as if at the higher temperature <span class="math-inline">\(T+\Delta T\)</span>. The <strong>bias factor</strong> <span class="math-inline">\(\gamma=(T+\Delta T)/T\)</span> is the main parameter: <span class="math-inline">\(\gamma=1\)</span> is unbiased MD, <span class="math-inline">\(\gamma\to\infty\)</span> is standard metadynamics, and typical values are 5 to 20, chosen so that the highest relevant barrier divided by <span class="math-inline">\(\gamma\)</span> is a few <span class="math-inline">\(k_BT\)</span>. The free energy is <span class="math-inline">\(F(s)=-\frac{\gamma}{\gamma-1}V(s)\)</span>, and other observables can be recovered by reweighting each frame with <span class="math-inline">\(e^{\beta[V(s,t)-c(t)]}\)</span>.</p>
+<p>Practical choices: the Gaussian width <span class="math-inline">\(\sigma\)</span> should be about the standard deviation of the CV in an unbiased basin; hills every 1 ps or so; initial height around 1 kJ/mol. <strong>Convergence</strong> means the system has gone back and forth between the basins many times and the free-energy difference between them has stopped changing. One crossing each way is not convergence. Variants: multiple walkers (several simulations sharing one bias), bias-exchange and parallel-tempering metadynamics, and on-the-fly probability enhanced sampling (OPES). The standard implementation is the PLUMED library, which plugs into GROMACS, AMBER, NAMD, LAMMPS and OpenMM.</p>
+<p><strong>Adaptive biasing force</strong> (Darve and Pohorille 2001) is the force-based relative: accumulate a running estimate of the mean force <span class="math-inline">\(-dF/ds\)</span> in bins along the CV, and apply its negative. Once the estimate is good the system diffuses freely along <span class="math-inline">\(s\)</span>, and <span class="math-inline">\(F\)</span> is the integral of the estimated mean force.</p>
+<h2 id="steered-md">Steered MD</h2>
+<p>Attach a harmonic spring to a CV and move its centre at constant speed <span class="math-inline">\(v\)</span>:</p>
+<p><span class="math-display">\[U_{pull}(t) = \tfrac12k\big[s(\mathbf r)-s_0-vt\big]^2 .\]</span></p>
+<p>This imitates an atomic-force-microscope or optical-tweezer experiment, at pulling speeds millions of times faster (0.1 to 10 nm/ns against micrometres per second). It is used to explore unbinding and unfolding pathways, to generate starting structures for umbrella windows, and to compare forces between related systems.</p>
+<p>Getting a free energy from it uses Jarzynski's equality (Module 13) with the accumulated work <span class="math-inline">\(W=\int F_{pull}\,v\,dt\)</span>. At practical speeds the process is far from equilibrium and most of the work is dissipated, so the exponential average does not converge. Rupture forces and work values depend on the pulling speed, roughly logarithmically, and comparisons are only meaningful at equal speed and spring constant.</p>
+<h2 id="accelerated-md">Accelerated MD</h2>
+<p>Hamelberg, Mongan and McCammon (2004). Raise the bottoms of all wells without choosing CVs. When the potential energy <span class="math-inline">\(V\)</span> is below a threshold <span class="math-inline">\(E\)</span>, add a boost:</p>
+<p><span class="math-display">\[\Delta V(\mathbf r) = \frac{\big(E-V(\mathbf r)\big)^2}{\alpha+E-V(\mathbf r)}\quad\text{for }V&lt;E,\qquad\Delta V=0\text{ otherwise}.\]</span></p>
+<p>Barriers shrink and transitions speed up by orders of magnitude. Recovering unbiased averages needs the weights <span class="math-inline">\(e^{\beta\Delta V}\)</span>, and because <span class="math-inline">\(\Delta V\)</span> is tens to hundreds of <span class="math-inline">\(k_BT\)</span> for a solvated protein, those weights are dominated by a few frames: the reweighted result is very noisy. <strong>Gaussian accelerated MD</strong> uses a harmonic boost whose distribution is close to Gaussian, so the reweighting factor can be approximated by a second-order cumulant expansion. These methods are good for exploration; treat their free energies with caution.</p>
+<h2 id="weighted-ensemble">Weighted ensemble</h2>
+<p>Huber and Kim (1996). No bias on the potential at all. Divide a progress coordinate into bins. Run many short unbiased trajectories ("walkers"), each carrying a statistical weight. After each short interval, <strong>split</strong> walkers in bins that have too few (the copies share the weight) and <strong>merge</strong> walkers in bins that have too many (the survivor takes the combined weight). Computer time is thereby concentrated on rare regions, while the total weight flowing from one state to another remains statistically exact.</p>
+<p>Because the dynamics are unbiased, the method gives <strong>rates</strong> and pathways as well as populations, which bias-based methods do not give directly. The costs are many trajectories, correlated walkers, and slow relaxation to steady state. WESTPA is the usual software. Milestoning, forward flux sampling and transition path sampling are related methods that also work with ensembles of unbiased trajectory fragments.</p>
+<h2 id="choosing">Choosing</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Reasonable first choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free energy along a coordinate you trust (a binding distance, one dihedral)</td>
+<td>Umbrella sampling with exchange between windows, or well-tempered metadynamics</td>
+</tr>
+<tr>
+<td>Conformational ensemble of a peptide or a disordered region, no obvious CV</td>
+<td>REST2, or temperature replica exchange for small systems</td>
+</tr>
+<tr>
+<td>Alchemical free energies</td>
+<td>Hamiltonian replica exchange in <span class="math-inline">\(\lambda\)</span></td>
+</tr>
+<tr>
+<td>Exploring an unknown mechanism</td>
+<td>Steered MD or Gaussian accelerated MD for a first look, then a rigorous method on the pathway found</td>
+</tr>
+<tr>
+<td>Rates and mechanisms</td>
+<td>Weighted ensemble, or many unbiased trajectories with a Markov state model (Module 16)</td>
+</tr>
+<tr>
+<td>The slow variable is unknown</td>
+<td>Preliminary simulations plus data-driven CV discovery, then a CV-based method</td>
+</tr>
+</tbody>
+</table>
+<p>The same validation applies to all of them: the final answer must not depend on the starting structure, on which half of the data you analyse, or on a second independent run.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Why does the number of replicas in temperature replica exchange grow with system size?</summary>
+<p>The swap probability depends on the overlap of the potential-energy distributions at neighbouring temperatures. Their separation grows as <span class="math-inline">\(N_{df}\,\Delta T\)</span> and their width as <span class="math-inline">\(\sqrt{N_{df}}\)</span>, so the temperature spacing giving constant overlap shrinks as <span class="math-inline">\(1/\sqrt{N_{df}}\)</span>.</p>
+</details>
+<details>
+<summary>2. In well-tempered metadynamics with bias factor 10 at 300 K, the converged bias between two basins differs by 18 kJ/mol. What is the free-energy difference?</summary>
+<p><span class="math-inline">\(F=-\frac{\gamma}{\gamma-1}V\)</span>, so the difference is <span class="math-inline">\(18\times10/9 = 20\)</span> kJ/mol, with the opposite sign to the bias difference: the basin with more accumulated bias is the lower one.</p>
+</details>
+<details>
+<summary>3. A metadynamics run shows the system leaving the bound state once and never returning. Can you report the binding free energy?</summary>
+<p>No. The depth of the bound well can be estimated only when the system has visited both states repeatedly under a nearly stationary bias. A single exit tells you roughly how much bias was needed to escape. That is not a free energy, and it says nothing about the free energy of the unbound state relative to the bound one.</p>
+</details>
+<details>
+<summary>4. Why do weighted ensemble simulations give rates while metadynamics does not, at least not directly?</summary>
+<p>Weighted ensemble trajectories follow the unmodified dynamics, and the splitting and merging only redistribute statistical weight, so the flux of weight into the target state is the true rate. In metadynamics the forces themselves are altered, so the time axis is no longer physical. (Rates can be recovered under extra assumptions when no bias is deposited on the transition state: "infrequent metadynamics".)</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Implement temperature replica exchange for the one-dimensional double well of Module 12 with four temperatures. Plot the trajectory of each replica through temperature space and compare the sampled distribution at the lowest temperature with the exact one.</li>
+<li>Implement well-tempered metadynamics for the same double well. Plot the estimated free energy every 10,000 steps and the free-energy difference between the wells against time.</li>
+<li>Estimate the number of replicas needed for temperature replica exchange between 300 and 450 K for a system with 60,000 degrees of freedom and for one with 600 (a peptide in implicit solvent), using an online temperature generator or the scaling argument above.</li>
+<li>Do the first PLUMED masterclass exercise on metadynamics of alanine dipeptide, with <span class="math-inline">\(\phi\)</span> and <span class="math-inline">\(\psi\)</span> as CVs. Then repeat using only <span class="math-inline">\(\psi\)</span> and explain what goes wrong.</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://doi.org/10.1007/978-3-540-38448-9" target="_blank" rel="noopener">Free Energy Calculations: Theory and Applications in Chemistry and Biology</a><span class="res-meta">Christophe Chipot, Andrew Pohorille (eds.) · 2007 · Springer</span><span class="res-why">Edited volume with the theory behind FEP, TI, umbrella sampling and related methods, written by the method developers.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li><li class="res"><a href="https://www.routledge.com/Statistical-Physics-of-Biomolecules-An-Introduction/Zuckerman/p/book/9781420073782" target="_blank" rel="noopener">Statistical Physics of Biomolecules: An Introduction</a><span class="res-meta">Daniel M. Zuckerman · 1st ed., 2010 · CRC Press (Taylor &amp; Francis)</span><span class="res-why">Biomolecule-oriented statistical mechanics with a dedicated chapter on sampling and simulation, pitched at life-science students.</span><span class="res-why"><b>Where to read:</b> Ch. 12, A Statistical Perspective on Biomolecular Simulation.</span></li><li class="res"><a href="https://shop.elsevier.com/books/understanding-molecular-simulation/frenkel/978-0-323-90292-2" target="_blank" rel="noopener">Understanding Molecular Simulation: From Algorithms to Applications</a><span class="res-meta">Daan Frenkel, Berend Smit · 3rd ed., 2023 · Academic Press (Elsevier)</span><span class="res-why">The standard algorithm-level reference connecting statistical mechanics to working MD, free-energy and rare-event methods.</span><span class="res-why"><b>Where to read:</b> Ch. 2 Thermodynamics and Statistical Mechanics; Ch. 4 Molecular Dynamics Simulations; Ch. 5 Computer Experiments; Ch. 7 Molecular Dynamics in Various Ensembles; Ch. 8 Free Energy Calculations; Ch. 11 Long-Ranged Interactions; Ch. 15 Rare Events; Appendix G Statistical Errors; Appendix H Integration Schemes</span></li><li class="res"><a href="https://global.oup.com/academic/product/statistical-mechanics-theory-and-molecular-simulation-9780198825562" target="_blank" rel="noopener">Statistical Mechanics: Theory and Molecular Simulation</a><span class="res-meta">Mark E. Tuckerman · 2nd ed., 2023 · Oxford University Press</span><span class="res-why">Rigorous derivation of ensembles, extended-system thermostats/barostats, reversible integrators and enhanced sampling from Hamiltonian mechanics.</span><span class="res-why"><b>Where to read:</b> Ch. 17 covers machine learning (new in the 2nd edition).</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i2e10607" target="_blank" rel="noopener">A Suite of Tutorials for the WESTPA Rare-Events Sampling Software</a> <span class="tag free">free</span><span class="res-meta">Anthony T. Bogetti, Barmak Mostofian, Alex Dickson, A. J. Pratt, Ali S. Saglam, Page O. Harrison, Max Dudek, Paul A. Torrillo, Alex J. DeGrave, Upendra Adhikari, Matthew C. Zweir, Daniel M. Zuckerman, Lillian T. Chong · 2019, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Hands-on weighted-ensemble tutorials for rate and pathway estimation.</span></li><li class="res"><a href="https://www.cecam.org/workshop-details/computational-biochemistry-efficient-tools-to-fight-diseases-1511" target="_blank" rel="noopener">Computational Biochemistry school: &#x27;Lesson 4-1. Enhanced sampling techniques&#x27; slides (2024)</a> <span class="tag free">free</span><span class="res-meta">CECAM · 2024 · CECAM</span><span class="res-why">Publicly reachable slides on umbrella sampling and the timescale problem; CECAM mostly hosts slides and booklets rather than full notes.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v4i1e1583" target="_blank" rel="noopener">Enhanced Sampling Methods for Molecular Dynamics Simulations</a> <span class="tag free">free</span><span class="res-meta">Jérôme Hénin, Tony Lelièvre, Michael R. Shirts, Omar Valsson, Lucie Delemotte · 2022, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Authoritative review of umbrella sampling, metadynamics, replica exchange and related methods.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i2e11073" target="_blank" rel="noopener">Lessons Learned from the Calculation of One-Dimensional Potentials of Mean Force</a> <span class="tag free">free</span><span class="res-meta">Daniel Markthaler, Sven Jakobtorweihen, Niels Hansen · 2019, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Practical pitfalls of umbrella sampling and PMF calculations.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5068" target="_blank" rel="noopener">From Proteins to Perturbed Hamiltonians: A Suite of Tutorials for the GROMACS-2018 Molecular Simulation Package</a> <span class="tag free">free</span><span class="res-meta">Justin A. Lemkul · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Peer-reviewed version of the GROMACS tutorial series, covering lysozyme, umbrella sampling and free energy.</span></li><li class="res"><a href="https://bioexcel.eu/services/training/" target="_blank" rel="noopener">BioExcel training catalogue (lecture plus hands-on modules, summer schools, webinars)</a> <span class="tag free">free</span><span class="res-meta">BioExcel · ongoing · BioExcel Centre of Excellence</span><span class="res-why">Free GROMACS training material in beginner, intermediate and advanced modules.</span></li><li class="res"><a href="http://www.nyu.edu/classes/tuckerman/stat.mech" target="_blank" rel="noopener">CHEM-GA 2600 Statistical Mechanics (NYU; formerly G25.2651) course page and lecture notes</a> <span class="tag free">free</span><span class="res-meta">Mark E. Tuckerman · current course page · New York University</span><span class="res-why">Author-hosted notes that derive MD algorithms, thermostats and barostats from first principles; linked from Tuckerman&#x27;s own teaching page.</span><span class="res-why"><b>Where to read:</b> Topics: Lagrangian and Hamiltonian mechanics, phase space and the Liouville theorem; ensembles; molecular dynamics, thermostats and barostats; Monte Carlo; enhanced sampling for free energies; linear response, Green-Kubo and Langevin equations.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://www.plumed.org/doc" target="_blank" rel="noopener">PLUMED documentation (v2.9 user documentation)</a> <span class="tag free">free</span><span class="res-meta">PLUMED consortium · v2.9 · plumed.org</span><span class="res-why">Reference for collective variables and biasing methods.</span></li><li class="res"><a href="https://www.plumed-tutorials.org/" target="_blank" rel="noopener">PLUMED Tutorials (plumed-tutorials.org)</a> <span class="tag free">free</span><span class="res-meta">PLUMED consortium · ongoing · plumed-tutorials.org</span><span class="res-why">Browsable lessons contributed from PLUMED schools. The PLUMED-NEST archive holds the input files of published studies.</span></li><li class="res"><a href="https://www.plumed.org/masterclass" target="_blank" rel="noopener">PLUMED Masterclasses</a> <span class="tag free">free</span><span class="res-meta">PLUMED consortium · ongoing · plumed.org</span><span class="res-why">Free hands-on masterclass exercises on metadynamics, umbrella sampling and analysis.</span></li><li class="res"><a href="https://tutorials.gromacs.org/" target="_blank" rel="noopener">GROMACS tutorials suite (Jupyter-based)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team and BioExcel · current · tutorials.gromacs.org</span><span class="res-why">Official notebook tutorials from basic MD up to free energies and enhanced sampling.</span></li><li class="res"><a href="http://www.mdtutorials.com/gmx/" target="_blank" rel="noopener">GROMACS Tutorials (mdtutorials.com/gmx)</a> <span class="tag free">free</span><span class="res-meta">Justin A. Lemkul · current · mdtutorials.com</span><span class="res-why">The most used step-by-step GROMACS tutorials (lysozyme in water, umbrella sampling and more).</span></li><li class="res"><a href="https://openmm.github.io/openmm-cookbook/latest/" target="_blank" rel="noopener">OpenMM Cookbook</a> <span class="tag free">free</span><span class="res-meta">OpenMM developers · current · openmm.github.io</span><span class="res-why">Recipes and notebooks for common OpenMM tasks.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="13-alchemical-free-energy.html">&larr; Free energy II, alchemical methods and non-equilibrium work</a><a class="next" href="15-coarse-grained.html">Coarse-grained models, from Martini to Gō models and implicit solvent &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

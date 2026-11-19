@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What molecular dynamics is, and what it can tell you | Molecular Dynamics: a course</title>
+<meta name="description" content="Describe the MD algorithm in six lines, say which physics it keeps and which it throws away, and name the three kinds of error every simulation has.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="01-what-is-md">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li class="current" data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part I · Foundations &middot; Module 1 of 17 &middot; about 4 hours</div><h1>What molecular dynamics is, and what it can tell you</h1><p class="lede">Describe the MD algorithm in six lines, say which physics it keeps and which it throws away, and name the three kinds of error every simulation has.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-idea-in-one-paragraph">The idea in one paragraph</a></li><li><a href="#the-algorithm">The algorithm</a></li><li><a href="#which-physics-is-kept-and-which-is-dropped">Which physics is kept, and which is dropped</a></li><li><a href="#units-and-the-numbers-worth-memorising">Units and the numbers worth memorising</a></li><li><a href="#time-and-length-scales">Time and length scales</a></li><li><a href="#a-short-history">A short history</a></li><li><a href="#what-you-get-out-and-the-three-kinds-of-error">What you get out, and the three kinds of error</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>write the MD loop from memory and say what each line costs;</li>
+<li>explain why atoms can be treated as classical particles, and where that breaks;</li>
+<li>place a process (a bond vibration, a loop motion, an unbinding event) on the time axis and say whether plain MD can reach it;</li>
+<li>separate the three sources of error: the model, the sampling, and the set-up.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<p>Start with one of the whole-course playlists below. You do not need to finish it now: watch the first one or two lectures to get the overall picture, then come back to the same playlist as you move through the modules.</p>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/playlist?list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz" target="_blank" rel="noopener">Molecular Biophysics - all lectures as concepts</a><span class="res-meta">Erik Lindahl (KTH/Stockholm Univ.) &middot; channel: Erik Lindahl &middot; Playlist, intro</span><span class="res-why">Complete molecular biophysics course in short concept videos covering force fields, integration, ensembles, PBC, PME and free energy by the GROMACS lead developer.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLm8ZSArAXicKIzMfkR0Y0GVx9AA1zge-P" target="_blank" rel="noopener">Molecular Dynamics / Monte Carlo</a><span class="res-meta">TMP Chem &middot; Playlist, intro</span><span class="res-why">Clear short lectures that build molecular dynamics and Monte Carlo from energy gradients up to practical algorithms.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLJoALJA_KMOCTXDqNRn0N2W2RuhC_oBwL" target="_blank" rel="noopener">Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras</a><span class="res-meta">Prof. Ethayaraja Mani (IIT Madras) &middot; channel: SWAYAM Prabha IIT Madras Channels &middot; Playlist, intro</span><span class="res-why">Dedicated course on the principles of molecular dynamics simulation from basic theory to analysis.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PL4GectRFDznPpbS98Ppu8zfEL1tahmZtv" target="_blank" rel="noopener">Molecular Dynamics Simulations of Biomolecules</a><span class="res-meta">SDU Odense (biomolecular simulation) &middot; channel: Videos Used in Teaching at SDU, Odense &middot; Playlist, intro</span><span class="res-why">Short teaching videos on biomolecular MD from a basic introduction to constraints and block error analysis.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLyqSpQzTE6M9Mu0bFYvQtXEjN0DhCNJDC" target="_blank" rel="noopener">Foundations of Computational Materials Modelling | IIT Madras</a><span class="res-meta">NPTEL / IIT Madras &middot; channel: NPTEL-NOC IITM &middot; Playlist, intro</span><span class="res-why">Computational materials modelling course that includes MD and LAMMPS fundamentals.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PL13CB8C2EDA4453ED" target="_blank" rel="noopener">MIT 3.320 Atomistic Computer Modeling of Materials</a><span class="res-meta">MIT OpenCourseWare (3.320) &middot; channel: MIT OpenCourseWare &middot; Playlist, intermediate</span><span class="res-why">Full MIT graduate course on atomistic modelling that covers MD, Monte Carlo, statistical mechanics and free energies with a rigorous foundation.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLmVLYa8E5SDff-uE7ehWBsX5sQzVRYiG6" target="_blank" rel="noopener">Introduction to Molecular Simulation and Statistical Mechanics (University of Utah, Fall 2023)</a><span class="res-meta">Brennon Shanks (University of Utah) &middot; channel: Brennon Shanks &middot; Playlist, intermediate</span><span class="res-why">Semester-long course combining statistical mechanics with hands-on MD derivations such as velocity Verlet, thermostats and sampling.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLMRj3zlKNpjHHBYdUWZ_mjsWgT8xHnpcF" target="_blank" rel="noopener">Molecular simulations | Molecular dynamics MD and Monte carlo MC</a><span class="res-meta">The Computational Chemist &middot; Playlist, intermediate</span><span class="res-why">Concise concept videos on MD and Monte Carlo covering Ewald, replica exchange, PBC, alchemical methods and free energies.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLOzRYVm0a65fCJJQendwEEcSrC8iwvgBn" target="_blank" rel="noopener">Computational Chemistry and Classical Molecular Dynamics</a><span class="res-meta">NPTEL / IIT Bombay &middot; channel: NPTEL IIT Bombay &middot; Playlist, intermediate</span><span class="res-why">Full NPTEL course on computational chemistry and classical molecular dynamics with a weekly lecture structure.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLLy_2iUCG87BAsKeYnI-N5zL2B2LE2mdR" target="_blank" rel="noopener">Advanced Thermodynamics and Molecular Simulations</a><span class="res-meta">NPTEL / IIT Roorkee &middot; channel: IIT Roorkee July 2018 &middot; Playlist, intermediate</span><span class="res-why">Long NPTEL series on advanced thermodynamics and molecular simulation including MD implementation, thermostats and barostats.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLUTWmWVeT0zYgsmFORDkNz-K3_8GZmt8G" target="_blank" rel="noopener">Course on Simulation of Biological Systems</a><span class="res-meta">MoBioChem school &middot; channel: MoBioChem &middot; Playlist, intermediate</span><span class="res-why">Multi-day school on simulating biological systems, from equations of motion and force fields to enhanced sampling and QM/MM.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLmdKEn2znJEld8l6Hp9PXf4EursC4-8nC" target="_blank" rel="noopener">PLUMED Masterclass 21</a><span class="res-meta">PLUMED consortium &middot; channel: Plumed Org &middot; Playlist, intermediate</span><span class="res-why">PLUMED Masterclass 2021, a hands-on series on enhanced sampling and free energy analysis with PLUMED.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLzLqYW5ci-2fhEKTFQHmXdXkJyQcWRvBV" target="_blank" rel="noopener">2021 BioExcel Summer School on Biomolecular Simulations</a><span class="res-meta">BioExcel &middot; channel: BioExcel CoE &middot; Playlist, intermediate</span><span class="res-why">BioExcel summer school lectures on biomolecular simulation methods and tools.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=dEmAnuO8RhQ" target="_blank" rel="noopener">Lecture 1: A High Level View of Molecular Simulations</a><span class="res-meta">Brennon Shanks &middot; Video, intro</span><span class="res-why">High level view of what molecular simulations are and why we run them, a good first lecture.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=SgH_GcFhQf8" target="_blank" rel="noopener">A conversation with Prof. Daan Frenkel</a><span class="res-meta">Daan Frenkel &middot; channel: Molecular Simulations Lab @ JNCASR &middot; Video, intermediate</span><span class="res-why">Long conversation with the author of Understanding Molecular Simulation about the history and ideas behind molecular simulation.</span></li></ul>
+<h2 id="the-idea-in-one-paragraph">The idea in one paragraph</h2>
+<p>A molecular dynamics (MD) simulation takes a set of particles, a rule that gives the potential energy <span class="math-inline">\(U(\mathbf r_1,\dots,\mathbf r_N)\)</span> for any arrangement of them, and Newton's second law. It then moves the particles forward in time in very small steps. The output is a <strong>trajectory</strong>: the positions and velocities of every particle at each saved step. Everything else you will ever report from MD (a free energy, a diffusion constant, an RMSD plot, a binding affinity) is a statistic computed from one or more trajectories.</p>
+<p>There are three ingredients, and the course follows them:</p>
+<table>
+<thead>
+<tr>
+<th>Ingredient</th>
+<th>Question it answers</th>
+<th>Modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equations of motion and how to integrate them</td>
+<td>How do the particles move, and how do we step forward in time without the error growing?</td>
+<td>2, 4, 8, 9</td>
+</tr>
+<tr>
+<td>The force field <span class="math-inline">\(U(\mathbf r)\)</span></td>
+<td>What are the forces between atoms?</td>
+<td>5, 6, 7, 15, 17</td>
+</tr>
+<tr>
+<td>Statistical mechanics</td>
+<td>Why does a trajectory tell us about thermodynamics, and how many samples do we need?</td>
+<td>3, 11, 12, 13, 14, 16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-algorithm">The algorithm</h2>
+<p>For particle <span class="math-inline">\(i\)</span> with mass <span class="math-inline">\(m_i\)</span> and position <span class="math-inline">\(\mathbf r_i\)</span>, Newton's second law is</p>
+<p><span class="math-display">\[m_i \frac{d^2 \mathbf r_i}{dt^2} = \mathbf F_i = -\frac{\partial U}{\partial \mathbf r_i}.\]</span></p>
+<p>There is no closed-form solution for more than two interacting particles, so we solve it numerically. The most common scheme, velocity Verlet (derived in Module 4), is:</p>
+<p><span class="math-display">\[\begin{aligned}
+\mathbf v_i\!\left(t+\tfrac{\Delta t}{2}\right) &amp;= \mathbf v_i(t) + \frac{\Delta t}{2 m_i}\,\mathbf F_i(t) \\
+\mathbf r_i(t+\Delta t) &amp;= \mathbf r_i(t) + \Delta t\,\mathbf v_i\!\left(t+\tfrac{\Delta t}{2}\right) \\
+\mathbf F_i(t+\Delta t) &amp;= -\nabla_i U\big(\mathbf r(t+\Delta t)\big) \\
+\mathbf v_i(t+\Delta t) &amp;= \mathbf v_i\!\left(t+\tfrac{\Delta t}{2}\right) + \frac{\Delta t}{2 m_i}\,\mathbf F_i(t+\Delta t)
+\end{aligned}\]</span></p>
+<p>In words:</p>
+<ol>
+<li>Give every atom a position (from a structure) and a velocity (random, from the Maxwell-Boltzmann distribution at the target temperature).</li>
+<li>Compute the force on every atom from the force field.</li>
+<li>Use the forces to update the velocities by half a step.</li>
+<li>Use the velocities to update the positions by a full step.</li>
+<li>Compute the forces at the new positions and finish the velocity update.</li>
+<li>Every so often, write positions and energies to disk. Go to 3.</li>
+</ol>
+<p>Step 5, the force calculation, takes more than 90 % of the computer time. The rest of the "engine" part of this course (cutoffs, neighbour lists, particle-mesh Ewald, constraints) exists to make that step cheaper or to allow a larger <span class="math-inline">\(\Delta t\)</span>.</p>
+<div class="widget" data-widget="md2d"></div>
+
+<h3 id="the-same-thing-in-35-lines-of-python">The same thing in 35 lines of Python</h3>
+<p>Read this code line by line. It is a complete simulation of a Lennard-Jones fluid (a good model of liquid argon) in reduced units. Every production MD program is this loop with a more elaborate force routine.</p>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lj_forces</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rc</span><span class="o">=</span><span class="mf">2.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lennard-Jones forces and potential energy (reduced units, periodic box).&quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>            <span class="c1"># all pair vectors r_i - r_j</span>
+    <span class="n">d</span> <span class="o">-=</span> <span class="n">L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>                     <span class="c1"># minimum-image convention</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>                 <span class="c1"># no self-interaction</span>
+    <span class="n">inside</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">&lt;</span> <span class="n">rc</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">inv6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">r2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="c1"># (sigma/r)^6 with sigma = 1</span>
+    <span class="n">shift</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">rc</span> <span class="o">**</span> <span class="o">-</span><span class="mi">12</span> <span class="o">-</span> <span class="n">rc</span> <span class="o">**</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span>           <span class="c1"># makes U continuous at the cutoff</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">inv6</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">inv6</span><span class="p">)</span> <span class="o">-</span> <span class="n">shift</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">inv6</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">inv6</span><span class="p">)</span> <span class="o">/</span> <span class="n">r2</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">u</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.004</span>               <span class="c1"># 5 x 5 x 5 = 125 atoms</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">/</span> <span class="n">rho</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>                         <span class="c1"># box edge from the density</span>
+<span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>   <span class="c1"># start on a lattice</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>          <span class="c1"># Maxwell-Boltzmann velocities</span>
+<span class="n">v</span> <span class="o">-=</span> <span class="n">v</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>                              <span class="c1"># remove centre-of-mass motion</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">lj_forces</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2001</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">f</span>                            <span class="c1"># half kick</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">v</span>                                  <span class="c1"># drift</span>
+    <span class="n">x</span> <span class="o">%=</span> <span class="n">L</span>                                       <span class="c1"># wrap back into the box</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">lj_forces</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>                       <span class="c1"># new forces (the expensive line)</span>
+    <span class="n">v</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">f</span>                            <span class="c1"># half kick</span>
+    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">200</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step </span><span class="si">{</span><span class="n">step</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2">  T = </span><span class="si">{</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  E/N = </span><span class="si">{</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The total energy per particle printed in the last column should stay constant to about four decimal places. The temperature does not stay at its starting value of 1.0: as the lattice melts, kinetic and potential energy are exchanged, and the temperature settles a little lower and keeps fluctuating. That is equilibration, which you will meet again in Module 10.</p>
+<h2 id="which-physics-is-kept-and-which-is-dropped">Which physics is kept, and which is dropped</h2>
+<p>The exact description of a molecule is the time-dependent Schrödinger equation for all nuclei and electrons. MD makes two approximations to get from there to Newton's law.</p>
+<p><strong>1. Born-Oppenheimer.</strong> Electrons are about 1,800 times lighter than a proton, so they adjust almost instantly to the nuclear positions. For a given arrangement of nuclei the electrons sit in their ground state, and the electronic ground-state energy as a function of nuclear positions is the potential energy surface <span class="math-inline">\(U(\mathbf r)\)</span>. In classical MD we do not solve for the electrons at all: we replace <span class="math-inline">\(U(\mathbf r)\)</span> by a cheap fitted formula, the <strong>force field</strong>. Consequence: bonds cannot break or form, and electrons cannot polarise (in standard force fields).</p>
+<p><strong>2. Classical nuclei.</strong> A particle behaves classically when its thermal de Broglie wavelength</p>
+<p><span class="math-display">\[\Lambda = \frac{h}{\sqrt{2\pi m k_B T}}\]</span></p>
+<p>is small compared with the distances over which the potential changes. At 300 K this gives <span class="math-inline">\(\Lambda \approx 1.0\)</span> Å for hydrogen and <span class="math-inline">\(0.29\)</span> Å for carbon, while interatomic distances are 1 to 4 Å. Heavy atoms are safely classical. Hydrogen is borderline.</p>
+<p>A second test is to compare the vibrational quantum <span class="math-inline">\(\hbar\omega\)</span> with the thermal energy <span class="math-inline">\(k_BT\)</span> (208 cm<span class="math-inline">\(^{-1}\)</span> at 300 K). A C-H stretch at about 3,000 cm<span class="math-inline">\(^{-1}\)</span> has <span class="math-inline">\(\hbar\omega \approx 14\,k_BT\)</span>: in reality it sits in its quantum ground state and does not exchange energy with its surroundings. A classical spring with the same frequency would hold a full <span class="math-inline">\(k_BT\)</span> of energy. This is one physical reason why it is acceptable, even preferable, to freeze bonds to hydrogen with constraints (Module 9). Slow, soft motions (torsions, diffusion, domain motions) have <span class="math-inline">\(\hbar\omega \ll k_BT\)</span> and are well described classically.</p>
+<div class="box key">
+<p><strong>What MD cannot do without extra methods:</strong> chemical reactions (needs QM/MM or reactive force fields), proton transfer and changes in protonation state (needs constant-pH methods), electronic excitation, and nuclear tunnelling.</p>
+</div>
+<h2 id="units-and-the-numbers-worth-memorising">Units and the numbers worth memorising</h2>
+<p>Most biomolecular codes use one of two unit systems. GROMACS uses nm, ps, atomic mass units (u), kJ/mol and elementary charges. These are consistent: 1 u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-2}\)</span> = 1 kJ/mol, so no conversion factors appear in Newton's law. AMBER, CHARMM and NAMD use Å, kcal/mol and an internal time unit.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(k_B\)</span></td>
+<td>0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span> = 0.0019872 kcal mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(k_BT\)</span> at 300 K</td>
+<td>2.494 kJ/mol = 0.596 kcal/mol</td>
+</tr>
+<tr>
+<td>1 kcal/mol</td>
+<td>4.184 kJ/mol</td>
+</tr>
+<tr>
+<td>Coulomb constant <span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span></td>
+<td>138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span> = 332.06 kcal mol<span class="math-inline">\(^{-1}\)</span> Å <span class="math-inline">\(e^{-2}\)</span></td>
+</tr>
+<tr>
+<td>Typical time step</td>
+<td>1 fs (flexible bonds), 2 fs (bonds to H constrained), 4 fs (with hydrogen mass repartitioning)</td>
+</tr>
+<tr>
+<td>Factor of 10 in a binding constant at 298 K</td>
+<td><span class="math-inline">\(RT\ln 10\)</span> = 5.71 kJ/mol = 1.36 kcal/mol</td>
+</tr>
+<tr>
+<td>Number density of water</td>
+<td>33.4 molecules per nm<span class="math-inline">\(^3\)</span>, about 100 atoms per nm<span class="math-inline">\(^3\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="time-and-length-scales">Time and length scales</h2>
+<p>The time step must resolve the fastest motion in the system, and the fastest motion is a bond vibration with a period of about 10 fs. Everything interesting in biology is slower by many orders of magnitude:</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Typical time</th>
+<th>Steps at 2 fs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bond stretch (C-H)</td>
+<td>10 fs</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Water reorientation, hydrogen-bond lifetime</td>
+<td>1 to 10 ps</td>
+<td><span class="math-inline">\(10^3\)</span></td>
+</tr>
+<tr>
+<td>Side-chain rotamer flips at the surface</td>
+<td>10 ps to 1 ns</td>
+<td><span class="math-inline">\(10^4\)</span> to <span class="math-inline">\(10^6\)</span></td>
+</tr>
+<tr>
+<td>Loop motions, helix formation</td>
+<td>1 ns to 1 µs</td>
+<td><span class="math-inline">\(10^6\)</span> to <span class="math-inline">\(10^9\)</span></td>
+</tr>
+<tr>
+<td>Fast protein folding, small-ligand binding</td>
+<td>1 µs to 1 ms</td>
+<td><span class="math-inline">\(10^9\)</span> to <span class="math-inline">\(10^{12}\)</span></td>
+</tr>
+<tr>
+<td>Unbinding of a nanomolar complex</td>
+<td>seconds to hours</td>
+<td><span class="math-inline">\(10^{15}\)</span> or more</td>
+</tr>
+</tbody>
+</table>
+<p>A single GPU today gives roughly 100 to 1,000 ns per day for a solvated protein of 50,000 to 100,000 atoms (the exact figure depends on the hardware, the system and the settings, so measure it for your own system). That is <span class="math-inline">\(10^{11}\)</span> steps per day at best. The special-purpose machine Anton reached one millisecond for a small protein in 2010. Seconds are far outside the range of direct simulation, and this gap is the reason Modules 12 to 16 exist: free-energy methods, enhanced sampling, coarse-graining and kinetic models are all ways to answer questions about slow processes without simulating them directly.</p>
+<p>Cost per step is set by the number of pair interactions. With about 100 atoms per nm<span class="math-inline">\(^3\)</span> and a 1 nm cutoff, each atom has <span class="math-inline">\(\tfrac{4}{3}\pi (1\,\text{nm})^3 \times 100 \approx 420\)</span> neighbours. A 100,000-atom system therefore evaluates about <span class="math-inline">\(2\times10^7\)</span> pair interactions per step (each pair counted once), plus the long-range electrostatics.</p>
+<h2 id="a-short-history">A short history</h2>
+<ul>
+<li><strong>1957, Alder and Wainwright.</strong> First MD simulation: hard spheres, showing a fluid-solid transition.</li>
+<li><strong>1964, Rahman.</strong> 864 argon atoms with a Lennard-Jones potential: the first simulation with a continuous potential, and agreement with experiment on the structure and diffusion of the liquid.</li>
+<li><strong>1967, Verlet.</strong> The integrator and the neighbour list that are still in use.</li>
+<li><strong>1971, Rahman and Stillinger.</strong> Liquid water, 216 molecules.</li>
+<li><strong>1977, McCammon, Gelin and Karplus.</strong> First protein simulation: the 58-residue inhibitor BPTI, in vacuum, for less than 10 ps. The lasting result was qualitative: the interior of a protein is fluid-like, not rigid.</li>
+<li><strong>1980s.</strong> Thermostats and barostats (Andersen, Berendsen, Nosé, Hoover, Parrinello and Rahman), constraints (SHAKE), free-energy perturbation applied to biomolecules, the first AMBER, CHARMM, GROMOS and OPLS force fields.</li>
+<li><strong>1993 to 1995.</strong> Particle-mesh Ewald makes proper long-range electrostatics affordable.</li>
+<li><strong>2010 to 2011, Shaw and co-workers.</strong> Millisecond simulation of BPTI and reversible folding of twelve small proteins on Anton.</li>
+<li><strong>2013.</strong> Nobel Prize in Chemistry to Karplus, Levitt and Warshel for multiscale models of complex chemical systems.</li>
+<li><strong>Since about 2015.</strong> GPUs make microsecond simulations routine; machine-learned potentials and generative models of ensembles appear (Module 17).</li>
+</ul>
+<h2 id="what-you-get-out-and-the-three-kinds-of-error">What you get out, and the three kinds of error</h2>
+<p>MD gives three classes of result:</p>
+<ul>
+<li><strong>Structure</strong>: average geometries, distributions of distances and angles, radial distribution functions, the ensemble of conformations.</li>
+<li><strong>Thermodynamics</strong>: averages and fluctuations (energy, density, heat capacity) and, with extra work, free-energy differences.</li>
+<li><strong>Dynamics</strong>: diffusion constants, relaxation times, rates. These depend on the thermostat and the model more than structural averages do.</li>
+</ul>
+<p>Every number from MD carries three kinds of error, and it helps to keep them apart:</p>
+<ol>
+<li><strong>Model error (accuracy of the force field).</strong> The energy function is an approximation. More sampling does not fix this. You detect it by comparing with experiment.</li>
+<li><strong>Sampling error (precision).</strong> The trajectory is finite, and consecutive frames are correlated. You detect it with repeats from different starting velocities, block averaging and convergence checks (Module 11).</li>
+<li><strong>Set-up and implementation error.</strong> Wrong protonation state, a box that is too small, a thermostat that distorts the ensemble, a cutoff that is inconsistent with the force field. You avoid it by knowing what every setting does, which is the purpose of Modules 7 to 10.</li>
+</ol>
+<p>A common mistake is to treat a single long trajectory as "the answer". It is one sample path of a chaotic system. Change the initial velocities and you get a different path with the same statistics, if and only if both runs are long enough.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Why is the time step about 1 to 2 fs, and what would happen at 10 fs?</summary>
+<p>The integrator must take roughly ten or more steps per period of the fastest motion. Bonds to hydrogen vibrate with a period near 10 fs, so unconstrained simulations use 1 fs. With those bonds constrained, the next fastest motions allow 2 fs. At 10 fs the integration of bond and angle vibrations is unstable: energy grows without bound within a few steps and the program stops with an error (in GROMACS usually a LINCS or SETTLE warning).</p>
+</details>
+<details>
+<summary>2. You double the number of atoms. How does the cost per step change?</summary>
+<p>With a cutoff and a neighbour list the number of pairs within the cutoff grows linearly with <span class="math-inline">\(N\)</span>, so the short-range cost doubles. Particle-mesh Ewald scales as <span class="math-inline">\(N\log N\)</span>. Without a cutoff the cost would grow as <span class="math-inline">\(N^2\)</span>.</p>
+</details>
+<details>
+<summary>3. A colleague says a 500 ns simulation "shows the binder stays bound, so the affinity is high". What is wrong?</summary>
+<p>A complex with a micromolar dissociation constant typically has a residence time of milliseconds or longer, which is thousands of times the simulated time. Both a weak and a strong binder will stay bound for 500 ns. Staying bound only rules out very unstable poses. Affinity is a free-energy difference and needs the methods of Modules 12 and 13.</p>
+</details>
+<details>
+<summary>4. Which approximation makes it impossible for a standard force field to describe an enzyme reaction?</summary>
+<p>The fixed bonding topology that replaces the electronic problem. The list of bonds is an input, and the bond term is a spring that cannot break.</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Run the Python code above. Plot total, kinetic and potential energy against time. Then increase <code>dt</code> to 0.01 and 0.02 and describe what happens to the total energy.</li>
+<li>Compute the thermal de Broglie wavelength for deuterium and for oxygen at 300 K.</li>
+<li>A system has 80,000 atoms and runs at 250 ns/day with a 2 fs step. How many pair forces per second is the GPU evaluating, assuming 420 neighbours per atom? How long would 1 ms take?</li>
+<li>Use the live simulation above with the thermostat on. Find the temperature below which the fluid condenses into a droplet. Why is there no sharp transition in such a small system?</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://www.taylorfrancis.com/books/mono/10.4324/9780203809075/molecular-driving-forces-ken-dill-sarina-bromberg" target="_blank" rel="noopener">Molecular Driving Forces: Statistical Thermodynamics in Biology, Chemistry, Physics, and Nanoscience</a><span class="res-meta">Ken A. Dill, Sarina Bromberg · 2nd ed., 2010 · Garland Science (Taylor &amp; Francis)</span><span class="res-why">Intuitive, example-driven statistical thermodynamics for biophysics students with little physics background.</span></li><li class="res"><a href="https://doi.org/10.1007/978-3-540-38448-9" target="_blank" rel="noopener">Free Energy Calculations: Theory and Applications in Chemistry and Biology</a><span class="res-meta">Christophe Chipot, Andrew Pohorille (eds.) · 2007 · Springer</span><span class="res-why">Edited volume with the theory behind FEP, TI, umbrella sampling and related methods, written by the method developers.</span></li><li class="res"><a href="https://books.google.com/books?vid=ISBN9780582382107" target="_blank" rel="noopener">Molecular Modelling: Principles and Applications</a><span class="res-meta">Andrew R. Leach · 2nd ed., 2001 · Prentice Hall (Pearson)</span><span class="res-why">Broad, readable introduction to force fields, energy minimisation, MD and Monte Carlo with biomolecular examples.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li><li class="res"><a href="https://www.routledge.com/Statistical-Physics-of-Biomolecules-An-Introduction/Zuckerman/p/book/9781420073782" target="_blank" rel="noopener">Statistical Physics of Biomolecules: An Introduction</a><span class="res-meta">Daniel M. Zuckerman · 1st ed., 2010 · CRC Press (Taylor &amp; Francis)</span><span class="res-why">Biomolecule-oriented statistical mechanics with a dedicated chapter on sampling and simulation, pitched at life-science students.</span><span class="res-why"><b>Where to read:</b> Ch. 12, A Statistical Perspective on Biomolecular Simulation.</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://www.physicallensonthecell.org/" target="_blank" rel="noopener">Physical Lens on the Cell (online book)</a> <span class="tag free">free</span><span class="res-meta">Daniel M. Zuckerman · online, ongoing · physicallensonthecell.org (author)</span><span class="res-why">Free online book from the author&#x27;s lab on the physics of biomolecular processes, with a chemical-physics section on kinetics, free energy and Markov models.</span><span class="res-why"><b>Where to read:</b> Chemical Physics (states and kinetics, equilibrium and detailed balance, free energy, diffusion, Markov models); Physical and Molecular Processes; Energy Economy; Molecular Machinery.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5966" target="_blank" rel="noopener">Simulation Best Practices for Lipid Membranes</a> <span class="tag free">free</span><span class="res-meta">David J. Smith, Jeffery B. Klauda, Alexander J. Sodt · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Best practices for membrane simulations (ensemble, force field, equilibration).</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v4i1e1497" target="_blank" rel="noopener">Best Practices for Constructing, Preparing, and Evaluating Protein-Ligand Binding Affinity Benchmarks</a> <span class="tag free">free</span><span class="res-meta">David Hahn, Christopher Bayly, Melissa L. Boby, Hannah Bruce Macdonald, John Chodera, Vytautas Gapsys, Antonia Mey, David Mobley, Laura Perez Benito, Christina Schindler, Gary Tresadern, Gregory Warren · 2022, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">How to build and judge binding-affinity benchmarks, useful when validating free-energy workflows.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3797" target="_blank" rel="noopener">Molecular Dynamics: From Basics to Application</a> <span class="tag free">free</span><span class="res-meta">Luis Vollmers, Shu-Yu Chen, Maria Reif, Tristan Alexander Mauck, Martin Zacharias · 2025, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Recent introductory LiveCoMS tutorial that walks from MD basics to a biomolecular application.</span></li><li class="res"><a href="https://web.stanford.edu/class/cs279/lectures/lecture%20MD__2026_v2.pdf" target="_blank" rel="noopener">CS279: Structure and Organization of Biomolecules and Cells (course page and public slides)</a> <span class="tag free">free</span><span class="res-meta">Ron Dror (Stanford) · 2026 edition · Stanford University</span><span class="res-why">Public slides give a biomolecule-centred MD overview with current ML-force-field readings; the course is now titled &#x27;Structure and Organization of Biomolecules and Cells&#x27; and lecture videos are enrolled-only.</span><span class="res-why"><b>Where to read:</b> The slide sets on energy functions and on molecular dynamics simulation.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5068" target="_blank" rel="noopener">From Proteins to Perturbed Hamiltonians: A Suite of Tutorials for the GROMACS-2018 Molecular Simulation Package</a> <span class="tag free">free</span><span class="res-meta">Justin A. Lemkul · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Peer-reviewed version of the GROMACS tutorial series, covering lysozyme, umbrella sampling and free energy.</span></li><li class="res"><a href="https://bioexcel.eu/services/training/" target="_blank" rel="noopener">BioExcel training catalogue (lecture plus hands-on modules, summer schools, webinars)</a> <span class="tag free">free</span><span class="res-meta">BioExcel · ongoing · BioExcel Centre of Excellence</span><span class="res-why">Free GROMACS training material in beginner, intermediate and advanced modules.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://www.ks.uiuc.edu/Training/Tutorials/namd-index.html" target="_blank" rel="noopener">NAMD / VMD tutorials</a> <span class="tag free">free</span><span class="res-meta">Theoretical and Computational Biophysics Group (UIUC) · current · ks.uiuc.edu</span><span class="res-why">The official NAMD and VMD tutorials.</span></li><li class="res"><a href="https://smog-server.org/" target="_blank" rel="noopener">SMOG 2 and SMOG server (structure-based models)</a> <span class="tag free">free</span><span class="res-meta">SMOG developers · current · smog-server.org</span><span class="res-why">Tools and documentation for structure-based (Go-type) models.</span></li><li class="res"><a href="https://github.com/KULL-Centre/CALVADOS" target="_blank" rel="noopener">CALVADOS (coarse-grained model for IDPs and multi-domain proteins) code and wiki</a> <span class="tag free">free</span><span class="res-meta">KULL-Centre (Lindorff-Larsen group) · current · GitHub</span><span class="res-why">Reference implementation and examples for the CALVADOS model.</span></li><li class="res"><a href="https://ambermd.org/tutorials/" target="_blank" rel="noopener">AMBER tutorials</a> <span class="tag free">free</span><span class="res-meta">AMBER developers · current · ambermd.org</span><span class="res-why">Official step-by-step tutorials for Amber setup and simulation.</span></li><li class="res"><a href="https://www.charmm-gui.org/?doc=lecture" target="_blank" rel="noopener">CHARMM-GUI (web service, demo and lecture material)</a> <span class="tag free">free</span><span class="res-meta">CHARMM-GUI team · current · charmm-gui.org</span><span class="res-why">System-building web tool with free lecture and demo pages; use of the tool needs an account, which this catalogue does not require you to create.</span></li><li class="res"><a href="https://cgmartini.nl/docs/tutorials/" target="_blank" rel="noopener">Martini coarse-grained force field: tutorials</a> <span class="tag free">free</span><span class="res-meta">Martini developers · current · cgmartini.nl</span><span class="res-why">Official Martini tutorials for building and running coarse-grained systems.</span></li><li class="res"><a href="https://tutorials.gromacs.org/" target="_blank" rel="noopener">GROMACS tutorials suite (Jupyter-based)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team and BioExcel · current · tutorials.gromacs.org</span><span class="res-why">Official notebook tutorials from basic MD up to free energies and enhanced sampling.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="index.html">&larr; Course home</a><a class="next" href="02-classical-mechanics.html">Classical mechanics for simulators &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

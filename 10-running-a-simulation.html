@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running a simulation from a PDB file to a production trajectory | Molecular Dynamics: a course</title>
+<meta name="description" content="Carry out the full workflow (prepare, solvate, neutralise, minimise, equilibrate, produce) in GROMACS and in OpenMM, knowing what every step and every setting is for.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="10-running-a-simulation">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li class="current" data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part III · Practice &middot; Module 10 of 17 &middot; about 8 hours</div><h1>Running a simulation from a PDB file to a production trajectory</h1><p class="lede">Carry out the full workflow (prepare, solvate, neutralise, minimise, equilibrate, produce) in GROMACS and in OpenMM, knowing what every step and every setting is for.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-workflow-at-a-glance">The workflow at a glance</a></li><li><a href="#step-1-the-starting-structure">Step 1: the starting structure</a></li><li><a href="#steps-2-to-4-topology-box-water-ions">Steps 2 to 4: topology, box, water, ions</a></li><li><a href="#step-5-energy-minimisation">Step 5: energy minimisation</a></li><li><a href="#steps-6-and-7-equilibration">Steps 6 and 7: equilibration</a></li><li><a href="#step-8-production-an-annotated-input-file">Step 8: production, an annotated input file</a></li><li><a href="#planning-length-repeats-output-cost">Planning: length, repeats, output, cost</a></li><li><a href="#what-goes-wrong">What goes wrong</a></li><li><a href="#what-to-report">What to report</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>prepare a structure: missing atoms, protonation states, termini, disulfides;</li>
+<li>build a solvated, neutral system at a chosen salt concentration and compute how many ions it needs;</li>
+<li>explain what energy minimisation and each equilibration stage do;</li>
+<li>read and write a GROMACS <code>.mdp</code> file and an OpenMM script line by line;</li>
+<li>recognise the common failures and list what a methods section must report.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/playlist?list=PLIQSdwcnidzDEmO9AI7JDZi9bG2u1IvYv" target="_blank" rel="noopener">GROMACS: Molecular Dynamics Simulations from Start to Finish</a><span class="res-meta">Dr. H Ismail &middot; Playlist, intro</span><span class="res-why">Series from install to production and analysis of GROMACS simulations.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLGL4XGw8noUxYZ-JrAob4hpVGCAhKGesk" target="_blank" rel="noopener">Sep2012 OpenMM Workshop -- September 6-7, 2012</a><span class="res-meta">OpenMM developers (Stanford Simbios) &middot; channel: SimbiosOpenMM &middot; Playlist, intermediate</span><span class="res-why">2012 OpenMM workshop with introductions and hands-on sessions.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLGL4XGw8noUwrh16gsC9H_D03fED3IcHo" target="_blank" rel="noopener">Mar2014 OpenMM Workshop - March 30 - April 1, 2014</a><span class="res-meta">OpenMM developers (Stanford Simbios) &middot; channel: SimbiosOpenMM &middot; Playlist, intermediate</span><span class="res-why">2014 OpenMM workshop covering MD workflows and analysis.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=8oGZn1NdvbY" target="_blank" rel="noopener">GROMACS Tutorial 1: Lysozyme in water</a><span class="res-meta">GROMACS &middot; Video, intro</span><span class="res-why">Official GROMACS lysozyme in water tutorial.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=EFtbEkuJ9tk" target="_blank" rel="noopener">Introduction to Molecular Dynamics Workflows and Tools</a><span class="res-meta">SimbiosOpenMM &middot; Video, intro</span><span class="res-why">Introduction to MD workflows and tools with OpenMM.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=hbQ_dfgWPc8" target="_blank" rel="noopener">Introduction to Running Simulations with OpenMM</a><span class="res-meta">SimbiosOpenMM &middot; Video, intro</span><span class="res-why">How to run simulations with OpenMM.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=xS4r2bLATvo" target="_blank" rel="noopener">Intro to Running Molecular Dynamics Simulations with NAMD (links to each section in description)</a><span class="res-meta">Gianmarc Grazioli &middot; Video, intro</span><span class="res-why">Long introduction to running MD with NAMD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=F-SsbOw2YrM" target="_blank" rel="noopener">Molecular Dynamics Simulation Using Free GPU on Google Colab | GROMACS/OpenMM Tutorial for Beginners</a><span class="res-meta">Dr. H Ismail &middot; Video, intro</span><span class="res-why">Running GROMACS or OpenMM MD on free Colab GPUs.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=IArpsQsZ95U" target="_blank" rel="noopener">NAMD Tutorial #1 - Simulation of a Simple Protein</a><span class="res-meta">Narogen &middot; Video, intro</span><span class="res-why">NAMD tutorial on simulating a simple protein.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=GRH81ABCq54" target="_blank" rel="noopener">Protein-Membrane Simulation Setup | CHARMM-GUI to GROMACS Molecular Dynamics Tutorial</a><span class="res-meta">Omixium &middot; Video, intermediate</span><span class="res-why">Protein-membrane setup with CHARMM-GUI feeding GROMACS.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Ck7EMuIStpM" target="_blank" rel="noopener">Ligand Parameterization for MD using CHARMM-GUI | Ligand Topology Generation | AmberTools | GROMACS</a><span class="res-meta">Dr. H Ismail &middot; Video, intermediate</span><span class="res-why">Ligand parameterisation with CHARMM-GUI.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=EVcw-w-Lcnk" target="_blank" rel="noopener">OpenMM + Martini3 Tutorial: Simulating Proteins in Membrane Systems (Coarse-grained MD)</a><span class="res-meta">Neurosnap &middot; Video, intermediate</span><span class="res-why">OpenMM with Martini 3 for coarse-grained protein simulations.</span></li></ul>
+<h2 id="the-workflow-at-a-glance">The workflow at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What you do</th>
+<th>Why</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Get and clean the structure</td>
+<td>The model must be chemically complete and sensible</td>
+<td>this one</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Choose force field and water model</td>
+<td>They define the physics</td>
+<td>5, 6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Define the box, add water</td>
+<td>Bulk-like environment</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Add ions</td>
+<td>Neutral system, physiological ionic strength</td>
+<td>7</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Energy minimisation</td>
+<td>Remove clashes that would make the first step explode</td>
+<td>this one</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NVT equilibration with restraints</td>
+<td>Bring the solvent to temperature around a fixed solute</td>
+<td>8</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NPT equilibration</td>
+<td>Bring the density to its equilibrium value</td>
+<td>8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Production</td>
+<td>Collect data</td>
+<td>4, 8, 9</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Checks and analysis</td>
+<td>Decide whether the data mean anything</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-1-the-starting-structure">Step 1: the starting structure</h2>
+<p>A simulation can only be as good as its starting model. Go through this list every time.</p>
+<ul>
+<li><strong>Source.</strong> A crystal or cryo-EM structure, an NMR model, or a prediction (AlphaFold and similar). For a predicted complex, the interface may be wrong in ways that MD will not repair on accessible time scales.</li>
+<li><strong>Missing atoms and residues.</strong> Crystal structures lack hydrogens and often lack flexible loops and side chains. Build missing side chains (PDBFixer, MODELLER, Swiss-PdbViewer, CHARMM-GUI). For a missing loop either model it or cap the chain ends, and say which.</li>
+<li><strong>Alternate conformations.</strong> Keep one (usually the A conformer).</li>
+<li><strong>Termini.</strong> Decide between charged termini (NH<span class="math-inline">\(_3^+\)</span>, COO<span class="math-inline">\(^-\)</span>) and neutral caps (acetyl, N-methylamide). A fragment cut from a longer protein should be capped, otherwise you create charges that do not exist in the real molecule.</li>
+<li><strong>Disulfide bonds.</strong> Make sure they are declared in the topology.</li>
+<li><strong>Protonation states.</strong> The force field needs one fixed protonation state per residue. At pH 7, Asp and Glu are deprotonated, Lys and Arg protonated. <strong>Histidine</strong> (pK<span class="math-inline">\(_a\)</span> near 6 to 6.5) is the difficult one: it can be neutral with the proton on N<span class="math-inline">\(\delta\)</span> (HID) or N<span class="math-inline">\(\varepsilon\)</span> (HIE), or doubly protonated and positive (HIP). Choose by inspecting hydrogen-bond partners or with a pK<span class="math-inline">\(_a\)</span> predictor (PROPKA, H++). Buried Asp, Glu, Lys and Cys can also have shifted pK<span class="math-inline">\(_a\)</span> values. If the science depends on pH, plan simulations in each relevant protonation state.</li>
+<li><strong>Ligands, cofactors, ions, structural waters.</strong> Keep those that matter and get parameters for anything non-standard from a compatible general force field (Module 6). Metal sites need special care.</li>
+</ul>
+<h2 id="steps-2-to-4-topology-box-water-ions">Steps 2 to 4: topology, box, water, ions</h2>
+<p>With GROMACS (a force field that ships with every version is used here; current ones such as ff14SB, ff19SB and CHARMM36m are available as ports):</p>
+<div class="code"><pre><span></span><code><span class="c1"># topology: applies the force field, adds hydrogens</span>
+gmx<span class="w"> </span>pdb2gmx<span class="w"> </span>-f<span class="w"> </span>protein.pdb<span class="w"> </span>-o<span class="w"> </span>processed.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-ff<span class="w"> </span>amber99sb-ildn<span class="w"> </span>-water<span class="w"> </span>tip3p<span class="w"> </span>-ignh
+
+<span class="c1"># rhombic dodecahedron with at least 1.2 nm between the solute and the box faces</span>
+gmx<span class="w"> </span>editconf<span class="w"> </span>-f<span class="w"> </span>processed.gro<span class="w"> </span>-o<span class="w"> </span>boxed.gro<span class="w"> </span>-c<span class="w"> </span>-d<span class="w"> </span><span class="m">1</span>.2<span class="w"> </span>-bt<span class="w"> </span>dodecahedron
+
+<span class="c1"># fill with water (spc216.gro is a generic equilibrated 3-site water box)</span>
+gmx<span class="w"> </span>solvate<span class="w"> </span>-cp<span class="w"> </span>boxed.gro<span class="w"> </span>-cs<span class="w"> </span>spc216.gro<span class="w"> </span>-o<span class="w"> </span>solvated.gro<span class="w"> </span>-p<span class="w"> </span>topol.top
+
+<span class="c1"># replace water molecules by ions: neutralise, then add 150 mM NaCl</span>
+gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>ions.mdp<span class="w"> </span>-c<span class="w"> </span>solvated.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>ions.tpr
+gmx<span class="w"> </span>genion<span class="w"> </span>-s<span class="w"> </span>ions.tpr<span class="w"> </span>-o<span class="w"> </span>ions.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-pname<span class="w"> </span>NA<span class="w"> </span>-nname<span class="w"> </span>CL<span class="w"> </span>-neutral<span class="w"> </span>-conc<span class="w"> </span><span class="m">0</span>.15
+</code></pre></div>
+
+<p><strong>How many ions?</strong> A concentration of 0.15 mol/L is <span class="math-inline">\(0.15\times0.6022 = 0.0903\)</span> ion pairs per nm<span class="math-inline">\(^3\)</span>. A box of 500 nm<span class="math-inline">\(^3\)</span> needs 45 Na<span class="math-inline">\(^+\)</span> and 45 Cl<span class="math-inline">\(^-\)</span>, plus counter-ions for the net charge of the solute. Equivalently, one ion pair per <span class="math-inline">\(55.5/0.15 = 370\)</span> water molecules. In small boxes the number of ions is small, so the realised concentration is coarse-grained: one ion pair more or less in a 100 nm<span class="math-inline">\(^3\)</span> box changes it by 17 mM.</p>
+<h2 id="step-5-energy-minimisation">Step 5: energy minimisation</h2>
+<p>The freshly built system has overlapping atoms: water placed too close to the protein, hydrogens added in idealised positions. The Lennard-Jones repulsion there is enormous, and the first MD step would give those atoms huge velocities. Minimisation moves the system downhill to the nearest local minimum of <span class="math-inline">\(U\)</span>.</p>
+<ul>
+<li><strong>Steepest descent.</strong> Move every atom along its force: <span class="math-inline">\(\mathbf r\leftarrow\mathbf r + h\,\mathbf F/|\mathbf F|_{max}\)</span>, increasing the step <span class="math-inline">\(h\)</span> after a successful step and decreasing it after a failed one. Robust far from a minimum, slow close to it. The right choice for removing clashes.</li>
+<li><strong>Conjugate gradient and L-BFGS.</strong> Use information from previous steps to choose better directions. Faster near a minimum. Needed when you want a tightly converged minimum, for example before normal-mode analysis.</li>
+</ul>
+<p>Convergence criterion: the maximum force on any atom below about 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> is enough to start MD. Minimisation does not find the global minimum and does not "relax" the structure in any thermodynamic sense: it is a 0 K operation that only removes strain.</p>
+<div class="code"><pre><span></span><code>; em.mdp
+integrator    = steep
+emtol         = 1000.0      ; stop when the largest force is below this (kJ/mol/nm)
+emstep        = 0.01        ; initial step (nm)
+nsteps        = 50000
+cutoff-scheme = Verlet
+coulombtype   = PME
+rcoulomb      = 1.0
+rvdw          = 1.0
+</code></pre></div>
+
+<h2 id="steps-6-and-7-equilibration">Steps 6 and 7: equilibration</h2>
+<p>The minimised system is at 0 K with a density that is slightly wrong and water that is not adapted to the solute. Equilibration brings it to the target temperature and pressure without damaging the structure you prepared.</p>
+<p><strong>Position restraints.</strong> During equilibration the heavy atoms of the solute are tied to their starting positions with harmonic springs, <span class="math-inline">\(U_{restr} = \tfrac12k|\mathbf r-\mathbf r_{ref}|^2\)</span> with <span class="math-inline">\(k\)</span> = 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> (fluctuations of about 0.05 nm). The solvent relaxes around the solute while the solute keeps its shape.</p>
+<p><strong>NVT stage (about 100 ps).</strong> Velocities are drawn from the Maxwell-Boltzmann distribution, the thermostat takes the system to 300 K at fixed volume. Check: the temperature reaches the target and fluctuates about it.</p>
+<p><strong>NPT stage (100 ps to a few ns).</strong> The barostat is switched on and the box volume adjusts. Check: the density rises to a plateau, close to 1,000 kg/m<span class="math-inline">\(^3\)</span> for a dilute aqueous system (the exact value depends on the water model). For membranes, large complexes or anything built by hand, extend this stage and release the restraints gradually (for example 1,000, then 100, then 10 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>).</p>
+<div class="code"><pre><span></span><code>gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>em.mdp<span class="w">  </span>-c<span class="w"> </span>ions.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>em.tpr<span class="w">                     </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>em
+gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>nvt.mdp<span class="w"> </span>-c<span class="w"> </span>em.gro<span class="w">  </span>-r<span class="w"> </span>em.gro<span class="w">  </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>nvt.tpr<span class="w">          </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>nvt
+gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>npt.mdp<span class="w"> </span>-c<span class="w"> </span>nvt.gro<span class="w"> </span>-r<span class="w"> </span>nvt.gro<span class="w"> </span>-t<span class="w"> </span>nvt.cpt<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>npt.tpr<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>npt
+gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>md.mdp<span class="w">  </span>-c<span class="w"> </span>npt.gro<span class="w"> </span>-t<span class="w"> </span>npt.cpt<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>md.tpr<span class="w">           </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>md
+</code></pre></div>
+
+<h2 id="step-8-production-an-annotated-input-file">Step 8: production, an annotated input file</h2>
+<p>Every line below refers to a module of this course. Settings are for an AMBER-family force field; a CHARMM force field needs <code>rvdw = 1.2</code>, <code>rvdw-switch = 1.0</code>, <code>vdw-modifier = Force-switch</code>, <code>rcoulomb = 1.2</code> and no dispersion correction.</p>
+<div class="code"><pre><span></span><code>; md.mdp : production, NPT, 100 ns
+integrator              = md            ; leap-frog (Module 4)
+dt                      = 0.002         ; 2 fs, needs constrained bonds to H
+nsteps                  = 50000000      ; 50,000,000 x 2 fs = 100 ns
+
+nstxout-compressed      = 5000          ; write positions every 10 ps
+nstenergy               = 5000          ; write energies every 10 ps
+nstlog                  = 5000
+
+continuation            = yes           ; continue from the NPT equilibration
+constraint-algorithm    = lincs         ; Module 9
+constraints             = h-bonds
+lincs-iter              = 1
+lincs-order             = 4
+
+cutoff-scheme           = Verlet        ; buffered neighbour list (Module 7)
+rvdw                    = 1.0           ; Lennard-Jones cutoff (nm)
+vdw-modifier            = Potential-shift
+DispCorr                = EnerPres      ; tail correction for energy and pressure
+
+coulombtype             = PME           ; particle-mesh Ewald (Module 7)
+rcoulomb                = 1.0
+pme-order               = 4
+fourierspacing          = 0.12
+
+tcoupl                  = V-rescale     ; stochastic velocity rescaling (Module 8)
+tc-grps                 = Protein Non-Protein
+tau-t                   = 0.1  0.1      ; ps
+ref-t                   = 300  300      ; K
+
+pcoupl                  = C-rescale     ; stochastic cell rescaling (Module 8)
+pcoupltype              = isotropic
+tau-p                   = 2.0           ; ps
+ref-p                   = 1.0           ; bar
+compressibility         = 4.5e-5        ; of water, bar^-1
+
+pbc                     = xyz
+gen-vel                 = no            ; velocities come from the checkpoint
+</code></pre></div>
+
+<h3 id="the-same-workflow-in-openmm">The same workflow in OpenMM</h3>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">openmm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openmm</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">unit</span>
+
+<span class="n">pdb</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">PDBFile</span><span class="p">(</span><span class="s2">&quot;protein.pdb&quot;</span><span class="p">)</span>
+<span class="n">ff</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">ForceField</span><span class="p">(</span><span class="s2">&quot;amber14-all.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;amber14/tip3pfb.xml&quot;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Modeller</span><span class="p">(</span><span class="n">pdb</span><span class="o">.</span><span class="n">topology</span><span class="p">,</span> <span class="n">pdb</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">addHydrogens</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="n">pH</span><span class="o">=</span><span class="mf">7.0</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">addSolvent</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mf">1.2</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">nanometer</span><span class="p">,</span>
+                 <span class="n">ionicStrength</span><span class="o">=</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">molar</span><span class="p">,</span> <span class="n">boxShape</span><span class="o">=</span><span class="s2">&quot;dodecahedron&quot;</span><span class="p">)</span>
+
+<span class="n">system</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">createSystem</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">topology</span><span class="p">,</span>
+                         <span class="n">nonbondedMethod</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">PME</span><span class="p">,</span>
+                         <span class="n">nonbondedCutoff</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">nanometer</span><span class="p">,</span>
+                         <span class="n">constraints</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">HBonds</span><span class="p">,</span>          <span class="c1"># Module 9</span>
+                         <span class="n">hydrogenMass</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">amu</span><span class="p">)</span>       <span class="c1"># HMR, allows 4 fs</span>
+<span class="n">system</span><span class="o">.</span><span class="n">addForce</span><span class="p">(</span><span class="n">mm</span><span class="o">.</span><span class="n">MonteCarloBarostat</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">bar</span><span class="p">,</span> <span class="mi">300</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">kelvin</span><span class="p">))</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">LangevinMiddleIntegrator</span><span class="p">(</span><span class="mi">300</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">kelvin</span><span class="p">,</span>     <span class="c1"># Module 8</span>
+                                         <span class="mi">1</span> <span class="o">/</span> <span class="n">unit</span><span class="o">.</span><span class="n">picosecond</span><span class="p">,</span>   <span class="c1"># friction</span>
+                                         <span class="mf">0.004</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">picoseconds</span><span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">topology</span><span class="p">,</span> <span class="n">system</span><span class="p">,</span> <span class="n">integrator</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">setPositions</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span>
+
+<span class="n">sim</span><span class="o">.</span><span class="n">minimizeEnergy</span><span class="p">()</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">setVelocitiesToTemperature</span><span class="p">(</span><span class="mi">300</span> <span class="o">*</span> <span class="n">unit</span><span class="o">.</span><span class="n">kelvin</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">125_000</span><span class="p">)</span>                                        <span class="c1"># 500 ps equilibration</span>
+
+<span class="n">sim</span><span class="o">.</span><span class="n">reporters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">DCDReporter</span><span class="p">(</span><span class="s2">&quot;traj.dcd&quot;</span><span class="p">,</span> <span class="mi">2500</span><span class="p">))</span>  <span class="c1"># every 10 ps</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">reporters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">StateDataReporter</span><span class="p">(</span><span class="s2">&quot;log.csv&quot;</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">potentialEnergy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">reporters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">CheckpointReporter</span><span class="p">(</span><span class="s2">&quot;state.chk&quot;</span><span class="p">,</span> <span class="mi">250_000</span><span class="p">))</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">25_000_000</span><span class="p">)</span>                                     <span class="c1"># 100 ns</span>
+</code></pre></div>
+
+<p>This short script skips the restrained equilibration stages. For real work add position restraints with a <code>CustomExternalForce</code> for the first stage and remove them before production.</p>
+<h2 id="planning-length-repeats-output-cost">Planning: length, repeats, output, cost</h2>
+<ul>
+<li><strong>How long?</strong> Long enough to see the slowest process relevant to your question many times, which you often do not know in advance. Start by listing the time scales (Module 1) and deciding what you can and cannot claim.</li>
+<li><strong>Repeats.</strong> Three to five independent runs from different initial velocities are worth more than one run of the same total length: they give an honest error bar and reveal dependence on the starting state (Module 11).</li>
+<li><strong>Output frequency.</strong> Saving every 10 to 100 ps is enough for most structural analysis. Saving more often than the correlation time of your observable only fills disks. If you do not need the water, save only the solute (<code>compressed-x-grps</code> in GROMACS).</li>
+<li><strong>Benchmark first.</strong> Run 5 minutes and read the performance in ns/day from the log before submitting a long job. Size the job's time limit from the measured speed.</li>
+<li><strong>Checkpoints.</strong> Long runs must be restartable: <code>gmx mdrun -cpi</code> continues exactly from the last checkpoint, and OpenMM's checkpoint reporter does the same. Chain short jobs if the cluster favours them.</li>
+</ul>
+<h2 id="what-goes-wrong">What goes wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crash in the first steps, "LINCS warning", "particle moved more than the cutoff", NaN energies</td>
+<td>Clashes left after minimisation, missing atoms, wrong topology, time step too large for the system state</td>
+<td>Inspect the named atoms; minimise further; start with a smaller time step and restraints</td>
+</tr>
+<tr>
+<td>"System has non-zero total charge"</td>
+<td>Ions not added or miscounted</td>
+<td>Neutralise with <code>genion -neutral</code></td>
+</tr>
+<tr>
+<td>Protein appears torn apart in the viewer</td>
+<td>Molecules wrapped across the periodic box, a display artefact</td>
+<td><code>gmx trjconv -pbc mol -center</code> or the equivalent in MDAnalysis</td>
+</tr>
+<tr>
+<td>Density far from 1,000 kg/m<span class="math-inline">\(^3\)</span>, box collapsing or exploding</td>
+<td>Barostat too aggressive on an unequilibrated system, vacuum bubbles</td>
+<td>Longer NVT, gentler barostat (stochastic cell rescaling), check solvation</td>
+</tr>
+<tr>
+<td>Protein interacts with its own image</td>
+<td>Box too small for the conformations sampled</td>
+<td>Larger box; monitor with <code>gmx mindist -pi</code></td>
+</tr>
+<tr>
+<td>Ligand or ion flies away immediately</td>
+<td>Wrong protonation or charges, missing restraints during equilibration</td>
+<td>Recheck parameters and protonation</td>
+</tr>
+<tr>
+<td>Structure drifts steadily, RMSD never levels off</td>
+<td>Could be real (wrong starting model), a force-field problem, or wrong protonation</td>
+<td>Compare repeats and force fields; check against experiment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-to-report">What to report</h2>
+<p>A reader must be able to repeat your simulation. State: source and preparation of the structure, protonation states and how they were chosen; force field, water model and ion parameters with versions; box shape and size, number of atoms, salt concentration; minimisation and equilibration protocol; integrator and time step, constraints, mass repartitioning; cutoffs, long-range electrostatics and dispersion treatment; thermostat and barostat with coupling constants; length and number of repeats, what was discarded as equilibration; software and version; where the input files and trajectories can be obtained.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Your solvated box is 7 × 7 × 7 nm and the protein has a net charge of −6. How many Na⁺ and Cl⁻ for 150 mM?</summary>
+<p>Volume 343 nm<span class="math-inline">\(^3\)</span> gives <span class="math-inline">\(343\times0.0903 = 31\)</span> ion pairs. Add 6 extra Na<span class="math-inline">\(^+\)</span> to neutralise: 37 Na<span class="math-inline">\(^+\)</span> and 31 Cl<span class="math-inline">\(^-\)</span>. (Strictly, the volume available to the solvent is slightly smaller than the box.)</p>
+</details>
+<details>
+<summary>2. Why equilibrate at constant volume before switching on the barostat?</summary>
+<p>Right after minimisation the kinetic energy is zero and the virial is unrepresentative, so the instantaneous pressure is far from equilibrium. A barostat acting on that would rescale the box violently. Bringing the system to temperature first makes the pressure meaningful.</p>
+</details>
+<details>
+<summary>3. What does the energy minimiser not do?</summary>
+<p>It does not cross barriers, does not find the global minimum, does not include entropy or temperature, and does not validate the structure. It only moves the system to the nearest local minimum.</p>
+</details>
+<details>
+<summary>4. A histidine sits next to an aspartate in your binding interface. Which protonation state would you consider?</summary>
+<p>The doubly protonated, positively charged form (HIP) is stabilised by the nearby negative charge, which raises the histidine pK<span class="math-inline">\(_a\)</span>. Run a pK<span class="math-inline">\(_a\)</span> prediction, and if the result is near the experimental pH, simulate both states.</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Do the complete workflow for a small protein of your choice (lysozyme, PDB 1AKI, is the classic tutorial case). Plot potential energy during minimisation, temperature during NVT, and density during NPT.</li>
+<li>Repeat the production run three times with different random seeds for the initial velocities. Overlay the backbone RMSD traces.</li>
+<li>Run a 100 ps NVE simulation from your equilibrated system (thermostat and barostat off) and measure the energy drift. Repeat with a 4 fs time step without mass repartitioning and describe what happens.</li>
+<li>Write the methods paragraph for your simulation following the list above, in fewer than 200 words.</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://books.google.com/books?vid=ISBN9780582382107" target="_blank" rel="noopener">Molecular Modelling: Principles and Applications</a><span class="res-meta">Andrew R. Leach · 2nd ed., 2001 · Prentice Hall (Pearson)</span><span class="res-why">Broad, readable introduction to force fields, energy minimisation, MD and Monte Carlo with biomolecular examples.</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://education.molssi.org/mm-tools/" target="_blank" rel="noopener">MolSSI Education (python-data-analysis and molecular-mechanics tools lessons)</a> <span class="tag free">free</span><span class="res-meta">MolSSI · ongoing · Molecular Sciences Software Institute</span><span class="res-why">Free self-paced lessons on molecular mechanics tools and on Python data analysis.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5966" target="_blank" rel="noopener">Simulation Best Practices for Lipid Membranes</a> <span class="tag free">free</span><span class="res-meta">David J. Smith, Jeffery B. Klauda, Alexander J. Sodt · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Best practices for membrane simulations (ensemble, force field, equilibration).</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3797" target="_blank" rel="noopener">Molecular Dynamics: From Basics to Application</a> <span class="tag free">free</span><span class="res-meta">Luis Vollmers, Shu-Yu Chen, Maria Reif, Tristan Alexander Mauck, Martin Zacharias · 2025, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Recent introductory LiveCoMS tutorial that walks from MD basics to a biomolecular application.</span></li><li class="res"><a href="https://web.stanford.edu/class/cs279/lectures/lecture%20MD__2026_v2.pdf" target="_blank" rel="noopener">CS279: Structure and Organization of Biomolecules and Cells (course page and public slides)</a> <span class="tag free">free</span><span class="res-meta">Ron Dror (Stanford) · 2026 edition · Stanford University</span><span class="res-why">Public slides give a biomolecule-centred MD overview with current ML-force-field readings; the course is now titled &#x27;Structure and Organization of Biomolecules and Cells&#x27; and lecture videos are enrolled-only.</span><span class="res-why"><b>Where to read:</b> The slide sets on energy functions and on molecular dynamics simulation.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5957" target="_blank" rel="noopener">Best Practices for Foundations in Molecular Simulations</a> <span class="tag free">free</span><span class="res-meta">Efrem Braun, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, Daniel M. Zuckerman · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">First-stop checklist for setting up and reporting a simulation correctly.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5068" target="_blank" rel="noopener">From Proteins to Perturbed Hamiltonians: A Suite of Tutorials for the GROMACS-2018 Molecular Simulation Package</a> <span class="tag free">free</span><span class="res-meta">Justin A. Lemkul · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Peer-reviewed version of the GROMACS tutorial series, covering lysozyme, umbrella sampling and free energy.</span></li><li class="res"><a href="https://bioexcel.eu/services/training/" target="_blank" rel="noopener">BioExcel training catalogue (lecture plus hands-on modules, summer schools, webinars)</a> <span class="tag free">free</span><span class="res-meta">BioExcel · ongoing · BioExcel Centre of Excellence</span><span class="res-why">Free GROMACS training material in beginner, intermediate and advanced modules.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://www.ks.uiuc.edu/Training/Tutorials/namd-index.html" target="_blank" rel="noopener">NAMD / VMD tutorials</a> <span class="tag free">free</span><span class="res-meta">Theoretical and Computational Biophysics Group (UIUC) · current · ks.uiuc.edu</span><span class="res-why">The official NAMD and VMD tutorials.</span></li><li class="res"><a href="https://lammpstutorials.github.io/" target="_blank" rel="noopener">LAMMPS tutorials (Lennard-Jones fluid, carbon nanotube deformation, water adsorption)</a> <span class="tag free">free</span><span class="res-meta">Simon Gravelle, Cecilia M. S. Alvares, Jacob R. Gissinger, Axel Kohlmeyer · 2025 (LiveCoMS 6:3037) · lammpstutorials.github.io</span><span class="res-why">Three step-by-step LAMMPS tutorials, also published in LiveCoMS.</span></li><li class="res"><a href="https://docs.mdanalysis.org/stable/" target="_blank" rel="noopener">MDAnalysis documentation</a> <span class="tag free">free</span><span class="res-meta">MDAnalysis developers · stable · docs.mdanalysis.org</span><span class="res-why">API reference for trajectory analysis in Python.</span></li><li class="res"><a href="https://userguide.mdanalysis.org/stable/" target="_blank" rel="noopener">MDAnalysis User Guide</a> <span class="tag free">free</span><span class="res-meta">MDAnalysis developers · stable · userguide.mdanalysis.org</span><span class="res-why">Narrative guide and worked examples for MDAnalysis.</span></li><li class="res"><a href="https://docs.openforcefield.org/projects/toolkit/en/stable/" target="_blank" rel="noopener">Open Force Field documentation and toolkit</a> <span class="tag free">free</span><span class="res-meta">Open Force Field Initiative · latest · docs.openforcefield.org</span><span class="res-why">Docs for the SMIRNOFF force fields and the toolkit for parametrising small molecules.</span></li><li class="res"><a href="https://github.com/pythoninchemistry/sim_and_scat" target="_blank" rel="noopener">Simulation and Scattering notebooks: molecular dynamics intro (Lennard-Jones, velocity Verlet)</a> <span class="tag free">free</span><span class="res-meta">pythoninchemistry · GitHub · pythoninchemistry.org</span><span class="res-why">Notebook course that implements force, velocity Verlet and a small MD loop in Python.</span></li><li class="res"><a href="https://fcichos.github.io/CBPM/seminars/seminar02/md1.html" target="_blank" rel="noopener">Step-by-Step Development of a Molecular Dynamics Simulation (seminar)</a> <span class="tag free">free</span><span class="res-meta">Fabian Cichos (Leipzig) · course page · fcichos.github.io</span><span class="res-why">Builds an MD code from one particle in free fall to a Lennard-Jones system.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="09-constraints.html">&larr; Constraints, freezing the fastest motions</a><a class="next" href="11-analysis-statistics.html">Analysing trajectories and putting error bars on the results &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>

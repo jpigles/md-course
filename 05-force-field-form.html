@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Force fields I, the energy function term by term | Molecular Dynamics: a course</title>
+<meta name="description" content="Write the standard biomolecular energy function, know what each term represents physically and what typical parameter values are, and derive the force from each term.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="05-force-field-form">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li class="current" data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 5 of 17 &middot; about 6 hours</div><h1>Force fields I, the energy function term by term</h1><p class="lede">Write the standard biomolecular energy function, know what each term represents physically and what typical parameter values are, and derive the force from each term.</p></div>
+<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-functional-form">The functional form</a></li><li><a href="#bond-stretching">Bond stretching</a></li><li><a href="#angle-bending">Angle bending</a></li><li><a href="#torsions-proper-dihedrals">Torsions (proper dihedrals)</a></li><li><a href="#improper-dihedrals">Improper dihedrals</a></li><li><a href="#lennard-jones-repulsion-and-dispersion">Lennard-Jones: repulsion and dispersion</a></li><li><a href="#electrostatics">Electrostatics</a></li><li><a href="#which-pairs-count-exclusions-and-1-4-scaling">Which pairs count: exclusions and 1-4 scaling</a></li><li><a href="#from-energy-to-force">From energy to force</a></li><li><a href="#how-many-terms">How many terms?</a></li><li><a href="#what-this-model-leaves-out">What this model leaves out</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<article>
+<div class="box goal">
+<h4 id="after-this-module-you-can">After this module you can</h4>
+<ul>
+<li>write the full additive force-field energy and name every parameter in it;</li>
+<li>convert a force constant into a thermal fluctuation and a vibration period;</li>
+<li>explain where the <span class="math-inline">\(r^{-6}\)</span> and <span class="math-inline">\(r^{-12}\)</span> terms come from and what the combining rules are;</li>
+<li>derive the force for a pair term and outline it for an angle or dihedral;</li>
+<li>list what a fixed-charge force field leaves out.</li>
+</ul>
+</div>
+<h2 id="watch-first">Watch first</h2>
+<ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=vpqo0q3zvJU" target="_blank" rel="noopener">Molecular Dynamics - chapter 2: Force Fields</a><span class="res-meta">MoBioChem &middot; Video, intro</span><span class="res-why">Chapter on force fields in a molecular dynamics lecture series.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=mzocP2rd0kk" target="_blank" rel="noopener">Week 4 Video 3: Lennard-Jones potentials &amp; MD simulations</a><span class="res-meta">Classical Mechanics Videos &middot; Video, intro</span><span class="res-why">Lennard-Jones potential and its use in MD simulations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=MK5BrpgUMUM" target="_blank" rel="noopener">CompChem02.06 Simulations with MM Force Fields — Monte Carlo and Molecular Dynamics Part I</a><span class="res-meta">Chris Cramer (University of Minnesota) &middot; channel: Chris Cramer &middot; Video, intermediate</span><span class="res-why">University lecture on MM force fields and how they drive MC and MD.</span></li></ul>
+<h2 id="the-functional-form">The functional form</h2>
+<p>A classical (Class I, additive) force field writes the potential energy as a sum of simple terms:</p>
+<p><span class="math-display">\[\begin{aligned}
+U(\mathbf r) ={}&amp; \sum_{bonds}\tfrac12 k_b\,(r-r_0)^2
++ \sum_{angles}\tfrac12 k_\theta\,(\theta-\theta_0)^2
++ \sum_{dihedrals}\sum_n k_{\phi,n}\,\big[1+\cos(n\phi-\delta_n)\big] \\
+&amp;+ \sum_{impropers}\tfrac12 k_\omega\,(\omega-\omega_0)^2
++ \sum_{i&lt;j}^{non\text{-}bonded} \left\{4\varepsilon_{ij}\left[\left(\frac{\sigma_{ij}}{r_{ij}}\right)^{12}-\left(\frac{\sigma_{ij}}{r_{ij}}\right)^{6}\right] + \frac{q_iq_j}{4\pi\varepsilon_0\,r_{ij}}\right\}
+\end{aligned}\]</span></p>
+<p>The first four sums are the <strong>bonded</strong> terms. They run over lists that are fixed when the system is built (the topology). The last sum is the <strong>non-bonded</strong> part and runs over all pairs of atoms, apart from the exclusions discussed below. AMBER, CHARMM, OPLS-AA and GROMOS all use this form with small variations.</p>
+<div class="box warn">
+<p><strong>Convention trap.</strong> GROMACS writes harmonic terms as <span class="math-inline">\(\tfrac12k(x-x_0)^2\)</span>. AMBER and CHARMM parameter files write <span class="math-inline">\(K(x-x_0)^2\)</span> without the half, so <span class="math-inline">\(k_{GROMACS} = 2K_{AMBER}\)</span>. Add the unit change from kcal mol<span class="math-inline">\(^{-1}\)</span> Å<span class="math-inline">\(^{-2}\)</span> to kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> (a factor 418.4), and the same C-C bond appears as 310 in one file and 259,408 in another.</p>
+</div>
+<h2 id="bond-stretching">Bond stretching</h2>
+<p><span class="math-display">\[U_b = \tfrac12 k_b\,(r-r_0)^2\]</span></p>
+<p>The true bond energy is closer to a Morse curve <span class="math-inline">\(D_e[1-e^{-a(r-r_0)}]^2\)</span>, which allows dissociation. At room temperature a bond explores only the very bottom of its well, where the harmonic term is an adequate fit.</p>
+<p>How stiff is it? In the canonical ensemble a harmonic coordinate has variance <span class="math-inline">\(k_BT/k\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Bond</th>
+<th><span class="math-inline">\(r_0\)</span> (nm)</th>
+<th><span class="math-inline">\(k_b\)</span> (kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>)</th>
+<th>Thermal fluctuation <span class="math-inline">\(\sqrt{k_BT/k_b}\)</span> at 300 K</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-C (aliphatic)</td>
+<td>0.153</td>
+<td>about <span class="math-inline">\(2.6\times10^5\)</span></td>
+<td>0.003 nm</td>
+</tr>
+<tr>
+<td>C-H</td>
+<td>0.109</td>
+<td>about <span class="math-inline">\(2.8\times10^5\)</span></td>
+<td>0.003 nm</td>
+</tr>
+<tr>
+<td>C=O</td>
+<td>0.123</td>
+<td>about <span class="math-inline">\(4.8\times10^5\)</span></td>
+<td>0.002 nm</td>
+</tr>
+</tbody>
+</table>
+<p>Bonds fluctuate by about 2 % of their length. They carry almost no conformational information, which is why constraining them (Module 9) costs little accuracy.</p>
+<h2 id="angle-bending">Angle bending</h2>
+<p><span class="math-display">\[U_\theta = \tfrac12 k_\theta\,(\theta-\theta_0)^2\]</span></p>
+<p>Typical <span class="math-inline">\(k_\theta\)</span> is 300 to 700 kJ mol<span class="math-inline">\(^{-1}\)</span> rad<span class="math-inline">\(^{-2}\)</span>, giving fluctuations of <span class="math-inline">\(\sqrt{2.494/500} \approx 0.07\)</span> rad, about 4°. CHARMM adds a <strong>Urey-Bradley</strong> term, a harmonic spring between atoms 1 and 3 of the angle, to improve vibrational spectra. GROMOS uses a harmonic function of <span class="math-inline">\(\cos\theta\)</span>, which is cheaper and avoids a singularity at 180°.</p>
+<h2 id="torsions-proper-dihedrals">Torsions (proper dihedrals)</h2>
+<p>The dihedral angle <span class="math-inline">\(\phi\)</span> of four bonded atoms i-j-k-l is the angle between the planes (i,j,k) and (j,k,l). Rotation about the central bond is periodic, so the energy is a short Fourier series:</p>
+<p><span class="math-display">\[U_\phi = \sum_{n} k_{\phi,n}\,\big[1+\cos(n\phi-\delta_n)\big],\qquad n = 1,2,3,(4,6).\]</span></p>
+<p><span class="math-inline">\(n\)</span> is the multiplicity (the number of minima in a full turn), <span class="math-inline">\(\delta_n\)</span> the phase (0 or 180° in most force fields), and <span class="math-inline">\(k_{\phi,n}\)</span> is half the barrier height of that component. For ethane-like rotation about an sp<span class="math-inline">\(^3\)</span>-sp<span class="math-inline">\(^3\)</span> bond, <span class="math-inline">\(n=3\)</span> with a total barrier near 12 kJ/mol (<span class="math-inline">\(\approx 5\,k_BT\)</span>).</p>
+<div class="box key">
+<p><strong>Torsions are where the biology is.</strong> Barriers of a few <span class="math-inline">\(k_BT\)</span> mean torsions are the soft degrees of freedom that change during conformational transitions: the backbone <span class="math-inline">\(\phi\)</span> and <span class="math-inline">\(\psi\)</span> angles and the side-chain <span class="math-inline">\(\chi\)</span> angles. They are also the least "physical" term: the torsion parameters absorb everything the other terms get wrong, and they are fitted last (Module 6). Almost every revision of a protein force field in the last 25 years (ff99SB, ILDN, ff14SB, CHARMM22/CMAP, CHARMM36, CHARMM36m) is mainly a re-fit of backbone or side-chain torsions.</p>
+</div>
+<p>Two variants you will meet:</p>
+<ul>
+<li><strong>Ryckaert-Bellemans</strong> form, a power series in <span class="math-inline">\(\cos\psi\)</span> with <span class="math-inline">\(\psi=\phi-180°\)</span>, used by OPLS in GROMACS. It is mathematically equivalent to a Fourier series.</li>
+<li><strong>CMAP</strong> (CHARMM and ff19SB): a two-dimensional correction <span class="math-inline">\(U_{CMAP}(\phi,\psi)\)</span> stored on a grid and interpolated with bicubic splines. It captures the coupling between the two backbone dihedrals that separate one-dimensional terms cannot.</li>
+</ul>
+<h2 id="improper-dihedrals">Improper dihedrals</h2>
+<p><span class="math-display">\[U_\omega = \tfrac12 k_\omega\,(\omega-\omega_0)^2\quad\text{(CHARMM, GROMOS)}\qquad\text{or}\qquad k\,[1+\cos(2\omega-180°)]\quad\text{(AMBER)}\]</span></p>
+<p>An improper keeps four atoms in a plane (the peptide bond, aromatic rings, carboxylates) or, in united-atom force fields, preserves the chirality of a carbon whose hydrogen is not represented.</p>
+<h2 id="lennard-jones-repulsion-and-dispersion">Lennard-Jones: repulsion and dispersion</h2>
+<p><span class="math-display">\[U_{LJ}(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^{6}\right]
+= \frac{C_{12}}{r^{12}}-\frac{C_6}{r^6},\qquad C_6 = 4\varepsilon\sigma^6,\; C_{12} = 4\varepsilon\sigma^{12}.\]</span></p>
+<ul>
+<li><span class="math-inline">\(\sigma\)</span> is the distance where the energy is zero, the "size" of the atom pair.</li>
+<li>The minimum is at <span class="math-inline">\(r_{min} = 2^{1/6}\sigma\approx1.122\,\sigma\)</span> with depth <span class="math-inline">\(-\varepsilon\)</span>. AMBER and CHARMM files list <span class="math-inline">\(R_{min}/2\)</span> per atom instead of <span class="math-inline">\(\sigma\)</span>.</li>
+<li><strong>The <span class="math-inline">\(r^{-6}\)</span> attraction is physical.</strong> It is the London dispersion energy: a fluctuation of the electron cloud on one atom creates an instantaneous dipole, which induces a dipole on the other, and the interaction of the two falls off as <span class="math-inline">\(r^{-6}\)</span>.</li>
+<li><strong>The <span class="math-inline">\(r^{-12}\)</span> repulsion is a convenience.</strong> Pauli repulsion from overlapping electron clouds is closer to exponential. <span class="math-inline">\(r^{-12}\)</span> was chosen because it is the square of <span class="math-inline">\(r^{-6}\)</span> and so costs one multiplication. It is somewhat too steep. The Buckingham potential <span class="math-inline">\(A e^{-Br} - C/r^6\)</span> is more realistic and slower.</li>
+</ul>
+<p>Typical values of <span class="math-inline">\(\varepsilon\)</span> are 0.1 to 1 kJ/mol, well below <span class="math-inline">\(k_BT\)</span> = 2.5 kJ/mol. A single dispersion contact is weak. Their importance comes from their number: a buried side chain has dozens.</p>
+<h3 id="combining-rules">Combining rules</h3>
+<p>Force fields store <span class="math-inline">\(\sigma_i\)</span> and <span class="math-inline">\(\varepsilon_i\)</span> per atom type and build pair parameters from a rule:</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th><span class="math-inline">\(\sigma_{ij}\)</span></th>
+<th><span class="math-inline">\(\varepsilon_{ij}\)</span></th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lorentz-Berthelot</td>
+<td><span class="math-inline">\(\tfrac12(\sigma_i+\sigma_j)\)</span></td>
+<td><span class="math-inline">\(\sqrt{\varepsilon_i\varepsilon_j}\)</span></td>
+<td>AMBER, CHARMM</td>
+</tr>
+<tr>
+<td>Geometric</td>
+<td><span class="math-inline">\(\sqrt{\sigma_i\sigma_j}\)</span></td>
+<td><span class="math-inline">\(\sqrt{\varepsilon_i\varepsilon_j}\)</span></td>
+<td>OPLS, GROMOS (on <span class="math-inline">\(C_6\)</span>, <span class="math-inline">\(C_{12}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p>The rules are approximations. Where they fail badly, force fields override them for specific pairs (<strong>NBFIX</strong> in CHARMM, for example for ion-carboxylate pairs).</p>
+<div class="widget" data-widget="lj"></div>
+
+<h2 id="electrostatics">Electrostatics</h2>
+<p><span class="math-display">\[U_C = \frac{q_iq_j}{4\pi\varepsilon_0\,r_{ij}} = 138.935\ \frac{q_iq_j}{r_{ij}}\ \text{kJ/mol}\quad(q \text{ in } e,\ r \text{ in nm}).\]</span></p>
+<p>Each atom carries a fixed <strong>partial charge</strong> placed at its nucleus. The charges represent the uneven distribution of electrons in the molecule: in a peptide group, about <span class="math-inline">\(-0.5\,e\)</span> on O, <span class="math-inline">\(+0.5\,e\)</span> on C, <span class="math-inline">\(-0.4\,e\)</span> on N and <span class="math-inline">\(+0.3\,e\)</span> on H (values vary by force field). There is no explicit hydrogen-bond term in modern force fields. A hydrogen bond is the sum of the Coulomb attraction between a positive H and a negative acceptor and the Lennard-Jones terms of the heavy atoms.</p>
+<p>There is no dielectric constant in the formula (<span class="math-inline">\(\varepsilon_r=1\)</span>). Screening by water is produced explicitly by the water molecules reorienting.</p>
+<p>Two features make electrostatics the hardest part:</p>
+<ul>
+<li><strong>It is long-ranged.</strong> <span class="math-inline">\(1/r\)</span> decays so slowly that it cannot be truncated without artefacts. Module 7 covers the solution, Ewald summation.</li>
+<li><strong>It is large.</strong> Two unit charges at 0.3 nm in vacuum interact with 463 kJ/mol, about 186 <span class="math-inline">\(k_BT\)</span>. Net effects in solution are small differences between large numbers (direct interaction against desolvation), which is one reason binding energies are hard to compute.</li>
+</ul>
+<h2 id="which-pairs-count-exclusions-and-1-4-scaling">Which pairs count: exclusions and 1-4 scaling</h2>
+<p>Atoms separated by one bond (1-2) or two bonds (1-3) are <strong>excluded</strong> from the non-bonded sum, since the bond and angle terms already describe them. Atoms separated by three bonds (1-4, the ends of a dihedral) interact through a scaled non-bonded term:</p>
+<table>
+<thead>
+<tr>
+<th>Force field</th>
+<th>1-4 Lennard-Jones</th>
+<th>1-4 Coulomb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMBER</td>
+<td>× 0.5</td>
+<td>× 1/1.2 = 0.833</td>
+</tr>
+<tr>
+<td>OPLS-AA</td>
+<td>× 0.5</td>
+<td>× 0.5</td>
+</tr>
+<tr>
+<td>CHARMM</td>
+<td>× 1 (special 1-4 parameters for some types)</td>
+<td>× 1</td>
+</tr>
+<tr>
+<td>GROMOS</td>
+<td>separate 1-4 parameter list</td>
+<td>× 1</td>
+</tr>
+</tbody>
+</table>
+<p>The torsion parameters are fitted together with a particular 1-4 scaling. This is one of several reasons you cannot mix parameters from different force-field families.</p>
+<h2 id="from-energy-to-force">From energy to force</h2>
+<p>MD needs <span class="math-inline">\(\mathbf F_i = -\partial U/\partial\mathbf r_i\)</span> for every term. For any term that depends on the distance between two atoms (bonds, Lennard-Jones, Coulomb), Module 2 gave</p>
+<p><span class="math-display">\[\mathbf F_i = -\frac{dU}{dr}\,\frac{\mathbf r_{ij}}{r_{ij}},\qquad \mathbf F_j=-\mathbf F_i .\]</span></p>
+<p>For Lennard-Jones:</p>
+<p><span class="math-display">\[-\frac{dU_{LJ}}{dr} = \frac{24\varepsilon}{r}\left[2\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]
+\quad\Longrightarrow\quad
+\mathbf F_i = \frac{24\varepsilon}{r^2}\left[2\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]\mathbf r_{ij}.\]</span></p>
+<p>Only <span class="math-inline">\(r^2\)</span> appears, never <span class="math-inline">\(r\)</span> itself, so no square root is needed. This is the real reason for the 12-6 form. For Coulomb, <span class="math-inline">\(\mathbf F_i = 138.935\,q_iq_j\,\mathbf r_{ij}/r^3\)</span>.</p>
+<p>For angles and dihedrals, use the chain rule through the internal coordinate, <span class="math-inline">\(\mathbf F_i = -\dfrac{dU}{d\theta}\dfrac{\partial\theta}{\partial\mathbf r_i}\)</span>. For an angle i-j-k with <span class="math-inline">\(\cos\theta = \hat{\mathbf r}_{ji}\cdot\hat{\mathbf r}_{jk}\)</span>,</p>
+<p><span class="math-display">\[\frac{\partial\cos\theta}{\partial\mathbf r_i} = \frac{1}{r_{ji}}\left(\hat{\mathbf r}_{jk} - \cos\theta\,\hat{\mathbf r}_{ji}\right),
+\qquad \mathbf F_i = \frac{1}{\sin\theta}\frac{dU}{d\theta}\,\frac{\partial\cos\theta}{\partial\mathbf r_i},\]</span></p>
+<p>with the analogous expression for <span class="math-inline">\(k\)</span>, and <span class="math-inline">\(\mathbf F_j = -\mathbf F_i-\mathbf F_k\)</span> because internal forces sum to zero. Dihedral forces follow the same route with more algebra. The standard derivation is in the GROMACS reference manual and in Allen and Tildesley.</p>
+<div class="box key">
+<p><strong>Always test forces numerically.</strong> Move one atom by <span class="math-inline">\(\pm h\)</span> along <span class="math-inline">\(x\)</span> (with <span class="math-inline">\(h\approx10^{-5}\)</span> nm), compute <span class="math-inline">\(-[U(x+h)-U(x-h)]/2h\)</span> and compare with the analytic force. This five-line test catches most bugs in a new potential, including in machine-learned force fields.</p>
+</div>
+<h2 id="how-many-terms">How many terms?</h2>
+<p>For a protein in water with <span class="math-inline">\(N\)</span> atoms there are about <span class="math-inline">\(N\)</span> bonds, <span class="math-inline">\(2N\)</span> angles and <span class="math-inline">\(3N\)</span> dihedrals, all cheap. The non-bonded sum has <span class="math-inline">\(N(N-1)/2\)</span> pairs, about <span class="math-inline">\(5\times10^9\)</span> for 100,000 atoms. Reducing that to the roughly <span class="math-inline">\(2\times10^7\)</span> pairs inside a cutoff, while still treating the long-range part correctly, is the subject of Module 7.</p>
+<h2 id="what-this-model-leaves-out">What this model leaves out</h2>
+<ul>
+<li><strong>Electronic polarisation.</strong> Charges are fixed, so a molecule has the same charge distribution in water, in a protein interior and at a membrane. Force fields compensate on average by using charges that are larger than in the gas phase. The water models have dipole moments of 2.2 to 2.4 D, against 1.85 D for an isolated water molecule. Polarizable force fields (Module 6) address this at higher cost.</li>
+<li><strong>Charge transfer and bond breaking.</strong> No chemistry.</li>
+<li><strong>Many-body dispersion and anisotropy.</strong> Atom-centred charges cannot represent lone pairs, <span class="math-inline">\(\pi\)</span> clouds or <span class="math-inline">\(\sigma\)</span>-holes (halogen bonds) unless extra sites are added.</li>
+<li><strong>Coupling between terms.</strong> Class II force fields (for materials) add cross terms such as bond-angle coupling. Biomolecular force fields mostly do not.</li>
+</ul>
+<p>Each omission is absorbed, as far as possible, into the fitted parameters. That makes the parameters <strong>effective</strong>: they work as a set, in the conditions they were fitted for.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<details>
+<summary>1. Convert the AMBER C-C bond constant K = 310 kcal mol⁻¹ Å⁻² to GROMACS units and convention.</summary>
+<p><span class="math-inline">\(k = 2\times310\times4.184\times100 = 259{,}408\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>. The 2 is the convention, 4.184 converts kcal to kJ, 100 converts Å<span class="math-inline">\(^{-2}\)</span> to nm<span class="math-inline">\(^{-2}\)</span>.</p>
+</details>
+<details>
+<summary>2. At what distance is the Lennard-Jones force zero? Where is it most attractive?</summary>
+<p>Zero at the minimum, <span class="math-inline">\(r = 2^{1/6}\sigma\)</span>. The most attractive force is where <span class="math-inline">\(d^2U/dr^2=0\)</span>: <span class="math-inline">\(r = (26/7)^{1/6}\sigma \approx 1.245\,\sigma\)</span>.</p>
+</details>
+<details>
+<summary>3. Why is there no explicit dielectric constant of 80 in the Coulomb term of an explicit-solvent simulation?</summary>
+<p>The dielectric constant is a macroscopic average of how water dipoles reorient and screen charges. In explicit solvent the water molecules are present and do the screening themselves, so the bare interaction with <span class="math-inline">\(\varepsilon_r=1\)</span> is the correct microscopic law. A dielectric constant appears only in implicit-solvent models (Module 15).</p>
+</details>
+<details>
+<summary>4. A torsion has a single term with n = 3 and k = 6 kJ/mol. How high is the barrier and how often is it crossed, roughly?</summary>
+<p>The barrier is <span class="math-inline">\(2k = 12\)</span> kJ/mol <span class="math-inline">\(= 4.8\,k_BT\)</span> at 300 K. With an attempt frequency of the order of <span class="math-inline">\(10^{12}\)</span> to <span class="math-inline">\(10^{13}\)</span> s<span class="math-inline">\(^{-1}\)</span>, the rate is about <span class="math-inline">\(10^{12.5}e^{-4.8}\approx3\times10^{10}\)</span> s<span class="math-inline">\(^{-1}\)</span>: one crossing every few tens of picoseconds. Easily sampled.</p>
+</details>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>Write a Python function that returns the energy and forces of a bond, an angle and a Lennard-Jones pair. Verify each force with the finite-difference test.</li>
+<li>Plot the torsional energy of butane using three Fourier terms of your choice so that the trans minimum is 3.5 kJ/mol below gauche. Compute the trans population at 300 K by numerical integration.</li>
+<li>For two water molecules in a linear hydrogen bond (O...O distance 0.28 nm), sum the nine Coulomb terms and the O-O Lennard-Jones term using TIP3P parameters (<span class="math-inline">\(q_O=-0.834\)</span>, <span class="math-inline">\(q_H=+0.417\)</span>, <span class="math-inline">\(\sigma=0.3151\)</span> nm, <span class="math-inline">\(\varepsilon=0.636\)</span> kJ/mol). Which term dominates?</li>
+<li>Using the pair-energy demo, find the charge product at which the Coulomb term equals the Lennard-Jones well depth at the minimum.</li>
+</ol>
+<h2 id="read">Read</h2>
+<h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://books.google.com/books?vid=ISBN9780582382107" target="_blank" rel="noopener">Molecular Modelling: Principles and Applications</a><span class="res-meta">Andrew R. Leach · 2nd ed., 2001 · Prentice Hall (Pearson)</span><span class="res-why">Broad, readable introduction to force fields, energy minimisation, MD and Monte Carlo with biomolecular examples.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li></ul>
+<h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/pages/lecture-notes/" target="_blank" rel="noopener">3.320 Atomistic Computer Modeling of Materials (SMA 5107), Spring 2005 lecture notes</a> <span class="tag free">free</span><span class="res-meta">MIT OpenCourseWare · Spring 2005 · MIT OpenCourseWare (CC BY-NC-SA 4.0)</span><span class="res-why">Graduate atomistic-modelling course with 25 lectures of notes; materials-oriented rather than biomolecular, so use selectively.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5966" target="_blank" rel="noopener">Simulation Best Practices for Lipid Membranes</a> <span class="tag free">free</span><span class="res-meta">David J. Smith, Jeffery B. Klauda, Alexander J. Sodt · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Best practices for membrane simulations (ensemble, force field, equilibration).</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v6i1e3797" target="_blank" rel="noopener">Molecular Dynamics: From Basics to Application</a> <span class="tag free">free</span><span class="res-meta">Luis Vollmers, Shu-Yu Chen, Maria Reif, Tristan Alexander Mauck, Martin Zacharias · 2025, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">Recent introductory LiveCoMS tutorial that walks from MD basics to a biomolecular application.</span></li><li class="res"><a href="https://web.stanford.edu/class/cs279/lectures/lecture%20MD__2026_v2.pdf" target="_blank" rel="noopener">CS279: Structure and Organization of Biomolecules and Cells (course page and public slides)</a> <span class="tag free">free</span><span class="res-meta">Ron Dror (Stanford) · 2026 edition · Stanford University</span><span class="res-why">Public slides give a biomolecule-centred MD overview with current ML-force-field readings; the course is now titled &#x27;Structure and Organization of Biomolecules and Cells&#x27; and lecture videos are enrolled-only.</span><span class="res-why"><b>Where to read:</b> The slide sets on energy functions and on molecular dynamics simulation.</span></li><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5957" target="_blank" rel="noopener">Best Practices for Foundations in Molecular Simulations</a> <span class="tag free">free</span><span class="res-meta">Efrem Braun, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, Daniel M. Zuckerman · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">First-stop checklist for setting up and reporting a simulation correctly.</span></li><li class="res"><a href="https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html" target="_blank" rel="noopener">CHE210D: Principles of modern molecular simulation methods (UCSB lecture notes, F19)</a> <span class="tag free">free</span><span class="res-meta">M. Scott Shell · Fall 2019 · UC Santa Barbara, Chemical Engineering</span><span class="res-why">Complete, free lecture-note set (18 lectures plus readings and Python/Fortran codes) that follows Frenkel and Smit.</span><span class="res-why"><b>Where to read:</b> Lecture notes: Classical force fields; Molecular dynamics; Computing properties; Simulations of bulk phases; Advanced molecular dynamics techniques; Free energies along reaction coordinates and biased sampling; Macroscopic free energies and reweighting; Advanced sampling; Coarse-graining and multiscale techniques; and the reading on simulation best practices.</span></li></ul>
+<h4>Tutorials and documentation</h4><ul class='reslist'><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/functions/bonded-interactions.html" target="_blank" rel="noopener">GROMACS Reference Manual: bonded interactions (force-field functional forms)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Explicit equations for bond, angle, dihedral and improper terms.</span></li><li class="res"><a href="https://lammpstutorials.github.io/" target="_blank" rel="noopener">LAMMPS tutorials (Lennard-Jones fluid, carbon nanotube deformation, water adsorption)</a> <span class="tag free">free</span><span class="res-meta">Simon Gravelle, Cecilia M. S. Alvares, Jacob R. Gissinger, Axel Kohlmeyer · 2025 (LiveCoMS 6:3037) · lammpstutorials.github.io</span><span class="res-why">Three step-by-step LAMMPS tutorials, also published in LiveCoMS.</span></li><li class="res"><a href="https://docs.openforcefield.org/projects/toolkit/en/stable/" target="_blank" rel="noopener">Open Force Field documentation and toolkit</a> <span class="tag free">free</span><span class="res-meta">Open Force Field Initiative · latest · docs.openforcefield.org</span><span class="res-why">Docs for the SMIRNOFF force fields and the toolkit for parametrising small molecules.</span></li><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/functions/nonbonded-interactions.html" target="_blank" rel="noopener">GROMACS Reference Manual: non-bonded interactions</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Lennard-Jones, Coulomb, cutoff and combination-rule definitions.</span></li><li class="res"><a href="https://manual.gromacs.org/current/reference-manual/index.html" target="_blank" rel="noopener">GROMACS Reference Manual (index)</a> <span class="tag free">free</span><span class="res-meta">GROMACS development team · current · manual.gromacs.org</span><span class="res-why">Entry page to all reference-manual sections.</span></li><li class="res"><a href="https://docs.openmm.org/latest/userguide/" target="_blank" rel="noopener">OpenMM User Guide</a> <span class="tag free">free</span><span class="res-meta">OpenMM developers · current · docs.openmm.org</span><span class="res-why">User guide with a theory section that gives the equations behind each force and integrator.</span><span class="res-why"><b>Where to read:</b> Theory chapters: standard forces, custom forces, integrators.</span></li><li class="res"><a href="https://ambermd.org/tutorials/" target="_blank" rel="noopener">AMBER tutorials</a> <span class="tag free">free</span><span class="res-meta">AMBER developers · current · ambermd.org</span><span class="res-why">Official step-by-step tutorials for Amber setup and simulation.</span></li></ul>
+<h2 id="key-papers">Key papers</h2>
+
+</article>
+<div class="donebox"><label><input type="checkbox" id="doneChk"> I have finished this module</label></div>
+<div class="prevnext"><a class="prev" href="04-integrators.html">&larr; Integrating the equations of motion</a><a class="next" href="06-force-field-parameters.html">Force fields II, where the parameters come from and which to use &rarr;</a></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+</body>
+</html>
