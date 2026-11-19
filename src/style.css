@@ -107,6 +107,7 @@ th { color: var(--ink2); font-weight: 600; border-bottom: 2px solid var(--axis);
 td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 table.syllabus tr.part td { background: var(--accent-soft); font-weight: 600; font-size: 13.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink2); }
 table.syllabus .tick { margin-right: 7px; }
+table.syllabus td:nth-child(2) { min-width: 210px; }
 article table { display: block; overflow-x: auto; }
 
 code { font: 14px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; background: var(--code); padding: 1px 5px; border-radius: 4px; }

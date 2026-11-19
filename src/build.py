@@ -85,7 +85,16 @@ def load_papers():
         return []
     with open(f, encoding="utf-8", newline="") as fh:
         rows = [{k: (v or "").strip() for k, v in r.items()} for r in csv.DictReader(fh)]
-    return [r for r in rows if r.get("verified", "").lower() == "yes" and r.get("doi")]
+    rows = [r for r in rows if r.get("verified", "").lower() == "yes" and r.get("doi")]
+    # arXiv preprints found by title (research/arxiv_lookup.py): a free copy when there is no other
+    hits = RESEARCH / "arxiv_hits.json"
+    if hits.exists():
+        arx = json.loads(hits.read_text(encoding="utf-8"))
+        for r in rows:
+            h = arx.get(r["key"])
+            if h:
+                r["preprint_url"] = h["abs"]
+    return rows
 
 
 E = lambda s: html.escape(str(s if s is not None else ""), quote=True)
@@ -162,6 +171,8 @@ def paper_li(p):
     oa = ""
     if p.get("oa_url"):
         oa = f' <a class="tag free" href="{E(p["oa_url"])}" target="_blank" rel="noopener">open access</a>'
+    if p.get("preprint_url"):
+        oa += f' <a class="tag free" href="{E(p["preprint_url"])}" target="_blank" rel="noopener">arXiv preprint</a>'
     vol = p.get("volume")
     pages = p.get("pages")
     cite = E(p.get("journal"))
