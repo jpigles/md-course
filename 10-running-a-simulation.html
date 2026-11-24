@@ -476,9 +476,10 @@ rcoulomb      = 1.0
 rvdw          = 1.0
 </code></pre></div>
 
-<p>The reason for the change: with <code>coulombtype = PME</code> and a solute that still has a net charge, <code>gmx grompp</code> gives a warning about the net charge, and a warning stops it from writing the output. Neutralising the box is what the next command is for, so at this one step a plain cutoff is used. The other lines are explained with <code>em.mdp</code> in Step 5.</p>
-<p>When <code>gmx genion</code> runs, it stops and asks which group of molecules it may replace by ions. Choose the group of the water molecules, which GROMACS calls <code>SOL</code>.</p>
-<p>(The status of this file and of the two equilibration files further down is stated in the box under "The equilibration input files".)</p>
+<p>The reason for the change: with <code>coulombtype = PME</code> and a solute that still has a net charge, <code>gmx grompp</code> gives a warning about the net charge, and a warning stops it from writing the output. In the test described further down, on a protein with a net charge of <span class="math-inline">\(+8\,e\)</span>, <code>em.mdp</code> at this step gave "You are using Ewald electrostatics in a system with net charge" and then "Too many warnings (1)", and no <code>.tpr</code> file was written. Neutralising the box is what the next command is for, so at this one step a plain cutoff is used. The other lines are explained with <code>em.mdp</code> in Step 5.</p>
+<p>With <code>ions.mdp</code>, <code>gmx grompp</code> prints two notes and carries on: one says that the system has a non-zero total charge, the other that a plain Coulomb cutoff might produce artefacts. Both are expected here. A note is information, and only a warning or an error stops the program.</p>
+<p>When <code>gmx genion</code> runs, it prints the list of groups, asks "Select a group" and waits. Choose the group of the water molecules, which GROMACS calls <code>SOL</code>. Afterwards the last lines of <code>topol.top</code> list the ions that were added. In the test they were 26 <code>NA</code> and 34 <code>CL</code>: eight more chloride ions than sodium ions, which cancels the charge of <span class="math-inline">\(+8\,e\)</span>.</p>
+<p>(How these files were tested is stated in the box under "The equilibration input files".)</p>
 <h3 id="how-large-is-the-box">How large is the box?</h3>
 <p>The box decides the cost of everything that follows, because most of the atoms in it are water (<a href="06-force-field-parameters.html">Module 6</a> puts water at 80 to 90 % of the atoms). Two numbers fix its size: the largest dimension of the solute and the <strong>padding</strong>, the layer of solvent you leave between the solute and the box face.</p>
 <p>The solute tumbles during the run, so its longest dimension can point in any direction. The box must leave the padding on both sides of that dimension:</p>
@@ -789,8 +790,10 @@ gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </sp
 <p>To look at what a run produced, use <code>gmx energy</code>. For example, <code>gmx energy -f nvt.edr -o temperature.xvg</code> reads the energy file of the NVT run (<code>nvt.edr</code>, written by <code>mdrun</code>), lists the quantities stored in it, asks which one you want (temperature, pressure, density, potential energy and others) and writes it as a table against time. These are the plots behind the checks of the two stages.</p>
 <h3 id="the-equilibration-input-files">The equilibration input files</h3>
 <p>The files <code>nvt.mdp</code> and <code>npt.mdp</code> differ from the production file of the next section in four ways. Both runs are short, and both have the position restraints on. The NVT file has no barostat and asks for new velocities. The NPT file has the barostat on and continues from the NVT checkpoint. Here they are in full. Every line that also occurs in <code>md.mdp</code> has the same value there and is explained in the next section, so only the lines that differ are explained here.</p>
-<div class="box warn">
-<p><strong>Status of these files.</strong> <code>em.mdp</code> and <code>md.mdp</code> were checked when the course was first written. <code>ions.mdp</code>, <code>nvt.mdp</code> and <code>npt.mdp</code> were added later. Every setting in them was compared with the GROMACS documentation (the page on <code>.mdp</code> options), but the three files have not yet been run for this course. If <code>gmx grompp</code> prints a warning or an error with one of them, read it: it names the setting it objects to.</p>
+<div class="box key">
+<p><strong>How these files were tested.</strong> The five parameter files of this module (<code>ions.mdp</code>, <code>em.mdp</code>, <code>nvt.mdp</code>, <code>npt.mdp</code>, <code>md.mdp</code>) were taken from this page as printed and passed through <code>gmx grompp</code> of GROMACS 2026.1, after the build commands of Steps 2 to 4, on hen egg-white lysozyme (PDB entry 1AKI, 129 residues, net charge <span class="math-inline">\(+8\,e\)</span>, crystal water removed). All five were accepted without a warning, and each produced its <code>.tpr</code> file.</p>
+<p>Two things were not tested. No simulation was run from the files (<code>gmx mdrun</code>), so the test shows that the settings are valid and consistent with each other, and not how a run behaves. And because there was no run, the structure with ions stood in for <code>em.gro</code> and <code>nvt.gro</code>, and the option <code>-t nvt.cpt</code> was left out.</p>
+<p>With <code>nvt.mdp</code> and <code>npt.mdp</code>, <code>gmx grompp</code> prints one note: removing the centre-of-mass motion while position restraints are on "might cause artifacts", which it calls usually negligible when a macromolecule is equilibrated. That note is expected. If you see a warning or an error with your own system, read it: it names the setting it objects to.</p>
 </div>
 <div class="code"><pre><span></span><code>; nvt.mdp : equilibration at constant volume, 100 ps, solute restrained
 define                  = -DPOSRES      ; switch on the position restraints of posre.itp
@@ -947,7 +950,7 @@ gen-vel                 = no            ; velocities come from the NVT checkpoin
 </tr>
 <tr>
 <td><code>refcoord-scaling = all</code></td>
-<td>When the barostat rescales the box, the reference positions of the restraints are rescaled with it. With the default, <code>no</code>, the reference positions stay where they were while the box changes around them, and the documentation warns that the pressure may then be ill defined.</td>
+<td>When the barostat rescales the box, the reference positions of the restraints are rescaled with it. With the default, <code>no</code>, the reference positions stay where they were while the box changes around them, and the documentation warns that the pressure may then be ill defined. In the test, <code>gmx grompp</code> refused the file with <code>no</code>: "You are using pressure coupling with absolute position restraints, this will give artifacts. Use the refcoord_scaling option."</td>
 <td>new</td>
 </tr>
 <tr>
