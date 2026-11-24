@@ -46,11 +46,11 @@ The module has four layers:
 The commands and input files are shown exactly as you would type them. After each block, a table explains every option and names the module in which the idea behind it was introduced. The few formulas are arithmetic: how many ions, how large a box, how many steps.
 
 <div class="box key" markdown="1">
-**Run it yourself.** A notebook for Google Colab runs this whole workflow on a real protein, hen egg-white lysozyme (PDB entry 1AKI), with OpenMM on a free GPU. It downloads the structure, cleans it, adds water and ions, minimises, equilibrates with the protein restrained, runs 1 ns of production and analyses the trajectory (RMSD, radius of gyration, flexibility of each residue, error bars, a movie). It needs a Google account and nothing installed on your computer.
+**Run it yourself.** Two notebooks for Google Colab run this whole workflow on a real protein, hen egg-white lysozyme (PDB entry 1AKI), on a free GPU. One uses the GROMACS commands and the five parameter files of this lesson, exactly as printed here. The other uses OpenMM. Each downloads the structure, builds the box with water and ions, minimises, equilibrates with the protein restrained, runs 1 ns of production and analyses the trajectory (RMSD, radius of gyration, flexibility of each residue, an error bar, a movie). They need a Google account and nothing installed on your computer.
 
-<a class="btn" href="https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb" target="_blank" rel="noopener">Open the notebook in Google Colab</a>
+<a class="btn" href="https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_gromacs.ipynb" target="_blank" rel="noopener">Open the GROMACS notebook in Colab</a> <a class="btn" href="https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb" target="_blank" rel="noopener">Open the OpenMM notebook in Colab</a>
 
-The notebook is a file in the repository of this course ([see it on GitHub](https://github.com/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb)). It was run from start to finish on Colab with a T4 GPU on 24 November 2026: the whole notebook took under ten minutes, of which 4.5 minutes for the 1 ns production run (about 320 ns per day).
+Both notebooks are files in the repository of this course (see them on GitHub: [GROMACS](https://github.com/jpigles/md-course/blob/main/notebooks/md_lysozyme_gromacs.ipynb), [OpenMM](https://github.com/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb)). Both were run from start to finish on Colab with a T4 GPU on 24 November 2026. The GROMACS notebook took about twelve minutes: two to install GROMACS, under seven for the 1 ns production run (about 210 ns per day). The OpenMM notebook took under ten minutes, of which 4.5 for the production run (about 320 ns per day).
 </div>
 
 ### How to read the commands and the files
@@ -666,7 +666,7 @@ The files `nvt.mdp` and `npt.mdp` differ from the production file of the next se
 <div class="box key" markdown="1">
 **How these files were tested.** The five parameter files of this module (`ions.mdp`, `em.mdp`, `nvt.mdp`, `npt.mdp`, `md.mdp`) were taken from this page as printed and passed through `gmx grompp` of GROMACS 2026.1, after the build commands of Steps 2 to 4, on hen egg-white lysozyme (PDB entry 1AKI, 129 residues, net charge $+8\,e$, crystal water removed). All five were accepted without a warning, and each produced its `.tpr` file.
 
-Two things were not tested. No simulation was run from the files (`gmx mdrun`), so the test shows that the settings are valid and consistent with each other, and not how a run behaves. And because there was no run, the structure with ions stood in for `em.gro` and `nvt.gro`, and the option `-t nvt.cpt` was left out.
+The files were then run for real. The GROMACS notebook linked at the top of this module takes them from this page and runs every stage with `gmx mdrun` (GROMACS 2026.3 on a GPU): the minimisation, 100 ps at constant volume, 100 ps at constant pressure and a production run. Only one line was changed for that run: `nsteps` in `md.mdp`, from 100 ns to 1 ns. Every stage finished without a warning or an error. The minimisation converged in 773 steps, the temperature held at 300 K, and the density settled near 1,015 kg/m$^3$.
 
 With `nvt.mdp` and `npt.mdp`, `gmx grompp` prints one note: removing the centre-of-mass motion while position restraints are on "might cause artifacts", which it calls usually negligible when a macromolecule is equilibrated. That note is expected. If you see a warning or an error with your own system, read it: it names the setting it objects to.
 </div>
@@ -929,7 +929,7 @@ A **coupling time** $\tau$ has a concrete meaning for a thermostat or barostat o
 
 <div data-videos="hbQ_dfgWPc8 AlWsbbdUNC0 yLnjbjtRgdg 71snkHHku1c"></div>
 
-To run this for real, open the [Colab notebook](https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb) named at the top of this module. It runs the script below on lysozyme, one step at a time, with the restrained equilibration of steps 6 and 7 added and an analysis of the result.
+To run this for real, open the [OpenMM notebook](https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb) named at the top of this module. It runs the script below on lysozyme, one step at a time, with the restrained equilibration of steps 6 and 7 added and an analysis of the result.
 
 OpenMM runs the same steps from one Python script. There are no intermediate files: the structure, the topology and the settings are Python objects in memory. Read the script in four parts: build the system (steps 1 to 4), choose the physics (what the `.mdp` file did), minimise and equilibrate (steps 5 to 7), and produce (step 8).
 
