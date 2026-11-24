@@ -320,6 +320,157 @@ def parse_front(path):
     return meta, raw.lstrip("\n")
 
 # ----------------------------------------------------------------------------
+# the list of symbols, collected from the lists under the formulas
+# ----------------------------------------------------------------------------
+
+GREEK = ("alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi pi rho sigma tau "
+         "upsilon phi chi psi omega").split()
+GREEK_CANON = {"varepsilon": "epsilon", "vartheta": "theta", "varphi": "phi", "varrho": "rho"}
+GREEK_CAPS = {"gamma", "delta", "theta", "lambda", "xi", "pi", "sigma", "phi", "psi", "omega"}
+SYM_STRIP = re.compile(
+    r"\\(?:mathbf|boldsymbol|bm|mathrm|mathcal|mathbb|mathsf|mathit|tilde|hat|bar|dot|ddot|vec|overline|underline|"
+    r"left|right|big|Big|bigg|Bigg|bigl|bigr|Bigl|Bigr|tfrac|dfrac|frac|sqrt|text|operatorname|displaystyle|"
+    r"partial|ln|log|exp|min|max|quad|qquad)(?![A-Za-z])")
+SYM_OPS = set("sum prod int oint nabla equiv approx propto cdot times langle le leq ge geq ll gg sim simeq to infty pm "
+              "mp in ne neq leftarrow rightarrow ldots dots cdots lvert lVert vert Vert mid circ".split())
+
+
+def symbol_group(head):
+    """(sort key, label) of the group a symbol is filed under, or None when the item is not a symbol."""
+    m = re.search(r"(?<!\\)\$(.+?)(?<!\\)\$", head)
+    if not m:
+        return None
+    tex = m.group(1).strip()
+    first = re.match(r"\\([A-Za-z]+)", tex)
+    if (first and first.group(1) in SYM_OPS) or tex[:1] in "|{[(<=+-/\\" and not first:
+        return ("~", "Signs and operators")
+    t = SYM_STRIP.sub(" ", tex)
+    t = re.sub(r"\\Delta\s*(?=[A-Za-z\\])", " ", t)      # Delta G is filed under G
+    for tok in re.finditer(r"\\([A-Za-z]+)|([A-Za-z])", t):
+        if tok.group(1):
+            name = tok.group(1)
+            canon = GREEK_CANON.get(name.lower(), name.lower())
+            if canon in GREEK:
+                return (f"zz{GREEK.index(canon):02d}", canon)
+            if name == "ell":
+                return ("l", "L")
+            if name == "hbar":
+                return ("h", "H")
+            continue
+        return (tok.group(2).lower(), tok.group(2).upper())
+    return ("~", "Signs and operators")
+
+
+def collect_symbols(mods):
+    """One row per symbol and lesson: the first definition of that symbol in that lesson."""
+    from markdown.extensions.toc import slugify
+    rows, seen = [], set()
+    for m in mods:
+        section, sec_slug, inside, item, used = "", "", False, None, {}
+
+        def flush():
+            nonlocal item
+            if item:
+                text = " ".join(item.split())
+                in_math, cut = False, -1
+                for i, ch in enumerate(text):
+                    if ch == "$" and (i == 0 or text[i - 1] != "\\"):
+                        in_math = not in_math
+                    elif ch == ":" and not in_math:
+                        cut = i
+                        break
+                if cut > 0:
+                    head, meaning = text[:cut].strip(), text[cut + 1:].strip()
+                    g = symbol_group(head)
+                    key = (re.sub(r"\s+", "", head), m["slug"])
+                    if g and meaning and key not in seen:
+                        seen.add(key)
+                        rows.append({"head": head, "meaning": meaning, "group": g, "num": int(m["num"]),
+                                     "slug": m["slug"], "section": section, "anchor": sec_slug})
+            item = None
+
+        in_fence = False
+        for ln in m["raw"].splitlines():
+            s = ln.strip()
+            if s.startswith("```"):
+                in_fence = not in_fence
+            if in_fence:
+                continue
+            h = re.match(r"#{1,6} (.+)", s)
+            if h and not inside:
+                title = re.sub(r"\s*\{[#.][^}]*\}\s*$", "", h.group(1)).strip()
+                if "$" in title:
+                    section, sec_slug = "", ""
+                else:
+                    base = slugify(html.unescape(re.sub(r"[*`]", "", title)), "-")
+                    n = used.get(base, 0)
+                    used[base] = n + 1
+                    section, sec_slug = re.sub(r"[*`]", "", title), (base if n == 0 else f"{base}_{n}")
+            if s.startswith('<div class="legend"'):
+                inside = True
+                continue
+            if inside and s.startswith("</div"):
+                flush()
+                inside = False
+                continue
+            if inside:
+                if s.startswith("- "):
+                    flush()
+                    item = s[2:]
+                elif s and item is not None:
+                    item += " " + s
+        flush()
+    return rows
+
+
+def cells_to_html(cells):
+    """Convert many short Markdown fragments (with maths) in one pass."""
+    body, _ = md_to_html("\n\n@@CELLSEP@@\n\n".join(cells))
+    parts = [re.sub(r"^<p>|</p>$", "", p.strip()) for p in re.split(r"<p>@@CELLSEP@@</p>", body)]
+    if len(parts) != len(cells):                      # a fragment was read as a block: convert one by one
+        parts = [re.sub(r"^<p>|</p>$", "", md_to_html(c)[0].strip()) for c in cells]
+    return parts
+
+
+def symbol_table(mods, built):
+    rows = collect_symbols(mods)
+    rows.sort(key=lambda r: (r["group"][0], re.sub(r"[^a-z0-9]", "", r["head"].lower()), r["head"], r["num"]))
+    cells = cells_to_html([r["head"] for r in rows] + [r["meaning"] for r in rows])
+    heads, means = cells[:len(rows)], cells[len(rows):]
+    groups, order = {}, []
+    for r, hd, mn in zip(rows, heads, means):
+        if r["group"] not in groups:
+            groups[r["group"]] = []
+            order.append(r["group"])
+        frag = f'#{r["anchor"]}' if r["anchor"] and f'id="{r["anchor"]}"' in built.get(r["slug"], "") else ""
+        where = f'Module {r["num"]}' + (f': {E(r["section"])}' if r["section"] else "")
+        groups[r["group"]].append(
+            f'<tr data-s="{E((r["head"] + " " + r["meaning"]).lower())}"><td class="sym">{hd}</td><td>{mn}</td>'
+            f'<td class="where"><a href="{r["slug"]}.html{frag}">{where}</a></td></tr>')
+
+    def label(g):
+        key, name = g
+        if key.startswith("zz"):
+            cap = f' <span class="math-inline">\\(\\{name.capitalize()}\\)</span>' if name in GREEK_CAPS else ""
+            return f'<span class="math-inline">\\(\\{name}\\)</span>{cap} {name}'
+        return E(name)
+
+    def gid(g):
+        return "sym-" + re.sub(r"[^a-z]", "", g[1].lower() if g[0] != "~" else "signs")
+
+    out = ['<div class="symfilter"><input id="symFilter" type="search" autocomplete="off" '
+           'placeholder="Type a letter or a name: lambda, sigma, k_B, tau" aria-label="Filter the list of symbols">'
+           '<span id="symCount"></span></div>',
+           '<p class="symjump">' + " ".join(
+               f'<a href="#{gid(g)}">{label(g) if g[0].startswith("zz") else E(g[1] if g[0] != "~" else "signs")}</a>'
+               for g in order) + "</p>"]
+    for g in order:
+        out.append(f'<div class="symgroup"><h3 id="{gid(g)}">{label(g)}</h3><table class="symtab"><thead><tr>'
+                   f'<th>Symbol</th><th>Meaning</th><th>Defined in</th></tr></thead><tbody>'
+                   + "".join(groups[g]) + "</tbody></table></div>")
+    return "\n".join(out), len(rows)
+
+# ----------------------------------------------------------------------------
 # page template
 # ----------------------------------------------------------------------------
 
@@ -340,7 +491,7 @@ PAGE = """<!doctype html>
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
@@ -379,7 +530,8 @@ def build():
         meta.setdefault("slug", p.stem)
         (mods if meta.get("num") else extras).append(meta)
     mods.sort(key=lambda m: int(m["num"]))
-    order = {"index": 0, "toy-data": 1, "projects": 2, "formula-sheet": 3, "library": 4, "sources": 5}
+    order = {"index": 0, "maths": 1, "physics": 2, "symbols": 3, "toy-data": 4, "projects": 5,
+             "formula-sheet": 6, "library": 7, "sources": 8}
     registry = load_video_registry(videos)
     by_key = {p["key"]: p for p in papers}
     extras.sort(key=lambda m: order.get(m["slug"], 9))
@@ -483,7 +635,7 @@ def build():
                 f'<a class="sv" data-yt="{vid}" href="https://www.youtube.com/watch?v={vid}" target="_blank" rel="noopener" '
                 f'title="{E(r["course"])}"><span class="sv-play">&#9654;</span><span class="sv-t">{E(r["title"])}</span>'
                 f'<span class="sv-m">{E(meta)}</span></a>')
-        return '<div class="secvideos"><span class="sv-label">Watch for this part</span>' + "".join(items) + "</div>"
+        return '<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span>' + "".join(items) + "</div>"
 
     def cite_link(match):
         key = match.group(1)
@@ -495,6 +647,7 @@ def build():
         return f'href="{E(link)}" class="cite" target="_blank" rel="noopener" title="{E(tip)}"'
 
     allpages = mods + extras
+    built = {}
     for m in allpages:
         raw = m["raw"]
         vt = [int(x) for x in re.findall(r"\d+", m.get("videos", ""))]
@@ -514,6 +667,9 @@ def build():
             "LIB_PAPERS": library_papers(),
         }
         blocks.update(counts)
+        if "{{SYMBOL_TABLE}}" in raw or "{{N_SYMBOLS}}" in raw:
+            table, n_sym = symbol_table(mods, built)
+            blocks["SYMBOL_TABLE"], blocks["N_SYMBOLS"] = table, f"{n_sym:,}"
         for k, v in blocks.items():
             body = body.replace("<p>{{" + k + "}}</p>", v).replace("{{" + k + "}}", v)
         body = re.sub(r'<div data-videos="([^"]*)"></div>', section_videos, body)
@@ -522,6 +678,7 @@ def build():
         if left:
             raise SystemExit(f"unfilled placeholder in {m['slug']}: {left[:3]}")
 
+        built[m["slug"]] = body
         is_mod = bool(m.get("num"))
         if is_mod:
             i = mods.index(m)
