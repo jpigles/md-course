@@ -45,6 +45,53 @@ In the reference lists, a paper that was read carries the label <span class="tag
 
 **Module 18** was written the other way round: from evidence files built by reading the literature first, with a page reference for every number.
 
+## The rewrite that made the lessons self-contained
+
+The first published version was correct but compressed. A reader reported three things: the lessons could not be followed without the videos, new physics and mathematics were not explained for someone who is not a physicist, and the letters in the formulas were not defined. In November 2026 all 18 lessons were rewritten to answer this, and three pages were added (the maths toolbox, the physics primer and the list of symbols).
+
+**What was added.** Each section now opens in plain words. Every new idea from physics or mathematics is explained from the beginning where it is first needed, in a box of its own with a small worked example. Derivations give every step. Under every displayed formula a list says what each letter and sign means: {{N_SYMBOLS}} definitions in the 18 lessons. The lessons grew to between five and eight times their first length.
+
+**How the checked text was protected.** The writers were told to keep every checked statement and to add around it. A program then compared each rewritten lesson with its checked original: every original equation, number, citation link, heading and lecture link had to be present, and the original sentences that were no longer present word for word were listed for the referee. No writer was allowed to add a statement about a paper, a program or a model from memory.
+
+**How the new text was checked.** Each rewritten lesson went to an independent referee that had not written it, and the two background pages and the formula sheet went to four more: 22 referees in all. Each referee re-derived every added formula, recomputed every added number (often with a short program or a small simulation), read every symbol list against its formula, and compared every added statement about a named method with the reading notes or the full text of the cited paper. The referee of Module 10 compared each explanation of a GROMACS or OpenMM option with the official documentation.
+
+| | Wrong | Misleading | Missing | Unclear |
+|---|---|---|---|---|
+| 18 lessons | 32 | 141 | 123 | 115 |
+| Maths toolbox and physics primer | 10 | 21 | 42 | 24 |
+| Formula sheet | 2 | 5 | 17 | 12 |
+
+"Missing" is mostly a symbol without a definition or a step without a reason. About 470 corrections were applied. The added derivations and numbers held up almost everywhere. The errors were in explanatory sentences and in incomplete symbol lists. Some examples of what was wrong in the new text:
+
+| Where | What the new text said | Corrected to |
+|---|---|---|
+| Module 2 | The demo "compares forward Euler with a symplectic method" | That demo shows phase-space area with and without friction; the comparison is in Module 4 |
+| Module 6 | "Each type of amino acid has its own correction map" (ff19SB) | The map depends on the type of amino acid; the paper has 16 maps for 20 amino acids |
+| Module 8 | The coupling time of a Langevin thermostat is $1/\gamma$ | The kinetic energy relaxes with $1/(2\gamma)$, twice as fast |
+| Module 11 | A bootstrap range from six values called a 95 % confidence interval | It holds the true mean about 87 % of the time; use the $t$ interval for few values |
+| Module 12 | The error rule $k_BT/\sqrt n$ "holds for the joined profile" | It gives only the scatter from bin to bin; the errors of the window constants add up along the profile |
+| Module 17 | The volume factor of a change of variables, inverted | The factor of the inverse map |
+
+**Statements of the first version that this round corrected.** The referees also read the original text again, and in Module 18 against its evidence files:
+
+| Where | What the published page said | Now |
+|---|---|---|
+| Module 18 | GPCRmd: 191 systems, 0.41 ms | 0.41 ms is the total of the 615 simulations on the platform |
+| Module 18 | Removing the language model "costs about thirty times more", beside a gain of 0.07 in correlation | Thirty times in mean squared error, not in correlation |
+| Module 18 | BioEmu finds 49 % of the open "apo" forms | "Open" is not in the source and was removed |
+| Module 18 | "The headroom for learning is a few hundredths" | About a tenth (0.09 to 0.12) |
+| Module 1 | The total energy wanders "because the force still has a small jump at the cutoff" | Mostly because of the time step: halving it made the wander nearly four times smaller in a test run |
+| Module 16 | $k_BT/h = 6.2\times10^{12}$ s$^{-1}$ at 300 K | $6.25\times10^{12}$ s$^{-1}$ |
+
+**What this does not cover.**
+
+- The new explanations were written by an AI system and checked by other instances of an AI system. No human expert has read them.
+- They are textbook material and were checked by derivation and computation, not against a textbook page by page.
+- A few one-line definitions of named methods rest on general knowledge and not on a source read for this course: the ECC charge scaling, the linear interaction energy method, OPES, Gaussian accelerated MD, what DSSP does, the shadow contact map, and the columns that MDAnalysis returns.
+- In Module 10 the input files `ions.mdp`, `nvt.mdp` and `npt.mdp` are new. Every setting was compared with the GROMACS documentation, but the files have not been run. The page says so next to them.
+- The referees worked on the source text. That every formula displays correctly was tested separately, in a browser, for all pages.
+- The length is deliberate. The cuts that the referees proposed were not made, because the reader asked for completeness.
+
 ## The references
 
 - **Papers.** Every DOI was looked up in Crossref twice, by two separate programs, and title, year and first author compared: 144 of 144 match. PubMed Central links were checked to point at the same DOI. The 60 references of Module 18 were checked against Crossref or the arXiv record.
@@ -64,8 +111,8 @@ The {{N_WIDGETS}} in-page simulations were each started and checked for errors i
 
 ## Where the records are
 
-In the repository: the referees' reports (`research/review_part1.md` to `review_part3.md`), the lists the pages are built from, and the short annotation of each paper that was read (`research/paper_notes.json`).
+In the repository: the referees' reports of the first version (`research/review_part1.md` to `review_part3.md`), the lists the pages are built from, the short annotation of each paper that was read (`research/paper_notes.json`), the lessons as they were before the rewrite (`research/modules_before_expand/`), and the rules and programs of the rewrite (`research/expand_brief.md`, `expand_review_brief.md`, `check_module.py`).
 
-Kept offline with the course sources, not published: the full reading note for each paper (`research/paper_notes/`), the evidence files behind Module 18 (`research/sota_partA.md`, `sota_partB.md`), and the papers themselves. The notes quote the papers, and those passages and files belong to the publishers.
+Kept offline with the course sources, not published: the full reading note for each paper (`research/paper_notes/`), the evidence files behind Module 18 (`research/sota_partA.md`, `sota_partB.md`), the referee reports of the rewrite (`research/expand_review/`), and the papers themselves. The notes and reports quote the papers, and those passages and files belong to the publishers.
 
 If you find an error, it is most likely in a statement about a paper that could not be read. Check the paper.

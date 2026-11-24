@@ -21,14 +21,24 @@ This course goes through all of it in order, with the derivations written out. I
 Each module has the same layout:
 
 1. **Goals**: what you will be able to do at the end.
-2. **Watch first**: lectures on YouTube for that topic, from full university courses down to short explainers. Inside the lesson, most sections also carry a strip called **Watch for this part**: the specific lectures that teach that section. Click one and it plays in the page.
-3. **The lesson**: the ideas and the mathematics, step by step, with worked numbers.
+2. **Lectures for this module**: lectures on YouTube for that topic, from full university courses down to short explainers. They are optional. The lesson is written to be complete without them, and they are there for when you want a second explanation. Inside the lesson, most sections also carry a strip called **Lectures on this part**: the specific lectures that teach that section. Click one and it plays in the page.
+3. **The lesson**: the ideas and the mathematics, step by step, with worked numbers. Each section starts in plain words. Every new idea from physics or mathematics is explained from the beginning where it first appears, in a box of its own. Under every displayed formula a list says what each letter in it means.
 4. **Try it**: in every module from 1 to 17, a simulation that runs in the page. Most of them let you download the data they generate, and the [toy data page](toy-data.html) shows what to do with it.
 5. **Check yourself**: short questions with answers hidden until you click.
 6. **Exercises**: things to derive, code and run.
 7. **Read** and **Key papers**: where to go deeper, with free sources marked.
 
 Tick "I have finished this module" at the bottom of each page and the sidebar keeps track of your progress (stored in your browser only).
+
+## If the mathematics or the physics is new to you
+
+You do not need to be a physicist to follow the course. Three pages are there for the background, and the lessons link to them at the places where they are needed:
+
+- the [maths toolbox](maths.html) explains every piece of mathematics the course uses, from "how to read a formula" and the derivative up to Fourier transforms and eigenvalues, each with a small worked example;
+- the [physics primer](physics.html) does the same for the physics: units, force and energy, temperature, entropy and free energy, charges, and why atoms can be treated as classical balls;
+- the [list of symbols](symbols.html) says what each letter stands for and in which module it is introduced.
+
+You can read the first two once before Module 1, or open them only when a lesson sends you there.
 
 ## Syllabus
 
@@ -68,5 +78,7 @@ Four books cover almost everything here at greater depth, and they complement ea
 The lessons were written by an AI system and then checked. Three independent referees re-derived the equations and recomputed the numbers, and every cited paper whose full text could be obtained legally (124 of the 144 in the main list) was read and compared with what the course says about it, equations included. Together they found 7 statements that were wrong and about 260 that were imprecise, and these were corrected. Papers that could not be read are not labelled as read. The full account, including what is still unverified, is on the page [How this course was checked](sources.html).
 
 Module 18 was written differently: from the papers first, with a source for every number.
+
+In November 2026 the lessons were rewritten so that they can be followed without the videos, with the background explained and every symbol defined. A program checked that no equation, number or citation of the checked text was lost. Each rewritten lesson then went to an independent referee, which re-derived the added formulas, recomputed the numbers and read every symbol list. The referees found about 540 problems, 44 of them statements that were wrong, and these were corrected. The new explanations have not been read by a human expert.
 
 The video, book and paper lists were compiled in November 2026. Linked videos, books and papers belong to their authors and publishers.
