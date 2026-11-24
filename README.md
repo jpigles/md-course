@@ -20,6 +20,7 @@ A self-study course on how molecular dynamics simulations work: the equations of
 |---|---|
 | `*.html`, `style.css`, `course.js` | The built site, served by GitHub Pages from the repository root |
 | `src/modules/*.md` | The source of every page: Markdown with LaTeX maths |
+| `notebooks/md_lysozyme_openmm.ipynb` | A notebook for Google Colab that runs the workflow of Module 10 for real: lysozyme in water with OpenMM on a GPU ([open in Colab](https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb)). `build_notebook.py` writes it, `run_local_test.py` runs it in a shortened form |
 | `src/build.py` | Turns the sources and the research lists into the HTML pages |
 | `src/style.css`, `src/course.js`, `src/demos2.js` | Stylesheet and the interactive demos |
 | `research/` | The verified lists of videos, books, notes, tutorials and papers that the pages are generated from; the short annotation of every paper that was read (`paper_notes.json`); the referees' reports (`review_part1.md` to `review_part3.md`); the rules and programs of the rewrite that made the lessons self-contained (`expand_brief.md`, `toolbox_brief.md`, `expand_review_brief.md`, `check_module.py`, `apply_expand_fixes.py`) |
