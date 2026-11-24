@@ -34,7 +34,7 @@ This notebook runs the workflow of [Module 10]({L10}) of the course *Molecular d
 | Program | [OpenMM](https://openmm.org), the second of the two programs of Module 10 |
 | Model | The settings of the OpenMM script in the lesson: Amber14 protein force field, TIP3P-FB water, particle-mesh Ewald, bonds to hydrogen constrained, 4 fs time step |
 | What runs | Minimisation, 100 ps at constant volume and 200 ps at constant pressure with the protein held in place, then 1 ns of production |
-| Time needed | About 10 minutes on the free GPU of Google Colab. Without a GPU it works too, but then shorten the run (see "Settings") |
+| Time needed | Under 10 minutes on the free T4 GPU of Google Colab (when this notebook was tested there, the 1 ns production run took 4.5 minutes). Without a GPU it works too, but then shorten the run (see "Settings") |
 
 **Before you start, switch the GPU on:** menu *Runtime*, *Change runtime type*, choose *T4 GPU*, *Save*. Then run the cells from top to bottom (Shift+Enter runs one cell, *Runtime > Run all* runs everything).
 
