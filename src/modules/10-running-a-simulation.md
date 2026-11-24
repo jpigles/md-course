@@ -289,11 +289,13 @@ rcoulomb      = 1.0
 rvdw          = 1.0
 ```
 
-The reason for the change: with `coulombtype = PME` and a solute that still has a net charge, `gmx grompp` gives a warning about the net charge, and a warning stops it from writing the output. Neutralising the box is what the next command is for, so at this one step a plain cutoff is used. The other lines are explained with `em.mdp` in Step 5.
+The reason for the change: with `coulombtype = PME` and a solute that still has a net charge, `gmx grompp` gives a warning about the net charge, and a warning stops it from writing the output. In the test described further down, on a protein with a net charge of $+8\,e$, `em.mdp` at this step gave "You are using Ewald electrostatics in a system with net charge" and then "Too many warnings (1)", and no `.tpr` file was written. Neutralising the box is what the next command is for, so at this one step a plain cutoff is used. The other lines are explained with `em.mdp` in Step 5.
 
-When `gmx genion` runs, it stops and asks which group of molecules it may replace by ions. Choose the group of the water molecules, which GROMACS calls `SOL`.
+With `ions.mdp`, `gmx grompp` prints two notes and carries on: one says that the system has a non-zero total charge, the other that a plain Coulomb cutoff might produce artefacts. Both are expected here. A note is information, and only a warning or an error stops the program.
 
-(The status of this file and of the two equilibration files further down is stated in the box under "The equilibration input files".)
+When `gmx genion` runs, it prints the list of groups, asks "Select a group" and waits. Choose the group of the water molecules, which GROMACS calls `SOL`. Afterwards the last lines of `topol.top` list the ions that were added. In the test they were 26 `NA` and 34 `CL`: eight more chloride ions than sodium ions, which cancels the charge of $+8\,e$.
+
+(How these files were tested is stated in the box under "The equilibration input files".)
 
 ### How large is the box?
 
@@ -653,8 +655,12 @@ To look at what a run produced, use `gmx energy`. For example, `gmx energy -f nv
 
 The files `nvt.mdp` and `npt.mdp` differ from the production file of the next section in four ways. Both runs are short, and both have the position restraints on. The NVT file has no barostat and asks for new velocities. The NPT file has the barostat on and continues from the NVT checkpoint. Here they are in full. Every line that also occurs in `md.mdp` has the same value there and is explained in the next section, so only the lines that differ are explained here.
 
-<div class="box warn" markdown="1">
-**Status of these files.** `em.mdp` and `md.mdp` were checked when the course was first written. `ions.mdp`, `nvt.mdp` and `npt.mdp` were added later. Every setting in them was compared with the GROMACS documentation (the page on `.mdp` options), but the three files have not yet been run for this course. If `gmx grompp` prints a warning or an error with one of them, read it: it names the setting it objects to.
+<div class="box key" markdown="1">
+**How these files were tested.** The five parameter files of this module (`ions.mdp`, `em.mdp`, `nvt.mdp`, `npt.mdp`, `md.mdp`) were taken from this page as printed and passed through `gmx grompp` of GROMACS 2026.1, after the build commands of Steps 2 to 4, on hen egg-white lysozyme (PDB entry 1AKI, 129 residues, net charge $+8\,e$, crystal water removed). All five were accepted without a warning, and each produced its `.tpr` file.
+
+Two things were not tested. No simulation was run from the files (`gmx mdrun`), so the test shows that the settings are valid and consistent with each other, and not how a run behaves. And because there was no run, the structure with ions stood in for `em.gro` and `nvt.gro`, and the option `-t nvt.cpt` was left out.
+
+With `nvt.mdp` and `npt.mdp`, `gmx grompp` prints one note: removing the centre-of-mass motion while position restraints are on "might cause artifacts", which it calls usually negligible when a macromolecule is equilibrated. That note is expected. If you see a warning or an error with your own system, read it: it names the setting it objects to.
 </div>
 
 ```
@@ -757,7 +763,7 @@ gen-vel                 = no            ; velocities come from the NVT checkpoin
 |---|---|---|
 | `continuation = yes` | The run continues the NVT run. The bonds to hydrogen already have their fixed lengths. | was `no` |
 | `pcoupl = C-rescale` and the four lines after it | The barostat is on, with the same settings as in `md.mdp`. | was `pcoupl = no` |
-| `refcoord-scaling = all` | When the barostat rescales the box, the reference positions of the restraints are rescaled with it. With the default, `no`, the reference positions stay where they were while the box changes around them, and the documentation warns that the pressure may then be ill defined. | new |
+| `refcoord-scaling = all` | When the barostat rescales the box, the reference positions of the restraints are rescaled with it. With the default, `no`, the reference positions stay where they were while the box changes around them, and the documentation warns that the pressure may then be ill defined. In the test, `gmx grompp` refused the file with `no`: "You are using pressure coupling with absolute position restraints, this will give artifacts. Use the refcoord_scaling option." | new |
 | `gen-vel = no` | Do not draw velocities again. They are read from `nvt.cpt`, which is given with `-t`. | was `yes` |
 
 **Where the restraints come from.** In GROMACS the restraints are prepared at step 2. Besides the topology, `gmx pdb2gmx` writes a file `posre.itp` with the list of restrained atoms and the spring constant, 1,000 kJ mol$^{-1}$ nm$^{-2}$ unless you ask for another value. The topology includes that file only when the name `POSRES` is defined, so the restraints are off unless the parameter file contains the line `define = -DPOSRES`. That line is in `nvt.mdp` and `npt.mdp` and absent from `md.mdp`. The reference positions are the coordinates of the file given to `gmx grompp` with `-r`.

@@ -88,7 +88,7 @@ The first published version was correct but compressed. A reader reported three 
 - The new explanations were written by an AI system and checked by other instances of an AI system. No human expert has read them.
 - They are textbook material and were checked by derivation and computation, not against a textbook page by page.
 - A few one-line definitions of named methods rest on general knowledge and not on a source read for this course: the ECC charge scaling, the linear interaction energy method, OPES, Gaussian accelerated MD, what DSSP does, the shadow contact map, and the columns that MDAnalysis returns.
-- In Module 10 the input files `ions.mdp`, `nvt.mdp` and `npt.mdp` are new. Every setting was compared with the GROMACS documentation, but the files have not been run. The page says so next to them.
+- In Module 10 the input files `ions.mdp`, `nvt.mdp` and `npt.mdp` are new. Every setting was compared with the GROMACS documentation. All five parameter files of the module were then taken from the page as printed and passed through `gmx grompp` of GROMACS 2026.1 on lysozyme (PDB entry 1AKI), after the build commands of the lesson. All were accepted without a warning. The test also confirmed two statements of the lesson: the minimisation file is refused at the ion step while the box has a net charge, and the constant-pressure file is refused without `refcoord-scaling`. No simulation was run from the files, so their behaviour in a run is not tested.
 - The referees worked on the source text. That every formula displays correctly was tested separately, in a browser, for all pages.
 - The length is deliberate. The cuts that the referees proposed were not made, because the reader asked for completeness.
 
