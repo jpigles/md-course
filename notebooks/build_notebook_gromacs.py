@@ -48,6 +48,7 @@ This notebook runs the GROMACS commands of [Module 10]({L10}) of the course *Mol
 | Program | [GROMACS](https://www.gromacs.org) 2026, the GPU build from conda-forge |
 | Model | The files of the lesson: Amber99SB-ILDN protein force field, TIP3P water, particle-mesh Ewald, bonds to hydrogen constrained, 2 fs time step |
 | What runs | Minimisation, 100 ps at constant volume and 100 ps at constant pressure with position restraints, then a production run (1 ns by default) |
+| Time needed | About 12 minutes on the free T4 GPU of Google Colab: 2 minutes to install GROMACS and under 7 for the 1 ns production run (about 210 ns per day when this notebook was tested there) |
 
 **Before you start, switch the GPU on:** menu *Runtime*, *Change runtime type*, choose *T4 GPU*, *Save*. Then run the cells from top to bottom (*Runtime > Run all*).
 
@@ -389,7 +390,7 @@ Lesson: Module 11 for the quantities and their error bars.
 GROMACS has a tool for each standard quantity. Each asks which atoms to use, and the answers are again typed by `echo` or `printf`.
 
 - `gmx energy` reads temperature, density and energies from the energy file.
-- `gmx rms` computes the RMSD: how far the backbone is from the minimised structure, after laying each frame on top of it.
+- `gmx rms` computes the RMSD: how far the backbone is from the minimised structure (the reference, `-s em.tpr`), after laying each frame on top of it.
 - `gmx gyrate` computes the radius of gyration, the overall size of the protein.
 - `gmx rmsf` computes how much each residue moves around its average position.
 """)
@@ -427,7 +428,7 @@ rmsf, _ = read_xvg("rmsf.xvg")            # residue number, RMSF in nm
 
 fig, axes = plt.subplots(1, 3, figsize=(15, 3.6))
 axes[0].plot(rmsd[:, 0], rmsd[:, 1] * 10)
-axes[0].set_xlabel("time (ns)"); axes[0].set_ylabel(r"backbone RMSD from the minimised structure ($\AA$)")
+axes[0].set_xlabel("time (ns)"); axes[0].set_ylabel(r"backbone RMSD ($\AA$)")
 axes[1].plot(gyr[:, 0], gyr[:, 1])
 axes[1].set_xlabel("time (ns)"); axes[1].set_ylabel("radius of gyration (nm)")
 axes[2].plot(rmsf[:, 0], rmsf[:, 1] * 10)
