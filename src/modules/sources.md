@@ -109,6 +109,8 @@ The first published version was correct but compressed. A reader reported three 
 
 The {{N_WIDGETS}} in-page simulations were each started and checked for errors in a browser, on a wide and a narrow screen. The umbrella-sampling demo recovers the exact potential to about 0.2 $k_BT$, the Liouville demo conserves area to about a percent, and the free-energy demo reproduces the exact answer with the acceptance-ratio estimator. They are teaching toys in reduced units, not research code.
 
+The Colab notebook of Module 10 is the opposite: a real simulation of lysozyme in water with OpenMM. It was run from start to finish twice: in a shortened form on a processor, and in full on Google Colab with a T4 GPU (OpenMM 8.6.1) on 24 November 2026, without an error. The run gave a protein charge of $+8\,e$, a temperature of 300.9 K, a density of 1.026 g/cm$^3$ and a radius of gyration of 1.43 nm, values that are reasonable for this protein and this water model. One run of 1 ns is a demonstration and not a measurement.
+
 ## Where the records are
 
 In the repository: the referees' reports of the first version (`research/review_part1.md` to `review_part3.md`), the lists the pages are built from, the short annotation of each paper that was read (`research/paper_notes.json`), the lessons as they were before the rewrite (`research/modules_before_expand/`), and the rules and programs of the rewrite (`research/expand_brief.md`, `expand_review_brief.md`, `check_module.py`).

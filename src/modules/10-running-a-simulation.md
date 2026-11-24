@@ -45,6 +45,14 @@ The module has four layers:
 
 The commands and input files are shown exactly as you would type them. After each block, a table explains every option and names the module in which the idea behind it was introduced. The few formulas are arithmetic: how many ions, how large a box, how many steps.
 
+<div class="box key" markdown="1">
+**Run it yourself.** A notebook for Google Colab runs this whole workflow on a real protein, hen egg-white lysozyme (PDB entry 1AKI), with OpenMM on a free GPU. It downloads the structure, cleans it, adds water and ions, minimises, equilibrates with the protein restrained, runs 1 ns of production and analyses the trajectory (RMSD, radius of gyration, flexibility of each residue, error bars, a movie). It needs a Google account and nothing installed on your computer.
+
+<a class="btn" href="https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb" target="_blank" rel="noopener">Open the notebook in Google Colab</a>
+
+The notebook is a file in the repository of this course ([see it on GitHub](https://github.com/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb)). It was run from start to finish on Colab with a T4 GPU on 24 November 2026: the whole notebook took under ten minutes, of which 4.5 minutes for the 1 ns production run (about 320 ns per day).
+</div>
+
 ### How to read the commands and the files
 
 GROMACS is a collection of command-line tools. Each one is started by typing `gmx`, then the name of the tool, then its options. OpenMM is a Python library: you write a short script and run it. The conventions below are enough to read every block in this module.
@@ -920,6 +928,8 @@ A **coupling time** $\tau$ has a concrete meaning for a thermostat or barostat o
 ### The same workflow in OpenMM
 
 <div data-videos="hbQ_dfgWPc8 AlWsbbdUNC0 yLnjbjtRgdg 71snkHHku1c"></div>
+
+To run this for real, open the [Colab notebook](https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb) named at the top of this module. It runs the script below on lysozyme, one step at a time, with the restrained equilibration of steps 6 and 7 added and an analysis of the result.
 
 OpenMM runs the same steps from one Python script. There are no intermediate files: the structure, the topology and the settings are Python objects in memory. Read the script in four parts: build the system (steps 1 to 4), choose the physics (what the `.mdp` file did), minimise and equilibrate (steps 5 to 7), and produce (step 8).
 
