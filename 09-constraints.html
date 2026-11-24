@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li class="current" data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 9 of 18 &middot; about 4 hours</div><h1>Constraints, freezing the fastest motions</h1><p class="lede">Derive constrained dynamics with Lagrange multipliers, understand how SHAKE, RATTLE, SETTLE and LINCS solve it, and know what hydrogen mass repartitioning and virtual sites do to the time step.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#why-constrain">Why constrain</a></li><li><a href="#constrained-equations-of-motion">Constrained equations of motion</a></li><li><a href="#shake">SHAKE</a></li><li><a href="#settle">SETTLE</a></li><li><a href="#lincs">LINCS</a></li><li><a href="#consequences-for-the-statistics">Consequences for the statistics</a></li><li><a href="#going-beyond-2-fs">Going beyond 2 fs</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#why-constrain">Why constrain</a></li><li><a href="#constrained-equations-of-motion">Constrained equations of motion</a></li><li><a href="#shake">SHAKE</a></li><li><a href="#settle">SETTLE</a></li><li><a href="#lincs">LINCS</a></li><li><a href="#consequences-for-the-statistics">Consequences for the statistics</a></li><li><a href="#going-beyond-2-fs">Going beyond 2 fs</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -36,63 +36,748 @@
 <li>explain how hydrogen mass repartitioning allows a 4 fs time step.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=--zH0AJjVqk" target="_blank" rel="noopener">Understanding the SHAKE Algorithm in LAMMPS</a><span class="res-meta">Soumyashree Das Adhikari &middot; Video, 8 min, intro</span><span class="res-why">Short practical explanation of SHAKE in LAMMPS.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=N2Lf-U8aIgM" target="_blank" rel="noopener">05 Constraint algorithms in MD simulations</a><span class="res-meta">SDU Odense &middot; channel: Videos Used in Teaching at SDU, Odense &middot; Video, 12 min, intermediate</span><span class="res-why">Short lecture on constraint algorithms in MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=_zwgPkBeO_I" target="_blank" rel="noopener">Molecular dynamics under (holonomic) constraints - J.P. Ryckaert, G. Ciccotti - CECAM-MARVEL lecture</a><span class="res-meta">J.P. Ryckaert and G. Ciccotti (CECAM-MARVEL) &middot; channel: Materials Cloud &middot; Video, 160 min, advanced</span><span class="res-why">Talk by the SHAKE authors on molecular dynamics under holonomic constraints.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=9Vj7h1TJePw" target="_blank" rel="noopener">SHAKE method</a><span class="res-meta">Melvin Leok &middot; Video, 13 min, advanced</span><span class="res-why">Mathematical lecture on the SHAKE method for holonomic constraints.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>An MD program moves the atoms forward in small jumps of time. The length of one jump, the time step, is set by the fastest motion in the system. In a biomolecule the fastest motion is the vibration of the bonds to hydrogen, and it tells you nothing about folding, binding or any other slow process. This module is about removing it. Each of these bonds is replaced by a rigid rod of fixed length, and the time step can then be doubled.</p>
+<p>The idea fits in one sentence. The work is in carrying it out inside an integrator, because the force field has no formula for the force of a rod. The program has to find, at every step, the forces that the rods exert on the atoms, from the single requirement that the bond lengths stay fixed.</p>
+<p>The module has five layers:</p>
+<ol>
+<li><strong>Why.</strong> Why bonds to hydrogen limit the time step, and why freezing them is acceptable physics.</li>
+<li><strong>The theory.</strong> A constraint as an equation that the positions must satisfy, the force that enforces it, and the Lagrange multiplier, which is the unknown strength of that force.</li>
+<li><strong>The algorithms.</strong> SHAKE and RATTLE correct one bond at a time and repeat. SETTLE is an exact formula for water. LINCS treats all bonds at once with matrices.</li>
+<li><strong>The consequences.</strong> What constraints do to the temperature, the pressure and the probabilities that a simulation reports.</li>
+<li><strong>Beyond 2 fs.</strong> Heavier hydrogens and virtual sites.</li>
+</ol>
+<p>The matrix part of LINCS is the heaviest. On a first reading, the one-bond version at the start of that section is enough, and the matrices can wait.</p>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula in this module is followed by a list that says what each letter in it means. The notation in the table first appears in this module. The general conventions (bold letters for vectors, dots for time derivatives, the sum sign) are explained in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(\mathbf r_{ij}\)</span></td>
+<td>The vector that points from atom <span class="math-inline">\(j\)</span> to atom <span class="math-inline">\(i\)</span>, <span class="math-inline">\(\mathbf r_i-\mathbf r_j\)</span>. For two bonded atoms it is the <strong>bond vector</strong>, and its length is the bond length.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\vert\mathbf a\vert\)</span>, <span class="math-inline">\(\vert\mathbf a\vert^2\)</span></td>
+<td>The length of the vector <span class="math-inline">\(\mathbf a\)</span>, and that length squared, <span class="math-inline">\(a_x^2+a_y^2+a_z^2\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf r'\)</span>, <span class="math-inline">\(\mathbf s'\)</span></td>
+<td>A prime marks a position or a bond vector after a step taken without the constraints, before it has been corrected. In this module a prime is never a derivative.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\hat{\mathbf s}\)</span></td>
+<td>A hat marks a <strong>unit vector</strong>: a vector of length 1, which only gives a direction.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\sigma_k\)</span></td>
+<td>The constraint function of constraint number <span class="math-inline">\(k\)</span>. It is zero when bond <span class="math-inline">\(k\)</span> has its target length.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\Delta t\)</span></td>
+<td>The time step, the amount of time by which the simulation advances in one step.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf B\)</span>, <span class="math-inline">\(\mathbf M\)</span>, <span class="math-inline">\(\mathbf A\)</span>, <span class="math-inline">\(\mathbf S\)</span></td>
+<td>A bold capital letter is a <strong>matrix</strong>, a rectangular table of numbers.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf B^T\)</span></td>
+<td>The <strong>transpose</strong> of <span class="math-inline">\(\mathbf B\)</span>: the same table with rows and columns exchanged.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf M^{-1}\)</span></td>
+<td>The <strong>inverse</strong> of <span class="math-inline">\(\mathbf M\)</span>: the matrix that undoes what <span class="math-inline">\(\mathbf M\)</span> does.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf 1\)</span></td>
+<td>The <strong>identity matrix</strong>, with ones on the diagonal and zeros elsewhere. Multiplying by it changes nothing.</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Letters that mean two things.</strong> <span class="math-inline">\(\sigma\)</span> is the constraint function here. In Module 5 it is a length in the Lennard-Jones potential, and in statistics it is a standard deviation. <span class="math-inline">\(\lambda\)</span> is the Lagrange multiplier here, the Lyapunov exponent in Module 2 and the coupling parameter in Module 13. <span class="math-inline">\(k\)</span> is the number of a constraint, not a spring constant. <span class="math-inline">\(d\)</span> is a bond length (<span class="math-inline">\(d_k\)</span> for bond <span class="math-inline">\(k\)</span>, and <span class="math-inline">\(\mathbf d\)</span> for the list of all of them), not the <span class="math-inline">\(d\)</span> of a derivative such as <span class="math-inline">\(d/dt\)</span>. <span class="math-inline">\(K\)</span> is the number of constraints in the LINCS section and the kinetic energy in the sections on temperature and pressure. A superscript <span class="math-inline">\(T\)</span> on a matrix means "transpose", while <span class="math-inline">\(T\)</span> on its own is the temperature. Small <span class="math-inline">\(\mathbf s\)</span> is a bond vector and capital <span class="math-inline">\(\mathbf S\)</span> is a matrix. <span class="math-inline">\(p\)</span> is the target for a projection in the LINCS section, while bold <span class="math-inline">\(\mathbf p_i\)</span> is a momentum in the section on hydrogen mass repartitioning. <span class="math-inline">\(l\)</span> is the length of a bond, except in "entry <span class="math-inline">\((k,l)\)</span>" of a matrix, where it is the number of a second constraint.</p>
+</div>
 <h2 id="why-constrain">Why constrain</h2>
+<p>A simulation advances in jumps of time. The length of one jump is the <strong>time step</strong>, <span class="math-inline">\(\Delta t\)</span>, measured in femtoseconds (1 fs is <span class="math-inline">\(10^{-15}\)</span> s, or 0.001 ps). One step costs about the same computer time whatever its length, because nearly all of the cost is the calculation of the forces. A longer time step therefore gives more simulated time for the same cost.</p>
+<p>The limit comes from the fastest vibration in the system. <a href="04-integrators.html">Module 4</a> shows that the integrator becomes unstable, with an energy that grows without bound, when <span class="math-inline">\(\Delta t\)</span> is longer than about a third of the period of that vibration, and that in practice one uses 10 to 20 steps per period. So to know how long the time step can be, you have to know which motion is the fastest.</p>
+<p>For two atoms joined by a bond that behaves like a spring, <a href="02-classical-mechanics.html">Module 2</a> gave the angular frequency <span class="math-inline">\(\omega = \sqrt{k_b/\mu}\)</span>. Here <span class="math-inline">\(k_b\)</span> is the stiffness of the spring and <span class="math-inline">\(\mu = m_1m_2/(m_1+m_2)\)</span> is the reduced mass of the two atoms. It is always smaller than the lighter of the two masses, and close to it when the other atom is much heavier. The period of one oscillation is <span class="math-inline">\(2\pi/\omega\)</span>.</p>
+<p>A stiff spring and a light atom both make the vibration fast. Covalent bonds are the stiffest springs in a force field and hydrogen is the lightest atom, so bonds to hydrogen are the fastest motion in a biomolecule. The worked example of Module 2 found a period of 11.4 fs for a C-H bond.</p>
 <p>The time step is limited by the fastest vibration (Module 4). Bonds to hydrogen vibrate with a period near 10 fs and force <span class="math-inline">\(\Delta t\approx1\)</span> fs. These vibrations:</p>
 <ul>
 <li>are almost decoupled from the slow conformational motions we care about;</li>
 <li>have <span class="math-inline">\(\hbar\omega\approx14\,k_BT\)</span>, so in reality they sit in their quantum ground state. A rigid bond is arguably a better classical model of a quantum oscillator in its ground state than a classical spring carrying <span class="math-inline">\(k_BT\)</span> of energy.</li>
 </ul>
-<p>Fixing the bond lengths removes them and allows 2 fs: twice the simulation for the same cost. The usual choices are <code>h-bonds</code> (only bonds involving hydrogen), which is the standard for AMBER and CHARMM force fields, and <code>all-bonds</code>. Bond <em>angles</em> are not usually constrained in proteins, because angle bending is coupled to torsional transitions and freezing it changes barrier heights noticeably. Water is the exception: the common water models are defined as fully rigid.</p>
+<p>These two points are the reason why freezing the bonds is acceptable physics, so each gets a closer look.</p>
+<p><strong>Decoupled.</strong> Two motions are coupled when energy passes easily from one to the other. That happens when their rhythms are similar, in the way that a child's swing only gains height when you push in time with it. A bond to hydrogen completes almost ninety oscillations in one picosecond (1000 fs divided by 11.4 fs), while a change of conformation takes from picoseconds to far longer. The slow motion feels only the average length of the bond. The average of a small, fast oscillation is very nearly a fixed length, which is what a rod has.</p>
+<p><strong>In the quantum ground state.</strong> This point needs one idea from quantum mechanics.</p>
+<div class="box physics">
+<p><strong>Physics you need here: the energy levels of a quantum oscillator.</strong> A classical spring can hold any amount of energy. A quantum oscillator can hold only certain amounts, which form a ladder of <strong>energy levels</strong> with equal spacing <span class="math-inline">\(\hbar\omega\)</span>. Here <span class="math-inline">\(\omega\)</span> is the angular frequency of the vibration and <span class="math-inline">\(\hbar\)</span> (read "h-bar") is the reduced Planck constant, 0.0635 kJ mol<span class="math-inline">\(^{-1}\)</span> ps in MD units. The lowest level is called the <strong>ground state</strong>.</p>
+<p>Whether the higher levels are ever reached depends on how <span class="math-inline">\(\hbar\omega\)</span> compares with the thermal energy <span class="math-inline">\(k_BT\)</span>, which is 2.494 kJ/mol at 300 K (<span class="math-inline">\(k_B\)</span> is the Boltzmann constant and <span class="math-inline">\(T\)</span> the temperature, Module 3). For the C-H bond of Module 2, <span class="math-inline">\(\omega = 551\)</span> ps<span class="math-inline">\(^{-1}\)</span>, so <span class="math-inline">\(\hbar\omega = 0.0635\times551 = 35.0\)</span> kJ/mol, which is <span class="math-inline">\(35.0/2.494 = 14\)</span> times <span class="math-inline">\(k_BT\)</span>. The first step of the ladder is 14 times higher than a typical thermal push. The chance of finding the bond one level up, compared with finding it in the ground state, is the Boltzmann factor <span class="math-inline">\(e^{-14}\approx 8\times10^{-7}\)</span>: less than one in a million.</p>
+<p>So a real bond to hydrogen stays in its ground state at room temperature. It does not take up heat and does not give any back. More in the primer, on <a href="physics.html#quantum">why atoms can be treated as classical balls</a> and on <a href="physics.html#oscillator">the harmonic oscillator</a>.</p>
+</div>
+<p>A classical spring behaves differently. By the equipartition rule of Module 3 it holds on average <span class="math-inline">\(\tfrac12k_BT\)</span> of kinetic energy and <span class="math-inline">\(\tfrac12k_BT\)</span> of potential energy, <span class="math-inline">\(k_BT\)</span> in total, and it trades this energy with its surroundings all the time. That is the "classical spring carrying <span class="math-inline">\(k_BT\)</span> of energy" of the list above, and the real bond does not do this.</p>
+<p>A rigid rod holds no vibrational energy and exchanges none. In this respect the rod is closer to the real bond than the spring is. Neither model is exact, which is why the text says "arguably": the real ground state has a small spread of bond lengths, and the rod ignores it.</p>
+<p>So the vibrations of the bonds to hydrogen can be given up. Fixing the bond lengths removes them and allows 2 fs: twice the simulation for the same cost. With the bonds to hydrogen rigid, the fastest motions that are left have periods around 20 fs (the last section of this module says which they are), and ten steps per period gives 2 fs.</p>
+<p>The usual choices are <code>h-bonds</code> (only bonds involving hydrogen), which is the standard for AMBER and CHARMM force fields, and <code>all-bonds</code>. These two words are values of the constraint setting in the input file of an MD program. The spelling differs between programs: the GROMACS input file of Module 10 contains the line <code>constraints = h-bonds</code>. <code>all-bonds</code> makes every covalent bond rigid, including those between two heavy atoms. One warning about the first name: <code>h-bonds</code> here means covalent bonds in which one of the two atoms is a hydrogen, such as C-H, N-H and O-H. It does not mean hydrogen bonds, the weak attractions between molecules, which are never constrained.</p>
+<p>Bond <em>angles</em> are not usually constrained in proteins, because angle bending is coupled to torsional transitions and freezing it changes barrier heights noticeably. A torsional transition is a rotation about a bond that takes a molecule from one stable arrangement to another. During the rotation, atoms pass close to each other, and the bond angles open a little to make room. If the angles are frozen they cannot give way, the atoms are squeezed harder, and the energy barrier of the rotation is higher than it should be. A higher barrier means fewer transitions, so frozen angles would change the slow motions, which are the ones the simulation is run for.</p>
+<p>Water is the exception: the common water models are defined as fully rigid. "Fully rigid" means that the two O-H bond lengths and the H-O-H angle are all fixed. The angle is fixed by a third distance constraint, between the two hydrogens: a triangle with three fixed sides cannot change its shape. For water you do not choose whether to constrain. A rigid water model is rigid by definition (Module 6).</p>
+<h3 id="constraint-or-restraint">Constraint or restraint</h3>
+<p>The two words sound alike and mean different things.</p>
+<ul>
+<li>A <strong>constraint</strong> is a condition that holds exactly at every step: "this bond has length <span class="math-inline">\(d\)</span>". There is no energy term for it. The constrained quantity cannot fluctuate, and one way in which the molecule could move is gone.</li>
+<li>A <strong>restraint</strong> is an extra term in the potential energy, usually a spring such as <span class="math-inline">\(\tfrac12 k_r(x-x_0)^2\)</span>, that makes deviations cost energy. Here <span class="math-inline">\(x\)</span> is the restrained quantity, <span class="math-inline">\(x_0\)</span> its reference value and <span class="math-inline">\(k_r\)</span> the stiffness you chose. The quantity still fluctuates around <span class="math-inline">\(x_0\)</span>, and nothing is removed from the system.</li>
+</ul>
+<p>The position restraints that hold a protein in place during equilibration (Module 10) are restraints. The rigid bonds of this module are constraints.</p>
+<p>For the time step the difference is large. A restraint is a spring, and a stiffer spring vibrates faster (<span class="math-inline">\(\omega = \sqrt{k_b/\mu}\)</span> again). Making a restraint ten times stiffer shortens its period by a factor <span class="math-inline">\(\sqrt{10}\approx3.2\)</span>, so a very stiff restraint forces a <em>shorter</em> time step. A constraint has no vibration at all.</p>
 <h2 id="constrained-equations-of-motion">Constrained equations of motion</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="N2Lf-U8aIgM" href="https://www.youtube.com/watch?v=N2Lf-U8aIgM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">05 Constraint algorithms in MD simulations</span><span class="sv-m">12 min · SDU Odense</span></a><a class="sv" data-yt="-6QUI57indo" href="https://www.youtube.com/watch?v=-6QUI57indo" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 16: Constraint Dynamics</span><span class="sv-m">54 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="N2Lf-U8aIgM" href="https://www.youtube.com/watch?v=N2Lf-U8aIgM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">05 Constraint algorithms in MD simulations</span><span class="sv-m">12 min · SDU Odense</span></a><a class="sv" data-yt="-6QUI57indo" href="https://www.youtube.com/watch?v=-6QUI57indo" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 16: Constraint Dynamics</span><span class="sv-m">54 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
-<p>A bond constraint between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> is a <strong>holonomic constraint</strong>, an equation between coordinates:</p>
+<p>This section answers one question: how do the atoms move when some of the distances between them are fixed? The picture to keep in mind is two atoms joined by a rigid rod that has no mass. Each atom feels the ordinary forces of the force field. In addition, the rod pulls or pushes on both atoms along its own direction, with whatever strength is needed to keep them at the right distance.</p>
+<p>That last phrase is the difficulty. The force of a spring is given by a formula: stiffness times stretch. The force of a rod is given by no formula. It is whatever it has to be. The theory below shows in which direction this force points, gives its strength a name (<span class="math-inline">\(\lambda\)</span>), and leaves that strength as an unknown to be solved for.</p>
+<p>First the condition has to be written as an equation. A bond constraint between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> is a <strong>holonomic constraint</strong>, an equation between coordinates:</p>
 <p><span class="math-display">\[\sigma_k(\mathbf r) = |\mathbf r_i-\mathbf r_j|^2 - d_k^2 = 0 .\]</span></p>
-<p>Following Lagrange (Module 2), add each constraint to the Lagrangian with a multiplier <span class="math-inline">\(\lambda_k\)</span>. The equations of motion become</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k\)</span>: the number of the constraint. A system has one such equation for every rigid bond.</li>
+<li><span class="math-inline">\(\sigma_k\)</span>: the <strong>constraint function</strong> of bond <span class="math-inline">\(k\)</span>, in nm<span class="math-inline">\(^2\)</span>. This <span class="math-inline">\(\sigma\)</span> is not the Lennard-Jones length of Module 5.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: the positions of all atoms together. The brackets say that <span class="math-inline">\(\sigma_k\)</span> depends on positions only.</li>
+<li><span class="math-inline">\(\mathbf r_i\)</span>, <span class="math-inline">\(\mathbf r_j\)</span>: the positions of the two atoms joined by bond <span class="math-inline">\(k\)</span>.</li>
+<li><span class="math-inline">\(|\mathbf r_i-\mathbf r_j|^2\)</span>: the squared distance between the two atoms. The bars mean "length of the vector".</li>
+<li><span class="math-inline">\(d_k\)</span>: the length that bond <span class="math-inline">\(k\)</span> must have, a constant taken from the force field, in nm.</li>
+<li><span class="math-inline">\(= 0\)</span>: the condition itself. The constraint is satisfied when the function is zero.</li>
+</ul>
+</div>
+<p>Read it like this. <span class="math-inline">\(\sigma_k\)</span> measures the error of bond <span class="math-inline">\(k\)</span>. It is zero when the bond has the right length, positive when the bond is too long and negative when it is too short. With <span class="math-inline">\(d_k = 0.1\)</span> nm, a bond stretched to 0.101 nm has <span class="math-inline">\(\sigma_k = 0.101^2 - 0.1^2 = 0.000201\)</span> nm<span class="math-inline">\(^2\)</span>.</p>
+<p>The squares are there for convenience. The condition "distance equals <span class="math-inline">\(d_k\)</span>" and the condition "squared distance equals <span class="math-inline">\(d_k^2\)</span>" say the same thing, but the squared distance, <span class="math-inline">\((x_i-x_j)^2+(y_i-y_j)^2+(z_i-z_j)^2\)</span>, has no square root in it and is easier to differentiate.</p>
+<p>"Holonomic" is the name for a constraint that can be written in this way, as a function of the positions set equal to zero. No velocity appears in it. Every constraint in this module is of this kind.</p>
+<h3 id="the-lagrange-multiplier">The Lagrange multiplier</h3>
+<p>The rod has to be turned into a force that can be put into Newton's law. The tool for that is the Lagrange multiplier. It is a general piece of mathematics, so it is introduced first on a small example that has nothing to do with atoms.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the Lagrange multiplier.</strong> The tool answers this kind of question: find the smallest (or largest) value of a function when its variables must satisfy a condition.</p>
+<p>A small example. Among all points <span class="math-inline">\((x, y)\)</span> on the straight line <span class="math-inline">\(x + y = 2\)</span>, which one is closest to the origin? The quantity to make small is the squared distance to the origin, <span class="math-inline">\(f = x^2 + y^2\)</span>. The condition is <span class="math-inline">\(c = x + y - 2 = 0\)</span>.</p>
+<p>The reasoning is geometric. Walk along the line. As long as <span class="math-inline">\(f\)</span> still changes when you take a small step along the line, you are not yet at the closest point. At the closest point a small step along the line does not change <span class="math-inline">\(f\)</span>.</p>
+<p>So the gradient of <span class="math-inline">\(f\)</span> (the direction in which <span class="math-inline">\(f\)</span> rises fastest) has no part along the line: it is perpendicular to the line. The gradient of <span class="math-inline">\(c\)</span> is also perpendicular to the line, because <span class="math-inline">\(c\)</span> stays zero all along it. Two vectors in a plane that are perpendicular to the same line are parallel, so one is a multiple of the other:</p>
+<p><span class="math-display">\[\nabla f = \lambda\,\nabla c .\]</span></p>
+<p>The number <span class="math-inline">\(\lambda\)</span> is the <strong>Lagrange multiplier</strong>. It is not known in advance. Here <span class="math-inline">\(\nabla f = (2x, 2y)\)</span> and <span class="math-inline">\(\nabla c = (1, 1)\)</span>, so <span class="math-inline">\(2x = \lambda\)</span> and <span class="math-inline">\(2y = \lambda\)</span>, which gives <span class="math-inline">\(x = y = \lambda/2\)</span>. Now use the condition to find <span class="math-inline">\(\lambda\)</span>: <span class="math-inline">\(x + y = \lambda/2 + \lambda/2 = \lambda\)</span> must equal 2. So <span class="math-inline">\(\lambda = 2\)</span>, and the closest point is <span class="math-inline">\((1, 1)\)</span>.</p>
+<p>The pattern to remember: a condition contributes a term "unknown number times the gradient of the condition", and the unknown number is found at the end by demanding that the condition holds. More in the <a href="maths.html#lagrange-multipliers">toolbox</a>.</p>
+</div>
+<p>The mechanical version follows the same pattern. A rod can act only in the direction in which its constraint function changes, which is the gradient of <span class="math-inline">\(\sigma_k\)</span>. How strongly it acts is an unknown number <span class="math-inline">\(\lambda_k\)</span>, found by demanding that the constraint holds.</p>
+<p>Following Lagrange (Module 2), add each constraint to the Lagrangian with a multiplier <span class="math-inline">\(\lambda_k\)</span>. In Module 2 the Lagrangian was <span class="math-inline">\(L = K - U\)</span>, kinetic minus potential energy, and the Euler-Lagrange equation turned it into Newton's law. With constraints the Lagrangian gets one more term for each constraint:</p>
+<p><span class="math-display">\[L_c = \sum_i \tfrac12 m_i\dot{\mathbf r}_i^2 - U(\mathbf r) - \sum_k \lambda_k\,\sigma_k(\mathbf r) .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(L_c\)</span>: the Lagrangian of the constrained system. The subscript c stands for "constrained".</li>
+<li><span class="math-inline">\(\sum_i \tfrac12 m_i\dot{\mathbf r}_i^2\)</span>: the kinetic energy <span class="math-inline">\(K\)</span>, summed over all atoms <span class="math-inline">\(i\)</span>. <span class="math-inline">\(m_i\)</span> is the mass of atom <span class="math-inline">\(i\)</span> and <span class="math-inline">\(\dot{\mathbf r}_i\)</span> its velocity.</li>
+<li><span class="math-inline">\(U(\mathbf r)\)</span>: the potential energy of the force field.</li>
+<li><span class="math-inline">\(\sum_k\)</span>: a sum over all constraints.</li>
+<li><span class="math-inline">\(\lambda_k\)</span>: the multiplier of constraint <span class="math-inline">\(k\)</span>, an unknown number that can be different at every instant.</li>
+<li><span class="math-inline">\(\sigma_k(\mathbf r)\)</span>: the constraint function of bond <span class="math-inline">\(k\)</span>, as defined above.</li>
+</ul>
+</div>
+<p>Every <span class="math-inline">\(\sigma_k\)</span> is zero when the constraints hold, so the new term has the value zero and does not change the energy. Its slope is what matters. The Euler-Lagrange equation of Module 2, written for the position of atom <span class="math-inline">\(i\)</span>, compares two derivatives of <span class="math-inline">\(L_c\)</span>:</p>
+<ol>
+<li>The derivative with respect to the velocity <span class="math-inline">\(\dot{\mathbf r}_i\)</span> is the momentum <span class="math-inline">\(m_i\dot{\mathbf r}_i\)</span>. Its rate of change in time is <span class="math-inline">\(m_i\ddot{\mathbf r}_i\)</span>, mass times acceleration.</li>
+<li>The derivative with respect to the position <span class="math-inline">\(\mathbf r_i\)</span> is <span class="math-inline">\(-\nabla_iU - \sum_k\lambda_k\nabla_i\sigma_k\)</span>. The first part, <span class="math-inline">\(-\nabla_iU\)</span>, is the ordinary force <span class="math-inline">\(\mathbf F_i\)</span>.</li>
+</ol>
+<p>The Euler-Lagrange equation says that the two are equal. The equations of motion become</p>
 <p><span class="math-display">\[m_i\ddot{\mathbf r}_i = \mathbf F_i + \mathbf G_i,\qquad \mathbf G_i = -\sum_k\lambda_k\,\nabla_i\sigma_k .\]</span></p>
-<p><span class="math-inline">\(\mathbf G_i\)</span> is the <strong>constraint force</strong>. For a bond constraint <span class="math-inline">\(\nabla_i\sigma_k = 2\mathbf r_{ij}\)</span>, so the constraint force acts along the bond, equal and opposite on the two atoms. It does no work, because the velocity of a constrained system has no component along <span class="math-inline">\(\nabla\sigma\)</span>. The multipliers <span class="math-inline">\(\lambda_k(t)\)</span> are unknowns to be determined at every step so that the constraints hold.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(m_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>, in u.</li>
+<li><span class="math-inline">\(\ddot{\mathbf r}_i\)</span>: the acceleration of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\mathbf F_i\)</span>: the force on atom <span class="math-inline">\(i\)</span> from the force field, <span class="math-inline">\(-\nabla_iU\)</span>. It contains everything that is not a constraint: angles, torsions, Lennard-Jones and Coulomb forces, and the bonds that were left flexible.</li>
+<li><span class="math-inline">\(\mathbf G_i\)</span>: the constraint force on atom <span class="math-inline">\(i\)</span>, the sum of the forces of all rods attached to it.</li>
+<li><span class="math-inline">\(\lambda_k\)</span>: the Lagrange multiplier of constraint <span class="math-inline">\(k\)</span>. It sets how strongly rod <span class="math-inline">\(k\)</span> acts. One number per constraint, unknown, and different at every instant.</li>
+<li><span class="math-inline">\(\nabla_i\sigma_k\)</span>: the gradient of constraint function <span class="math-inline">\(k\)</span> with respect to the position of atom <span class="math-inline">\(i\)</span> (the gradient is explained in the <a href="maths.html#gradient">toolbox</a>). It gives the direction in which rod <span class="math-inline">\(k\)</span> acts on atom <span class="math-inline">\(i\)</span>, and it is zero if atom <span class="math-inline">\(i\)</span> is not one of the two atoms of bond <span class="math-inline">\(k\)</span>.</li>
+<li><span class="math-inline">\(\sum_k\)</span>: a sum over all constraints. Only the rods attached to atom <span class="math-inline">\(i\)</span> contribute.</li>
+<li>The minus sign: a convention. It decides what a positive <span class="math-inline">\(\lambda_k\)</span> means, as shown below.</li>
+</ul>
+</div>
+<p>Read it like this. The first equation is Newton's law with one more force on the right. The second says what that force is made of: for each rod, a known direction (<span class="math-inline">\(\nabla_i\sigma_k\)</span>) times an unknown strength (<span class="math-inline">\(\lambda_k\)</span>).</p>
+<h3 id="the-constraint-force-for-a-bond">The constraint force for a bond</h3>
+<p><span class="math-inline">\(\mathbf G_i\)</span> is the <strong>constraint force</strong>. For a bond constraint <span class="math-inline">\(\nabla_i\sigma_k = 2\mathbf r_{ij}\)</span>, so the constraint force acts along the bond, equal and opposite on the two atoms.</p>
+<p>To see where the <span class="math-inline">\(2\mathbf r_{ij}\)</span> comes from, write the constraint function in components:</p>
+<p><span class="math-display">\[\sigma_k = (x_i-x_j)^2 + (y_i-y_j)^2 + (z_i-z_j)^2 - d_k^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x_i\)</span>, <span class="math-inline">\(y_i\)</span>, <span class="math-inline">\(z_i\)</span>: the three coordinates of atom <span class="math-inline">\(i\)</span>. The same with <span class="math-inline">\(j\)</span> for atom <span class="math-inline">\(j\)</span>.</li>
+<li><span class="math-inline">\(d_k\)</span>: the target length of bond <span class="math-inline">\(k\)</span>, a constant.</li>
+<li><span class="math-inline">\(\sigma_k\)</span>: the constraint function of bond <span class="math-inline">\(k\)</span>.</li>
+</ul>
+</div>
+<p>Differentiate with respect to <span class="math-inline">\(x_i\)</span> and hold everything else fixed (a partial derivative). Only the first bracket contains <span class="math-inline">\(x_i\)</span>, and the rule for the derivative of a square gives <span class="math-inline">\(\partial\sigma_k/\partial x_i = 2(x_i-x_j)\)</span>. The same holds for <span class="math-inline">\(y_i\)</span> and <span class="math-inline">\(z_i\)</span>.</p>
+<p>Collected into one vector, the gradient is <span class="math-inline">\(\nabla_i\sigma_k = 2(\mathbf r_i-\mathbf r_j) = 2\mathbf r_{ij}\)</span>. For atom <span class="math-inline">\(j\)</span> the bracket contains <span class="math-inline">\(-x_j\)</span>, which adds a minus sign: <span class="math-inline">\(\nabla_j\sigma_k = -2\mathbf r_{ij}\)</span>. Put both into the definition of <span class="math-inline">\(\mathbf G\)</span>:</p>
+<p><span class="math-display">\[\mathbf G_i = -2\lambda_k\,\mathbf r_{ij},\qquad \mathbf G_j = +2\lambda_k\,\mathbf r_{ij} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf G_i\)</span>, <span class="math-inline">\(\mathbf G_j\)</span>: the forces that rod <span class="math-inline">\(k\)</span> exerts on atom <span class="math-inline">\(i\)</span> and on atom <span class="math-inline">\(j\)</span>, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r_{ij} = \mathbf r_i-\mathbf r_j\)</span>: the bond vector, pointing from atom <span class="math-inline">\(j\)</span> to atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\lambda_k\)</span>: the multiplier of this bond.</li>
+</ul>
+</div>
+<p>Read it like this:</p>
+<ul>
+<li><strong>Direction.</strong> Both forces lie along the bond vector. A rod cannot push sideways.</li>
+<li><strong>Equal and opposite.</strong> The two forces add up to zero. The rod cannot move the molecule as a whole, and the total momentum is conserved (Newton's third law, Module 2).</li>
+<li><strong>The sign of <span class="math-inline">\(\lambda_k\)</span>.</strong> If <span class="math-inline">\(\lambda_k\)</span> is positive, the force on atom <span class="math-inline">\(i\)</span> points along <span class="math-inline">\(-\mathbf r_{ij}\)</span>, from <span class="math-inline">\(i\)</span> towards <span class="math-inline">\(j\)</span>. The rod pulls the two atoms together, as it must when they try to fly apart. If <span class="math-inline">\(\lambda_k\)</span> is negative, the rod pushes them apart.</li>
+<li><strong>The unit of <span class="math-inline">\(\lambda_k\)</span>.</strong> A force is <span class="math-inline">\(\lambda_k\)</span> times a length, so <span class="math-inline">\(\lambda_k\)</span> has the unit kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>, the unit of a spring constant. It is not a property of the bond, though. It changes from one instant to the next.</li>
+</ul>
+<p>Now back to the constraint force <span class="math-inline">\(\mathbf G_i\)</span>. It does no work, because the velocity of a constrained system has no component along <span class="math-inline">\(\nabla\sigma\)</span>. "Work" is the energy that a force gives to an object, and the rate at which a force <span class="math-inline">\(\mathbf G\)</span> gives energy to an atom with velocity <span class="math-inline">\(\mathbf v\)</span> is the dot product <span class="math-inline">\(\mathbf G\cdot\mathbf v\)</span>. Only the part of the velocity along the force counts.</p>
+<p>Here is the argument for one bond. The bond length is constant, so its square, <span class="math-inline">\(\mathbf r_{ij}\cdot\mathbf r_{ij}\)</span>, is constant and its time derivative is zero. By the product rule that derivative is <span class="math-inline">\(2\,\mathbf r_{ij}\cdot\mathbf v_{ij}\)</span>, where <span class="math-inline">\(\mathbf v_{ij} = \mathbf v_i-\mathbf v_j\)</span> is the velocity of atom <span class="math-inline">\(i\)</span> relative to atom <span class="math-inline">\(j\)</span>. A dot product of zero means that the two vectors are perpendicular. The two atoms can circle around each other, but they cannot approach or separate.</p>
+<p>The rate at which the rod gives energy to the pair is then</p>
+<p><span class="math-display">\[\mathbf G_i\cdot\mathbf v_i + \mathbf G_j\cdot\mathbf v_j = -2\lambda_k\,\mathbf r_{ij}\cdot(\mathbf v_i-\mathbf v_j) = -2\lambda_k\,\mathbf r_{ij}\cdot\mathbf v_{ij} = 0 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf v_i\)</span>, <span class="math-inline">\(\mathbf v_j\)</span>: the velocities of the two atoms.</li>
+<li><span class="math-inline">\(\mathbf v_{ij}\)</span>: their relative velocity, <span class="math-inline">\(\mathbf v_i-\mathbf v_j\)</span>.</li>
+<li><span class="math-inline">\(\cdot\)</span>: the <a href="maths.html#dot-product">dot product</a>. It is zero for perpendicular vectors.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>The rod acts like the string of a ball that is whirled in a circle. The string pulls towards the centre and the ball moves sideways, so the string changes the direction of the motion without adding energy. This is why a simulation with constraints still conserves the total energy.</p>
+<p>The multipliers <span class="math-inline">\(\lambda_k(t)\)</span> are unknowns to be determined at every step so that the constraints hold. One case can be done by hand, and it shows what kind of number <span class="math-inline">\(\lambda\)</span> is.</p>
+<div class="box key">
+<p><strong>Worked example: the pull of a rod on a spinning pair.</strong> Two atoms of mass <span class="math-inline">\(m = 12\)</span> u are joined by a rod of length <span class="math-inline">\(d = 0.15\)</span> nm. No other force acts. The pair spins about its centre, and each atom has a speed <span class="math-inline">\(v = 0.5\)</span> nm/ps. (Round values for illustration. The thermal speed of a carbon atom along one direction at 300 K is <span class="math-inline">\(\sqrt{k_BT/m} = 0.46\)</span> nm/ps.)</p>
+<ol>
+<li>Each atom moves on a circle of radius <span class="math-inline">\(R = d/2 = 0.075\)</span> nm.</li>
+<li>An object that moves on a circle needs a force <span class="math-inline">\(mv^2/R\)</span> towards the centre, or it would fly off along a straight line. Here that is <span class="math-inline">\(12\times0.5^2/0.075 = 40\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li>Only the rod can supply this force. The size of the constraint force is <span class="math-inline">\(2\lambda d\)</span>, from <span class="math-inline">\(\mathbf G_i = -2\lambda\,\mathbf r_{ij}\)</span> with <span class="math-inline">\(|\mathbf r_{ij}| = d\)</span>.</li>
+<li>So <span class="math-inline">\(2\lambda\times0.15 = 40\)</span>, which gives <span class="math-inline">\(\lambda = 133\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>. It is positive: the rod pulls inward.</li>
+</ol>
+<p>Nobody chose this <span class="math-inline">\(\lambda\)</span>. It came out of the motion. If the pair spins twice as fast, the force and <span class="math-inline">\(\lambda\)</span> are four times larger. If it does not spin, <span class="math-inline">\(\lambda\)</span> is zero. In a real molecule the other forces also pull on the atoms, the motion is not a circle, and <span class="math-inline">\(\lambda\)</span> has to be found numerically at every step.</p>
+</div>
+<p>Counting shows that the problem can be solved. A system with <span class="math-inline">\(K\)</span> constraints has <span class="math-inline">\(K\)</span> unknown multipliers and <span class="math-inline">\(K\)</span> equations <span class="math-inline">\(\sigma_k = 0\)</span>, as many equations as unknowns. The algorithms in the next sections differ only in how they solve these equations.</p>
+<p>They share one decision. They do not try to follow the exact <span class="math-inline">\(\lambda_k(t)\)</span> of the continuous motion. At each time step they choose the values that make every constraint hold at the <em>end</em> of that step, exactly or to within a chosen accuracy. Errors then cannot build up over many steps, because each step starts from bonds of the correct length.</p>
 <h2 id="shake">SHAKE</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="9Vj7h1TJePw" href="https://www.youtube.com/watch?v=9Vj7h1TJePw" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">SHAKE method</span><span class="sv-m">13 min · Melvin Leok</span></a><a class="sv" data-yt="--zH0AJjVqk" href="https://www.youtube.com/watch?v=--zH0AJjVqk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Understanding the SHAKE Algorithm in LAMMPS</span><span class="sv-m">8 min · Soumyashree Das Adhikari</span></a><a class="sv" data-yt="_zwgPkBeO_I" href="https://www.youtube.com/watch?v=_zwgPkBeO_I" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Molecular dynamics under (holonomic) constraints - J.P. Ryckaert, G. Ciccotti - CECAM-MARVEL lecture</span><span class="sv-m">2 h 40 min · J.P. Ryckaert and G. Ciccotti (CECAM-MARVEL)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="9Vj7h1TJePw" href="https://www.youtube.com/watch?v=9Vj7h1TJePw" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">SHAKE method</span><span class="sv-m">13 min · Melvin Leok</span></a><a class="sv" data-yt="--zH0AJjVqk" href="https://www.youtube.com/watch?v=--zH0AJjVqk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Understanding the SHAKE Algorithm in LAMMPS</span><span class="sv-m">8 min · Soumyashree Das Adhikari</span></a><a class="sv" data-yt="_zwgPkBeO_I" href="https://www.youtube.com/watch?v=_zwgPkBeO_I" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Molecular dynamics under (holonomic) constraints - J.P. Ryckaert, G. Ciccotti - CECAM-MARVEL lecture</span><span class="sv-m">2 h 40 min · J.P. Ryckaert and G. Ciccotti (CECAM-MARVEL)</span></a></div>
 
+<p>SHAKE solves the problem in the most direct way. First ignore the rods and move the atoms with the ordinary forces. The bonds now have slightly wrong lengths. Then move the two atoms of each bond towards each other or apart, along the direction that the bond had at the start of the step, until the length is right again. The second move is the effect of the constraint force, and finding how far to move is the same as finding <span class="math-inline">\(\lambda\)</span>.</p>
+<p>For the first move, recall the Verlet step of Module 4:</p>
+<p><span class="math-display">\[\mathbf r_i(t+\Delta t) = 2\,\mathbf r_i(t) - \mathbf r_i(t-\Delta t) + \frac{\Delta t^2}{m_i}\,\mathbf F_i(t) .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r_i(t)\)</span>: the position of atom <span class="math-inline">\(i\)</span> now, at time <span class="math-inline">\(t\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r_i(t-\Delta t)\)</span>: its position one step ago.</li>
+<li><span class="math-inline">\(\mathbf r_i(t+\Delta t)\)</span>: its position one step ahead, which is what the formula computes.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step, in ps.</li>
+<li><span class="math-inline">\(m_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\mathbf F_i(t)\)</span>: the force on atom <span class="math-inline">\(i\)</span> at time <span class="math-inline">\(t\)</span>.</li>
+</ul>
+</div>
+<p>The force appears only in the last term. A force <span class="math-inline">\(\mathbf F\)</span> on an atom of mass <span class="math-inline">\(m\)</span> shifts its new position by <span class="math-inline">\(\mathbf F\Delta t^2/m\)</span>. With constraints the force is <span class="math-inline">\(\mathbf F_i+\mathbf G_i\)</span>. So the new position is the one computed with <span class="math-inline">\(\mathbf F_i\)</span> alone, which is called <span class="math-inline">\(\mathbf r_i'\)</span>, plus a shift <span class="math-inline">\(\mathbf G_i\Delta t^2/m_i\)</span> caused by the rods.</p>
 <p><a href="https://doi.org/10.1016/0021-9991(77)90098-5" class="cite" target="_blank" rel="noopener" title="Ryckaert JP; Ciccotti G; Berendsen HJC (1977). Numerical integration of the cartesian equations of motion of a system with constraints: molecular dynamics of n-alkanes. Journal of Computational Physics">Ryckaert, Ciccotti and Berendsen (1977)</a>. Take a normal, unconstrained Verlet step to positions <span class="math-inline">\(\mathbf r'\)</span>, then add the displacement caused by the constraint forces, which are evaluated along the bond directions at the <em>start</em> of the step:</p>
 <p><span class="math-display">\[\mathbf r_i(t+\Delta t) = \mathbf r_i' - \frac{\Delta t^2}{m_i}\sum_k\lambda_k\,\nabla_i\sigma_k\big(\mathbf r(t)\big).\]</span></p>
-<p><strong>One constraint, solved explicitly.</strong> Let <span class="math-inline">\(\mathbf s = \mathbf r_i(t)-\mathbf r_j(t)\)</span> be the old bond vector (length <span class="math-inline">\(d\)</span>) and <span class="math-inline">\(\mathbf s' = \mathbf r_i'-\mathbf r_j'\)</span> the unconstrained new one. With <span class="math-inline">\(g = 2\lambda\Delta t^2\)</span>,</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r_i(t+\Delta t)\)</span>: the final position of atom <span class="math-inline">\(i\)</span> at the end of the step, with all constraints satisfied.</li>
+<li><span class="math-inline">\(\mathbf r_i'\)</span>: the position of atom <span class="math-inline">\(i\)</span> after the unconstrained step. The prime is not a derivative.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(m_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\lambda_k\)</span>: the multiplier of constraint <span class="math-inline">\(k\)</span> for this step, the unknown.</li>
+<li><span class="math-inline">\(\nabla_i\sigma_k\big(\mathbf r(t)\big)\)</span>: the gradient of constraint function <span class="math-inline">\(k\)</span>, computed from the positions at the start of the step, time <span class="math-inline">\(t\)</span>. For a bond it is plus or minus twice the <em>old</em> bond vector.</li>
+<li><span class="math-inline">\(\sum_k\)</span>: a sum over all constraints. Only the bonds of atom <span class="math-inline">\(i\)</span> contribute.</li>
+</ul>
+</div>
+<p>Read it like this: new position equals unconstrained position plus the shifts from the rods. Each shift is divided by the mass, so a light atom is moved further than a heavy one. The directions of the shifts are known, because they are the old bond vectors. Only the numbers <span class="math-inline">\(\lambda_k\)</span> are unknown.</p>
+<p>Why the <em>old</em> bond direction? The Verlet step uses every force as it is at time <span class="math-inline">\(t\)</span>, and at time <span class="math-inline">\(t\)</span> each rod points along its bond as it is at time <span class="math-inline">\(t\)</span>. So this is the Verlet rule applied to the constraint force, with no extra approximation. It is also convenient, because the old bond vectors are known numbers.</p>
+<p><strong>One constraint, solved explicitly.</strong> Let <span class="math-inline">\(\mathbf s = \mathbf r_i(t)-\mathbf r_j(t)\)</span> be the old bond vector (length <span class="math-inline">\(d\)</span>) and <span class="math-inline">\(\mathbf s' = \mathbf r_i'-\mathbf r_j'\)</span> the unconstrained new one.</p>
+<p>For a single bond the sum over <span class="math-inline">\(k\)</span> has one term, and the previous section gave the two gradients: <span class="math-inline">\(2\mathbf s\)</span> for atom <span class="math-inline">\(i\)</span> and <span class="math-inline">\(-2\mathbf s\)</span> for atom <span class="math-inline">\(j\)</span>. Atom <span class="math-inline">\(i\)</span> is therefore shifted by <span class="math-inline">\(-(\Delta t^2/m_i)\,\lambda\,2\mathbf s\)</span>, and atom <span class="math-inline">\(j\)</span> by the same expression with <span class="math-inline">\(m_j\)</span> and the opposite sign. The combination <span class="math-inline">\(2\lambda\Delta t^2\)</span> occurs in both shifts, so it gets a letter of its own.</p>
+<p>With <span class="math-inline">\(g = 2\lambda\Delta t^2\)</span>,</p>
 <p><span class="math-display">\[\mathbf r_i = \mathbf r_i' - \frac{g}{m_i}\mathbf s,\qquad \mathbf r_j = \mathbf r_j' + \frac{g}{m_j}\mathbf s,
 \qquad\text{so the new bond vector is}\quad \mathbf s' - g\left(\frac1{m_i}+\frac1{m_j}\right)\mathbf s .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r_i\)</span>, <span class="math-inline">\(\mathbf r_j\)</span>: the final positions of the two atoms at time <span class="math-inline">\(t+\Delta t\)</span>. The time is no longer written.</li>
+<li><span class="math-inline">\(\mathbf r_i'\)</span>, <span class="math-inline">\(\mathbf r_j'\)</span>: their positions after the unconstrained step.</li>
+<li><span class="math-inline">\(\mathbf s\)</span>: the old bond vector, <span class="math-inline">\(\mathbf r_i(t)-\mathbf r_j(t)\)</span>. Its length is exactly <span class="math-inline">\(d\)</span>.</li>
+<li><span class="math-inline">\(\mathbf s'\)</span>: the bond vector after the unconstrained step, <span class="math-inline">\(\mathbf r_i'-\mathbf r_j'\)</span>. Its length is slightly wrong.</li>
+<li><span class="math-inline">\(g\)</span>: the unknown, <span class="math-inline">\(2\lambda\Delta t^2\)</span>. Its unit is a mass (u), because <span class="math-inline">\(\lambda\)</span> is in u ps<span class="math-inline">\(^{-2}\)</span> (1 kJ/mol is 1 u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-2}\)</span>). This <span class="math-inline">\(g\)</span> is not the acceleration of gravity.</li>
+<li><span class="math-inline">\(m_i\)</span>, <span class="math-inline">\(m_j\)</span>: the masses of the two atoms.</li>
+</ul>
+</div>
+<p>The third expression is the first minus the second: <span class="math-inline">\(\mathbf r_i-\mathbf r_j = (\mathbf r_i'-\mathbf r_j') - (g/m_i)\,\mathbf s - (g/m_j)\,\mathbf s\)</span>.</p>
+<p>Read it like this. Both atoms move along the old bond, in opposite directions. The ratio <span class="math-inline">\(g/m_i\)</span> is a pure number: atom <span class="math-inline">\(i\)</span> moves by that fraction of the old bond vector. A hydrogen (1 u) bonded to a carbon (12 u) moves 12 times as far as the carbon. The centre of mass of the pair does not move, because <span class="math-inline">\(m_i\times(-g/m_i) + m_j\times(g/m_j) = 0\)</span>.</p>
+<p>The bracket <span class="math-inline">\(1/m_i+1/m_j\)</span> is one divided by the reduced mass <span class="math-inline">\(\mu\)</span> of Module 2, and is written <span class="math-inline">\(\mu^{-1}\)</span> from here on. For a C-H bond it is <span class="math-inline">\(1/1 + 1/12 = 1.083\)</span> u<span class="math-inline">\(^{-1}\)</span>.</p>
+<p>The unknown <span class="math-inline">\(g\)</span> is fixed by demanding that the new bond vector has length <span class="math-inline">\(d\)</span>. That needs the squared length of a difference of two vectors.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the length of a difference of two vectors.</strong> The squared length of a vector is its dot product with itself, <span class="math-inline">\(|\mathbf a|^2 = \mathbf a\cdot\mathbf a\)</span>. A dot product can be multiplied out like ordinary brackets, so</p>
+<p><span class="math-display">\[|\mathbf a-\mathbf b|^2 = (\mathbf a-\mathbf b)\cdot(\mathbf a-\mathbf b) = |\mathbf a|^2 - 2\,\mathbf a\cdot\mathbf b + |\mathbf b|^2 .\]</span></p>
+<p>Check with numbers: <span class="math-inline">\(\mathbf a = (3, 1)\)</span> and <span class="math-inline">\(\mathbf b = (1, 2)\)</span> give <span class="math-inline">\(\mathbf a-\mathbf b = (2, -1)\)</span>, with squared length <span class="math-inline">\(4 + 1 = 5\)</span>. On the right-hand side, <span class="math-inline">\(|\mathbf a|^2 = 10\)</span>, <span class="math-inline">\(\mathbf a\cdot\mathbf b = 3 + 2 = 5\)</span> and <span class="math-inline">\(|\mathbf b|^2 = 5\)</span>, so <span class="math-inline">\(10 - 10 + 5 = 5\)</span>. More in the <a href="maths.html#dot-product">toolbox</a>.</p>
+</div>
 <p>Requiring its length to be <span class="math-inline">\(d\)</span> gives a quadratic equation in <span class="math-inline">\(g\)</span>:</p>
 <p><span class="math-display">\[|\mathbf s'|^2 - 2g\,\mu^{-1}\,\mathbf s\cdot\mathbf s' + g^2\mu^{-2}d^2 = d^2,\qquad \mu^{-1} = \frac1{m_i}+\frac1{m_j}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(|\mathbf s'|^2\)</span>: the squared length of the bond after the unconstrained step.</li>
+<li><span class="math-inline">\(\mathbf s\cdot\mathbf s'\)</span>: the dot product of the old and the unconstrained bond vector. It is close to <span class="math-inline">\(d^2\)</span> when the bond has turned and stretched only a little.</li>
+<li><span class="math-inline">\(\mu\)</span>: the reduced mass of the two atoms, in u. <span class="math-inline">\(\mu^{-1}\)</span> is one divided by it, and <span class="math-inline">\(\mu^{-2}\)</span> is one divided by its square.</li>
+<li><span class="math-inline">\(d\)</span>: the target bond length. <span class="math-inline">\(d^2\)</span> appears on the left as the squared length of the old bond vector <span class="math-inline">\(\mathbf s\)</span>, and on the right as the squared length that the new bond must have.</li>
+<li><span class="math-inline">\(g\)</span>: the unknown.</li>
+</ul>
+</div>
+<p>The steps: use the box with <span class="math-inline">\(\mathbf a = \mathbf s'\)</span> and <span class="math-inline">\(\mathbf b = g\mu^{-1}\mathbf s\)</span>. The three terms are <span class="math-inline">\(|\mathbf s'|^2\)</span>, then <span class="math-inline">\(-2g\mu^{-1}\,\mathbf s\cdot\mathbf s'\)</span>, then <span class="math-inline">\(g^2\mu^{-2}|\mathbf s|^2\)</span>. In the last one, <span class="math-inline">\(|\mathbf s|^2 = d^2\)</span> because the bond had the correct length at the start of the step. The sum must be <span class="math-inline">\(d^2\)</span>. The equation is called quadratic because the unknown appears squared.</p>
 <p>Dropping the small <span class="math-inline">\(g^2\)</span> term gives the SHAKE update:</p>
 <p><span class="math-display">\[\boxed{g \approx \frac{|\mathbf s'|^2-d^2}{2\,\mu^{-1}\;\mathbf s\cdot\mathbf s'}}\]</span></p>
-<p><strong>Many constraints.</strong> Atoms share constraints (a CH<span class="math-inline">\(_3\)</span> group has three), so the equations are coupled. SHAKE treats them one at a time: apply the single-constraint correction to each in turn, and sweep through the list repeatedly until every bond length is within a relative tolerance (typically <span class="math-inline">\(10^{-4}\)</span> to <span class="math-inline">\(10^{-8}\)</span>) of its target. This is a Gauss-Seidel iteration. It is simple and general, but its sequential nature makes it awkward to parallelise, and convergence slows when many constraints are coupled.</p>
-<p><strong>RATTLE</strong> (<a href="https://doi.org/10.1016/0021-9991(83)90014-1" class="cite" target="_blank" rel="noopener" title="Andersen HC (1983). Rattle: A “velocity” version of the shake algorithm for molecular dynamics calculations. Journal of Computational Physics">Andersen 1983</a>) is the version for velocity Verlet. It also removes the component of the velocities along each bond, enforcing the time derivative of the constraint, <span class="math-inline">\(\dot\sigma_k = 2\,\mathbf r_{ij}\cdot\mathbf v_{ij} = 0\)</span>, so that positions and velocities are both consistent at each step.</p>
-<h2 id="settle">SETTLE</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="fueOYcMgFfQ" href="https://www.youtube.com/watch?v=fueOYcMgFfQ" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 17: Constraint Dynamics - Water As An Example</span><span class="sv-m">38 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(g\)</span>: the amount of correction, in u. Atom <span class="math-inline">\(i\)</span> is then moved by <span class="math-inline">\(-(g/m_i)\,\mathbf s\)</span> and atom <span class="math-inline">\(j\)</span> by <span class="math-inline">\(+(g/m_j)\,\mathbf s\)</span>.</li>
+<li><span class="math-inline">\(\approx\)</span>: "approximately equal", because one term was dropped.</li>
+<li><span class="math-inline">\(|\mathbf s'|^2-d^2\)</span>: how far the squared length of the unconstrained bond is from its target.</li>
+<li>The frame around the formula marks it as a main result. It has no mathematical meaning.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>The steps: without the <span class="math-inline">\(g^2\)</span> term the equation reads <span class="math-inline">\(|\mathbf s'|^2 - 2g\mu^{-1}\,\mathbf s\cdot\mathbf s' = d^2\)</span>. Move <span class="math-inline">\(d^2\)</span> to the left and the term with <span class="math-inline">\(g\)</span> to the right, which gives <span class="math-inline">\(|\mathbf s'|^2-d^2 = 2g\mu^{-1}\,\mathbf s\cdot\mathbf s'\)</span>. Then divide both sides by <span class="math-inline">\(2\mu^{-1}\,\mathbf s\cdot\mathbf s'\)</span>.</p>
+<p>Why is the dropped term small? The product <span class="math-inline">\(g\mu^{-1}\)</span> is the fraction of its own length by which the bond vector is corrected, a few per cent at most in one step. The <span class="math-inline">\(g^2\)</span> term is smaller than the term with <span class="math-inline">\(g\)</span> by the factor <span class="math-inline">\(g\mu^{-1}/2\)</span> (divide one by the other and use <span class="math-inline">\(\mathbf s\cdot\mathbf s'\approx d^2\)</span>). For a correction of 3 % that factor is 0.015.</p>
+<p>Read the update like this:</p>
+<ul>
+<li><strong>The numerator</strong> is the error. If the unconstrained bond is too long, <span class="math-inline">\(g\)</span> is positive and the atoms are pulled together. If it is too short, <span class="math-inline">\(g\)</span> is negative and they are pushed apart. If the length is already right, <span class="math-inline">\(g = 0\)</span> and nothing moves.</li>
+<li><strong>The denominator</strong> contains <span class="math-inline">\(\mathbf s\cdot\mathbf s'\)</span>, which is close to <span class="math-inline">\(d^2\)</span>. It becomes small when the bond has turned through a large angle during the step, and it is zero at 90°. A push along the old direction cannot repair a bond that now points sideways. This is why every constraint algorithm assumes that a bond turns by only a few degrees in one step.</li>
+</ul>
+<p>Dropping a term has a price. After the correction the length is close to <span class="math-inline">\(d\)</span> but not equal to it. The cure is to repeat: take the corrected positions as the new "unconstrained" ones, keep the same old bond vector <span class="math-inline">\(\mathbf s\)</span>, and apply the formula again. Each pass leaves an error of the order of the square of the previous one, so two or three passes are enough.</p>
+<p>For a single bond the quadratic equation could also be solved exactly (Exercise 1). SHAKE does not do that, because with several bonds that share atoms there is no such formula, and repetition is needed there in any case.</p>
+<div class="box key">
+<p><strong>Worked example: SHAKE for one C-H bond.</strong> The numbers are round values chosen for illustration, in two dimensions to keep them short. Atom <span class="math-inline">\(i\)</span> is the hydrogen (<span class="math-inline">\(m_i = 1\)</span> u), atom <span class="math-inline">\(j\)</span> the carbon (<span class="math-inline">\(m_j = 12\)</span> u), and the bond length is <span class="math-inline">\(d = 0.1\)</span> nm. Positions are in nm.</p>
+<ol>
+<li><em>Start of the step.</em> Hydrogen at <span class="math-inline">\((0.100, 0)\)</span>, carbon at <span class="math-inline">\((0, 0)\)</span>. The old bond vector is <span class="math-inline">\(\mathbf s = (0.100, 0)\)</span>.</li>
+<li><em>Unconstrained step.</em> Suppose the ordinary forces move the hydrogen to <span class="math-inline">\((0.104, 0.010)\)</span> and the carbon to <span class="math-inline">\((0.001, 0)\)</span>. Then <span class="math-inline">\(\mathbf s' = (0.103, 0.010)\)</span>, with <span class="math-inline">\(|\mathbf s'|^2 = 0.103^2 + 0.010^2 = 0.010709\)</span> nm<span class="math-inline">\(^2\)</span> and a length of 0.10348 nm. The bond is 3.5 % too long.</li>
+<li><em>The ingredients.</em> <span class="math-inline">\(d^2 = 0.01\)</span> nm<span class="math-inline">\(^2\)</span>. <span class="math-inline">\(\mathbf s\cdot\mathbf s' = 0.100\times0.103 + 0\times0.010 = 0.0103\)</span> nm<span class="math-inline">\(^2\)</span>. <span class="math-inline">\(\mu^{-1} = 1/1 + 1/12 = 1.0833\)</span> u<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><em>The update.</em> <span class="math-inline">\(g = (0.010709 - 0.01)/(2\times1.0833\times0.0103) = 0.000709/0.022317 = 0.03177\)</span> u.</li>
+<li><em>Move the atoms.</em> The hydrogen moves by <span class="math-inline">\(-(g/m_i)\,\mathbf s = (-0.00318, 0)\)</span> and the carbon by <span class="math-inline">\(+(g/m_j)\,\mathbf s = (+0.00026, 0)\)</span>. New positions: hydrogen <span class="math-inline">\((0.10082, 0.010)\)</span>, carbon <span class="math-inline">\((0.00126, 0)\)</span>.</li>
+<li><em>Check.</em> The bond vector is now <span class="math-inline">\((0.09956, 0.010)\)</span> and its length is 0.10006 nm. The error fell from 3.5 % to 0.06 %.</li>
+<li><em>Repeat.</em> A second pass with the same <span class="math-inline">\(\mathbf s\)</span> gives <span class="math-inline">\(g = 0.00055\)</span> u and a length of 0.10000002 nm, a relative error of <span class="math-inline">\(2\times10^{-7}\)</span>. A third pass brings the error below <span class="math-inline">\(10^{-13}\)</span>.</li>
+<li><em>Back to <span class="math-inline">\(\lambda\)</span>.</em> The three values of <span class="math-inline">\(g\)</span> add up to 0.03232 u. With <span class="math-inline">\(\Delta t = 2\)</span> fs <span class="math-inline">\(= 0.002\)</span> ps, <span class="math-inline">\(\lambda = g/(2\Delta t^2) = 0.03232/(2\times0.002^2) = 4040\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>. The rod pulled the two atoms together with a force <span class="math-inline">\(2\lambda d = 808\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> during this step.</li>
+</ol>
+<p>Three things to see. The correction is along the old bond, here the <span class="math-inline">\(x\)</span> direction: the <span class="math-inline">\(y\)</span> components did not change. The final bond is not parallel to the old one. It has turned by 5.7°, and that rotation is real motion, which the constraint leaves alone. And the hydrogen moved 12 times as far as the carbon.</p>
+</div>
+<p>The same calculation in Python. It prints the value of <span class="math-inline">\(g\)</span> and the bond length after each pass, and it is a starting point for Exercise 2.</p>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
+<span class="n">d</span><span class="p">,</span> <span class="n">m_i</span><span class="p">,</span> <span class="n">m_j</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">12.0</span>            <span class="c1"># bond length (nm), masses (u)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.100</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>              <span class="c1"># old bond vector, r_i(t) - r_j(t)</span>
+<span class="n">r_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.104</span><span class="p">,</span> <span class="mf">0.010</span><span class="p">])</span>          <span class="c1"># positions after the unconstrained step</span>
+<span class="n">r_j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">mu_inv</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">m_i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">m_j</span>
+
+<span class="k">for</span> <span class="n">sweep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">s_new</span> <span class="o">=</span> <span class="n">r_i</span> <span class="o">-</span> <span class="n">r_j</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">s_new</span><span class="p">,</span> <span class="n">s_new</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu_inv</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s_new</span><span class="p">))</span>
+    <span class="n">r_i</span> <span class="o">=</span> <span class="n">r_i</span> <span class="o">-</span> <span class="n">g</span><span class="o">/</span><span class="n">m_i</span> <span class="o">*</span> <span class="n">s</span>               <span class="c1"># the light atom moves more</span>
+    <span class="n">r_j</span> <span class="o">=</span> <span class="n">r_j</span> <span class="o">+</span> <span class="n">g</span><span class="o">/</span><span class="n">m_j</span> <span class="o">*</span> <span class="n">s</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sweep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">r_i</span> <span class="o">-</span> <span class="n">r_j</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Many constraints.</strong> Atoms share constraints (a CH<span class="math-inline">\(_3\)</span> group has three), so the equations are coupled. SHAKE treats them one at a time: apply the single-constraint correction to each in turn, and sweep through the list repeatedly until every bond length is within a relative tolerance (typically <span class="math-inline">\(10^{-4}\)</span> to <span class="math-inline">\(10^{-8}\)</span>) of its target. This is a Gauss-Seidel iteration. It is simple and general, but its sequential nature makes it awkward to parallelise, and convergence slows when many constraints are coupled.</p>
+<p>Several words in this paragraph need unpacking.</p>
+<p><em>Coupled</em> means that the unknowns cannot be found one by one. In a CH<span class="math-inline">\(_3\)</span> group the three C-H bonds share the carbon. Correcting the first bond moves the carbon a little, and that changes the lengths of the other two. Correcting the second moves the carbon again and spoils the first. No bond can be finished before the others.</p>
+<p>A <em>sweep</em> is one pass through the list of constraints, in which each bond is corrected once. After every sweep the program compares each bond length with its target. The <em>relative tolerance</em> is the largest value of <span class="math-inline">\(|l-d|/d\)</span> that is accepted, where <span class="math-inline">\(l\)</span> is the actual length of a bond and <span class="math-inline">\(d\)</span> its target. With a tolerance of <span class="math-inline">\(10^{-4}\)</span>, a bond of 0.1 nm may be wrong by <span class="math-inline">\(10^{-5}\)</span> nm. When every bond passes the test, the step is finished.</p>
+<div class="box maths">
+<p><strong>Maths you need here: solving coupled equations by repetition.</strong> Take two equations in which each unknown depends on the other: <span class="math-inline">\(x = (3+y)/4\)</span> and <span class="math-inline">\(y = (3+x)/4\)</span>. The solution is <span class="math-inline">\(x = y = 1\)</span>, as you can check by putting the numbers in. Suppose you could not see that. Start from a guess, <span class="math-inline">\(x = y = 0\)</span>, and use the two equations in turn, each time with the newest value of the other unknown:</p>
+<table>
+<thead>
+<tr>
+<th>Sweep</th>
+<th><span class="math-inline">\(x = (3+y)/4\)</span></th>
+<th><span class="math-inline">\(y = (3+x)/4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.75</td>
+<td>0.9375</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.9844</td>
+<td>0.9961</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.9990</td>
+<td>0.9998</td>
+</tr>
+</tbody>
+</table>
+<p>Every sweep brings both numbers closer to 1, here by a factor of 16 per sweep. This way of solving, one unknown at a time with the latest values of the others, is called a <strong>Gauss-Seidel iteration</strong>. It does not give the exact answer in a finite number of sweeps. You stop when the remaining error is smaller than a tolerance that you chose.</p>
+</div>
+<div class="box key">
+<p><strong>Worked example: two bonds that share an atom.</strong> Three atoms of equal mass lie in a plane. Two bonds of length 0.1 nm share the middle atom (round numbers for illustration, positions in nm). At the start of the step atom 1 is at <span class="math-inline">\((-0.08, 0.06)\)</span>, atom 2 at <span class="math-inline">\((0, 0)\)</span> and atom 3 at <span class="math-inline">\((0.08, 0.06)\)</span>. Both bonds have the correct length, and the angle between them is 106°. The unconstrained step moves the atoms to <span class="math-inline">\((-0.082, 0.061)\)</span>, <span class="math-inline">\((0.001, -0.001)\)</span> and <span class="math-inline">\((0.079, 0.063)\)</span>. Bond 1-2 is now 0.10360 nm long and bond 2-3 is 0.10090 nm.</p>
+<p>Correct bond 1-2 with the SHAKE update. Its length becomes 0.10006 nm. But atom 2 has moved, and bond 2-3, which was 0.9 % too long, is now 1.3 % too long (0.10133 nm).</p>
+<p>Correct bond 2-3. It becomes 0.10001 nm, and bond 1-2 is disturbed in turn, to 0.10025 nm. That was one sweep. The largest relative error after each sweep is:</p>
+<table>
+<thead>
+<tr>
+<th>Sweep</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Largest error</td>
+<td><span class="math-inline">\(2.5\times10^{-3}\)</span></td>
+<td><span class="math-inline">\(6.2\times10^{-5}\)</span></td>
+<td><span class="math-inline">\(1.1\times10^{-6}\)</span></td>
+<td><span class="math-inline">\(2.1\times10^{-8}\)</span></td>
+<td><span class="math-inline">\(3.9\times10^{-10}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each sweep reduces the error by a factor of about 50. A tolerance of <span class="math-inline">\(10^{-4}\)</span> is reached after 2 sweeps and a tolerance of <span class="math-inline">\(10^{-8}\)</span> after 5. A tighter tolerance costs more sweeps, and every extra digit costs about the same number of extra sweeps.</p>
+</div>
+<p><em>Awkward to parallelise</em>: the corrections have to be made one after another, because each one uses positions that the previous correction changed. When a large molecule is divided over several processors, a bond on one processor has to wait for its neighbour on another.</p>
+<p><em>Convergence slows when many constraints are coupled</em>: in a long chain with every bond constrained, a correction at one place disturbs the neighbouring bonds, their corrections disturb the next ones, and the error has to be passed along the chain and worn down over many sweeps.</p>
+<p><strong>RATTLE</strong> (<a href="https://doi.org/10.1016/0021-9991(83)90014-1" class="cite" target="_blank" rel="noopener" title="Andersen HC (1983). Rattle: A “velocity” version of the shake algorithm for molecular dynamics calculations. Journal of Computational Physics">Andersen 1983</a>) is the version for velocity Verlet. It also removes the component of the velocities along each bond, enforcing the time derivative of the constraint, <span class="math-inline">\(\dot\sigma_k = 2\,\mathbf r_{ij}\cdot\mathbf v_{ij} = 0\)</span>, so that positions and velocities are both consistent at each step.</p>
+<p>Velocity Verlet (Module 4) stores positions and velocities at the same instants. One step is a half kick of the velocities by the forces, a drift of the positions with the new velocities, and a second half kick. After the drift, RATTLE corrects the positions in the same way as SHAKE, and changes the velocities by the matching amount (the shift divided by <span class="math-inline">\(\Delta t\)</span>). But the velocities at the end of the step are stored too, and they must agree with rigid bonds.</p>
+<p>The condition on the velocities is the time derivative of the constraint. Write <span class="math-inline">\(\sigma_k = \mathbf r_{ij}\cdot\mathbf r_{ij} - d_k^2\)</span>. The product rule gives <span class="math-inline">\(\dot\sigma_k = 2\,\mathbf r_{ij}\cdot\dot{\mathbf r}_{ij}\)</span>, and <span class="math-inline">\(\dot{\mathbf r}_{ij} = \mathbf v_i-\mathbf v_j = \mathbf v_{ij}\)</span> is the relative velocity of the two atoms. If <span class="math-inline">\(\sigma_k\)</span> is zero at all times, its rate of change <span class="math-inline">\(\dot\sigma_k\)</span> is zero too.</p>
+<p>In words: the two atoms may not move towards each other or apart. After the second half kick this is in general not true, because the ordinary forces have pushed the atoms along the bond.</p>
+<p>RATTLE therefore makes a second correction, to the velocities. It has the same form as the correction of the positions: along the bond, opposite for the two atoms, and divided by the mass. For one bond,</p>
+<p><span class="math-display">\[\mathbf v_i \to \mathbf v_i - \frac{h}{m_i}\,\mathbf r_{ij},\qquad \mathbf v_j \to \mathbf v_j + \frac{h}{m_j}\,\mathbf r_{ij},\qquad h = \frac{\mathbf r_{ij}\cdot\mathbf v_{ij}}{\mu^{-1}\,d^2} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf v_i\)</span>, <span class="math-inline">\(\mathbf v_j\)</span>: the velocities of the two atoms after the second half kick, in nm/ps.</li>
+<li><span class="math-inline">\(\to\)</span>: "is replaced by".</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span>: the bond vector at the new time. The positions were already corrected, so its length is <span class="math-inline">\(d\)</span>.</li>
+<li><span class="math-inline">\(\mathbf v_{ij}\)</span>: the relative velocity <span class="math-inline">\(\mathbf v_i-\mathbf v_j\)</span> before the correction.</li>
+<li><span class="math-inline">\(h\)</span>: the strength of the velocity correction, a second multiplier, in u/ps.</li>
+<li><span class="math-inline">\(m_i\)</span>, <span class="math-inline">\(m_j\)</span>: the masses of the two atoms.</li>
+<li><span class="math-inline">\(\mu^{-1}\)</span>: <span class="math-inline">\(1/m_i+1/m_j\)</span>, as before.</li>
+<li><span class="math-inline">\(d\)</span>: the bond length.</li>
+</ul>
+</div>
+<p>The steps: subtract the second replacement from the first. The new relative velocity is <span class="math-inline">\(\mathbf v_{ij} - h\mu^{-1}\mathbf r_{ij}\)</span>. Demand that its dot product with <span class="math-inline">\(\mathbf r_{ij}\)</span> is zero: <span class="math-inline">\(\mathbf r_{ij}\cdot\mathbf v_{ij} - h\mu^{-1}|\mathbf r_{ij}|^2 = 0\)</span>. With <span class="math-inline">\(|\mathbf r_{ij}|^2 = d^2\)</span>, solving for <span class="math-inline">\(h\)</span> gives the formula.</p>
+<p>This equation has no squared unknown, so for one bond the result is exact and needs no repetition. When several bonds share atoms, the velocity corrections are swept through in the same way as the position corrections.</p>
+<p>An example with the C-H bond used above. The bond vector is <span class="math-inline">\(\mathbf r_{ij} = (0.1, 0)\)</span> nm, the hydrogen has velocity <span class="math-inline">\((1.0, 0.5)\)</span> nm/ps and the carbon <span class="math-inline">\((0.1, 0)\)</span> nm/ps. Then <span class="math-inline">\(\mathbf v_{ij} = (0.9, 0.5)\)</span>, <span class="math-inline">\(\mathbf r_{ij}\cdot\mathbf v_{ij} = 0.09\)</span>, and <span class="math-inline">\(h = 0.09/(1.0833\times0.01) = 8.31\)</span> u/ps.</p>
+<p>The velocity of the hydrogen becomes <span class="math-inline">\((0.169, 0.5)\)</span> and that of the carbon <span class="math-inline">\((0.169, 0)\)</span>. Along the bond both atoms now move at the same 0.169 nm/ps, so the bond length does not change. Across the bond the hydrogen keeps its 0.5 nm/ps, which is the rotation of the bond.</p>
+<p>SHAKE has no such step, because the position form of the Verlet algorithm stores no velocities. Velocities that are computed afterwards from differences of positions (Module 4) satisfy this condition only approximately.</p>
+<h2 id="settle">SETTLE</h2>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="fueOYcMgFfQ" href="https://www.youtube.com/watch?v=fueOYcMgFfQ" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 17: Constraint Dynamics - Water As An Example</span><span class="sv-m">38 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+
+<p>Water is the special case that decides the cost of a simulation, because most of the atoms are water.</p>
+<p>A rigid three-site water molecule is a triangle with the oxygen and the two hydrogens at its corners. "Three-site" means that the model has three points that carry interactions, one on each atom. Three fixed distances define the triangle: the two O-H bond lengths and the H-H distance, which fixes the angle.</p>
+<p>Three atoms have nine coordinates. Three constraints leave six ways to move: three for the position of the molecule and three for its orientation. The molecule moves as a rigid body.</p>
 <p>For a rigid three-site water molecule there are exactly three constraints on three atoms, and the problem can be solved analytically: <a href="https://doi.org/10.1002/jcc.540130805" class="cite" target="_blank" rel="noopener" title="Miyamoto S; Kollman PA (1992). Settle: An analytical version of the SHAKE and RATTLE algorithm for rigid water models. Journal of Computational Chemistry">Miyamoto and Kollman (1992)</a> find the rotated position of the rigid triangle directly. No iteration and no tolerance. Since most atoms in a simulation are water, every major code uses SETTLE or an equivalent for water and a general algorithm for the solute.</p>
+<p>"Solved analytically" means by a formula, in a fixed number of arithmetic operations, instead of by repeated approximation.</p>
+<p>Here is why a formula can exist. The unconstrained step leaves a triangle that is slightly out of shape. The constraint forces act inside the molecule, in equal and opposite pairs, so they cannot move its centre of mass. The centre of mass after the unconstrained step is therefore already the final one.</p>
+<p>The shape of the final triangle is known too: it is the rigid geometry of the water model. The only thing left to find is how the rigid triangle is turned about its centre of mass, and for three atoms that geometric problem can be solved directly.</p>
+<p>"No iteration and no tolerance" means that the three distances come out correct in one pass, to the rounding precision of the computer, and that there is no accuracy setting to choose. An iterative method stops when it reaches its tolerance, and its cost depends on how many sweeps that took.</p>
+<p>The "solute" is everything that is not solvent: the protein, a ligand, the ions. In the system of the first "Check yourself" question below, 57,000 of the 60,000 atoms are water. A method that treats those quickly and exactly matters more for the total cost than the method used for the protein.</p>
 <h2 id="lincs">LINCS</h2>
-<p><a href="https://doi.org/10.1002/(sici)1096-987x(199709)18:12&lt;1463::aid-jcc4&gt;3.0.co;2-h" class="cite" target="_blank" rel="noopener" title="Hess B; Bekker H; Berendsen HJC; Fraaije JGEM (1997). LINCS: A linear constraint solver for molecular simulations. Journal of Computational Chemistry">Hess, Bekker, Berendsen and Fraaije (1997)</a>; the default for non-water constraints in GROMACS. Write all constraints at once in matrix form. With <span class="math-inline">\(\mathbf B\)</span> the matrix of normalised bond directions at time <span class="math-inline">\(t\)</span> and <span class="math-inline">\(\mathbf M\)</span> the diagonal mass matrix, the constrained positions are a projection of the unconstrained ones:</p>
+<p>LINCS solves the same problem as SHAKE with a different plan. SHAKE corrects one bond at a time and repeats until a test is passed. LINCS treats all bonds together, in a fixed number of operations, with no test and no loop. The name stands for "linear constraint solver", the title of the paper.</p>
+<p><a href="https://doi.org/10.1002/(sici)1096-987x(199709)18:12&lt;1463::aid-jcc4&gt;3.0.co;2-h" class="cite" target="_blank" rel="noopener" title="Hess B; Bekker H; Berendsen HJC; Fraaije JGEM (1997). LINCS: A linear constraint solver for molecular simulations. Journal of Computational Chemistry">Hess, Bekker, Berendsen and Fraaije (1997)</a>; the default for non-water constraints in GROMACS.</p>
+<p>The method makes two moves. A <strong>projection</strong> sets the length of every bond, measured <em>along its old direction</em>, to the target. A <strong>correction</strong> then removes a small lengthening that the first move leaves behind. Both moves are easiest to see for a single bond, so that case comes first and the matrices come after it.</p>
+<h3 id="lincs-for-a-single-bond">LINCS for a single bond</h3>
+<p>Let <span class="math-inline">\(\hat{\mathbf s} = \mathbf s/d\)</span> be the unit vector along the old bond. The bond vector after the unconstrained step, <span class="math-inline">\(\mathbf s'\)</span>, can be split into a part along <span class="math-inline">\(\hat{\mathbf s}\)</span> and a part across it. The size of the part along <span class="math-inline">\(\hat{\mathbf s}\)</span> is the dot product <span class="math-inline">\(\hat{\mathbf s}\cdot\mathbf s'\)</span>. It is called the <strong>projection</strong> of <span class="math-inline">\(\mathbf s'\)</span> on the old direction: the length of the shadow that <span class="math-inline">\(\mathbf s'\)</span> casts on the line of the old bond.</p>
+<p><em>Move 1, the projection.</em> Shift the two atoms along <span class="math-inline">\(\hat{\mathbf s}\)</span>, in opposite directions and in inverse proportion to their masses as in SHAKE, until the projection equals <span class="math-inline">\(d\)</span>. The part across the old bond is left as it is:</p>
+<p><span class="math-display">\[\mathbf s' \;\to\; \mathbf s' - \left(\hat{\mathbf s}\cdot\mathbf s' - d\right)\hat{\mathbf s} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf s'\)</span>: the bond vector after the unconstrained step.</li>
+<li><span class="math-inline">\(\hat{\mathbf s}\)</span>: the unit vector along the old bond, <span class="math-inline">\(\mathbf s/d\)</span>.</li>
+<li><span class="math-inline">\(\hat{\mathbf s}\cdot\mathbf s'\)</span>: the projection of <span class="math-inline">\(\mathbf s'\)</span> on the old direction, in nm.</li>
+<li><span class="math-inline">\(d\)</span>: the target bond length.</li>
+<li><span class="math-inline">\(\to\)</span>: "is replaced by".</li>
+</ul>
+</div>
+<p>Read it like this: measure how much the shadow of the bond on its old direction is too long, and take that amount away along the old direction. The condition "projection equals <span class="math-inline">\(d\)</span>" contains the unknown shift only to the first power. It is solved in one stroke, with nothing dropped and nothing to repeat. This is the "linear" in the name.</p>
+<p><em>What move 1 leaves behind.</em> The bond now has a part of length <span class="math-inline">\(d\)</span> along the old direction, and it still has its part across that direction, of length <span class="math-inline">\(q\)</span>, say. By Pythagoras' theorem its length is <span class="math-inline">\(l = \sqrt{d^2+q^2}\)</span>, which is larger than <span class="math-inline">\(d\)</span>.</p>
+<p>If <span class="math-inline">\(\theta\)</span> is the angle between the new bond and the old one, then <span class="math-inline">\(d = l\cos\theta\)</span>, so <span class="math-inline">\(l = d/\cos\theta\)</span>. The bond is too long by the factor <span class="math-inline">\(1/\cos\theta\)</span>. A bond that turns by 1.8° in one step comes out too long by <span class="math-inline">\(5\times10^{-4}\)</span> of its length, and a bond that turns by 30° by 15 %.</p>
+<p><em>Move 2, the correction.</em> Shift the atoms along <span class="math-inline">\(\hat{\mathbf s}\)</span> once more, so that the part along the old direction becomes a little shorter than <span class="math-inline">\(d\)</span>, by the amount that makes the total length right. The part across the old direction is still <span class="math-inline">\(q\)</span>, with <span class="math-inline">\(q^2 = l^2-d^2\)</span>. By Pythagoras again, the total length is <span class="math-inline">\(d\)</span> when the part along the old direction is</p>
+<p><span class="math-display">\[p = \sqrt{d^2-q^2} = \sqrt{2d^2-l^2} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(p\)</span>: the new target for the projection of the bond on its old direction, in nm.</li>
+<li><span class="math-inline">\(d\)</span>: the target bond length.</li>
+<li><span class="math-inline">\(q\)</span>: the size of the part of the bond vector across the old direction. Move 1 did not change it.</li>
+<li><span class="math-inline">\(l\)</span>: the length of the bond after move 1.</li>
+</ul>
+</div>
+<p>For a single bond the result is exact. With the bond of the SHAKE example, <span class="math-inline">\(\mathbf s = (0.100, 0)\)</span> and <span class="math-inline">\(\mathbf s' = (0.103, 0.010)\)</span>, the projection is 0.103 nm. Move 1 sets it to 0.100 and gives the bond vector <span class="math-inline">\((0.100, 0.010)\)</span>, with length <span class="math-inline">\(l = 0.10050\)</span> nm: too long by 0.5 %, which is <span class="math-inline">\(1/\cos\theta\)</span> for <span class="math-inline">\(\theta = 5.7\)</span>°. Move 2 sets the projection to <span class="math-inline">\(p = \sqrt{2\times0.01-0.0101} = 0.09950\)</span> nm and gives <span class="math-inline">\((0.09950, 0.010)\)</span>, with length 0.10000 nm. This is the bond that SHAKE reached after three passes.</p>
+<h3 id="all-bonds-at-once-the-matrix-form">All bonds at once: the matrix form</h3>
+<p>With many bonds that share atoms, move 1 has to be made for all bonds together, because shifting the atoms of one bond changes the projections of its neighbours. That is a set of coupled linear equations, and matrices are the standard way to write and solve such a set.</p>
+<div class="box maths">
+<p><strong>Maths you need here: matrices.</strong> A <strong>matrix</strong> is a rectangular table of numbers. A matrix times a list of numbers (a vector) gives a new list. Each entry of the result is one row of the matrix, multiplied entry by entry with the list and added up. For example</p>
+<p><span class="math-display">\[\begin{pmatrix} 2 &amp; 1\\ 0 &amp; 3 \end{pmatrix}\begin{pmatrix} 1\\ 2 \end{pmatrix} = \begin{pmatrix} 2\times1 + 1\times2\\ 0\times1 + 3\times2 \end{pmatrix} = \begin{pmatrix} 4\\ 6 \end{pmatrix} .\]</span></p>
+<p>Four more words:</p>
+<ul>
+<li>The <strong>transpose</strong> <span class="math-inline">\(\mathbf B^T\)</span> is <span class="math-inline">\(\mathbf B\)</span> with rows and columns exchanged.</li>
+<li>A <strong>diagonal</strong> matrix has non-zero numbers only on the line from top left to bottom right.</li>
+<li>The <strong>inverse</strong> <span class="math-inline">\(\mathbf C^{-1}\)</span> of a square matrix <span class="math-inline">\(\mathbf C\)</span> undoes it: if <span class="math-inline">\(\mathbf C\mathbf x = \mathbf y\)</span> then <span class="math-inline">\(\mathbf x = \mathbf C^{-1}\mathbf y\)</span>. For a diagonal matrix the inverse is easy, one divided by each diagonal entry. For a general matrix with <span class="math-inline">\(K\)</span> rows it costs of the order of <span class="math-inline">\(K^3\)</span> operations.</li>
+<li>A matrix is <strong>sparse</strong> when most of its entries are zero.</li>
+</ul>
+<p>More in the <a href="maths.html#matrices">toolbox</a>.</p>
+</div>
+<p>Write all constraints at once in matrix form. With <span class="math-inline">\(\mathbf B\)</span> the matrix of normalised bond directions at time <span class="math-inline">\(t\)</span> and <span class="math-inline">\(\mathbf M\)</span> the diagonal mass matrix, the constrained positions are a projection of the unconstrained ones:</p>
 <p><span class="math-display">\[\mathbf r(t+\Delta t) = \mathbf r' - \mathbf M^{-1}\mathbf B^{T}\left(\mathbf B\mathbf M^{-1}\mathbf B^{T}\right)^{-1}\left(\mathbf B\mathbf r' - \mathbf d\right).\]</span></p>
-<p>The expensive part is inverting the <span class="math-inline">\(K\times K\)</span> constraint-coupling matrix <span class="math-inline">\(\mathbf B\mathbf M^{-1}\mathbf B^T\)</span>. LINCS writes it as <span class="math-inline">\(\mathbf S(\mathbf 1-\mathbf A)\mathbf S\)</span> with <span class="math-inline">\(\mathbf S\)</span> diagonal, where <span class="math-inline">\(\mathbf A\)</span> is sparse and has non-zero entries only for constraints that share an atom, and uses the series</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r'\)</span>: the positions of all <span class="math-inline">\(N\)</span> atoms after the unconstrained step, written as one list of <span class="math-inline">\(3N\)</span> numbers <span class="math-inline">\((x_1, y_1, z_1, x_2, \dots)\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r(t+\Delta t)\)</span>: the same list after the constraints have been applied.</li>
+<li><span class="math-inline">\(K\)</span>: the number of constraints. In this section <span class="math-inline">\(K\)</span> is not the kinetic energy.</li>
+<li><span class="math-inline">\(\mathbf B\)</span>: a table with <span class="math-inline">\(K\)</span> rows and <span class="math-inline">\(3N\)</span> columns. Row <span class="math-inline">\(k\)</span> describes bond <span class="math-inline">\(k\)</span> between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>. It holds the old unit vector <span class="math-inline">\(\hat{\mathbf s}_k\)</span> in the three columns of atom <span class="math-inline">\(i\)</span>, <span class="math-inline">\(-\hat{\mathbf s}_k\)</span> in the three columns of atom <span class="math-inline">\(j\)</span>, and zeros everywhere else. "Normalised" means "of length 1".</li>
+<li><span class="math-inline">\(\mathbf B\mathbf r'\)</span>: a list of <span class="math-inline">\(K\)</span> numbers. Entry <span class="math-inline">\(k\)</span> is <span class="math-inline">\(\hat{\mathbf s}_k\cdot(\mathbf r_i'-\mathbf r_j')\)</span>, the projection of the unconstrained bond <span class="math-inline">\(k\)</span> on its old direction.</li>
+<li><span class="math-inline">\(\mathbf d\)</span>: the list of the <span class="math-inline">\(K\)</span> target bond lengths.</li>
+<li><span class="math-inline">\(\mathbf B\mathbf r'-\mathbf d\)</span>: the error of every bond along its old direction, <span class="math-inline">\(K\)</span> numbers in nm.</li>
+<li><span class="math-inline">\(\mathbf M\)</span>: the diagonal matrix with <span class="math-inline">\(3N\)</span> rows that holds the mass of each atom three times, once for each of <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>. Its inverse <span class="math-inline">\(\mathbf M^{-1}\)</span> holds <span class="math-inline">\(1/m\)</span> on the diagonal.</li>
+<li><span class="math-inline">\(\mathbf B^T\)</span>: the transpose of <span class="math-inline">\(\mathbf B\)</span>, with <span class="math-inline">\(3N\)</span> rows and <span class="math-inline">\(K\)</span> columns.</li>
+<li><span class="math-inline">\(\mathbf B\mathbf M^{-1}\mathbf B^{T}\)</span>: a table with <span class="math-inline">\(K\)</span> rows and <span class="math-inline">\(K\)</span> columns, the <strong>constraint-coupling matrix</strong>. The power <span class="math-inline">\(-1\)</span> outside the bracket is its inverse.</li>
+</ul>
+</div>
+<p>Read the formula from right to left:</p>
+<ol>
+<li><span class="math-inline">\(\mathbf B\mathbf r'-\mathbf d\)</span> measures, for every bond, how far its projection on the old direction is from the target.</li>
+<li>The inverse of the coupling matrix turns these errors into the strength of the correction that each bond needs. It takes into account that bonds share atoms, so that correcting one bond changes its neighbours. These <span class="math-inline">\(K\)</span> strengths play the part of <span class="math-inline">\(g\)</span> in SHAKE: one unknown per bond.</li>
+<li><span class="math-inline">\(\mathbf B^T\)</span> turns the strength of each bond into shifts of its two atoms, along the old bond direction and opposite for the two.</li>
+<li><span class="math-inline">\(\mathbf M^{-1}\)</span> divides each shift by the mass of the atom, so light atoms move more.</li>
+<li>The result is subtracted from the unconstrained positions.</li>
+</ol>
+<p>For one bond this is move 1 of the previous subsection. <span class="math-inline">\(\mathbf B\)</span> has a single row, <span class="math-inline">\((\hat{\mathbf s}, -\hat{\mathbf s})\)</span>. The coupling matrix is the single number <span class="math-inline">\(1/m_i+1/m_j = \mu^{-1}\)</span>, and its inverse is <span class="math-inline">\(\mu\)</span>. Atom <span class="math-inline">\(i\)</span> is shifted by <span class="math-inline">\(-(\mu/m_i)(\hat{\mathbf s}\cdot\mathbf s'-d)\,\hat{\mathbf s}\)</span> and atom <span class="math-inline">\(j\)</span> by <span class="math-inline">\(+(\mu/m_j)(\hat{\mathbf s}\cdot\mathbf s'-d)\,\hat{\mathbf s}\)</span>. Since <span class="math-inline">\(\mu/m_i+\mu/m_j = 1\)</span>, the bond vector changes by <span class="math-inline">\(-(\hat{\mathbf s}\cdot\mathbf s'-d)\,\hat{\mathbf s}\)</span>, as before.</p>
+<p>Why does <span class="math-inline">\(\mathbf B\)</span> hold unit vectors, while SHAKE had <span class="math-inline">\(2\mathbf r_{ij}\)</span>? LINCS writes each constraint with the length, <span class="math-inline">\(|\mathbf r_i-\mathbf r_j|-d_k = 0\)</span>, instead of the squared length. The gradient of a length with respect to <span class="math-inline">\(\mathbf r_i\)</span> is the unit vector along the bond (Module 2). So the rows of <span class="math-inline">\(\mathbf B\)</span> are the gradients of the constraints, and <span class="math-inline">\(\mathbf B^T\)</span> plays the part that <span class="math-inline">\(\nabla_i\sigma_k\)</span> played in SHAKE.</p>
+<p>To check that the formula does what is claimed, multiply it from the left by <span class="math-inline">\(\mathbf B\)</span>:</p>
+<p><span class="math-display">\[\mathbf B\,\mathbf r(t+\Delta t) = \mathbf B\mathbf r' - \left(\mathbf B\mathbf M^{-1}\mathbf B^{T}\right)\left(\mathbf B\mathbf M^{-1}\mathbf B^{T}\right)^{-1}\left(\mathbf B\mathbf r'-\mathbf d\right) = \mathbf B\mathbf r' - \left(\mathbf B\mathbf r'-\mathbf d\right) = \mathbf d .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf B\,\mathbf r(t+\Delta t)\)</span>: the projections of the final bonds on their old directions.</li>
+<li>A matrix times its own inverse is the identity matrix and drops out. That is the step from the second to the third expression.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>After the step, the projection of every bond on its old direction equals its target length, for all bonds at the same time. "Projection" is also the mathematical name for an operation of this kind: it removes the part of the positions that violates the constraints and leaves the rest alone.</p>
+<h3 id="the-series-that-replaces-the-inverse">The series that replaces the inverse</h3>
+<p>The expensive part is inverting the <span class="math-inline">\(K\times K\)</span> constraint-coupling matrix <span class="math-inline">\(\mathbf B\mathbf M^{-1}\mathbf B^T\)</span>. A protein has a thousand or more constraints, and the bond directions change at every step, so the matrix would have to be inverted anew at every step. A direct inverse is far too expensive for that.</p>
+<p>The entries of the coupling matrix can be written down. On the diagonal, entry <span class="math-inline">\((k,k)\)</span> is <span class="math-inline">\(1/m_i+1/m_j\)</span> for the two atoms of bond <span class="math-inline">\(k\)</span>, the <span class="math-inline">\(\mu^{-1}\)</span> of SHAKE. Off the diagonal, entry <span class="math-inline">\((k,l)\)</span> is zero unless bonds <span class="math-inline">\(k\)</span> and <span class="math-inline">\(l\)</span> share an atom. If they share an atom of mass <span class="math-inline">\(m_c\)</span>, its size is <span class="math-inline">\(|\cos\phi|/m_c\)</span>, where <span class="math-inline">\(\phi\)</span> is the angle between the two bonds, and its sign depends on the order in which the two atoms of each bond are written. These off-diagonal entries are the coupling: they say how much a correction of bond <span class="math-inline">\(l\)</span> changes the projection of bond <span class="math-inline">\(k\)</span>.</p>
+<p>LINCS writes it as <span class="math-inline">\(\mathbf S(\mathbf 1-\mathbf A)\mathbf S\)</span> with <span class="math-inline">\(\mathbf S\)</span> diagonal, where <span class="math-inline">\(\mathbf A\)</span> is sparse and has non-zero entries only for constraints that share an atom, and uses the series</p>
 <p><span class="math-display">\[(\mathbf 1-\mathbf A)^{-1} = \mathbf 1+\mathbf A+\mathbf A^2+\mathbf A^3+\dots\]</span></p>
-<p>truncated after a few terms (<code>lincs-order = 4</code>). Because the projection uses the old bond directions, the new bonds come out slightly too long after rotation, by a factor <span class="math-inline">\(1/\cos\theta\)</span> for a rotation angle <span class="math-inline">\(\theta\)</span> in one step (a relative error of about <span class="math-inline">\(5\times10^{-4}\)</span> rms for a protein at 2 fs). A final correction step reduces this to about <span class="math-inline">\(10^{-6}\)</span> (<code>lincs-iter = 1</code>). It is not exactly zero, because the correction itself rotates coupled bonds slightly.</p>
-<p>LINCS has no convergence loop (its accuracy is set by the order of the series and the number of correction steps), was three to four times faster than SHAKE at equal accuracy in the authors' tests, and is easy to parallelise because a bond is coupled only to bonds a few steps away (P-LINCS). The series only converges when all eigenvalues of <span class="math-inline">\(\mathbf A\)</span> are smaller than 1 in absolute value. This always holds for bond constraints in molecules, even with rings. It can fail when angles are also constrained through extra distance constraints, which create small rings with high connectivity: Hess et al. found a largest eigenvalue of 0.8 for angle-constrained butane and 1.2 for pentane. The projection itself is still valid then, but the matrix has to be inverted another way, so rigid triangles and similar groups need special handling. When a simulation becomes unstable, the first symptom in GROMACS is usually a "LINCS warning": a bond has rotated by more than 30° in one step. The constraint algorithm is reporting the problem, and is rarely the cause. Look for bad contacts, a time step that is too large, or a system that was not equilibrated.</p>
+<p>truncated after a few terms (<code>lincs-order = 4</code>).</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf S\)</span>: a diagonal matrix with <span class="math-inline">\(K\)</span> rows. Its entry for bond <span class="math-inline">\(k\)</span> is <span class="math-inline">\(\sqrt{1/m_i+1/m_j}\)</span>, the square root of the diagonal entry of the coupling matrix. It is not the bond vector <span class="math-inline">\(\mathbf s\)</span>. (The LINCS paper gives the name <span class="math-inline">\(\mathbf S\)</span> to the inverse of this matrix and writes the inverse of the coupling matrix with it. The matrix <span class="math-inline">\(\mathbf A\)</span> is the same in both ways of writing.)</li>
+<li><span class="math-inline">\(\mathbf 1\)</span>: the identity matrix with <span class="math-inline">\(K\)</span> rows.</li>
+<li><span class="math-inline">\(\mathbf A\)</span>: a matrix with <span class="math-inline">\(K\)</span> rows and columns and zeros on its diagonal. Entry <span class="math-inline">\((k,l)\)</span> is minus the entry of the coupling matrix divided by <span class="math-inline">\(S_{kk}S_{ll}\)</span>. Its entries are pure numbers.</li>
+<li><span class="math-inline">\((\mathbf 1-\mathbf A)^{-1}\)</span>: the inverse of the matrix <span class="math-inline">\(\mathbf 1-\mathbf A\)</span>.</li>
+<li><span class="math-inline">\(\mathbf A^2\)</span>, <span class="math-inline">\(\mathbf A^3\)</span>: <span class="math-inline">\(\mathbf A\)</span> applied twice, three times.</li>
+<li>The dots: the sum continues without end.</li>
+</ul>
+</div>
+<p>The first step is a rescaling. Dividing row <span class="math-inline">\(k\)</span> and column <span class="math-inline">\(k\)</span> of the coupling matrix by <span class="math-inline">\(S_{kk}\)</span> turns every diagonal entry into 1. What is left off the diagonal is called <span class="math-inline">\(-\mathbf A\)</span>.</p>
+<p>So the coupling matrix equals <span class="math-inline">\(\mathbf S(\mathbf 1-\mathbf A)\mathbf S\)</span>, and its inverse is <span class="math-inline">\(\mathbf S^{-1}(\mathbf 1-\mathbf A)^{-1}\mathbf S^{-1}\)</span>. <span class="math-inline">\(\mathbf S\)</span> is diagonal, so its inverse costs nothing. All the difficulty is now in <span class="math-inline">\((\mathbf 1-\mathbf A)^{-1}\)</span>, and for that there is a trick that is known from ordinary numbers.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the geometric series.</strong> For a number <span class="math-inline">\(x\)</span> between <span class="math-inline">\(-1\)</span> and 1,</p>
+<p><span class="math-display">\[\frac{1}{1-x} = 1 + x + x^2 + x^3 + \dots\]</span></p>
+<p>To see why, call the sum up to the term <span class="math-inline">\(x^n\)</span> by the name <span class="math-inline">\(s_n\)</span> and multiply it by <span class="math-inline">\((1-x)\)</span>. All terms cancel in pairs except the first and the last: <span class="math-inline">\((1-x)\,s_n = 1-x^{n+1}\)</span>. When <span class="math-inline">\(x\)</span> is smaller than 1 in size, <span class="math-inline">\(x^{n+1}\)</span> shrinks towards zero as <span class="math-inline">\(n\)</span> grows, so <span class="math-inline">\(s_n\)</span> approaches <span class="math-inline">\(1/(1-x)\)</span>.</p>
+<p>With <span class="math-inline">\(x = 0.2\)</span> the exact value is <span class="math-inline">\(1/0.8 = 1.25\)</span>, and the sums are 1, 1.2, 1.24, 1.248, 1.2496. After the term <span class="math-inline">\(x^4\)</span> the error is 0.0004. The smaller <span class="math-inline">\(x\)</span> is, the fewer terms are needed.</p>
+<p>With <span class="math-inline">\(x = 1.2\)</span> the sums are 1, 2.2, 3.64, 5.37 and grow without limit, while <span class="math-inline">\(1/(1-1.2) = -5\)</span>. The series is useless when <span class="math-inline">\(x\)</span> is larger than 1 in size. It is the Taylor expansion of <span class="math-inline">\(1/(1-x)\)</span> around <span class="math-inline">\(x = 0\)</span> (<a href="maths.html#taylor">toolbox</a>).</p>
+</div>
+<p>The same series holds with the matrix <span class="math-inline">\(\mathbf A\)</span> in the place of the number <span class="math-inline">\(x\)</span> and the identity matrix in the place of 1. That is the formula above. You can check it in the same way: multiply <span class="math-inline">\(\mathbf 1+\mathbf A+\dots+\mathbf A^n\)</span> by <span class="math-inline">\((\mathbf 1-\mathbf A)\)</span>, and all terms cancel except <span class="math-inline">\(\mathbf 1-\mathbf A^{n+1}\)</span>.</p>
+<p>Why is this cheaper than inverting? The program never builds the powers of <span class="math-inline">\(\mathbf A\)</span> as tables. It needs only the product of the inverse with one list of numbers, the errors. So it multiplies that list by <span class="math-inline">\(\mathbf A\)</span>, multiplies the result by <span class="math-inline">\(\mathbf A\)</span> again, and so on, and adds up the lists. Because <span class="math-inline">\(\mathbf A\)</span> is sparse, one such multiplication costs a few operations per bond.</p>
+<p>Each term has a meaning. The term <span class="math-inline">\(\mathbf 1\)</span> corrects every bond as if it were alone. The term <span class="math-inline">\(\mathbf A\)</span> adds the effect that the correction of each bond has on its direct neighbours. The term <span class="math-inline">\(\mathbf A^2\)</span> adds the effect over two bonds, which includes the echo of a bond on itself through a neighbour, and so on.</p>
+<p>Cutting the series after <span class="math-inline">\(\mathbf A^4\)</span> ignores coupling over more than four bonds. The setting <code>lincs-order</code> says where the series is cut. In the algorithm printed in the LINCS paper the order is the number of multiplications by <span class="math-inline">\(\mathbf A\)</span>, which is the highest power of <span class="math-inline">\(\mathbf A\)</span> that is kept.</p>
+<p>How fast the terms shrink depends on the size of the entries of <span class="math-inline">\(\mathbf A\)</span>, which is set by the masses and by <span class="math-inline">\(\cos\phi\)</span>.</p>
+<p>Three illustrations, with masses of 1 and 12 u. For two C-H bonds on the same carbon at an angle of 110° the entry is about 0.03, because the shared carbon is heavy and enters as <span class="math-inline">\(1/12\)</span>. For two bonds between carbons that share a carbon at 110° it is 0.17. For an angle of 90° it would be zero. With entries of this size the terms of the series shrink quickly.</p>
+<h3 id="the-correction-for-rotation">The correction for rotation</h3>
+<p>Because the projection uses the old bond directions, the new bonds come out slightly too long after rotation, by a factor <span class="math-inline">\(1/\cos\theta\)</span> for a rotation angle <span class="math-inline">\(\theta\)</span> in one step (a relative error of about <span class="math-inline">\(5\times10^{-4}\)</span> rms for a protein at 2 fs). This is the lengthening that the one-bond picture showed. "rms" stands for root mean square, a kind of average over all bonds: square each error, take the mean, and take the square root.</p>
+<p>A relative error of <span class="math-inline">\(5\times10^{-4}\)</span> is what a rotation by 1.8° produces, and that is the size of rotation to expect from thermal motion. At 300 K a hydrogen moves at about <span class="math-inline">\(\sqrt{k_BT/m} = 1.6\)</span> nm/ps along each direction, which is 0.0032 nm in a step of 2 fs. A sideways move of 0.0032 nm at the end of a bond of 0.1 nm is an angle of 0.032 radians, or 1.8°.</p>
+<p>A final correction step reduces this to about <span class="math-inline">\(10^{-6}\)</span> (<code>lincs-iter = 1</code>). It is not exactly zero, because the correction itself rotates coupled bonds slightly.</p>
+<p>The correction step is move 2 of the one-bond picture, made for all bonds together. The program measures the length <span class="math-inline">\(l_k\)</span> of every bond after the projection, computes the new targets <span class="math-inline">\(p_k = \sqrt{2d_k^2-l_k^2}\)</span>, and applies the projection formula once more with the list of the <span class="math-inline">\(p_k\)</span> in the place of <span class="math-inline">\(\mathbf d\)</span>. The same series is used again.</p>
+<p>For a bond on its own this would be exact. With coupled bonds, the shift of a shared atom turns the neighbouring bonds a little, which is the reason for the remaining <span class="math-inline">\(10^{-6}\)</span>. The setting <code>lincs-iter</code> is the number of correction steps.</p>
+<p>The formula for <span class="math-inline">\(p_k\)</span> has no solution when <span class="math-inline">\(l_k^2\)</span> is larger than <span class="math-inline">\(2d_k^2\)</span>. That happens when a bond has turned by more than 45° in one step, because then <span class="math-inline">\(1/\cos\theta\)</span> is larger than <span class="math-inline">\(\sqrt2\)</span>. No shift along the old direction can repair such a bond.</p>
+<div class="box key">
+<p><strong>Worked example: LINCS for two bonds that share an atom.</strong> Take the three atoms of the SHAKE example again: equal masses of 12 u, old positions <span class="math-inline">\((-0.08, 0.06)\)</span>, <span class="math-inline">\((0, 0)\)</span> and <span class="math-inline">\((0.08, 0.06)\)</span> nm, bonds of 0.1 nm. Bond 1 runs from atom 2 to atom 1 and bond 2 from atom 2 to atom 3, so the old unit vectors are <span class="math-inline">\(\hat{\mathbf s}_1 = (-0.8, 0.6)\)</span> and <span class="math-inline">\(\hat{\mathbf s}_2 = (0.8, 0.6)\)</span>. The matrix <span class="math-inline">\(\mathbf B\)</span> has two rows, one per bond, and six columns, for <span class="math-inline">\(x_1, y_1, x_2, y_2, x_3, y_3\)</span>:</p>
+<p><span class="math-display">\[\mathbf B = \begin{pmatrix} -0.8 &amp; 0.6 &amp; 0.8 &amp; -0.6 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; -0.8 &amp; -0.6 &amp; 0.8 &amp; 0.6 \end{pmatrix} .\]</span></p>
+<ol>
+<li><em>The errors.</em> The unconstrained positions are <span class="math-inline">\((-0.082, 0.061)\)</span>, <span class="math-inline">\((0.001, -0.001)\)</span> and <span class="math-inline">\((0.079, 0.063)\)</span>. The projections <span class="math-inline">\(\mathbf B\mathbf r'\)</span> are 0.1036 and 0.1008 nm, so <span class="math-inline">\(\mathbf B\mathbf r'-\mathbf d = (0.0036, 0.0008)\)</span> nm.</li>
+<li><em>The coupling matrix.</em> The diagonal entries are <span class="math-inline">\(1/12+1/12 = 0.1667\)</span> u<span class="math-inline">\(^{-1}\)</span>. The two bonds share atom 2 at an angle of 106°, with <span class="math-inline">\(\cos\phi = -0.28\)</span>, so the off-diagonal entries are <span class="math-inline">\(-0.28/12 = -0.0233\)</span> u<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><em><span class="math-inline">\(\mathbf S\)</span> and <span class="math-inline">\(\mathbf A\)</span>.</em> <span class="math-inline">\(S_{11} = S_{22} = \sqrt{0.1667} = 0.408\)</span>. Dividing the off-diagonal entry by <span class="math-inline">\(0.408\times0.408 = 0.1667\)</span> and changing its sign gives <span class="math-inline">\(A_{12} = A_{21} = 0.14\)</span>.</li>
+<li><em>The series.</em> Summed up to <span class="math-inline">\(\mathbf A^4\)</span>, it has 1.019984 on the diagonal and 0.142744 off it. The exact inverse of <span class="math-inline">\(\mathbf 1-\mathbf A\)</span> has 1.019992 and 0.142799. Cut after <span class="math-inline">\(\mathbf A^4\)</span>, each entry is off by less than <span class="math-inline">\(6\times10^{-5}\)</span>.</li>
+<li><em>The strengths.</em> Without coupling, each bond would get a correction of its error divided by 0.1667, which is 0.0216 and 0.0048 (in u nm). With coupling the values are 0.0227 and 0.0080. Bond 2 needs much more than its own error suggests, because the large correction of bond 1 pulls on the shared atom.</li>
+<li><em>After the projection.</em> The bond lengths are 0.100004 and 0.100034 nm. The bonds turned by 0.5° and 1.5° during the step, and they are too long by <span class="math-inline">\(4\times10^{-5}\)</span> and <span class="math-inline">\(3\times10^{-4}\)</span> of their length, the factor <span class="math-inline">\(1/\cos\theta\)</span>.</li>
+<li><em>After one correction.</em> The relative errors are <span class="math-inline">\(1\times10^{-6}\)</span> and <span class="math-inline">\(-3\times10^{-6}\)</span>.</li>
+</ol>
+<p>The final positions agree with those of SHAKE, iterated to convergence, to within <span class="math-inline">\(2\times10^{-7}\)</span> nm. LINCS got there with a fixed amount of work: two projections, each with four multiplications by <span class="math-inline">\(\mathbf A\)</span>.</p>
+</div>
+<h3 id="what-lincs-gains-and-when-the-series-fails">What LINCS gains, and when the series fails</h3>
+<p>LINCS has no convergence loop (its accuracy is set by the order of the series and the number of correction steps), was three to four times faster than SHAKE at equal accuracy in the authors' tests, and is easy to parallelise because a bond is coupled only to bonds a few steps away (P-LINCS).</p>
+<p>"No convergence loop" means that the amount of work per step is known in advance. "Coupled only to bonds a few steps away" follows from the series: cut after <span class="math-inline">\(\mathbf A^4\)</span>, the new position of an atom depends only on bonds a few bonds away (about as many as the order of the series), and the correction step doubles that reach. A processor that holds one part of a molecule therefore needs to know only a thin layer of the neighbouring part. P-LINCS is the name of the parallel version.</p>
+<p>The series only converges when all eigenvalues of <span class="math-inline">\(\mathbf A\)</span> are smaller than 1 in absolute value. An eigenvalue of a matrix is a number <span class="math-inline">\(a\)</span> for which there is a list of numbers, an eigenvector, that the matrix only multiplies by <span class="math-inline">\(a\)</span> (Module 2 and the <a href="maths.html#eigen">toolbox</a>). Applying <span class="math-inline">\(\mathbf A\)</span> to such a list <span class="math-inline">\(n\)</span> times multiplies it by <span class="math-inline">\(a^n\)</span>.</p>
+<p>If every eigenvalue is smaller than 1 in size, the terms of the series shrink, like <span class="math-inline">\(x^n\)</span> in the box above. If one of them is larger than 1, the terms grow and the sum has no meaning. In the worked example the eigenvalues of <span class="math-inline">\(\mathbf A\)</span> are <span class="math-inline">\(+0.14\)</span> and <span class="math-inline">\(-0.14\)</span>.</p>
+<p>This always holds for bond constraints in molecules, even with rings. It can fail when angles are also constrained through extra distance constraints, which create small rings with high connectivity: Hess et al. found a largest eigenvalue of 0.8 for angle-constrained butane and 1.2 for pentane.</p>
+<p>An angle is constrained by adding a rod between the two outer atoms, as in rigid water. Each such rod closes a triangle of three constraints in which every constraint shares an atom with the other two, and neighbouring triangles share a side. That is the meaning of "small rings with high connectivity". Every constraint is coupled to many others, and the eigenvalues grow.</p>
+<p>With an eigenvalue of 0.8 the series still converges, but slowly: <span class="math-inline">\(0.8^5 = 0.33\)</span>, so after the term <span class="math-inline">\(\mathbf A^4\)</span> a third of that part of the error is still there. With 1.2 the terms grow, as in the box.</p>
+<p>The projection itself is still valid then, but the matrix has to be inverted another way, so rigid triangles and similar groups need special handling.</p>
+<h3 id="lincs-warnings">LINCS warnings</h3>
+<p>When a simulation becomes unstable, the first symptom in GROMACS is usually a "LINCS warning": a bond has rotated by more than 30° in one step. The constraint algorithm is reporting the problem, and is rarely the cause. Look for bad contacts, a time step that is too large, or a system that was not equilibrated.</p>
+<p>Why does the warning speak of rotation? The whole method assumes that the old bond direction is still a good guide, which is true when bonds turn by a small angle in one step. Thermal motion turns a bond to hydrogen by about 2° in 2 fs, as estimated above.</p>
+<p>A turn of 30° needs the hydrogen to move about 0.05 nm sideways in a single step, more than fifteen times its thermal speed. An atom becomes that fast only when a very large force acts on it. Such a force has a cause outside the constraint algorithm: two atoms that overlap (a "bad contact"), or a trajectory that has already become unstable.</p>
+<p>At 30° a bond would come out 15 % too long after the projection, and at 45° the correction has no solution. The warning comes before the method breaks down.</p>
+<h3 id="what-the-accuracy-settings-mean">What the accuracy settings mean</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it controls</th>
+<th>Looser or lower</th>
+<th>Tighter or higher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHAKE relative tolerance (<span class="math-inline">\(10^{-4}\)</span> to <span class="math-inline">\(10^{-8}\)</span>)</td>
+<td>The largest relative error of a bond length at which SHAKE stops sweeping</td>
+<td>Fewer sweeps, but every bond may be wrong by that fraction at every step</td>
+<td>More sweeps per step</td>
+</tr>
+<tr>
+<td><code>lincs-order</code> (4)</td>
+<td>Where the series is cut (the order of the expansion), that is, over how many bonds the coupling is followed</td>
+<td>Cheaper, less accurate for strongly coupled bonds</td>
+<td>More multiplications by <span class="math-inline">\(\mathbf A\)</span>, and a wider layer to exchange between processors</td>
+</tr>
+<tr>
+<td><code>lincs-iter</code> (1)</td>
+<td>The number of correction steps for the lengthening by rotation</td>
+<td>With none, the error of about <span class="math-inline">\(5\times10^{-4}\)</span> quoted above stays</td>
+<td>One more projection per step for each extra correction</td>
+</tr>
+<tr>
+<td>SETTLE</td>
+<td>Nothing to set: the result is exact</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>LINCS has no tolerance. Its accuracy follows from the two numbers in the table and from how far the bonds turn in one step, so it gets worse when the time step is longer or the atoms are faster.</p>
+<p>Why care about the fourth or sixth digit of a bond length? Because of the energy. A bond length that is slightly wrong in a different way at every step means constraint forces that are slightly wrong at every step, and those do a little work. Over millions of steps the total energy drifts. Module 4 lists a loose constraint tolerance among the things to suspect when the energy of a run without thermostat does not behave as the integrator predicts.</p>
+<p>The demo below compares a small molecule with flexible bonds and the same molecule with its bonds held rigid by SHAKE. Its units are arbitrary, not femtoseconds. Raise the time step and watch the error of the total energy. The flexible molecule becomes unstable at the limit set by its stiff bonds, while the rigid one stays stable up to a time step several times larger. The line of numbers under the plot also reports how many SHAKE sweeps were needed per step and how well the bond lengths were kept.</p>
 <div class="widget" data-widget="shake"></div>
 
 <h2 id="consequences-for-the-statistics">Consequences for the statistics</h2>
-<p><strong>Degrees of freedom.</strong> Each constraint removes one degree of freedom. The temperature must be computed with</p>
+<p>Rigid bonds change three things that you compute from a simulation: the temperature, the pressure and, very slightly, the probabilities of the conformations. The program takes care of the first two, but you need to know what it does in order to read its output and to avoid mistakes in your own analysis.</p>
+<p><strong>Degrees of freedom.</strong> Each constraint removes one degree of freedom. A <strong>degree of freedom</strong> is one independent way in which the system can move (Module 2). <span class="math-inline">\(N\)</span> free atoms have <span class="math-inline">\(3N\)</span> of them, one for each coordinate. A constraint is one equation that ties coordinates together, so it takes one away.</p>
+<p>Two free atoms have 6 degrees of freedom. Joined by a rod they have 5: three for moving the pair as a whole and two for turning it. The vibration along the bond is the one that is gone.</p>
+<p>This matters for the temperature. In a simulation the temperature is computed from the kinetic energy (Module 3). At equilibrium every degree of freedom carries on average <span class="math-inline">\(\tfrac12k_BT\)</span> of kinetic energy, so</p>
+<p><span class="math-display">\[T_{inst} = \frac{2K}{N_{df}\,k_B} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(T_{inst}\)</span>: the instantaneous temperature, the temperature computed from one frame of the simulation, in K.</li>
+<li><span class="math-inline">\(K\)</span>: the total kinetic energy, <span class="math-inline">\(\sum_i\tfrac12m_iv_i^2\)</span>, in kJ/mol. Here <span class="math-inline">\(K\)</span> is not the number of constraints.</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number of degrees of freedom that carry kinetic energy.</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+</ul>
+</div>
+<p>A frozen vibration carries no kinetic energy, so it must not be counted in <span class="math-inline">\(N_{df}\)</span>. The temperature must be computed with</p>
 <p><span class="math-display">\[N_{df} = 3N - N_{c} - 3 .\]</span></p>
-<p>A solvated protein with rigid water loses a third of its degrees of freedom this way. Codes do this for you, but when you thermostat groups separately or analyse a subset of atoms you need the right count for each group.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(N\)</span>: the number of atoms. <span class="math-inline">\(3N\)</span> is the number of coordinates.</li>
+<li><span class="math-inline">\(N_c\)</span>: the number of constraints (called <span class="math-inline">\(K\)</span> in the LINCS section).</li>
+<li><span class="math-inline">\(3\)</span>: the three components of the total momentum. In a periodic box they are held at zero, which removes three more degrees of freedom (Module 2).</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number that goes into the temperature formula above.</li>
+</ul>
+</div>
+<p>A solvated protein with rigid water loses a third of its degrees of freedom this way. A rigid water molecule has 9 coordinates and 3 constraints, so 6 of its 9 degrees of freedom are left, and most atoms of the system are water.</p>
+<p>A wrong count gives a wrong temperature. Suppose a program divided by <span class="math-inline">\(3N\)</span> instead of <span class="math-inline">\(N_{df}\)</span>. For the system of the first "Check yourself" question, <span class="math-inline">\(N_{df}\)</span> is 121,497 and <span class="math-inline">\(3N\)</span> is 180,000. The same kinetic energy would be reported as a temperature that is too low by the factor <span class="math-inline">\(121{,}497/180{,}000 = 0.675\)</span>: a system at 300 K would read 202 K. A thermostat that trusted this number would heat the system until the wrong formula showed 300 K, which is a true temperature of 444 K.</p>
+<p>Codes do this for you, but when you thermostat groups separately or analyse a subset of atoms you need the right count for each group. In the same system the protein (3,000 atoms, 1,500 constraints) has <span class="math-inline">\(9{,}000-1{,}500 = 7{,}500\)</span> degrees of freedom, and the water has <span class="math-inline">\(19{,}000\times6 = 114{,}000\)</span>. If you compute "the temperature of the protein" yourself from its velocities, use 7,500 and not 9,000. (The 3 for the total momentum belongs to the system as a whole and makes no visible difference for groups of this size.)</p>
 <p><strong>Pressure.</strong> Constraint forces contribute to the virial, <span class="math-inline">\(\Xi_{c} = -\tfrac12\sum_k\mathbf r_{ij}\cdot\mathbf G_{ij}\)</span>. Leaving them out gives a pressure that is wrong by hundreds of bar.</p>
+<p>To see what this means, recall how the pressure is computed (Modules 3 and 8). It has two ingredients: the kinetic energy, and the <strong>virial</strong>, a sum over all pairs of atoms of the distance between them times the force along it:</p>
+<p><span class="math-display">\[P_{inst} = \frac{2}{3V}\left(K - \Xi\right),\qquad \Xi = -\frac12\sum_{i&lt;j}\mathbf r_{ij}\cdot\mathbf F_{ij}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_{inst}\)</span>: the instantaneous pressure, computed from one frame.</li>
+<li><span class="math-inline">\(V\)</span>: the volume of the simulation box, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(K\)</span>: the total kinetic energy.</li>
+<li><span class="math-inline">\(\Xi\)</span> (capital Greek xi): the virial, in kJ/mol.</li>
+<li><span class="math-inline">\(\sum_{i&lt;j}\)</span>: a sum over all pairs of atoms, each pair counted once.</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span>: the vector from atom <span class="math-inline">\(j\)</span> to atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\mathbf F_{ij}\)</span>: the force on atom <span class="math-inline">\(i\)</span> caused by atom <span class="math-inline">\(j\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this. A force that pulls two atoms together points against <span class="math-inline">\(\mathbf r_{ij}\)</span>, so <span class="math-inline">\(\mathbf r_{ij}\cdot\mathbf F_{ij}\)</span> is negative, <span class="math-inline">\(\Xi\)</span> gets a positive contribution and the pressure goes down. A force that pushes them apart raises the pressure.</p>
+<p>The kinetic energy stands for the atoms hitting the walls, and the virial corrects for the forces between them. For the units: 1 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span> is 16.6 bar, and the pressure of the atmosphere is about 1 bar.</p>
+<p>A rod is a force between two atoms like any other, so it has to be in the sum. In <span class="math-inline">\(\Xi_c\)</span> the sum runs over the constraints <span class="math-inline">\(k\)</span>, <span class="math-inline">\(\mathbf r_{ij}\)</span> is the bond vector of constraint <span class="math-inline">\(k\)</span>, and <span class="math-inline">\(\mathbf G_{ij}\)</span> is the force of its rod on atom <span class="math-inline">\(i\)</span>, which is <span class="math-inline">\(-2\lambda_k\mathbf r_{ij}\)</span>. Putting that in gives</p>
+<p><span class="math-display">\[\Xi_c = -\tfrac12\sum_k \mathbf r_{ij}\cdot\left(-2\lambda_k\,\mathbf r_{ij}\right) = \sum_k \lambda_k\,d_k^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Xi_c\)</span>: the part of the virial that comes from the constraint forces.</li>
+<li><span class="math-inline">\(\sum_k\)</span>: a sum over all constraints.</li>
+<li><span class="math-inline">\(\lambda_k\)</span>: the multiplier of constraint <span class="math-inline">\(k\)</span>, which the constraint algorithm has already computed.</li>
+<li><span class="math-inline">\(d_k\)</span>: the length of bond <span class="math-inline">\(k\)</span>. The last step uses <span class="math-inline">\(\mathbf r_{ij}\cdot\mathbf r_{ij} = d_k^2\)</span>.</li>
+</ul>
+</div>
+<p>A rod under tension (<span class="math-inline">\(\lambda_k&gt;0\)</span>) pulls its two atoms together, adds a positive amount to the virial and lowers the pressure, like any attraction.</p>
+<p>The spinning pair of the earlier worked example shows that this term is not small. Its rod has <span class="math-inline">\(\lambda = 133\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> and <span class="math-inline">\(d = 0.15\)</span> nm, so <span class="math-inline">\(\Xi_c = \lambda d^2 = 3.0\)</span> kJ/mol. The kinetic energy of the spinning is <span class="math-inline">\(2\times\tfrac12\times12\times0.5^2 = 3.0\)</span> kJ/mol, the same number.</p>
+<p>In <span class="math-inline">\(K-\Xi\)</span> the two cancel. That makes physical sense: a molecule that only spins does not push on the walls of its container, and it is the virial of the rod that removes the spinning from the pressure. Every rigid molecule in the box has such a term, which is why leaving them out does so much damage. A rough size for water: if a rigid water molecule turned freely, the virial of its three rods would equal its rotational kinetic energy, on average <span class="math-inline">\(\tfrac32k_BT\)</span>. Leaving that out for every molecule would raise the pressure by <span class="math-inline">\(nk_BT\)</span>, with <span class="math-inline">\(n\)</span> the number of molecules per volume. For liquid water, <span class="math-inline">\(n = 33.4\)</span> nm<span class="math-inline">\(^{-3}\)</span> gives <span class="math-inline">\(33.4\times2.494 = 83\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>, about 1,400 bar. The "hundreds of bar" quoted above is therefore a cautious figure for a box of water.</p>
 <p><strong>Distributions.</strong> Rigidly constrained and very stiff flexible systems do not have exactly the same distribution of the remaining coordinates: integrating out the constrained momenta leaves a factor depending on the mass-metric tensor (the Fixman correction). For bond-length constraints the effect is negligible. For constrained angles and dihedrals it is not, another reason these are left free.</p>
+<p>This is the subtlest point of the module. On a first reading, the last two sentences of that paragraph are what you need. The idea behind the first sentence is this.</p>
+<p>Module 3 shows that without constraints the probability of an arrangement of the atoms depends only on its potential energy. The momenta can be "integrated out", that is, summed over all their possible values, and the sum gives the same number for every arrangement.</p>
+<p>With rods this is no longer exactly true. A rod forbids motion along its own direction, and that direction turns with the molecule. The set of allowed momenta therefore depends on the shape of the molecule, and summing over it leaves a factor that depends on the shape. A very stiff spring leaves no such factor, because its atoms can still move along the bond.</p>
+<p>The "mass-metric tensor" is the table of masses and bond directions from which this factor is computed, and "Fixman correction" is the name under which the factor is known.</p>
+<details>
+<summary>Optional: how large the factor is for two bonds</summary>
+<p>The factor is built from the determinant of the constraint-coupling matrix that LINCS inverts. (A determinant is a single number computed from a square matrix. For a table with two rows it is the product of the two diagonal entries minus the product of the other two.)</p>
+<p>For one bond the matrix is the single number <span class="math-inline">\(1/m_i+1/m_j\)</span>. It does not depend on the shape of the molecule, so one constraint on its own changes nothing. For two bonds that share an atom of mass <span class="math-inline">\(m_c\)</span>, with outer atoms of mass <span class="math-inline">\(m_i\)</span> and <span class="math-inline">\(m_j\)</span> and an angle <span class="math-inline">\(\phi\)</span> between the bonds, the determinant is</p>
+<p><span class="math-display">\[\left(\frac1{m_i}+\frac1{m_c}\right)\left(\frac1{m_j}+\frac1{m_c}\right) - \frac{\cos^2\phi}{m_c^2} .\]</span></p>
+<p>It depends on the shape only through the angle <span class="math-inline">\(\phi\)</span>. For two C-H bonds on one carbon (masses of 1 and 12 u) the first term is 1.1736 u<span class="math-inline">\(^{-2}\)</span>, and the second is at most <span class="math-inline">\(1/144 = 0.007\)</span> u<span class="math-inline">\(^{-2}\)</span>. Between <span class="math-inline">\(\phi = 100\)</span>° and <span class="math-inline">\(\phi = 120\)</span>° the determinant changes by 0.13 %. A change of that size in a probability corresponds to an energy of about 0.001 <span class="math-inline">\(k_BT\)</span>, far below anything a simulation can resolve. The effect is small because the shared atom is heavy and enters as <span class="math-inline">\(1/m_c\)</span>, and because bond angles vary little.</p>
+<p>When angles are constrained as well, the rods form triangles that share sides, and the determinant depends on the torsion angles. Those are the coordinates that describe the conformation, so the factor then changes the populations that you want to measure.</p>
+</details>
 <h2 id="going-beyond-2-fs">Going beyond 2 fs</h2>
+<p>With ten steps per period, a fastest period of 20 fs is what holds the time step at 2 fs. To reach 4 fs the fastest period has to be near 40 fs.</p>
 <p>After constraining bonds to hydrogen, the fastest remaining motions involve hydrogens: bond-angle vibrations (H-X-H, H-X-Y) and the rotation of hydroxyl and methyl groups, with periods around 20 fs. Two techniques slow them down.</p>
+<p>In "H-X-H" and "H-X-Y", X and Y stand for any heavy atoms, such as carbon, nitrogen or oxygen. The first is the opening and closing of the angle between two hydrogens on the same atom, the second the swinging of one hydrogen. A hydroxyl group is O-H and a methyl group is CH<span class="math-inline">\(_3\)</span>. Both techniques act on the hydrogens, because the small mass of the hydrogens is what makes these motions fast.</p>
 <h3 id="hydrogen-mass-repartitioning-hmr">Hydrogen mass repartitioning (HMR)</h3>
 <p>Increase the mass of each hydrogen (for example from 1 to 3 or 4 u) and subtract the same amount from the heavy atom it is bonded to. The total mass of every group is unchanged. Frequencies of hydrogen motions fall by <span class="math-inline">\(\sqrt{m_H'/m_H}\)</span>, a factor of up to 2, which allows <span class="math-inline">\(\Delta t\)</span> = 4 fs with bonds to hydrogen constrained.</p>
+<p>The idea rests on the formula <span class="math-inline">\(\omega = \sqrt{k_b/\mu}\)</span>: for a given stiffness, a heavier mass vibrates more slowly. The force field, and with it every stiffness, is left untouched. Only the masses in the input are changed.</p>
+<p>In the factor, <span class="math-inline">\(m_H\)</span> is the normal mass of a hydrogen (1 u) and <span class="math-inline">\(m_H'\)</span> its increased mass. With <span class="math-inline">\(m_H' = 3\)</span> u the factor is <span class="math-inline">\(\sqrt3 = 1.73\)</span>, and with 4 u it is <span class="math-inline">\(\sqrt4 = 2\)</span>. These factors are upper limits, because the heavy atom becomes lighter at the same time and the frequency follows the reduced mass (Exercise 4). The periods grow from about 20 fs to between 30 and 40 fs (the table in Module 4), which is what makes a time step of 4 fs possible.</p>
+<p>The bookkeeping for a methyl group: a carbon of 12 u and three hydrogens of 1 u make 15 u. With hydrogens of 3 u, each hydrogen has taken 2 u from the carbon, which is left with <span class="math-inline">\(12-3\times2 = 6\)</span> u. The total is still <span class="math-inline">\(6+3\times3 = 15\)</span> u.</p>
 <p>Why it is legitimate: without constraints the equilibrium distribution of positions does not depend on masses at all (Module 3), and with bond constraints the only mass dependence is the small metric-tensor factor mentioned above, which is negligible for bonds to hydrogen. Thermodynamics is therefore unchanged to an excellent approximation. Dynamics are slightly altered, mainly rates that involve the light atoms. <a href="https://doi.org/10.1021/ct5010406" class="cite" target="_blank" rel="noopener" title="Hopkins CW; Le Grand S; Walker RC; Roitberg AE (2015). Long-Time-Step Molecular Dynamics through Hydrogen Mass Repartitioning. Journal of Chemical Theory and Computation">Hopkins et al. (2015)</a> validated it for proteins. Water is usually not repartitioned, because it is rigid already and changing its hydrogen masses would change its rotational dynamics and viscosity.</p>
+<p>Changing masses can look like cheating, so here is the first step of that argument in full. At equilibrium the probability of a state with positions <span class="math-inline">\(\mathbf r\)</span> and momenta <span class="math-inline">\(\mathbf p\)</span> is proportional to the Boltzmann factor <span class="math-inline">\(e^{-\beta H}\)</span> (Module 3). The energy <span class="math-inline">\(H\)</span> is a sum of a kinetic and a potential part, and the exponential of a sum is a product:</p>
+<p><span class="math-display">\[e^{-\beta H} = e^{-\beta\sum_i \mathbf p_i^2/2m_i}\times e^{-\beta U(\mathbf r)} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(H\)</span>: the total energy, kinetic plus potential (the Hamiltonian of Module 2).</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>. At 300 K, <span class="math-inline">\(k_BT\)</span> is 2.494 kJ/mol.</li>
+<li><span class="math-inline">\(e\)</span>: the base of the exponential function. <span class="math-inline">\(e^{-\beta H}\)</span> is small for states of high energy.</li>
+<li><span class="math-inline">\(\mathbf p_i\)</span>: the momentum of atom <span class="math-inline">\(i\)</span>, mass times velocity.</li>
+<li><span class="math-inline">\(m_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\mathbf p_i^2/2m_i\)</span>: the kinetic energy of atom <span class="math-inline">\(i\)</span>. <span class="math-inline">\(\sum_i\)</span> adds it up over all atoms.</li>
+<li><span class="math-inline">\(U(\mathbf r)\)</span>: the potential energy, a function of the positions only.</li>
+</ul>
+</div>
+<p>The masses appear only in the first factor, which contains momenta and no positions. The second factor decides how probable each arrangement of the atoms is, and it contains no mass. So the masses decide how fast the system moves through its conformations, and they have no say in how often each conformation occurs. Heavier balls roll more slowly over an energy landscape, but its hills and valleys stay where they are.</p>
+<p>"Thermodynamics" here means everything that depends only on how often states occur: average structures, populations, free-energy differences. "Dynamics" means everything that depends on how fast things happen: rates, diffusion constants, relaxation times.</p>
+<p>The last sentence, on water, has a simple reason. A rigid water molecule has no internal vibration to slow down, so nothing would be gained. Something would be lost: moving mass from the oxygen to the hydrogens changes how easily the molecule turns, and with it how fast water molecules rotate and how viscous the liquid is. The solute would then move in a different solvent.</p>
 <h3 id="virtual-sites">Virtual sites</h3>
 <p>Remove the hydrogen degrees of freedom entirely: the hydrogen position is constructed each step from the positions of its heavy-atom neighbours, the force on it is redistributed to those atoms, and its mass is added to them. With all hydrogen motions gone, 4 to 5 fs is possible. The same machinery implements the massless charge sites of four- and five-site water models and the off-centre sites used for lone pairs.</p>
+<p>A <strong>virtual site</strong> is a point that interacts with other atoms, through a charge or Lennard-Jones parameters, but is not moved by the integrator. Its position is not an independent quantity. At every step it is computed by a fixed geometric rule from the positions of real atoms. It has no degree of freedom of its own, so it cannot vibrate, and it is not counted in <span class="math-inline">\(N_{df}\)</span>.</p>
+<p>The simplest rule places the site on the line between two atoms:</p>
+<p><span class="math-display">\[\mathbf r_v = (1-a)\,\mathbf r_1 + a\,\mathbf r_2 ,\qquad \mathbf F_1 \leftarrow \mathbf F_1 + (1-a)\,\mathbf F_v,\qquad \mathbf F_2 \leftarrow \mathbf F_2 + a\,\mathbf F_v .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r_v\)</span>: the position of the virtual site.</li>
+<li><span class="math-inline">\(\mathbf r_1\)</span>, <span class="math-inline">\(\mathbf r_2\)</span>: the positions of the two real atoms from which it is built.</li>
+<li><span class="math-inline">\(a\)</span>: a fixed number, chosen once. <span class="math-inline">\(a = 0\)</span> puts the site on atom 1, and <span class="math-inline">\(a = 0.5\)</span> puts it halfway between the two atoms.</li>
+<li><span class="math-inline">\(\mathbf F_v\)</span>: the force that the force field computes on the site, from its interactions with all other atoms.</li>
+<li><span class="math-inline">\(\mathbf F_1\)</span>, <span class="math-inline">\(\mathbf F_2\)</span>: the forces on the two real atoms.</li>
+<li><span class="math-inline">\(\leftarrow\)</span>: "is replaced by".</li>
+</ul>
+</div>
+<p>Read it like this. The first formula is the construction. The other two are the redistribution of the force. The site feels a force but cannot respond to it, because it has no mass and no equation of motion. The force is therefore passed on to the atoms that define the site.</p>
+<p>The shares follow from the construction. If atom 1 moves by a small amount, the site moves by <span class="math-inline">\((1-a)\)</span> times that amount, so a force on the site acts on atom 1 with the weight <span class="math-inline">\((1-a)\)</span>. The two shares add up to the whole force, so nothing is lost. A hydrogen needs a rule with more neighbours, which can place it off the line, but the principle is the same.</p>
+<p>"Its mass is added to them" keeps the total mass of the molecule right: the hydrogen is no longer a moving atom, so its mass is carried by its heavy neighbours.</p>
+<p>The last sentence of the paragraph names two other uses. A four-site water model puts its negative charge on a point near the oxygen that has no mass (Module 6). That point is a virtual site built from the three atoms. "Lone pairs" are the electron pairs of atoms such as oxygen that take no part in a bond, and some models represent them by a charged site placed away from the centre of the atom.</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. A system has 60,000 atoms: a 3,000-atom protein with 1,500 bonds to hydrogen constrained, and 19,000 rigid three-site water molecules. How many degrees of freedom?</summary>
@@ -101,6 +786,7 @@
 <details>
 <summary>2. Why does the constraint force do no work?</summary>
 <p>It is parallel to <span class="math-inline">\(\nabla\sigma\)</span>, and the constraint <span class="math-inline">\(\sigma=0\)</span> for all time implies <span class="math-inline">\(\dot\sigma = \sum_i\nabla_i\sigma\cdot\mathbf v_i = 0\)</span>. The power <span class="math-inline">\(\sum_i\mathbf G_i\cdot\mathbf v_i = -\lambda\sum_i\nabla_i\sigma\cdot\mathbf v_i\)</span> is therefore zero.</p>
+<p>Here <span class="math-inline">\(\sigma\)</span> is the constraint function, <span class="math-inline">\(\nabla_i\sigma\)</span> its gradient with respect to the position of atom <span class="math-inline">\(i\)</span>, <span class="math-inline">\(\mathbf v_i\)</span> the velocity of atom <span class="math-inline">\(i\)</span>, <span class="math-inline">\(\mathbf G_i = -\lambda\nabla_i\sigma\)</span> the constraint force on atom <span class="math-inline">\(i\)</span> and <span class="math-inline">\(\lambda\)</span> the multiplier. "Power" is the rate at which a force does work, force times velocity.</p>
 </details>
 <details>
 <summary>3. Does hydrogen mass repartitioning change the free energy difference between two conformations?</summary>
@@ -109,6 +795,19 @@
 <details>
 <summary>4. GROMACS prints LINCS warnings and then crashes at step 12 of the first NVT run. What do you do?</summary>
 <p>Do not loosen the LINCS settings. Go back: check that energy minimisation converged (maximum force below about 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>), look at the atoms named in the warning for clashes or wrong protonation, check for missing atoms and wrong box size, and try a shorter time step with position restraints for the first picoseconds.</p>
+</details>
+<details>
+<summary>5. A colleague proposes to replace the constraints on bonds to hydrogen by very stiff harmonic restraints on the same bond lengths. Does this allow a longer time step?</summary>
+<p>No. A restraint is a spring, and its frequency is <span class="math-inline">\(\omega = \sqrt{k_b/\mu}\)</span>, with <span class="math-inline">\(k_b\)</span> the stiffness and <span class="math-inline">\(\mu\)</span> the reduced mass of the two atoms. A stiffer spring vibrates faster and needs a shorter time step. A constraint removes the vibration altogether, which is why it allows a longer one.</p>
+</details>
+<details>
+<summary>6. In the SHAKE update, the unconstrained bond is too short. What is the sign of <span class="math-inline">\(g\)</span>, and which way do the two atoms move?</summary>
+<p>The numerator <span class="math-inline">\(|\mathbf s'|^2-d^2\)</span> is negative and the denominator is positive, so <span class="math-inline">\(g\)</span> is negative. Atom <span class="math-inline">\(i\)</span> moves by <span class="math-inline">\(-(g/m_i)\,\mathbf s\)</span>, which now points along <span class="math-inline">\(+\mathbf s\)</span>, away from atom <span class="math-inline">\(j\)</span>. Atom <span class="math-inline">\(j\)</span> moves by <span class="math-inline">\(+(g/m_j)\,\mathbf s\)</span>, along <span class="math-inline">\(-\mathbf s\)</span>, away from atom <span class="math-inline">\(i\)</span>. The rod pushes the atoms apart, and the lighter atom moves further.</p>
+</details>
+<details>
+<summary>7. The largest eigenvalue of the LINCS matrix <span class="math-inline">\(\mathbf A\)</span> of some molecule is 0.3 in size. Roughly how large is the error of the series cut after <span class="math-inline">\(\mathbf A^4\)</span>? What changes if it is 1.2?</summary>
+<p>The terms shrink like <span class="math-inline">\(0.3^n\)</span>. The first neglected term is of size <span class="math-inline">\(0.3^5 = 0.0024\)</span>, and all neglected terms together are at most <span class="math-inline">\(0.3^5/(1-0.3) = 0.0035\)</span>, by the geometric series. So the strengths of the corrections are right to a few parts in a thousand.</p>
+<p>With 1.2 the terms grow instead of shrinking, and the series cannot be used at all. This is the case of the angle-constrained pentane in the text.</p>
 </details>
 <h2 id="exercises">Exercises</h2>
 <ol>

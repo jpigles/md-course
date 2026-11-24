@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li class="current" data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part IV · Free energy and sampling &middot; Module 14 of 18 &middot; about 8 hours</div><h1>Enhanced sampling, getting over barriers</h1><p class="lede">Understand the main families of enhanced sampling (replica exchange, metadynamics, adaptive biasing, accelerated and steered MD, weighted ensemble), derive their key equations, and choose between them.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-problem-in-one-formula">The problem in one formula</a></li><li><a href="#collective-variables">Collective variables</a></li><li><a href="#replica-exchange-parallel-tempering">Replica exchange (parallel tempering)</a></li><li><a href="#metadynamics">Metadynamics</a></li><li><a href="#steered-md">Steered MD</a></li><li><a href="#accelerated-md">Accelerated MD</a></li><li><a href="#weighted-ensemble">Weighted ensemble</a></li><li><a href="#choosing">Choosing</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#the-problem-in-one-formula">The problem in one formula</a></li><li><a href="#collective-variables">Collective variables</a></li><li><a href="#replica-exchange-parallel-tempering">Replica exchange (parallel tempering)</a></li><li><a href="#metadynamics">Metadynamics</a></li><li><a href="#steered-md">Steered MD</a></li><li><a href="#accelerated-md">Accelerated MD</a></li><li><a href="#weighted-ensemble">Weighted ensemble</a></li><li><a href="#choosing">Choosing</a></li><li><a href="#checking-convergence">Checking convergence</a></li><li><a href="#what-is-lost-the-time-axis">What is lost: the time axis</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -36,14 +36,206 @@
 <li>list the properties of a good collective variable.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/playlist?list=PLmdKEn2znJEmCw1OfLLhv43TXl-QDvkUO" target="_blank" rel="noopener">PLUMED Masterclass 22</a><span class="res-meta">PLUMED consortium &middot; channel: Plumed Org &middot; Playlist, 29 videos, intermediate</span><span class="res-why">PLUMED Masterclass 2022 on enhanced sampling and analysis.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PL8XC6Vx8S1GDuJtKeIe8muGmQURVQnl_m" target="_blank" rel="noopener">Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation</a><span class="res-meta">TCBG UIUC &middot; Playlist, 7 videos, advanced</span><span class="res-why">Urbana 2018 workshop on enhanced sampling and free energy calculation.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PL8XC6Vx8S1GAtcF0p2-m0FbQT7gHM86TN" target="_blank" rel="noopener">Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations</a><span class="res-meta">TCBG UIUC &middot; Playlist, 11 videos, advanced</span><span class="res-why">Urbana 2017 workshop on enhanced sampling and free energy calculations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=ktkmgiFJSGQ" target="_blank" rel="noopener">Enhanced Sampling Methods - chapter 3: Replica Exchange Molecular Dynamics</a><span class="res-meta">MoBioChem &middot; Video, 36 min, intermediate</span><span class="res-why">Chapter on replica exchange molecular dynamics.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=qITm4laxhtk" target="_blank" rel="noopener">Replica Exchange Method REM | Parallel Tempering | TREM HREM</a><span class="res-meta">The Computational Chemist &middot; Video, 18 min, intermediate</span><span class="res-why">Replica exchange and parallel tempering.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=b8aViZKaKFs" target="_blank" rel="noopener">Enhanced Sampling Methods - Chapter 4: Metadynamics</a><span class="res-meta">MoBioChem &middot; Video, 9 min, intermediate</span><span class="res-why">Chapter on metadynamics.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=EMZu-n4WCH0" target="_blank" rel="noopener">DM Zuckerman - Introduction to Weighted Ensemble Simulation</a><span class="res-meta">Daniel Zuckerman &middot; channel: dan z &middot; Video, 31 min, intermediate</span><span class="res-why">Introduction to weighted ensemble simulation.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=f4faPQU58oA" target="_blank" rel="noopener">Gaussian accelerated Molecular Dynamics (GaMD) Workshop 2024</a><span class="res-meta">Yinglong Miao lab &middot; channel: miaolab &middot; Video, 348 min, intermediate</span><span class="res-why">Long GaMD workshop on Gaussian accelerated MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=5upvgbp_elI" target="_blank" rel="noopener">PASI 2012 - Massimiliano Bonomi: Theory of simulated tempering and replica exchange</a><span class="res-meta">Massimiliano Bonomi &middot; channel: SIRAH ForceField &middot; Video, 62 min, advanced</span><span class="res-why">Theory of simulated tempering and replica exchange.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=bZZggbV2r5E" target="_blank" rel="noopener">PASI 2012 - Giovanni Bussi: Metadynamics from direct to well-tempered and flexible hills</a><span class="res-meta">Giovanni Bussi &middot; channel: SIRAH ForceField &middot; Video, 71 min, advanced</span><span class="res-why">Metadynamics from direct to well-tempered and flexible hills.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=ShtrAD-tT7c" target="_blank" rel="noopener">HITS Colloquium: Lillian T. Chong on weighted ensemble simulations</a><span class="res-meta">Lillian Chong (HITS) &middot; channel: TheHITSters &middot; Video, 42 min, advanced</span><span class="res-why">Weighted ensemble simulations colloquium.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=cc_5q6Od6XU" target="_blank" rel="noopener">Unconstrained Enhanced Sampling of Biomolecules - Yinglong Miao</a><span class="res-meta">Yinglong Miao &middot; channel: The Qualcomm Institute &middot; Video, 58 min, advanced</span><span class="res-why">Unconstrained enhanced sampling of biomolecules.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=RJMQ70K8UmA" target="_blank" rel="noopener">TCBG Summer School 2003: Steered Molecular Dynamics of Proteins - Introduction and Examples</a><span class="res-meta">TCBG UIUC &middot; channel: TCBG UIUCTalk &middot; Video, 85 min, advanced</span><span class="res-why">Introduction and examples of steered molecular dynamics.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>A molecular dynamics run follows every atom, femtosecond by femtosecond, and that is also its limit. The events you usually care about (a loop that opens, a ligand that leaves its pocket, a peptide that folds) are <strong>rare events</strong>. The system waits for a long time in one shape and then changes quickly. A plain simulation spends almost its whole budget on the waiting, and often the event never comes.</p>
+<p>This module is about methods that shorten the waiting. Each one changes the simulation on purpose and then corrects for the change, so that the result still describes the real system. Together they are called <strong>enhanced sampling</strong>. "Sampling" means collecting configurations (snapshots of all atomic positions) with the probabilities they have at equilibrium. Every average and every free energy is computed from such a collection (Module 3).</p>
+<p>The module has four layers:</p>
+<ol>
+<li><strong>The problem.</strong> How long you would wait for a barrier of a given height, and the three kinds of cure.</li>
+<li><strong>The vocabulary.</strong> Collective variables: the one or two coordinates along which most methods act.</li>
+<li><strong>The methods, one at a time.</strong> Replica exchange, metadynamics and the adaptive biasing force, steered MD, accelerated MD, weighted ensemble and adaptive sampling. For each: the idea in words, the central formula with every symbol defined, what it gives and what it costs.</li>
+<li><strong>Judgement.</strong> Which method fits which problem, how to tell that a run has converged, and what information about the real motion is lost.</li>
+</ol>
+<p>On a first reading the essential parts are the first section, replica exchange up to the boxed acceptance rule, and metadynamics up to the well-tempered formula. The blocks marked "Optional" and the estimate of the number of replicas can wait for a second reading.</p>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula in the main text is followed by a list that says what each letter in it means. Inside the boxes the surrounding sentences do that job. The notation below appears for the first time in this module or is used heavily in it. The general conventions are in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(\beta\)</span></td>
+<td>Shorthand for <span class="math-inline">\(1/k_BT\)</span>, where <span class="math-inline">\(k_B\)</span> is the Boltzmann constant and <span class="math-inline">\(T\)</span> the temperature. At 300 K, <span class="math-inline">\(k_BT = 2.494\)</span> kJ/mol and <span class="math-inline">\(\beta = 0.401\)</span> mol/kJ. A product such as <span class="math-inline">\(\beta U\)</span> is an energy counted in units of <span class="math-inline">\(k_BT\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\ddagger\)</span></td>
+<td>A double dagger marks a quantity taken at the top of a barrier. <span class="math-inline">\(\Delta F^\ddagger\)</span> is the height of a free-energy barrier.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(s\)</span>, <span class="math-inline">\(s(\mathbf r)\)</span></td>
+<td>A <strong>collective variable</strong>: one number computed from the atomic positions <span class="math-inline">\(\mathbf r\)</span>, for example a distance.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf x\)</span>, <span class="math-inline">\(\mathbf x'\)</span></td>
+<td>A configuration: the positions of all atoms of one copy of the system. The prime marks a second, different configuration. It is not a derivative.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\min\{a,\ b\}\)</span></td>
+<td>The smaller of the two numbers <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\propto\)</span></td>
+<td>"Is proportional to": the two sides are equal up to a constant factor that is not written.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(t\to\infty\)</span></td>
+<td>"As the time <span class="math-inline">\(t\)</span> grows without limit": the value that is approached in a very long run.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\sum_{t'&lt;t}\)</span></td>
+<td>A sum over all earlier times <span class="math-inline">\(t'\)</span> at which something was done (here: a hill was added).</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\langle A\rangle\)</span></td>
+<td>The average of the quantity <span class="math-inline">\(A\)</span> over the configurations of an equilibrium simulation.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\exp(x)\)</span></td>
+<td>The same as <span class="math-inline">\(e^{x}\)</span>, the exponential function. It is written this way when the exponent is long.</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Letters that mean two things in this module.</strong> The methods come from different groups and each kept its own notation.</p>
+<ul>
+<li><span class="math-inline">\(k\)</span> is a rate (crossings per second) in the first section, a label in the temperature ladder <span class="math-inline">\(T_k\)</span>, and a spring constant in steered MD. <span class="math-inline">\(k_B\)</span> is always the Boltzmann constant.</li>
+<li><span class="math-inline">\(V\)</span> is the bias potential <span class="math-inline">\(V(s,t)\)</span> in the metadynamics section and the potential energy <span class="math-inline">\(V(\mathbf r)\)</span> in the accelerated MD section. Everywhere else the potential energy is <span class="math-inline">\(U\)</span>.</li>
+<li><span class="math-inline">\(w\)</span> is the height of a hill in metadynamics. <span class="math-inline">\(w_i\)</span> with a label is the bias potential of replica <span class="math-inline">\(i\)</span> in Hamiltonian replica exchange.</li>
+<li><span class="math-inline">\(\Delta T\)</span> is the gap between two neighbouring temperatures in replica exchange. In well-tempered metadynamics it is a parameter that sets how fast the hills shrink.</li>
+<li><span class="math-inline">\(F\)</span> is a free energy. <span class="math-inline">\(F_{pull}\)</span> is a force.</li>
+<li><span class="math-inline">\(\sigma\)</span> is the width of a hill in metadynamics and a standard deviation elsewhere.</li>
+<li><span class="math-inline">\(\lambda_m\)</span> is the scaling factor of REST2. The plain <span class="math-inline">\(\lambda\)</span> is the alchemical parameter of Module 13.</li>
+<li><span class="math-inline">\(W\)</span> is a work in steered MD. (Module 12 used <span class="math-inline">\(W\)</span> for the potential of mean force, which this module calls <span class="math-inline">\(F\)</span>.)</li>
+<li><span class="math-inline">\(C\)</span> is a constant without importance in the free-energy and bias formulas. In the part on the number of replicas it is the heat capacity.</li>
+<li><span class="math-inline">\(E\)</span> is an energy in <span class="math-inline">\(F = E-TS\)</span> and the threshold energy in accelerated MD.</li>
+<li><span class="math-inline">\(n\)</span> counts the steps of the temperature ladder, labels a second replica in the REST2 exchange, and numbers the saved frames in the reweighting formulas.</li>
+</ul>
+<p>The lists under the formulas say which meaning applies each time.</p>
+</div>
 <h2 id="the-problem-in-one-formula">The problem in one formula</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="PkTCrc0P_Xs" href="https://www.youtube.com/watch?v=PkTCrc0P_Xs" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Non Boltzmann sampling Molecular Dynamics MD &amp; Monte Carlo MC</span><span class="sv-m">12 min · The Computational Chemist</span></a><a class="sv" data-yt="9JiorFETCTo" href="https://www.youtube.com/watch?v=9JiorFETCTo" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Modeling molecular recognition through enhanced-sampling methods -  Part I</span><span class="sv-m">47 min · BioExcel</span></a><a class="sv" data-yt="EwGZ39PS1qk" href="https://www.youtube.com/watch?v=EwGZ39PS1qk" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Modeling molecular recognition through enhanced-sampling methods - Part 2</span><span class="sv-m">36 min · BioExcel</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="PkTCrc0P_Xs" href="https://www.youtube.com/watch?v=PkTCrc0P_Xs" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Non Boltzmann sampling Molecular Dynamics MD &amp; Monte Carlo MC</span><span class="sv-m">12 min · The Computational Chemist</span></a><a class="sv" data-yt="9JiorFETCTo" href="https://www.youtube.com/watch?v=9JiorFETCTo" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Modeling molecular recognition through enhanced-sampling methods -  Part I</span><span class="sv-m">47 min · BioExcel</span></a><a class="sv" data-yt="EwGZ39PS1qk" href="https://www.youtube.com/watch?v=EwGZ39PS1qk" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Modeling molecular recognition through enhanced-sampling methods - Part 2</span><span class="sv-m">36 min · BioExcel</span></a></div>
 
-<p>The rate of crossing a free-energy barrier <span class="math-inline">\(\Delta F^\ddagger\)</span> is roughly</p>
+<p>This section answers one question: how long must a simulation run before an interesting event happens once? The answer decides whether plain MD is enough or whether you need the methods of this module.</p>
+<p>Picture the energy of a molecule as a terrain of valleys and mountain passes (an energy landscape, <a href="physics.html#energy">primer</a>). A valley is called a <strong>basin</strong>: a family of similar shapes, for example "loop closed" or "ligand bound". To go from one basin to another the system has to climb over a pass, the <strong>barrier</strong>. The climb is paid for by random pushes from the surrounding atoms, and a push large enough for a high pass is rare.</p>
+<p>The picture is drawn in two dimensions, and that is where it can mislead. The real terrain has thousands of dimensions, and a pass can be hard to cross because it is high or because it is narrow and hard to find. Both cases appear below.</p>
+<div class="box physics">
+<p><strong>Physics you need here: free energy along a coordinate.</strong> Module 3 defined a free energy as a function of one chosen coordinate <span class="math-inline">\(s\)</span>, such as a distance or an angle. Count how often an equilibrium simulation finds the system at each value of <span class="math-inline">\(s\)</span>. That gives a probability density <span class="math-inline">\(P(s)\)</span> (the fraction of the frames per unit of <span class="math-inline">\(s\)</span>, Module 3), and the free energy along <span class="math-inline">\(s\)</span> is</p>
+<p><span class="math-display">\[F(s) = -k_BT\ln P(s) + C .\]</span></p>
+<p>Here <span class="math-inline">\(k_B\)</span> is the Boltzmann constant, <span class="math-inline">\(T\)</span> the temperature, <span class="math-inline">\(\ln\)</span> the natural logarithm and <span class="math-inline">\(C\)</span> a constant that does not matter, because only differences of <span class="math-inline">\(F\)</span> are used. The product <span class="math-inline">\(k_BT\)</span> is the typical size of a thermal push (<a href="physics.html#temperature">primer</a>): 2.494 kJ/mol at 300 K. Where the system is often found, <span class="math-inline">\(P\)</span> is large and <span class="math-inline">\(F\)</span> is low: a basin. Where it is almost never found, <span class="math-inline">\(F\)</span> is high: a barrier.</p>
+<p>Two remarks. <span class="math-inline">\(F(s)\)</span> is a <em>free</em> energy and not the potential energy: it already contains the effect of all the other coordinates, water included, through the count of how many configurations share the same <span class="math-inline">\(s\)</span>. And Modules 3 and 12 call the same function the potential of mean force and write it <span class="math-inline">\(W(\xi)\)</span>. More in the <a href="physics.html#thermodynamics">primer</a>.</p>
+</div>
+<p>The height of the barrier, measured from the bottom of the basin the system starts in, is written <span class="math-inline">\(\Delta F^\ddagger\)</span>. The rate of crossing a free-energy barrier <span class="math-inline">\(\Delta F^\ddagger\)</span> is roughly</p>
 <p><span class="math-display">\[k\approx k_0\,e^{-\beta\Delta F^\ddagger},\]</span></p>
-<p>with a prefactor <span class="math-inline">\(k_0\)</span> of about <span class="math-inline">\(10^{9}\)</span> to <span class="math-inline">\(10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> for molecular motions in solution. Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. A barrier of 40 kJ/mol gives waiting times of microseconds to milliseconds, and 60 kJ/mol gives tens of milliseconds to tens of seconds. Plain MD spends almost all its time vibrating inside one basin.</p>
+<p>with a prefactor <span class="math-inline">\(k_0\)</span> of about <span class="math-inline">\(10^{9}\)</span> to <span class="math-inline">\(10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> for molecular motions in solution.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k\)</span>: the <strong>rate</strong> of crossing: the average number of crossings per second while the system sits in the starting basin. Its unit is s<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\approx\)</span>: "is roughly equal to". The formula gives an order of magnitude, not three digits.</li>
+<li><span class="math-inline">\(k_0\)</span>: the <strong>prefactor</strong>, also called the attempt frequency: how many times per second the system arrives at the foot of the barrier and tries.</li>
+<li><span class="math-inline">\(e\)</span>: the base of the exponential function, 2.718. For positive <span class="math-inline">\(x\)</span>, <span class="math-inline">\(e^{-x}\)</span> is a number between 0 and 1 that shrinks fast as <span class="math-inline">\(x\)</span> grows.</li>
+<li><span class="math-inline">\(\beta\)</span>: shorthand for <span class="math-inline">\(1/k_BT\)</span>. At 300 K, <span class="math-inline">\(\beta = 1/2.494 = 0.401\)</span> mol/kJ.</li>
+<li><span class="math-inline">\(\Delta F^\ddagger\)</span>: the height of the free-energy barrier above the bottom of the starting basin, in kJ/mol. <span class="math-inline">\(\Delta\)</span> means "difference", and the double dagger marks the top of the barrier.</li>
+<li><span class="math-inline">\(\beta\Delta F^\ddagger\)</span>: the barrier height counted in units of <span class="math-inline">\(k_BT\)</span>. It is a pure number.</li>
+</ul>
+</div>
+<p>Read it like this. The rate is a product of two factors: the number of attempts per second, <span class="math-inline">\(k_0\)</span>, and the fraction of attempts that succeed, <span class="math-inline">\(e^{-\beta\Delta F^\ddagger}\)</span>. The second factor is the Boltzmann factor of Module 3, often called the Arrhenius factor when it appears in a rate. It is the probability of finding the system at the top of the barrier relative to the bottom of the basin. A higher barrier or a lower temperature makes the exponent more negative and the rate smaller.</p>
+<p>The quantity you feel in practice is the <strong>mean waiting time</strong>, <span class="math-inline">\(1/k\)</span>. If crossings happen at a rate of 1,000 per second, you wait on average one thousandth of a second for the next one. The waiting is random, so a single wait can be several times shorter or longer than the mean.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the exponential and the logarithm.</strong> The exponential function turns sums into products: <span class="math-inline">\(e^{a+b} = e^{a}\,e^{b}\)</span>. So adding a fixed amount to the barrier multiplies the rate by a fixed factor, whatever the barrier was before. The natural logarithm <span class="math-inline">\(\ln\)</span> undoes the exponential: <span class="math-inline">\(\ln(e^{x}) = x\)</span>.</p>
+<p>Use this to find the extra barrier height <span class="math-inline">\(\Delta\)</span> that makes the rate ten times smaller. The condition is <span class="math-inline">\(e^{-\beta\Delta} = 1/10\)</span>. Take the logarithm of both sides: <span class="math-inline">\(-\beta\Delta = -\ln 10\)</span>. Multiply both sides by <span class="math-inline">\(-k_BT\)</span>: <span class="math-inline">\(\Delta = k_BT\ln 10 = 2.494\times2.303 = 5.74\)</span> kJ/mol at 300 K. More in the <a href="maths.html#exp-log">toolbox</a>.</p>
+</div>
+<p>Each additional 5.7 kJ/mol (at 300 K) makes the event ten times rarer. The table works this out at 300 K for the two ends of the range of <span class="math-inline">\(k_0\)</span>. The first two columns are the barrier in kJ/mol and in units of <span class="math-inline">\(k_BT\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(\Delta F^\ddagger\)</span> (kJ/mol)</th>
+<th><span class="math-inline">\(\beta\Delta F^\ddagger\)</span></th>
+<th><span class="math-inline">\(e^{-\beta\Delta F^\ddagger}\)</span></th>
+<th>Mean wait if <span class="math-inline">\(k_0 = 10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span></th>
+<th>Mean wait if <span class="math-inline">\(k_0 = 10^{9}\)</span> s<span class="math-inline">\(^{-1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>4.0</td>
+<td><span class="math-inline">\(1.8\times10^{-2}\)</span></td>
+<td>55 ps</td>
+<td>55 ns</td>
+</tr>
+<tr>
+<td>20</td>
+<td>8.0</td>
+<td><span class="math-inline">\(3.3\times10^{-4}\)</span></td>
+<td>3.0 ns</td>
+<td>3.0 µs</td>
+</tr>
+<tr>
+<td>30</td>
+<td>12.0</td>
+<td><span class="math-inline">\(6.0\times10^{-6}\)</span></td>
+<td>0.17 µs</td>
+<td>0.17 ms</td>
+</tr>
+<tr>
+<td>40</td>
+<td>16.0</td>
+<td><span class="math-inline">\(1.1\times10^{-7}\)</span></td>
+<td>9.2 µs</td>
+<td>9.2 ms</td>
+</tr>
+<tr>
+<td>50</td>
+<td>20.0</td>
+<td><span class="math-inline">\(2.0\times10^{-9}\)</span></td>
+<td>0.51 ms</td>
+<td>0.51 s</td>
+</tr>
+<tr>
+<td>60</td>
+<td>24.1</td>
+<td><span class="math-inline">\(3.6\times10^{-11}\)</span></td>
+<td>28 ms</td>
+<td>28 s</td>
+</tr>
+</tbody>
+</table>
+<p>A barrier of 40 kJ/mol gives waiting times of microseconds to milliseconds, and 60 kJ/mol gives tens of milliseconds to tens of seconds. The <a href="physics.html#time-scales">primer</a> has a table of the time scales of molecular motions for comparison.</p>
+<div class="box key">
+<p><strong>Worked example: one row of the table.</strong> Take <span class="math-inline">\(\Delta F^\ddagger = 40\)</span> kJ/mol at 300 K.</p>
+<ol>
+<li><em>Barrier in units of <span class="math-inline">\(k_BT\)</span>.</em> <span class="math-inline">\(\beta\Delta F^\ddagger = 40/2.494 = 16.04\)</span>.</li>
+<li><em>Fraction of successful attempts.</em> <span class="math-inline">\(e^{-16.04} = 1.1\times10^{-7}\)</span>: about one attempt in nine million.</li>
+<li><em>Rate.</em> With <span class="math-inline">\(k_0 = 10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span>, <span class="math-inline">\(k = 10^{12}\times1.1\times10^{-7} = 1.1\times10^{5}\)</span> s<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><em>Mean waiting time.</em> <span class="math-inline">\(1/k = 9.2\times10^{-6}\)</span> s <span class="math-inline">\(= 9.2\)</span> µs. With <span class="math-inline">\(k_0 = 10^{9}\)</span> s<span class="math-inline">\(^{-1}\)</span> it is a thousand times longer, 9.2 ms.</li>
+</ol>
+<p>Now compare with what you can simulate. Say your budget is 1 µs (an illustration). Even with the fastest prefactor, the expected number of crossings in the whole run is <span class="math-inline">\(10^{-6}\ \text{s}\times1.1\times10^{5}\ \text{s}^{-1} = 0.11\)</span>. Most such runs would never see the event.</p>
+</div>
+<p>Plain MD spends almost all its time vibrating inside one basin. This is a problem for averages and not only for watching events. Module 3 showed that a time average along a trajectory equals the equilibrium average only if the trajectory is long enough to visit every important basin, and to visit each one many times. A run that stays in one basin reports the properties of that basin with small error bars and no warning that another basin exists. That is the <strong>sampling problem</strong>.</p>
+<h3 id="three-ways-out">Three ways out</h3>
+<p>Keep the terrain in mind. When the pass is too high for the walker, there are three things you can do.</p>
+<ol>
+<li><strong>Raise the temperature.</strong> A hotter system receives larger random pushes. In the formula, <span class="math-inline">\(\beta\)</span> becomes smaller, so the same barrier counts for fewer units of <span class="math-inline">\(k_BT\)</span>. A barrier that is 40 kJ/mol of pure energy is crossed about 200 times more often at 450 K than at 300 K (<span class="math-inline">\(e^{-10.69}\)</span> against <span class="math-inline">\(e^{-16.04}\)</span>, with the same prefactor). The price is that a hot simulation samples the hot system, where the shapes have other populations. The tempering methods run hot and cold copies together and pass structures between them.</li>
+<li><strong>Change the terrain.</strong> Add an extra energy term, a <strong>bias</strong>, that fills the valleys or lowers the passes, so that the system moves over a flatter terrain. Because you know exactly what you added, you can remove its effect from the results afterwards. Umbrella sampling, metadynamics, the adaptive biasing force and accelerated MD work this way. Steered MD is a rougher relative: it drags the system over the pass with a moving spring.</li>
+<li><strong>Leave the terrain alone and manage many walkers.</strong> Run many short, unmodified trajectories. Stop some of those that wander where many others already are, and start extra copies of the few that have made progress up the pass. Weighted ensemble and adaptive sampling work this way.</li>
+</ol>
+<p>The first two change the temperature or the forces, so the motion you watch is no longer the real motion in time. The third keeps the real motion and pays with a large number of trajectories. This difference decides which methods can give rates, and the last two sections come back to it.</p>
+<div class="box maths">
+<p><strong>Maths you need here: reweighting.</strong> A biased simulation visits configurations with the wrong frequencies, but they are wrong by a known factor, and a known factor can be divided out.</p>
+<p>Add a bias energy <span class="math-inline">\(V_b\)</span> to the potential energy <span class="math-inline">\(U\)</span>. The probability of a configuration was proportional to <span class="math-inline">\(e^{-\beta U}\)</span>. It is now proportional to <span class="math-inline">\(e^{-\beta(U+V_b)} = e^{-\beta U}\,e^{-\beta V_b}\)</span>. So each configuration is visited too rarely by the factor <span class="math-inline">\(e^{-\beta V_b}\)</span> (or too often, where <span class="math-inline">\(V_b\)</span> is negative). To undo this, count each saved frame with the <strong>weight</strong> <span class="math-inline">\(e^{+\beta V_b}\)</span>, using the bias energy that frame had, and take a weighted average:</p>
+<p><span class="math-display">\[\langle A\rangle = \frac{\sum_n A_n\,e^{\beta V_{b,n}}}{\sum_n e^{\beta V_{b,n}}} .\]</span></p>
+<p>Here <span class="math-inline">\(n\)</span> numbers the saved frames, <span class="math-inline">\(A_n\)</span> is the value of the quantity <span class="math-inline">\(A\)</span> in frame <span class="math-inline">\(n\)</span>, <span class="math-inline">\(V_{b,n}\)</span> is the bias energy of frame <span class="math-inline">\(n\)</span>, and <span class="math-inline">\(\langle A\rangle\)</span> is the average in the system without bias.</p>
+<p>A two-state example. In the real system, a "closed" state holds 99 % of the population and an "open" state holds 1 %. You add a bias of <span class="math-inline">\(+11.46\)</span> kJ/mol to every closed configuration and none to the open ones. At 300 K, <span class="math-inline">\(e^{-\beta\times11.46} = 1/99\)</span>, so the biased run spends half its time in each state: say 500 closed frames and 500 open frames.</p>
+<p>Now reweight. Each closed frame gets the weight <span class="math-inline">\(e^{+\beta\times11.46} = 99\)</span> and each open frame the weight 1. The weighted fraction of open frames is <span class="math-inline">\(500/(500\times99+500) = 0.01\)</span>, the true 1 %. The biased run moved between the two states easily and still returned the right populations.</p>
+<p>One warning for later: this works well only while the weights are of similar size. If a few frames carry almost all the weight, the average rests on those few frames. More on averages in the <a href="maths.html#averages">toolbox</a>.</p>
+</div>
 <p>Enhanced sampling methods change the simulation so that barriers are crossed often, in a way that still allows the unbiased equilibrium distribution, or at least a free-energy difference, to be recovered. They fall into five families (the classification follows the review of <a href="https://doi.org/10.33011/livecoms.4.1.1583" class="cite" target="_blank" rel="noopener" title="Hénin J; Lelièvre T; Shirts MR; Valsson O; Delemotte L (2022). Enhanced Sampling Methods for Molecular Dynamics Simulations [Article v1.0]. Living Journal of Computational Molecular Science">Hénin et al. 2022</a>):</p>
 <table>
 <thead>
@@ -87,69 +279,506 @@
 </tr>
 </tbody>
 </table>
+<p>Some words in the table need a line each.</p>
+<ul>
+<li><em>Unbiased equilibrium distribution</em>: the probabilities that the configurations have in the real, unmodified system at the temperature of interest. "Unbiased" means "as if nothing had been added".</li>
+<li><em>CV</em>: collective variable, the subject of the next section.</li>
+<li><em>Hamiltonian</em> (Module 2): the function that gives the total energy of the system. "Part of the Hamiltonian is scaled" means that some of the energy terms are multiplied by a factor.</li>
+<li><em>Replica</em>: one of several copies of the system that are simulated side by side.</li>
+<li><em>Simulated tempering</em>: a single copy whose temperature moves up and down a list of temperatures in a random walk during the run, in place of several copies that exchange.</li>
+<li><em>Equilibrium ensemble</em> (Module 3): the collection of configurations, each with its Boltzmann probability, that a system at fixed temperature visits. A system that is being dragged does not have time to settle into it.</li>
+<li><em>Non-equilibrium switching</em>: changing a parameter of the energy function in a finite time and recording the work, as in Module 13.</li>
+<li><em>Progress coordinate</em>: a coordinate that measures how far a trajectory has advanced. It is used only to sort trajectories. No force is derived from it.</li>
+</ul>
+<p>The five rows fit the three pictures. Rows one, two and four change the terrain (with a bias along chosen coordinates, with a boost everywhere, or by dragging). Row three raises the temperature, or imitates a higher temperature by scaling energies. Row five manages many walkers.</p>
 <h2 id="collective-variables">Collective variables</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="TYz9W8d54zM" href="https://www.youtube.com/watch?v=TYz9W8d54zM" target="_blank" rel="noopener" title="Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations"><span class="sv-play">&#9654;</span><span class="sv-t">Designing Implementing and Optimzing Collective Variables in VMD and NAMD - Giacomo Fiorin</span><span class="sv-m">58 min · TCBG UIUC</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="TYz9W8d54zM" href="https://www.youtube.com/watch?v=TYz9W8d54zM" target="_blank" rel="noopener" title="Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations"><span class="sv-play">&#9654;</span><span class="sv-t">Designing Implementing and Optimzing Collective Variables in VMD and NAMD - Giacomo Fiorin</span><span class="sv-m">58 min · TCBG UIUC</span></a></div>
 
+<p>Most methods of this module do not act on all the atomic coordinates. They act on one or two numbers computed from the coordinates, chosen by you. This section says what such a number is and what separates a useful choice from a harmful one.</p>
+<p>The idea is the one behind any map. A protein in water has tens of thousands of coordinates or more, and nobody can draw, or fill with bias, a function of that many variables. So you describe the process by a number that changes as the process advances: for unbinding, the distance between the ligand and its pocket. The rest of the system is left to adjust by itself.</p>
+<p>The standard name for such a number is <strong>collective variable</strong>, CV for short, because it depends on many atoms together. In symbols, <span class="math-inline">\(\mathbf r\)</span> stands for the positions of all atoms and <span class="math-inline">\(s(\mathbf r)\)</span> is a recipe that turns those positions into one number.</p>
+<p>The usual choices are these:</p>
+<ul>
+<li>a <strong>distance</strong> between two atoms, or between the centres of mass of two groups of atoms;</li>
+<li>an <strong>angle</strong> or a <strong>dihedral angle</strong>, the twist around a bond (Module 5), such as the backbone angles <span class="math-inline">\(\phi\)</span> and <span class="math-inline">\(\psi\)</span> of a peptide;</li>
+<li>a <strong>coordination number</strong>: how many atoms of one kind lie within a chosen distance of a given atom or group. It is computed with a smooth counting function so that it changes gradually, because a bias force needs a slope;</li>
+<li>an <strong>RMSD</strong> (root-mean-square deviation, Module 11): the typical distance of the atoms from their places in a reference structure, after the two structures have been superposed;</li>
+<li>the <strong>fraction of native contacts</strong> <span class="math-inline">\(Q\)</span>: of all the pairs of atoms or residues that touch in the reference (native) structure, the fraction that also touch now. It runs from 0 (none formed) to 1 (all formed);</li>
+<li>a <strong>path variable</strong>: the position of the present structure along a chosen series of structures that leads from the starting state to the final state, like the kilometre mark along a road.</li>
+</ul>
 <p>A collective variable <span class="math-inline">\(s(\mathbf r)\)</span> is a function of the coordinates that describes the process in few dimensions: a distance, an angle, a coordination number, an RMSD, the fraction of native contacts, a path variable. A good CV:</p>
 <ol>
 <li><strong>distinguishes</strong> the initial, final and intermediate states;</li>
 <li><strong>includes the slow motions</strong>. Any slow motion not in the CV set is not accelerated, and the bias then pushes the system over the wrong ridge, producing hysteresis and wrong free energies;</li>
 <li>is <strong>few in number</strong>: the cost of filling a free-energy landscape grows exponentially with the number of CVs, and three or four is the practical limit for most CV-based methods.</li>
 </ol>
-<p>Finding good CVs is the hard part of this whole subject. Machine-learning approaches (time-lagged independent components, autoencoders, classifiers trained on end states) are increasingly used to propose them from preliminary simulations.</p>
+<p><strong>Property 1.</strong> If two states give the same value of <span class="math-inline">\(s\)</span>, the method cannot tell them apart, and neither can your free-energy profile. The distance between the two ends of a peptide, for example, can be the same in a folded hairpin and in a disordered compact coil. A profile along that distance mixes the two.</p>
+<p><strong>Property 2</strong> is the one that fails most often. A "slow motion" is any change that takes long to happen by itself.</p>
+<p>Suppose a ligand can leave its pocket only after a side chain has swung out of the way, and suppose you chose the ligand-pocket distance as the only CV. The side-chain rotation is slow and is not in <span class="math-inline">\(s\)</span>. The bias pushes the ligand outward while the gate is still closed, and the ligand is forced out through the wall of the pocket, at an energy cost that the real process never pays. That is "the wrong ridge": a pass that exists on your one-dimensional map and is not the pass the real system uses.</p>
+<p><strong>Hysteresis</strong> means that the result depends on the direction or the history of the run: pushing the system from A to B gives one profile, and from B to A another. At equilibrium the answer cannot depend on the direction. Hysteresis therefore shows that some slow motion was left behind. The motions that are not described by the CV are called the <strong>orthogonal degrees of freedom</strong>, and every CV-based method assumes that they keep up.</p>
+<p><strong>Property 3</strong> is arithmetic. Suppose you need 20 points along each CV to draw the free energy. One CV needs 20 points, two CVs need <span class="math-inline">\(20^2 = 400\)</span>, three need 8,000 and four need 160,000. Each point has to be visited many times before its free energy is known, so the computer time grows by the same factors.</p>
+<p>Finding good CVs is the hard part of this whole subject. Machine-learning approaches (time-lagged independent components, autoencoders, classifiers trained on end states) are increasingly used to propose them from preliminary simulations. In words: time-lagged independent components are the combinations of input coordinates that change most slowly in time (Module 16). An autoencoder is a neural network that compresses each structure into a few numbers and expands it again, so those few numbers must carry the main differences between structures. A classifier trained on end states is a model that has learned to tell structures of state A from structures of state B, and its output, which runs from "like A" to "like B", is used as the CV.</p>
 <h2 id="replica-exchange-parallel-tempering">Replica exchange (parallel tempering)</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="qITm4laxhtk" href="https://www.youtube.com/watch?v=qITm4laxhtk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Replica Exchange Method REM | Parallel Tempering | TREM HREM</span><span class="sv-m">18 min · The Computational Chemist</span></a><a class="sv" data-yt="ktkmgiFJSGQ" href="https://www.youtube.com/watch?v=ktkmgiFJSGQ" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Enhanced Sampling Methods - chapter 3: Replica Exchange Molecular Dynamics</span><span class="sv-m">36 min · MoBioChem</span></a><a class="sv" data-yt="5upvgbp_elI" href="https://www.youtube.com/watch?v=5upvgbp_elI" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">PASI 2012 - Massimiliano Bonomi: Theory of simulated tempering and replica exchange</span><span class="sv-m">1 h 02 min · Massimiliano Bonomi</span></a><a class="sv" data-yt="5w6rRqq2Dhg" href="https://www.youtube.com/watch?v=5w6rRqq2Dhg" target="_blank" rel="noopener" title="Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation"><span class="sv-play">&#9654;</span><span class="sv-t">Accelerating Convergence of Free-Energy Calculation with Replica Exchange Solute Tempering,Wei Jiang</span><span class="sv-m">1 h 01 min · TCBG UIUC</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="qITm4laxhtk" href="https://www.youtube.com/watch?v=qITm4laxhtk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Replica Exchange Method REM | Parallel Tempering | TREM HREM</span><span class="sv-m">18 min · The Computational Chemist</span></a><a class="sv" data-yt="ktkmgiFJSGQ" href="https://www.youtube.com/watch?v=ktkmgiFJSGQ" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Enhanced Sampling Methods - chapter 3: Replica Exchange Molecular Dynamics</span><span class="sv-m">36 min · MoBioChem</span></a><a class="sv" data-yt="5upvgbp_elI" href="https://www.youtube.com/watch?v=5upvgbp_elI" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">PASI 2012 - Massimiliano Bonomi: Theory of simulated tempering and replica exchange</span><span class="sv-m">1 h 02 min · Massimiliano Bonomi</span></a><a class="sv" data-yt="5w6rRqq2Dhg" href="https://www.youtube.com/watch?v=5w6rRqq2Dhg" target="_blank" rel="noopener" title="Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation"><span class="sv-play">&#9654;</span><span class="sv-t">Accelerating Convergence of Free-Energy Calculation with Replica Exchange Solute Tempering,Wei Jiang</span><span class="sv-m">1 h 01 min · TCBG UIUC</span></a></div>
 
+<p>This is the first cure: raise the temperature. The difficulty is to use heat without ending up with the properties of a hot system. Replica exchange solves it by running several temperatures at once and letting structures travel between them.</p>
+<p>A <strong>replica</strong> is one complete, independent copy of the simulated system: the same molecules and the same force field, with its own positions and velocities, running as its own simulation. Replicas do not interact. No atom of one replica feels a force from an atom of another. The only contact between them is the swap move described below.</p>
 <p>Run <span class="math-inline">\(M\)</span> copies of the system at temperatures <span class="math-inline">\(T_1&lt;T_2&lt;\dots&lt;T_M\)</span> simultaneously. The hot replicas cross barriers easily. At intervals, attempt to <strong>swap configurations</strong> between neighbouring temperatures, so that structures found at high temperature can reach the temperature of interest.</p>
-<p><strong>The acceptance rule.</strong> The joint probability of replica <span class="math-inline">\(i\)</span> holding configuration <span class="math-inline">\(\mathbf x\)</span> and replica <span class="math-inline">\(j\)</span> holding <span class="math-inline">\(\mathbf x'\)</span> is proportional to <span class="math-inline">\(e^{-\beta_iU(\mathbf x)}e^{-\beta_jU(\mathbf x')}\)</span>. After the swap it is <span class="math-inline">\(e^{-\beta_iU(\mathbf x')}e^{-\beta_jU(\mathbf x)}\)</span>. Detailed balance with the Metropolis criterion requires accepting with the ratio of the two:</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(M\)</span>: the number of replicas.</li>
+<li><span class="math-inline">\(T_1\)</span>: the lowest temperature, usually the one you care about (for example 300 K).</li>
+<li><span class="math-inline">\(T_M\)</span>: the highest temperature, chosen hot enough for the barriers to be crossed quickly.</li>
+<li><span class="math-inline">\(T_1&lt;T_2&lt;\dots&lt;T_M\)</span>: the temperatures in rising order. The list is called the <strong>temperature ladder</strong>, and each temperature is a rung.</li>
+</ul>
+</div>
+<p>Think of the ladder as a relay. A structure that crossed a barrier at 450 K is handed down, one rung at a time, until it arrives at 300 K. A structure that was stuck at 300 K is handed up, is shaken loose at the top, and comes down again somewhere else. The swap has to follow a rule, or the cold simulation would fill up with hot structures that do not belong there. The rule is an accept-or-reject test, and deriving it needs one new idea.</p>
+<div class="box physics">
+<p><strong>Physics you need here: detailed balance and the Metropolis rule.</strong> Suppose you want a procedure that visits states <span class="math-inline">\(a\)</span>, <span class="math-inline">\(b\)</span>, ... with given target probabilities <span class="math-inline">\(\pi(a)\)</span>, <span class="math-inline">\(\pi(b)\)</span>, ... (for us, Boltzmann probabilities). The procedure makes random moves from one state to another. It keeps the target probabilities stable if it obeys <strong>detailed balance</strong>: for every pair of states, the flow from <span class="math-inline">\(a\)</span> to <span class="math-inline">\(b\)</span> equals the flow from <span class="math-inline">\(b\)</span> to <span class="math-inline">\(a\)</span>,</p>
+<p><span class="math-display">\[\pi(a)\,P(a\to b) = \pi(b)\,P(b\to a) .\]</span></p>
+<p>Here <span class="math-inline">\(P(a\to b)\)</span> is the probability that the procedure, being in <span class="math-inline">\(a\)</span>, moves to <span class="math-inline">\(b\)</span>. The left side is "how often you are in <span class="math-inline">\(a\)</span>" times "how often you then go to <span class="math-inline">\(b\)</span>". If the flows cancel pair by pair, no state gains or loses probability, so a collection of systems that has the target distribution keeps it.</p>
+<p>The <strong>Metropolis rule</strong> is the standard way to obey detailed balance. Propose moves in such a way that proposing <span class="math-inline">\(a\to b\)</span> is as likely as proposing <span class="math-inline">\(b\to a\)</span>. Then accept a proposal with probability <span class="math-inline">\(\min\{1,\ \pi(b)/\pi(a)\}\)</span>: always, if <span class="math-inline">\(b\)</span> is at least as probable as <span class="math-inline">\(a\)</span>, and otherwise with a probability equal to the ratio. In a program you draw a random number between 0 and 1 and accept if it is smaller than the ratio.</p>
+<p>A check with two states, <span class="math-inline">\(\pi(a) = 0.8\)</span> and <span class="math-inline">\(\pi(b) = 0.2\)</span>. The move <span class="math-inline">\(a\to b\)</span> is accepted with probability <span class="math-inline">\(0.2/0.8 = 0.25\)</span>, and the move <span class="math-inline">\(b\to a\)</span> always. The flow from <span class="math-inline">\(a\)</span> to <span class="math-inline">\(b\)</span> is <span class="math-inline">\(0.8\times0.25 = 0.2\)</span>. The flow from <span class="math-inline">\(b\)</span> to <span class="math-inline">\(a\)</span> is <span class="math-inline">\(0.2\times1 = 0.2\)</span>. They are equal. More on probabilities in the <a href="maths.html#probability">toolbox</a>.</p>
+</div>
+<p>Take two replicas, <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>, and treat the pair as one large system whose "state" says which configuration sits at which temperature. Two facts are needed. At equilibrium, a system at temperature <span class="math-inline">\(T\)</span> is found in configuration <span class="math-inline">\(\mathbf x\)</span> with a probability proportional to the Boltzmann factor <span class="math-inline">\(e^{-\beta U(\mathbf x)}\)</span> (Module 3), where <span class="math-inline">\(U(\mathbf x)\)</span> is the potential energy of that configuration and <span class="math-inline">\(\beta = 1/k_BT\)</span>. And the two replicas are independent, so the probability of finding both in given configurations is the product of the two separate probabilities. The rule then follows in three steps: the probability before the swap, the probability after it, and their ratio.</p>
+<p><strong>The acceptance rule.</strong> The joint probability of replica <span class="math-inline">\(i\)</span> holding configuration <span class="math-inline">\(\mathbf x\)</span> and replica <span class="math-inline">\(j\)</span> holding <span class="math-inline">\(\mathbf x'\)</span> is proportional to <span class="math-inline">\(e^{-\beta_iU(\mathbf x)}e^{-\beta_jU(\mathbf x')}\)</span>. After the swap it is <span class="math-inline">\(e^{-\beta_iU(\mathbf x')}e^{-\beta_jU(\mathbf x)}\)</span>. (The swap exchanges the two configurations and leaves the temperatures where they are, so each <span class="math-inline">\(\beta\)</span> now multiplies the energy of the other configuration.)</p>
+<p>For the third step, divide the second expression by the first. A ratio of exponentials is the exponential of the difference of the exponents:</p>
+<p><span class="math-display">\[\frac{e^{-\beta_iU(\mathbf x')}\,e^{-\beta_jU(\mathbf x)}}{e^{-\beta_iU(\mathbf x)}\,e^{-\beta_jU(\mathbf x')}}
+= \exp\big[-\beta_iU(\mathbf x')-\beta_jU(\mathbf x)+\beta_iU(\mathbf x)+\beta_jU(\mathbf x')\big].\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(i\)</span>, <span class="math-inline">\(j\)</span>: the labels of the two replicas, two rungs of the ladder.</li>
+<li><span class="math-inline">\(\mathbf x\)</span>, <span class="math-inline">\(\mathbf x'\)</span>: the configurations (all atomic positions) held by replica <span class="math-inline">\(i\)</span> and by replica <span class="math-inline">\(j\)</span> before the swap.</li>
+<li><span class="math-inline">\(U(\mathbf x)\)</span>: the potential energy of configuration <span class="math-inline">\(\mathbf x\)</span>, in kJ/mol. All replicas use the same energy function <span class="math-inline">\(U\)</span>.</li>
+<li><span class="math-inline">\(\beta_i = 1/k_BT_i\)</span>: the inverse temperature of replica <span class="math-inline">\(i\)</span>. A colder replica has a larger <span class="math-inline">\(\beta\)</span>.</li>
+<li>The fraction on the left: the probability of the arrangement after the swap (top) divided by the probability before it (bottom).</li>
+<li><span class="math-inline">\(\exp[\dots]\)</span>: the exponential function, another way of writing <span class="math-inline">\(e\)</span> to the power of the bracket.</li>
+</ul>
+</div>
+<p>Now tidy the exponent. Collect the two terms that contain <span class="math-inline">\(\beta_i\)</span> and the two that contain <span class="math-inline">\(\beta_j\)</span>: the exponent is <span class="math-inline">\(\beta_i\big(U(\mathbf x)-U(\mathbf x')\big)-\beta_j\big(U(\mathbf x)-U(\mathbf x')\big) = (\beta_i-\beta_j)\big(U(\mathbf x)-U(\mathbf x')\big)\)</span>. This ratio plays the part of <span class="math-inline">\(\pi(b)/\pi(a)\)</span> in the box. A swap is proposed as often in one direction as in the other, so the Metropolis rule applies. Detailed balance with the Metropolis criterion requires accepting with the ratio of the two:</p>
 <p><span class="math-display">\[\boxed{P_{acc} = \min\Big\{1,\ \exp\big[(\beta_i-\beta_j)\,\big(U(\mathbf x)-U(\mathbf x')\big)\big]\Big\}}\]</span></p>
-<p>Sanity check: if <span class="math-inline">\(i\)</span> is the colder replica (<span class="math-inline">\(\beta_i&gt;\beta_j\)</span>) and currently holds the configuration of higher energy (<span class="math-inline">\(U(\mathbf x)&gt;U(\mathbf x')\)</span>), the exponent is positive and the swap is always accepted. The low-energy configuration moves to the cold replica, as it should. After an accepted swap, velocities are rescaled by <span class="math-inline">\(\sqrt{T_{new}/T_{old}}\)</span>. Each temperature samples its own canonical ensemble exactly, so the lowest-temperature replica gives unbiased averages directly.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_{acc}\)</span>: the probability with which the proposed swap is accepted, a number between 0 and 1.</li>
+<li><span class="math-inline">\(\min\{1,\ \dots\}\)</span>: the smaller of 1 and the number that follows. A probability cannot be larger than 1.</li>
+<li><span class="math-inline">\(\beta_i-\beta_j\)</span>: the difference of the two inverse temperatures. It is positive when <span class="math-inline">\(i\)</span> is the colder replica.</li>
+<li><span class="math-inline">\(U(\mathbf x)-U(\mathbf x')\)</span>: the energy of the configuration now held by <span class="math-inline">\(i\)</span> minus the energy of the configuration now held by <span class="math-inline">\(j\)</span>.</li>
+<li>The frame around the formula marks it as a main result.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>Read it like this. Only two numbers enter: the difference of the inverse temperatures and the difference of the potential energies. Both are already known in a running simulation, so a swap attempt costs almost nothing. No velocities appear and no new forces are needed.</p>
+<p>Sanity check: if <span class="math-inline">\(i\)</span> is the colder replica (<span class="math-inline">\(\beta_i&gt;\beta_j\)</span>) and currently holds the configuration of higher energy (<span class="math-inline">\(U(\mathbf x)&gt;U(\mathbf x')\)</span>), the exponent is positive and the swap is always accepted. The low-energy configuration moves to the cold replica, as it should. In the opposite case, where the cold replica already holds the configuration of lower energy, the exponent is negative and the swap is accepted only some of the time.</p>
+<p>A numerical example: replica <span class="math-inline">\(i\)</span> runs at 300 K and replica <span class="math-inline">\(j\)</span> at 310 K, so <span class="math-inline">\(\beta_i = 0.4009\)</span> mol/kJ, <span class="math-inline">\(\beta_j = 0.3880\)</span> mol/kJ and <span class="math-inline">\(\beta_i-\beta_j = 0.0129\)</span> mol/kJ. If the cold replica holds the configuration that is lower in energy by 50 kJ/mol, then <span class="math-inline">\(U(\mathbf x)-U(\mathbf x') = -50\)</span> kJ/mol, the exponent is <span class="math-inline">\(0.0129\times(-50) = -0.65\)</span> and <span class="math-inline">\(P_{acc} = e^{-0.65} = 0.52\)</span>. If it is lower by 200 kJ/mol, the exponent is <span class="math-inline">\(-2.59\)</span> and <span class="math-inline">\(P_{acc} = 0.075\)</span>. The wider the energy gap between the two configurations, the smaller the chance of a swap. The number of replicas a system needs follows from this fact.</p>
+<p>After an accepted swap, velocities are rescaled by <span class="math-inline">\(\sqrt{T_{new}/T_{old}}\)</span>. Here <span class="math-inline">\(T_{old}\)</span> is the temperature the configuration came from and <span class="math-inline">\(T_{new}\)</span> the temperature it now runs at. The reason: the configuration arrives with the velocities of its old temperature, and the kinetic energy is proportional to the square of the velocities and, on average, to the temperature (Module 3). Multiplying every velocity by <span class="math-inline">\(\sqrt{T_{new}/T_{old}}\)</span> multiplies the kinetic energy by <span class="math-inline">\(T_{new}/T_{old}\)</span>, which puts it at the level of the new temperature at once. This rescaling is also why only the potential energy appears in the rule: with it, the kinetic-energy parts of the Boltzmann factors are the same before and after the swap, and they cancel from the ratio.</p>
+<p>Each temperature samples its own canonical ensemble exactly, so the lowest-temperature replica gives unbiased averages directly. The <strong>canonical ensemble</strong> (Module 3) is the collection of configurations with Boltzmann probabilities at one fixed temperature, which is what a thermostatted simulation samples. "Exactly" means that the swap rule adds no error of its own. The frames collected at 300 K can be analysed as they are, with no reweighting.</p>
+<h3 id="replicas-temperatures-and-what-the-hot-ones-tell-you">Replicas, temperatures, and what the hot ones tell you</h3>
+<p>The output can be sorted in two ways. Sorted by temperature, you get everything that was simulated at, say, 300 K: this is what you analyse. Sorted by replica, you follow one copy of the system as it wanders up and down the ladder: this is what you inspect to see whether the method works. (Exchanging the configurations of two temperatures, or the temperatures of two running copies, is the same move described in two ways.)</p>
+<p>The word "replica" is used in both senses in this lesson. In the derivation above, and in "the hot replicas", it means the simulation that runs at one temperature, whichever configuration it holds at the moment. In "sorted by replica" and in the next paragraph it means one continuous copy of the system, which changes its temperature at every accepted swap.</p>
+<p>A healthy run shows every replica travelling from the bottom of the ladder to the top and back, many times. A replica that stays in the lower half never benefits from the heat, however good the acceptance looks.</p>
+<p>What you may conclude from the hot replicas:</p>
+<ul>
+<li>Each of them is a correct equilibrium simulation of the model at its own temperature. Averages taken at 400 K are averages of the model at 400 K.</li>
+<li>They are a source of new structures for the cold replicas. That is their purpose.</li>
+<li>Their data can be combined with the cold data by MBAR (Module 12), which accepts states that differ in temperature, to reduce the statistical error.</li>
+</ul>
+<p>What you may not conclude:</p>
+<ul>
+<li>The populations seen at a high temperature are not the populations at the temperature of interest. A helix that is mostly formed at 300 K can be mostly melted at 450 K. Only the frames collected at 300 K, or a proper reweighting, tell you about 300 K.</li>
+<li>The time order means nothing. After sorting by temperature, the frames at 300 K are pieces of different replicas joined end to end, with a jump at every accepted swap. Sorting by replica does not help, because then the temperature changes along the way. Durations, rates and the order of events are lost.</li>
+<li>Whether the model describes the real molecule well at 450 K is a separate question. The method does not need the hot replicas to be realistic. It only needs them to move.</li>
+</ul>
+<h3 id="how-many-replicas">How many replicas</h3>
+<p>The ladder must be fine enough for swaps to be accepted, and every rung costs a full simulation. This part explains why large systems need many rungs. On a first reading the picture of the overlapping bells, the formula and the worked example are enough. The four steps in between show where the formula comes from.</p>
+<p>At a given temperature the potential energy of the system is not one number. It fluctuates from frame to frame around a mean value. Make a histogram of it and you get a bell-shaped curve with a centre (the mean energy at that temperature) and a width (the standard deviation, the typical size of the fluctuations). A hotter replica has its bell at higher energy.</p>
+<p>Now look at the acceptance rule again. A swap is accepted easily only when the energy of the cold replica's configuration is not far below the energy of the hot replica's configuration. That happens often only if the two bells overlap, so that a typical energy of one replica is also a plausible energy of the other. If the bells are far apart, the gap is large every time, the exponent is large and negative, and nearly every swap is refused.</p>
 <p><strong>How many replicas.</strong> Swaps are accepted only if the potential-energy distributions of neighbouring temperatures overlap. The mean energy grows in proportion to the number of degrees of freedom <span class="math-inline">\(N_{df}\)</span> while the width of the distribution grows as <span class="math-inline">\(\sqrt{N_{df}}\)</span>, so the temperature spacing must shrink as <span class="math-inline">\(1/\sqrt{N_{df}}\)</span> and</p>
 <p><span class="math-display">\[M\propto\sqrt{N_{df}}\;\ln\frac{T_{max}}{T_{min}} .\]</span></p>
-<p>A geometric ladder, <span class="math-inline">\(T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}\)</span>, gives roughly uniform acceptance when the heat capacity is constant; aim for roughly equal acceptance between all neighbouring pairs, commonly 20 to 30 % (the original eight-replica peptide simulation had about 15 %, and its authors considered anything above 10 % sufficient). A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.</p>
-<p><strong>REST2</strong> (replica exchange with solute tempering; <a href="https://doi.org/10.1021/jp204407d" class="cite" target="_blank" rel="noopener" title="Wang L; Friesner RA; Berne BJ (2011). Replica Exchange with Solute Scaling: A More Efficient Version of Replica Exchange with Solute Tempering (REST2). The Journal of Physical Chemistry B">Wang, Friesner and Berne 2011</a>). All replicas run at the same temperature <span class="math-inline">\(T_0\)</span>, but the potential energy is scaled so that only the solute is effectively heated:</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(M\)</span>: the number of replicas.</li>
+<li><span class="math-inline">\(\propto\)</span>: "is proportional to". The formula says how <span class="math-inline">\(M\)</span> scales. It does not give the number itself, because the constant in front depends on the acceptance you aim for and on the heat capacity of the system.</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number of <strong>degrees of freedom</strong>, the number of independent ways in which the atoms can move. It is about three per atom, minus the constraints (Module 3).</li>
+<li><span class="math-inline">\(\sqrt{N_{df}}\)</span>: its square root. A system with four times as many atoms has twice this value.</li>
+<li><span class="math-inline">\(T_{min}\)</span>, <span class="math-inline">\(T_{max}\)</span>: the lowest and the highest temperature of the ladder.</li>
+<li><span class="math-inline">\(\ln\)</span>: the natural logarithm. It grows slowly: for 300 to 450 K, <span class="math-inline">\(\ln(450/300) = 0.405\)</span>.</li>
+</ul>
+</div>
+<div class="box maths">
+<p><strong>Maths you need here: mean, standard deviation, and the square-root rule.</strong> The <strong>mean</strong> of a fluctuating quantity is its average value. The <strong>standard deviation</strong> <span class="math-inline">\(\sigma\)</span> measures how far single values typically lie from the mean. Its square, <span class="math-inline">\(\sigma^2\)</span>, is called the variance.</p>
+<p>When a quantity is a sum of <span class="math-inline">\(N\)</span> independent contributions of similar size, its mean grows in proportion to <span class="math-inline">\(N\)</span> and its standard deviation only as <span class="math-inline">\(\sqrt N\)</span>. Example: toss <span class="math-inline">\(N\)</span> coins and count the heads. For <span class="math-inline">\(N = 100\)</span> you expect 50, give or take 5 (the standard deviation is <span class="math-inline">\(\sqrt N/2\)</span>). For <span class="math-inline">\(N = 10{,}000\)</span> you expect 5,000, give or take 50. The count grew 100 times and its spread only 10 times.</p>
+<p>The energy of a large system behaves in the same way, because it is a sum of contributions from many atoms. More in the <a href="maths.html#averages">toolbox</a>.</p>
+</div>
+<p>Here is where the two scalings come from, in four steps.</p>
+<p><em>Step 1, the distance between the bells.</em> The energy needed to warm the system by one kelvin is its <strong>heat capacity</strong> <span class="math-inline">\(C\)</span>. (Only the potential energy enters the swap rule, so <span class="math-inline">\(C\)</span> here is the part of the heat capacity that comes from the potential energy.) Two replicas whose temperatures differ by <span class="math-inline">\(\Delta T\)</span> have mean energies that differ by <span class="math-inline">\(C\,\Delta T\)</span>. Every degree of freedom takes its share of the heat, so <span class="math-inline">\(C\)</span> is proportional to <span class="math-inline">\(N_{df}\)</span>.</p>
+<p><em>Step 2, the width of a bell.</em> The energy is a sum of very many contributions, so by the square-root rule its standard deviation grows as <span class="math-inline">\(\sqrt{N_{df}}\)</span>. Module 3 gave the exact relation for the total energy, and the same relation holds for the potential energy with its own part of the heat capacity: the variance is <span class="math-inline">\(k_BT^2C\)</span>. The standard deviation is the square root of that, <span class="math-inline">\(\sqrt{k_BT^2C}\)</span>.</p>
+<p><em>Step 3, the ratio.</em> The overlap is set by the distance between the bells measured in units of their width:</p>
+<p><span class="math-display">\[\frac{\text{distance between the means}}{\text{width}} = \frac{C\,\Delta T}{\sqrt{k_BT^2C}} = \sqrt{\frac{C}{k_B}}\;\frac{\Delta T}{T} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(C\)</span>: the heat capacity (potential-energy part), in kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>. It is proportional to <span class="math-inline">\(N_{df}\)</span>.</li>
+<li><span class="math-inline">\(\Delta T\)</span>: the difference between two neighbouring temperatures of the ladder, in K.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature of the colder of the two, in K.</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\sqrt{k_BT^2C}\)</span>: the standard deviation of the potential energy at temperature <span class="math-inline">\(T\)</span>.</li>
+<li><span class="math-inline">\(C/k_B\)</span>: the heat capacity as a pure number. It is of the order of the number of degrees of freedom.</li>
+<li>The second equality: <span class="math-inline">\(C/\sqrt{C} = \sqrt{C}\)</span>, and <span class="math-inline">\(\sqrt{k_BT^2} = T\sqrt{k_B}\)</span>.</li>
+</ul>
+</div>
+<p>To keep the same overlap when the system grows, this ratio has to stay the same. Since <span class="math-inline">\(\sqrt{C/k_B}\)</span> grows as <span class="math-inline">\(\sqrt{N_{df}}\)</span>, the relative spacing <span class="math-inline">\(\Delta T/T\)</span> has to shrink as <span class="math-inline">\(1/\sqrt{N_{df}}\)</span>.</p>
+<p><em>Step 4, counting the rungs.</em> If every step multiplies the temperature by the same factor <span class="math-inline">\(1+\Delta T/T\)</span>, then <span class="math-inline">\(n\)</span> steps multiply it by <span class="math-inline">\((1+\Delta T/T)^n\)</span>. To reach <span class="math-inline">\(T_{max}\)</span> from <span class="math-inline">\(T_{min}\)</span> you need <span class="math-inline">\((1+\Delta T/T)^n = T_{max}/T_{min}\)</span>. Take the logarithm of both sides and use <span class="math-inline">\(\ln(1+x)\approx x\)</span> for small <span class="math-inline">\(x\)</span>: <span class="math-inline">\(n\approx\ln(T_{max}/T_{min})\,/\,(\Delta T/T)\)</span>. With <span class="math-inline">\(\Delta T/T\)</span> proportional to <span class="math-inline">\(1/\sqrt{N_{df}}\)</span>, the number of steps, and so the number of replicas <span class="math-inline">\(M = n+1\)</span>, is proportional to <span class="math-inline">\(\sqrt{N_{df}}\,\ln(T_{max}/T_{min})\)</span>. That is the formula above.</p>
+<details>
+<summary>Optional: from the overlap to an acceptance percentage</summary>
+<p>The ratio of step 3 can be turned into a number. Assume that the two energy distributions are Gaussian bells of the same width <span class="math-inline">\(\sigma\)</span>, with centres a distance <span class="math-inline">\(d\)</span> apart, and that <span class="math-inline">\(d\)</span> and <span class="math-inline">\(\sigma\)</span> are related as in steps 1 and 2. Averaging the acceptance rule over the two bells is a Gaussian integral. Its result is</p>
+<p><span class="math-display">\[\text{average acceptance} = \operatorname{erfc}\left(\frac{d}{2\sigma}\right),\]</span></p>
+<p>where erfc is the complementary error function: <span class="math-inline">\(\operatorname{erfc}(z)\)</span> is the probability that a Gaussian number lies further than <span class="math-inline">\(z\sqrt2\)</span> standard deviations from its mean, on either side (<a href="maths.html#gaussian">toolbox</a>). It is 1 at <span class="math-inline">\(z = 0\)</span> and falls quickly. Some values:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(d/\sigma\)</span></th>
+<th>0.5</th>
+<th>1</th>
+<th>1.5</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>average acceptance</td>
+<td>72 %</td>
+<td>48 %</td>
+<td>29 %</td>
+<td>16 %</td>
+<td>3.4 %</td>
+<td>0.5 %</td>
+</tr>
+</tbody>
+</table>
+<p>So an acceptance of 20 to 30 % corresponds to bells whose centres are about 1.5 to 1.8 widths apart. The model is rough (real distributions are not exactly Gaussian, and their widths differ a little between neighbours), but it shows how fast the acceptance collapses when the rungs are too far apart.</p>
+</details>
+<div class="box key">
+<p><strong>Worked example: a ladder for a small system, and for one four times larger.</strong> The numbers are an illustration. Take <span class="math-inline">\(N_{df} = 10{,}000\)</span> and suppose the potential-energy part of the heat capacity is <span class="math-inline">\(\tfrac12k_B\)</span> per degree of freedom, the value for a collection of springs (real liquids differ). Then <span class="math-inline">\(C/k_B = 5{,}000\)</span> and <span class="math-inline">\(\sqrt{C/k_B} = 70.7\)</span>.</p>
+<ol>
+<li><em>Choose the overlap.</em> Aim for a ratio of 1.5 in step 3, which the optional block above translates into an acceptance near 29 %.</li>
+<li><em>Spacing.</em> <span class="math-inline">\(\Delta T/T = 1.5/70.7 = 0.021\)</span>: each rung is 2.1 % hotter than the one below, which is 6.4 K at 300 K.</li>
+<li><em>Number of rungs from 300 to 400 K.</em> <span class="math-inline">\(n = \ln(400/300)/\ln(1.021) = 0.288/0.021 = 13.7\)</span>, so 14 steps and 15 replicas.</li>
+</ol>
+<p>Now make the system four times larger, <span class="math-inline">\(N_{df} = 40{,}000\)</span>. The spacing halves to 1.06 %, the number of steps doubles to 28, and you need 29 replicas. Each replica also costs four times more to run, so the whole calculation costs about eight times more.</p>
+</div>
+<p>A geometric ladder, <span class="math-inline">\(T_k = T_{min}(T_{max}/T_{min})^{k/(M-1)}\)</span>, gives roughly uniform acceptance when the heat capacity is constant; aim for roughly equal acceptance between all neighbouring pairs, commonly 20 to 30 % (the original eight-replica peptide simulation had about 15 %, and its authors considered anything above 10 % sufficient).</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(T_k\)</span>: the temperature of rung <span class="math-inline">\(k\)</span>.</li>
+<li><span class="math-inline">\(k\)</span>: the label of the rung. In this formula it runs from 0 to <span class="math-inline">\(M-1\)</span>, so that <span class="math-inline">\(T_0 = T_{min}\)</span> and <span class="math-inline">\(T_{M-1} = T_{max}\)</span>. (The list at the start of the section was numbered from 1 to <span class="math-inline">\(M\)</span>. Only the numbering differs: with that numbering the same ladder is written <span class="math-inline">\(T_k = T_{min}(T_{max}/T_{min})^{(k-1)/(M-1)}\)</span>, with <span class="math-inline">\(k\)</span> from 1 to <span class="math-inline">\(M\)</span>.)</li>
+<li><span class="math-inline">\(T_{max}/T_{min}\)</span>: the ratio of the highest to the lowest temperature.</li>
+<li>The exponent <span class="math-inline">\(k/(M-1)\)</span>: the fraction of the ladder that has been climbed at rung <span class="math-inline">\(k\)</span>, from 0 at the bottom to 1 at the top.</li>
+</ul>
+</div>
+<p>"Geometric" means that each temperature is the one below it multiplied by the same factor, <span class="math-inline">\((T_{max}/T_{min})^{1/(M-1)}\)</span>. For four replicas between 300 and 450 K the factor is <span class="math-inline">\(1.5^{1/3} = 1.145\)</span> and the ladder is 300, 343, 393 and 450 K. The gaps grow (43, 50 and 57 K) while the ratio stays the same.</p>
+<p>Step 3 shows why this is the natural choice: the overlap depends on <span class="math-inline">\(\Delta T/T\)</span>, the relative spacing, and on <span class="math-inline">\(C\)</span>. "When the heat capacity is constant" means when <span class="math-inline">\(C\)</span> is the same at all temperatures of the ladder. Where <span class="math-inline">\(C\)</span> is larger, the same step also shows that the rungs must be closer.</p>
+<p>The reason for aiming at equal acceptance: a structure travels along the ladder by a chain of accepted swaps, and the pair with the lowest acceptance is the bottleneck of the whole chain. The usual target is a compromise. With a much lower acceptance the structures hardly travel. With a much higher one the rungs are closer than they need to be, and replicas are spent for nothing.</p>
+<p>A small protein in explicit water (30,000 atoms) spanning 300 to 450 K needs of the order of 50 to 60 replicas, most of the effort going into heating water. That cost motivates the next method.</p>
+<p>"Explicit water" means that the water molecules are simulated atom by atom. They are counted in <span class="math-inline">\(N_{df}\)</span> like any other atoms, so the ladder is set by the water although the barriers you care about are in the protein. The estimate of the worked example, applied to a system of this size, gives a number of the same order. Exercise 3 asks you to do it.</p>
+<p><strong>REST2</strong> (replica exchange with solute tempering; <a href="https://doi.org/10.1021/jp204407d" class="cite" target="_blank" rel="noopener" title="Wang L; Friesner RA; Berne BJ (2011). Replica Exchange with Solute Scaling: A More Efficient Version of Replica Exchange with Solute Tempering (REST2). The Journal of Physical Chemistry B">Wang, Friesner and Berne 2011</a>). The idea in words: the protein or peptide (the <strong>solute</strong>) is what is stuck, and the water around it is not. So heat the solute only. Two parts of one box cannot stay at two temperatures at equilibrium, because heat flows from the hot part to the cold one, but there is another way to the same effect. The Boltzmann factor contains only the product <span class="math-inline">\(\beta U = U/k_BT\)</span>. Dividing an energy by 2 changes this product exactly as doubling the temperature would.</p>
+<p>All replicas run at the same temperature <span class="math-inline">\(T_0\)</span>, but the potential energy is scaled so that only the solute is effectively heated:</p>
 <p><span class="math-display">\[U_m = \lambda_m\,U_{pp}+\sqrt{\lambda_m}\,U_{pw}+U_{ww},\qquad\lambda_m = \frac{T_0}{T_m}\le1,\]</span></p>
-<p>with solute-solute (pp), solute-water (pw) and water-water (ww) terms. The solute sees an effective temperature <span class="math-inline">\(T_m\)</span> while the water stays cold. The water-water energy cancels from the exchange criterion, leaving only the solute-solute and solute-water energies, so the number of replicas grows with the number of degrees of freedom of the solute, not with the number of water molecules. A handful to a dozen replicas suffice for peptides and small proteins. In practice only the solute's dihedral terms, charges and Lennard-Jones well depths are scaled: scaling its bonds and angles does not help (<a href="https://doi.org/10.1021/jp204407d" class="cite" target="_blank" rel="noopener" title="Wang L; Friesner RA; Berne BJ (2011). Replica Exchange with Solute Scaling: A More Efficient Version of Replica Exchange with Solute Tempering (REST2). The Journal of Physical Chemistry B">Wang, Friesner and Berne 2011</a>).</p>
-<p><strong>Hamiltonian replica exchange.</strong> In general the replicas can differ in any parameter of the Hamiltonian: the <span class="math-inline">\(\lambda\)</span> of an alchemical transformation, or the centre of an umbrella window. For two replicas with bias potentials <span class="math-inline">\(w_i\)</span> and <span class="math-inline">\(w_j\)</span> at the same temperature, holding <span class="math-inline">\(\mathbf x_i\)</span> and <span class="math-inline">\(\mathbf x_j\)</span>:</p>
+<p>with solute-solute (pp), solute-water (pw) and water-water (ww) terms.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_m\)</span>: the potential-energy function used by replica <span class="math-inline">\(m\)</span>.</li>
+<li><span class="math-inline">\(m\)</span>: the label of the replica.</li>
+<li><span class="math-inline">\(U_{pp}\)</span>: the solute-solute energy, all interactions among the atoms of the solute (p for protein).</li>
+<li><span class="math-inline">\(U_{pw}\)</span>: the solute-water energy, all interactions between a solute atom and a water atom.</li>
+<li><span class="math-inline">\(U_{ww}\)</span>: the water-water energy.</li>
+<li><span class="math-inline">\(\lambda_m\)</span>: the scaling factor of replica <span class="math-inline">\(m\)</span>, a pure number between 0 and 1. The replica with <span class="math-inline">\(\lambda_m = 1\)</span> is the real system. This is not the alchemical <span class="math-inline">\(\lambda\)</span> of Module 13.</li>
+<li><span class="math-inline">\(\sqrt{\lambda_m}\)</span>: its square root, the factor applied to the solute-water energy.</li>
+<li><span class="math-inline">\(T_0\)</span>: the real temperature of every replica, the one the thermostat holds.</li>
+<li><span class="math-inline">\(T_m\)</span>: the effective temperature of the solute in replica <span class="math-inline">\(m\)</span>. It is a label that you choose to fix <span class="math-inline">\(\lambda_m\)</span>. No thermostat is set to it.</li>
+<li><span class="math-inline">\(\le\)</span>: "smaller than or equal to".</li>
+</ul>
+</div>
+<p>Read it like this, for <span class="math-inline">\(T_0 = 300\)</span> K and <span class="math-inline">\(T_m = 600\)</span> K, so <span class="math-inline">\(\lambda_m = 0.5\)</span>. The solute-solute energy is halved. Its Boltzmann factor is <span class="math-inline">\(e^{-\beta_0\lambda_mU_{pp}} = e^{-U_{pp}/k_BT_m}\)</span> with <span class="math-inline">\(\beta_0 = 1/k_BT_0\)</span>, the same as for the unscaled energy at 600 K. The solute-water energy is multiplied by <span class="math-inline">\(\sqrt{0.5} = 0.71\)</span>, which corresponds to an intermediate temperature of <span class="math-inline">\(\sqrt{T_0T_m} = 424\)</span> K. The water-water energy is untouched and stays at 300 K.</p>
+<p>The solute sees an effective temperature <span class="math-inline">\(T_m\)</span> while the water stays cold. The water-water energy cancels from the exchange criterion, leaving only the solute-solute and solute-water energies, so the number of replicas grows with the number of degrees of freedom of the solute, not with the number of water molecules. A handful to a dozen replicas suffice for peptides and small proteins. The cancellation is shown below, after the general exchange rule. The saving follows from the square-root argument: the energies that enter the swap test now belong to the solute and its contacts with water, and no longer to the whole box.</p>
+<p>In practice only the solute's dihedral terms, charges and Lennard-Jones well depths are scaled: scaling its bonds and angles does not help (<a href="https://doi.org/10.1021/jp204407d" class="cite" target="_blank" rel="noopener" title="Wang L; Friesner RA; Berne BJ (2011). Replica Exchange with Solute Scaling: A More Efficient Version of Replica Exchange with Solute Tempering (REST2). The Journal of Physical Chemistry B">Wang, Friesner and Berne 2011</a>). These are the force-field terms of Module 5.</p>
+<p>The charge scaling shows where the square root in the formula comes from. An electrostatic energy is proportional to the product of two charges. Multiply every solute charge by <span class="math-inline">\(\sqrt{\lambda_m}\)</span>: a pair of solute atoms then has its energy multiplied by <span class="math-inline">\(\sqrt{\lambda_m}\times\sqrt{\lambda_m} = \lambda_m\)</span>, and a solute-water pair by <span class="math-inline">\(\sqrt{\lambda_m}\)</span> only, because the water charge is unchanged. The Lennard-Jones well depths behave in the same way under the combination rule of Module 5, in which the well depth of a pair of atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> is <span class="math-inline">\(\sqrt{\varepsilon_i\varepsilon_j}\)</span>, when the well depth <span class="math-inline">\(\varepsilon_i\)</span> of each solute atom is multiplied by <span class="math-inline">\(\lambda_m\)</span>.</p>
+<p>Temperature is only one way to make replicas differ. The general idea is to give each replica a slightly different energy function and to exchange configurations between neighbours. The Hamiltonian (Module 2) is the function that gives the total energy, which explains the name of the general method. REST2 is one case of it.</p>
+<p><strong>Hamiltonian replica exchange.</strong> In general the replicas can differ in any parameter of the Hamiltonian: the <span class="math-inline">\(\lambda\)</span> of an alchemical transformation, or the centre of an umbrella window. (An alchemical <span class="math-inline">\(\lambda\)</span> is the parameter of Module 13 that gradually turns one molecule into another. An umbrella window is one of the simulations of Module 12, in which a spring holds a coordinate near a chosen centre.)</p>
+<p>The rule is derived as before. Let every replica have the same temperature and the energy function <span class="math-inline">\(U+w_i\)</span>, where <span class="math-inline">\(w_i\)</span> is the extra term of replica <span class="math-inline">\(i\)</span>. Before the swap the joint probability is proportional to <span class="math-inline">\(e^{-\beta[U(\mathbf x_i)+w_i(\mathbf x_i)]}\,e^{-\beta[U(\mathbf x_j)+w_j(\mathbf x_j)]}\)</span>. After the swap, replica <span class="math-inline">\(i\)</span> holds <span class="math-inline">\(\mathbf x_j\)</span> and replica <span class="math-inline">\(j\)</span> holds <span class="math-inline">\(\mathbf x_i\)</span>, and it is proportional to <span class="math-inline">\(e^{-\beta[U(\mathbf x_j)+w_i(\mathbf x_j)]}\,e^{-\beta[U(\mathbf x_i)+w_j(\mathbf x_i)]}\)</span>.</p>
+<p>Divide the second by the first. The common energy <span class="math-inline">\(U(\mathbf x_i)+U(\mathbf x_j)\)</span> appears in both and cancels, and only the extra terms remain. For two replicas with bias potentials <span class="math-inline">\(w_i\)</span> and <span class="math-inline">\(w_j\)</span> at the same temperature, holding <span class="math-inline">\(\mathbf x_i\)</span> and <span class="math-inline">\(\mathbf x_j\)</span>:</p>
 <p><span class="math-display">\[P_{acc} = \min\Big\{1,\ \exp\big(-\beta\big[w_i(\mathbf x_j)+w_j(\mathbf x_i)-w_i(\mathbf x_i)-w_j(\mathbf x_j)\big]\big)\Big\} .\]</span></p>
-<p>The bracket is the energy after the swap minus the energy before. Exchanges between umbrella windows let a configuration diffuse along the reaction coordinate and help the orthogonal degrees of freedom to relax, which reduces the hysteresis problem of Module 12 at no extra cost.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_{acc}\)</span>: the probability of accepting the swap.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>, the same for both replicas.</li>
+<li><span class="math-inline">\(w_i\)</span>, <span class="math-inline">\(w_j\)</span>: the <strong>bias potentials</strong> of replicas <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>, the extra energy terms that make each replica different from the others. For umbrella windows, <span class="math-inline">\(w_i = \tfrac12k(\xi-\xi_i)^2\)</span>, a spring of stiffness <span class="math-inline">\(k\)</span> that holds the coordinate <span class="math-inline">\(\xi\)</span> near the centre <span class="math-inline">\(\xi_i\)</span>. (This <span class="math-inline">\(w\)</span> is not the hill height of metadynamics.)</li>
+<li><span class="math-inline">\(\mathbf x_i\)</span>, <span class="math-inline">\(\mathbf x_j\)</span>: the configurations held by replica <span class="math-inline">\(i\)</span> and by replica <span class="math-inline">\(j\)</span> before the swap.</li>
+<li><span class="math-inline">\(w_i(\mathbf x_j)\)</span>: the bias of replica <span class="math-inline">\(i\)</span> evaluated on the configuration of replica <span class="math-inline">\(j\)</span>: the extra energy replica <span class="math-inline">\(i\)</span> would have if it received that configuration.</li>
+<li><span class="math-inline">\(\min\{1,\ \dots\}\)</span>: the smaller of 1 and the number that follows.</li>
+</ul>
+</div>
+<p>The bracket is the energy after the swap minus the energy before. If the swap lowers the total bias energy, it is always accepted. If it raises it, it is accepted with the Boltzmann factor of the increase.</p>
+<p>A numerical example with two umbrella windows at 300 K. Both springs have <span class="math-inline">\(k = 1{,}000\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>, with centres at 1.00 and 1.05 nm. Replica <span class="math-inline">\(i\)</span> holds a configuration with <span class="math-inline">\(\xi = 1.01\)</span> nm and replica <span class="math-inline">\(j\)</span> one with <span class="math-inline">\(\xi = 1.04\)</span> nm.</p>
+<p>Before the swap the bias energies are <span class="math-inline">\(500\times0.01^2 = 0.05\)</span> kJ/mol each. After it, each configuration sits 0.04 nm from its new centre and costs <span class="math-inline">\(500\times0.04^2 = 0.8\)</span> kJ/mol. The bracket is <span class="math-inline">\(0.8+0.8-0.05-0.05 = 1.5\)</span> kJ/mol, so <span class="math-inline">\(P_{acc} = e^{-1.5/2.494} = 0.55\)</span>. Windows whose centres are much further apart than the width of their distributions would almost never exchange.</p>
+<p>Back to REST2, where two replicas <span class="math-inline">\(m\)</span> and <span class="math-inline">\(n\)</span> differ in the whole energy function, <span class="math-inline">\(U_m\)</span> against <span class="math-inline">\(U_n\)</span>. The same derivation gives the same bracket with <span class="math-inline">\(U_m\)</span> and <span class="math-inline">\(U_n\)</span> in the places of <span class="math-inline">\(w_i\)</span> and <span class="math-inline">\(w_j\)</span>: energy after the swap minus energy before. The water-water energy <span class="math-inline">\(U_{ww}\)</span> enters <span class="math-inline">\(U_m\)</span> and <span class="math-inline">\(U_n\)</span> with the same factor 1. In the bracket it therefore appears once with a plus sign and once with a minus sign for each of the two configurations, and drops out. Only the terms that are scaled differently in the two replicas remain, the solute-solute and the solute-water energies, which is the cancellation stated above.</p>
+<p>Exchanges between umbrella windows let a configuration diffuse along the reaction coordinate and help the orthogonal degrees of freedom to relax, which reduces the hysteresis problem of Module 12 at no extra cost. "Diffuse along the reaction coordinate" means that, through a chain of accepted swaps, a configuration can travel from window to window instead of staying where it was started. A configuration that is stuck in a bad arrangement of the other coordinates can then be replaced by a better one from a neighbouring window. "At no extra cost" holds because the windows have to be run anyway, and the swap test needs only bias energies.</p>
 <p>A limit to remember: tempering helps with <em>enthalpic</em> barriers. A barrier that is entropic, a narrow path that must be found, is not lowered by heating.</p>
+<div class="box physics">
+<p><strong>Physics you need here: enthalpic and entropic barriers.</strong> A free energy has two parts, <span class="math-inline">\(F = E - TS\)</span> (Module 3): the energy <span class="math-inline">\(E\)</span> and the entropy <span class="math-inline">\(S\)</span>, which counts how many configurations are available. A barrier can be high for either reason. (Enthalpy is the energy plus a pressure-volume term that is negligible for a liquid at 1 bar, so "enthalpic" can be read as "energetic" here.)</p>
+<p>A barrier is <strong>enthalpic</strong> when the system must pay energy to pass, for example by breaking hydrogen bonds. The chance of having that energy is <span class="math-inline">\(e^{-\Delta E^\ddagger/k_BT}\)</span>, where <span class="math-inline">\(\Delta E^\ddagger\)</span> is the energy needed, and it rises steeply with temperature. For <span class="math-inline">\(\Delta E^\ddagger = 40\)</span> kJ/mol it is <span class="math-inline">\(e^{-16.0}\)</span> at 300 K and <span class="math-inline">\(e^{-10.7}\)</span> at 450 K, about 200 times larger.</p>
+<p>A barrier is <strong>entropic</strong> when no energy is needed but the way through is narrow: of all the configurations in the basin, only a tiny fraction lies at the entrance of the path. The chance of being there is a ratio of two counts of configurations, and a ratio of counts does not depend on the temperature. If one configuration in nine million is at the entrance, that is so at 300 K and at 450 K. Think of a large hall with one small door: the share of the floor that lies in front of the door does not change when the people inside move faster. More in the <a href="physics.html#thermodynamics">primer</a>.</p>
+</div>
 <h2 id="metadynamics">Metadynamics</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="QP5F83g1G0E" href="https://www.youtube.com/watch?v=QP5F83g1G0E" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Metadynamics (introduction) | A history dependent non-Boltzmann sampling technique | MD</span><span class="sv-m">16 min · The Computational Chemist</span></a><a class="sv" data-yt="b8aViZKaKFs" href="https://www.youtube.com/watch?v=b8aViZKaKFs" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Enhanced Sampling Methods - Chapter 4: Metadynamics</span><span class="sv-m">9 min · MoBioChem</span></a><a class="sv" data-yt="bZZggbV2r5E" href="https://www.youtube.com/watch?v=bZZggbV2r5E" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">PASI 2012 - Giovanni Bussi: Metadynamics from direct to well-tempered and flexible hills</span><span class="sv-m">1 h 11 min · Giovanni Bussi</span></a><a class="sv" data-yt="BYvsNThvXlk" href="https://www.youtube.com/watch?v=BYvsNThvXlk" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Accelerating sampling in GROMACS with the Accelerated Weight Histogram method</span><span class="sv-m">21 min · BioExcel</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="QP5F83g1G0E" href="https://www.youtube.com/watch?v=QP5F83g1G0E" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Metadynamics (introduction) | A history dependent non-Boltzmann sampling technique | MD</span><span class="sv-m">16 min · The Computational Chemist</span></a><a class="sv" data-yt="b8aViZKaKFs" href="https://www.youtube.com/watch?v=b8aViZKaKFs" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Enhanced Sampling Methods - Chapter 4: Metadynamics</span><span class="sv-m">9 min · MoBioChem</span></a><a class="sv" data-yt="bZZggbV2r5E" href="https://www.youtube.com/watch?v=bZZggbV2r5E" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">PASI 2012 - Giovanni Bussi: Metadynamics from direct to well-tempered and flexible hills</span><span class="sv-m">1 h 11 min · Giovanni Bussi</span></a><a class="sv" data-yt="BYvsNThvXlk" href="https://www.youtube.com/watch?v=BYvsNThvXlk" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Accelerating sampling in GROMACS with the Accelerated Weight Histogram method</span><span class="sv-m">21 min · BioExcel</span></a></div>
 
+<p>This is the second cure: change the terrain. Umbrella sampling (Module 12) also adds a bias, but there you decide in advance where the springs go. Metadynamics builds its bias while it runs, out of the history of the run. Wherever the system has been, a little extra energy is left behind, so that the system is pushed to go somewhere new.</p>
+<p>One picture carries the idea. A walker in a valley drops a shovel of sand at their feet at regular intervals. The floor rises where the walker spends time. In the end the valleys are full, the walker roams everywhere, and the amount of sand at each place tells you how deep the valley was there.</p>
+<p>The picture needs one correction. The sand is not dropped in real space. It is dropped along the collective variable <span class="math-inline">\(s\)</span>, so the bias is a function of <span class="math-inline">\(s\)</span> alone, and the "walker" is the whole system.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the Gaussian as a bump.</strong> The function</p>
+<p><span class="math-display">\[g(s) = w\,\exp\left(-\frac{(s-s_c)^2}{2\sigma^2}\right)\]</span></p>
+<p>is a smooth bump centred at <span class="math-inline">\(s = s_c\)</span>. Its <strong>height</strong> is <span class="math-inline">\(w\)</span>: that is its value at the centre, where the exponent is zero and <span class="math-inline">\(\exp(0) = 1\)</span>. Its <strong>width</strong> is <span class="math-inline">\(\sigma\)</span>. One <span class="math-inline">\(\sigma\)</span> away from the centre the bump has fallen to <span class="math-inline">\(e^{-1/2} = 0.61\)</span> of its height, two <span class="math-inline">\(\sigma\)</span> away to <span class="math-inline">\(e^{-2} = 0.14\)</span>, and three <span class="math-inline">\(\sigma\)</span> away to <span class="math-inline">\(e^{-4.5} = 0.011\)</span>.</p>
+<p>The same function describes the normal distribution of statistics. Here it is used only as a shape: a small pile with no edges, whose slope, and so the force it produces, is finite everywhere. More in the <a href="maths.html#gaussian">toolbox</a>.</p>
+</div>
 <p><a href="https://doi.org/10.1073/pnas.202427399" class="cite" target="_blank" rel="noopener" title="Laio A; Parrinello M (2002). Escaping free-energy minima. Proceedings of the National Academy of Sciences">Laio and Parrinello (2002)</a> introduced the idea of a history-dependent bias made of Gaussians (in their paper it acts on a coarse-grained dynamics of the CVs driven by mean forces). In the form used today the bias is added directly to an MD run. Instead of fixing the bias in advance, build it during the run: at regular intervals deposit a small Gaussian hill at the current value of the CVs:</p>
 <p><span class="math-display">\[V(s,t) = \sum_{t'&lt;t}w\,\exp\left(-\frac{\big(s-s(t')\big)^2}{2\sigma^2}\right).\]</span></p>
-<p>The accumulated hills push the system away from where it has already been. Wells are filled, the system spills over the lowest barrier into the next well, and eventually the whole landscape along <span class="math-inline">\(s\)</span> is flat. At that point the bias is the negative of the free energy, <span class="math-inline">\(V(s,t\to\infty)\approx-F(s)+C\)</span>.</p>
-<p>In this original form the bias never converges: hills keep being added and <span class="math-inline">\(V\)</span> fluctuates around <span class="math-inline">\(-F\)</span> with an error that grows with the rate at which bias is deposited (as the square root of the hill height divided by the deposition interval). <strong>Well-tempered metadynamics</strong> (<a href="https://doi.org/10.1103/physrevlett.100.020603" class="cite" target="_blank" rel="noopener" title="Barducci A; Bussi G; Parrinello M (2008). Well-Tempered Metadynamics: A Smoothly Converging and Tunable Free-Energy Method. Physical Review Letters">Barducci, Bussi and Parrinello 2008</a>) lets the hill height decrease where bias has already accumulated:</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(V(s,t)\)</span>: the <strong>bias potential</strong>: the extra energy that is added, at time <span class="math-inline">\(t\)</span>, to any configuration whose CV has the value <span class="math-inline">\(s\)</span>. Its unit is kJ/mol. In this section <span class="math-inline">\(V\)</span> is the bias, not the potential energy of the system, which is <span class="math-inline">\(U\)</span>.</li>
+<li><span class="math-inline">\(s\)</span>: the value of the collective variable at which you ask for the bias. With two CVs, <span class="math-inline">\(s\)</span> stands for the pair of values and each hill is a bump in two dimensions.</li>
+<li><span class="math-inline">\(t\)</span>: the present simulation time.</li>
+<li><span class="math-inline">\(t'\)</span>: an earlier time at which a hill was deposited. Hills are deposited at a fixed interval, the <strong>deposition stride</strong> (written <span class="math-inline">\(\tau_G\)</span> in this lesson), so <span class="math-inline">\(t' = \tau_G, 2\tau_G, 3\tau_G, \dots\)</span> The stride does not appear as a letter in the formula. It is hidden in the list of times.</li>
+<li><span class="math-inline">\(\sum_{t'&lt;t}\)</span>: the sum over all hills deposited before the present time.</li>
+<li><span class="math-inline">\(s(t')\)</span>: the value the CV had at the time <span class="math-inline">\(t'\)</span>. It is the centre of that hill.</li>
+<li><span class="math-inline">\(w\)</span>: the <strong>height</strong> of each hill, in kJ/mol.</li>
+<li><span class="math-inline">\(\sigma\)</span>: the <strong>width</strong> of each hill, in the unit of the CV (nm for a distance, radians for an angle).</li>
+<li><span class="math-inline">\(\exp(\dots)\)</span>: the Gaussian bump of the box above, with centre <span class="math-inline">\(s(t')\)</span>.</li>
+</ul>
+</div>
+<p>"History-dependent" means that the bias at any moment depends on where the system has been before. A "mean force" is a force averaged over all the other coordinates. It returns below, in the adaptive biasing force.</p>
+<p>Read the formula like this. With a hill every 1 ps, the sum has 1,000 terms after 1 ns. To get the bias at some value <span class="math-inline">\(s\)</span>, go through all the hills and add up what each one contributes at <span class="math-inline">\(s\)</span>. Hills whose centres lie within a few <span class="math-inline">\(\sigma\)</span> of <span class="math-inline">\(s\)</span> count, and the others contribute almost nothing. Three numbers are yours to choose: the height <span class="math-inline">\(w\)</span>, the width <span class="math-inline">\(\sigma\)</span> and the stride <span class="math-inline">\(\tau_G\)</span>.</p>
+<p>The simulation runs on the total energy <span class="math-inline">\(U+V\)</span>. The bias reaches the atoms through the <a href="maths.html#chain-rule">chain rule</a>: the extra force on atom <span class="math-inline">\(i\)</span> is <span class="math-inline">\(-(\partial V/\partial s)\,\nabla_i s\)</span>. The first factor is the slope of the pile along <span class="math-inline">\(s\)</span>, and <span class="math-inline">\(\nabla_i s\)</span> is the <a href="maths.html#gradient">gradient</a> of the CV with respect to the position of atom <span class="math-inline">\(i\)</span> (Module 2), which says how moving that atom changes <span class="math-inline">\(s\)</span>. The force points down the slope of the pile, away from where hills have accumulated.</p>
+<p>The accumulated hills push the system away from where it has already been. Wells are filled, the system spills over the lowest barrier into the next well, and eventually the whole landscape along <span class="math-inline">\(s\)</span> is flat. At that point the bias is the negative of the free energy, <span class="math-inline">\(V(s,t\to\infty)\approx-F(s)+C\)</span>. In this short formula, <span class="math-inline">\(t\to\infty\)</span> means "after a very long run", <span class="math-inline">\(F(s)\)</span> is the free energy along the CV as defined in the first section, and <span class="math-inline">\(C\)</span> is a constant, the same for all <span class="math-inline">\(s\)</span>, that drops out of every free-energy difference.</p>
+<h3 id="why-the-bias-ends-up-as-minus-the-free-energy">Why the bias ends up as minus the free energy</h3>
+<p>The statement follows from three observations.</p>
+<ol>
+<li><em>What the system feels.</em> Along <span class="math-inline">\(s\)</span>, the unbiased system moves on the free energy <span class="math-inline">\(F(s)\)</span>. With the bias it moves on <span class="math-inline">\(F(s)+V(s,t)\)</span>. If the bias changes slowly, the system is found at <span class="math-inline">\(s\)</span> with a probability proportional to <span class="math-inline">\(e^{-\beta[F(s)+V(s,t)]}\)</span>: most often where <span class="math-inline">\(F+V\)</span> is lowest.</li>
+<li><em>Where the hills go.</em> Hills are dropped where the system is. So the bias grows fastest where <span class="math-inline">\(F+V\)</span> is lowest. The lowest places are raised first, which is a self-correcting process: any dip in <span class="math-inline">\(F+V\)</span> attracts the system and is filled.</li>
+<li><em>When it stops changing shape.</em> Once <span class="math-inline">\(F+V\)</span> has the same value everywhere, the system visits all values of <span class="math-inline">\(s\)</span> equally often, hills fall evenly, and <span class="math-inline">\(V\)</span> rises by the same amount everywhere. The sum <span class="math-inline">\(F+V\)</span> stays flat.</li>
+</ol>
+<p>A flat sum means <span class="math-inline">\(F(s)+V(s,t) = \text{constant}\)</span>, which is <span class="math-inline">\(V = -F+C\)</span>. The constant keeps growing as hills are added, and constants do not matter. The argument also shows why the result is a <em>free</em> energy. Hills are placed according to how often the system is at each <span class="math-inline">\(s\)</span>, and "how often" already counts all the other coordinates, which is how <span class="math-inline">\(F(s)\)</span> was defined.</p>
+<p>In this original form the bias never converges: hills keep being added and <span class="math-inline">\(V\)</span> fluctuates around <span class="math-inline">\(-F\)</span> with an error that grows with the rate at which bias is deposited (as the square root of the hill height divided by the deposition interval). In the notation above, the rate of deposition is <span class="math-inline">\(w/\tau_G\)</span>, an energy per unit of time, and the error grows as <span class="math-inline">\(\sqrt{w/\tau_G}\)</span>. This is a trade. Large or frequent hills fill the wells quickly and leave a rough bias. Hills four times smaller take four times longer to fill the same well and halve the error, because <span class="math-inline">\(\sqrt{1/4} = 1/2\)</span>.</p>
+<p><strong>Well-tempered metadynamics</strong> (<a href="https://doi.org/10.1103/physrevlett.100.020603" class="cite" target="_blank" rel="noopener" title="Barducci A; Bussi G; Parrinello M (2008). Well-Tempered Metadynamics: A Smoothly Converging and Tunable Free-Energy Method. Physical Review Letters">Barducci, Bussi and Parrinello 2008</a>) lets the hill height decrease where bias has already accumulated:</p>
 <p><span class="math-display">\[w(t') = w_0\,\exp\left(-\frac{V\big(s(t'),t'\big)}{k_B\,\Delta T}\right),
 \qquad
 V(s,t\to\infty) = -\frac{\Delta T}{T+\Delta T}\,F(s)+C .\]</span></p>
-<p>The bias converges smoothly to a fraction of <span class="math-inline">\(-F\)</span>, and the CVs are sampled as if at the higher temperature <span class="math-inline">\(T+\Delta T\)</span>. The <strong>bias factor</strong> <span class="math-inline">\(\gamma=(T+\Delta T)/T\)</span> is the main parameter: <span class="math-inline">\(\gamma=1\)</span> is unbiased MD, <span class="math-inline">\(\gamma\to\infty\)</span> is standard metadynamics, and typical values are 5 to 20, chosen so that the highest relevant barrier divided by <span class="math-inline">\(\gamma\)</span> is a few <span class="math-inline">\(k_BT\)</span>. The free energy is <span class="math-inline">\(F(s)=-\frac{\gamma}{\gamma-1}V(s)\)</span>, and other observables can be recovered by reweighting each frame with <span class="math-inline">\(e^{\beta[V(s,t)-c(t)]}\)</span>.</p>
-<p>Practical choices: the Gaussian width <span class="math-inline">\(\sigma\)</span> should be about the standard deviation of the CV in an unbiased basin; hills every 1 ps or so; initial height around 1 kJ/mol. <strong>Convergence</strong> means the system has gone back and forth between the basins many times and the free-energy difference between them has stopped changing. One crossing each way is not convergence. Variants: multiple walkers (several simulations sharing one bias), bias-exchange and parallel-tempering metadynamics, and on-the-fly probability enhanced sampling (OPES). The standard implementation is the PLUMED library, which plugs into GROMACS, AMBER, NAMD, LAMMPS and other MD programs (its manual has the current list).</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(w(t')\)</span>: the height of the hill deposited at time <span class="math-inline">\(t'\)</span>. It is no longer the same for all hills.</li>
+<li><span class="math-inline">\(w_0\)</span>: the <strong>initial hill height</strong>: the height of a hill that lands where there is no bias yet.</li>
+<li><span class="math-inline">\(V\big(s(t'),t'\big)\)</span>: the bias that is already present, at the time <span class="math-inline">\(t'\)</span>, at the place where the system is and where the new hill will land.</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\Delta T\)</span>: a parameter with the unit of temperature, chosen by you. It sets the energy scale <span class="math-inline">\(k_B\,\Delta T\)</span> on which the hills shrink. It is not a gap between two temperatures and no thermostat is set to it.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature of the simulation, the one the thermostat holds.</li>
+<li><span class="math-inline">\(F(s)\)</span>: the free energy along the CV.</li>
+<li><span class="math-inline">\(\dfrac{\Delta T}{T+\Delta T}\)</span>: a number between 0 and 1: the fraction of the free energy that the bias compensates in the end.</li>
+<li><span class="math-inline">\(t\to\infty\)</span>: after a very long run.</li>
+<li><span class="math-inline">\(C\)</span>: a number that is the same for all <span class="math-inline">\(s\)</span> but not fixed in time. It keeps rising as hills are added, ever more slowly (roughly as the logarithm of the time). What converges is the shape of the bias: the differences of <span class="math-inline">\(V\)</span> between values of <span class="math-inline">\(s\)</span>.</li>
+</ul>
+</div>
+<p>Read the first formula like this. Where there is no bias yet, the exponent is zero and the hill has its full height <span class="math-inline">\(w_0\)</span>. Where the bias has reached <span class="math-inline">\(k_B\,\Delta T\)</span>, new hills have shrunk to <span class="math-inline">\(e^{-1} = 0.37\)</span> of <span class="math-inline">\(w_0\)</span>. An example at 300 K with <span class="math-inline">\(w_0 = 1\)</span> kJ/mol and <span class="math-inline">\(\Delta T = 2{,}700\)</span> K, so that <span class="math-inline">\(k_B\,\Delta T = 22.4\)</span> kJ/mol: where 10 kJ/mol of bias has accumulated the next hill is 0.64 kJ/mol high, at 20 kJ/mol it is 0.41, and at 45 kJ/mol it is 0.13. The bias keeps growing, but ever more slowly, so it settles instead of fluctuating.</p>
+<p>The second formula says where it settles: at a fixed fraction of <span class="math-inline">\(-F\)</span>. In the example the fraction is <span class="math-inline">\(2{,}700/3{,}000 = 0.9\)</span>. (In the notation introduced below, this example has the bias factor <span class="math-inline">\(\gamma = 10\)</span>.)</p>
+<h3 id="where-the-fraction-comes-from">Where the fraction comes from</h3>
+<p>The argument is the one used above, with one new ingredient: the height of a hill now depends on the place. At a given <span class="math-inline">\(s\)</span> the bias grows at a rate equal to the height of a new hill there, times how often the system is there to receive one:</p>
+<p><span class="math-display">\[\text{growth rate of the bias at }s\ \propto\ \underbrace{e^{-V(s,t)/k_B\Delta T}}_{\text{height of a new hill}}\times\underbrace{e^{-[F(s)+V(s,t)]/k_BT}}_{\text{how often the system is at }s} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\propto\)</span>: "is proportional to". The constant factors <span class="math-inline">\(w_0\)</span> and <span class="math-inline">\(1/\tau_G\)</span> are left out because they are the same at every <span class="math-inline">\(s\)</span>.</li>
+<li>The first factor: the hill-height rule of the well-tempered formula.</li>
+<li>The second factor: the Boltzmann probability of finding the system at <span class="math-inline">\(s\)</span> when it moves on <span class="math-inline">\(F+V\)</span> at the temperature <span class="math-inline">\(T\)</span>.</li>
+<li>The braces underneath only attach the two descriptions. They are not part of the formula.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>The shape of the bias stops changing when it grows at the same rate at every <span class="math-inline">\(s\)</span>, that is, when the product on the right no longer depends on <span class="math-inline">\(s\)</span>. Three lines of algebra turn this condition into the result:</p>
+<p><span class="math-display">\[\begin{aligned}
+-\frac{V(s)}{k_B\,\Delta T}-\frac{F(s)+V(s)}{k_BT} &amp;= \text{constant}\\
+V(s)\left(\frac{1}{\Delta T}+\frac{1}{T}\right) &amp;= -\frac{F(s)}{T}+\text{constant}\\
+V(s) &amp;= -\frac{\Delta T}{T+\Delta T}\,F(s)+C .
+\end{aligned}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(V(s)\)</span>: the bias at the end of a long run, written without the time.</li>
+<li>"constant": any number that is the same for all values of <span class="math-inline">\(s\)</span>. It changes from line to line and is called <span class="math-inline">\(C\)</span> in the last one.</li>
+<li>Other symbols: as in the lists above.</li>
+</ul>
+</div>
+<p>Line 1 takes the logarithm of the product: the logarithm of a product is the sum of the logarithms, and the logarithm of an exponential is its exponent. Line 2 multiplies both sides by <span class="math-inline">\(-k_B\)</span>, collects the two terms that contain <span class="math-inline">\(V\)</span>, and moves the term with <span class="math-inline">\(F\)</span> to the right. Line 3 uses <span class="math-inline">\(1/\Delta T+1/T = (T+\Delta T)/(T\,\Delta T)\)</span> and divides both sides by it. As before the process corrects itself: where the product is larger than elsewhere, the bias grows faster, and that lowers the product there.</p>
+<p>The bias converges smoothly to a fraction of <span class="math-inline">\(-F\)</span>, and the CVs are sampled as if at the higher temperature <span class="math-inline">\(T+\Delta T\)</span>. The second half of the sentence follows from the first. What the system feels along <span class="math-inline">\(s\)</span> at the end is <span class="math-inline">\(F+V = F-\frac{\Delta T}{T+\Delta T}F = \frac{T}{T+\Delta T}F\)</span>. Its Boltzmann factor at the real temperature is <span class="math-inline">\(e^{-\frac{T}{T+\Delta T}F/k_BT} = e^{-F/k_B(T+\Delta T)}\)</span>, which is the Boltzmann factor of the full <span class="math-inline">\(F\)</span> at the temperature <span class="math-inline">\(T+\Delta T\)</span>. Only the CVs are "hot" in this sense: all other coordinates stay at <span class="math-inline">\(T\)</span>, which is the difference from replica exchange, where everything is heated.</p>
+<p>The <strong>bias factor</strong> <span class="math-inline">\(\gamma=(T+\Delta T)/T\)</span> is the main parameter: <span class="math-inline">\(\gamma=1\)</span> is unbiased MD, <span class="math-inline">\(\gamma\to\infty\)</span> is standard metadynamics, and typical values are 5 to 20, chosen so that the highest relevant barrier divided by <span class="math-inline">\(\gamma\)</span> is a few <span class="math-inline">\(k_BT\)</span>. The free energy is <span class="math-inline">\(F(s)=-\frac{\gamma}{\gamma-1}V(s)\)</span>, and other observables can be recovered by reweighting each frame with <span class="math-inline">\(e^{\beta[V(s,t)-c(t)]}\)</span>.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\gamma\)</span>: the <strong>bias factor</strong>, a pure number of 1 or more. It is the ratio of the temperature at which the CVs appear to be sampled to the real temperature. (In Modules 8 and 16 the same letter is a friction.)</li>
+<li><span class="math-inline">\(T\)</span>, <span class="math-inline">\(\Delta T\)</span>: the real temperature and the well-tempered parameter, as above.</li>
+<li><span class="math-inline">\(\gamma\to\infty\)</span>: the limit of a very large bias factor.</li>
+<li><span class="math-inline">\(V(s)\)</span>: the bias at the end of the run.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span> at the real temperature.</li>
+<li><span class="math-inline">\(V(s,t)\)</span>: the bias that a frame saved at time <span class="math-inline">\(t\)</span>, with CV value <span class="math-inline">\(s\)</span>, was feeling.</li>
+<li><span class="math-inline">\(c(t)\)</span>: an energy that depends on the time and not on the configuration. It is explained below.</li>
+</ul>
+</div>
+<p>The three statements about <span class="math-inline">\(\gamma\)</span> can be checked one by one. With <span class="math-inline">\(\gamma = 1\)</span>, <span class="math-inline">\(\Delta T = 0\)</span>, and the converged bias <span class="math-inline">\(-\frac{\Delta T}{T+\Delta T}F\)</span> is zero: no bias, plain MD. With <span class="math-inline">\(\gamma\to\infty\)</span>, <span class="math-inline">\(\Delta T\to\infty\)</span>: the exponent of the hill-height rule is zero, every hill has the height <span class="math-inline">\(w_0\)</span>, and you are back to the original method. In between, the system moves on <span class="math-inline">\(F/\gamma\)</span>: every barrier along <span class="math-inline">\(s\)</span> is divided by <span class="math-inline">\(\gamma\)</span>. For a barrier of 50 kJ/mol at 300 K:</p>
+<table>
+<thead>
+<tr>
+<th>Bias factor <span class="math-inline">\(\gamma\)</span></th>
+<th>Fraction of <span class="math-inline">\(F\)</span> compensated, <span class="math-inline">\((\gamma-1)/\gamma\)</span></th>
+<th>The 50 kJ/mol barrier becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>0.80</td>
+<td>10 kJ/mol, or 4.0 <span class="math-inline">\(k_BT\)</span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.90</td>
+<td>5 kJ/mol, or 2.0 <span class="math-inline">\(k_BT\)</span></td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.95</td>
+<td>2.5 kJ/mol, or 1.0 <span class="math-inline">\(k_BT\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The formula for the free energy is the converged bias turned around. The fraction <span class="math-inline">\(\Delta T/(T+\Delta T)\)</span> equals <span class="math-inline">\(1-T/(T+\Delta T) = 1-1/\gamma = (\gamma-1)/\gamma\)</span>. So <span class="math-inline">\(V = -\frac{\gamma-1}{\gamma}F\)</span>, and dividing by the fraction gives <span class="math-inline">\(F = -\frac{\gamma}{\gamma-1}V\)</span>. With <span class="math-inline">\(\gamma = 10\)</span>, the free energy is the bias times <span class="math-inline">\(-10/9\)</span>.</p>
+<p><strong>Reweighting</strong> is the tool of the maths box in the first section, applied to a bias that changes in time. A frame saved at time <span class="math-inline">\(t\)</span> carried the bias energy <span class="math-inline">\(V(s,t)\)</span>, so its weight contains <span class="math-inline">\(e^{\beta V(s,t)}\)</span>. The term <span class="math-inline">\(c(t)\)</span> is needed because the bias as a whole keeps rising during the run. Without it, late frames would receive larger weights than early ones for no physical reason. With these weights you can compute the average of any quantity, and the free energy along a coordinate that was not biased.</p>
+<details>
+<summary>Optional: where the offset c(t) comes from</summary>
+<p>At time <span class="math-inline">\(t\)</span> the system moves on the energy <span class="math-inline">\(U+V(s,t)\)</span>. If the bias changes slowly, the configurations at that time have the probabilities <span class="math-inline">\(e^{-\beta[U+V(s,t)]}/Z_V(t)\)</span>. Here <span class="math-inline">\(Z_V(t)\)</span> is the normalisation: the sum of <span class="math-inline">\(e^{-\beta[U+V]}\)</span> over all configurations, which makes the probabilities add up to 1. In the unbiased system the probabilities are <span class="math-inline">\(e^{-\beta U}/Z_0\)</span>, with <span class="math-inline">\(Z_0\)</span> the sum of <span class="math-inline">\(e^{-\beta U}\)</span> over all configurations. The weight that converts a biased frame into an unbiased one is the ratio of the two probabilities:</p>
+<p><span class="math-display">\[\frac{e^{-\beta U}/Z_0}{e^{-\beta[U+V(s,t)]}/Z_V(t)} = e^{\beta V(s,t)}\,\frac{Z_V(t)}{Z_0} = e^{\beta[V(s,t)-c(t)]},
+\qquad
+c(t) = -k_BT\ln\frac{Z_V(t)}{Z_0} .\]</span></p>
+<p>The first equality cancels <span class="math-inline">\(e^{-\beta U}\)</span>. The second writes the ratio of the two normalisations as an exponential, which defines <span class="math-inline">\(c(t)\)</span>. Both sums can be done along the CV alone, because the bias depends on the configuration only through <span class="math-inline">\(s\)</span>: <span class="math-inline">\(Z_0\)</span> is proportional to <span class="math-inline">\(\int e^{-\beta F(s)}\,ds\)</span> and <span class="math-inline">\(Z_V(t)\)</span> to <span class="math-inline">\(\int e^{-\beta[F(s)+V(s,t)]}\,ds\)</span>, with the same constant in front. So <span class="math-inline">\(c(t)\)</span> can be computed from the free-energy estimate and the bias. A check: if the bias were the same number <span class="math-inline">\(V_0\)</span> at every <span class="math-inline">\(s\)</span>, then <span class="math-inline">\(Z_V = e^{-\beta V_0}Z_0\)</span>, <span class="math-inline">\(c = V_0\)</span>, and every weight would be 1: a uniform bias changes nothing, as it should.</p>
+</details>
+<p>Practical choices: the Gaussian width <span class="math-inline">\(\sigma\)</span> should be about the standard deviation of the CV in an unbiased basin; hills every 1 ps or so; initial height around 1 kJ/mol. The reasons are these.</p>
+<ul>
+<li><em>Width.</em> Run a short plain simulation inside one basin and compute the standard deviation of the CV. Hills much wider than that cannot follow the shape of the basin and smear out its features. Hills much narrower need many more depositions to fill the same well and leave a rough surface.</li>
+<li><em>Stride.</em> After a hill has been added, the system needs time to respond to it. Hills that follow each other too closely pile up under a system that has not yet moved.</li>
+<li><em>Height.</em> At 300 K, 1 kJ/mol is 0.4 <span class="math-inline">\(k_BT\)</span>: each hill is a gentle push, small against the thermal energy.</li>
+</ul>
+<p><strong>Convergence</strong> means the system has gone back and forth between the basins many times and the free-energy difference between them has stopped changing. One crossing each way is not convergence. The first crossing shows only that the first well has been filled far enough for the system to get over the pass. At that moment the second well contains no bias, and nothing is known about its depth. The estimate <span class="math-inline">\(F = -\frac{\gamma}{\gamma-1}V\)</span> becomes meaningful when both wells are filled and the system keeps moving between them, so that the bias is topped up evenly on both sides.</p>
+<p>A practical check: compute the free-energy difference between the two basins from the bias at regular times during the run, and plot it against time. (The free energy of a basin is obtained by adding up <span class="math-inline">\(e^{-\beta F(s)}\)</span> over the values of <span class="math-inline">\(s\)</span> that belong to it and taking <span class="math-inline">\(-k_BT\ln\)</span> of the sum, as for the macrostates of Module 3.) In a converged run the curve settles around a constant value.</p>
+<p>Variants: multiple walkers (several simulations sharing one bias), bias-exchange and parallel-tempering metadynamics, and on-the-fly probability enhanced sampling (OPES). The standard implementation is the PLUMED library, which plugs into GROMACS, AMBER, NAMD, LAMMPS and other MD programs (its manual has the current list). In words: bias-exchange runs several replicas that each bias a different CV and exchange configurations. Parallel-tempering metadynamics runs metadynamics inside the replicas of a temperature ladder. OPES, as its name says, builds the bias from an estimate of the probability distribution of the CVs that is updated during the run.</p>
 <p><strong>Adaptive biasing force</strong> (<a href="https://doi.org/10.1063/1.1410978" class="cite" target="_blank" rel="noopener" title="Darve E; Pohorille A (2001). Calculating free energies using average force. The Journal of Chemical Physics">Darve and Pohorille 2001</a>) is the force-based relative: accumulate a running estimate of the mean force <span class="math-inline">\(-dF/ds\)</span> in bins along the CV, and apply its negative. Once the estimate is good the system diffuses freely along <span class="math-inline">\(s\)</span>, and <span class="math-inline">\(F\)</span> is the integral of the estimated mean force. The quantity averaged in each bin is the instantaneous force along the coordinate plus a geometric (Jacobian) correction. The 2001 paper derives this formula; the adaptive algorithm itself appeared in a later paper by the same authors.</p>
+<p>Unpacked, this says the following.</p>
+<ul>
+<li>The <strong>mean force</strong> <span class="math-inline">\(-dF/ds\)</span> is the slope of the free energy along <span class="math-inline">\(s\)</span> with a minus sign. It is the average force that pushes the system along <span class="math-inline">\(s\)</span> when the CV has that value (Module 3). Metadynamics estimates <span class="math-inline">\(F\)</span> by piling up energy. This method estimates the slope of <span class="math-inline">\(F\)</span> by averaging forces.</li>
+<li><em>Bins</em> are small intervals into which the range of <span class="math-inline">\(s\)</span> is divided. Each bin keeps its own running average.</li>
+<li><em>Apply its negative</em>: add a force that is equal and opposite to the average. Along <span class="math-inline">\(s\)</span> the system then feels no net force on average. It wanders back and forth as on flat ground, which is what "diffuses freely" means.</li>
+<li><em><span class="math-inline">\(F\)</span> is the integral</em>: the free energy is recovered by adding up slope times bin width from one end of the range, <span class="math-inline">\(F(s) = F(s_0)-\int_{s_0}^{s}(\text{mean force})\,ds'\)</span>, where <span class="math-inline">\(s_0\)</span> is the starting end and <span class="math-inline">\(s'\)</span> runs from <span class="math-inline">\(s_0\)</span> to <span class="math-inline">\(s\)</span> (<a href="maths.html#integral">toolbox</a>). Example: a mean force of <span class="math-inline">\(-20\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> over a stretch of 0.1 nm raises <span class="math-inline">\(F\)</span> by <span class="math-inline">\(20\times0.1 = 2\)</span> kJ/mol.</li>
+<li>The <em>Jacobian correction</em> is a geometric term. Module 12 met it for a distance: there is more room at larger separation, which produces an apparent outward push that is not caused by any interaction. It has to be included for the integral to give the free energy.</li>
+</ul>
+<p>The demo below runs well-tempered metadynamics on one particle in a double well, with energies in units of <span class="math-inline">\(k_BT\)</span>. Its sliders are the quantities defined in this section: the barrier height, the bias factor <span class="math-inline">\(\gamma\)</span>, the initial hill height <span class="math-inline">\(w_0\)</span> and the hill width <span class="math-inline">\(\sigma\)</span>. It draws the exact energy, the estimate <span class="math-inline">\(-\frac{\gamma}{\gamma-1}V\)</span> read from the bias, and the sum of energy and bias that the particle feels at that moment.</p>
 <div class="widget" data-widget="metad"></div>
 
 <h2 id="steered-md">Steered MD</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="RJMQ70K8UmA" href="https://www.youtube.com/watch?v=RJMQ70K8UmA" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">TCBG Summer School 2003: Steered Molecular Dynamics of Proteins - Introduction and Examples</span><span class="sv-m">1 h 25 min · TCBG UIUC</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="RJMQ70K8UmA" href="https://www.youtube.com/watch?v=RJMQ70K8UmA" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">TCBG Summer School 2003: Steered Molecular Dynamics of Proteins - Introduction and Examples</span><span class="sv-m">1 h 25 min · TCBG UIUC</span></a></div>
 
+<p>This is the roughest way to change the terrain: do not wait for the system to find the pass, drag it over. Steered MD ties one end of an imaginary spring to a collective variable, for example the distance between a ligand and its pocket, and moves the other end at a steady speed. The system follows, as a sledge follows a rope.</p>
 <p>Attach a harmonic spring to a CV and move its centre at constant speed <span class="math-inline">\(v\)</span>:</p>
 <p><span class="math-display">\[U_{pull}(t) = \tfrac12k\big[s(\mathbf r)-s_0-vt\big]^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{pull}(t)\)</span>: the energy of the spring at time <span class="math-inline">\(t\)</span>, in kJ/mol. It is added to the potential energy of the system.</li>
+<li><span class="math-inline">\(k\)</span>: the <strong>spring constant</strong>, the stiffness of the spring, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> when the CV is a distance. In this section <span class="math-inline">\(k\)</span> is not a rate.</li>
+<li><span class="math-inline">\(s(\mathbf r)\)</span>: the present value of the collective variable.</li>
+<li><span class="math-inline">\(s_0\)</span>: the position of the centre of the spring at <span class="math-inline">\(t = 0\)</span>, usually the value of the CV in the starting structure.</li>
+<li><span class="math-inline">\(v\)</span>: the <strong>pulling speed</strong>, in nm/ps or nm/ns.</li>
+<li><span class="math-inline">\(t\)</span>: the time since the pulling started.</li>
+<li><span class="math-inline">\(s_0+vt\)</span>: where the centre of the spring is at time <span class="math-inline">\(t\)</span>.</li>
+<li><span class="math-inline">\(\tfrac12k[\dots]^2\)</span>: the energy of a spring stretched by the amount in the brackets (Module 2, <a href="physics.html#oscillator">primer</a>). "Harmonic" is the name for this quadratic form.</li>
+</ul>
+</div>
+<p>Read it like this. The centre of the spring moves ahead at the speed <span class="math-inline">\(v\)</span> whatever the system does. When the CV lags behind the centre, the spring is stretched and pulls the system forward with the force <span class="math-inline">\(F_{pull} = k\,[s_0+vt-s(\mathbf r)]\)</span>, the stiffness times the lag. A stiff spring keeps the CV close to its centre. A soft one lets the CV fall behind and then jump.</p>
+<p>Example: with <span class="math-inline">\(k = 1{,}000\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> and a lag of 0.05 nm, the force is <span class="math-inline">\(1{,}000\times0.05 = 50\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> (83 pN, since 1 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> is 1.66 pN) and the spring stores <span class="math-inline">\(\tfrac12\times1{,}000\times0.05^2 = 1.25\)</span> kJ/mol.</p>
 <p>This imitates an atomic-force-microscope or optical-tweezer experiment, at pulling speeds millions of times faster (0.1 to 10 nm/ns against micrometres per second). It is used to explore unbinding and unfolding pathways, to generate starting structures for umbrella windows, and to compare forces between related systems.</p>
+<p>In those experiments a single molecule is held between a surface and a fine lever, or between beads held by laser light, and is stretched while the force is recorded. For the comparison of speeds, 1 nm/ns is 1 m/s, so the simulation pulls at 0.1 to 10 m/s and the experiment at about <span class="math-inline">\(10^{-6}\)</span> m/s.</p>
 <p>Getting a free energy from it uses Jarzynski's equality (Module 13) with the accumulated work <span class="math-inline">\(W=\int F_{pull}\,v\,dt\)</span>. At practical speeds the process is far from equilibrium and most of the work is dissipated, so the exponential average does not converge. Rupture forces and work values depend on the pulling speed (in force spectroscopy the rupture force rises roughly linearly with the logarithm of the loading rate), and comparisons are only meaningful at equal speed and spring constant.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(W\)</span>: the <strong>work</strong> done on the system by the moving spring during one pull, in kJ/mol. (Not the potential of mean force of Module 12.)</li>
+<li><span class="math-inline">\(F_{pull}\)</span>: the force of the spring on the system at each instant, as given above.</li>
+<li><span class="math-inline">\(v\,dt\)</span>: the small distance the centre of the spring moves in the short time <span class="math-inline">\(dt\)</span>.</li>
+<li><span class="math-inline">\(\int\dots dt\)</span>: the sum of force times distance over all the short time intervals of the pull (<a href="maths.html#integral">toolbox</a>).</li>
+</ul>
+</div>
+<p>Each sentence of that paragraph packs an idea.</p>
+<p><em>Jarzynski's equality.</em> Repeat the pull many times from different equilibrium starting structures and record the work <span class="math-inline">\(W\)</span> of each. Module 13 gave the exact relation <span class="math-inline">\(\langle e^{-\beta W}\rangle = e^{-\beta\Delta F}\)</span>. Here <span class="math-inline">\(\langle\ \rangle\)</span> is the average over the repeated pulls and <span class="math-inline">\(\Delta F\)</span> is the free-energy difference between the end and the start of the pull (Module 13 wrote it <span class="math-inline">\(\Delta A\)</span>).</p>
+<p><em>Dissipated work.</em> Pull infinitely slowly and the work equals <span class="math-inline">\(\Delta F\)</span>. Pull fast and you spend more, because the system is dragged through the water before it can adjust, and the extra work turns into heat. That extra part is the dissipated work. It is the molecular version of stirring honey quickly.</p>
+<p><em>The exponential average does not converge.</em> The average of <span class="math-inline">\(e^{-\beta W}\)</span> is dominated by the pulls with unusually small work, and those are rare. For work values with a bell-shaped (Gaussian) distribution of standard deviation <span class="math-inline">\(\sigma_W\)</span>, the pulls that carry the average lie <span class="math-inline">\(\sigma_W/k_BT\)</span> standard deviations below the mean work. With <span class="math-inline">\(\sigma_W = 3\,k_BT\)</span> that is 3 standard deviations, about one pull in 740. With <span class="math-inline">\(\sigma_W = 5\,k_BT\)</span> it is one pull in 3.5 million. When most of the work is dissipated the spread is large, and the pulls that matter do not occur in any sample you can afford.</p>
+<p><em>Rupture force and loading rate.</em> The rupture force is the peak force at which the complex gives way. The loading rate is how fast the applied force grows, the spring constant times the pulling speed, <span class="math-inline">\(kv\)</span>. Both the rupture force and the work depend on how fast you pull, so two systems can be compared only when they were pulled in the same way.</p>
 <h2 id="accelerated-md">Accelerated MD</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="cc_5q6Od6XU" href="https://www.youtube.com/watch?v=cc_5q6Od6XU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Unconstrained Enhanced Sampling of Biomolecules - Yinglong Miao</span><span class="sv-m">58 min · Yinglong Miao</span></a><a class="sv" data-yt="f4faPQU58oA" href="https://www.youtube.com/watch?v=f4faPQU58oA" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Gaussian accelerated Molecular Dynamics (GaMD) Workshop 2024</span><span class="sv-m">5 h 48 min · Yinglong Miao lab</span></a><a class="sv" data-yt="SbtqjZk80Qc" href="https://www.youtube.com/watch?v=SbtqjZk80Qc" target="_blank" rel="noopener" title="MIT 3.320 Atomistic Computer Modeling of Materials"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 23 | MIT 3.320 Atomistic Computer Modeling of Materials</span><span class="sv-m">1 h 11 min · MIT OpenCourseWare (3.320)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="cc_5q6Od6XU" href="https://www.youtube.com/watch?v=cc_5q6Od6XU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Unconstrained Enhanced Sampling of Biomolecules - Yinglong Miao</span><span class="sv-m">58 min · Yinglong Miao</span></a><a class="sv" data-yt="f4faPQU58oA" href="https://www.youtube.com/watch?v=f4faPQU58oA" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Gaussian accelerated Molecular Dynamics (GaMD) Workshop 2024</span><span class="sv-m">5 h 48 min · Yinglong Miao lab</span></a><a class="sv" data-yt="SbtqjZk80Qc" href="https://www.youtube.com/watch?v=SbtqjZk80Qc" target="_blank" rel="noopener" title="MIT 3.320 Atomistic Computer Modeling of Materials"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 23 | MIT 3.320 Atomistic Computer Modeling of Materials</span><span class="sv-m">1 h 11 min · MIT OpenCourseWare (3.320)</span></a></div>
 
+<p>This method changes the terrain without a map. No collective variable is chosen. The rule looks only at the potential energy of the present configuration: if it is low, the system is probably deep in some well, and the energy is raised by an amount that is larger the deeper the system sits.</p>
 <p><a href="https://doi.org/10.1063/1.1755656" class="cite" target="_blank" rel="noopener" title="Hamelberg D; Mongan J; McCammon JA (2004). Accelerated molecular dynamics: A promising and efficient simulation method for biomolecules. The Journal of Chemical Physics">Hamelberg, Mongan and McCammon (2004)</a>. Raise the bottoms of all wells without choosing CVs. When the potential energy <span class="math-inline">\(V\)</span> is below a threshold <span class="math-inline">\(E\)</span>, add a boost:</p>
 <p><span class="math-display">\[\Delta V(\mathbf r) = \frac{\big(E-V(\mathbf r)\big)^2}{\alpha+E-V(\mathbf r)}\quad\text{for }V&lt;E,\qquad\Delta V=0\text{ otherwise}.\]</span></p>
-<p>The wells are raised, so barriers shrink and escapes become faster (the 2004 paper applied the boost to the dihedral terms of small peptides in implicit solvent). Recovering unbiased averages needs the weights <span class="math-inline">\(e^{\beta\Delta V}\)</span>, and because <span class="math-inline">\(\Delta V\)</span> can be tens to hundreds of <span class="math-inline">\(k_BT\)</span> for a solvated protein, those weights are dominated by a few frames: the reweighted result is very noisy. <strong>Gaussian accelerated MD</strong> uses a harmonic boost whose distribution is close to Gaussian, so the reweighting factor can be approximated by a second-order cumulant expansion. These methods are good for exploration; treat their free energies with caution.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(V(\mathbf r)\)</span>: the potential energy of the configuration <span class="math-inline">\(\mathbf r\)</span>, or the part of it that is boosted (for example the dihedral terms), in kJ/mol. In this section <span class="math-inline">\(V\)</span> is not the bias of metadynamics.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: the positions of all atoms.</li>
+<li><span class="math-inline">\(E\)</span>: the <strong>threshold energy</strong>, chosen by you. Configurations whose energy is above <span class="math-inline">\(E\)</span> are left alone.</li>
+<li><span class="math-inline">\(\Delta V(\mathbf r)\)</span>: the <strong>boost</strong>, the extra energy added to the configuration. It is never negative. The simulation runs on <span class="math-inline">\(V+\Delta V\)</span>.</li>
+<li><span class="math-inline">\(E-V(\mathbf r)\)</span>: how far the configuration lies below the threshold.</li>
+<li><span class="math-inline">\(\alpha\)</span>: a tuning parameter with the unit of energy, chosen by you. It sets how strongly the wells are flattened.</li>
+<li>"for <span class="math-inline">\(V&lt;E\)</span>" and "otherwise": the rule has two cases, below and above the threshold.</li>
+</ul>
+</div>
+<p>Read it like this, with numbers. Take <span class="math-inline">\(\alpha = 20\)</span> kJ/mol. A well bottom that lies 40 kJ/mol below the threshold is raised by <span class="math-inline">\(40^2/(20+40) = 26.7\)</span> kJ/mol. A barrier top that lies 10 kJ/mol below the threshold is raised by <span class="math-inline">\(10^2/(20+10) = 3.3\)</span> kJ/mol. The barrier between them was 30 kJ/mol and is now <span class="math-inline">\(30-26.7+3.3 = 6.7\)</span> kJ/mol.</p>
+<p>The parameter <span class="math-inline">\(\alpha\)</span> sets the strength. With a large <span class="math-inline">\(\alpha\)</span> of 200 kJ/mol the two boosts are 6.7 and 0.5 kJ/mol, and the barrier is still 23.8 kJ/mol. With <span class="math-inline">\(\alpha\)</span> close to zero the boost approaches <span class="math-inline">\(E-V\)</span>, and everything below the threshold is lifted to the threshold itself: a flat plain on which the system has lost all sense of where the wells were. The boost always grows more slowly than the depth below the threshold, so minima stay minima and passes stay passes. Only the differences are compressed.</p>
+<p>The wells are raised, so barriers shrink and escapes become faster (the 2004 paper applied the boost to the dihedral terms of small peptides in implicit solvent). Implicit solvent means that the water is represented by a continuous medium and not by molecules (Module 15).</p>
+<p>Recovering unbiased averages needs the weights <span class="math-inline">\(e^{\beta\Delta V}\)</span>, and because <span class="math-inline">\(\Delta V\)</span> can be tens to hundreds of <span class="math-inline">\(k_BT\)</span> for a solvated protein, those weights are dominated by a few frames: the reweighted result is very noisy. This is reweighting as in the first section, with the boost as the bias. The trouble is the size of the exponent. If the boost of two frames differs by 10 <span class="math-inline">\(k_BT\)</span>, their weights differ by a factor of <span class="math-inline">\(e^{10} = 22{,}000\)</span>: one frame counts as much as 22,000 others.</p>
+<p>The boost is computed from the potential energy of the whole system, which fluctuates by amounts that grow with the size of the system (the square-root rule again). So the weights vary enormously from frame to frame, for reasons that have nothing to do with the barrier you care about. Metadynamics does not have this problem to the same degree, because its bias is a function of one or two CVs and is no larger than the free-energy differences along them.</p>
+<p><strong>Gaussian accelerated MD</strong> uses a harmonic boost whose distribution is close to Gaussian, so the reweighting factor can be approximated by a second-order cumulant expansion. These methods are good for exploration; treat their free energies with caution. "Harmonic" means quadratic: the boost grows as the square of the distance <span class="math-inline">\(E-V\)</span> below the threshold, like the energy of a spring. "Its distribution" is the histogram of the boost values over the frames of the run.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the cumulant expansion.</strong> The noisy quantity in reweighting is an average of an exponential, <span class="math-inline">\(\langle e^{x}\rangle\)</span>, with <span class="math-inline">\(x = \beta\Delta V\)</span>. A few large values of <span class="math-inline">\(x\)</span> dominate it. The cumulant expansion writes its logarithm in terms of quantities that are easy to estimate:</p>
+<p><span class="math-display">\[\ln\langle e^{x}\rangle = \langle x\rangle+\tfrac12\sigma_x^2+\dots\]</span></p>
+<p>Here <span class="math-inline">\(\langle x\rangle\)</span> is the mean of <span class="math-inline">\(x\)</span>, and <span class="math-inline">\(\sigma_x^2 = \langle x^2\rangle-\langle x\rangle^2\)</span> is its variance. The dots stand for terms built from higher powers of the deviations from the mean. If <span class="math-inline">\(x\)</span> has exactly a Gaussian distribution, all those terms are zero and the first two are the whole answer. "Second order" means stopping after the variance term.</p>
+<p>Example: if <span class="math-inline">\(\beta\Delta V\)</span> has a mean of 20 and a standard deviation of 2, then <span class="math-inline">\(\ln\langle e^{\beta\Delta V}\rangle = 20+\tfrac12\times2^2 = 22\)</span>. The mean and the variance are computed from all frames and not from a few extreme ones, so the estimate is far less noisy. Its accuracy rests on the boost really being Gaussian. More in the toolbox: <a href="maths.html#averages">mean and variance</a>, <a href="maths.html#gaussian">the Gaussian</a>.</p>
+</div>
 <h2 id="weighted-ensemble">Weighted ensemble</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="EMZu-n4WCH0" href="https://www.youtube.com/watch?v=EMZu-n4WCH0" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">DM Zuckerman - Introduction to Weighted Ensemble Simulation</span><span class="sv-m">31 min · Daniel Zuckerman</span></a><a class="sv" data-yt="ShtrAD-tT7c" href="https://www.youtube.com/watch?v=ShtrAD-tT7c" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">HITS Colloquium: Lillian T. Chong on weighted ensemble simulations</span><span class="sv-m">42 min · Lillian Chong (HITS)</span></a><a class="sv" data-yt="ziRedoLEb2o" href="https://www.youtube.com/watch?v=ziRedoLEb2o" target="_blank" rel="noopener" title="Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations"><span class="sv-play">&#9654;</span><span class="sv-t">Transition Path Sampling and Free Energy Calculations - Chris Chipot</span><span class="sv-m">1 h 30 min · TCBG UIUC</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="EMZu-n4WCH0" href="https://www.youtube.com/watch?v=EMZu-n4WCH0" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">DM Zuckerman - Introduction to Weighted Ensemble Simulation</span><span class="sv-m">31 min · Daniel Zuckerman</span></a><a class="sv" data-yt="ShtrAD-tT7c" href="https://www.youtube.com/watch?v=ShtrAD-tT7c" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">HITS Colloquium: Lillian T. Chong on weighted ensemble simulations</span><span class="sv-m">42 min · Lillian Chong (HITS)</span></a><a class="sv" data-yt="ziRedoLEb2o" href="https://www.youtube.com/watch?v=ziRedoLEb2o" target="_blank" rel="noopener" title="Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations"><span class="sv-play">&#9654;</span><span class="sv-t">Transition Path Sampling and Free Energy Calculations - Chris Chipot</span><span class="sv-m">1 h 30 min · TCBG UIUC</span></a></div>
 
+<p>This is the third cure: leave the terrain alone and manage many walkers. The forces are never touched. What is changed is the bookkeeping: which trajectories are continued, which are stopped, and how much probability each one stands for.</p>
 <p><a href="https://doi.org/10.1016/s0006-3495(96)79552-8" class="cite" target="_blank" rel="noopener" title="Huber GA; Kim S (1996). Weighted-ensemble Brownian dynamics simulations for protein association reactions. Biophysical Journal">Huber and Kim (1996)</a> introduced the method for Brownian dynamics of two model proteins (rigid spheres that diffuse and associate), not for all-atom MD. No bias on the potential at all. Divide a progress coordinate into bins. Run many short unbiased trajectories ("walkers"), each carrying a statistical weight. After each short interval (in the original paper, after every Brownian time step), <strong>split</strong> walkers in bins that have too few (the copies share the weight) and <strong>merge</strong> walkers in bins that have too many (the survivor takes the combined weight). Computer time is thereby concentrated on rare regions, while the total weight flowing from one state to another remains statistically exact.</p>
+<p>Some words first. Brownian dynamics (Module 8) moves particles by random steps plus a drift along the force, with the solvent present only as friction and noise. A progress coordinate measures how far a walker has advanced, for example the distance between the two partners, and is cut into intervals called bins. The <strong>statistical weight</strong> of a walker is the share of the total probability that it stands for. The weights of all walkers add up to 1 at all times.</p>
+<p>An example with invented numbers. Start 10 walkers in the first bin, each with the weight 0.1, and decide to keep 4 walkers in every occupied bin.</p>
+<ul>
+<li><em>Split.</em> One walker steps into the second bin, which was empty, and is replaced by 4 copies with the weight <span class="math-inline">\(0.1/4 = 0.025\)</span> each. The copies continue with different random numbers (the random steps of Brownian dynamics, or the random kicks of a stochastic thermostat in MD), so they soon follow different paths. Without some randomness, identical copies would stay identical and nothing would be gained. When one of them reaches the third bin it is split again, into 4 walkers of weight 0.00625.</li>
+<li><em>Merge.</em> Suppose a crowded bin holds, among others, two walkers with the weights 0.3 and 0.1. One of them is stopped and the other continues with the weight 0.4. The survivor has to be picked at random, with the probabilities 0.75 and 0.25 that are in proportion to the weights. Then each of the two possible futures still carries, on average, the weight it had: <span class="math-inline">\(0.75\times0.4 = 0.3\)</span> and <span class="math-inline">\(0.25\times0.4 = 0.1\)</span>.</li>
+</ul>
+<p>After a few rounds the bins near the top of the barrier are full of walkers, each of which stands for a very small probability. A region that a single trajectory would reach once in millions of attempts is populated by walkers of tiny weight, without anyone waiting for it. The result stays exact because splitting and merging never change the forces, never change the total weight, and never change the average weight that travels along each path. The weight that arrives anywhere is, on average, what unmodified dynamics would deliver.</p>
 <p>Because the dynamics are unbiased, the method gives <strong>rates</strong> (from the flux of weight into the target state once a steady state has been reached; in the original method each walker that arrives is put back in the starting state, and the steady flux is the inverse of the mean first-passage time) and pathways, which bias-based methods do not give directly. It is less well suited to equilibrium populations. The costs are many trajectories, correlated walkers, and slow relaxation to steady state. WESTPA is the usual software. Milestoning, forward flux sampling and transition path sampling are related methods that also work with ensembles of unbiased trajectory fragments.</p>
+<p>The terms of that paragraph:</p>
+<ul>
+<li>The <strong>flux</strong> is the weight that arrives in the target state per unit of time.</li>
+<li>A <strong>steady state</strong> is reached when the flux no longer changes with time, because the distribution of walkers over the bins has settled. Before that, the measured flux is still drifting and does not give the rate.</li>
+<li>The <strong>mean first-passage time</strong> is the average time a trajectory that starts in the initial state needs to reach the target for the first time. Its inverse is the rate. Example: if a weight of <span class="math-inline">\(10^{-6}\)</span> arrives per nanosecond, the rate is <span class="math-inline">\(10^{-6}\)</span> ns<span class="math-inline">\(^{-1}\)</span> <span class="math-inline">\(= 10^{3}\)</span> s<span class="math-inline">\(^{-1}\)</span> and the mean first-passage time is 1 ms, although no walker ran for longer than a short interval.</li>
+<li><strong>Correlated walkers</strong>: copies made by splitting share their past. A hundred walkers that descend from one parent are not a hundred independent observations, so error bars have to come from independent runs.</li>
+</ul>
+<h3 id="adaptive-sampling">Adaptive sampling</h3>
+<p>Adaptive sampling, the last entry of the table in the first section, follows the same strategy with looser bookkeeping. Run a batch of short unbiased trajectories. Look at where they went and find the places where sampling is thin: states visited only a few times, or newly discovered. Start the next batch from those places, and repeat. Computer time flows to the frontier, as in weighted ensemble, but the trajectories carry no weights.</p>
+<p>Starting points chosen in this way are not drawn from the equilibrium distribution, so a plain average over all frames would be wrong. The correction is made in the analysis, by a Markov state model (Module 16). Such a model counts transitions between small states over a short time. A count "from state <span class="math-inline">\(i\)</span> to state <span class="math-inline">\(j\)</span>" says what happens <em>after</em> the system is in <span class="math-inline">\(i\)</span>, and that does not depend on how often trajectories were started in <span class="math-inline">\(i\)</span>.</p>
+<p>From the transition probabilities the model then computes the equilibrium populations and the rates. The condition is that the trajectories are in local equilibrium within each state, and Module 16 explains how to test the model.</p>
 <h2 id="choosing">Choosing</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="st5XKYuJHQE" href="https://www.youtube.com/watch?v=st5XKYuJHQE" target="_blank" rel="noopener" title="Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation"><span class="sv-play">&#9654;</span><span class="sv-t">Specialized Algorithms for Enhanced Ergodic Sampling, Chris Chipot</span><span class="sv-m">1 h 14 min · TCBG UIUC</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="st5XKYuJHQE" href="https://www.youtube.com/watch?v=st5XKYuJHQE" target="_blank" rel="noopener" title="Urbana 2018 Workshop on Enhanced Sampling and Free-Energy Calculation"><span class="sv-play">&#9654;</span><span class="sv-t">Specialized Algorithms for Enhanced Ergodic Sampling, Chris Chipot</span><span class="sv-m">1 h 14 min · TCBG UIUC</span></a></div>
 
+<p>Three things narrow the choice before you look at the table. The first is whether you know a coordinate you trust: if you do, a CV-based method is the natural choice. The second is whether you need populations and free energies, or rates and mechanisms: only methods built on unbiased trajectories give rates directly. The third is the size of the part of the system that has to be heated or biased, which decides whether a tempering method is affordable.</p>
 <table>
 <thead>
 <tr>
@@ -185,14 +814,112 @@ V(s,t\to\infty) = -\frac{\Delta T}{T+\Delta T}\,F(s)+C .\]</span></p>
 </tbody>
 </table>
 <p>The same validation applies to all of them: the final answer must not depend on the starting structure, on which half of the data you analyse, or on a second independent run.</p>
+<h2 id="checking-convergence">Checking convergence</h2>
+<p>An enhanced-sampling run that has not converged can deliver a smooth, plausible free-energy profile that is wrong, and nothing in the output says so. "Converged" means that running longer would not change the answer beyond its error bar. The three tests at the end of the previous section apply to every method. Each method also has its own signs.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>What to look at</th>
+<th>Sign of trouble</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temperature replica exchange, REST2</td>
+<td>The path of each replica along the ladder. The acceptance of each neighbouring pair. Averages at the lowest rung from the first and the second half of the run.</td>
+<td>A replica that never travels the whole ladder. One pair with a much lower acceptance than the others. Two halves that disagree.</td>
+</tr>
+<tr>
+<td>Umbrella sampling with exchange</td>
+<td>The histograms of all windows and the profile from the two halves, as in Module 12.</td>
+<td>Gaps between histograms. A profile that depends on the direction in which the windows were prepared.</td>
+</tr>
+<tr>
+<td>Metadynamics</td>
+<td>The CV against time. The free-energy difference between the basins against time. The height of the new hills (well-tempered).</td>
+<td>Few crossings. A free-energy difference that keeps drifting. A CV that gets stuck again after the wells were filled, which points to a slow motion outside the CV.</td>
+</tr>
+<tr>
+<td>Accelerated MD</td>
+<td>The spread of the boost over the frames, and the effective number of frames (below).</td>
+<td>A handful of frames carry nearly all the weight.</td>
+</tr>
+<tr>
+<td>Weighted ensemble</td>
+<td>The flux into the target state against time.</td>
+<td>A flux that is still rising, or that jumps each time a single heavy walker arrives.</td>
+</tr>
+</tbody>
+</table>
+<p>For every method that reweights, one number summarises how many frames really count. If frame <span class="math-inline">\(n\)</span> has the weight <span class="math-inline">\(g_n\)</span>, the <strong>effective number of frames</strong> is</p>
+<p><span class="math-display">\[N_{eff} = \frac{\big(\sum_ng_n\big)^2}{\sum_ng_n^2} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(N_{eff}\)</span>: the effective number of frames: the number of equally weighted frames that would give an average of the same statistical quality.</li>
+<li><span class="math-inline">\(n\)</span>: the label of a saved frame, from 1 to the total number of frames.</li>
+<li><span class="math-inline">\(g_n\)</span>: the weight of frame <span class="math-inline">\(n\)</span>, for example <span class="math-inline">\(e^{\beta\Delta V}\)</span> in accelerated MD.</li>
+<li><span class="math-inline">\(\sum_n\)</span>: the sum over all saved frames.</li>
+</ul>
+</div>
+<p>Read it like this: if all <span class="math-inline">\(N\)</span> weights are equal (<span class="math-inline">\(N\)</span> is the number of frames), the formula gives <span class="math-inline">\(N_{eff} = N\)</span>. If one frame outweighs all the others together, it gives a number close to 1. Example: 999 frames of weight 1 and one frame of weight 1,000 give <span class="math-inline">\(N_{eff} = 1{,}999^2/(999+1{,}000^2) = 4.0\)</span>. A thousand frames were saved, and the average rests on about four. Error bars then come, as always, from blocks or from independent runs (Module 11).</p>
+<h2 id="what-is-lost-the-time-axis">What is lost: the time axis</h2>
+<p>Every method that changes the temperature or the forces gives up the real motion in time. Equilibrium averages survive this. Module 3 made the point: any procedure that visits configurations with the right probabilities gives correct averages, whatever the order of the visits. Rates do not survive it, because a rate is a statement about how long things take.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Populations and free energies</th>
+<th>Rates, durations, order of events</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plain MD</td>
+<td>Yes, if the run is long enough</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Replica exchange (temperature, REST2, Hamiltonian)</td>
+<td>Yes, from the unmodified replica</td>
+<td>No. Swaps cut the trajectories into pieces, and time in a heated or scaled replica is not real time</td>
+</tr>
+<tr>
+<td>Umbrella sampling, metadynamics, adaptive biasing force</td>
+<td>Yes, along the CVs, and for other quantities by reweighting</td>
+<td>No. The forces are altered</td>
+</tr>
+<tr>
+<td>Accelerated MD</td>
+<td>In principle, by reweighting, with large noise</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Steered MD</td>
+<td>Only through averages of the work, which rarely converge</td>
+<td>No. The speed is imposed by you</td>
+</tr>
+<tr>
+<td>Weighted ensemble</td>
+<td>Less well suited</td>
+<td>Yes. The trajectories are unbiased</td>
+</tr>
+<tr>
+<td>Adaptive sampling with a Markov model</td>
+<td>Yes, from the model (Module 16)</td>
+<td>Yes, from the model, once it has passed its validation tests</td>
+</tr>
+</tbody>
+</table>
+<p>Two cautions follow. A pathway seen under a bias is a suggestion and not yet a mechanism: the system was pushed along the CV you chose, and the real process may go another way. And a barrier height read from a free-energy profile is not enough for a rate, even with the formula of the first section. The CV must be a good reaction coordinate (one along which the transition really proceeds, so that the top of the profile is the true bottleneck), and the prefactor must be known as well (Module 16).</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. Why does the number of replicas in temperature replica exchange grow with system size?</summary>
-<p>The swap probability depends on the overlap of the potential-energy distributions at neighbouring temperatures. Their separation grows as <span class="math-inline">\(N_{df}\,\Delta T\)</span> and their width as <span class="math-inline">\(\sqrt{N_{df}}\)</span>, so the temperature spacing giving constant overlap shrinks as <span class="math-inline">\(1/\sqrt{N_{df}}\)</span>.</p>
+<p>The swap probability depends on the overlap of the potential-energy distributions at neighbouring temperatures. Their separation grows as <span class="math-inline">\(N_{df}\,\Delta T\)</span> and their width as <span class="math-inline">\(\sqrt{N_{df}}\)</span>, so the temperature spacing giving constant overlap shrinks as <span class="math-inline">\(1/\sqrt{N_{df}}\)</span>. (Here <span class="math-inline">\(N_{df}\)</span> is the number of degrees of freedom and <span class="math-inline">\(\Delta T\)</span> the difference between two neighbouring temperatures.)</p>
 </details>
 <details>
 <summary>2. In well-tempered metadynamics with bias factor 10 at 300 K, the converged bias between two basins differs by 18 kJ/mol. What is the free-energy difference?</summary>
-<p><span class="math-inline">\(F=-\frac{\gamma}{\gamma-1}V\)</span>, so the difference is <span class="math-inline">\(18\times10/9 = 20\)</span> kJ/mol, with the opposite sign to the bias difference: the basin with more accumulated bias is the lower one.</p>
+<p><span class="math-inline">\(F=-\frac{\gamma}{\gamma-1}V\)</span>, so the difference is <span class="math-inline">\(18\times10/9 = 20\)</span> kJ/mol, with the opposite sign to the bias difference: the basin with more accumulated bias is the lower one. (Here <span class="math-inline">\(\gamma\)</span> is the bias factor, <span class="math-inline">\(V\)</span> the converged bias and <span class="math-inline">\(F\)</span> the free energy along the CV.)</p>
 </details>
 <details>
 <summary>3. A metadynamics run shows the system leaving the bound state once and never returning. Can you report the binding free energy?</summary>
@@ -201,6 +928,18 @@ V(s,t\to\infty) = -\frac{\Delta T}{T+\Delta T}\,F(s)+C .\]</span></p>
 <details>
 <summary>4. Why do weighted ensemble simulations give rates while metadynamics does not, at least not directly?</summary>
 <p>Weighted ensemble trajectories follow the unmodified dynamics, and the splitting and merging only redistribute statistical weight, so the steady-state flux of weight into the target state is the true rate. In metadynamics the forces themselves are altered, so the time axis is no longer physical. (Rates can be recovered under extra assumptions when no bias is deposited on the transition state: "infrequent metadynamics".)</p>
+</details>
+<details>
+<summary>5. A conformational change has a free-energy barrier of 30 kJ/mol at 300 K. With a prefactor of 10¹⁰ s⁻¹, what is the mean waiting time, and how many crossings do you expect in a simulation of 1 µs?</summary>
+<p>The barrier in units of <span class="math-inline">\(k_BT\)</span> is <span class="math-inline">\(30/2.494 = 12.03\)</span>, and <span class="math-inline">\(e^{-12.03} = 6.0\times10^{-6}\)</span>. The rate is <span class="math-inline">\(k = 10^{10}\times6.0\times10^{-6} = 6.0\times10^{4}\)</span> s<span class="math-inline">\(^{-1}\)</span>, so the mean waiting time is <span class="math-inline">\(1/k = 17\)</span> µs. In 1 µs you expect <span class="math-inline">\(10^{-6}\times6.0\times10^{4} = 0.06\)</span> crossings: most such runs see none.</p>
+</details>
+<details>
+<summary>6. Two replicas run at 300 K and 320 K. The cold one holds a configuration whose potential energy is 40 kJ/mol lower than that of the hot one. With what probability is a swap accepted? And if the cold one held the configuration of higher energy?</summary>
+<p><span class="math-inline">\(\beta_i-\beta_j = \frac{1}{k_B}\left(\frac{1}{300}-\frac{1}{320}\right) = 0.0251\)</span> mol/kJ, with <span class="math-inline">\(i\)</span> the cold replica. In the first case <span class="math-inline">\(U(\mathbf x)-U(\mathbf x') = -40\)</span> kJ/mol, the exponent is <span class="math-inline">\(0.0251\times(-40) = -1.0\)</span> and <span class="math-inline">\(P_{acc} = e^{-1.0} = 0.37\)</span>. In the second case the exponent is positive and the swap is always accepted.</p>
+</details>
+<details>
+<summary>7. A colleague analyses the 450 K replica of a replica-exchange run and reports the populations of folded and unfolded peptide found there as the result of the study, which is about 300 K. What is wrong?</summary>
+<p>The 450 K replica samples the equilibrium of the model at 450 K, where the populations are different. The hot replicas exist to supply the cold one with new structures. The populations at 300 K come from the frames collected at 300 K (or from a reweighting of all temperatures with MBAR). Time information is not available from either.</p>
 </details>
 <h2 id="exercises">Exercises</h2>
 <ol>

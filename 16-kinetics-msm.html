@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li class="current" data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part V · Beyond all-atom &middot; Module 16 of 18 &middot; about 7 hours</div><h1>Kinetics, from rate theory to Markov state models</h1><p class="lede">Relate free-energy barriers to rates with transition state and Kramers theory, understand the committor, and build and validate a Markov state model from many short trajectories.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#thermodynamics-is-not-kinetics">Thermodynamics is not kinetics</a></li><li><a href="#transition-state-theory">Transition state theory</a></li><li><a href="#kramers-theory">Kramers theory</a></li><li><a href="#the-committor-and-what-makes-a-good-reaction-coordinate">The committor and what makes a good reaction coordinate</a></li><li><a href="#markov-state-models">Markov state models</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#thermodynamics-is-not-kinetics">Thermodynamics is not kinetics</a></li><li><a href="#transition-state-theory">Transition state theory</a></li><li><a href="#kramers-theory">Kramers theory</a></li><li><a href="#the-committor-and-what-makes-a-good-reaction-coordinate">The committor and what makes a good reaction coordinate</a></li><li><a href="#markov-state-models">Markov state models</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -36,67 +36,641 @@
 <li>validate it with implied time scales and the Chapman-Kolmogorov test.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/playlist?list=PL5GA9U-KFnqLWf2xfoPtpDc_SSjiYduGN" target="_blank" rel="noopener">Markov state models [PyEMMA 2018]</a><span class="res-meta">PyEMMA workshop (Noe group) &middot; channel: Yunier Perera Sardiña &middot; Playlist, 11 videos, intermediate</span><span class="res-why">PyEMMA 2018 workshop lectures on Markov state models.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=VJHKiqTQhQE" target="_blank" rel="noopener">[PyEMMA 2021] Introduction talk</a><span class="res-meta">PyEMMA workshop &middot; channel: MarkovModel &middot; Video, 54 min, intro</span><span class="res-why">PyEMMA 2021 introduction talk.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=7s8-r7qFc-I" target="_blank" rel="noopener">[PyEMMA 2017] Overview</a><span class="res-meta">PyEMMA workshop &middot; channel: MarkovModel &middot; Video, 69 min, intro</span><span class="res-why">PyEMMA 2017 overview.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=xNjQatR2rRU" target="_blank" rel="noopener">Lecture 06, concept 19: Markov state models - slow processes from many short simulations</a><span class="res-meta">Erik Lindahl &middot; Video, 2 min, intro</span><span class="res-why">Short concept video on MSMs.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=gSR2xp2NFIc" target="_blank" rel="noopener">[PyEMMA 2021] MSM theory</a><span class="res-meta">PyEMMA workshop (Noe group) &middot; channel: MarkovModel &middot; Video, 45 min, intermediate</span><span class="res-why">PyEMMA 2021 MSM theory.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=0pB3pUXULmo" target="_blank" rel="noopener">Introduction to Markov State Models for Trajectory Analysis</a><span class="res-meta">SimbiosOpenMM &middot; Video, 20 min, intermediate</span><span class="res-why">Introduction to MSMs for trajectory analysis.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=CNYreswqJAQ" target="_blank" rel="noopener">Markov state model tutorial through pyEMMA</a><span class="res-meta">Christian Seitz &middot; Video, 68 min, intermediate</span><span class="res-why">MSM tutorial with pyEMMA.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Fuai8_MSxaw" target="_blank" rel="noopener">Frank Noé - Workshop on Free Energy, Kinetics, &amp; MSM in Drug Design 2018</a><span class="res-meta">Frank Noe &middot; channel: Chodera lab &middot; Video, 37 min, advanced</span><span class="res-why">Noe talk on kinetics and MSMs in drug design.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=B8uo60u9TqI" target="_blank" rel="noopener">Greg Bowman - Workshop on Free Energy, Kinetics, &amp; MSM in Drug Design 2018</a><span class="res-meta">Greg Bowman &middot; channel: Chodera lab &middot; Video, 33 min, advanced</span><span class="res-why">Bowman talk on MSMs in drug design.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=opx_wViFlTs" target="_blank" rel="noopener">Lecture 16: Markov State Models, from concept to construction</a><span class="res-meta">Pietro Faccioli &middot; Video, 107 min, advanced</span><span class="res-why">Markov state models from concept to construction.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>Modules 12 to 14 computed free energies. A free energy tells you how much of each state there is at equilibrium: how much of a protein is folded, how much of a ligand is bound. It does not tell you how long it takes to go from one state to the other. That second question belongs to <strong>kinetics</strong>, the study of rates. It decides how long a drug stays on its target, how fast a protein folds, and whether a simulation of a given length can see an event at all.</p>
+<p>The module has four layers:</p>
+<ol>
+<li><strong>Rates.</strong> What a rate constant is, how two rate constants fix the equilibrium populations, and what the kinetics of binding means for a simulation.</li>
+<li><strong>From a barrier to a rate.</strong> Transition state theory, then Kramers theory, which adds the friction of the solvent, and the mean first-passage time.</li>
+<li><strong>The committor.</strong> A number that says how far a configuration has progressed from one state to the other, and a test of whether the coordinate you chose describes the process.</li>
+<li><strong>Markov state models.</strong> A method that needs no coordinate chosen in advance. You cut the configurations into many small states, count the jumps between them in many short trajectories, and read the slow processes from a table of jump probabilities.</li>
+</ol>
+<p>Layers 2 and 3 are what you need to read a paper that quotes a barrier or a rate. Layer 4 is the one you will use on your own trajectories. On a first reading you can skip the blocks marked "Optional" and the part on the mean first-passage time.</p>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula is followed by a list that says what each letter means. The notation below first appears in this module. The general conventions (bold letters, dots for time derivatives, sums) are in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(k_{AB}\)</span></td>
+<td>A <strong>rate constant</strong>: the probability per unit time of a jump from state A to state B. Read the subscript from left to right: from A, to B.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(P_A\)</span></td>
+<td>The <strong>population</strong> of state A: the fraction of all molecules (or of all simulation time) found in A. A number between 0 and 1.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(P_A^{eq}\)</span></td>
+<td>The same at equilibrium, when the populations have stopped changing.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\beta\)</span></td>
+<td>Shorthand for <span class="math-inline">\(1/k_BT\)</span>, where <span class="math-inline">\(k_B\)</span> is the Boltzmann constant and <span class="math-inline">\(T\)</span> the temperature. At 300 K, <span class="math-inline">\(k_BT = 2.494\)</span> kJ/mol.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\ddagger\)</span></td>
+<td>The double dagger marks a quantity taken at the top of a barrier. <span class="math-inline">\(\Delta W^\ddagger\)</span> is the height of the barrier.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\langle\dots\rangle_{\xi^\ddagger}\)</span></td>
+<td>An average of the quantity between the brackets, taken only over the configurations that sit at the barrier top.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(P(a\mid b)\)</span></td>
+<td>A <strong>conditional probability</strong>: the probability of <span class="math-inline">\(a\)</span>, given that <span class="math-inline">\(b\)</span> is true.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(T_{ij}\)</span></td>
+<td>The entry in row <span class="math-inline">\(i\)</span> and column <span class="math-inline">\(j\)</span> of the table (matrix) <span class="math-inline">\(\mathbf T\)</span>. Here it is the probability of going from state <span class="math-inline">\(i\)</span> to state <span class="math-inline">\(j\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf p^T\)</span></td>
+<td>A superscript <span class="math-inline">\(T\)</span> on a list of numbers means that the list is written as a row.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf T^k\)</span></td>
+<td>The matrix <span class="math-inline">\(\mathbf T\)</span> multiplied by itself <span class="math-inline">\(k\)</span> times.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\hat T\)</span></td>
+<td>A hat marks an <strong>estimate</strong> computed from data, as opposed to the true value.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\gg\)</span>, <span class="math-inline">\(\ll\)</span></td>
+<td>"Much larger than" and "much smaller than".</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Letters that mean two things in this module.</strong> The lists under the formulas say which meaning applies each time.</p>
+<ul>
+<li><span class="math-inline">\(k\)</span> with a subscript (<span class="math-inline">\(k_{AB}\)</span>, <span class="math-inline">\(k_{on}\)</span>, <span class="math-inline">\(k_{TST}\)</span>) is a rate constant, and so is a plain <span class="math-inline">\(k\)</span> in the sections on rates and rate theory. <span class="math-inline">\(k_B\)</span> is the Boltzmann constant. In the sections on Markov models, a plain <span class="math-inline">\(k\)</span> counts lag times, as in <span class="math-inline">\(k\tau\)</span>, or is a label in a sum.</li>
+<li><span class="math-inline">\(T\)</span> in <span class="math-inline">\(k_BT\)</span> is the temperature. <span class="math-inline">\(\mathbf T\)</span> and <span class="math-inline">\(T_{ij}\)</span> are the transition matrix. A superscript <span class="math-inline">\(T\)</span>, as in <span class="math-inline">\(\mathbf p^T\)</span>, turns a column into a row.</li>
+<li><span class="math-inline">\(\tau\)</span> is the lag time of a Markov model. <span class="math-inline">\(\tau(a\to b)\)</span> is a mean first-passage time.</li>
+<li><span class="math-inline">\(t\)</span> is the time. <span class="math-inline">\(t_i\)</span> with a subscript is the implied time scale of process number <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(P_A\)</span> is a population and <span class="math-inline">\(P(\dots)\)</span> a probability. An upright <span class="math-inline">\(\text{P}\)</span> is the protein in <span class="math-inline">\(\text{P}+\text{L}\)</span>. <span class="math-inline">\(\mathbf p\)</span> is a list of populations, and <span class="math-inline">\(p_B\)</span> is the committor.</li>
+<li><span class="math-inline">\(\pi\)</span> is the number 3.14159 in <span class="math-inline">\(2\pi\)</span>. <span class="math-inline">\(\pi_i\)</span> and <span class="math-inline">\(\boldsymbol\pi\)</span> are the stationary distribution of a Markov model.</li>
+<li><span class="math-inline">\(\lambda\)</span> is an eigenvalue of the transition matrix. In the TICA step of the pipeline it is an eigenvalue of a different matrix problem.</li>
+<li><span class="math-inline">\(C_{ij}\)</span> is a number of counted transitions. <span class="math-inline">\(C_{ab}(\tau)\)</span> in the TICA step is a covariance.</li>
+<li><span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> label states in <span class="math-inline">\(T_{ij}\)</span> and <span class="math-inline">\(\pi_i\)</span>. In <span class="math-inline">\(\lambda_i\)</span> and <span class="math-inline">\(t_i\)</span> the label <span class="math-inline">\(i\)</span> numbers the eigenvalues.</li>
+<li><span class="math-inline">\(x\)</span>, <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span>: in the mean first-passage time, <span class="math-inline">\(x\)</span> is a position along the coordinate and <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span> are the start and the end. In the TICA step, <span class="math-inline">\(x_a\)</span> is the value of feature number <span class="math-inline">\(a\)</span>. A bold <span class="math-inline">\(\mathbf x\)</span> is a whole configuration. In the check of the moderate-friction formula, <span class="math-inline">\(x\)</span> is short for <span class="math-inline">\(\gamma/2\omega_b\)</span>.</li>
+<li><span class="math-inline">\(y\)</span> is the variable of the inner integral in the mean first-passage time. In the TICA step it is a combination of features.</li>
+</ul>
+</div>
 <h2 id="thermodynamics-is-not-kinetics">Thermodynamics is not kinetics</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="rFavri_VYfk" href="https://www.youtube.com/watch?v=rFavri_VYfk" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 04, concept 10: Populations and transitions in energy landscapes</span><span class="sv-m">1 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a><a class="sv" data-yt="balC-1gTQro" href="https://www.youtube.com/watch?v=balC-1gTQro" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 04, concept 17: Kinetics of transitions is governed by energy barriers</span><span class="sv-m">8 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a><a class="sv" data-yt="hRpUif7C4Ek" href="https://www.youtube.com/watch?v=hRpUif7C4Ek" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 10, concept 05: E &amp; S decrease in balance during folding, but create a free energy barrier</span><span class="sv-m">4 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a><a class="sv" data-yt="NOHVd_VgAD0" href="https://www.youtube.com/watch?v=NOHVd_VgAD0" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 13, concept 02: Full simulations of binding reveal kinetics &amp; barriers</span><span class="sv-m">5 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="rFavri_VYfk" href="https://www.youtube.com/watch?v=rFavri_VYfk" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 04, concept 10: Populations and transitions in energy landscapes</span><span class="sv-m">1 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a><a class="sv" data-yt="balC-1gTQro" href="https://www.youtube.com/watch?v=balC-1gTQro" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 04, concept 17: Kinetics of transitions is governed by energy barriers</span><span class="sv-m">8 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a><a class="sv" data-yt="hRpUif7C4Ek" href="https://www.youtube.com/watch?v=hRpUif7C4Ek" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 10, concept 05: E &amp; S decrease in balance during folding, but create a free energy barrier</span><span class="sv-m">4 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a><a class="sv" data-yt="NOHVd_VgAD0" href="https://www.youtube.com/watch?v=NOHVd_VgAD0" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 13, concept 02: Full simulations of binding reveal kinetics &amp; barriers</span><span class="sv-m">5 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
 
-<p>For two states A and B with rate constants <span class="math-inline">\(k_{AB}\)</span> and <span class="math-inline">\(k_{BA}\)</span>,</p>
+<p>Picture two valleys separated by a mountain pass, and a crowd of hikers who wander at random. In the long run more hikers are found in the deeper valley, and how many more depends only on the two valleys. How often a hiker gets from one valley to the other depends on the pass. Raise the pass and the traffic drops, while the long-run numbers in the two valleys stay what they were.</p>
+<p>Molecules behave in the same way. <strong>Thermodynamics</strong> is about the long-run numbers: the equilibrium populations of the states, which are fixed by their free energies (Module 3). <strong>Kinetics</strong> is about the traffic: how many jumps happen per unit time, which is fixed by the barrier between the states. This section makes the statement exact for the smallest case, two states.</p>
+<div class="box physics">
+<p><strong>Physics you need here: the rate constant and the waiting time.</strong> Take many copies of a molecule, all in state A, and suppose that each copy can jump to state B. The <strong>rate constant</strong> <span class="math-inline">\(k\)</span> is the probability per unit time that one copy jumps. Its unit is one over time, for example s<span class="math-inline">\(^{-1}\)</span> or µs<span class="math-inline">\(^{-1}\)</span>. In a short time <span class="math-inline">\(dt\)</span>, a copy that is still in A jumps with probability <span class="math-inline">\(k\,dt\)</span>.</p>
+<p>Let <span class="math-inline">\(S(t)\)</span> be the fraction of copies that have not jumped yet at time <span class="math-inline">\(t\)</span>. During the next short time <span class="math-inline">\(dt\)</span> a fraction <span class="math-inline">\(k\,dt\)</span> of them jumps, so <span class="math-inline">\(S\)</span> changes by <span class="math-inline">\(dS = -k\,S\,dt\)</span>. Dividing by <span class="math-inline">\(dt\)</span>:</p>
+<p><span class="math-display">\[\frac{dS}{dt} = -k\,S, \qquad\text{with the solution}\qquad S(t) = e^{-kt} .\]</span></p>
+<p>The left part is a <a href="maths.html#ode">differential equation</a>: it gives the rate of change of <span class="math-inline">\(S\)</span> in terms of <span class="math-inline">\(S\)</span> itself. The right part is its solution, an <a href="maths.html#exp-log">exponential decay</a> that starts at <span class="math-inline">\(S(0)=1\)</span>. You can check it by differentiating: the derivative of <span class="math-inline">\(e^{-kt}\)</span> with respect to <span class="math-inline">\(t\)</span> is <span class="math-inline">\(-k\,e^{-kt}\)</span>, which is <span class="math-inline">\(-k\,S\)</span>. A process whose rate is proportional to the first power of the amount present is called <strong>first-order</strong>.</p>
+<p>Three consequences. The waiting time before the jump is random, and short waits are the most likely. The mean waiting time is <span class="math-inline">\(1/k\)</span> (the average of <span class="math-inline">\(t\)</span> weighted by the probability <span class="math-inline">\(k\,e^{-kt}\,dt\)</span> of jumping between <span class="math-inline">\(t\)</span> and <span class="math-inline">\(t+dt\)</span>). The time after which half of the copies have jumped is <span class="math-inline">\(\ln 2/k\approx0.69/k\)</span>. Example: with <span class="math-inline">\(k = 2\)</span> µs<span class="math-inline">\(^{-1}\)</span> the mean wait is 0.5 µs, half of the copies have jumped after 0.35 µs, and after 1 µs a fraction <span class="math-inline">\(e^{-2} = 0.14\)</span> is still waiting.</p>
+</div>
+<p>Now let the copies jump in both directions. For two states A and B with rate constants <span class="math-inline">\(k_{AB}\)</span> and <span class="math-inline">\(k_{BA}\)</span>,</p>
 <p><span class="math-display">\[\frac{dP_A}{dt}=-k_{AB}P_A+k_{BA}P_B,\qquad\frac{P_B^{eq}}{P_A^{eq}}=\frac{k_{AB}}{k_{BA}}=e^{-\beta\Delta G_{AB}} .\]</span></p>
-<p>The free-energy difference fixes only the <em>ratio</em> of the rates. The populations relax with the single rate <span class="math-inline">\(k_{AB}+k_{BA}\)</span>. For binding, <span class="math-inline">\(\text{P}+\text{L}\rightleftharpoons\text{PL}\)</span>:</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_A\)</span>, <span class="math-inline">\(P_B\)</span>: the populations of A and B at time <span class="math-inline">\(t\)</span>, the fractions of all copies found in each state. They add up to 1.</li>
+<li><span class="math-inline">\(dP_A/dt\)</span>: the rate at which the population of A changes.</li>
+<li><span class="math-inline">\(k_{AB}\)</span>: the rate constant for jumps from A to B, in 1/time.</li>
+<li><span class="math-inline">\(k_{BA}\)</span>: the rate constant for jumps from B to A.</li>
+<li><span class="math-inline">\(-k_{AB}P_A\)</span>: the loss of A, the copies that leave A per unit time.</li>
+<li><span class="math-inline">\(+k_{BA}P_B\)</span>: the gain of A, the copies that arrive from B per unit time.</li>
+<li><span class="math-inline">\(P_A^{eq}\)</span>, <span class="math-inline">\(P_B^{eq}\)</span>: the populations at equilibrium, when they no longer change.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>, with <span class="math-inline">\(k_BT = 2.494\)</span> kJ/mol at 300 K.</li>
+<li><span class="math-inline">\(\Delta G_{AB}\)</span>: the free energy of B minus the free energy of A. It is positive when B is the less populated state.</li>
+<li><span class="math-inline">\(e^{-\beta\Delta G_{AB}}\)</span>: the Boltzmann factor of that free-energy difference.</li>
+</ul>
+</div>
+<p>The first formula is a balance sheet for state A: what leaves, with a minus sign, and what arrives, with a plus sign. The second formula follows from it in two steps. At equilibrium the populations stop changing, so set <span class="math-inline">\(dP_A/dt=0\)</span>. That gives <span class="math-inline">\(k_{AB}P_A^{eq}=k_{BA}P_B^{eq}\)</span>: per unit time, as many copies go from A to B as come back. Divide both sides by <span class="math-inline">\(k_{BA}P_A^{eq}\)</span> and you have <span class="math-inline">\(P_B^{eq}/P_A^{eq}=k_{AB}/k_{BA}\)</span>.</p>
+<p>The last equality is the statistical mechanics of Module 3: the ratio of two equilibrium populations is the Boltzmann factor of their free-energy difference. A Boltzmann factor is <span class="math-inline">\(e^{-\beta E}\)</span> for an energy <span class="math-inline">\(E\)</span>: the higher the energy, the smaller the factor. The ratio <span class="math-inline">\(P_B^{eq}/P_A^{eq}\)</span> is called the <strong>equilibrium constant</strong> (see the <a href="physics.html#equilibrium">primer</a>). So the equilibrium constant is the ratio of the two rate constants.</p>
+<p>The free-energy difference fixes only the <em>ratio</em> of the rates. Multiply both rate constants by a thousand and every jump happens a thousand times more often, yet the ratio, the populations and <span class="math-inline">\(\Delta G_{AB}\)</span> stay what they were.</p>
+<p>The populations relax with the single rate <span class="math-inline">\(k_{AB}+k_{BA}\)</span>. To see why, use <span class="math-inline">\(P_B = 1-P_A\)</span> in the balance sheet. Collecting the terms that contain <span class="math-inline">\(P_A\)</span> gives <span class="math-inline">\(-(k_{AB}+k_{BA})P_A+k_{BA}\)</span>, and taking the factor <span class="math-inline">\(-(k_{AB}+k_{BA})\)</span> out of both terms gives the form on the right:</p>
+<p><span class="math-display">\[\frac{dP_A}{dt}=-k_{AB}P_A+k_{BA}(1-P_A)=-(k_{AB}+k_{BA})\,\big(P_A-P_A^{eq}\big),\qquad P_A^{eq}=\frac{k_{BA}}{k_{AB}+k_{BA}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(1-P_A\)</span>: the population of B, because the two populations add up to 1.</li>
+<li><span class="math-inline">\(P_A-P_A^{eq}\)</span>: the distance of the population of A from its equilibrium value.</li>
+<li><span class="math-inline">\(k_{AB}+k_{BA}\)</span>: the <strong>relaxation rate</strong>, in 1/time.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>This is the equation of the box above, with the distance from equilibrium in the place of <span class="math-inline">\(S\)</span> and <span class="math-inline">\(k_{AB}+k_{BA}\)</span> in the place of <span class="math-inline">\(k\)</span>. Its solution is therefore an exponential decay of that distance:</p>
+<p><span class="math-display">\[P_A(t)=P_A^{eq}+\big(P_A(0)-P_A^{eq}\big)\,e^{-(k_{AB}+k_{BA})\,t} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_A(0)\)</span>: the population of A at the start.</li>
+<li><span class="math-inline">\(P_A(t)\)</span>: the population of A after a time <span class="math-inline">\(t\)</span>.</li>
+<li><span class="math-inline">\(e^{-(k_{AB}+k_{BA})t}\)</span>: a factor that starts at 1 and falls towards 0. It has dropped to <span class="math-inline">\(1/e\approx0.37\)</span> after the <strong>relaxation time</strong> <span class="math-inline">\(1/(k_{AB}+k_{BA})\)</span>.</li>
+<li>Other symbols: as in the lists above.</li>
+</ul>
+</div>
+<p>Read it like this. Whatever the starting populations, the distance from equilibrium shrinks by the same factor in every equal interval of time. The rate of this approach is the <em>sum</em> of the two rate constants, so equilibrium is reached faster than either jump alone would suggest. An experiment or a simulation that watches populations relax therefore measures the sum. To get <span class="math-inline">\(k_{AB}\)</span> and <span class="math-inline">\(k_{BA}\)</span> separately you also need their ratio, which is the equilibrium constant.</p>
+<div class="box key">
+<p><strong>Worked example: the same populations at two speeds.</strong> Say <span class="math-inline">\(k_{AB}=1\)</span> µs<span class="math-inline">\(^{-1}\)</span> and <span class="math-inline">\(k_{BA}=9\)</span> µs<span class="math-inline">\(^{-1}\)</span> (round numbers, for illustration). Then <span class="math-inline">\(P_B^{eq}/P_A^{eq}=1/9\)</span>, so <span class="math-inline">\(P_A^{eq}=0.9\)</span> and <span class="math-inline">\(P_B^{eq}=0.1\)</span>. At 300 K, <span class="math-inline">\(\Delta G_{AB}=-k_BT\ln(1/9)=2.494\times2.197=5.48\)</span> kJ/mol. The relaxation rate is <span class="math-inline">\(1+9=10\)</span> µs<span class="math-inline">\(^{-1}\)</span> and the relaxation time is 0.1 µs. Starting with every copy in A, <span class="math-inline">\(P_A(t)=0.9+0.1\,e^{-10t}\)</span> with <span class="math-inline">\(t\)</span> in µs: 0.937 after 0.1 µs and 0.905 after 0.3 µs.</p>
+<p>A second molecule has <span class="math-inline">\(k_{AB}=0.001\)</span> µs<span class="math-inline">\(^{-1}\)</span> and <span class="math-inline">\(k_{BA}=0.009\)</span> µs<span class="math-inline">\(^{-1}\)</span>. The ratio is the same, so the populations and <span class="math-inline">\(\Delta G_{AB}\)</span> are the same, but the relaxation time is 100 µs. A measurement of populations cannot tell the two molecules apart. A simulation can: the expected number of A-to-B jumps in a run of length <span class="math-inline">\(t_{sim}\)</span> is <span class="math-inline">\(P_A^{eq}\,k_{AB}\,t_{sim}\)</span>. In 10 µs that is <span class="math-inline">\(0.9\times1\times10=9\)</span> jumps for the first molecule and <span class="math-inline">\(0.009\)</span> for the second, which means that the run will almost certainly show none.</p>
+</div>
+<h3 id="binding-on-rates-off-rates-and-what-a-simulation-can-see">Binding: on-rates, off-rates and what a simulation can see</h3>
+<p>Binding adds one complication: two molecules must meet before they can form a complex. For binding, <span class="math-inline">\(\text{P}+\text{L}\rightleftharpoons\text{PL}\)</span>:</p>
 <p><span class="math-display">\[K_d=\frac{k_{off}}{k_{on}},\qquad\text{residence time}=\frac{1}{k_{off}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\text{P}\)</span>, <span class="math-inline">\(\text{L}\)</span>, <span class="math-inline">\(\text{PL}\)</span>: the free protein, the free ligand and the complex. The double arrow <span class="math-inline">\(\rightleftharpoons\)</span> says that the reaction runs in both directions.</li>
+<li><span class="math-inline">\(k_{on}\)</span>: the <strong>association rate constant</strong>. The number of complexes formed per unit time and volume is <span class="math-inline">\(k_{on}[\text{P}][\text{L}]\)</span>, where square brackets are concentrations. Two concentrations are multiplied, so the unit of <span class="math-inline">\(k_{on}\)</span> is M<span class="math-inline">\(^{-1}\)</span>s<span class="math-inline">\(^{-1}\)</span> (M means mol per litre).</li>
+<li><span class="math-inline">\(k_{off}\)</span>: the <strong>dissociation rate constant</strong>, the probability per unit time that one complex falls apart, in s<span class="math-inline">\(^{-1}\)</span>. It is a first-order rate constant like <span class="math-inline">\(k\)</span> in the box above.</li>
+<li><span class="math-inline">\(K_d\)</span>: the <strong>dissociation constant</strong>, <span class="math-inline">\([\text{P}][\text{L}]/[\text{PL}]\)</span> at equilibrium, a concentration. It is the concentration of free ligand at which half of the protein is bound. A small <span class="math-inline">\(K_d\)</span> means tight binding (Module 3).</li>
+<li>Residence time: the mean lifetime of one complex.</li>
+</ul>
+</div>
+<p>Both relations follow from what you have seen. At equilibrium, complexes form as fast as they fall apart: <span class="math-inline">\(k_{on}[\text{P}][\text{L}]=k_{off}[\text{PL}]\)</span>. Divide both sides by <span class="math-inline">\(k_{on}[\text{PL}]\)</span> and the left side becomes <span class="math-inline">\([\text{P}][\text{L}]/[\text{PL}]\)</span>, which is <span class="math-inline">\(K_d\)</span>. For the residence time, one complex falls apart with probability <span class="math-inline">\(k_{off}\)</span> per unit time, so by the box above its mean waiting time is <span class="math-inline">\(1/k_{off}\)</span>.</p>
+<p>Read it like this. <span class="math-inline">\(K_d\)</span> is thermodynamics: it is a ratio, and it does not say whether a binder is tight because it binds fast or because it leaves slowly. The two rate constants are kinetics, and they answer different questions. <span class="math-inline">\(k_{on}\)</span> says how quickly a free ligand finds its site. <span class="math-inline">\(k_{off}\)</span> says how long it stays there.</p>
 <p>Association rates of proteins are typically <span class="math-inline">\(10^5\)</span> to <span class="math-inline">\(10^7\)</span> M<span class="math-inline">\(^{-1}\)</span>s<span class="math-inline">\(^{-1}\)</span>, bounded above by diffusion at about <span class="math-inline">\(10^9\)</span> to <span class="math-inline">\(10^{10}\)</span>. For a 10 nM complex with <span class="math-inline">\(k_{on}=10^6\)</span> M<span class="math-inline">\(^{-1}\)</span>s<span class="math-inline">\(^{-1}\)</span>, <span class="math-inline">\(k_{off}=10^{-2}\)</span> s<span class="math-inline">\(^{-1}\)</span>: the complex lives for 100 seconds on average. Two complexes with the same <span class="math-inline">\(K_d\)</span> can differ by orders of magnitude in residence time, and for drug efficacy residence time often matters more.</p>
+<p>Three remarks on this paragraph. The diffusion bound exists because the two partners must first find each other by random motion through the water, and no binding step can be faster than these encounters. The arithmetic of the example is <span class="math-inline">\(k_{off}=K_d\,k_{on}=10^{-8}\ \text{M}\times10^{6}\ \text{M}^{-1}\text{s}^{-1}=10^{-2}\)</span> s<span class="math-inline">\(^{-1}\)</span>, and the residence time is <span class="math-inline">\(1/k_{off}=100\)</span> s.</p>
+<p>For the last sentence of the paragraph, take two complexes with <span class="math-inline">\(K_d=10\)</span> nM. One has <span class="math-inline">\(k_{on}=10^7\)</span> M<span class="math-inline">\(^{-1}\)</span>s<span class="math-inline">\(^{-1}\)</span> and <span class="math-inline">\(k_{off}=10^{-1}\)</span> s<span class="math-inline">\(^{-1}\)</span>, and lives 10 s. The other has <span class="math-inline">\(k_{on}=10^5\)</span> M<span class="math-inline">\(^{-1}\)</span>s<span class="math-inline">\(^{-1}\)</span> and <span class="math-inline">\(k_{off}=10^{-3}\)</span> s<span class="math-inline">\(^{-1}\)</span>, and lives 1,000 s, about 17 minutes.</p>
+<p><strong>What MD can observe directly.</strong> An event with rate constant <span class="math-inline">\(k\)</span> happens about <span class="math-inline">\(k\,t_{sim}\)</span> times in a simulation of length <span class="math-inline">\(t_{sim}\)</span> that spends its time in the starting state. To estimate a rate by counting you want at least some ten events, so <span class="math-inline">\(k\)</span> must be larger than about <span class="math-inline">\(10/t_{sim}\)</span>. For a 1 µs trajectory that means <span class="math-inline">\(k&gt;10^7\)</span> s<span class="math-inline">\(^{-1}\)</span>. The complex above, with <span class="math-inline">\(k_{off}=10^{-2}\)</span> s<span class="math-inline">\(^{-1}\)</span>, misses this by nine orders of magnitude.</p>
+<p>Association is slow too, for a different reason. In a simulation box of <span class="math-inline">\(10\times10\times10\)</span> nm (an illustration) that holds one protein and one ligand, the ligand concentration is one molecule per 1,000 nm<span class="math-inline">\(^3\)</span>. With 1 M <span class="math-inline">\(=0.6022\)</span> molecules per nm<span class="math-inline">\(^3\)</span> (Module 3) this is <span class="math-inline">\(1/(1000\times0.6022)=1.7\times10^{-3}\)</span> M, or 1.7 mM, a high concentration. Even so, with <span class="math-inline">\(k_{on}=10^6\)</span> M<span class="math-inline">\(^{-1}\)</span>s<span class="math-inline">\(^{-1}\)</span> the binding rate is <span class="math-inline">\(k_{on}[\text{L}]=1.7\times10^{3}\)</span> s<span class="math-inline">\(^{-1}\)</span>, a mean waiting time of 0.6 ms.</p>
+<p>So the kinetics of binding is out of reach of plain simulation in most cases. The rest of this module gives the two ways around the problem. Rate theories compute a rate from a free-energy barrier, which the methods of Modules 12 and 14 can provide. Markov state models assemble long time scales from many short trajectories.</p>
 <h2 id="transition-state-theory">Transition state theory</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="c-dKO66Sx9A" href="https://www.youtube.com/watch?v=c-dKO66Sx9A" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Classic Treatment of rare events: Umbrella Sampling &amp; Reactive Flux Formalism</span><span class="sv-m">1 h 26 min · MyCMTS CCI</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="c-dKO66Sx9A" href="https://www.youtube.com/watch?v=c-dKO66Sx9A" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Classic Treatment of rare events: Umbrella Sampling &amp; Reactive Flux Formalism</span><span class="sv-m">1 h 26 min · MyCMTS CCI</span></a></div>
 
-<p>Divide configuration space into reactant and product by a surface at the top of the barrier, at <span class="math-inline">\(\xi=\xi^\ddagger\)</span>. TST assumes that every trajectory crossing the surface towards products goes on to become product, and that reactants are in equilibrium. The rate is the equilibrium flux through the surface:</p>
+<p>The two-state picture took the rate constants as given. Transition state theory (TST) computes one from the free-energy profile along a coordinate. Its idea fits in one sentence: the rate is the probability that a reactant is found at the top of the barrier, times the speed at which it moves through the top. The top of the barrier is called the <strong>transition state</strong>, which gives the theory its name.</p>
+<p>Three terms from earlier modules are needed:</p>
+<ul>
+<li>A <strong>collective variable</strong> <span class="math-inline">\(\xi\)</span> (Greek xi) is a single number, computed from the atomic positions, that measures the progress of the process. An example is the distance between a ligand and its binding site (Modules 12 and 14).</li>
+<li>The <strong>potential of mean force</strong> (PMF) <span class="math-inline">\(W(\xi)\)</span> is the free energy as a function of <span class="math-inline">\(\xi\)</span>, defined by <span class="math-inline">\(W(\xi)=-k_BT\ln P(\xi)+\text{const}\)</span>, where <span class="math-inline">\(P(\xi)\)</span> is the equilibrium <a href="maths.html#probability">probability density</a> of <span class="math-inline">\(\xi\)</span> (Modules 3 and 12). Its wells are the stable states and the hill between two wells is the barrier.</li>
+<li><strong>Configuration space</strong> is the set of all possible arrangements of the atoms: positions only, without the velocities.</li>
+</ul>
+<p>Divide configuration space into reactant and product by a surface at the top of the barrier, at <span class="math-inline">\(\xi=\xi^\ddagger\)</span>. Every configuration with <span class="math-inline">\(\xi\)</span> below <span class="math-inline">\(\xi^\ddagger\)</span> is then called reactant (state A) and every configuration above it product (state B). The border, all configurations with exactly <span class="math-inline">\(\xi=\xi^\ddagger\)</span>, is the <strong>dividing surface</strong>.</p>
+<p>TST assumes that every trajectory crossing the surface towards products goes on to become product, and that reactants are in equilibrium. The first assumption says that nobody turns back after the top. The second says that the configurations inside A occur with their Boltzmann probabilities, including the rare ones near the top, although some copies keep leaving. A <strong>flux</strong> is a number of crossings per unit time. The rate is the equilibrium flux through the surface:</p>
 <p><span class="math-display">\[k_{TST}=\tfrac12\big\langle|\dot\xi|\big\rangle_{\xi^\ddagger}\;\frac{e^{-\beta W(\xi^\ddagger)}}{\int_{A}e^{-\beta W(\xi)}d\xi} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k_{TST}\)</span>: the TST estimate of the rate constant from reactant to product, in 1/time.</li>
+<li><span class="math-inline">\(\xi\)</span>: the collective variable. <span class="math-inline">\(\xi^\ddagger\)</span> is its value at the top of the barrier.</li>
+<li><span class="math-inline">\(\dot\xi\)</span>: the time derivative of <span class="math-inline">\(\xi\)</span>, the velocity along the coordinate. The bars in <span class="math-inline">\(|\dot\xi|\)</span> take the absolute value: the speed, without its direction.</li>
+<li><span class="math-inline">\(\langle\dots\rangle_{\xi^\ddagger}\)</span>: an average over equilibrium configurations that sit on the dividing surface.</li>
+<li><span class="math-inline">\(\tfrac12\)</span>: at the top, half of the copies are moving towards the product and half are moving back. Only the first half counts.</li>
+<li><span class="math-inline">\(W(\xi)\)</span>: the potential of mean force, an energy in kJ/mol.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(e^{-\beta W(\xi^\ddagger)}\)</span>: the Boltzmann factor at the barrier top. It is small when the top is high.</li>
+<li><span class="math-inline">\(\int_A\dots d\xi\)</span>: an <a href="maths.html#integral">integral</a> over the reactant region, all values of <span class="math-inline">\(\xi\)</span> below <span class="math-inline">\(\xi^\ddagger\)</span>. It adds up the Boltzmann factors of all reactant positions.</li>
+</ul>
+</div>
+<p>Read it like this. The fraction on the right is a probability density: the chance, per unit length of <span class="math-inline">\(\xi\)</span>, that a copy which is somewhere in A is found at the top. Multiplying a probability per unit length by a speed (length per time) gives a probability per unit time, which is a rate constant.</p>
+<p>Each part of the formula can be read on its own. A higher barrier makes the numerator exponentially smaller. A wider well makes the denominator larger and the rate smaller, because the reactant has more places to be that are not the top. A faster coordinate makes the first factor larger.</p>
+<details>
+<summary>Optional: where the factor in front comes from</summary>
+<p>Call the fraction <span class="math-inline">\(\rho^\ddagger\)</span>. Among the reactant copies, the fraction found in a thin strip of width <span class="math-inline">\(d\xi\)</span> at the top is <span class="math-inline">\(\rho^\ddagger\,d\xi\)</span>.</p>
+<p>A copy that moves to the right with velocity <span class="math-inline">\(\dot\xi&gt;0\)</span> crosses the surface during the next short time <span class="math-inline">\(dt\)</span> if it is closer to the surface than the distance it travels, <span class="math-inline">\(\dot\xi\,dt\)</span>. The fraction of copies in that strip is <span class="math-inline">\(\rho^\ddagger\,\dot\xi\,dt\)</span>.</p>
+<p>Copies have different velocities, so average over them, counting only the positive ones. If <span class="math-inline">\(p(\dot\xi)\)</span> is the probability density of the velocity, the fraction of copies that cross in <span class="math-inline">\(dt\)</span> is</p>
+<p><span class="math-display">\[\rho^\ddagger\,dt\int_0^\infty\dot\xi\;p(\dot\xi)\,d\dot\xi=\rho^\ddagger\,dt\;\tfrac12\big\langle|\dot\xi|\big\rangle .\]</span></p>
+<p>The equality holds because the distribution of velocities is symmetric: as many copies move left as right, so the integral over positive velocities is half of the average of <span class="math-inline">\(|\dot\xi|\)</span> over all velocities. Dividing by <span class="math-inline">\(dt\)</span> gives the crossings per unit time per reactant copy, which is the formula for <span class="math-inline">\(k_{TST}\)</span>.</p>
+</details>
+<p>The general formula becomes much shorter when the well has a simple shape. "Harmonic" means that near its minimum the PMF is a parabola, <span class="math-inline">\(W\approx W_{min}+\tfrac12m\omega_0^2(\xi-\xi_0)^2\)</span>, like the energy of a mass <span class="math-inline">\(m\)</span> on a spring (Module 2 and the <a href="physics.html#oscillator">primer</a>). Here <span class="math-inline">\(\xi_0\)</span> is the position of the minimum, <span class="math-inline">\(W_{min}\)</span> the free energy there, and <span class="math-inline">\(m\)</span> the mass that moves along <span class="math-inline">\(\xi\)</span>.</p>
 <p>For a one-dimensional harmonic well with frequency <span class="math-inline">\(\omega_0\)</span> and barrier <span class="math-inline">\(\Delta W^\ddagger\)</span> this becomes</p>
 <p><span class="math-display">\[k_{TST}=\frac{\omega_0}{2\pi}\,e^{-\beta\Delta W^\ddagger},\]</span></p>
-<p>and in the form used by chemists (Eyring), <span class="math-inline">\(k=\dfrac{k_BT}{h}e^{-\beta\Delta G^\ddagger}\)</span>, with <span class="math-inline">\(k_BT/h=6.2\times10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> at 300 K.</p>
+<p>and in the form used by chemists (Eyring), <span class="math-inline">\(k=\dfrac{k_BT}{h}e^{-\beta\Delta G^\ddagger}\)</span>, with <span class="math-inline">\(k_BT/h=6.25\times10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> at 300 K.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\omega_0\)</span>: the angular frequency of the oscillation in the reactant well, in radians per unit time.</li>
+<li><span class="math-inline">\(\omega_0/2\pi\)</span>: the ordinary frequency, the number of full oscillations per unit time. Here <span class="math-inline">\(\pi\)</span> is the number 3.14159.</li>
+<li><span class="math-inline">\(\Delta W^\ddagger\)</span>: the barrier height, <span class="math-inline">\(W(\xi^\ddagger)-W_{min}\)</span>, measured from the bottom of the well.</li>
+<li><span class="math-inline">\(e^{-\beta\Delta W^\ddagger}\)</span>: the Boltzmann factor of the barrier, a number between 0 and 1.</li>
+<li><span class="math-inline">\(h\)</span>: Planck's constant, <span class="math-inline">\(6.626\times10^{-34}\)</span> J s, a constant of quantum mechanics.</li>
+<li><span class="math-inline">\(k_BT/h\)</span>: a frequency that depends only on the temperature, about 6 per picosecond at 300 K.</li>
+<li><span class="math-inline">\(\Delta G^\ddagger\)</span>: the <strong>activation free energy</strong> of Eyring's form: the free energy of the system held at the top of the barrier minus the free energy of the whole reactant state. It is not the same number as <span class="math-inline">\(\Delta W^\ddagger\)</span> (see below).</li>
+<li><span class="math-inline">\(k\)</span>: the rate constant in Eyring's form, in 1/time. <span class="math-inline">\(k_B\)</span> is the Boltzmann constant and <span class="math-inline">\(T\)</span> the temperature.</li>
+<li><span class="math-inline">\(k_{TST}\)</span>, <span class="math-inline">\(\beta\)</span>: as in the list above.</li>
+</ul>
+</div>
+<p>Read it like this. The system knocks at the barrier <span class="math-inline">\(\omega_0/2\pi\)</span> times per unit time, once per oscillation in the well. Each attempt succeeds with probability <span class="math-inline">\(e^{-\beta\Delta W^\ddagger}\)</span>. The rate is attempts times success probability.</p>
+<div class="box key">
+<p><strong>Worked example: how strongly the rate depends on the barrier.</strong> Say the oscillation in the well has a period of 1 ps, so <span class="math-inline">\(\omega_0/2\pi=10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> (an illustration).</p>
+<ul>
+<li>Barrier of <span class="math-inline">\(5\,k_BT\)</span> (12.5 kJ/mol at 300 K): <span class="math-inline">\(e^{-5}=6.7\times10^{-3}\)</span>, so <span class="math-inline">\(k=6.7\times10^{9}\)</span> s<span class="math-inline">\(^{-1}\)</span>. One crossing per 0.15 ns.</li>
+<li>Barrier of <span class="math-inline">\(10\,k_BT\)</span> (24.9 kJ/mol): <span class="math-inline">\(e^{-10}=4.5\times10^{-5}\)</span>, so <span class="math-inline">\(k=4.5\times10^{7}\)</span> s<span class="math-inline">\(^{-1}\)</span>. One crossing per 22 ns.</li>
+<li>Barrier of <span class="math-inline">\(20\,k_BT\)</span> (49.9 kJ/mol): <span class="math-inline">\(e^{-20}=2.1\times10^{-9}\)</span>, so <span class="math-inline">\(k=2.1\times10^{3}\)</span> s<span class="math-inline">\(^{-1}\)</span>. One crossing per 0.5 ms.</li>
+</ul>
+<p>Every extra <span class="math-inline">\(k_BT\)</span> of barrier divides the rate by <span class="math-inline">\(e\approx2.7\)</span>. Every extra <span class="math-inline">\(k_BT\ln10=5.7\)</span> kJ/mol divides it by ten. An error of 6 kJ/mol in a computed barrier is therefore an error of a factor ten in the rate.</p>
+</div>
+<details>
+<summary>Optional: from the general formula to the harmonic one</summary>
+<p>Two ingredients are needed, and both are <a href="maths.html#gaussian">Gaussian integrals</a>.</p>
+<p><em>The speed at the top.</em> At temperature <span class="math-inline">\(T\)</span> the velocity along <span class="math-inline">\(\xi\)</span> follows the Maxwell-Boltzmann distribution (Module 3): a Gaussian with mean zero and variance <span class="math-inline">\(k_BT/m\)</span>. For a Gaussian with standard deviation <span class="math-inline">\(\sigma\)</span> the mean absolute value is <span class="math-inline">\(\sigma\sqrt{2/\pi}\)</span>. So <span class="math-inline">\(\langle|\dot\xi|\rangle=\sqrt{2k_BT/\pi m}\)</span>.</p>
+<p><em>The integral over the well.</em> With the parabola for <span class="math-inline">\(W\)</span>, the Boltzmann factor <span class="math-inline">\(e^{-\beta W}\)</span> is a Gaussian in <span class="math-inline">\(\xi\)</span> centred on the minimum. Almost all of its area lies near the minimum, so the integral over A can be extended over all <span class="math-inline">\(\xi\)</span>. The standard result <span class="math-inline">\(\int_{-\infty}^{\infty}e^{-ax^2}dx=\sqrt{\pi/a}\)</span> with <span class="math-inline">\(a=\beta m\omega_0^2/2\)</span> gives</p>
+<p><span class="math-display">\[\int_Ae^{-\beta W(\xi)}d\xi\approx e^{-\beta W_{min}}\sqrt{\frac{2\pi k_BT}{m\,\omega_0^2}} .\]</span></p>
+<p><em>Put them together.</em> Insert both into the general formula and use <span class="math-inline">\(W(\xi^\ddagger)-W_{min}=\Delta W^\ddagger\)</span>:</p>
+<p><span class="math-display">\[k_{TST}=\frac12\sqrt{\frac{2k_BT}{\pi m}}\;\sqrt{\frac{m\,\omega_0^2}{2\pi k_BT}}\;e^{-\beta\Delta W^\ddagger}=\frac12\,\frac{\omega_0}{\pi}\,e^{-\beta\Delta W^\ddagger}=\frac{\omega_0}{2\pi}\,e^{-\beta\Delta W^\ddagger} .\]</span></p>
+<p>Under the two square roots, <span class="math-inline">\(k_BT\)</span> and <span class="math-inline">\(m\)</span> cancel and <span class="math-inline">\(\omega_0^2/\pi^2\)</span> is left. Neither the mass nor the temperature survives in the factor in front.</p>
+</details>
+<p>Eyring's form is the same transition-state-theory rate with a different bookkeeping. Its factor in front, <span class="math-inline">\(k_BT/h\)</span>, is the same for every reaction, and everything that is specific to the reaction, the width of the well included, is put into <span class="math-inline">\(\Delta G^\ddagger\)</span>. For the one-dimensional harmonic well, setting the two forms equal gives <span class="math-inline">\(\Delta G^\ddagger=\Delta W^\ddagger+k_BT\ln\big(k_BT/h\nu_0\big)\)</span>, where <span class="math-inline">\(\nu_0=\omega_0/2\pi\)</span> is the frequency in the well. For a well period of 1 ps at 300 K the extra term is <span class="math-inline">\(k_BT\ln6.25=4.6\)</span> kJ/mol, and for a softer well with a period of 10 ps it is <span class="math-inline">\(k_BT\ln62.5=10.3\)</span> kJ/mol.</p>
+<p>So a barrier read from a PMF is not yet an activation free energy in Eyring's sense: the term for the width of the well is missing. If you put <span class="math-inline">\(\Delta W^\ddagger\)</span> into Eyring's form unchanged, the rate comes out too high by the factor <span class="math-inline">\(k_BT/h\nu_0\)</span>, about 6 and about 60 in the two examples. With a barrier from a PMF, use <span class="math-inline">\(\omega_0/2\pi\)</span> as the factor in front, or add the extra term to the barrier first. This is where the curvature of the well enters the first answer to "Check yourself" 2. As a number to remember: with <span class="math-inline">\(\Delta G^\ddagger=30\)</span> kJ/mol at 300 K, <span class="math-inline">\(e^{-30/2.494}=6.0\times10^{-6}\)</span> and Eyring's form gives <span class="math-inline">\(k=3.7\times10^{7}\)</span> s<span class="math-inline">\(^{-1}\)</span>.</p>
+<h3 id="recrossing-and-the-transmission-coefficient">Recrossing and the transmission coefficient</h3>
 <p>TST is an <strong>upper bound</strong>. Real trajectories recross the surface: they are knocked back by the solvent. The exact rate is <span class="math-inline">\(k=\kappa\,k_{TST}\)</span> with a <strong>transmission coefficient</strong> <span class="math-inline">\(\kappa\le1\)</span> that can be computed by launching short trajectories from the dividing surface (the reactive-flux, or Bennett-Chandler, method).</p>
+<p>Here <span class="math-inline">\(\kappa\)</span> (Greek kappa) is a pure number between 0 and 1, <span class="math-inline">\(k_{TST}\)</span> is the TST rate constant of the formulas above, and <span class="math-inline">\(k\)</span> is the true rate constant.</p>
+<p>The picture is this. A copy arrives at the top and moves towards the product. TST counts it as a reaction at that instant.</p>
+<p>In water, the next collision may reverse its velocity and send it back into the reactant well, or it may cross the top several times before it settles on one side. Each of these crossings was counted by TST, and only some of them belong to a completed reaction. TST can therefore only count too many crossings, never too few, which is why it is an upper bound. With <span class="math-inline">\(\kappa=0.1\)</span>, the true rate is a tenth of the TST rate.</p>
+<p>The reactive-flux method measures <span class="math-inline">\(\kappa\)</span> directly. You prepare many configurations on the dividing surface, give each one random velocities for the temperature, and follow each for a short time, until it has settled in A or in B. Then you compare the flow that ended in B with the flow that TST assumed. The trajectories can be short because they start at the top, the place that a free simulation almost never visits.</p>
 <h2 id="kramers-theory">Kramers theory</h2>
+<p>The harmonic TST formula contains the well and the barrier and nothing else. The solvent is absent from it. Yet a coordinate of a protein in water is pushed around by collisions all the time. Kramers theory puts the solvent back as friction, and asks how the rate depends on the strength of that friction.</p>
+<div class="box physics">
+<p><strong>Physics you need here: friction and Brownian motion.</strong> A particle of mass <span class="math-inline">\(m\)</span> that moves through a solvent with velocity <span class="math-inline">\(v\)</span> feels a drag force <span class="math-inline">\(-m\gamma v\)</span> that opposes the motion, and random kicks from the collisions with solvent molecules. Motion of this kind is called <strong>Brownian motion</strong>, and this description of it is the Langevin model of Module 8. With no other force, the drag makes the average velocity decay as <span class="math-inline">\(e^{-\gamma t}\)</span>. The <strong>friction rate</strong> <span class="math-inline">\(\gamma\)</span> (Greek gamma) therefore has the unit 1/time, and <span class="math-inline">\(1/\gamma\)</span> is the time after which the particle has forgotten its velocity.</p>
+<p>When <span class="math-inline">\(\gamma\)</span> is large, the particle forgets its velocity almost at once and its path is a random walk. The regime is called <strong>overdamped</strong> or diffusive. When <span class="math-inline">\(\gamma\)</span> is small, the particle flies and oscillates almost as it would in vacuum, and the regime is called underdamped.</p>
+<p>How fast a random walk spreads is measured by the <strong>diffusion coefficient</strong> <span class="math-inline">\(D\)</span>, in length squared per time: along one coordinate, the mean squared displacement after a time <span class="math-inline">\(t\)</span> is <span class="math-inline">\(2Dt\)</span>. Friction and diffusion are tied together by <span class="math-inline">\(D=k_BT/m\gamma\)</span>: more friction, slower spreading. More in the <a href="physics.html#diffusion">primer</a>.</p>
+</div>
 <p><a href="https://doi.org/10.1016/s0031-8914(40)90098-2" class="cite" target="_blank" rel="noopener" title="Kramers HA (1940). Brownian motion in a field of force and the diffusion model of chemical reactions. Physica">Kramers (1940)</a> treated barrier crossing as Brownian motion of a particle in a potential with friction <span class="math-inline">\(\gamma\)</span>. With angular well frequency <span class="math-inline">\(\omega_0\)</span> and angular barrier frequency <span class="math-inline">\(\omega_b\)</span> (each <span class="math-inline">\(\sqrt{|W''|/m}\)</span>, taken at the minimum and at the barrier top), friction rate <span class="math-inline">\(\gamma\)</span> (in 1/time, as in Module 8) and barrier height <span class="math-inline">\(\Delta W^\ddagger\)</span>, the high-friction result is</p>
 <p><span class="math-display">\[k_{Kramers}=\frac{\omega_0\,\omega_b}{2\pi\gamma}\,e^{-\beta\Delta W^\ddagger}\qquad(\gamma\gg\omega_b).\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k_{Kramers}\)</span>: the rate constant for crossing the barrier, in 1/time.</li>
+<li><span class="math-inline">\(W''\)</span>: the second derivative of <span class="math-inline">\(W\)</span> with respect to the coordinate, its <a href="maths.html#derivative">curvature</a>. It is positive at the minimum and negative at the barrier top, which is why the absolute value is taken.</li>
+<li><span class="math-inline">\(m\)</span>: the mass that moves along the coordinate.</li>
+<li><span class="math-inline">\(\omega_0\)</span>: the angular frequency of oscillation in the well, <span class="math-inline">\(\sqrt{W''_{min}/m}\)</span>. A stiff, narrow well has a large <span class="math-inline">\(\omega_0\)</span>.</li>
+<li><span class="math-inline">\(\omega_b\)</span>: the angular barrier frequency, <span class="math-inline">\(\sqrt{|W''_{top}|/m}\)</span>. It measures how sharply the barrier top is curved. A particle without friction, released next to the top, slides away from it roughly as <span class="math-inline">\(e^{\omega_bt}\)</span>.</li>
+<li><span class="math-inline">\(\gamma\)</span>: the friction rate, in 1/time.</li>
+<li><span class="math-inline">\(\Delta W^\ddagger\)</span>: the barrier height. <span class="math-inline">\(\beta=1/k_BT\)</span>. In <span class="math-inline">\(2\pi\)</span>, <span class="math-inline">\(\pi\)</span> is the number 3.14159.</li>
+<li><span class="math-inline">\((\gamma\gg\omega_b)\)</span>: the condition under which the formula holds. The velocity is forgotten, after a time <span class="math-inline">\(1/\gamma\)</span>, long before the particle could slide off the top, which takes a time of about <span class="math-inline">\(1/\omega_b\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this. Compare with the harmonic TST formula: the Boltzmann factor and <span class="math-inline">\(\omega_0/2\pi\)</span> are the same, and there is one new factor, <span class="math-inline">\(\omega_b/\gamma\)</span>. That factor is the transmission coefficient <span class="math-inline">\(\kappa\)</span> of the previous section, and under the condition <span class="math-inline">\(\gamma\gg\omega_b\)</span> it is much smaller than 1. With <span class="math-inline">\(\gamma=10\,\omega_b\)</span> the rate is a tenth of the TST rate. Double the friction and the rate halves.</p>
 <p>The rate is inversely proportional to friction: in the overdamped regime that applies to conformational changes of proteins in water, crossing the barrier top is a slow diffusion and the system recrosses many times. At very low friction the rate falls again, now in proportion to <span class="math-inline">\(\gamma\)</span>, because the particle cannot gain or lose energy fast enough. The rate therefore has a maximum at an intermediate friction, the "Kramers turnover" (<a href="https://doi.org/10.1103/revmodphys.62.251" class="cite" target="_blank" rel="noopener" title="Hänggi P; Talkner P; Borkovec M (1990). Reaction-rate theory: fifty years after Kramers. Reviews of Modern Physics">Hänggi, Talkner and Borkovec 1990</a>). For moderate friction Kramers' formula is <span class="math-inline">\(k=\kappa\,k_{TST}\)</span> with <span class="math-inline">\(\kappa=\sqrt{1+(\gamma/2\omega_b)^2}-\gamma/2\omega_b\)</span>, which reduces to the high-friction result when <span class="math-inline">\(\gamma\gg\omega_b\)</span>.</p>
+<p>The two limits are easier to remember as pictures.</p>
+<table>
+<thead>
+<tr>
+<th>Friction</th>
+<th>Picture</th>
+<th>What limits the rate</th>
+<th>How the rate changes with <span class="math-inline">\(\gamma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High, <span class="math-inline">\(\gamma\gg\omega_b\)</span></td>
+<td>A ball pushed through honey</td>
+<td>Diffusing across the flat region at the top, with many recrossings</td>
+<td>Falls as <span class="math-inline">\(1/\gamma\)</span></td>
+</tr>
+<tr>
+<td>Intermediate</td>
+<td>Between the two</td>
+<td>Little: the rate is at its maximum, nearest to the TST value and still below it</td>
+<td>Almost flat</td>
+</tr>
+<tr>
+<td>Very low</td>
+<td>A ball on an almost frictionless track</td>
+<td>Collecting enough energy to reach the top, and getting rid of it afterwards</td>
+<td>Rises in proportion to <span class="math-inline">\(\gamma\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The low-friction row needs a few more words. To cross, the particle needs an energy above the barrier top, and the only source of energy is the solvent. When the coupling to the solvent is weak, a particle in the well waits a long time for that energy. Once it has it, it flies over the top, bounces off the far wall and flies back, because it loses energy as slowly as it gained it. It is not trapped in the product well until the solvent has taken the energy away.</p>
+<p>The formula for moderate friction can be checked in both directions. Write <span class="math-inline">\(x=\gamma/2\omega_b\)</span>. For large <span class="math-inline">\(x\)</span>, <span class="math-inline">\(\sqrt{1+x^2}=x\sqrt{1+1/x^2}\approx x+1/2x\)</span> (a <a href="maths.html#taylor">Taylor expansion</a> of the square root), so <span class="math-inline">\(\kappa\approx1/2x=\omega_b/\gamma\)</span>, the high-friction factor. For example <span class="math-inline">\(x=5\)</span> gives <span class="math-inline">\(\kappa=\sqrt{26}-5=0.099\)</span>, against <span class="math-inline">\(\omega_b/\gamma=0.1\)</span>.</p>
+<p>For small <span class="math-inline">\(x\)</span>, <span class="math-inline">\(\kappa\)</span> approaches 1, which is TST: <span class="math-inline">\(x=0.05\)</span> gives <span class="math-inline">\(\kappa=0.95\)</span>. This formula does not contain the fall of the rate at very low friction, which needs a separate treatment.</p>
 <p>Two lessons for simulation. First, anything that changes the effective friction (the thermostat's <span class="math-inline">\(\gamma\)</span>, a water model that is too fluid, a coarse-grained or implicit-solvent model) changes the rates without changing the free energies. The direction depends on the regime: more friction lowers the rate when the motion is overdamped and raises it at very weak friction. Second, the prefactor is not universal: it depends on the curvature and on the diffusion coefficient along the coordinate (with <span class="math-inline">\(D=k_BT/m\gamma\)</span> the high-friction formula reads <span class="math-inline">\(k=D\sqrt{W''_{min}\,|W''_{top}|}\;e^{-\beta\Delta W^\ddagger}/2\pi k_BT\)</span>), so a barrier height alone does not give a rate.</p>
+<p>Why the free energies do not change: equilibrium populations are given by Boltzmann factors of the energy, and friction does not appear in them. Friction only decides how fast the system moves between configurations. Two warnings of earlier modules have this origin. A Langevin thermostat adds its friction to that of the solvent and slows the dynamics (Module 8), and time in a coarse-grained model, which has lost part of the friction, has no simple relation to real time (Module 15). The "prefactor" is everything in front of the exponential.</p>
+<p>The formula in brackets is the Kramers formula rewritten. Two substitutions are needed. From the definitions, <span class="math-inline">\(\omega_0\omega_b=\sqrt{W''_{min}/m}\,\sqrt{|W''_{top}|/m}=\sqrt{W''_{min}|W''_{top}|}/m\)</span>. And from <span class="math-inline">\(D=k_BT/m\gamma\)</span>, <span class="math-inline">\(1/m\gamma=D/k_BT\)</span>. Together:</p>
+<p><span class="math-display">\[k=\frac{\omega_0\,\omega_b}{2\pi\gamma}\,e^{-\beta\Delta W^\ddagger}=\frac{D\,\sqrt{W''_{min}\,|W''_{top}|}}{2\pi\,k_BT}\;e^{-\beta\Delta W^\ddagger} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(D\)</span>: the diffusion coefficient along the coordinate, for example in nm<span class="math-inline">\(^2\)</span>/ps when the coordinate is a distance.</li>
+<li><span class="math-inline">\(W''_{min}\)</span>: the curvature of the PMF at the bottom of the well, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> for a distance.</li>
+<li><span class="math-inline">\(W''_{top}\)</span>: the curvature at the barrier top, a negative number. The bars take its absolute value.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy, 2.494 kJ/mol at 300 K.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>This form is the practical one, because it contains only quantities that a simulation can measure: two curvatures and a barrier height from the PMF, and a diffusion coefficient from the motion along the coordinate. The mass has dropped out. Example with round numbers: <span class="math-inline">\(D=0.001\)</span> nm<span class="math-inline">\(^2\)</span>/ps, both curvatures 500 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> and a barrier of <span class="math-inline">\(5\,k_BT\)</span> give <span class="math-inline">\(k=0.001\times500\times e^{-5}/(2\pi\times2.494)=2.1\times10^{-4}\)</span> ps<span class="math-inline">\(^{-1}\)</span>, one crossing per 4.7 ns. Halve <span class="math-inline">\(D\)</span> and the rate halves, with the same PMF.</p>
+<h3 id="the-mean-first-passage-time">The mean first-passage time</h3>
+<p>Start a trajectory at position <span class="math-inline">\(a\)</span> and stop the clock the first time it reaches position <span class="math-inline">\(b\)</span>. The time on the clock is a <strong>first-passage time</strong>. It is different in every run, and its average over many runs is the <strong>mean first-passage time</strong>. It is the most direct definition of "how long does it take", and for diffusion along one coordinate it can be written down without approximating the shape of <span class="math-inline">\(W\)</span>.</p>
 <p>For diffusive motion along a coordinate with free energy <span class="math-inline">\(W(x)\)</span> and position-dependent diffusion coefficient <span class="math-inline">\(D(x)\)</span>, the mean first-passage time from <span class="math-inline">\(a\)</span> to <span class="math-inline">\(b\)</span> is exact:</p>
 <p><span class="math-display">\[\tau(a\to b)=\int_a^b\frac{e^{\beta W(x)}}{D(x)}\left[\int_{-\infty}^{x}e^{-\beta W(y)}dy\right]dx .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\tau(a\to b)\)</span>: the mean first-passage time from <span class="math-inline">\(a\)</span> to <span class="math-inline">\(b\)</span>, a time. This <span class="math-inline">\(\tau\)</span> is not the lag time of the later sections.</li>
+<li><span class="math-inline">\(x\)</span>: a position along the coordinate between <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span>, the variable of the outer integral.</li>
+<li><span class="math-inline">\(y\)</span>: a position to the left of <span class="math-inline">\(x\)</span>, the variable of the inner integral.</li>
+<li><span class="math-inline">\(W(x)\)</span>: the free-energy profile (the PMF) along the coordinate. <span class="math-inline">\(\beta=1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(D(x)\)</span>: the diffusion coefficient, which may differ from place to place.</li>
+<li><span class="math-inline">\(e^{\beta W(x)}\)</span>: an exponential with a <em>positive</em> sign. It is large where <span class="math-inline">\(W\)</span> is high, at the barrier.</li>
+<li><span class="math-inline">\(\int_{-\infty}^{x}e^{-\beta W(y)}dy\)</span>: the sum of the Boltzmann factors of all positions to the left of <span class="math-inline">\(x\)</span>, a measure of the population found there.</li>
+<li><span class="math-inline">\(-\infty\)</span>: there is no exit on the left. The profile <span class="math-inline">\(W\)</span> must rise there, so that the inner integral is finite.</li>
+</ul>
+</div>
+<p>Read it like this. "Exact" refers to the model of diffusive motion on a profile <span class="math-inline">\(W\)</span>: no parabola and no high barrier is assumed. The outer integrand is largest near the barrier top, where <span class="math-inline">\(e^{\beta W}\)</span> is large, so the top dominates the passage time. At the top, the inner integral is the whole population of the starting well. A deep, wide well and a high, flat top both make the time long, and so does slow diffusion at the top.</p>
+<p>Two checks with numbers. For a flat profile with a wall at <span class="math-inline">\(x=0\)</span>, constant <span class="math-inline">\(D\)</span> and a target at distance <span class="math-inline">\(L\)</span>, the formula gives <span class="math-inline">\(\tau=\int_0^L(x/D)\,dx=L^2/2D\)</span>: with <span class="math-inline">\(L=1\)</span> nm and <span class="math-inline">\(D=1\)</span> nm<span class="math-inline">\(^2\)</span>/ns, 0.5 ns. For the double well <span class="math-inline">\(W(x)=5\,k_BT\,(x^2-1)^2\)</span>, with its minima at <span class="math-inline">\(x=\pm1\)</span> and with <span class="math-inline">\(D=1\)</span> in the units of the example, evaluating the two integrals numerically gives <span class="math-inline">\(\tau(-1\to1)=36.5\)</span>, while the inverse of the Kramers rate is 33.0. The two differ by about 10%, the price of replacing the well and the top by parabolas. For a barrier of <span class="math-inline">\(8\,k_BT\)</span> the difference shrinks to 6%.</p>
+<details>
+<summary>Optional: how the Kramers rate comes out of this integral</summary>
+<p>Take a constant <span class="math-inline">\(D\)</span> and a barrier of several <span class="math-inline">\(k_BT\)</span>, and let <span class="math-inline">\(b\)</span> lie well beyond the top.</p>
+<p><em>The outer integral.</em> Near the top, at <span class="math-inline">\(x^\ddagger\)</span>, the profile is an upside-down parabola, <span class="math-inline">\(W\approx W^\ddagger-\tfrac12|W''_{top}|(x-x^\ddagger)^2\)</span>. So <span class="math-inline">\(e^{\beta W}\)</span> is a Gaussian peak centred on the top, and its area is <span class="math-inline">\(e^{\beta W^\ddagger}\sqrt{2\pi k_BT/|W''_{top}|}\)</span>.</p>
+<p><em>The inner integral.</em> For <span class="math-inline">\(x\)</span> near the top it covers the whole well. With a parabola for the well, as in the TST section, it equals <span class="math-inline">\(e^{-\beta W_{min}}\sqrt{2\pi k_BT/W''_{min}}\)</span>, and it hardly changes while <span class="math-inline">\(x\)</span> moves across the narrow peak.</p>
+<p><em>The product.</em></p>
+<p><span class="math-display">\[\tau\approx\frac{1}{D}\,\sqrt{\frac{2\pi k_BT}{|W''_{top}|}}\,\sqrt{\frac{2\pi k_BT}{W''_{min}}}\;e^{\beta(W^\ddagger-W_{min})}=\frac{2\pi\,k_BT}{D\sqrt{W''_{min}|W''_{top}|}}\;e^{\beta\Delta W^\ddagger} ,\]</span></p>
+<p>which is <span class="math-inline">\(1/k\)</span> for the Kramers rate in its diffusion form. If <span class="math-inline">\(b\)</span> is placed exactly at the top, the outer integral covers only half of the Gaussian peak and the result is half as large. A particle that has reached the top falls back as often as it goes on, so reaching the top takes half the time of a full transition. Exercise 1 uses this.</p>
+</details>
 <h2 id="the-committor-and-what-makes-a-good-reaction-coordinate">The committor and what makes a good reaction coordinate</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="ziRedoLEb2o" href="https://www.youtube.com/watch?v=ziRedoLEb2o" target="_blank" rel="noopener" title="Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations"><span class="sv-play">&#9654;</span><span class="sv-t">Transition Path Sampling and Free Energy Calculations - Chris Chipot</span><span class="sv-m">1 h 30 min · TCBG UIUC</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="ziRedoLEb2o" href="https://www.youtube.com/watch?v=ziRedoLEb2o" target="_blank" rel="noopener" title="Urbana 2017 Workshop on Enhanced Sampling and Free-Energy Calculations"><span class="sv-play">&#9654;</span><span class="sv-t">Transition Path Sampling and Free Energy Calculations - Chris Chipot</span><span class="sv-m">1 h 30 min · TCBG UIUC</span></a></div>
 
+<p>The rate formulas above need a coordinate with a well and a barrier top. A protein offers many candidate coordinates, and a convenient one need not describe the process well. This section gives the standard by which a coordinate is judged.</p>
+<p>Start with a question about one configuration: if the system is released here, where does it go first, back to A or on to B? Rain on a mountain ridge is the picture. A drop that falls on one side of the ridge ends in one valley, a drop on the other side ends in the other valley, and the ridge line is where both outcomes are equally likely. The picture fails in one respect. Water runs downhill along a fixed path, while a molecule is kicked at random, so for a molecule the answer is a probability that changes gradually from 0 to 1.</p>
 <p>For any configuration <span class="math-inline">\(\mathbf x\)</span>, the <strong>committor</strong> <span class="math-inline">\(p_B(\mathbf x)\)</span> is the probability that a trajectory started from <span class="math-inline">\(\mathbf x\)</span> with random Maxwell-Boltzmann velocities reaches state B before state A. It is 0 in A, 1 in B, and the true <strong>transition state ensemble</strong> is the set of configurations with <span class="math-inline">\(p_B=\tfrac12\)</span>.</p>
-<p>The committor is the ideal reaction coordinate: it says exactly how far a configuration has progressed. A collective variable <span class="math-inline">\(\xi\)</span> is a good reaction coordinate to the extent that the committor is a function of it, <span class="math-inline">\(p_B(\mathbf x)\approx g\big(\xi(\mathbf x)\big)\)</span> with <span class="math-inline">\(g\)</span> monotonic, so that every surface of constant <span class="math-inline">\(\xi\)</span> is a surface of constant committor. The test: collect configurations at the barrier top of your PMF, shoot many short trajectories from each, and histogram their committor values. A peak near <span class="math-inline">\(\tfrac12\)</span> means <span class="math-inline">\(\xi\)</span> captures the mechanism. A bimodal histogram with peaks near 0 and 1 means that the configurations at the "barrier top" already belong to one side or the other: an important coordinate is missing, the barrier in the PMF is lower than the true one, and a rate computed from it will be too high.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf x\)</span>: one configuration, the positions of all atoms. Bold, because it is a list of many numbers.</li>
+<li>A, B: the two states, each a region of configuration space, for example "bound" and "unbound".</li>
+<li><span class="math-inline">\(p_B(\mathbf x)\)</span>: the committor of configuration <span class="math-inline">\(\mathbf x\)</span>, a number between 0 and 1. The subscript B names the state that is to be reached first. This <span class="math-inline">\(p\)</span> is not a momentum.</li>
+<li>Random Maxwell-Boltzmann velocities: velocities drawn at random from the distribution that belongs to the temperature (Module 3). The positions are the same in every trial and only the velocities differ.</li>
+<li>Transition state ensemble: an ensemble is a collection of configurations. This one collects the configurations from which both outcomes are equally likely.</li>
+</ul>
+</div>
+<p>The definition is also the recipe for computing it. Take the configuration, draw random velocities, and run until the trajectory reaches A or B. Repeat <span class="math-inline">\(N\)</span> times. If <span class="math-inline">\(n_B\)</span> of the runs ended in B, then <span class="math-inline">\(p_B\approx n_B/N\)</span>.</p>
+<p>The statistical error of such a fraction is <span class="math-inline">\(\sqrt{p_B(1-p_B)/N}\)</span>: for <span class="math-inline">\(p_B=\tfrac12\)</span> and <span class="math-inline">\(N=200\)</span> runs it is 0.035. For a configuration near the top each run is short, because it ends as soon as a state is reached, but a few hundred runs are needed for every configuration, which makes the committor expensive.</p>
+<p>The committor is the ideal reaction coordinate: it says exactly how far a configuration has progressed. A collective variable <span class="math-inline">\(\xi\)</span> is a good reaction coordinate to the extent that the committor is a function of it, <span class="math-inline">\(p_B(\mathbf x)\approx g\big(\xi(\mathbf x)\big)\)</span> with <span class="math-inline">\(g\)</span> monotonic, so that every surface of constant <span class="math-inline">\(\xi\)</span> is a surface of constant committor.</p>
+<p>Three words in the last sentence need unpacking. <span class="math-inline">\(\xi(\mathbf x)\)</span> is the value of the collective variable in configuration <span class="math-inline">\(\mathbf x\)</span>. <span class="math-inline">\(g\)</span> is some function of one variable, and "monotonic" means that it never turns round: it only goes up as <span class="math-inline">\(\xi\)</span> goes up (or only goes down, when B lies at small values of <span class="math-inline">\(\xi\)</span>). A "surface of constant <span class="math-inline">\(\xi\)</span>" is the set of all configurations that share one value of <span class="math-inline">\(\xi\)</span>. So the sentence says: once you know <span class="math-inline">\(\xi\)</span>, you know the committor, and nothing else about the configuration matters.</p>
+<p>The test: collect configurations at the barrier top of your PMF, shoot many short trajectories from each, and histogram their committor values. A peak near <span class="math-inline">\(\tfrac12\)</span> means <span class="math-inline">\(\xi\)</span> captures the mechanism. A bimodal histogram with peaks near 0 and 1 means that the configurations at the "barrier top" already belong to one side or the other: an important coordinate is missing, the barrier in the PMF is lower than the true one, and a rate computed from it will be too high.</p>
+<p>"Bimodal" means with two peaks. An example shows how this happens. Suppose that a ligand can leave its site only after a loop of the protein has opened, and that the opening of the loop is the difficult step. You compute the PMF along the distance between the ligand and the site, which is the convenient coordinate.</p>
+<p>At the distance where your PMF has its maximum you will find two kinds of configurations: some with the loop closed, which fall back to the bound state, and some with the loop open, which go on to the unbound state. Configurations with the loop half open, the real bottleneck, are rare at every distance.</p>
+<p>The PMF along the distance averages over the loop. Its maximum is made of the two common kinds of configurations and hides the rare half-open ones, so it lies lower than the barrier that the system has to cross. A lower barrier in a rate formula gives a higher rate.</p>
 <p>This is why barrier heights read from a PMF along a convenient coordinate should not be quoted as activation free energies without such a check.</p>
+<details>
+<summary>Optional: the committor along one coordinate</summary>
+<p>For diffusion along a single coordinate with a constant diffusion coefficient, with state A at <span class="math-inline">\(x=a\)</span> and state B at <span class="math-inline">\(x=b\)</span>, the committor has a closed form. It is a standard result, given here without its derivation:</p>
+<p><span class="math-display">\[p_B(x)=\frac{\int_a^xe^{\beta W(y)}dy}{\int_a^be^{\beta W(y)}dy} .\]</span></p>
+<p>Here <span class="math-inline">\(W\)</span> is the free-energy profile, <span class="math-inline">\(\beta=1/k_BT\)</span>, and <span class="math-inline">\(y\)</span> is the variable of integration. The integrand <span class="math-inline">\(e^{\beta W}\)</span> is large near the barrier top, so the committor rises from 0 to 1 almost entirely in the region of the top.</p>
+<p>For the double well <span class="math-inline">\(W(x)=5\,k_BT\,(x^2-1)^2\)</span> with <span class="math-inline">\(a=-1\)</span> and <span class="math-inline">\(b=1\)</span>, numerical integration gives <span class="math-inline">\(p_B=0.50\)</span> at <span class="math-inline">\(x=0\)</span>, 0.80 at <span class="math-inline">\(x=0.2\)</span> and 0.97 at <span class="math-inline">\(x=0.5\)</span>, and by symmetry 0.20 and 0.03 on the other side. A simulation agrees: of 4,000 Brownian trajectories started at <span class="math-inline">\(x=0.2\)</span>, a fraction 0.805 reached <span class="math-inline">\(x=1\)</span> first. Nearly all of the change takes place where <span class="math-inline">\(W\)</span> lies within about <span class="math-inline">\(2\,k_BT\)</span> of the top. The transition state is a narrow region.</p>
+</details>
 <h2 id="markov-state-models">Markov state models</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="xNjQatR2rRU" href="https://www.youtube.com/watch?v=xNjQatR2rRU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 19: Markov state models - slow processes from many short simulations</span><span class="sv-m">2 min · Erik Lindahl</span></a><a class="sv" data-yt="0pB3pUXULmo" href="https://www.youtube.com/watch?v=0pB3pUXULmo" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Markov State Models for Trajectory Analysis</span><span class="sv-m">20 min · SimbiosOpenMM</span></a><a class="sv" data-yt="YXppP_QTut8" href="https://www.youtube.com/watch?v=YXppP_QTut8" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] Introduction to Markov state models</span><span class="sv-m">1 h 08 min · PyEMMA workshop (Noe group)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="xNjQatR2rRU" href="https://www.youtube.com/watch?v=xNjQatR2rRU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 19: Markov state models - slow processes from many short simulations</span><span class="sv-m">2 min · Erik Lindahl</span></a><a class="sv" data-yt="0pB3pUXULmo" href="https://www.youtube.com/watch?v=0pB3pUXULmo" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Markov State Models for Trajectory Analysis</span><span class="sv-m">20 min · SimbiosOpenMM</span></a><a class="sv" data-yt="YXppP_QTut8" href="https://www.youtube.com/watch?v=YXppP_QTut8" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] Introduction to Markov state models</span><span class="sv-m">1 h 08 min · PyEMMA workshop (Noe group)</span></a></div>
 
+<p>Rate theory needs one coordinate, one barrier, and evidence that the coordinate is a good one. A protein has many states, many barriers and no coordinate that is known to be good. A Markov state model (MSM) avoids the choice.</p>
 <p>The alternative to choosing a coordinate in advance: describe the dynamics as jumps between many small states, and estimate the jump probabilities from simulation. An MSM turns many short trajectories, which can be run in parallel and started from different points, into a model of long-time kinetics.</p>
+<p>The sections below take this in steps: a Markov chain in the smallest example, the definition of the model, how it is estimated from trajectories, what its eigenvalues mean, the full pipeline for a protein, how the model is validated, how to sample for it, and what goes wrong.</p>
+<h3 id="a-markov-chain-in-a-small-example">A Markov chain in a small example</h3>
+<p>Think of a board game in which your next square depends only on the square you are on now and on the dice. How you reached the square does not matter. A process with this property is a <strong>Markov chain</strong>, and the property is called <strong>memoryless</strong>, or Markovian.</p>
+<p>Take a molecule with two states, 1 and 2, and look at it once every nanosecond. Suppose that a molecule seen in state 1 is found in state 2 at the next look with probability 0.1, and that a molecule seen in state 2 is found in state 1 with probability 0.3 (numbers chosen for illustration). The four possibilities fit in a table, the <strong>transition matrix</strong>:</p>
+<p><span class="math-display">\[\mathbf T=\begin{pmatrix}T_{11}&amp;T_{12}\\ T_{21}&amp;T_{22}\end{pmatrix}=\begin{pmatrix}0.9&amp;0.1\\ 0.3&amp;0.7\end{pmatrix} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf T\)</span>: the transition matrix, a table of probabilities.</li>
+<li><span class="math-inline">\(T_{ij}\)</span>: the probability of being in state <span class="math-inline">\(j\)</span> at the next look, given state <span class="math-inline">\(i\)</span> now. The first label is the row and says where the molecule comes from. The second is the column and says where it goes.</li>
+<li>Row 1, <span class="math-inline">\((0.9,\ 0.1)\)</span>: a molecule in state 1 stays with probability 0.9 and moves to state 2 with probability 0.1.</li>
+<li>Row 2, <span class="math-inline">\((0.3,\ 0.7)\)</span>: a molecule in state 2 moves to state 1 with probability 0.3 and stays with probability 0.7.</li>
+<li>Every row adds up to 1, because the molecule has to be somewhere at the next look.</li>
+</ul>
+</div>
+<p>Now follow a large number of copies. Let <span class="math-inline">\(p_1\)</span> and <span class="math-inline">\(p_2\)</span> be the fractions of copies in the two states. After one step, state 1 holds the copies that were in 1 and stayed, plus the copies that were in 2 and moved: <span class="math-inline">\(p_1'=p_1T_{11}+p_2T_{21}\)</span>. In the same way <span class="math-inline">\(p_2'=p_1T_{12}+p_2T_{22}\)</span>. The prime marks the value one step later.</p>
+<div class="box maths">
+<p><strong>Maths you need here: a row of numbers times a matrix.</strong> The two sums above are one operation, "multiply the row <span class="math-inline">\(\mathbf p^T=(p_1,\ p_2)\)</span> by the matrix <span class="math-inline">\(\mathbf T\)</span>", written <span class="math-inline">\(\mathbf p^T\mathbf T\)</span>. The rule: entry <span class="math-inline">\(j\)</span> of the result is <span class="math-inline">\(\sum_ip_iT_{ij}\)</span>. Go down column <span class="math-inline">\(j\)</span> of the matrix, multiply each entry by the matching entry of the row, and add. Example: <span class="math-inline">\((1,\ 0)\,\mathbf T=(1\times0.9+0\times0.3,\ \ 1\times0.1+0\times0.7)=(0.9,\ 0.1)\)</span>.</p>
+<p>Two steps in a row are one multiplication by the matrix product <span class="math-inline">\(\mathbf T\,\mathbf T=\mathbf T^2\)</span>. Entry <span class="math-inline">\((i,j)\)</span> of a product of two matrices is <span class="math-inline">\(\sum_kT_{ik}T_{kj}\)</span>: the probability of going from <span class="math-inline">\(i\)</span> to some state <span class="math-inline">\(k\)</span> in the first step and from <span class="math-inline">\(k\)</span> to <span class="math-inline">\(j\)</span> in the second, added up over all intermediate states <span class="math-inline">\(k\)</span>. For the matrix above,</p>
+<p><span class="math-display">\[\mathbf T^2=\begin{pmatrix}0.9\times0.9+0.1\times0.3&amp;0.9\times0.1+0.1\times0.7\\0.3\times0.9+0.7\times0.3&amp;0.3\times0.1+0.7\times0.7\end{pmatrix}=\begin{pmatrix}0.84&amp;0.16\\0.48&amp;0.52\end{pmatrix} .\]</span></p>
+<p>More in the <a href="maths.html#matrices">toolbox</a>.</p>
+</div>
+<p>Start with every copy in state 1 and apply the matrix again and again:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Time (ns)</th>
+<th><span class="math-inline">\(p_1\)</span></th>
+<th><span class="math-inline">\(p_2\)</span></th>
+<th><span class="math-inline">\(p_1-0.75\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0.9</td>
+<td>0.1</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>0.84</td>
+<td>0.16</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>0.804</td>
+<td>0.196</td>
+<td>0.054</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>0.782</td>
+<td>0.218</td>
+<td>0.032</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>0.754</td>
+<td>0.246</td>
+<td>0.004</td>
+</tr>
+</tbody>
+</table>
+<p>Two things happen, and the rest of this part of the module is built on them.</p>
+<p><strong>The populations settle.</strong> They approach <span class="math-inline">\((0.75,\ 0.25)\)</span> and stay there. Check: <span class="math-inline">\((0.75,\ 0.25)\,\mathbf T=(0.675+0.075,\ \ 0.075+0.175)=(0.75,\ 0.25)\)</span>. A set of populations that one step leaves unchanged is the <strong>stationary distribution</strong> of the chain, written <span class="math-inline">\(\boldsymbol\pi\)</span>. It is the equilibrium of the model. At that point the two flows balance: <span class="math-inline">\(0.75\times0.1=0.075\)</span> of all copies go from 1 to 2 in a step, and <span class="math-inline">\(0.25\times0.3=0.075\)</span> come back.</p>
+<p><strong>The distance from equilibrium shrinks by a constant factor.</strong> The last column reads 0.25, 0.15, 0.09, 0.054: each number is 0.6 times the one before. A constant factor per step is an exponential decay, the relaxation of the two-state rate equation seen at regular intervals. The factor is <span class="math-inline">\(1-T_{12}-T_{21}=1-0.1-0.3=0.6\)</span>, and the section on eigenvalues turns it into a relaxation time.</p>
+<details>
+<summary>Optional: why the factor is 1 − T₁₂ − T₂₁</summary>
+<p>Use <span class="math-inline">\(p_2=1-p_1\)</span> in the rule for one step: <span class="math-inline">\(p_1'=p_1T_{11}+(1-p_1)T_{21}=p_1(T_{11}-T_{21})+T_{21}\)</span>. The stationary value <span class="math-inline">\(\pi_1\)</span> obeys the same rule and does not change: <span class="math-inline">\(\pi_1=\pi_1(T_{11}-T_{21})+T_{21}\)</span>. Subtract the second equation from the first:</p>
+<p><span class="math-display">\[p_1'-\pi_1=(T_{11}-T_{21})\,(p_1-\pi_1)=(1-T_{12}-T_{21})\,(p_1-\pi_1) ,\]</span></p>
+<p>where the last step uses <span class="math-inline">\(T_{11}=1-T_{12}\)</span>. Solving the equation for <span class="math-inline">\(\pi_1\)</span> gives <span class="math-inline">\(\pi_1=T_{21}/(T_{12}+T_{21})=0.3/0.4=0.75\)</span>. Compare with the rate equation of the first section, where <span class="math-inline">\(P_A^{eq}=k_{BA}/(k_{AB}+k_{BA})\)</span>: the same structure, with jump probabilities in the place of rate constants.</p>
+</details>
 <h3 id="the-model">The model</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="kKC4ccoUHGU" href="https://www.youtube.com/watch?v=kKC4ccoUHGU" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] MSM theory</span><span class="sv-m">48 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="gSR2xp2NFIc" href="https://www.youtube.com/watch?v=gSR2xp2NFIc" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2021] MSM theory</span><span class="sv-m">45 min · PyEMMA workshop (Noe group)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="kKC4ccoUHGU" href="https://www.youtube.com/watch?v=kKC4ccoUHGU" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] MSM theory</span><span class="sv-m">48 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="gSR2xp2NFIc" href="https://www.youtube.com/watch?v=gSR2xp2NFIc" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2021] MSM theory</span><span class="sv-m">45 min · PyEMMA workshop (Noe group)</span></a></div>
 
+<p>A Markov state model is a chain of this kind whose states are made from simulation frames. Each state is a region of configuration space, and every frame of every trajectory falls into exactly one of them. How the regions are made is the subject of "The pipeline" below. For now, take them as given.</p>
 <p>Partition configuration space into <span class="math-inline">\(n\)</span> discrete states. Choose a <strong>lag time</strong> <span class="math-inline">\(\tau\)</span>. The model is the transition probability matrix</p>
 <p><span class="math-display">\[T_{ij}(\tau)=P\big(\text{in state }j\text{ at }t+\tau\ \big|\ \text{in state }i\text{ at }t\big),\]</span></p>
-<p>and the assumption is that the process is <strong>Markovian</strong> at lag <span class="math-inline">\(\tau\)</span>: the next state depends only on the current state, not on the history. Then the model assumes that the populations evolve as <span class="math-inline">\(\mathbf p^T(t+k\tau)=\mathbf p^T(t)\,\mathbf T^k(\tau)\)</span>. The assumption is never exactly true for a discretised process, because the position inside a state is lost. The error shrinks when the states are fine, above all near barriers where the slow processes change fastest, and when <span class="math-inline">\(\tau\)</span> is long enough that the system forgets within one lag time where inside a state it was.</p>
+<p>and the assumption is that the process is <strong>Markovian</strong> at lag <span class="math-inline">\(\tau\)</span>: the next state depends only on the current state, not on the history.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(n\)</span>: the number of states, in practice 100 to 1,000 (see "The pipeline" below).</li>
+<li><span class="math-inline">\(i\)</span>, <span class="math-inline">\(j\)</span>: the labels of two states, each from 1 to <span class="math-inline">\(n\)</span>.</li>
+<li><span class="math-inline">\(\tau\)</span>: the <strong>lag time</strong>, the interval between "now" and "later", for example 1 ns or 10 ns. You choose it. It is a multiple of the interval at which frames were saved, and far longer than the time step of the integrator.</li>
+<li><span class="math-inline">\(t\)</span>: any time along a trajectory.</li>
+<li><span class="math-inline">\(T_{ij}(\tau)\)</span>: the probability of finding the system in state <span class="math-inline">\(j\)</span> at time <span class="math-inline">\(t+\tau\)</span>, given that it is in state <span class="math-inline">\(i\)</span> at time <span class="math-inline">\(t\)</span>. The matrix depends on <span class="math-inline">\(\tau\)</span>: with a longer lag the system has more time to move, and the numbers change.</li>
+<li><span class="math-inline">\(P(\dots\mid\dots)\)</span>: a <a href="maths.html#probability">conditional probability</a>. The vertical bar reads "given that".</li>
+</ul>
+</div>
+<p>Then the model assumes that the populations evolve as <span class="math-inline">\(\mathbf p^T(t+k\tau)=\mathbf p^T(t)\,\mathbf T^k(\tau)\)</span>. The assumption is never exactly true for a discretised process, because the position inside a state is lost. The error shrinks when the states are fine, above all near barriers where the slow processes change fastest, and when <span class="math-inline">\(\tau\)</span> is long enough that the system forgets within one lag time where inside a state it was.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf p(t)\)</span>: the populations of the <span class="math-inline">\(n\)</span> states at time <span class="math-inline">\(t\)</span>, a list of <span class="math-inline">\(n\)</span> numbers that add up to 1. <span class="math-inline">\(\mathbf p^T\)</span> is the same list written as a row.</li>
+<li><span class="math-inline">\(k\)</span>: a whole number, the number of lag times that pass. It is not a rate constant here.</li>
+<li><span class="math-inline">\(\mathbf T^k(\tau)\)</span>: the matrix for lag <span class="math-inline">\(\tau\)</span> multiplied by itself <span class="math-inline">\(k\)</span> times.</li>
+</ul>
+</div>
+<p>Read the formula like this: to predict the populations after a time <span class="math-inline">\(k\tau\)</span>, apply the one-step matrix <span class="math-inline">\(k\)</span> times. The table of the small example did exactly this.</p>
+<p>Why can the assumption not be exactly true? A state is a region and has an inside. Think of a copy that has entered state <span class="math-inline">\(i\)</span> a moment ago. It sits close to the border that it crossed and is more likely to go back than a copy that has been in state <span class="math-inline">\(i\)</span> for a long time and sits in the middle. The future of a copy then depends on where it came from, which is memory.</p>
+<p>A "discretised process" is the sequence of state labels, in which the exact position has been thrown away.</p>
+<p>Two things reduce this memory, and they are the two named in the paragraph above. If a state is small, the border and the middle are almost the same place. If the lag time is long, a copy has wandered all over its state before the next look, and where it entered no longer matters.</p>
+<p>Fine states matter most near barriers. "Where the slow processes change fastest" is short for: where the right eigenvector of a slow process (see "What the eigenvalues mean" below), which is nearly constant inside each well, changes from its value in one well to its value in the other. That happens at the barrier, which is also where the future of a configuration changes fastest with position. In a one-dimensional double well with a barrier of <span class="math-inline">\(5\,k_BT\)</span>, the committor goes from 0.03 to 0.97 across the top of the barrier (the optional block of the previous section has the numbers). A single state that covers the whole top mixes configurations with opposite futures.</p>
 <h3 id="estimation">Estimation</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="pVl7TPFuHwk" href="https://www.youtube.com/watch?v=pVl7TPFuHwk" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] MSM estimation and validation</span><span class="sv-m">1 h 02 min · PyEMMA workshop (Noe group)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="pVl7TPFuHwk" href="https://www.youtube.com/watch?v=pVl7TPFuHwk" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] MSM estimation and validation</span><span class="sv-m">1 h 02 min · PyEMMA workshop (Noe group)</span></a></div>
 
+<p>Nobody gives you the transition matrix. You estimate it from the trajectories by counting. Once the states are defined, every trajectory becomes a list of state labels, one label per saved frame. This list is called a <strong>discrete trajectory</strong>.</p>
 <p>Count transitions at lag <span class="math-inline">\(\tau\)</span> along all trajectories: <span class="math-inline">\(C_{ij}\)</span> is the number of times the system was in <span class="math-inline">\(i\)</span> at time <span class="math-inline">\(t\)</span> and in <span class="math-inline">\(j\)</span> at <span class="math-inline">\(t+\tau\)</span>. The simplest estimate of the transition matrix is the row-normalised count matrix,</p>
 <p><span class="math-display">\[\hat T_{ij}=\frac{C_{ij}}{\sum_kC_{ik}} .\]</span></p>
-<p>At equilibrium the dynamics obey detailed balance, <span class="math-inline">\(\pi_iT_{ij}=\pi_jT_{ji}\)</span>, and current practice is to restrict the model to the largest connected set of states and to use a maximum-likelihood estimator that enforces detailed balance. Bayesian estimators sample the distribution of transition matrices compatible with the counts and give error bars for everything derived from the model.</p>
-<h3 id="what-the-eigenvalues-mean">What the eigenvalues mean</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="opx_wViFlTs" href="https://www.youtube.com/watch?v=opx_wViFlTs" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 16: Markov State Models, from concept to construction</span><span class="sv-m">1 h 47 min · Pietro Faccioli</span></a></div>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(C_{ij}\)</span>: the number of counted transitions from state <span class="math-inline">\(i\)</span> to state <span class="math-inline">\(j\)</span> at lag <span class="math-inline">\(\tau\)</span>. The table of all of them is the <strong>count matrix</strong>.</li>
+<li><span class="math-inline">\(\sum_kC_{ik}\)</span>: the sum of row <span class="math-inline">\(i\)</span> of the count matrix, the total number of times the system was seen in state <span class="math-inline">\(i\)</span> at the start of a pair. Here <span class="math-inline">\(k\)</span> is a label that runs over all states.</li>
+<li><span class="math-inline">\(\hat T_{ij}\)</span>: the estimate of <span class="math-inline">\(T_{ij}\)</span>: of all the times the system was seen in <span class="math-inline">\(i\)</span>, the fraction in which it was in <span class="math-inline">\(j\)</span> one lag time later. The hat marks an estimate from data.</li>
+</ul>
+</div>
+<div class="box key">
+<p><strong>Worked example: counting by hand.</strong> A trajectory was saved every 1 ns and reads A A B A A A B B A A, ten frames. At a lag of 1 ns, compare every frame with the next one. That gives nine pairs: A to A four times, A to B twice, B to A twice, B to B once. Row A has <span class="math-inline">\(4+2=6\)</span> counts, so <span class="math-inline">\(\hat T_{AA}=4/6=0.67\)</span> and <span class="math-inline">\(\hat T_{AB}=2/6=0.33\)</span>. Row B has 3 counts, so <span class="math-inline">\(\hat T_{BA}=0.67\)</span> and <span class="math-inline">\(\hat T_{BB}=0.33\)</span>.</p>
+<p>At a lag of 2 ns, compare every frame with the frame two places later. That gives eight pairs: A to B three times, B to A three times, A to A twice and B to B never. Every frame is used as a starting point, so the pairs overlap. Nine counts are far too few for any conclusion. A real model needs many thousands of frames.</p>
+</div>
+<p>In Python the count takes a few lines:</p>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
+<span class="k">def</span><span class="w"> </span><span class="nf">count_matrix</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">lag</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;states: one state label (0 to n-1) per frame. lag: in frames.&quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">states</span><span class="p">[:</span><span class="o">-</span><span class="n">lag</span><span class="p">],</span> <span class="n">states</span><span class="p">[</span><span class="n">lag</span><span class="p">:]):</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">C</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">count_matrix</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">lag</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>        <span class="c1"># states: your discrete trajectory</span>
+<span class="n">T_hat</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    <span class="c1"># divide every row by its sum</span>
+</code></pre></div>
+
+<div class="box key">
+<p><strong>Worked example: an estimate against a known answer.</strong> To judge an estimate you need a case in which the truth is known. Take a chain with three states and a lag time of 1 ns (numbers chosen for illustration):</p>
+<p><span class="math-display">\[\mathbf T=\begin{pmatrix}0.90&amp;0.10&amp;0\\0.20&amp;0.79&amp;0.01\\0&amp;0.01&amp;0.99\end{pmatrix} .\]</span></p>
+<p>States 1 and 2 exchange often. State 3 is reached only from state 2, and rarely. The stationary distribution is <span class="math-inline">\(\boldsymbol\pi=(0.5,\ 0.25,\ 0.25)\)</span>, which you can check by multiplying it with the matrix.</p>
+<p>One trajectory of 10,000 steps (10 µs of "simulation"), generated from this matrix with random numbers, gave these counts at a lag of one step, and this estimate (a second run, with other random numbers, gives somewhat different counts):</p>
+<p><span class="math-display">\[\mathbf C=\begin{pmatrix}4410&amp;492&amp;0\\491&amp;1975&amp;21\\0&amp;20&amp;2590\end{pmatrix},\qquad\hat{\mathbf T}=\begin{pmatrix}0.900&amp;0.100&amp;0\\0.197&amp;0.794&amp;0.008\\0&amp;0.008&amp;0.992\end{pmatrix} .\]</span></p>
+<p>The entries that rest on hundreds or thousands of counts are right to two decimals. The exchange between states 2 and 3 rests on 21 and 20 counts. The relative uncertainty of a count of <span class="math-inline">\(N\)</span> random events is about <span class="math-inline">\(1/\sqrt N\)</span>, which is 22% for 21 events, and the estimates 0.008 against the true 0.01 are off by that order. The precision of a transition probability depends on how many times that transition was seen. The total length of the simulation does not decide it.</p>
+</div>
+<p>At equilibrium the dynamics obey detailed balance, <span class="math-inline">\(\pi_iT_{ij}=\pi_jT_{ji}\)</span>, and current practice is to restrict the model to the largest connected set of states and to use a maximum-likelihood estimator that enforces detailed balance. Bayesian estimators sample the distribution of transition matrices compatible with the counts and give error bars for everything derived from the model.</p>
+<p>These two sentences contain four ideas.</p>
+<p><strong>Detailed balance.</strong> <span class="math-inline">\(\pi_i\)</span> is the equilibrium population of state <span class="math-inline">\(i\)</span>, and <span class="math-inline">\(\pi_iT_{ij}\)</span> is the fraction of all copies that jump from <span class="math-inline">\(i\)</span> to <span class="math-inline">\(j\)</span> during one lag time: the population of <span class="math-inline">\(i\)</span> times the probability of the jump. Detailed balance says that this flow equals the flow in the opposite direction, for every pair of states separately. The reason is the time reversibility of Module 2. A film of a system at equilibrium looks equally plausible when it runs backwards, so every jump must be as frequent as its reverse. Both examples above obey it: <span class="math-inline">\(0.75\times0.1=0.25\times0.3\)</span> in the two-state chain, and <span class="math-inline">\(0.5\times0.10=0.25\times0.20\)</span> and <span class="math-inline">\(0.25\times0.01=0.25\times0.01\)</span> in the three-state chain.</p>
+<p><strong>Why enforce it.</strong> Counts from a finite amount of data do not, as a rule, satisfy detailed balance exactly, least of all when they come from many short trajectories. Building it into the estimate uses a fact that is known in advance, which reduces the noise. It also guarantees that all eigenvalues of the matrix are ordinary real numbers, which the next section needs.</p>
+<p><strong>The largest connected set.</strong> A set of states is connected when every state in it can be reached from every other one, and back, along transitions that were observed. A state that trajectories entered and never left, or left and never entered again, cannot be given an equilibrium population relative to the others. Such states are removed before the estimate.</p>
+<p><strong>Maximum likelihood, and the Bayesian alternative.</strong> The maximum-likelihood estimate is the matrix under which the observed counts are most probable. Without extra conditions it is the row-normalised count matrix above. With detailed balance as a condition there is no closed formula, and the software finds the matrix by iteration.</p>
+<p>A Bayesian estimator produces many matrices, each compatible with the counts, and they differ more from each other where the counts are few. You compute your quantity of interest, a population or a time scale, from each of them. The spread of the results is its error bar.</p>
+<h3 id="what-the-eigenvalues-mean">What the eigenvalues mean</h3>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="opx_wViFlTs" href="https://www.youtube.com/watch?v=opx_wViFlTs" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 16: Markov State Models, from concept to construction</span><span class="sv-m">1 h 47 min · Pietro Faccioli</span></a></div>
+
+<p>A transition matrix with 500 states holds 250,000 numbers, and nobody can read a process from them directly. The eigenvalues and eigenvectors of the matrix sort the same information into a short list: the equilibrium populations, and a few slow processes, each with its time scale.</p>
+<div class="box maths">
+<p><strong>Maths you need here: eigenvectors of a transition matrix.</strong> Module 2 introduced eigenvectors: special vectors that a matrix only multiplies by a number, the eigenvalue. A transition matrix acts on a row of populations, <span class="math-inline">\(\mathbf p^T\mathbf T\)</span>, so the vectors of interest here are rows with <span class="math-inline">\(\mathbf l^T\mathbf T=\lambda\,\mathbf l^T\)</span>. They are called <strong>left eigenvectors</strong>. In words, <span class="math-inline">\(\mathbf l\)</span> is a pattern of populations that one step of the chain leaves unchanged in shape and multiplies by the number <span class="math-inline">\(\lambda\)</span>. "Diagonalising" the matrix means finding all its eigenvalues and eigenvectors, which a numerical library does in one call.</p>
+<p>Example, with the two-state matrix of the small example. <span class="math-inline">\((0.75,\ 0.25)\,\mathbf T=(0.75,\ 0.25)\)</span>: an eigenvector with eigenvalue 1. And <span class="math-inline">\((1,\ -1)\,\mathbf T=(0.9-0.3,\ \ 0.1-0.7)=(0.6,\ -0.6)\)</span>: an eigenvector with eigenvalue 0.6.</p>
+<p>A matrix also has <strong>right eigenvectors</strong>, columns <span class="math-inline">\(\mathbf r\)</span> with <span class="math-inline">\(\mathbf T\,\mathbf r=\lambda\,\mathbf r\)</span>, for the same eigenvalues. With detailed balance the two kinds carry the same information: the entry of <span class="math-inline">\(\mathbf l\)</span> for a state is the entry of <span class="math-inline">\(\mathbf r\)</span> for that state times the equilibrium population of the state. More in the <a href="maths.html#eigen">toolbox</a>.</p>
+</div>
 <p>Diagonalise <span class="math-inline">\(\mathbf T\)</span>. The eigenvalues satisfy <span class="math-inline">\(1=\lambda_1&gt;\lambda_2\ge\lambda_3\ge\dots\)</span></p>
 <ul>
 <li>The left eigenvector with <span class="math-inline">\(\lambda_1=1\)</span> is the <strong>stationary distribution</strong> <span class="math-inline">\(\boldsymbol\pi\)</span>: the equilibrium populations of the states, and so the free energies <span class="math-inline">\(F_i=-k_BT\ln\pi_i\)</span>, obtained from short trajectories that never individually sampled equilibrium.</li>
 <li>Each further eigenvector describes a <strong>relaxation process</strong>, an exchange of population between the regions where it is positive and negative, decaying with the <strong>implied time scale</strong></li>
 </ul>
 <p><span class="math-display">\[t_i=-\frac{\tau}{\ln|\lambda_i(\tau)|} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\lambda_i(\tau)\)</span>: eigenvalue number <span class="math-inline">\(i\)</span> of the transition matrix that was estimated at lag <span class="math-inline">\(\tau\)</span>. The eigenvalues are numbered from the largest, <span class="math-inline">\(\lambda_1=1\)</span>, downwards. Here the label <span class="math-inline">\(i\)</span> numbers processes, not states.</li>
+<li><span class="math-inline">\(|\dots|\)</span>: the absolute value. An eigenvalue of a fast process can come out negative, and the bars keep the logarithm defined.</li>
+<li><span class="math-inline">\(\ln\)</span>: the natural <a href="maths.html#exp-log">logarithm</a>. It is negative for a number between 0 and 1, so the minus sign in front makes <span class="math-inline">\(t_i\)</span> positive.</li>
+<li><span class="math-inline">\(\tau\)</span>: the lag time.</li>
+<li><span class="math-inline">\(t_i\)</span>: the implied time scale of process <span class="math-inline">\(i\)</span>, for <span class="math-inline">\(i\ge2\)</span>, in the same unit as <span class="math-inline">\(\tau\)</span>.</li>
+<li><span class="math-inline">\(\boldsymbol\pi\)</span> (in the list above the formula): the stationary distribution, the list of the equilibrium populations <span class="math-inline">\(\pi_i\)</span> of all states.</li>
+<li><span class="math-inline">\(F_i\)</span>: the free energy of state <span class="math-inline">\(i\)</span>. <span class="math-inline">\(k_BT\)</span> is 2.494 kJ/mol at 300 K.</li>
+</ul>
+</div>
 <p>A gap in the spectrum (a few slow processes well separated from the rest) indicates metastable states.</p>
-<h3 id="the-pipeline">The pipeline</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="A3AUWXqqONc" href="https://www.youtube.com/watch?v=A3AUWXqqONc" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] The variational approach</span><span class="sv-m">32 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="QHQBVmVq-Vo" href="https://www.youtube.com/watch?v=QHQBVmVq-Vo" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] How to select models with the VAMP score</span><span class="sv-m">21 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="u4ec4EYsgkQ" href="https://www.youtube.com/watch?v=u4ec4EYsgkQ" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] MSM coarse graining with PCCA++</span><span class="sv-m">40 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="jXMaCSSOSgg" href="https://www.youtube.com/watch?v=jXMaCSSOSgg" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] VAMPnets</span><span class="sv-m">30 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="CNYreswqJAQ" href="https://www.youtube.com/watch?v=CNYreswqJAQ" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Markov state model tutorial through pyEMMA</span><span class="sv-m">1 h 08 min · Christian Seitz</span></a></div>
+<p>The "spectrum" is the list of eigenvalues. A <strong>metastable</strong> state is one in which the system stays for a long time before it leaves. The paragraphs below take the three statements in turn.</p>
+<p><strong>The first eigenvector: populations and free energies.</strong> The stationary distribution is the row of populations that a step leaves unchanged, <span class="math-inline">\(\boldsymbol\pi^T\mathbf T=\boldsymbol\pi^T\)</span>. That is the eigenvector equation with eigenvalue 1. No eigenvalue can be larger than 1, because a pattern of populations cannot grow without limit when the total is fixed at 1. The relation <span class="math-inline">\(F_i=-k_BT\ln\pi_i\)</span> is the same link between a population and a free energy as in the PMF. In the three-state chain above, <span class="math-inline">\(\boldsymbol\pi=(0.5,\ 0.25,\ 0.25)\)</span>, so state 2 lies <span class="math-inline">\(k_BT\ln2=1.73\)</span> kJ/mol above state 1.</p>
+<p>The remark about short trajectories is the reason the method exists. To estimate <span class="math-inline">\(T_{ij}\)</span> you only need to know what happens during one lag time after the system was in state <span class="math-inline">\(i\)</span>. Trajectories can therefore be short and can start anywhere. The matrix then says where the populations would settle if you waited long enough, although no single trajectory waited that long.</p>
+<p><strong>The other eigenvectors: where the formula comes from.</strong> Three steps. First, the starting populations can be written as the stationary distribution plus a mixture of the other left eigenvectors, which is always possible for a matrix with detailed balance:</p>
+<p><span class="math-display">\[\mathbf p^T(0)=\boldsymbol\pi^T+\sum_{i\ge2}c_i\,\mathbf l_i^T .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf p(0)\)</span>: the populations of all states at the start.</li>
+<li><span class="math-inline">\(\boldsymbol\pi\)</span>: the stationary distribution, which is the first left eigenvector.</li>
+<li><span class="math-inline">\(\mathbf l_i\)</span>: left eigenvector number <span class="math-inline">\(i\)</span>. Its entries add up to zero for <span class="math-inline">\(i\ge2\)</span>, so adding it moves population between states and leaves the total unchanged.</li>
+<li><span class="math-inline">\(c_i\)</span>: a number that says how strongly process <span class="math-inline">\(i\)</span> is present in the starting populations.</li>
+<li><span class="math-inline">\(\sum_{i\ge2}\)</span>: a sum over all eigenvectors except the first.</li>
+</ul>
+</div>
+<p>Second, apply the matrix <span class="math-inline">\(k\)</span> times. Each application leaves <span class="math-inline">\(\boldsymbol\pi\)</span> unchanged and multiplies every <span class="math-inline">\(\mathbf l_i\)</span> by its eigenvalue, so after <span class="math-inline">\(k\)</span> steps each term carries the factor <span class="math-inline">\(\lambda_i^k\)</span>. Third, write that factor as an exponential, with the rule <span class="math-inline">\(a^k=e^{k\ln a}\)</span>:</p>
+<p><span class="math-display">\[\mathbf p^T(k\tau)=\boldsymbol\pi^T+\sum_{i\ge2}c_i\,\lambda_i^k\,\mathbf l_i^T,\qquad\lambda_i^k=e^{k\ln\lambda_i}=e^{-k\tau/t_i}\quad\text{with}\quad t_i=-\frac{\tau}{\ln\lambda_i} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k\)</span>: the number of steps taken, a whole number.</li>
+<li><span class="math-inline">\(k\tau\)</span>: the time that has passed.</li>
+<li><span class="math-inline">\(\lambda_i^k\)</span>: the eigenvalue raised to the power <span class="math-inline">\(k\)</span>.</li>
+<li><span class="math-inline">\(e^{-k\tau/t_i}\)</span>: an exponential decay in the elapsed time <span class="math-inline">\(k\tau\)</span>, with time constant <span class="math-inline">\(t_i\)</span>.</li>
+<li>Other symbols: as in the lists above.</li>
+</ul>
+</div>
+<p>The last equality is only a definition of <span class="math-inline">\(t_i\)</span>, chosen so that <span class="math-inline">\(k\ln\lambda_i\)</span> equals <span class="math-inline">\(-k\tau/t_i\)</span>. With it, every process decays as <span class="math-inline">\(e^{-t/t_i}\)</span>, where <span class="math-inline">\(t=k\tau\)</span> is the elapsed time. This is the form of the two-state relaxation of the first section, <span class="math-inline">\(e^{-(k_{AB}+k_{BA})t}\)</span>. So an eigenvalue is a decay factor per lag time, and the implied time scale is the same information expressed as a time.</p>
+<p>The positive and negative entries of an eigenvector say where the population moves. States with a positive entry hold too much population while the process is present and states with a negative entry too little, or the other way round, depending on the sign of <span class="math-inline">\(c_i\)</span>. As the term decays, population flows from one group to the other.</p>
+<p>Read the formula like this. An eigenvalue close to 1 means a slow process, because little of the pattern is lost in one lag time. In the two-state example, <span class="math-inline">\(\lambda_2=0.6\)</span> at <span class="math-inline">\(\tau=1\)</span> ns gives <span class="math-inline">\(t_2=-1/\ln0.6=1.96\)</span> ns. The table agrees: after two steps the distance from equilibrium had fallen from 0.25 to 0.09, a factor 0.36, close to <span class="math-inline">\(1/e=0.37\)</span>.</p>
+<p>For an eigenvalue near 1 a useful approximation is <span class="math-inline">\(t_i\approx\tau/(1-\lambda_i)\)</span>: <span class="math-inline">\(\lambda=0.99\)</span> gives about <span class="math-inline">\(100\,\tau\)</span>. The same example shows how sensitive slow time scales are: 0.99 gives <span class="math-inline">\(99.5\,\tau\)</span> and 0.98 gives <span class="math-inline">\(49.5\,\tau\)</span>, so an error of 0.01 in the eigenvalue is a factor two in the time.</p>
+<p>The word "implied" is a reminder that nobody watched the relaxation happen. The time scale is implied by a matrix that was estimated at a short lag.</p>
+<p><strong>From a relaxation time to rate constants.</strong> Take the two-state system of the first section, with rate constants <span class="math-inline">\(k_{AB}\)</span> and <span class="math-inline">\(k_{BA}\)</span>, and look at it once every <span class="math-inline">\(\tau\)</span>. The distance from equilibrium decays as <span class="math-inline">\(e^{-(k_{AB}+k_{BA})t}\)</span>, so the factor per lag time is <span class="math-inline">\(\lambda_2=e^{-(k_{AB}+k_{BA})\tau}\)</span>. Insert this in the formula: <span class="math-inline">\(t_2=-\tau/\ln\lambda_2=1/(k_{AB}+k_{BA})\)</span>.</p>
+<p>Two conclusions follow. The implied time scale of a two-state system is its relaxation time, the inverse of the <em>sum</em> of the two rate constants. And <span class="math-inline">\(\tau\)</span> has cancelled: with the example rates of 1 and 9 µs<span class="math-inline">\(^{-1}\)</span>, a lag of 0.01 µs gives <span class="math-inline">\(\lambda_2=e^{-0.1}=0.905\)</span> and a lag of 0.05 µs gives <span class="math-inline">\(\lambda_2=e^{-0.5}=0.607\)</span>, and both give <span class="math-inline">\(t_2=0.1\)</span> µs.</p>
+<p>To get the two rate constants separately, combine the relaxation time with the populations. From <span class="math-inline">\(k_{AB}+k_{BA}=1/t_2\)</span> and <span class="math-inline">\(k_{AB}/k_{BA}=\pi_B/\pi_A\)</span> it follows that <span class="math-inline">\(k_{AB}=\pi_B/t_2\)</span> and <span class="math-inline">\(k_{BA}=\pi_A/t_2\)</span>. For the two-state chain of the small example, with <span class="math-inline">\(\boldsymbol\pi=(0.75,\ 0.25)\)</span> and <span class="math-inline">\(t_2=1.96\)</span> ns, the rate constant from 1 to 2 is <span class="math-inline">\(0.25/1.96=0.13\)</span> ns<span class="math-inline">\(^{-1}\)</span> and the one from 2 to 1 is <span class="math-inline">\(0.75/1.96=0.38\)</span> ns<span class="math-inline">\(^{-1}\)</span>.</p>
+<div class="box key">
+<p><strong>Worked example: the three-state chain.</strong> For the matrix of the estimation example, with <span class="math-inline">\(\tau=1\)</span> ns, a numerical library gives:</p>
+<ul>
+<li><span class="math-inline">\(\lambda_1=1\)</span>, left eigenvector <span class="math-inline">\((0.5,\ 0.25,\ 0.25)\)</span>: the stationary distribution.</li>
+<li><span class="math-inline">\(\lambda_2=0.987\)</span>, left eigenvector proportional to <span class="math-inline">\((-0.70,\ -0.30,\ +1.00)\)</span>, implied time scale <span class="math-inline">\(-1/\ln0.987=76\)</span> ns.</li>
+<li><span class="math-inline">\(\lambda_3=0.693\)</span>, left eigenvector proportional to <span class="math-inline">\((+0.97,\ -1.00,\ +0.03)\)</span>, implied time scale <span class="math-inline">\(-1/\ln0.693=2.7\)</span> ns.</li>
+</ul>
+<p>Process 2 has one sign on states 1 and 2 and the other sign on state 3. It is the exchange between the pair <span class="math-inline">\(\{1,2\}\)</span> and state 3, and it is slow. Process 3 has opposite signs on states 1 and 2 and almost nothing on state 3. It is the exchange between 1 and 2, and it is 28 times faster.</p>
+<p>That factor is the gap in the spectrum. On times longer than a few nanoseconds, states 1 and 2 behave as one state, and the chain has two metastable states: <span class="math-inline">\(\{1,2\}\)</span> with population 0.75 and <span class="math-inline">\(\{3\}\)</span> with population 0.25.</p>
+<p>You can watch both processes by starting with every copy in state 1 and applying the matrix. After 20 steps the populations are <span class="math-inline">\((0.640,\ 0.311,\ 0.049)\)</span>: states 1 and 2 already stand in their equilibrium ratio of two to one, and state 3 is still almost empty. After 100 steps they are <span class="math-inline">\((0.549,\ 0.271,\ 0.180)\)</span>, and after 400 steps <span class="math-inline">\((0.501,\ 0.250,\ 0.249)\)</span>.</p>
+</div>
+<p>The numbers of the example come from these lines, which you can reuse for your own matrix:</p>
+<div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.79</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]])</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">1.0</span>                                  <span class="c1"># lag time in ns</span>
+
+<span class="n">evals</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>           <span class="c1"># eigenvectors of the transpose = left eigenvectors of T</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">evals</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>            <span class="c1"># largest eigenvalue first</span>
+<span class="n">evals</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="n">evals</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="n">order</span><span class="p">],</span> <span class="n">left</span><span class="o">.</span><span class="n">real</span><span class="p">[:,</span> <span class="n">order</span><span class="p">]</span>
+
+<span class="n">pi</span> <span class="o">=</span> <span class="n">left</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">left</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>         <span class="c1"># stationary distribution, normalised to sum 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>                  <span class="c1"># [1.    0.987 0.693]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>                     <span class="c1"># [0.5  0.25 0.25]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">evals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># [76.24  2.73]  implied time scales in ns</span>
+</code></pre></div>
+
+<h3 id="the-pipeline">The pipeline</h3>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="A3AUWXqqONc" href="https://www.youtube.com/watch?v=A3AUWXqqONc" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] The variational approach</span><span class="sv-m">32 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="QHQBVmVq-Vo" href="https://www.youtube.com/watch?v=QHQBVmVq-Vo" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] How to select models with the VAMP score</span><span class="sv-m">21 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="u4ec4EYsgkQ" href="https://www.youtube.com/watch?v=u4ec4EYsgkQ" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] MSM coarse graining with PCCA++</span><span class="sv-m">40 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="jXMaCSSOSgg" href="https://www.youtube.com/watch?v=jXMaCSSOSgg" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] VAMPnets</span><span class="sv-m">30 min · PyEMMA workshop (Noe group)</span></a><a class="sv" data-yt="CNYreswqJAQ" href="https://www.youtube.com/watch?v=CNYreswqJAQ" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Markov state model tutorial through pyEMMA</span><span class="sv-m">1 h 08 min · Christian Seitz</span></a></div>
+
+<p>So far the states were given. For a protein you have to make them, from frames that each hold the coordinates of thousands of atoms. The list below is the map of the whole procedure. The paragraphs after it take the steps one at a time.</p>
 <ol>
 <li><strong>Featurise.</strong> Convert each frame into internal coordinates that do not depend on overall rotation: backbone dihedrals, distances between residues, contacts.</li>
 <li><strong>Reduce dimension with TICA.</strong> Time-lagged independent component analysis finds the linear combinations of features that decorrelate most slowly, by solving the generalised eigenvalue problem
@@ -108,22 +682,164 @@
 <li><strong>Coarse-grain</strong> the microstates into a few metastable macrostates (PCCA+, or a hidden Markov model) for interpretation.</li>
 <li><strong>Extract</strong> populations, rates, mean first-passage times, and with transition path theory the committor, the reactive flux and the dominant pathways between two states.</li>
 </ol>
+<p>The formula in step 2 uses these symbols.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x_a(t)\)</span>: the value of feature number <span class="math-inline">\(a\)</span> in the frame at time <span class="math-inline">\(t\)</span>. The labels <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span> run over the features.</li>
+<li><span class="math-inline">\(\delta x_a(t)\)</span>: the deviation of that feature from its mean over all frames, <span class="math-inline">\(x_a(t)-\langle x_a\rangle\)</span>.</li>
+<li><span class="math-inline">\(\langle\dots\rangle\)</span>: an average over all frames of all trajectories.</li>
+<li><span class="math-inline">\(C_{ab}(\tau)\)</span>: the <strong>time-lagged covariance</strong> of features <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span>: the average of the deviation of <span class="math-inline">\(a\)</span> now times the deviation of <span class="math-inline">\(b\)</span> one lag time later. Here <span class="math-inline">\(\tau\)</span> is a lag time chosen for this step.</li>
+<li><span class="math-inline">\(\mathbf C(\tau)\)</span>: the matrix of all <span class="math-inline">\(C_{ab}(\tau)\)</span>. <span class="math-inline">\(\mathbf C(0)\)</span> is the same at lag zero, the ordinary covariance matrix that PCA uses.</li>
+<li><span class="math-inline">\(\mathbf v\)</span>: a list of weights, one per feature. It defines one combination of the features, <span class="math-inline">\(y=\sum_av_a\,\delta x_a\)</span>.</li>
+<li><span class="math-inline">\(\lambda\)</span>: the eigenvalue that belongs to <span class="math-inline">\(\mathbf v\)</span>. It is the autocorrelation of the combination <span class="math-inline">\(y\)</span> at lag <span class="math-inline">\(\tau\)</span>, a number near 1 for a slow combination and near 0 for a fast one. It is not an eigenvalue of the transition matrix.</li>
+</ul>
+</div>
+<p><strong>Step 1, features.</strong> Cartesian coordinates change when the whole protein rotates or drifts, which says nothing about its shape. Features are numbers that depend on the shape alone: dihedral angles, distances between residues, and contacts (1 if two residues touch, 0 if they do not). Each frame becomes a list of hundreds or thousands of such numbers. No later step can repair this choice, because the model can only contain motions that the features can see.</p>
+<p><strong>Step 2, TICA.</strong> A list of a thousand features is too long to cluster well, and most of the features carry fast, local noise. The aim of this step is to keep a handful of combinations of features that carry the slow motions.</p>
+<div class="box maths">
+<p><strong>Maths you need here: covariance, autocorrelation and the generalised eigenvalue problem.</strong> The <strong>covariance</strong> of two quantities is the average of the product of their deviations from their means. It is positive when the two tend to be above their means at the same time. The covariance of a quantity with itself is its <strong>variance</strong>, the square of its standard deviation (see the <a href="maths.html#averages">toolbox</a>).</p>
+<p>A <em>time-lagged</em> covariance compares one quantity now with another one a time <span class="math-inline">\(\tau\)</span> later. For a single quantity <span class="math-inline">\(y\)</span>, the ratio <span class="math-inline">\(\langle\delta y(t)\,\delta y(t+\tau)\rangle/\langle\delta y^2\rangle\)</span> is its <strong>autocorrelation</strong> at lag <span class="math-inline">\(\tau\)</span> (Module 11). It is 1 if <span class="math-inline">\(y\)</span> has not changed at all after <span class="math-inline">\(\tau\)</span> and 0 if it has forgotten its value. A slow quantity has a high autocorrelation.</p>
+<p>An ordinary eigenvalue problem reads <span class="math-inline">\(\mathbf A\mathbf v=\lambda\mathbf v\)</span>. A <em>generalised</em> one has a second matrix on the right-hand side, <span class="math-inline">\(\mathbf A\mathbf v=\lambda\mathbf B\mathbf v\)</span>, and libraries solve it in the same way. In TICA the eigenvalue has a direct meaning. Multiply the equation from the left by the row <span class="math-inline">\(\mathbf v^T\)</span>: the left side becomes <span class="math-inline">\(\langle\delta y(t)\,\delta y(t+\tau)\rangle\)</span> for the combination <span class="math-inline">\(y=\sum_av_a\,\delta x_a\)</span>, and the right side becomes <span class="math-inline">\(\lambda\langle\delta y^2\rangle\)</span>. So <span class="math-inline">\(\lambda\)</span> is the autocorrelation of <span class="math-inline">\(y\)</span>, and the eigenvector with the largest <span class="math-inline">\(\lambda\)</span> is the slowest combination that the features allow.</p>
+<p>A tiny example with two features that are not correlated with each other. Feature 1 has variance 4 and autocorrelation 0.1 at the chosen lag. Feature 2 has variance 1 and autocorrelation 0.9. Then <span class="math-inline">\(\mathbf C(0)\)</span> has 4 and 1 on its diagonal, <span class="math-inline">\(\mathbf C(\tau)\)</span> has <span class="math-inline">\(4\times0.1=0.4\)</span> and <span class="math-inline">\(1\times0.9=0.9\)</span>, and the two eigenvalues are 0.1 and 0.9.</p>
+<p>PCA ranks feature 1 first, because its variance is larger. TICA ranks feature 2 first, because it is slower.</p>
+</div>
+<p>The comparison with PCA in the list is easier to keep with a picture. A floppy loop at the surface moves a long way and does so within picoseconds. A side chain that blocks a binding site may move by a fraction of a nanometre once in a microsecond. PCA puts the loop first. For kinetics the side chain is the motion that counts, and TICA puts it first.</p>
+<p>After this step every frame is described by a few numbers, its values along the slowest TICA components.</p>
+<p><strong>Step 3, clustering.</strong> The frames are now points in a space of a few dimensions, and clustering groups nearby points. The k-means method does it as follows: place a chosen number of centres among the points, assign every frame to its nearest centre, move each centre to the mean of the frames assigned to it, and repeat until nothing changes. Each centre with its frames is one <strong>microstate</strong>, and each frame receives the label of its microstate.</p>
+<p>The number of microstates is a compromise. More of them means smaller states and a better Markov assumption. It also means fewer counts per transition and more statistical noise.</p>
+<p><strong>Steps 4 and 5</strong> are the estimation of the previous section, repeated for several lag times, and the validation of the next section.</p>
+<p><strong>Step 6, coarse-graining.</strong> A model with 500 microstates gives good numbers and no picture. If the spectrum has a gap after, say, the third eigenvalue, the system has three metastable states, and the microstates can be grouped into three <strong>macrostates</strong>. PCCA+ reads the grouping from the right eigenvectors of the slow processes: microstates with nearly the same entries there exchange quickly with each other and are put together. In the three-state chain the right eigenvector of the slow process is proportional to <span class="math-inline">\((-0.35,\ -0.30,\ 1.00)\)</span>. States 1 and 2 have nearly the same entry and form one macrostate.</p>
+<p>A hidden Markov model reaches the same goal in another way: it assumes a small number of hidden states with memoryless jumps between them, each of which produces the observed microstates with certain probabilities. "For interpretation" is meant literally. In the pipeline above, the time scales were computed and validated on the microstate model in steps 4 and 5, and the macrostates are for pictures and for words.</p>
+<p><strong>Step 7, extracting results.</strong> The population of a macrostate is the sum of <span class="math-inline">\(\pi_i\)</span> over its microstates. Rates between macrostates and mean first-passage times follow from the matrix by solving sets of linear equations. <strong>Transition path theory</strong> (TPT) goes further. You name a start set A and a target set B of states, for example unbound and bound, and TPT answers three questions from the matrix alone, with no new simulation.</p>
+<p><em>What is the committor of every state?</em> The committor of a state is the average of the committors of the states it jumps to, weighted by the jump probabilities:</p>
+<p><span class="math-display">\[q_i=\sum_jT_{ij}\,q_j\quad\text{for every state }i\text{ outside A and B},\qquad q_i=0\ \text{in A},\qquad q_i=1\ \text{in B}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(q_i\)</span>: the committor of microstate <span class="math-inline">\(i\)</span>, the probability of reaching B before A when starting from <span class="math-inline">\(i\)</span>. It is the quantity <span class="math-inline">\(p_B\)</span> of the committor section, for a state in place of a configuration.</li>
+<li><span class="math-inline">\(T_{ij}\)</span>: the transition matrix of the model.</li>
+<li><span class="math-inline">\(\sum_j\)</span>: a sum over all states <span class="math-inline">\(j\)</span> that can be reached from <span class="math-inline">\(i\)</span>, including <span class="math-inline">\(i\)</span> itself.</li>
+</ul>
+</div>
+<p>This is one linear equation per state, and a library solves the whole set. In the three-state chain with A <span class="math-inline">\(=\{1\}\)</span> and B <span class="math-inline">\(=\{3\}\)</span> there is one unknown, <span class="math-inline">\(q_2=T_{21}\times0+T_{22}\,q_2+T_{23}\times1\)</span>, so <span class="math-inline">\(q_2=T_{23}/(1-T_{22})=0.01/0.21=0.048\)</span>. From state 2 the system reaches state 3 before state 1 in fewer than 5% of the cases. State 2 lies on the side of state 1, as the eigenvectors said.</p>
+<p><em>Where does the traffic pass?</em> The <strong>reactive flux</strong> between two states is the number of transitions per unit time made by trajectories that are on their way from A to B. Trajectories that leave A and return to it are not counted.</p>
+<p><em>Which routes matter?</em> The reactive flux can be split into <strong>pathways</strong>, chains of states that lead from A to B, each with its share of the total. Statements such as "most binding events pass through this intermediate" come from this analysis.</p>
 <p>The variational principle (VAMP) gives a score that measures how well a choice of features and states captures the slow dynamics, so that modelling choices can be compared objectively by cross-validation. Neural networks trained on this score (VAMPnets) merge steps 1 to 3.</p>
+<p>The idea behind the score returns under "Validation" below: a poor description can make the slow processes look faster than they are, and apart from statistical noise it cannot make them look slower. Of several descriptions of the same data at the same lag time, the one in which the slow processes come out slowest is therefore the closest to the truth, and the score measures this. <strong>Cross-validation</strong> protects against rewarding noise: the model is built on one part of the trajectories and scored on another part that it has not seen. A VAMPnet is a neural network that takes the coordinates of a frame and returns its state directly, so that features, dimension reduction and clustering are learned together.</p>
 <h3 id="validation">Validation</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="aO_DmbqHWYs" href="https://www.youtube.com/watch?v=aO_DmbqHWYs" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] How to analyze Markov state models</span><span class="sv-m">17 min · PyEMMA workshop (Noe group)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="aO_DmbqHWYs" href="https://www.youtube.com/watch?v=aO_DmbqHWYs" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] How to analyze Markov state models</span><span class="sv-m">17 min · PyEMMA workshop (Noe group)</span></a></div>
 
+<p>A Markov state model always produces numbers. Whether they mean anything depends on the Markov assumption, on the states and on the amount of data, and each of these can be tested. The three checks are listed first and explained after the list.</p>
 <ul>
 <li><strong>Implied time scales against lag time.</strong> Compute <span class="math-inline">\(t_i(\tau)\)</span> for increasing <span class="math-inline">\(\tau\)</span>. If the model is Markovian, a true relaxation time does not depend on the lag used to measure it. Choose the smallest <span class="math-inline">\(\tau\)</span> at which the slow time scales have levelled off. Levelling off is necessary but not sufficient for a Markovian model, so it guides the choice of <span class="math-inline">\(\tau\)</span> and does not validate the model; the Chapman-Kolmogorov test below does. Time scales that keep rising with <span class="math-inline">\(\tau\)</span> mean the discretisation is too coarse: discretisation error always underestimates the slow time scales, which approach their true values from below. Too little data is a separate, statistical problem. No process faster than <span class="math-inline">\(\tau\)</span> can be resolved.</li>
 <li><strong>Chapman-Kolmogorov test.</strong> Check that <span class="math-inline">\(\mathbf T(k\tau)\approx\mathbf T(\tau)^k\)</span>: the model estimated at lag <span class="math-inline">\(\tau\)</span> must predict, within error, the transition probabilities estimated directly from the data at longer lags.</li>
 <li><strong>Connectivity and statistics.</strong> Every state kept must be reversibly connected to the rest, with transitions observed in both directions more than a few times. A state entered once and never left makes the model meaningless for that state.</li>
 </ul>
+<p><strong>Implied time scales.</strong> The two-state calculation in the section on eigenvalues showed why a true relaxation time does not depend on the lag: <span class="math-inline">\(\tau\)</span> cancels. A model with memory behaves differently. At a short lag it sees fast returns across the borders of its states and reports a relaxation that is too fast. At longer lags these returns matter less and the reported time scale rises.</p>
+<p>So you estimate the matrix at many lag times, compute <span class="math-inline">\(t_i=-\tau/\ln|\lambda_i(\tau)|\)</span> for each, and plot the slow time scales against <span class="math-inline">\(\tau\)</span>. "Discretisation" is the cutting of configuration space into states, and its error is the memory described under "The model".</p>
+<p>A worked example makes this concrete. Take the three-state chain as the truth, with its slow time scale of 76.2 ns, and suppose that your clustering produced only two states. In the good case the border lies where it should, <span class="math-inline">\(\{1,2\}\)</span> against <span class="math-inline">\(\{3\}\)</span>. In the bad case it lies between states 1 and 2, giving <span class="math-inline">\(\{1\}\)</span> against <span class="math-inline">\(\{2,3\}\)</span>. The table shows the implied time scale of each two-state model, computed exactly, that is, as if there were unlimited data.</p>
+<table>
+<thead>
+<tr>
+<th>Lag <span class="math-inline">\(\tau\)</span> (ns)</th>
+<th>Good states (ns)</th>
+<th>Bad states (ns)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>74.5</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>74.8</td>
+<td>4.8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>75.3</td>
+<td>6.1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>75.7</td>
+<td>9.2</td>
+</tr>
+<tr>
+<td>20</td>
+<td>75.9</td>
+<td>15.7</td>
+</tr>
+<tr>
+<td>50</td>
+<td>76.1</td>
+<td>30.0</td>
+</tr>
+<tr>
+<td>100</td>
+<td>76.2</td>
+<td>43.1</td>
+</tr>
+<tr>
+<td>200</td>
+<td>76.2</td>
+<td>55.0</td>
+</tr>
+</tbody>
+</table>
+<p>Both columns start below the true 76.2 ns and rise towards it, as the first bullet says. With good states the error is 2% at the shortest lag and the curve is flat. With bad states the model is 17 times too fast at a lag of 1 ns, and at 200 ns it is still 28% short and still rising. More data would not help, because the table already assumes unlimited data. Only better states would.</p>
+<p><strong>The Chapman-Kolmogorov test.</strong> For a memoryless chain, <span class="math-inline">\(k\)</span> steps of length <span class="math-inline">\(\tau\)</span> are the same as one step of length <span class="math-inline">\(k\tau\)</span>. That is the Chapman-Kolmogorov equation, <span class="math-inline">\(\mathbf T(k\tau)=\mathbf T(\tau)^k\)</span>, and the box on matrix products showed a case: <span class="math-inline">\(\mathbf T^2\)</span> holds the probabilities for two steps.</p>
+<p>The test compares the two sides, each obtained in its own way. The right side is the model: estimate the matrix at lag <span class="math-inline">\(\tau\)</span> and raise it to the power <span class="math-inline">\(k\)</span>. The left side is the data: count pairs of frames a time <span class="math-inline">\(k\tau\)</span> apart and normalise the rows. The comparison is usually shown for a few metastable sets, as the probability of being in a set after a time <span class="math-inline">\(k\tau\)</span> when starting in it, with error bars from a Bayesian estimator. "Within error" means that the two curves agree inside those bars.</p>
+<p>In the worked example, the model with bad states, estimated at a lag of 1 ns, predicts that a copy that starts in <span class="math-inline">\(\{1\}\)</span> is found there 10 ns later with probability 0.55. Counting directly gives 0.67. After 20 ns the numbers are 0.51 and 0.64. The model fails.</p>
+<p>With good states, the probability of being found in <span class="math-inline">\(\{1,2\}\)</span> after 20 ns is 0.941 from the model and 0.942 from direct counting. The model passes.</p>
+<p>Why are flat time scales not enough? They show that the eigenvalues estimated at different lags agree with each other. The Chapman-Kolmogorov test compares whole matrices, which also contain the eigenvectors, that is, where the population goes. It is the stronger test.</p>
+<p><strong>No process faster than <span class="math-inline">\(\tau\)</span>.</strong> The model looks at the system once per lag time. A process that relaxes in much less than <span class="math-inline">\(\tau\)</span> is over between two looks, and its eigenvalue <span class="math-inline">\(e^{-\tau/t_i}\)</span> is close to zero and lost in the noise.</p>
+<p>The lag time is therefore a compromise. A short lag keeps the fast processes and risks memory. A long lag is safer for the Markov assumption, loses the fast processes and leaves fewer independent counts. The rule in the first bullet, the smallest lag at which the slow time scales are flat, is that compromise.</p>
+<p><strong>Too little data.</strong> This error is of a different kind. It is random, it can go in either direction, and more data cures it. Go back to the three-state chain with correct states and a correct lag, and estimate the slow time scale from one trajectory of 10,000 steps.</p>
+<p>The trajectory of the estimation example gives 97 ns. In eight more repeats with different random numbers the estimate ranged from 63 to 105 ns, against the true 76 ns, and each trajectory contained between 19 and 28 transitions from state 2 to state 3. The fast time scale, which rests on thousands of transitions, ranged only from 2.6 to 3.0 ns. With trajectories of 1,000 steps there were between zero and three transitions to state 3, and one trajectory never reached it. A model built from that trajectory has two states and no slow process at all.</p>
+<p><strong>Connectivity and statistics.</strong> The last experiment is the reason for the third bullet. A transition seen once has a relative uncertainty of 100%. A state that was entered and never left has no measured exit probability, so its population and every time scale that involves it are undefined. Count the transitions in both directions for every state you keep. Error bars from a Bayesian estimator, or from repeating the analysis with part of the trajectories left out, tell you whether a time scale is known to 10% or to a factor of three.</p>
+<p>The demo below builds a model from a particle that diffuses in a potential with three wells. Its left plot is the implied-time-scale plot of this section, and its right plot compares the stationary distribution of the model with the exact Boltzmann populations. The demo enforces detailed balance in the simplest way: it replaces <span class="math-inline">\(C_{ij}\)</span> and <span class="math-inline">\(C_{ji}\)</span> by their average before the rows are normalised.</p>
+<p>This shortcut is not the maximum-likelihood estimator of the section on estimation. It treats every observed jump as if its reverse had been observed too, which is justified only when the trajectories as a whole sample equilibrium. The stationary distribution of the matrix it gives is then practically the fraction of frames found in each state. For the one long trajectory of the demo that is acceptable. For many short trajectories started away from equilibrium it gives wrong populations, and the freedom to start trajectories where you like (next section) is lost.</p>
 <div class="widget" data-widget="msm"></div>
 
 <h3 id="sampling-for-a-markov-model">Sampling for a Markov model</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="B8uo60u9TqI" href="https://www.youtube.com/watch?v=B8uo60u9TqI" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Greg Bowman - Workshop on Free Energy, Kinetics, &amp; MSM in Drug Design 2018</span><span class="sv-m">33 min · Greg Bowman</span></a><a class="sv" data-yt="Fuai8_MSxaw" href="https://www.youtube.com/watch?v=Fuai8_MSxaw" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Frank Noé - Workshop on Free Energy, Kinetics, &amp; MSM in Drug Design 2018</span><span class="sv-m">37 min · Frank Noe</span></a><a class="sv" data-yt="HfTdS-kgG70" href="https://www.youtube.com/watch?v=HfTdS-kgG70" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] How to estimate multi-ensemble Markov models</span><span class="sv-m">42 min · PyEMMA workshop (Noe group)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="B8uo60u9TqI" href="https://www.youtube.com/watch?v=B8uo60u9TqI" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Greg Bowman - Workshop on Free Energy, Kinetics, &amp; MSM in Drug Design 2018</span><span class="sv-m">33 min · Greg Bowman</span></a><a class="sv" data-yt="Fuai8_MSxaw" href="https://www.youtube.com/watch?v=Fuai8_MSxaw" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Frank Noé - Workshop on Free Energy, Kinetics, &amp; MSM in Drug Design 2018</span><span class="sv-m">37 min · Frank Noe</span></a><a class="sv" data-yt="HfTdS-kgG70" href="https://www.youtube.com/watch?v=HfTdS-kgG70" target="_blank" rel="noopener" title="Markov state models [PyEMMA 2018]"><span class="sv-play">&#9654;</span><span class="sv-t">[PyEMMA 2018] How to estimate multi-ensemble Markov models</span><span class="sv-m">42 min · PyEMMA workshop (Noe group)</span></a></div>
 
+<p>A single trajectory long enough to cross every barrier many times is what a Markov model lets you avoid. A road map can be drawn from many short trips, provided that together they cover every road in both directions. It does not need one driver who visits the whole country.</p>
 <p>Because only local equilibrium within states is needed, the data can be many short trajectories from distributed computing or many GPUs. <strong>Adaptive sampling</strong> runs in rounds: build a preliminary model, start new trajectories from states that are poorly sampled or newly discovered, and repeat (doing this fully automatically and reliably for complex systems is still an open problem). Markov models have been used to describe protein folding at millisecond time scales and the binding and unbinding of ligands and of protein partners, including dissociation events that no single trajectory spans.</p>
+<p>"Local equilibrium within states" is the precise condition. To estimate row <span class="math-inline">\(i\)</span> of the matrix you need trajectories that pass through state <span class="math-inline">\(i\)</span>, and while they are inside it they must visit its configurations with their Boltzmann weights. A short trajectory reaches this condition quickly when the state is small.</p>
+<p>What you do not need is the right <em>number</em> of trajectories in each state. Normalising each row divides that number out, so you may start many more trajectories in a rare state than its population would justify. "Poorly sampled" means few counts in a row or in a transition, and adaptive sampling sends the next round of trajectories there.</p>
 <p>Limits: the model is only as good as the features (a slow motion that the features cannot see is absent from the model), rare states remain statistically weak, and the result depends on modelling choices, which is why the validation steps are not optional. The underlying trajectories must come from dynamics whose kinetics you are prepared to defend (Module 8).</p>
+<p>The last sentence points back to Kramers theory. A Markov model reports the kinetics of the trajectories it was given. If they were run with a thermostat of strong friction, or with a coarse-grained model, the time scales of the model are those of that dynamics.</p>
+<h3 id="three-ways-to-get-a-wrong-model">Three ways to get a wrong model</h3>
+<table>
+<thead>
+<tr>
+<th>What went wrong</th>
+<th>What you see</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Too little data</td>
+<td>Wide error bars. Time scales and populations change when part of the trajectories is left out. States with transitions in one direction only.</td>
+<td>More trajectories, started in the weakly sampled states. Fewer and larger states where the counts are thin.</td>
+</tr>
+<tr>
+<td>Poor features or poor states</td>
+<td>Slow time scales keep rising with the lag time, and the Chapman-Kolmogorov test fails. In the worst case nothing shows it, because the missing motion is invisible to the features.</td>
+<td>Add features that describe the missing motion and compare feature sets by their VAMP score. Use finer states near the transitions. Compare predictions with experiment.</td>
+</tr>
+<tr>
+<td>Lag time too short</td>
+<td>The time scales at the chosen lag lie below their plateau, and the model predicts kinetics that are too fast.</td>
+<td>A longer lag time, at the price of losing the faster processes.</td>
+</tr>
+</tbody>
+</table>
+<p>The first row is a statistical error: random, in either direction, and cured by data. The second and third rows are systematic errors: they make slow processes look too fast, and more data of the same kind does not remove them. The worst case in the second row cannot be detected from inside the model, because validation only tests whether the model is consistent with the trajectories as the features describe them.</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. A complex has K_d = 1 nM and k_on = 10⁶ M⁻¹s⁻¹. What is its residence time? How long would you have to simulate to see it dissociate ten times?</summary>
@@ -139,7 +855,19 @@
 </details>
 <details>
 <summary>4. The implied time scale of the slowest process rises from 200 ns at τ = 1 ns to 2 µs at τ = 50 ns and is still rising. What should you do?</summary>
-<p>The model is not Markovian at these lags with this state definition. Improve the features and the discretisation (the states mix configurations on both sides of a barrier), and collect more data. Do not report the rate.</p>
+<p>The model is not Markovian at these lags with this state definition. Improve the features and the discretisation (the states mix configurations on both sides of a barrier), and collect more data. Do not report the rate. The new data are for the finer states, which each need enough counted transitions. More data with the same states would not stop the rise, which is a discretisation error (see "Validation").</p>
+</details>
+<details>
+<summary>5. Two states exchange with k_AB = 2 µs⁻¹ and k_BA = 6 µs⁻¹. What are the equilibrium populations, the free-energy difference at 300 K and the relaxation time?</summary>
+<p><span class="math-inline">\(P_B^{eq}/P_A^{eq}=k_{AB}/k_{BA}=1/3\)</span>, so <span class="math-inline">\(P_A^{eq}=0.75\)</span> and <span class="math-inline">\(P_B^{eq}=0.25\)</span>. <span class="math-inline">\(\Delta G_{AB}=-k_BT\ln(1/3)=2.494\times1.099=2.74\)</span> kJ/mol, where <span class="math-inline">\(\Delta G_{AB}\)</span> is the free energy of B minus that of A. The relaxation rate is <span class="math-inline">\(k_{AB}+k_{BA}=8\)</span> µs<span class="math-inline">\(^{-1}\)</span>, so the relaxation time is <span class="math-inline">\(0.125\)</span> µs, or 125 ns. It is shorter than both mean waiting times, <span class="math-inline">\(1/k_{AB}=500\)</span> ns and <span class="math-inline">\(1/k_{BA}=167\)</span> ns.</p>
+</details>
+<details>
+<summary>6. A two-state Markov model at a lag time of 5 ns has T₁₂ = 0.02 and T₂₁ = 0.06. Find the stationary distribution, the implied time scale and the two rate constants.</summary>
+<p><span class="math-inline">\(\pi_1=T_{21}/(T_{12}+T_{21})=0.06/0.08=0.75\)</span> and <span class="math-inline">\(\pi_2=0.25\)</span>. The second eigenvalue is <span class="math-inline">\(\lambda_2=1-T_{12}-T_{21}=0.92\)</span>, so <span class="math-inline">\(t_2=-5/\ln0.92=60\)</span> ns. The rate constants are <span class="math-inline">\(\pi_2/t_2=0.25/60=0.0042\)</span> ns<span class="math-inline">\(^{-1}\)</span> from state 1 to state 2 and <span class="math-inline">\(\pi_1/t_2=0.75/60=0.0125\)</span> ns<span class="math-inline">\(^{-1}\)</span> from state 2 to state 1. They are close to <span class="math-inline">\(T_{12}/\tau=0.004\)</span> and <span class="math-inline">\(T_{21}/\tau=0.012\)</span> ns<span class="math-inline">\(^{-1}\)</span>, because the lag time is much shorter than the relaxation time.</p>
+</details>
+<details>
+<summary>7. A discrete trajectory saved every 1 ns reads 1 1 2 2 2 1 1 1 2 1. Build the count matrix and the transition matrix at a lag of 1 ns. Why should you not trust the result?</summary>
+<p>The nine pairs of neighbouring frames give <span class="math-inline">\(C_{11}=3\)</span>, <span class="math-inline">\(C_{12}=2\)</span>, <span class="math-inline">\(C_{21}=2\)</span> and <span class="math-inline">\(C_{22}=2\)</span>. Dividing each row by its sum, <span class="math-inline">\(\hat T_{11}=0.6\)</span>, <span class="math-inline">\(\hat T_{12}=0.4\)</span>, <span class="math-inline">\(\hat T_{21}=0.5\)</span> and <span class="math-inline">\(\hat T_{22}=0.5\)</span>. Each kind of transition was seen only two or three times, so every entry has a relative uncertainty of the order of <span class="math-inline">\(1/\sqrt2\)</span>, about 70%.</p>
 </details>
 <h2 id="exercises">Exercises</h2>
 <ol>

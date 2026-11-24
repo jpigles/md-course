@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Physics primer | Molecular Dynamics: a course</title>
+<meta name="description" content="The physics that the lessons build on, explained from zero in sixteen short sections that you can read in order or open one at a time from a link in a lesson.">
+<script>try{var t=localStorage.getItem('mdc-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="physics">
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
+  <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
+  <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li class="current"><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+</aside>
+<main class="content">
+<div class="hero"><h1>Physics primer</h1><p class="lede">The physics that the lessons build on, explained from zero in sixteen short sections that you can read in order or open one at a time from a link in a lesson.</p></div>
+
+<article>
+<p>This page explains the physics that the eighteen lessons build on. It starts from zero. You need no physics beyond what you remember from school. The mathematics is on a separate page, the <a href="maths.html#notation">maths toolbox</a>, and this page links to it wherever a tool is needed.</p>
+<p>There are two ways to use the page. You can read it once from top to bottom before Module 1, because the sections build on each other. Or you can arrive from a link in a lesson, read the one section you need, and go back with the back button of your browser.</p>
+<p>Every section has the same five parts in the same order: the idea in plain words, the notation (with a list under every formula that says what each symbol means), one or two worked examples with numbers that you can check by hand, the lessons that use the idea, and a common mistake.</p>
+<p>All numbers are in the units of the course: nanometres, picoseconds, atomic mass units and kJ/mol. The first section explains them.</p>
+<div class="box warn">
+<p><strong>Letters that mean two things on this page.</strong> Physics has more quantities than letters. The lists under the formulas say which meaning is used each time. The collisions to watch for:</p>
+<ul>
+<li><span class="math-inline">\(T\)</span> is the temperature. <span class="math-inline">\(T_{period}\)</span> is the time of one oscillation.</li>
+<li><span class="math-inline">\(k\)</span> is a spring constant in the first half of the page and the wave number <span class="math-inline">\(2\pi/\lambda\)</span> in the last section. <span class="math-inline">\(k_B\)</span> is Boltzmann's constant. Capital <span class="math-inline">\(K\)</span> is the kinetic energy, and in one section an equilibrium constant. An upright K after a number is the unit kelvin.</li>
+<li><span class="math-inline">\(E\)</span> is an energy. Bold <span class="math-inline">\(\mathbf E\)</span> is the electric field.</li>
+<li><span class="math-inline">\(P\)</span> is the pressure. <span class="math-inline">\(P_A\)</span> with a label is a probability. Small bold <span class="math-inline">\(\mathbf p\)</span> and capital bold <span class="math-inline">\(\mathbf P\)</span> are momenta.</li>
+<li><span class="math-inline">\(\mu\)</span> is the reduced mass of two atoms. Bold <span class="math-inline">\(\boldsymbol\mu\)</span> is a dipole moment.</li>
+<li><span class="math-inline">\(\varepsilon\)</span> alone is the depth of a Lennard-Jones well. <span class="math-inline">\(\varepsilon_0\)</span> and <span class="math-inline">\(\varepsilon_r\)</span> belong to electrostatics.</li>
+<li><span class="math-inline">\(H\)</span> is the enthalpy here. In Module 2 it is the Hamiltonian.</li>
+<li><span class="math-inline">\(Q\)</span> is heat here. In Module 3 it is the partition function.</li>
+<li><span class="math-inline">\(\nu\)</span> (Greek nu) is a frequency. <span class="math-inline">\(v\)</span> (Latin) is a velocity. They look alike in print.</li>
+<li><span class="math-inline">\(\lambda\)</span> is a wavelength. <span class="math-inline">\(\lambda_D\)</span> is the Debye length. Capital <span class="math-inline">\(\Lambda\)</span> is the thermal wavelength of a particle.</li>
+<li><span class="math-inline">\(\rho\)</span> is the number of molecules per volume in the section on pressure and the charge per volume in Poisson's equation.</li>
+<li><span class="math-inline">\(A\)</span> is the Helmholtz free energy. In the section on pressure it is an area, and as a subscript it is the name of a state.</li>
+<li><span class="math-inline">\(e\)</span> is the elementary charge when it stands in a unit or in a charge. In a power such as <span class="math-inline">\(e^{-x}\)</span> it is the number 2.718.</li>
+<li><span class="math-inline">\(R\)</span> is the gas constant in <span class="math-inline">\(RT\)</span> and the radius of a sphere in the section on diffusion. Bold <span class="math-inline">\(\mathbf R\)</span> is the centre of mass.</li>
+</ul>
+</div>
+<p><strong>The sections</strong></p>
+<ol>
+<li><a href="#units">Units used in MD</a></li>
+<li><a href="#newton">Motion, velocity, acceleration, force</a></li>
+<li><a href="#energy">Work, kinetic and potential energy</a></li>
+<li><a href="#momentum">Momentum and angular momentum</a></li>
+<li><a href="#oscillator">The harmonic oscillator</a></li>
+<li><a href="#temperature">Temperature and thermal energy</a></li>
+<li><a href="#pressure">Pressure and volume</a></li>
+<li><a href="#thermodynamics">Heat, entropy and free energy</a></li>
+<li><a href="#equilibrium">Equilibrium constants and free energy</a></li>
+<li><a href="#electrostatics">Charge and Coulomb's law</a></li>
+<li><a href="#dipoles">Dipoles and polarisation</a></li>
+<li><a href="#quantum">Why atoms can be treated as classical balls</a></li>
+<li><a href="#intermolecular">Forces between molecules</a></li>
+<li><a href="#diffusion">Diffusion, friction and viscosity</a></li>
+<li><a href="#time-scales">Time and length scales of molecules</a></li>
+<li><a href="#waves">Waves and frequencies</a></li>
+</ol>
+<h2 id="units">Units used in MD</h2>
+<p>A protein is a few nanometres across, one of its carbon atoms weighs <span class="math-inline">\(2\times10^{-26}\)</span> kg, and its bonds vibrate once every <span class="math-inline">\(10^{-14}\)</span> s. In metres, kilograms, seconds and joules, every number in a simulation would carry a large power of ten. MD programs therefore use units of the size of atoms and molecules. This course uses the following set throughout.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Unit</th>
+<th>In SI units</th>
+<th>A scale to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length</td>
+<td>nanometre, nm</td>
+<td><span class="math-inline">\(10^{-9}\)</span> m</td>
+<td>A bond is 0.1 to 0.15 nm long. 1 nm = 10 Å (ångström).</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>picosecond, ps</td>
+<td><span class="math-inline">\(10^{-12}\)</span> s</td>
+<td>1 ps = 1,000 fs (femtoseconds). A time step is 1 to 4 fs.</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>atomic mass unit, u</td>
+<td><span class="math-inline">\(1.66054\times10^{-27}\)</span> kg</td>
+<td>Hydrogen is about 1 u, carbon 12 u, oxygen 16 u.</td>
+</tr>
+<tr>
+<td>Energy</td>
+<td>kJ/mol</td>
+<td><span class="math-inline">\(1.66054\times10^{-21}\)</span> J for one molecule</td>
+<td>The thermal energy at 300 K is 2.494 kJ/mol.</td>
+</tr>
+<tr>
+<td>Charge</td>
+<td>elementary charge, <span class="math-inline">\(e\)</span></td>
+<td><span class="math-inline">\(1.602177\times10^{-19}\)</span> C</td>
+<td>A proton has <span class="math-inline">\(+1\,e\)</span>, an electron <span class="math-inline">\(-1\,e\)</span>.</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>kelvin, K</td>
+<td>K</td>
+<td>0 °C is 273.15 K. Body temperature is 310 K.</td>
+</tr>
+<tr>
+<td>Pressure</td>
+<td>bar</td>
+<td><span class="math-inline">\(10^5\)</span> Pa</td>
+<td>The atmosphere at sea level is 1.013 bar.</td>
+</tr>
+</tbody>
+</table>
+<p>The mass in u of a molecule is the same number as its molar mass in g/mol: water is 18 u and 18 g/mol. Biochemists call the same unit the dalton (Da), so a protein of 20 kDa has a mass of 20,000 u. Many papers and some programs use ångström for length and kcal/mol for energy. The conversion table below covers both.</p>
+<p><strong>Energies are "per mole".</strong> Chemists measure energies for a mole of molecules, because a mole is an amount that you can weigh. A mole is <span class="math-inline">\(N_A = 6.02214\times10^{23}\)</span> molecules (Avogadro's number). An energy of 1 kJ/mol means: if every molecule in a mole did this, the total would be 1 kJ. For one molecule it is</p>
+<p><span class="math-display">\[1\ \text{kJ/mol} = \frac{1000\ \text{J}}{N_A} = 1.66054\times10^{-21}\ \text{J for one molecule}.\]</span></p>
+<div class="legend">
+<ul>
+<li>kJ/mol: kilojoule per mole, the energy unit of this course.</li>
+<li>J: joule, the SI unit of energy. 1 kJ is 1,000 J.</li>
+<li><span class="math-inline">\(N_A\)</span>: Avogadro's number, <span class="math-inline">\(6.02214\times10^{23}\)</span> per mole, the number of molecules in one mole.</li>
+</ul>
+</div>
+<p>So "kJ/mol" in MD is a unit for the energy of one molecule or one interaction, scaled to a convenient size. It does not mean that the simulation contains a mole of anything. When a program prints a total potential energy of <span class="math-inline">\(-300{,}000\)</span> kJ/mol for a box of water, it means <span class="math-inline">\(-300{,}000\times1.66054\times10^{-21}\)</span> J for that one box.</p>
+<p><strong>Why these units fit together.</strong> Kinetic energy is one half of mass times velocity squared (see <a href="#energy">Work, kinetic and potential energy</a>). In MD units a mass times a velocity squared is in u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-2}\)</span>. Convert each factor to SI units:</p>
+<p><span class="math-display">\[1\ \text{u}\,\text{nm}^2\,\text{ps}^{-2} = 1.66054\times10^{-27}\ \text{kg}\times\frac{(10^{-9}\ \text{m})^2}{(10^{-12}\ \text{s})^2} = 1.66054\times10^{-21}\ \text{J} = 1\ \text{kJ/mol}.\]</span></p>
+<div class="legend">
+<ul>
+<li>u: the atomic mass unit, <span class="math-inline">\(1.66054\times10^{-27}\)</span> kg.</li>
+<li>nm, ps: nanometre and picosecond.</li>
+<li>kg, m, s, J: the SI units kilogram, metre, second and joule. One joule is 1 kg m<span class="math-inline">\(^2\)</span> s<span class="math-inline">\(^{-2}\)</span>.</li>
+<li>The last step uses the formula above: <span class="math-inline">\(1.66054\times10^{-21}\)</span> J for one molecule is 1 kJ/mol.</li>
+</ul>
+</div>
+<p>The two numbers agree because the atomic mass unit is one gram per mole divided by Avogadro's number, and the powers of ten in nm and ps cancel the rest. The consequence is that no conversion factor appears in Newton's law or in the kinetic energy. With masses in u, lengths in nm and times in ps, energies come out in kJ/mol, forces in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>, velocities in nm/ps and accelerations in nm ps<span class="math-inline">\(^{-2}\)</span>.</p>
+<p><strong>Conversions.</strong></p>
+<table>
+<thead>
+<tr>
+<th>This</th>
+<th>equals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 nm</td>
+<td>10 Å</td>
+</tr>
+<tr>
+<td>1 ps</td>
+<td>1,000 fs</td>
+</tr>
+<tr>
+<td>1 kcal/mol</td>
+<td>4.184 kJ/mol</td>
+</tr>
+<tr>
+<td>1 kJ/mol</td>
+<td>0.2390 kcal/mol</td>
+</tr>
+<tr>
+<td>1 eV for one molecule (electronvolt)</td>
+<td>96.485 kJ/mol</td>
+</tr>
+<tr>
+<td>1 kcal mol<span class="math-inline">\(^{-1}\)</span> Å<span class="math-inline">\(^{-2}\)</span> (a spring constant)</td>
+<td>418.4 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span></td>
+</tr>
+<tr>
+<td>1 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> (a force)</td>
+<td>1.6605 pN (piconewton)</td>
+</tr>
+<tr>
+<td>1 nm/ps (a velocity)</td>
+<td>1,000 m/s</td>
+</tr>
+<tr>
+<td>1 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span> (a pressure)</td>
+<td>16.605 bar</td>
+</tr>
+<tr>
+<td>1 atm (atmosphere)</td>
+<td>1.01325 bar</td>
+</tr>
+<tr>
+<td>1 M (mol per litre, a concentration)</td>
+<td>0.6022 molecules per nm<span class="math-inline">\(^3\)</span></td>
+</tr>
+<tr>
+<td>1 D (debye, a dipole moment)</td>
+<td>0.02082 <span class="math-inline">\(e\)</span> nm</td>
+</tr>
+<tr>
+<td>1 V (volt, an electric potential)</td>
+<td>96.485 kJ mol<span class="math-inline">\(^{-1}\)</span> <span class="math-inline">\(e^{-1}\)</span></td>
+</tr>
+<tr>
+<td>1 cm<span class="math-inline">\(^{-1}\)</span> (a wavenumber, as an energy)</td>
+<td>0.011963 kJ/mol</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Constants in MD units.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Symbol</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boltzmann's constant</td>
+<td><span class="math-inline">\(k_B\)</span></td>
+<td>0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>, which is <span class="math-inline">\(1.380649\times10^{-23}\)</span> J/K for one molecule</td>
+</tr>
+<tr>
+<td>Avogadro's number</td>
+<td><span class="math-inline">\(N_A\)</span></td>
+<td><span class="math-inline">\(6.02214\times10^{23}\)</span> mol<span class="math-inline">\(^{-1}\)</span></td>
+</tr>
+<tr>
+<td>Coulomb constant</td>
+<td><span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span></td>
+<td>138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>, which is 332.06 kcal mol<span class="math-inline">\(^{-1}\)</span> Å <span class="math-inline">\(e^{-2}\)</span></td>
+</tr>
+<tr>
+<td>Planck's constant</td>
+<td><span class="math-inline">\(h\)</span></td>
+<td>0.399031 kJ mol<span class="math-inline">\(^{-1}\)</span> ps, which is <span class="math-inline">\(6.62607\times10^{-34}\)</span> J s</td>
+</tr>
+<tr>
+<td>Speed of light</td>
+<td><span class="math-inline">\(c\)</span></td>
+<td>299,792 nm/ps, which is <span class="math-inline">\(2.99792\times10^{8}\)</span> m/s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The thermal energy.</strong> The one number worth knowing by heart is the product of Boltzmann's constant and the temperature:</p>
+<p><span class="math-display">\[k_BT = 0.0083145\ \text{kJ mol}^{-1}\,\text{K}^{-1}\times 300\ \text{K} = 2.494\ \text{kJ/mol} = 0.596\ \text{kcal/mol}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k_B\)</span>: Boltzmann's constant. It converts a temperature into an energy.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature in kelvin, here 300 K (27 °C).</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy, the typical energy that random thermal motion gives to one molecule. See <a href="#temperature">Temperature and thermal energy</a>.</li>
+</ul>
+</div>
+<p>Chemistry books call the per-mole value of <span class="math-inline">\(k_B\)</span> the gas constant, <span class="math-inline">\(R = N_Ak_B = 8.3145\)</span> J mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>. With energies in kJ/mol the two are the same number, and the lessons write <span class="math-inline">\(k_B\)</span> throughout.</p>
+<div class="box key">
+<p><strong>Worked example: three conversions.</strong></p>
+<ol>
+<li><em>A free energy from a paper.</em> A binding free energy of <span class="math-inline">\(-10\)</span> kcal/mol is <span class="math-inline">\(-10\times4.184 = -41.84\)</span> kJ/mol. In units of the thermal energy at 300 K it is <span class="math-inline">\(-41.84/2.494 = -16.8\ k_BT\)</span>.</li>
+<li><em>A kinetic energy with no conversion factor.</em> A carbon atom (12 u) moves at 0.5 nm/ps. Its kinetic energy is <span class="math-inline">\(\tfrac12\times12\times0.5^2 = 1.5\)</span> kJ/mol. The same in SI units: <span class="math-inline">\(\tfrac12\times(12\times1.66054\times10^{-27}\ \text{kg})\times(500\ \text{m/s})^2 = 2.49\times10^{-21}\)</span> J, and multiplying by <span class="math-inline">\(N_A\)</span> gives 1,500 J/mol, which is 1.5 kJ/mol.</li>
+<li><em>A spring constant.</em> 300 kcal mol<span class="math-inline">\(^{-1}\)</span> Å<span class="math-inline">\(^{-2}\)</span> is <span class="math-inline">\(300\times4.184\times100 = 125{,}520\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>. The factor 100 appears because 1 Å<span class="math-inline">\(^{-2}\)</span> is 100 nm<span class="math-inline">\(^{-2}\)</span>.</li>
+</ol>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: the table of numbers worth memorising.</li>
+<li><a href="02-classical-mechanics.html">Module 2</a>, Classical mechanics: the period of a bond vibration computed with no conversion factor.</li>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: every parameter has a unit, and force fields differ in their unit systems.</li>
+<li><a href="10-running-a-simulation.html">Module 10</a>, Running a simulation: every number in an input file is in these units.</li>
+<li><a href="12-free-energy-pmf.html">Module 12</a>, Free energy and the potential of mean force: the standard concentration of 1 M as a volume per molecule.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Mixing kJ with kcal, or nm with Å. An energy that is wrong by the factor 4.184 looks plausible, but energies enter probabilities through an exponential, so the populations computed from it are badly wrong. Spring constants are the usual trap: the factor between kcal mol<span class="math-inline">\(^{-1}\)</span> Å<span class="math-inline">\(^{-2}\)</span> and kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> is 418.4, because the length is squared. A second mistake is to put a temperature in °C into a formula. Every formula on this page needs kelvin.</p>
+</div>
+<h2 id="newton">Motion, velocity, acceleration, force</h2>
+<p>To describe motion you need three quantities, and each is the rate of change of the one before. The <strong>position</strong> says where an atom is. The <strong>velocity</strong> says how fast and in which direction the position is changing. The <strong>acceleration</strong> says how fast and in which direction the velocity is changing. In a car, the speedometer shows the size of the velocity, and you feel the acceleration in your back when the car speeds up, brakes or turns.</p>
+<p>All three are <a href="maths.html#vectors">vectors</a>: each has a size and a direction and is stored as three numbers, one for each of <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>. "Rate of change" is the <a href="maths.html#derivative">derivative</a> with respect to time.</p>
+<p><span class="math-display">\[\mathbf v = \frac{d\mathbf r}{dt} = \dot{\mathbf r}, \qquad \mathbf a = \frac{d\mathbf v}{dt} = \ddot{\mathbf r}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r\)</span>: the position of the atom, a vector <span class="math-inline">\((x, y, z)\)</span>, in nm.</li>
+<li><span class="math-inline">\(t\)</span>: the time, in ps.</li>
+<li><span class="math-inline">\(\mathbf v\)</span>: the velocity, in nm/ps. Its size, without the direction, is the <strong>speed</strong>.</li>
+<li><span class="math-inline">\(\mathbf a\)</span>: the acceleration, in nm ps<span class="math-inline">\(^{-2}\)</span>.</li>
+<li><span class="math-inline">\(d/dt\)</span>: the derivative with respect to time, "how fast this changes".</li>
+<li>The dots: a shorter way of writing the same thing. One dot is one time derivative, two dots are two.</li>
+</ul>
+</div>
+<p>What makes the velocity change is a <strong>force</strong>, a push or a pull. Newton's three laws say how.</p>
+<ol>
+<li><strong>No force, no change.</strong> An atom on which no force acts keeps its velocity. If it is at rest it stays at rest. If it moves, it goes on in a straight line at constant speed.</li>
+<li><strong>A force changes the velocity.</strong> The acceleration is the force divided by the mass. The same force changes the velocity of a heavy atom less than that of a light one.</li>
+<li><strong>Forces come in pairs.</strong> If atom A pushes atom B, then B pushes A with a force of the same size in the opposite direction.</li>
+</ol>
+<p>The second law as a formula:</p>
+<p><span class="math-display">\[m\,\mathbf a = \mathbf F .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(m\)</span>: the mass of the atom, in u.</li>
+<li><span class="math-inline">\(\mathbf a\)</span>: its acceleration.</li>
+<li><span class="math-inline">\(\mathbf F\)</span>: the total force on the atom, a vector, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>. One such unit is 1.66 pN.</li>
+</ul>
+</div>
+<p>Read it as "acceleration equals force divided by mass". The force gives the acceleration, the acceleration changes the velocity, and the velocity changes the position. When the force is constant, this chain can be worked out exactly. Along one direction <span class="math-inline">\(x\)</span>:</p>
+<p><span class="math-display">\[v(t) = v_0 + a\,t, \qquad x(t) = x_0 + v_0\,t + \tfrac12 a\,t^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x_0\)</span>, <span class="math-inline">\(v_0\)</span>: the position and the velocity at time zero.</li>
+<li><span class="math-inline">\(a\)</span>: the constant acceleration, <span class="math-inline">\(F/m\)</span>.</li>
+<li><span class="math-inline">\(t\)</span>: the time that has passed.</li>
+<li><span class="math-inline">\(v(t)\)</span>, <span class="math-inline">\(x(t)\)</span>: the velocity and the position at time <span class="math-inline">\(t\)</span>.</li>
+</ul>
+</div>
+<p>The velocity grows in proportion to the time, and the position gets an extra term that grows with the time squared. Between atoms the force is never constant for long, because it changes as the atoms move. An MD program therefore uses formulas of this kind over one very short time step, computes the forces again, and repeats (<a href="04-integrators.html">Module 4</a>).</p>
+<div class="box key">
+<p><strong>Worked example: one time step of one atom.</strong> A carbon atom, <span class="math-inline">\(m = 12\)</span> u, feels a force of 1,200 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> along <span class="math-inline">\(x\)</span> (an illustration). Its acceleration is <span class="math-inline">\(a = F/m = 1200/12 = 100\)</span> nm ps<span class="math-inline">\(^{-2}\)</span>.</p>
+<p>Follow it for one time step of 1 fs, which is 0.001 ps. The velocity changes by <span class="math-inline">\(a\,t = 100\times0.001 = 0.1\)</span> nm/ps. If the atom started at rest it moves <span class="math-inline">\(\tfrac12 a t^2 = \tfrac12\times100\times0.001^2 = 5\times10^{-5}\)</span> nm.</p>
+<p>Compare this with thermal motion. At 300 K a carbon atom has a typical speed of 0.46 nm/ps along any one direction (see <a href="#temperature">Temperature and thermal energy</a>). In 1 fs that velocity carries it <span class="math-inline">\(0.46\times0.001 = 4.6\times10^{-4}\)</span> nm, about nine times farther than the force does. So within one step an atom mostly continues in a straight line, and the force bends its path a little. The effect of the forces builds up over many steps.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: the algorithm is Newton's second law applied again and again.</li>
+<li><a href="02-classical-mechanics.html">Module 2</a>, Classical mechanics: Newton's law, and the same law rewritten by Lagrange and Hamilton.</li>
+<li><a href="04-integrators.html">Module 4</a>, Integrators: how to turn accelerations into steps without losing accuracy.</li>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: where the force on each atom comes from.</li>
+<li><a href="08-thermostats-barostats.html">Module 8</a>, Thermostats and barostats: extra terms that are added to Newton's law to control the temperature.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Thinking that a force is needed to keep something moving. Everyday experience suggests it, because a bicycle stops when you stop pedalling. But the bicycle stops because friction, a force, slows it down. Without any force an atom keeps its velocity for ever. A force is needed to <em>change</em> a velocity.</p>
+<p>Also keep velocity and speed apart: an atom that goes round a circle at constant speed is accelerating all the time, because the direction of its velocity changes.</p>
+</div>
+<h2 id="energy">Work, kinetic and potential energy</h2>
+<p>Energy is a quantity that keeps its total while it passes from one form to another. Lift a shopping bag onto a table and you transfer energy from your arm to the bag. Push it off the table and that stored energy turns into energy of motion. Physics gives each of the three steps a name: the transfer is <strong>work</strong>, the stored energy is <strong>potential energy</strong>, and the energy of motion is <strong>kinetic energy</strong>.</p>
+<p><strong>Work</strong> is how a force transfers energy. It is the force multiplied by the distance moved in the direction of the force.</p>
+<p><span class="math-display">\[W = F\,\Delta x \quad\text{(constant force)},\qquad W = \int_{x_1}^{x_2} F(x)\,dx \quad\text{(a force that changes along the way)}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(W\)</span>: the work done by the force, an energy, in kJ/mol.</li>
+<li><span class="math-inline">\(F\)</span>: the force along the direction of motion. A force at right angles to the motion does no work.</li>
+<li><span class="math-inline">\(\Delta x\)</span>: the distance moved. The Greek capital delta, <span class="math-inline">\(\Delta\)</span>, means "change of".</li>
+<li><span class="math-inline">\(x_1\)</span>, <span class="math-inline">\(x_2\)</span>: the positions where the motion starts and ends.</li>
+<li><span class="math-inline">\(\int\)</span>: the <a href="maths.html#integral">integral</a>. It adds up force times distance over many small pieces of the path, each of length <span class="math-inline">\(dx\)</span>, and is the area under the curve of <span class="math-inline">\(F\)</span> against <span class="math-inline">\(x\)</span>.</li>
+</ul>
+</div>
+<p><strong>Kinetic energy</strong> is the energy that a mass has because it moves.</p>
+<p><span class="math-display">\[K = \tfrac12 m v^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(K\)</span>: the kinetic energy, in kJ/mol.</li>
+<li><span class="math-inline">\(m\)</span>: the mass, in u.</li>
+<li><span class="math-inline">\(v\)</span>: the speed, in nm/ps. For a velocity vector, <span class="math-inline">\(v^2 = v_x^2 + v_y^2 + v_z^2\)</span>.</li>
+</ul>
+</div>
+<p>The two are linked: the work done on a particle by the total force equals the change of its kinetic energy. You can check this for a constant force with the formulas of <a href="#newton">the previous section</a>. From <span class="math-inline">\(v = v_0 + at\)</span> and <span class="math-inline">\(\Delta x = v_0t + \tfrac12at^2\)</span> it follows that <span class="math-inline">\(v^2 = v_0^2 + 2a\,\Delta x\)</span>. Multiply by <span class="math-inline">\(\tfrac12m\)</span> and use <span class="math-inline">\(ma = F\)</span>: <span class="math-inline">\(\tfrac12mv^2 - \tfrac12mv_0^2 = F\,\Delta x\)</span>.</p>
+<p><strong>Potential energy</strong> is energy stored in the arrangement of the atoms. It exists when the work that the force does between two points is the same whatever the route. All force-field forces are of this kind (<a href="02-classical-mechanics.html">Module 2</a> calls them conservative). The work can then be written as the difference of a function <span class="math-inline">\(U\)</span> of position.</p>
+<p><span class="math-display">\[F = -\frac{dU}{dx}, \qquad U(x_2) - U(x_1) = -\int_{x_1}^{x_2} F(x)\,dx .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U\)</span>: the potential energy, a function of the position, in kJ/mol.</li>
+<li><span class="math-inline">\(dU/dx\)</span>: the <a href="maths.html#derivative">derivative</a> of <span class="math-inline">\(U\)</span>, the slope of the curve of <span class="math-inline">\(U\)</span> against <span class="math-inline">\(x\)</span>.</li>
+<li>The first minus sign: the force points downhill, towards lower <span class="math-inline">\(U\)</span>.</li>
+<li>The second formula: when the force does positive work, the potential energy falls by the same amount.</li>
+<li><span class="math-inline">\(F\)</span>, <span class="math-inline">\(x\)</span>, <span class="math-inline">\(x_1\)</span>, <span class="math-inline">\(x_2\)</span>, <span class="math-inline">\(\int\)</span>: the force, the position, the two end points and the integral, as in the list for work above.</li>
+</ul>
+</div>
+<p>With many atoms, <span class="math-inline">\(U\)</span> depends on all the positions, and the force on atom <span class="math-inline">\(i\)</span> is minus the <a href="maths.html#gradient">gradient</a> of <span class="math-inline">\(U\)</span> with respect to the position of that atom (<a href="02-classical-mechanics.html">Module 2</a>). Because the work that the force does is taken out of <span class="math-inline">\(U\)</span> and put into <span class="math-inline">\(K\)</span>, the sum of the two does not change:</p>
+<p><span class="math-display">\[E = K + U = \text{constant}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(E\)</span>: the total energy.</li>
+<li><span class="math-inline">\(K\)</span>: the kinetic energy of all atoms added together.</li>
+<li><span class="math-inline">\(U\)</span>: the potential energy.</li>
+</ul>
+</div>
+<p>This is the <strong>conservation of energy</strong>. It holds when nothing outside the system pushes on it or exchanges heat with it.</p>
+<p><strong>Energy landscapes.</strong> Plot <span class="math-inline">\(U\)</span> against the coordinates and you get a landscape of hills and valleys. A valley is a stable arrangement, because every small displacement is pushed back. A pass between two valleys is a <strong>barrier</strong>: the system needs at least that much energy to get from one valley to the other. With <span class="math-inline">\(N\)</span> atoms there are <span class="math-inline">\(3N\)</span> coordinates, so the landscape cannot be drawn. In practice people draw the energy along one or two chosen coordinates, such as a distance or a torsion angle.</p>
+<div class="box key">
+<p><strong>Worked example: a ball on a spring.</strong> A spring has the potential energy <span class="math-inline">\(U = \tfrac12kx^2\)</span>, with <span class="math-inline">\(k = 100\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> (an illustration). An atom of mass 12 u is held at <span class="math-inline">\(x = 0.1\)</span> nm and released from rest.</p>
+<ul>
+<li>At the start: <span class="math-inline">\(U = \tfrac12\times100\times0.1^2 = 0.5\)</span> kJ/mol and <span class="math-inline">\(K = 0\)</span>, so <span class="math-inline">\(E = 0.5\)</span> kJ/mol.</li>
+<li>Half-way, at <span class="math-inline">\(x = 0.05\)</span> nm: <span class="math-inline">\(U = \tfrac12\times100\times0.05^2 = 0.125\)</span> kJ/mol, so <span class="math-inline">\(K = 0.5 - 0.125 = 0.375\)</span> kJ/mol. The speed is <span class="math-inline">\(v = \sqrt{2K/m} = \sqrt{2\times0.375/12} = 0.25\)</span> nm/ps.</li>
+<li>At the bottom, <span class="math-inline">\(x = 0\)</span>: <span class="math-inline">\(U = 0\)</span> and <span class="math-inline">\(K = 0.5\)</span> kJ/mol, so <span class="math-inline">\(v = \sqrt{2\times0.5/12} = 0.29\)</span> nm/ps.</li>
+</ul>
+<p>Half-way in distance the atom already has three quarters of its final kinetic energy, because the spring force is largest at the start.</p>
+<p><strong>Worked example: work.</strong> A constant force of 100 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> moves an atom by 0.02 nm along the force. The work is <span class="math-inline">\(100\times0.02 = 2\)</span> kJ/mol, a little less than the thermal energy at 300 K.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="02-classical-mechanics.html">Module 2</a>, Classical mechanics: the proof that the total energy is conserved, and the first test of any MD program.</li>
+<li><a href="04-integrators.html">Module 4</a>, Integrators: the drift of the total energy measures the quality of an integrator.</li>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: the potential energy written term by term.</li>
+<li><a href="10-running-a-simulation.html">Module 10</a>, Running a simulation: energy minimisation walks downhill on <span class="math-inline">\(U\)</span> before the dynamics starts.</li>
+<li><a href="13-alchemical-free-energy.html">Module 13</a>, Alchemical free energy: the work done when a system is changed at a finite speed.</li>
+<li><a href="14-enhanced-sampling.html">Module 14</a>, Enhanced sampling: barriers, and the work of pulling a molecule.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Reading a meaning into the absolute value of a potential energy. Only differences of <span class="math-inline">\(U\)</span> and its slopes have physical meaning. You can add any constant to <span class="math-inline">\(U\)</span> and no force changes. So the potential energies of two different systems, or of the same molecule in two force fields, cannot be compared.</p>
+<p>A second mistake is to treat the lowest potential energy as the most probable state. At a finite temperature the number of arrangements counts as well (see <a href="#thermodynamics">Heat, entropy and free energy</a>).</p>
+</div>
+<h2 id="momentum">Momentum and angular momentum</h2>
+<p>The <strong>momentum</strong> of an atom is its mass times its velocity. It measures how hard the atom is to stop: a lorry and a bicycle at the same speed have very different momenta. Newton's second law can be read as "a force changes the momentum", and the third law then says that when two atoms push on each other, what one gains in momentum the other loses. The total is unchanged.</p>
+<p><span class="math-display">\[\mathbf p = m\,\mathbf v, \qquad \frac{d\mathbf p}{dt} = \mathbf F, \qquad \mathbf P = \sum_i m_i\mathbf v_i .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf p\)</span>: the momentum of one atom, a vector, in u nm/ps.</li>
+<li><span class="math-inline">\(m\)</span>, <span class="math-inline">\(\mathbf v\)</span>: its mass and its velocity.</li>
+<li><span class="math-inline">\(\mathbf F\)</span>: the total force on the atom. The middle formula is Newton's second law, because <span class="math-inline">\(d\mathbf p/dt = m\,\mathbf a\)</span>.</li>
+<li><span class="math-inline">\(\mathbf P\)</span>: the total momentum of the system.</li>
+<li><span class="math-inline">\(\sum_i\)</span>: a sum over all atoms, labelled by <span class="math-inline">\(i\)</span>.</li>
+</ul>
+</div>
+<p>The total momentum can be assigned to a single point that carries the whole mass, the <strong>centre of mass</strong>. It is the average position of the atoms, with each atom weighted by its mass.</p>
+<p><span class="math-display">\[\mathbf R = \frac{1}{M}\sum_i m_i\,\mathbf r_i, \qquad M = \sum_i m_i, \qquad \mathbf P = M\,\dot{\mathbf R}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf R\)</span>: the position of the centre of mass.</li>
+<li><span class="math-inline">\(M\)</span>: the total mass.</li>
+<li><span class="math-inline">\(m_i\)</span>, <span class="math-inline">\(\mathbf r_i\)</span>: the mass and the position of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\dot{\mathbf R}\)</span>: the velocity of the centre of mass.</li>
+<li><span class="math-inline">\(\mathbf P\)</span>, <span class="math-inline">\(\sum_i\)</span>: the total momentum and the sum over all atoms, as in the list above.</li>
+</ul>
+</div>
+<p>The centre of mass moves as if the whole mass sat there and only the forces from outside acted on it. The forces between the atoms of the system cancel in pairs and cannot move it. A molecule that tumbles and vibrates as it flies through empty space still has a centre of mass that travels in a straight line.</p>
+<p><strong>Rotation</strong> has its own versions of momentum and force. The <strong>angular momentum</strong> measures how much an atom is moving around a chosen point. The <strong>torque</strong> is the turning effect of a force. A door shows the idea: the same push turns the door more easily when you apply it far from the hinge.</p>
+<p><span class="math-display">\[\mathbf L = \mathbf r\times\mathbf p, \qquad \boldsymbol\tau = \mathbf r\times\mathbf F, \qquad \frac{d\mathbf L}{dt} = \boldsymbol\tau .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf L\)</span>: the angular momentum of the atom about the origin, in u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: the position of the atom, measured from the origin you chose.</li>
+<li><span class="math-inline">\(\times\)</span>: the <a href="maths.html#cross-product">cross product</a>. It gives a vector at right angles to both factors. Its size is largest when the two factors are perpendicular and zero when they are parallel.</li>
+<li><span class="math-inline">\(\boldsymbol\tau\)</span> (Greek tau, bold): the torque.</li>
+<li><span class="math-inline">\(\mathbf p\)</span>, <span class="math-inline">\(\mathbf F\)</span>: the momentum of the atom and the force on it, as in the first list of this section.</li>
+<li>The last formula: a torque changes the angular momentum, in the same way that a force changes the momentum.</li>
+</ul>
+</div>
+<p>For an atom that moves on a circle of radius <span class="math-inline">\(r\)</span> at speed <span class="math-inline">\(v\)</span>, with the origin at the centre of the circle, the position and the momentum are perpendicular, so the size of the angular momentum is <span class="math-inline">\(L = m\,r\,v\)</span>. It points along the axis of the circle. An atom of 16 u on a circle of radius 0.1 nm at 0.5 nm/ps has <span class="math-inline">\(L = 16\times0.1\times0.5 = 0.8\)</span> u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-1}\)</span>.</p>
+<p>When no force acts from outside, the total momentum is conserved. When no torque acts from outside, the total angular momentum is conserved.</p>
+<div class="box key">
+<p><strong>Worked example: a centre of mass.</strong> A carbon atom (12 u) sits at <span class="math-inline">\(x = 0\)</span> and an oxygen atom (16 u) at <span class="math-inline">\(x = 0.113\)</span> nm (a round bond length for an illustration). The centre of mass is at <span class="math-inline">\(X = (12\times0 + 16\times0.113)/28 = 0.0646\)</span> nm. It lies closer to the heavier atom: 0.065 nm from the carbon and 0.048 nm from the oxygen.</p>
+<p><strong>Worked example: a collision.</strong> An atom of 1 u moving at 2 nm/ps hits an atom of 16 u at rest, and the two stick together. The momentum before is <span class="math-inline">\(1\times2 = 2\)</span> u nm/ps. Afterwards the pair has mass 17 u, so its velocity is <span class="math-inline">\(2/17 = 0.118\)</span> nm/ps.</p>
+<p>The kinetic energy before was <span class="math-inline">\(\tfrac12\times1\times2^2 = 2\)</span> kJ/mol. The kinetic energy of the pair moving together is <span class="math-inline">\(\tfrac12\times17\times0.118^2 = 0.12\)</span> kJ/mol. The missing 1.88 kJ/mol went into the vibration of the new pair. Momentum is conserved in every collision. The kinetic energy of the overall motion is not.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="02-classical-mechanics.html">Module 2</a>, Classical mechanics: momenta in Hamilton's equations, and which of the two totals a periodic box conserves.</li>
+<li><a href="03-statistical-mechanics.html">Module 3</a>, Statistical mechanics: the conserved total momentum removes three degrees of freedom from the temperature.</li>
+<li><a href="08-thermostats-barostats.html">Module 8</a>, Thermostats and barostats: programs remove the motion of the centre of mass.</li>
+<li><a href="11-analysis-statistics.html">Module 11</a>, Analysis and statistics: the overall translation and rotation of a molecule are removed before its internal motion is analysed.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: a group of atoms is replaced by one particle, often placed at the centre of mass of the group.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Confusing momentum with kinetic energy. Both are built from the mass and the velocity, but momentum is a vector and kinetic energy is a number that is never negative. Two equal atoms that fly apart at the same speed have a total momentum of zero and a total kinetic energy that is not zero. A second point: an angular momentum always refers to an origin. If you change the origin, its value changes.</p>
+</div>
+<h2 id="oscillator">The harmonic oscillator</h2>
+<p>Hang a weight on a spring, pull it down and let go. It moves up and down around its rest position in a steady rhythm. This is a <strong>harmonic oscillator</strong>: a mass that is pulled back towards a rest position by a force proportional to how far it has been moved. A child on a swing and a ball that rolls back and forth in a bowl behave in the same way for small swings, and so does a chemical bond.</p>
+<p><span class="math-display">\[F = -k\,x, \qquad U = \tfrac12 k\,x^2, \qquad m\,\ddot x = -k\,x .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x\)</span>: the displacement from the rest position, in nm. For a bond it is the bond length minus its rest length.</li>
+<li><span class="math-inline">\(k\)</span>: the <strong>spring constant</strong> or stiffness, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>. A large <span class="math-inline">\(k\)</span> is a stiff spring.</li>
+<li><span class="math-inline">\(F\)</span>: the restoring force. The minus sign says that it points against the displacement.</li>
+<li><span class="math-inline">\(U\)</span>: the potential energy of the spring, a parabola. Its slope gives the force, <span class="math-inline">\(F = -dU/dx\)</span>.</li>
+<li><span class="math-inline">\(m\)</span>: the mass. <span class="math-inline">\(\ddot x\)</span>: its acceleration. The third formula is Newton's second law for this force.</li>
+</ul>
+</div>
+<p>The third formula is a <a href="maths.html#ode">differential equation</a>: it says that the acceleration is always proportional to the displacement and opposite to it. Its solution is a cosine.</p>
+<p><span class="math-display">\[x(t) = x_{\max}\cos(\omega t + \varphi), \qquad \omega = \sqrt{\frac{k}{m}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x_{\max}\)</span>: the <strong>amplitude</strong>, the largest displacement reached.</li>
+<li><span class="math-inline">\(\cos\)</span>: the cosine function. It swings between <span class="math-inline">\(+1\)</span> and <span class="math-inline">\(-1\)</span> and repeats each time its argument has grown by <span class="math-inline">\(2\pi\)</span>.</li>
+<li><span class="math-inline">\(\omega\)</span> (Greek omega): the <strong>angular frequency</strong>, in radians per ps. It says how fast the argument of the cosine grows.</li>
+<li><span class="math-inline">\(\varphi\)</span> (Greek phi): the phase, which says where in its cycle the oscillator is at <span class="math-inline">\(t = 0\)</span>.</li>
+<li><span class="math-inline">\(k\)</span>, <span class="math-inline">\(m\)</span>: the spring constant and the mass, as in the list above. With <span class="math-inline">\(k\)</span> in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> and <span class="math-inline">\(m\)</span> in u, the square root is in ps<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(t\)</span>: the time.</li>
+</ul>
+</div>
+<p>You can check the solution. Differentiating the cosine twice gives <span class="math-inline">\(\ddot x = -\omega^2x\)</span>. Put this into Newton's law: <span class="math-inline">\(-m\omega^2x = -kx\)</span>, which holds at all times if <span class="math-inline">\(\omega^2 = k/m\)</span>.</p>
+<p><span class="math-display">\[T_{period} = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{m}{k}}, \qquad \nu = \frac{1}{T_{period}} = \frac{\omega}{2\pi} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(T_{period}\)</span>: the <strong>period</strong>, the time of one full oscillation. It is not a temperature.</li>
+<li><span class="math-inline">\(\nu\)</span> (Greek nu): the <strong>frequency</strong>, the number of oscillations per unit of time, in ps<span class="math-inline">\(^{-1}\)</span>. One ps<span class="math-inline">\(^{-1}\)</span> is <span class="math-inline">\(10^{12}\)</span> Hz (hertz, oscillations per second).</li>
+<li><span class="math-inline">\(2\pi\)</span>: one full turn of the cosine, in radians.</li>
+<li><span class="math-inline">\(\omega\)</span>, <span class="math-inline">\(m\)</span>, <span class="math-inline">\(k\)</span>: the angular frequency, the mass and the spring constant, as in the lists above.</li>
+</ul>
+</div>
+<p>Read it like this. A stiffer spring oscillates faster and a heavier mass oscillates more slowly. Because of the square root, four times the stiffness halves the period. The amplitude does not appear in the formula: a small swing and a large swing take the same time. That is special to the parabola and is only approximately true for real bonds.</p>
+<p>The total energy of the oscillator is <span class="math-inline">\(E = \tfrac12mv^2 + \tfrac12kx^2 = \tfrac12kx_{\max}^2\)</span>. The last form holds because at the largest displacement the mass stands still for an instant, so all the energy is potential there. It passes from potential to kinetic and back twice in every period, as in the worked example of the section on <a href="#energy">energy</a>.</p>
+<p><strong>Two atoms on one spring.</strong> When two atoms are joined by a spring, both move. The bond length then oscillates with <span class="math-inline">\(\omega = \sqrt{k/\mu}\)</span>, where <span class="math-inline">\(\mu = m_1m_2/(m_1+m_2)\)</span> is the <strong>reduced mass</strong> of the two atoms with masses <span class="math-inline">\(m_1\)</span> and <span class="math-inline">\(m_2\)</span> (<a href="02-classical-mechanics.html">Module 2</a>). The reduced mass is always smaller than the lighter of the two masses. For a hydrogen bonded to a heavy atom it is close to 1 u.</p>
+<p><strong>Why it is everywhere.</strong> Near the bottom of any smooth valley of the potential energy, the curve looks like a parabola. This follows from the <a href="maths.html#taylor">Taylor expansion</a>: at a minimum the slope is zero, so the first term that matters is the quadratic one, with <span class="math-inline">\(k\)</span> equal to the curvature of <span class="math-inline">\(U\)</span> at the minimum. So any system close to a stable arrangement behaves like a set of harmonic oscillators. That is why force fields describe bonds and angles as springs, and why the harmonic oscillator is the standard test case for integrators and thermostats.</p>
+<div class="box key">
+<p><strong>Worked example: a stiff bond.</strong> Take a bond between an oxygen (16 u) and a hydrogen (1 u) with <span class="math-inline">\(k = 4.5\times10^5\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> (a round value for an illustration). The reduced mass is <span class="math-inline">\(\mu = 16\times1/(16+1) = 0.9412\)</span> u. Then <span class="math-inline">\(\omega = \sqrt{4.5\times10^5/0.9412} = 691\)</span> ps<span class="math-inline">\(^{-1}\)</span>. The period is <span class="math-inline">\(2\pi/691 = 0.0091\)</span> ps, which is 9.1 fs, and the frequency is <span class="math-inline">\(\nu = 691/2\pi = 110\)</span> ps<span class="math-inline">\(^{-1}\)</span>. The units need no conversion: kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> divided by u is ps<span class="math-inline">\(^{-2}\)</span> (see <a href="#units">Units</a>).</p>
+<p><strong>Worked example: a soft spring.</strong> A carbon atom (12 u) on a spring with <span class="math-inline">\(k = 100\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>, fixed at the other end: <span class="math-inline">\(\omega = \sqrt{100/12} = 2.89\)</span> ps<span class="math-inline">\(^{-1}\)</span> and the period is <span class="math-inline">\(2\pi\sqrt{12/100} = 2.18\)</span> ps. Compared with the bond above, the stiffness is 4,500 times smaller and the mass 12.75 times larger, so the period is <span class="math-inline">\(\sqrt{4500\times12.75} = 240\)</span> times longer.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="02-classical-mechanics.html">Module 2</a>, Classical mechanics: the vibrations of a molecule as a set of independent oscillators (normal modes).</li>
+<li><a href="04-integrators.html">Module 4</a>, Integrators: the fastest oscillation in the system limits the time step.</li>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: bonds and angles are harmonic springs.</li>
+<li><a href="09-constraints.html">Module 9</a>, Constraints: the fastest oscillators are frozen so that the time step can be longer.</li>
+<li><a href="12-free-energy-pmf.html">Module 12</a>, Free energy and the potential of mean force: umbrella sampling holds a coordinate with a harmonic spring.</li>
+<li><a href="16-kinetics-msm.html">Module 16</a>, Kinetics and Markov state models: the frequencies of a well and of a barrier top appear in the formulas for rates.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Confusing the angular frequency <span class="math-inline">\(\omega\)</span> with the frequency <span class="math-inline">\(\nu\)</span>. They differ by the factor <span class="math-inline">\(2\pi \approx 6.28\)</span>. The bond in the example has <span class="math-inline">\(\omega = 691\)</span> ps<span class="math-inline">\(^{-1}\)</span> but oscillates 110 times per picosecond, not 691 times. Before you use a "frequency" from a paper, check which of the two is meant.</p>
+<p>A second point: a harmonic spring never breaks, however far you stretch it. A real bond does, so the spring is a good model only for small displacements.</p>
+</div>
+<h2 id="temperature">Temperature and thermal energy</h2>
+<p>The atoms of any material move all the time, even in a solid that looks still. In a liquid they jostle, collide and change direction many times in a picosecond. <strong>Temperature</strong> measures how much kinetic energy this random motion carries on average. In a hot cup of tea the water molecules move faster than in a cold one.</p>
+<p>When two objects touch, their atoms collide at the surface and exchange kinetic energy. Energy flows from the side with more kinetic energy per atom to the side with less, until the averages are equal. Two objects at the same temperature are two objects for which this flow has stopped.</p>
+<p><span class="math-display">\[\left\langle \tfrac12 m v_x^2 \right\rangle = \tfrac12 k_BT .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(m\)</span>: the mass of an atom.</li>
+<li><span class="math-inline">\(v_x\)</span>: the <span class="math-inline">\(x\)</span> component of its velocity.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the <a href="maths.html#averages">average</a>, over a long time or over many atoms.</li>
+<li><span class="math-inline">\(k_B\)</span>: Boltzmann's constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature in kelvin.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy, 2.494 kJ/mol at 300 K.</li>
+</ul>
+</div>
+<p>The same holds for the <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span> components. One atom therefore has <span class="math-inline">\(\tfrac32k_BT\)</span> of kinetic energy on average, and for <span class="math-inline">\(N\)</span> atoms</p>
+<p><span class="math-display">\[\langle K\rangle = \tfrac32 N k_BT , \qquad \sqrt{\langle v^2\rangle} = \sqrt{\frac{3k_BT}{m}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(K\)</span>: the total kinetic energy of the system.</li>
+<li><span class="math-inline">\(N\)</span>: the number of atoms, each free to move in three directions.</li>
+<li><span class="math-inline">\(\sqrt{\langle v^2\rangle}\)</span>: the root-mean-square speed, the typical speed of an atom of mass <span class="math-inline">\(m\)</span>. It follows from <span class="math-inline">\(\langle\tfrac12mv^2\rangle = \tfrac32k_BT\)</span>.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>Read it like this. All atoms have the same average kinetic energy, whatever their mass, so light atoms are faster than heavy ones. The typical speed grows with the square root of the temperature: to double the speed you must multiply the temperature (in kelvin) by four.</p>
+<p>The single velocities are spread around these typical values. Each component of the velocity of an atom, for example <span class="math-inline">\(v_x\)</span>, follows a <a href="maths.html#gaussian">Gaussian</a> distribution with mean zero and standard deviation <span class="math-inline">\(\sqrt{k_BT/m}\)</span>. This is the <strong>Maxwell-Boltzmann distribution</strong> (<a href="03-statistical-mechanics.html">Module 3</a>). The "typical speed along one direction" quoted on this page is this standard deviation.</p>
+<p><strong>Equipartition.</strong> The rule is more general. Every term in the energy that is a constant times the square of a velocity or of a coordinate holds <span class="math-inline">\(\tfrac12k_BT\)</span> on average. Each velocity component gives such a term, <span class="math-inline">\(\tfrac12mv_x^2\)</span>, and so does a harmonic spring, <span class="math-inline">\(\tfrac12kx^2\)</span>. The thermal energy is shared equally between all these terms, which is what the word <strong>equipartition</strong> means. Each independent way in which a system can move is called a <strong>degree of freedom</strong>.</p>
+<p>For a spring the rule gives the typical displacement at once: <span class="math-inline">\(\langle\tfrac12kx^2\rangle = \tfrac12k_BT\)</span> means <span class="math-inline">\(\sqrt{\langle x^2\rangle} = \sqrt{k_BT/k}\)</span>. For the soft spring of the last section, <span class="math-inline">\(k = 100\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>, this is <span class="math-inline">\(\sqrt{2.494/100} = 0.16\)</span> nm. <a href="03-statistical-mechanics.html">Module 3</a> proves the rule. It belongs to classical physics and fails for very stiff vibrations such as bond stretches (see <a href="#quantum">Why atoms can be treated as classical balls</a>).</p>
+<p><strong>The yardstick.</strong> The thermal energy is the scale against which every other energy in the course is judged. In a system at temperature <span class="math-inline">\(T\)</span>, a state with a higher energy is less probable, by a factor that depends only on the energy difference divided by <span class="math-inline">\(k_BT\)</span>.</p>
+<p><span class="math-display">\[\frac{P_2}{P_1} = e^{-(E_2 - E_1)/k_BT}, \qquad \beta = \frac{1}{k_BT} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_1\)</span>, <span class="math-inline">\(P_2\)</span>: the probabilities of finding the system in state 1 and in state 2. A state is here one definite arrangement of the atoms (a microstate, see <a href="#thermodynamics">Heat, entropy and free energy</a>). Here <span class="math-inline">\(P\)</span> is not a pressure.</li>
+<li><span class="math-inline">\(E_1\)</span>, <span class="math-inline">\(E_2\)</span>: the energies of the two states.</li>
+<li><span class="math-inline">\(e^{-\dots}\)</span>: the <a href="maths.html#exp-log">exponential function</a>. The factor is called the <strong>Boltzmann factor</strong>.</li>
+<li><span class="math-inline">\(\beta\)</span> (Greek beta): a shorthand used in all the lessons. At 300 K, <span class="math-inline">\(\beta = 1/2.494 = 0.401\)</span> mol/kJ. With it the factor reads <span class="math-inline">\(e^{-\beta(E_2-E_1)}\)</span>.</li>
+</ul>
+</div>
+<table>
+<thead>
+<tr>
+<th>Energy difference</th>
+<th>In kJ/mol at 300 K</th>
+<th>Boltzmann factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(1\,k_BT\)</span></td>
+<td>2.5</td>
+<td>0.37</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(2.3\,k_BT\)</span></td>
+<td>5.7</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(5\,k_BT\)</span></td>
+<td>12.5</td>
+<td>0.0067</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(10\,k_BT\)</span></td>
+<td>24.9</td>
+<td><span class="math-inline">\(4.5\times10^{-5}\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(20\,k_BT\)</span></td>
+<td>49.9</td>
+<td><span class="math-inline">\(2.1\times10^{-9}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A difference well below <span class="math-inline">\(k_BT\)</span> hardly matters. A difference of many <span class="math-inline">\(k_BT\)</span> makes the upper state very rare. <a href="03-statistical-mechanics.html">Module 3</a> derives the Boltzmann factor.</p>
+<div class="box key">
+<p><strong>Worked example: how fast are molecules?</strong> A water molecule at 300 K, with <span class="math-inline">\(m = 18.015\)</span> u, has a typical speed of <span class="math-inline">\(\sqrt{3\times2.494/18.015} = 0.644\)</span> nm/ps, which is 644 m/s. Along one direction the typical speed is <span class="math-inline">\(\sqrt{2.494/18.015} = 0.372\)</span> nm/ps. A hydrogen atom (1.008 u) has <span class="math-inline">\(\sqrt{3\times2.494/1.008} = 2.72\)</span> nm/ps and a carbon atom (12.011 u) has 0.79 nm/ps. Both have the same average kinetic energy, and the hydrogen is about 3.5 times faster.</p>
+<p><strong>Worked example: the temperature of a simulation.</strong> A system of 1,000 atoms has 2,997 degrees of freedom (three per atom, minus three for the conserved total momentum). At one instant its kinetic energy is 3,700 kJ/mol. Each degree of freedom should hold <span class="math-inline">\(\tfrac12k_BT\)</span>, so <span class="math-inline">\(T = 2K/(2997\,k_B) = 2\times3700/(2997\times0.0083145) = 297\)</span> K.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: <span class="math-inline">\(k_BT\)</span> is among the numbers to memorise.</li>
+<li><a href="03-statistical-mechanics.html">Module 3</a>, Statistical mechanics: the Boltzmann factor and equipartition are derived, and the temperature of a simulation is defined.</li>
+<li><a href="08-thermostats-barostats.html">Module 8</a>, Thermostats and barostats: how a program holds the temperature.</li>
+<li><a href="10-running-a-simulation.html">Module 10</a>, Running a simulation: starting velocities are drawn for the chosen temperature.</li>
+<li><a href="14-enhanced-sampling.html">Module 14</a>, Enhanced sampling: copies of the system at higher temperatures cross barriers more often.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: what temperature means when atoms have been merged.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Giving a temperature to one atom or to one instant. Temperature is defined through an average. The value that a program computes from the kinetic energy at one step goes up and down around the target even in a perfect simulation, and the smaller the system, the larger these swings (<a href="03-statistical-mechanics.html">Module 3</a> gives the formula). A trace of the temperature that wanders by a few kelvin is correct.</p>
+</div>
+<h2 id="pressure">Pressure and volume</h2>
+<p>The molecules of a gas or a liquid hit the walls of their container all the time. Each hit is a small push. Over the enormous number of hits on every part of the wall, the pushes add up to a steady force. <strong>Pressure</strong> is that force divided by the area of the wall. A bicycle tyre is hard because the air inside is denser than the air outside, so more molecules hit the rubber from the inside.</p>
+<p><span class="math-display">\[P = \frac{F}{A} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P\)</span>: the pressure.</li>
+<li><span class="math-inline">\(F\)</span>: the force on the wall, at right angles to it.</li>
+<li><span class="math-inline">\(A\)</span>: the area of the wall.</li>
+</ul>
+</div>
+<p>The SI unit is the pascal, 1 Pa = 1 N/m<span class="math-inline">\(^2\)</span>, and 1 bar is <span class="math-inline">\(10^5\)</span> Pa. In MD units a force divided by an area is in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>, and one such unit is 16.6 bar.</p>
+<p>For a gas whose molecules do not interact with each other, an <strong>ideal gas</strong>, the pressure follows from the number of molecules, the volume and the temperature alone.</p>
+<p><span class="math-display">\[P\,V = N\,k_BT \qquad\text{or}\qquad P = \rho\,k_BT .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(V\)</span>: the volume of the container, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(N\)</span>: the number of molecules.</li>
+<li><span class="math-inline">\(\rho\)</span> (Greek rho): the number density <span class="math-inline">\(N/V\)</span>, in molecules per nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(P\)</span>: the pressure, as above. With <span class="math-inline">\(V\)</span> in nm<span class="math-inline">\(^3\)</span> and <span class="math-inline">\(k_BT\)</span> in kJ/mol it comes out in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>. Multiply by 16.605 to get bar.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+</ul>
+</div>
+<p>Read it like this. More molecules in the same volume give more hits. A higher temperature gives faster molecules, which hit more often and harder. A larger volume gives each molecule a longer way between two hits on the wall. Chemistry books write the same law as <span class="math-inline">\(PV = nRT\)</span>, with <span class="math-inline">\(n\)</span> the amount in moles and <span class="math-inline">\(R\)</span> the gas constant.</p>
+<p><strong>Liquids.</strong> In a liquid the molecules are in contact, and the forces between them change the pressure. Attractions hold the molecules together and lower the pressure. Repulsions push them apart and raise it. <a href="03-statistical-mechanics.html">Module 3</a> writes the pressure as the ideal-gas term plus a term from the forces, called the virial. In a liquid at 1 bar both terms are very large and they almost cancel (first worked example below).</p>
+<p><strong>Compressibility.</strong> How much does the volume shrink when the pressure rises?</p>
+<p><span class="math-display">\[\kappa_T = -\frac{1}{V}\left(\frac{\partial V}{\partial P}\right)_T .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\kappa_T\)</span> (Greek kappa): the <strong>isothermal compressibility</strong>, in bar<span class="math-inline">\(^{-1}\)</span>. It is the fraction by which the volume shrinks for each bar of added pressure.</li>
+<li><span class="math-inline">\(\partial V/\partial P\)</span>: the <a href="maths.html#partial-derivative">partial derivative</a> of the volume with respect to the pressure.</li>
+<li>The subscript <span class="math-inline">\(T\)</span> on the bracket: the temperature is held fixed while the pressure changes.</li>
+<li>The minus sign: the volume falls when the pressure rises, so the sign makes <span class="math-inline">\(\kappa_T\)</span> positive.</li>
+</ul>
+</div>
+<p>Water is hard to compress: <span class="math-inline">\(\kappa_T = 4.5\times10^{-5}\)</span> bar<span class="math-inline">\(^{-1}\)</span> near room temperature. For an ideal gas, <span class="math-inline">\(V = Nk_BT/P\)</span> gives <span class="math-inline">\(\partial V/\partial P = -V/P\)</span> and so <span class="math-inline">\(\kappa_T = 1/P\)</span>, which is 1 bar<span class="math-inline">\(^{-1}\)</span> at 1 bar. A gas at 1 bar is 22,000 times easier to compress than water.</p>
+<div class="box key">
+<p><strong>Worked example: a gas and a liquid.</strong> At 1 bar and 300 K the volume for each molecule of an ideal gas is <span class="math-inline">\(V/N = k_BT/P\)</span>. In MD units 1 bar is <span class="math-inline">\(1/16.605 = 0.06022\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>, so <span class="math-inline">\(V/N = 2.494/0.06022 = 41.4\)</span> nm<span class="math-inline">\(^3\)</span>, a cube with an edge of 3.5 nm. Liquid water has 33.4 molecules per nm<span class="math-inline">\(^3\)</span>, which is 0.030 nm<span class="math-inline">\(^3\)</span> for each molecule, about 1,400 times less.</p>
+<p>Now put the density of liquid water into the ideal-gas law: <span class="math-inline">\(\rho k_BT = 33.4\times2.494 = 83.3\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>, which is <span class="math-inline">\(83.3\times16.605 = 1{,}383\)</span> bar. The real pressure is 1 bar. So the forces between the molecules contribute about <span class="math-inline">\(-1{,}382\)</span> bar. Two large numbers almost cancel, and a small change in the distances between molecules changes the balance by many bar.</p>
+<p><strong>Worked example: compressing water.</strong> Raising the pressure by 100 bar shrinks water by <span class="math-inline">\(100\times4.5\times10^{-5} = 0.0045\)</span>, which is 0.45 %. Turned around: a change of the volume by 0.1 % goes with a change of the pressure by <span class="math-inline">\(0.001/(4.5\times10^{-5}) = 22\)</span> bar.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="03-statistical-mechanics.html">Module 3</a>, Statistical mechanics: the pressure of a simulation from the forces between atoms (the virial).</li>
+<li><a href="07-boundaries-electrostatics.html">Module 7</a>, Boundaries and electrostatics: the correction to the pressure for interactions beyond the cutoff.</li>
+<li><a href="08-thermostats-barostats.html">Module 8</a>, Thermostats and barostats: how a program holds the pressure, and why the compressibility is one of its settings.</li>
+<li><a href="10-running-a-simulation.html">Module 10</a>, Running a simulation: equilibration at constant pressure, judged by the density.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Expecting the pressure printed at each step to be close to 1 bar. The two worked examples show why it cannot be: the pressure of a liquid is a small difference between large terms, and water hardly compresses. In a box of a few nanometres the instantaneous pressure swings by hundreds of bar, and this is correct. Judge the average over a long stretch, and judge equilibration by the density (<a href="08-thermostats-barostats.html">Module 8</a>).</p>
+</div>
+<h2 id="thermodynamics">Heat, entropy and free energy</h2>
+<p>Thermodynamics is the bookkeeping of energy for a <strong>system</strong> that exchanges energy with its <strong>surroundings</strong>. In a simulation the system is everything in the box. The surroundings are an imagined large reservoir, the <strong>heat bath</strong>, that holds the temperature fixed. This section introduces heat, work, entropy, enthalpy and free energy. The last one decides what a molecule does at a given temperature, and several lessons are about computing it.</p>
+<p><strong>The first law: energy is conserved.</strong> The energy of the system can change in two ways. <strong>Work</strong> is energy transferred by a force that moves something in an ordered way: a piston is pushed in, or a molecule is pulled by one end. <strong>Heat</strong> is energy transferred by the random collisions of atoms at the boundary between system and surroundings.</p>
+<p><span class="math-display">\[\Delta E = Q + W .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(E\)</span>: the <strong>internal energy</strong> of the system, the kinetic plus the potential energy of all its atoms.</li>
+<li><span class="math-inline">\(\Delta\)</span>: "change of": the value at the end minus the value at the start.</li>
+<li><span class="math-inline">\(Q\)</span>: the heat that flows into the system. It is negative when heat flows out. Here <span class="math-inline">\(Q\)</span> is not the partition function of Module 3.</li>
+<li><span class="math-inline">\(W\)</span>: the work done on the system. It is negative when the system does work on the surroundings.</li>
+</ul>
+</div>
+<p><strong>The second law: which way things go.</strong> A hot cup of tea cools to room temperature and never warms up again by itself. A drop of ink spreads through a glass of water and never gathers again. The reverse processes would conserve energy, so the first law does not forbid them. What forbids them is a matter of counting.</p>
+<p>Throw 100 coins. "All heads" can happen in one way. "Fifty heads and fifty tails" can happen in about <span class="math-inline">\(10^{29}\)</span> ways, because that is the number of ways to choose which fifty coins show heads (<a href="maths.html#combinatorics">counting</a>). Every single arrangement is equally likely, so you will practically always find about half heads, because nearly all arrangements look like that.</p>
+<p>Atoms behave like the coins. One detailed arrangement, with every position and every velocity given, is a <strong>microstate</strong>. What you see on a large scale ("the ink is spread out", "the protein is unfolded") is a <strong>macrostate</strong>, and it contains very many microstates. A system left to itself ends up in the macrostate with the most microstates, because that is where almost all the possibilities are. <strong>Entropy</strong> measures that number.</p>
+<p><span class="math-display">\[S = k_B\ln\Omega .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(S\)</span>: the entropy of a macrostate, in kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\Omega\)</span> (Greek capital omega): the number of microstates that belong to the macrostate.</li>
+<li><span class="math-inline">\(\ln\)</span>: the <a href="maths.html#exp-log">natural logarithm</a>. It turns products into sums. Two independent systems have <span class="math-inline">\(\Omega_1\Omega_2\)</span> microstates together, and their entropies add: <span class="math-inline">\(S_1 + S_2\)</span>.</li>
+<li><span class="math-inline">\(k_B\)</span>: Boltzmann's constant. It gives the entropy its unit, so that <span class="math-inline">\(T\)</span> times <span class="math-inline">\(S\)</span> is an energy.</li>
+</ul>
+</div>
+<p>The second law says: the total entropy of a system and its surroundings never decreases. It grows until the macrostate with the most microstates is reached. That state is <strong>equilibrium</strong>.</p>
+<p>Entropy is connected with heat. When heat <span class="math-inline">\(Q\)</span> flows slowly into a body at temperature <span class="math-inline">\(T\)</span>, the entropy of the body rises by <span class="math-inline">\(Q/T\)</span>: more energy can be shared out among the atoms in more ways. The same heat adds more entropy to a cold body than it removes from a hot one, because it is divided by a smaller <span class="math-inline">\(T\)</span>. That is why heat flows from hot to cold.</p>
+<p><strong>Free energy: the second law for a system at constant temperature.</strong> A simulated system is not isolated. It exchanges heat with the bath. The second law applies to the system and the bath together, but it can be rewritten as a statement about the system alone.</p>
+<p>Let the system change at constant volume, with no work done. Its energy changes by <span class="math-inline">\(\Delta E\)</span> and its entropy by <span class="math-inline">\(\Delta S\)</span>. The energy came from the bath as heat, so the bath lost the heat <span class="math-inline">\(\Delta E\)</span>, and its entropy changed by <span class="math-inline">\(-\Delta E/T\)</span>.</p>
+<p>The total entropy change is <span class="math-inline">\(\Delta S - \Delta E/T\)</span>, and the second law says that it cannot be negative. Multiply by <span class="math-inline">\(-T\)</span>, which turns "not negative" into "not positive": <span class="math-inline">\(\Delta E - T\Delta S \le 0\)</span>. This combination has a name.</p>
+<p><span class="math-display">\[A = E - TS, \qquad \Delta A = \Delta E - T\,\Delta S \le 0 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(A\)</span>: the <strong>Helmholtz free energy</strong>, in kJ/mol. Some books write <span class="math-inline">\(F\)</span>.</li>
+<li><span class="math-inline">\(E\)</span>: the internal energy of the system.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature of the bath, held fixed.</li>
+<li><span class="math-inline">\(S\)</span>: the entropy of the system.</li>
+<li><span class="math-inline">\(\le 0\)</span>: at constant temperature and volume the system can only move to states of lower <span class="math-inline">\(A\)</span>. Equilibrium is the state of lowest <span class="math-inline">\(A\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this. The free energy falls when the energy falls or when the entropy rises. A state can win by having a low energy (strong, favourable interactions) or by having a high entropy (many arrangements). The temperature sets the exchange rate between the two: at low temperature the energy decides, at high temperature the entropy decides.</p>
+<p>A protein unfolds when it is heated for this reason. The unfolded chain has a higher energy but far more conformations.</p>
+<p><strong>Work and free energy.</strong> The same argument covers a change that is driven from outside, for example by pulling on a molecule. Let the work <span class="math-inline">\(W\)</span> be done on the system while it stays in contact with the bath. By the first law the heat that the system takes from the bath is <span class="math-inline">\(\Delta E - W\)</span>, so the entropy of the bath changes by <span class="math-inline">\(-(\Delta E - W)/T\)</span>. The total entropy change, <span class="math-inline">\(\Delta S - (\Delta E - W)/T\)</span>, cannot be negative, which gives <span class="math-inline">\(W \ge \Delta E - T\,\Delta S = \Delta A\)</span>.</p>
+<p>So the free-energy difference is the smallest amount of work that the change can cost. The work equals <span class="math-inline">\(\Delta A\)</span> only when the change is made infinitely slowly. A faster change costs more, and the extra work ends up as heat in the bath. For a system as small as one molecule the work differs from one repetition to the next, and the rule holds for the average (<a href="13-alchemical-free-energy.html">Module 13</a>).</p>
+<p><strong>Constant pressure: enthalpy and the Gibbs free energy.</strong> Most experiments are done at constant pressure, not at constant volume. The system can then expand, and to do so it must push the surroundings back, which costs the energy <span class="math-inline">\(P\,\Delta V\)</span>. Two more quantities take this into account.</p>
+<p><span class="math-display">\[H = E + PV, \qquad G = H - TS .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(H\)</span>: the <strong>enthalpy</strong>. At constant pressure, the heat that flows into the system equals <span class="math-inline">\(\Delta H\)</span>. Here <span class="math-inline">\(H\)</span> is not the Hamiltonian of Module 2.</li>
+<li><span class="math-inline">\(P\)</span>, <span class="math-inline">\(V\)</span>: the pressure and the volume of the system.</li>
+<li><span class="math-inline">\(G\)</span>: the <strong>Gibbs free energy</strong>. At constant temperature and pressure the system moves to lower <span class="math-inline">\(G\)</span>, and equilibrium is the state of lowest <span class="math-inline">\(G\)</span>.</li>
+<li><span class="math-inline">\(E\)</span>, <span class="math-inline">\(T\)</span>, <span class="math-inline">\(S\)</span>: as in the list above.</li>
+</ul>
+</div>
+<p>For a liquid at 1 bar the term <span class="math-inline">\(PV\)</span> is tiny. One water molecule takes up 0.030 nm<span class="math-inline">\(^3\)</span>, so <span class="math-inline">\(PV = 0.06022\times0.030 = 0.0018\)</span> kJ/mol for each molecule, a thousand times less than <span class="math-inline">\(k_BT\)</span>. In solution <span class="math-inline">\(\Delta G\)</span> and <span class="math-inline">\(\Delta A\)</span> are therefore almost the same number, and so are <span class="math-inline">\(\Delta H\)</span> and <span class="math-inline">\(\Delta E\)</span>. The difference matters when a gas is formed. When a liquid evaporates, each molecule gains the volume <span class="math-inline">\(k_BT/P\)</span> of a gas molecule, so <span class="math-inline">\(P\,\Delta V \approx k_BT = 2.5\)</span> kJ/mol at 300 K.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Definition</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(E\)</span></td>
+<td>internal energy</td>
+<td>kinetic plus potential energy</td>
+<td>conserved in an isolated system</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(H\)</span></td>
+<td>enthalpy</td>
+<td><span class="math-inline">\(E + PV\)</span></td>
+<td>heat exchanged at constant pressure</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(A\)</span></td>
+<td>Helmholtz free energy</td>
+<td><span class="math-inline">\(E - TS\)</span></td>
+<td>lowest at equilibrium at constant volume and temperature</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(G\)</span></td>
+<td>Gibbs free energy</td>
+<td><span class="math-inline">\(H - TS\)</span></td>
+<td>lowest at equilibrium at constant pressure and temperature</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Free energy and probability.</strong> A free-energy difference between two macrostates tells you how much more often the system is found in one than in the other.</p>
+<p><span class="math-display">\[\frac{P_B}{P_A} = e^{-\Delta A/k_BT}, \qquad \Delta A = A_B - A_A .\]</span></p>
+<div class="legend">
+<ul>
+<li>The subscripts <span class="math-inline">\(A\)</span> and <span class="math-inline">\(B\)</span>: the names of two macrostates, for example "folded" and "unfolded", or "bound" and "unbound".</li>
+<li><span class="math-inline">\(P_A\)</span>, <span class="math-inline">\(P_B\)</span>: the probabilities of finding the system in each. Here <span class="math-inline">\(P\)</span> is not a pressure.</li>
+<li><span class="math-inline">\(A_A\)</span>, <span class="math-inline">\(A_B\)</span>: the Helmholtz free energies of the two macrostates. The large <span class="math-inline">\(A\)</span> is the free energy and the subscript is the name of the state. At constant pressure, use <span class="math-inline">\(G\)</span> in place of the free energy <span class="math-inline">\(A\)</span>.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+</ul>
+</div>
+<p>This is the Boltzmann factor of the section on <a href="#temperature">temperature</a>, with the free energy in the place of the energy. The entropy enters because a macrostate with more microstates is found more often. If each of the <span class="math-inline">\(\Omega\)</span> microstates of a macrostate has the same energy <span class="math-inline">\(E\)</span>, the probability of the macrostate is proportional to <span class="math-inline">\(\Omega\,e^{-E/k_BT}\)</span>. Because <span class="math-inline">\(\Omega = e^{S/k_B}\)</span>, this is <span class="math-inline">\(e^{-(E-TS)/k_BT}\)</span>, the Boltzmann factor of the free energy <span class="math-inline">\(A = E - TS\)</span>. <a href="03-statistical-mechanics.html">Module 3</a> derives the formula in general.</p>
+<p>The formula also says how to read the rule that a system moves to lower <span class="math-inline">\(A\)</span>. For a glass of water, the free-energy differences between macrostates are enormous compared with <span class="math-inline">\(k_BT\)</span>, so the macrostate of lowest free energy is found practically always. For a single molecule the differences are a few <span class="math-inline">\(k_BT\)</span>. The molecule then visits both states again and again, and the one with the higher free energy less often.</p>
+<div class="box key">
+<p><strong>Worked example: energy against entropy.</strong> A molecule has two macrostates at 300 K. State A is one conformation with energy 0. State B consists of 1,000 conformations, each with energy <span class="math-inline">\(+10\)</span> kJ/mol.</p>
+<ul>
+<li>Energy: <span class="math-inline">\(\Delta E = +10\)</span> kJ/mol. It favours A.</li>
+<li>Entropy: <span class="math-inline">\(\Delta S = k_B\ln(1000/1) = 0.0083145\times6.9078 = 0.05743\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>, so <span class="math-inline">\(T\Delta S = 300\times0.05743 = 17.23\)</span> kJ/mol. It favours B.</li>
+<li>Free energy: <span class="math-inline">\(\Delta A = 10 - 17.23 = -7.23\)</span> kJ/mol. B wins.</li>
+<li>Populations: <span class="math-inline">\(P_B/P_A = e^{7.23/2.494} = 18\)</span>. The molecule is found in B 18 times more often than in A, although every conformation of B has a higher energy than A.</li>
+</ul>
+<p>The balance changes with temperature. <span class="math-inline">\(\Delta A = 0\)</span> when <span class="math-inline">\(T = \Delta E/\Delta S = 10/0.05743 = 174\)</span> K. Below 174 K state A is the more populated one, above it state B. <a href="03-statistical-mechanics.html">Module 3</a> does the same calculation in another way.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="03-statistical-mechanics.html">Module 3</a>, Statistical mechanics: entropy and free energy from the count of states, and the link to probabilities.</li>
+<li><a href="06-force-field-parameters.html">Module 6</a>, Force-field parameters: heats of vaporisation and free energies of solvation as data for fitting.</li>
+<li><a href="08-thermostats-barostats.html">Module 8</a>, Thermostats and barostats: constant volume or constant pressure, and which free energy belongs to each.</li>
+<li><a href="11-analysis-statistics.html">Module 11</a>, Analysis and statistics: free-energy surfaces from histograms of a trajectory.</li>
+<li><a href="12-free-energy-pmf.html">Module 12</a>, Free energy and the potential of mean force: the free energy along a coordinate.</li>
+<li><a href="13-alchemical-free-energy.html">Module 13</a>, Alchemical free energy: free-energy differences between two molecules, and the link between work and free energy.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: why the interaction between merged particles is a free energy.</li>
+<li><a href="16-kinetics-msm.html">Module 16</a>, Kinetics and Markov state models: the free energy of a barrier and the rate of crossing it.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Taking the structure with the lowest potential energy for the most populated one. The example shows that it need not be. Populations follow the free energy, which includes the number of arrangements, and that number includes the arrangements of the water around the molecule. A second trap is the word "disorder" for entropy. It is a count of microstates, and a state can look ordered to the eye and still have the larger count.</p>
+</div>
+<h2 id="equilibrium">Equilibrium constants and free energy</h2>
+<p>A molecule that can exist in two forms, A and B, keeps switching between them. At <strong>equilibrium</strong> the switches from A to B happen as often as those from B to A. The fraction of molecules in each form then stays constant, although every single molecule goes on switching. The ratio of the two fractions is the <strong>equilibrium constant</strong>. It is what an experiment measures, and it is a free-energy difference in another form.</p>
+<p><span class="math-display">\[K = \frac{[\text{B}]}{[\text{A}]} = e^{-\Delta G/k_BT}, \qquad \Delta G = -k_BT\ln K .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\([\text{A}]\)</span>, <span class="math-inline">\([\text{B}]\)</span>: the concentrations of the two forms at equilibrium. Square brackets mean "concentration of", in mol per litre (M).</li>
+<li><span class="math-inline">\(K\)</span>: the equilibrium constant. For this reaction it is a pure number. Here <span class="math-inline">\(K\)</span> is not the kinetic energy.</li>
+<li><span class="math-inline">\(\Delta G\)</span>: the Gibbs free energy of form B minus that of form A, with both at the same concentration (chemistry books write <span class="math-inline">\(\Delta G^\circ\)</span>). A negative value means that B is favoured. It is not the <span class="math-inline">\(\Delta G\)</span> of the statement "at equilibrium <span class="math-inline">\(\Delta G = 0\)</span>", which is the free-energy change at the concentrations actually present.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy, 2.494 kJ/mol at 300 K. Chemistry books write <span class="math-inline">\(RT\)</span>, which is the same number for a mole.</li>
+<li><span class="math-inline">\(\ln\)</span>: the natural logarithm, the inverse of the exponential.</li>
+</ul>
+</div>
+<p>This is the probability formula of the <a href="#thermodynamics">last section</a>, because the ratio of the concentrations is the ratio of the probabilities <span class="math-inline">\(P_B/P_A\)</span>. Read it like this. When <span class="math-inline">\(\Delta G = 0\)</span>, <span class="math-inline">\(K = 1\)</span> and the two forms are equally populated. Each factor of 10 in <span class="math-inline">\(K\)</span> corresponds to <span class="math-inline">\(k_BT\ln10 = 5.74\)</span> kJ/mol (1.37 kcal/mol) at 300 K. At 298 K, the temperature used in <a href="01-what-is-md.html">Module 1</a>, it is 5.71 kJ/mol (1.36 kcal/mol).</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(\Delta G\)</span> in kJ/mol at 300 K</th>
+<th><span class="math-inline">\(K\)</span></th>
+<th>Fraction in form B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>50 %</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(-2.5\)</span> (one <span class="math-inline">\(k_BT\)</span>)</td>
+<td>2.7</td>
+<td>73 %</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(-5.7\)</span></td>
+<td>10</td>
+<td>91 %</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(-11.5\)</span></td>
+<td>100</td>
+<td>99 %</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(-20\)</span></td>
+<td>3,000</td>
+<td>99.97 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Binding.</strong> When two molecules join, a protein P and a ligand L forming the complex PL, there are two constants in use, and one is the inverse of the other.</p>
+<p><span class="math-display">\[K_a = \frac{[\text{PL}]}{[\text{P}][\text{L}]}, \qquad K_d = \frac{1}{K_a} = \frac{[\text{P}][\text{L}]}{[\text{PL}]} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\([\text{P}]\)</span>, <span class="math-inline">\([\text{L}]\)</span>: the concentrations of free protein and free ligand at equilibrium.</li>
+<li><span class="math-inline">\([\text{PL}]\)</span>: the concentration of the complex.</li>
+<li><span class="math-inline">\(K_a\)</span>: the <strong>association constant</strong>. Its unit is M<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(K_d\)</span>: the <strong>dissociation constant</strong>. Its unit is M. A small <span class="math-inline">\(K_d\)</span> means tight binding.</li>
+</ul>
+</div>
+<p>The dissociation constant has a direct meaning. Solve its definition for the complex, <span class="math-inline">\([\text{PL}] = [\text{P}][\text{L}]/K_d\)</span>, and put this into the fraction of the protein that carries a ligand. Then divide the top and the bottom by <span class="math-inline">\([\text{P}]\)</span> and multiply both by <span class="math-inline">\(K_d\)</span>:</p>
+<p><span class="math-display">\[\text{fraction bound} = \frac{[\text{PL}]}{[\text{P}] + [\text{PL}]} = \frac{[\text{L}]}{[\text{L}] + K_d} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\([\text{L}]\)</span>: the concentration of free ligand.</li>
+<li><span class="math-inline">\(K_d\)</span>: the dissociation constant.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>When <span class="math-inline">\([\text{L}] = K_d\)</span> the fraction is one half. So <span class="math-inline">\(K_d\)</span> is the concentration of free ligand at which half of the protein is occupied. With <span class="math-inline">\(K_d = 1\)</span> nM and 10 nM of free ligand, the occupied fraction is <span class="math-inline">\(10/(10+1) = 0.91\)</span>.</p>
+<p><strong>The standard state.</strong> For the reaction between A and B, <span class="math-inline">\(K\)</span> was a pure number. <span class="math-inline">\(K_a\)</span> has a unit, and the logarithm of a quantity with a unit is not defined. It must first be multiplied by a reference concentration.</p>
+<p><span class="math-display">\[\Delta G^\circ_{bind} = -k_BT\ln\big(K_a C^\circ\big) = k_BT\ln\frac{K_d}{C^\circ}, \qquad C^\circ = 1\ \text{M} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Delta G^\circ_{bind}\)</span>: the <strong>standard free energy of binding</strong>. The small circle means "with every species at the standard concentration".</li>
+<li><span class="math-inline">\(C^\circ\)</span>: the <strong>standard concentration</strong>, 1 mol per litre by convention. In MD units it is 0.6022 molecules per nm<span class="math-inline">\(^3\)</span>, or one molecule in every 1.661 nm<span class="math-inline">\(^3\)</span> (the standard volume <span class="math-inline">\(V^\circ\)</span> of <a href="12-free-energy-pmf.html">Module 12</a>).</li>
+<li><span class="math-inline">\(K_aC^\circ\)</span> and <span class="math-inline">\(K_d/C^\circ\)</span>: pure numbers, so the logarithm can be taken.</li>
+<li><span class="math-inline">\(k_BT\)</span>, <span class="math-inline">\(\ln\)</span>, <span class="math-inline">\(K_a\)</span>, <span class="math-inline">\(K_d\)</span>: as in the lists above. The second form follows from <span class="math-inline">\(K_a = 1/K_d\)</span> and <span class="math-inline">\(\ln(1/x) = -\ln x\)</span>.</li>
+</ul>
+</div>
+<p>There is physics behind this. A free ligand can be anywhere in the volume that the solution offers to each molecule, and that volume depends on the concentration. Binding takes this freedom away. The more dilute the solution, the more freedom is lost and the less favourable binding is.</p>
+<p>A "free energy of binding" therefore means nothing until the concentration is stated, and the convention is 1 M. Another convention would shift every <span class="math-inline">\(\Delta G^\circ\)</span> by the same constant, so differences between two ligands do not depend on it.</p>
+<p>Binding constants are also linked to rates: <span class="math-inline">\(K_d = k_{off}/k_{on}\)</span>, where <span class="math-inline">\(k_{on}\)</span> is the rate constant for binding and <span class="math-inline">\(k_{off}\)</span> the one for unbinding (<a href="16-kinetics-msm.html">Module 16</a>).</p>
+<div class="box key">
+<p><strong>Worked example: from a dissociation constant to a free energy.</strong> A complex has <span class="math-inline">\(K_d = 1\)</span> nM, which is <span class="math-inline">\(10^{-9}\)</span> M. At 300 K, <span class="math-inline">\(\Delta G^\circ = 2.494\times\ln(10^{-9}) = 2.494\times(-20.72) = -51.7\)</span> kJ/mol, or <span class="math-inline">\(-12.4\)</span> kcal/mol. For <span class="math-inline">\(K_d = 1\)</span> µM the result is <span class="math-inline">\(2.494\times(-13.82) = -34.5\)</span> kJ/mol. The two differ by three factors of ten, and <span class="math-inline">\(3\times5.74 = 17.2\)</span> kJ/mol.</p>
+<p>The convention matters. If the standard concentration were 1 mM, the 1 nM complex would have <span class="math-inline">\(\Delta G^\circ = 2.494\times\ln(10^{-9}/10^{-3}) = -34.5\)</span> kJ/mol. It is the same complex, and the number differs by <span class="math-inline">\(k_BT\ln1000 = 17.2\)</span> kJ/mol.</p>
+<p><strong>Worked example: the concentration in a simulation box.</strong> One ligand in a cubic box with an edge of 5 nm has <span class="math-inline">\(1/125 = 0.008\)</span> molecules per nm<span class="math-inline">\(^3\)</span>. Divide by 0.6022 to get mol per litre: 0.0133 M, or 13 mM. That is far above the <span class="math-inline">\(K_d\)</span> of most complexes of interest. A simulation of one protein and one ligand is therefore not at the standard concentration, and <a href="12-free-energy-pmf.html">Module 12</a> shows how to convert.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: the free energy that corresponds to a factor of ten in a binding constant.</li>
+<li><a href="03-statistical-mechanics.html">Module 3</a>, Statistical mechanics: the binding constant written with the tools of statistical mechanics.</li>
+<li><a href="12-free-energy-pmf.html">Module 12</a>, Free energy and the potential of mean force: from a free-energy profile to <span class="math-inline">\(K_d\)</span>, with the correct standard state.</li>
+<li><a href="13-alchemical-free-energy.html">Module 13</a>, Alchemical free energy: binding free energies computed by transforming molecules.</li>
+<li><a href="16-kinetics-msm.html">Module 16</a>, Kinetics and Markov state models: <span class="math-inline">\(K_d\)</span> as a ratio of two rates.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Reporting the depth of a free-energy well, or a free-energy difference measured in one simulation box, as "the binding free energy". The depth of a well is not a free energy of binding, and a difference measured in one box depends on the size of that box. Only the reference to 1 M gives a number that can be compared with experiment (<a href="12-free-energy-pmf.html">Module 12</a>). Two smaller traps: the sign (binding has a negative <span class="math-inline">\(\Delta G^\circ\)</span> when <span class="math-inline">\(K_d\)</span> is below 1 M, and dissociation has the opposite sign), and the logarithm (<span class="math-inline">\(\ln K = 2.303\times\log_{10}K\)</span>).</p>
+</div>
+<h2 id="electrostatics">Charge and Coulomb's law</h2>
+<p><strong>Charge</strong> is a property of matter, like mass. Unlike mass it comes in two kinds, positive and negative. Two charges of the same kind repel each other, and two of opposite kinds attract.</p>
+<p>In an atom the nucleus is positive and the electrons are negative. A proton carries the charge <span class="math-inline">\(+e\)</span> and an electron <span class="math-inline">\(-e\)</span>, where <span class="math-inline">\(e\)</span> is the elementary charge. An <strong>ion</strong> is an atom or a molecule with unequal numbers of the two. Almost everything that atoms do to each other comes from electric forces between their nuclei and their electrons.</p>
+<p>Coulomb's law gives the energy of two point charges.</p>
+<p><span class="math-display">\[U(r) = \frac{q_1q_2}{4\pi\varepsilon_0\,r} = 138.935\ \frac{q_1q_2}{r}\ \text{kJ/mol}\qquad(q \text{ in } e,\ r \text{ in nm}).\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(q_1\)</span>, <span class="math-inline">\(q_2\)</span>: the two charges, in units of <span class="math-inline">\(e\)</span>. They can be fractions (see <a href="#dipoles">Dipoles and polarisation</a>).</li>
+<li><span class="math-inline">\(r\)</span>: the distance between the charges, in nm.</li>
+<li><span class="math-inline">\(\varepsilon_0\)</span> (Greek epsilon, with a zero): the vacuum permittivity, a constant of nature that fixes how strong electric forces are in SI units.</li>
+<li><span class="math-inline">\(4\pi\)</span>: a geometric factor that belongs to the SI definition of <span class="math-inline">\(\varepsilon_0\)</span>.</li>
+<li><span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span>: the Coulomb constant. In MD units it is 138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>.</li>
+<li><span class="math-inline">\(U\)</span>: the energy of the pair, counted as zero when the charges are infinitely far apart.</li>
+</ul>
+</div>
+<p>The force is minus the slope of this energy.</p>
+<p><span class="math-display">\[F(r) = -\frac{dU}{dr} = \frac{q_1q_2}{4\pi\varepsilon_0\,r^2} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(F\)</span>: the force along the line that joins the two charges. A positive value pushes them apart, a negative value pulls them together.</li>
+<li><span class="math-inline">\(dU/dr\)</span>: the derivative of <span class="math-inline">\(U\)</span> with respect to the distance. The derivative of <span class="math-inline">\(1/r\)</span> is <span class="math-inline">\(-1/r^2\)</span>.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>Read it like this. For two charges of the same sign the product <span class="math-inline">\(q_1q_2\)</span> is positive, the energy is positive and falls when they move apart, so they repel. For opposite signs everything is reversed.</p>
+<p>The energy decays slowly: at twice the distance it is still one half. Compare the attraction between two neutral atoms (the Lennard-Jones attraction of the section on <a href="#intermolecular">forces between molecules</a>), which falls to 1/64 at twice the distance. This slow decay is the reason why electrostatics needs special methods in a simulation (<a href="07-boundaries-electrostatics.html">Module 7</a>).</p>
+<p><strong>Potential and field.</strong> It is often useful to describe what a set of charges does to the space around it, before saying which charge will feel it. The <strong>electrostatic potential</strong> at a point is the energy that a test charge of <span class="math-inline">\(+1\,e\)</span> would have there. The <strong>electric field</strong> is the force that the test charge would feel.</p>
+<p><span class="math-display">\[\phi(\mathbf r) = \sum_j \frac{q_j}{4\pi\varepsilon_0\,\vert\mathbf r - \mathbf r_j\vert}, \qquad U = q\,\phi(\mathbf r), \qquad \mathbf E = -\nabla\phi, \qquad \mathbf F = q\,\mathbf E .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\phi(\mathbf r)\)</span> (Greek phi): the electrostatic potential at the point <span class="math-inline">\(\mathbf r\)</span>, in kJ mol<span class="math-inline">\(^{-1}\)</span> <span class="math-inline">\(e^{-1}\)</span>. One volt is 96.485 of these units.</li>
+<li><span class="math-inline">\(\sum_j\)</span>: a sum over the charges <span class="math-inline">\(q_j\)</span> that create the potential, at the positions <span class="math-inline">\(\mathbf r_j\)</span>. The potentials of several charges add.</li>
+<li><span class="math-inline">\(\vert\mathbf r - \mathbf r_j\vert\)</span>: the distance from charge <span class="math-inline">\(j\)</span> to the point. The bars mean "length of the vector".</li>
+<li><span class="math-inline">\(q\)</span>: a charge placed at the point, and <span class="math-inline">\(U\)</span> its energy there.</li>
+<li><span class="math-inline">\(\mathbf E\)</span> (bold): the electric field at the point, a vector. It is a force for each unit of charge, not an energy.</li>
+<li><span class="math-inline">\(\nabla\)</span>: the <a href="maths.html#gradient">gradient</a>. The field points in the direction in which the potential falls fastest.</li>
+<li><span class="math-inline">\(\mathbf F\)</span>: the force on the charge <span class="math-inline">\(q\)</span>.</li>
+</ul>
+</div>
+<p>For a continuous cloud of charge the same relation between charge and potential is written as Poisson's equation, <span class="math-inline">\(\nabla^2\phi = -\rho/\varepsilon_0\)</span>, where <span class="math-inline">\(\rho\)</span> is the charge density (charge in each unit of volume) and <span class="math-inline">\(\nabla^2\)</span> is the Laplacian (<a href="maths.html#divergence">toolbox</a>). Module 7 writes it as <span class="math-inline">\(\nabla^2\phi = -4\pi\rho\)</span>, which is the same equation in units where the Coulomb constant <span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span> is set to 1, so that <span class="math-inline">\(1/\varepsilon_0 = 4\pi\)</span>. In those units a point charge <span class="math-inline">\(q\)</span> creates the potential <span class="math-inline">\(q/r\)</span>, and every energy is multiplied by 138.935 at the end to get kJ/mol. One consequence of Poisson's equation is used there: seen from outside, a round cloud of total charge <span class="math-inline">\(q\)</span> creates the same potential as a point charge <span class="math-inline">\(q\)</span> at its centre.</p>
+<p><strong>The dielectric constant.</strong> Put two ions in water instead of in vacuum. Water molecules are small dipoles (next section). Around a positive ion they turn their negative side towards it, and around a negative ion their positive side. These turned molecules create a field of their own that opposes the field of the ion.</p>
+<p>From a distance each ion therefore looks as if it carried a smaller charge. At distances that are large compared with a water molecule, the result is Coulomb's law divided by a number.</p>
+<p><span class="math-display">\[U(r) = \frac{q_1q_2}{4\pi\varepsilon_0\varepsilon_r\,r} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\varepsilon_r\)</span>: the <strong>dielectric constant</strong> (relative permittivity) of the medium, a pure number. It is 1 in vacuum, about 2 in a non-polar liquid such as an oil, and about 78 in water at 25 °C (78.4 to three digits, the value used in the arithmetic below; some lessons round it to 80).</li>
+<li>Other symbols: as in the first list of this section.</li>
+</ul>
+</div>
+<p>The dielectric constant is a property of the bulk liquid, an average over very many molecules. It describes charges that are several molecular diameters apart. It is not accurate for two ions in contact, and it has no single value inside a protein. In a simulation with explicit water the formula is used with <span class="math-inline">\(\varepsilon_r = 1\)</span>, because the water molecules are present and do the screening themselves (<a href="05-force-field-form.html">Module 5</a>). A dielectric constant larger than 1 appears when the water is simplified or left out (<a href="15-coarse-grained.html">Module 15</a>), and in the reaction-field method for the liquid beyond the cutoff (<a href="07-boundaries-electrostatics.html">Module 7</a>).</p>
+<p><strong>A single charge in a dielectric.</strong> A dielectric also lowers the energy of a single charge, because the molecules that have turned towards the charge are attracted to it. For an ion of charge <span class="math-inline">\(q\)</span> and radius <span class="math-inline">\(R\)</span> that is moved from vacuum into the medium, the free energy changes by <span class="math-inline">\(-\tfrac12\,q^2(1-1/\varepsilon_r)/(4\pi\varepsilon_0R)\)</span>. This is the Born formula of <a href="15-coarse-grained.html">Module 15</a>. For a unit charge of radius 0.2 nm in water it gives <span class="math-inline">\(-\tfrac12\times(138.935/0.2)\times(1-1/78.4) = -343\)</span> kJ/mol, more than a hundred times <span class="math-inline">\(k_BT\)</span>. This is why charged groups stay in contact with water, and why burying one in the interior of a protein or a membrane costs so much.</p>
+<p>A useful length follows from comparing Coulomb's law with the thermal energy. The <strong>Bjerrum length</strong> is the distance at which two unit charges have an interaction energy of exactly <span class="math-inline">\(k_BT\)</span>.</p>
+<p><span class="math-display">\[\ell_B = \frac{e^2}{4\pi\varepsilon_0\varepsilon_r\,k_BT} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\ell_B\)</span>: the Bjerrum length, in nm.</li>
+<li><span class="math-inline">\(e^2/(4\pi\varepsilon_0)\)</span>: the Coulomb constant times one unit charge squared, 138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm.</li>
+<li><span class="math-inline">\(\varepsilon_r\)</span>: the dielectric constant of the medium.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+</ul>
+</div>
+<p>In vacuum at 300 K it is <span class="math-inline">\(138.935/2.494 = 55.7\)</span> nm. In water at 25 °C, where <span class="math-inline">\(k_BT = 2.479\)</span> kJ/mol, it is <span class="math-inline">\(138.935/(78.4\times2.479) = 0.71\)</span> nm. Two unit charges in water that are farther apart than 0.7 nm interact with less than the thermal energy.</p>
+<p><strong>Screening by salt.</strong> Dissolved ions are free to move. Near a positive charge, negative ions are a little more common than average and positive ions a little rarer. This cloud of ions cancels the charge further, and beyond a certain distance almost completely. For weak interactions the result is Coulomb's law with an extra factor that decays exponentially.</p>
+<p><span class="math-display">\[U(r) = \frac{q_1q_2}{4\pi\varepsilon_0\varepsilon_r\,r}\,e^{-r/\lambda_D}, \qquad \lambda_D \approx \frac{0.304}{\sqrt{I}}\ \text{nm} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\lambda_D\)</span>: the <strong>Debye length</strong>, the distance over which the cloud of ions screens a charge.</li>
+<li><span class="math-inline">\(e^{-r/\lambda_D}\)</span>: an exponential decay. At <span class="math-inline">\(r = \lambda_D\)</span> the interaction is down to 37 % of its value without salt, at <span class="math-inline">\(r = 3\lambda_D\)</span> to 5 %. Here <span class="math-inline">\(e\)</span> is the number 2.718, not the elementary charge.</li>
+<li><span class="math-inline">\(I\)</span>: the <strong>ionic strength</strong> in mol per litre. For a salt such as NaCl it is equal to the salt concentration.</li>
+<li>0.304: the value for water at 25 °C. <a href="15-coarse-grained.html">Module 15</a> gives the full formula. For 0.15 M it quotes 0.79 nm. To three digits the value is 0.785 nm.</li>
+<li>Other symbols: as in the lists above.</li>
+</ul>
+</div>
+<table>
+<thead>
+<tr>
+<th>Ionic strength</th>
+<th>Debye length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 M</td>
+<td>0.30 nm</td>
+</tr>
+<tr>
+<td>0.15 M (about the salt concentration in the body)</td>
+<td>0.785 nm</td>
+</tr>
+<tr>
+<td>0.01 M</td>
+<td>3.0 nm</td>
+</tr>
+<tr>
+<td>0.001 M</td>
+<td>9.6 nm</td>
+</tr>
+</tbody>
+</table>
+<div class="box key">
+<p><strong>Worked example: vacuum against water.</strong> A charge of <span class="math-inline">\(+1\,e\)</span> and a charge of <span class="math-inline">\(-1\,e\)</span> are 0.3 nm apart. In vacuum, <span class="math-inline">\(U = 138.935\times(+1)\times(-1)/0.3 = -463\)</span> kJ/mol, which is <span class="math-inline">\(-186\ k_BT\)</span> at 300 K. With the dielectric constant of water, <span class="math-inline">\(-463/78 = -5.9\)</span> kJ/mol, or <span class="math-inline">\(-2.4\ k_BT\)</span>. (At contact the second number is only a rough estimate, as explained above.) Water turns an interaction that nothing thermal could break into one that breaks all the time.</p>
+<p>The force between the two charges in vacuum has the size <span class="math-inline">\(138.935/0.3^2 = 1{,}544\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>, which is <span class="math-inline">\(1{,}544\times1.6605 \approx 2{,}560\)</span> pN. The potential 0.3 nm from the positive charge is <span class="math-inline">\(138.935/0.3 = 463\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> <span class="math-inline">\(e^{-1}\)</span>, which is <span class="math-inline">\(463/96.485 = 4.8\)</span> V.</p>
+<p><strong>Worked example: salt.</strong> Two charges of <span class="math-inline">\(+1\,e\)</span> are 1 nm apart in water at 25 °C with 0.15 M salt. Without salt, <span class="math-inline">\(U = 138.935/(78.4\times1) = 1.77\)</span> kJ/mol. The Debye length is <span class="math-inline">\(0.304/\sqrt{0.15} = 0.785\)</span> nm, and the factor is <span class="math-inline">\(e^{-1/0.785} = 0.28\)</span>. So <span class="math-inline">\(U = 1.77\times0.28 = 0.50\)</span> kJ/mol, one fifth of <span class="math-inline">\(k_BT\)</span>.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: the Coulomb term, and why it contains no dielectric constant.</li>
+<li><a href="06-force-field-parameters.html">Module 6</a>, Force-field parameters: charges are chosen to reproduce the electrostatic potential around a molecule.</li>
+<li><a href="07-boundaries-electrostatics.html">Module 7</a>, Boundaries and electrostatics: why the Coulomb energy cannot be cut off, and the Ewald sum that treats it correctly.</li>
+<li><a href="10-running-a-simulation.html">Module 10</a>, Running a simulation: ions are added to make the box neutral.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: screened Coulomb interactions and other models that replace the water by a dielectric constant.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Dividing the Coulomb energy by 78 in a simulation that contains explicit water. That counts the screening twice. A second mistake is to conclude from screening that electrostatics is short-ranged and can be cut off. Screening is produced by all the other charges as they respond, and they can only produce it if their own interactions are computed at full range.</p>
+</div>
+<h2 id="dipoles">Dipoles and polarisation</h2>
+<p>Atoms of different elements pull on the electrons they share with different strength. In a water molecule the oxygen pulls harder than the hydrogens. The oxygen side of the molecule is therefore slightly negative and the hydrogen side slightly positive, although the molecule as a whole is neutral. A molecule with a positive and a negative side is a <strong>dipole</strong>, and such a molecule is called <strong>polar</strong> (a molecule without such sides, for example a hydrocarbon, is <strong>non-polar</strong>). A force field represents this uneven distribution by giving each atom a <strong>partial charge</strong>, a fraction of <span class="math-inline">\(e\)</span>, usually placed at its nucleus.</p>
+<p>The <strong>dipole moment</strong> measures how much charge is separated and how far.</p>
+<p><span class="math-display">\[\boldsymbol\mu = \sum_i q_i\,\mathbf r_i .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\boldsymbol\mu\)</span> (Greek mu, bold): the dipole moment of the molecule, a vector. It points from the negative side to the positive side.</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(\mathbf r_i\)</span>: the partial charge and the position of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\sum_i\)</span>: a sum over the atoms of the molecule.</li>
+<li>Unit: <span class="math-inline">\(e\)</span> nm, or the debye (D). 1 D is 0.02082 <span class="math-inline">\(e\)</span> nm, and 1 <span class="math-inline">\(e\)</span> nm is 48.03 D.</li>
+</ul>
+</div>
+<p>The simplest case is two charges <span class="math-inline">\(+q\)</span> and <span class="math-inline">\(-q\)</span> a distance <span class="math-inline">\(d\)</span> apart. Then the size of the dipole moment is <span class="math-inline">\(\mu = q\,d\)</span>. One elementary charge separated by 0.1 nm gives 0.1 <span class="math-inline">\(e\)</span> nm, which is 4.8 D. For a neutral molecule the dipole moment does not depend on where you put the origin, because shifting all positions by the same vector adds that vector times the total charge, which is zero.</p>
+<p>An electric field turns a dipole. The energy of a dipole in a field is</p>
+<p><span class="math-display">\[U = -\boldsymbol\mu\cdot\mathbf E = -\mu\,E\cos\theta .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\boldsymbol\mu\cdot\mathbf E\)</span>: the <a href="maths.html#dot-product">dot product</a> of the dipole moment and the electric field.</li>
+<li><span class="math-inline">\(\mu\)</span>, <span class="math-inline">\(E\)</span>: the sizes of the two vectors. Here <span class="math-inline">\(E\)</span> is the size of the field, not an energy.</li>
+<li><span class="math-inline">\(\theta\)</span> (Greek theta): the angle between the dipole and the field.</li>
+<li>The energy is lowest when the dipole points along the field (<span class="math-inline">\(\theta = 0\)</span>) and highest when it points against it.</li>
+</ul>
+</div>
+<p>A field therefore lines dipoles up, and thermal motion works against this. The result is a partial alignment, and this is how water screens charges (see <a href="#electrostatics">the dielectric constant</a>).</p>
+<p>Seen from far away, the two sides of a dipole almost cancel. Its interactions therefore fall off faster with distance than those of a net charge.</p>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>Energy falls off as</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>charge and charge</td>
+<td><span class="math-inline">\(1/r\)</span></td>
+<td>Coulomb's law</td>
+</tr>
+<tr>
+<td>charge and dipole</td>
+<td><span class="math-inline">\(1/r^2\)</span></td>
+<td>the two sides of the dipole nearly cancel</td>
+</tr>
+<tr>
+<td>dipole and dipole, in fixed orientations</td>
+<td><span class="math-inline">\(1/r^3\)</span></td>
+<td>the cancellation happens on both sides</td>
+</tr>
+</tbody>
+</table>
+<p>You can check the middle row by adding up Coulomb's law for the single charges. Put a charge of <span class="math-inline">\(+1\,e\)</span> at the origin, and build a dipole from <span class="math-inline">\(-0.5\,e\)</span> and <span class="math-inline">\(+0.5\,e\)</span> that are 0.1 nm apart, with its centre at a distance <span class="math-inline">\(r\)</span> and its negative end towards the charge. At <span class="math-inline">\(r = 0.3\)</span> nm the energy is <span class="math-inline">\(138.935\times(-0.5/0.25 + 0.5/0.35) = -79.4\)</span> kJ/mol. At <span class="math-inline">\(r = 0.6\)</span> nm it is <span class="math-inline">\(138.935\times(-0.5/0.55 + 0.5/0.65) = -19.4\)</span> kJ/mol. Twice the distance leaves about a quarter of the energy, where two net charges would keep one half.</p>
+<p><strong>Polarisation.</strong> The charges in a molecule are not rigidly fixed. An electric field pushes the electron cloud one way and the nuclei the other way. This creates an additional dipole, the <strong>induced dipole</strong>, which lasts as long as the field does.</p>
+<p><span class="math-display">\[\boldsymbol\mu_{ind} = \alpha\,\mathbf E .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\boldsymbol\mu_{ind}\)</span>: the induced dipole moment.</li>
+<li><span class="math-inline">\(\alpha\)</span> (Greek alpha): the <strong>polarisability</strong> of the molecule. It says how easily its electron cloud is shifted.</li>
+<li><span class="math-inline">\(\mathbf E\)</span>: the electric field at the molecule.</li>
+<li>Tables usually list the polarisability volume <span class="math-inline">\(\alpha' = \alpha/(4\pi\varepsilon_0)\)</span>, in nm<span class="math-inline">\(^3\)</span> or Å<span class="math-inline">\(^3\)</span>. It is of the order of 0.001 nm<span class="math-inline">\(^3\)</span> (1 Å<span class="math-inline">\(^3\)</span>) for a small molecule and grows with the size of the molecule.</li>
+</ul>
+</div>
+<p>The induced dipole lowers the energy by <span class="math-inline">\(\tfrac12\alpha E^2\)</span>. A liquid thus responds to a field in two ways. Its molecules turn, which takes time, and their electron clouds shift, which is immediate.</p>
+<p>A force field with fixed partial charges contains the first response, because the molecules in the simulation can turn. It does not contain the second, because the charges never change (<a href="05-force-field-form.html">Module 5</a>). Polarisable force fields add it (<a href="06-force-field-parameters.html">Module 6</a>).</p>
+<div class="box key">
+<p><strong>Worked example: the dipole moment of a water-like molecule.</strong> Take a charge of <span class="math-inline">\(-0.8\,e\)</span> on the oxygen and <span class="math-inline">\(+0.4\,e\)</span> on each hydrogen, O-H distances of 0.1 nm and an H-O-H angle of 104.5° (round values for an illustration). Put the oxygen at the origin, so that it contributes nothing to the sum. Each hydrogen lies <span class="math-inline">\(0.1\times\cos(52.25^\circ) = 0.0612\)</span> nm along the axis of symmetry (52.25° is half of the angle), and the sideways parts of the two hydrogens cancel. So <span class="math-inline">\(\mu = 2\times0.4\times0.0612 = 0.0490\)</span> <span class="math-inline">\(e\)</span> nm, which is <span class="math-inline">\(0.0490/0.02082 = 2.35\)</span> D. Module 5 lists the dipole moments of real water models.</p>
+<p><strong>Worked example: an induced dipole.</strong> A molecule with <span class="math-inline">\(\alpha' = 0.0015\)</span> nm<span class="math-inline">\(^3\)</span> (an illustration) is 0.3 nm from a charge of <span class="math-inline">\(+1\,e\)</span>. The field of a point charge is <span class="math-inline">\(E = q/(4\pi\varepsilon_0r^2)\)</span> and <span class="math-inline">\(\alpha = 4\pi\varepsilon_0\alpha'\)</span>, so the factors <span class="math-inline">\(4\pi\varepsilon_0\)</span> cancel and the formula above becomes <span class="math-inline">\(\mu_{ind} = \alpha'q/r^2 = 0.0015\times1/0.3^2 = 0.0167\)</span> <span class="math-inline">\(e\)</span> nm, which is 0.80 D, a third of the permanent dipole in the first example. The energy gained is <span class="math-inline">\(\tfrac12\alpha E^2\)</span>, which in these units is <span class="math-inline">\(\tfrac12\times138.935\times\alpha'q^2/r^4 = \tfrac12\times138.935\times0.0015/0.3^4 = 12.9\)</span> kJ/mol. Close to an ion, polarisation is not a small effect.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="03-statistical-mechanics.html">Module 3</a>, Statistical mechanics: the dielectric constant of a liquid from the fluctuations of its total dipole moment.</li>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: partial charges, and the missing response of the electron clouds.</li>
+<li><a href="06-force-field-parameters.html">Module 6</a>, Force-field parameters: how partial charges are chosen, and polarisable force fields.</li>
+<li><a href="07-boundaries-electrostatics.html">Module 7</a>, Boundaries and electrostatics: the reaction-field method, which treats the liquid beyond the cutoff as a medium that can be polarised.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Thinking that a neutral molecule has no electrostatic interactions. Water is neutral, and its interactions are mostly electrostatic. A second point: partial charges are parameters of a model and cannot be measured. Different sets of charges can describe the same molecule almost equally well. What can be measured or computed without ambiguity is the dipole moment and the electrostatic potential around the molecule.</p>
+</div>
+<h2 id="quantum">Why atoms can be treated as classical balls</h2>
+<p>An atom is a small, heavy nucleus with light electrons around it. Electrons do not behave like tiny balls. They obey quantum mechanics: each electron is spread out as a cloud, and chemistry (bonds, lone pairs, partial charges) is the shape and the energy of these clouds.</p>
+<p>The exact equation for all the electrons and nuclei of a protein in water is far beyond any computer. MD gets round it in three steps. Each step is an approximation, and it is worth knowing what each one gives up. (<a href="01-what-is-md.html">Module 1</a> counts steps 1 and 2 together as its first approximation, and step 3 as its second.)</p>
+<p><strong>Step 1: separate the electrons from the nuclei.</strong> A proton is 1,836 times heavier than an electron, and other nuclei are heavier still. The electrons therefore move much faster than the nuclei and rearrange almost instantly when the nuclei move. Picture slow lorries (the nuclei) with a swarm of flies (the electrons) around them: wherever the lorries are, the swarm has already adapted.</p>
+<p>So for each arrangement of the nuclei the electrons have one definite lowest energy. That energy, as a function of the positions of all nuclei, is the potential energy <span class="math-inline">\(U(\mathbf r)\)</span> in which the nuclei move. This is the <strong>Born-Oppenheimer approximation</strong>.</p>
+<p><strong>Step 2: replace the electronic energy by a formula.</strong> Computing the energy of the electrons for one arrangement of the nuclei is the business of quantum chemistry, and it is far too slow to repeat at every step for a hundred thousand atoms. A <strong>force field</strong> is a cheap formula with fitted parameters that imitates <span class="math-inline">\(U(\mathbf r)\)</span>: springs for bonds and angles, periodic terms for rotations about bonds, a Lennard-Jones term, and Coulomb's law between partial charges (<a href="05-force-field-form.html">Module 5</a>). The electrons no longer appear. Their effect is stored in the parameters.</p>
+<p><strong>Step 3: move the nuclei with Newton's law.</strong> Nuclei are quantum objects too, but they are much heavier than electrons. Two tests say whether the classical description is good enough. The first compares the quantum blur of a particle with the distances that matter.</p>
+<p><span class="math-display">\[\Lambda = \frac{h}{\sqrt{2\pi m k_BT}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Lambda\)</span> (Greek capital lambda): the <strong>thermal de Broglie wavelength</strong>, the size of the quantum blur in the position of a particle at temperature <span class="math-inline">\(T\)</span>.</li>
+<li><span class="math-inline">\(h\)</span>: Planck's constant, <span class="math-inline">\(6.62607\times10^{-34}\)</span> J s, or 0.399031 kJ mol<span class="math-inline">\(^{-1}\)</span> ps. It sets the scale of all quantum effects.</li>
+<li><span class="math-inline">\(m\)</span>: the mass of the particle.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+</ul>
+</div>
+<p>A particle behaves classically when <span class="math-inline">\(\Lambda\)</span> is small compared with the distances over which the forces on it change. Between atoms these distances are 0.1 to 0.4 nm.</p>
+<table>
+<thead>
+<tr>
+<th>Particle</th>
+<th>Mass</th>
+<th><span class="math-inline">\(\Lambda\)</span> at 300 K</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Electron</td>
+<td>0.00055 u</td>
+<td>4.3 nm</td>
+</tr>
+<tr>
+<td>Hydrogen</td>
+<td>1.008 u</td>
+<td>0.10 nm</td>
+</tr>
+<tr>
+<td>Carbon</td>
+<td>12.011 u</td>
+<td>0.029 nm</td>
+</tr>
+<tr>
+<td>Oxygen</td>
+<td>15.999 u</td>
+<td>0.025 nm</td>
+</tr>
+</tbody>
+</table>
+<p>The blur of an electron is many times larger than an atom, so electrons are never classical. Carbon and oxygen are safely classical. Hydrogen is a borderline case.</p>
+<p>The second test looks at vibrations. A quantum oscillator cannot have any energy it likes. Its energy comes in steps.</p>
+<p><span class="math-display">\[E_n = \left(n + \tfrac12\right)\hbar\omega, \qquad n = 0, 1, 2, \dots\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(E_n\)</span>: the allowed energies of a quantum harmonic oscillator.</li>
+<li><span class="math-inline">\(n\)</span>: the number of the level. <span class="math-inline">\(n = 0\)</span> is the lowest.</li>
+<li><span class="math-inline">\(\hbar\)</span> ("h-bar"): Planck's constant divided by <span class="math-inline">\(2\pi\)</span>, 0.0635078 kJ mol<span class="math-inline">\(^{-1}\)</span> ps.</li>
+<li><span class="math-inline">\(\omega\)</span>: the angular frequency of the <a href="#oscillator">oscillator</a>, in ps<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\hbar\omega\)</span>: the distance between two neighbouring levels, the <strong>vibrational quantum</strong>.</li>
+<li><span class="math-inline">\(\tfrac12\hbar\omega\)</span>: the <strong>zero-point energy</strong>, which remains even in the lowest level. A quantum oscillator is never completely at rest.</li>
+</ul>
+</div>
+<p>Compare <span class="math-inline">\(\hbar\omega\)</span> with <span class="math-inline">\(k_BT\)</span>. If <span class="math-inline">\(\hbar\omega\)</span> is much smaller than <span class="math-inline">\(k_BT\)</span>, the steps are tiny on the thermal scale, the energy looks continuous, and the classical description is good. If <span class="math-inline">\(\hbar\omega\)</span> is much larger than <span class="math-inline">\(k_BT\)</span>, the oscillator sits in its lowest level and cannot take up or give off thermal energy. A classical spring with the same frequency would hold <span class="math-inline">\(k_BT\)</span> of energy and exchange it freely, which is wrong.</p>
+<div class="box key">
+<p><strong>Worked example: a stiff and a soft vibration.</strong> The C-H stretch of Module 2 has <span class="math-inline">\(\omega = 551\)</span> ps<span class="math-inline">\(^{-1}\)</span>. Its quantum is <span class="math-inline">\(\hbar\omega = 0.0635\times551 = 35.0\)</span> kJ/mol, which is <span class="math-inline">\(35.0/2.494 = 14\ k_BT\)</span> at 300 K. The first excited level is populated <span class="math-inline">\(e^{-14} = 8\times10^{-7}\)</span> times as often as the lowest one. This vibration is frozen in its lowest level, which is one reason why bonds to hydrogen can be replaced by rigid constraints (<a href="09-constraints.html">Module 9</a>).</p>
+<p>The soft spring in the section on <a href="#oscillator">the harmonic oscillator</a> had <span class="math-inline">\(\omega = 2.89\)</span> ps<span class="math-inline">\(^{-1}\)</span>. Its quantum is <span class="math-inline">\(0.0635\times2.89 = 0.18\)</span> kJ/mol, or <span class="math-inline">\(0.07\ k_BT\)</span>. Slow, soft motions are classical.</p>
+<p><strong>Worked example: the thermal wavelength of hydrogen.</strong> In SI units, <span class="math-inline">\(m = 1.008\times1.66054\times10^{-27} = 1.6738\times10^{-27}\)</span> kg and <span class="math-inline">\(k_BT = 1.380649\times10^{-23}\times300 = 4.1419\times10^{-21}\)</span> J. Then <span class="math-inline">\(2\pi mk_BT = 4.356\times10^{-47}\)</span>, its square root is <span class="math-inline">\(6.600\times10^{-24}\)</span>, and <span class="math-inline">\(\Lambda = 6.626\times10^{-34}/(6.600\times10^{-24}) = 1.00\times10^{-10}\)</span> m, which is 0.10 nm.</p>
+</div>
+<p><strong>Where the classical picture fails.</strong></p>
+<ul>
+<li><strong>Chemical reactions.</strong> When a bond breaks or forms, the electrons rearrange. An ordinary force field has a fixed list of bonds.</li>
+<li><strong>Excited electrons.</strong> Absorption of light, fluorescence and photochemistry need electrons in states other than the lowest one.</li>
+<li><strong>Transfer of protons and electrons.</strong> Light particles can also pass through a barrier that they do not have the energy to climb. This is called tunnelling.</li>
+<li><strong>Stiff vibrations.</strong> Their zero-point energy and their failure to take up heat are missing from a classical simulation.</li>
+<li><strong>The response of the electron clouds</strong> to their surroundings, unless the force field includes polarisation (see <a href="#dipoles">Dipoles and polarisation</a>).</li>
+</ul>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: which physics MD keeps and which it drops.</li>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: the formula that replaces the energy of the electrons.</li>
+<li><a href="06-force-field-parameters.html">Module 6</a>, Force-field parameters: parameters fitted to quantum-chemical calculations and to experiments.</li>
+<li><a href="09-constraints.html">Module 9</a>, Constraints: freezing the bonds to hydrogen.</li>
+<li><a href="17-machine-learning.html">Module 17</a>, Machine-learned potentials: a learned replacement for the energy of the electrons, trained on quantum-chemical calculations.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Saying that classical MD "contains no quantum mechanics". The quantum behaviour of the electrons is what creates <span class="math-inline">\(U(\mathbf r)\)</span>, and the force field carries it in its parameters. What is classical is the motion of the nuclei. The opposite mistake is to expect an ordinary simulation to show a reaction, a change of protonation or a shift of charge. The formula has no way to produce them.</p>
+</div>
+<h2 id="intermolecular">Forces between molecules</h2>
+<p>The atoms inside a molecule are held together by covalent bonds, and these do not break in an MD simulation. Everything else is decided by the much weaker forces between atoms that are not bonded to each other: why water is a liquid, why a protein folds, why a drug stays on its target. There are only a few kinds. All of them have an electric origin, and a force field describes them with two formulas, the Lennard-Jones function and Coulomb's law.</p>
+<p><strong>Repulsion.</strong> Push two atoms together and their electron clouds begin to overlap. Quantum mechanics does not allow two electrons to be in the same state in the same place (the Pauli principle), so the energy rises very steeply. This is what gives an atom its size and what makes matter hard to compress.</p>
+<p><strong>Dispersion.</strong> Two atoms attract each other weakly even when neither has a charge or a dipole. The electron cloud of an atom fluctuates, so at any instant it is slightly lopsided: the atom has a momentary dipole. The field of that dipole polarises the neighbouring atom (see <a href="#dipoles">Dipoles and polarisation</a>), and the two dipoles attract. The energy of this attraction falls off as <span class="math-inline">\(1/r^6\)</span>. It acts between all atoms and is stronger for atoms with more electrons.</p>
+<p>The dispersion attraction is also called the London force or the van der Waals attraction. The Lennard-Jones function combines repulsion and dispersion, and the term it forms in a force field is often called the van der Waals term.</p>
+<p><span class="math-display">\[U_{LJ}(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6}\right].\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{LJ}\)</span>: the Lennard-Jones energy of one pair of atoms, in kJ/mol. It is zero when the atoms are far apart.</li>
+<li>4: a number chosen so that the depth of the well is exactly <span class="math-inline">\(\varepsilon\)</span>.</li>
+<li><span class="math-inline">\(r\)</span>: the distance between the two atoms, in nm.</li>
+<li><span class="math-inline">\(\varepsilon\)</span> (Greek epsilon, without a subscript): the depth of the energy well, in kJ/mol. It is not the permittivity <span class="math-inline">\(\varepsilon_0\)</span> of electrostatics.</li>
+<li><span class="math-inline">\(\sigma\)</span> (Greek sigma): the distance at which the energy is zero, roughly the diameter of an atom.</li>
+<li><span class="math-inline">\((\sigma/r)^{12}\)</span>: the repulsion, a conveniently steep function.</li>
+<li><span class="math-inline">\(-(\sigma/r)^{6}\)</span>: the dispersion attraction.</li>
+</ul>
+</div>
+<p>The curve is very high at short distance, crosses zero at <span class="math-inline">\(r = \sigma\)</span>, has its minimum of depth <span class="math-inline">\(-\varepsilon\)</span> at <span class="math-inline">\(r = 2^{1/6}\sigma = 1.12\,\sigma\)</span>, and rises back towards zero at large distance (<a href="05-force-field-form.html">Module 5</a>).</p>
+<p><strong>Electrostatic forces.</strong> Charges and partial charges interact through Coulomb's law. This one formula covers the interactions between ions, between an ion and a polar molecule, and between two polar molecules (see <a href="#electrostatics">Charge and Coulomb's law</a> and <a href="#dipoles">Dipoles and polarisation</a>).</p>
+<p><strong>The hydrogen bond.</strong> A hydrogen bound to a nitrogen or an oxygen carries a positive partial charge. Because a hydrogen atom is small, a negatively charged oxygen or nitrogen of another group can come very close to it. The result is a strong attraction with a preferred direction, the hydrogen bond. It is strongest when the three atoms (the atom that carries the hydrogen, the hydrogen, and the atom that accepts it) lie nearly on a line. It is mostly electrostatic.</p>
+<p>For two water molecules in the gas phase a hydrogen bond is worth about 20 kJ/mol, which is 8 <span class="math-inline">\(k_BT\)</span> at 300 K. In liquid water the balance is different: a group that loses one hydrogen bond usually finds another partner, so the net free-energy changes are much smaller. A force field has no separate term for hydrogen bonds. They arise from the Coulomb and Lennard-Jones terms (<a href="05-force-field-form.html">Module 5</a>).</p>
+<p><strong>The hydrophobic effect.</strong> Oil and water do not mix. The reason is not a strong attraction between oil molecules: the dispersion attraction between oil and water is about as strong as between oil and oil. The reason lies in the water.</p>
+<p>Water molecules form hydrogen bonds with each other, and a non-polar molecule cannot take part. The water around it keeps its hydrogen bonds by arranging itself around the intruder, but it has fewer ways of doing so, and its entropy falls (see <a href="#thermodynamics">Heat, entropy and free energy</a>). This is the picture for small non-polar molecules at room temperature.</p>
+<p>When two non-polar groups come together, the surface that they show to the water shrinks, some water is released, and the free energy falls. This looks like an attraction between the two groups. It is a free-energy effect of the solvent, so you will not find it as a term in the potential energy function. It appears by itself in a simulation with explicit water. Models without water molecules must add it by hand (<a href="15-coarse-grained.html">Module 15</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Interaction</th>
+<th>Origin</th>
+<th>Falls off as</th>
+<th>Typical size</th>
+<th>In a force field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repulsion</td>
+<td>overlap of electron clouds</td>
+<td>very steeply</td>
+<td>sets the size of atoms</td>
+<td>Lennard-Jones, first term</td>
+</tr>
+<tr>
+<td>Dispersion</td>
+<td>fluctuating electron clouds</td>
+<td><span class="math-inline">\(1/r^6\)</span></td>
+<td>0.1 to 1 kJ/mol for one pair of atoms</td>
+<td>Lennard-Jones, second term</td>
+</tr>
+<tr>
+<td>Charge with charge</td>
+<td>Coulomb's law</td>
+<td><span class="math-inline">\(1/r\)</span></td>
+<td>hundreds of kJ/mol in vacuum at contact</td>
+<td>Coulomb term</td>
+</tr>
+<tr>
+<td>Charge with dipole, dipole with dipole</td>
+<td>Coulomb's law between partial charges</td>
+<td><span class="math-inline">\(1/r^2\)</span>, <span class="math-inline">\(1/r^3\)</span></td>
+<td>tens of kJ/mol at contact</td>
+<td>Coulomb term</td>
+</tr>
+<tr>
+<td>Hydrogen bond</td>
+<td>mostly electrostatic</td>
+<td>short-ranged, directional</td>
+<td>about 20 kJ/mol in the gas phase</td>
+<td>Coulomb and Lennard-Jones terms together</td>
+</tr>
+<tr>
+<td>Hydrophobic effect</td>
+<td>hydrogen bonds between water molecules</td>
+<td></td>
+<td>grows with the non-polar surface</td>
+<td>none: it comes from the explicit water</td>
+</tr>
+</tbody>
+</table>
+<div class="box key">
+<p><strong>Worked example: the Lennard-Jones energy at five distances.</strong> Take <span class="math-inline">\(\varepsilon = 0.5\)</span> kJ/mol and <span class="math-inline">\(\sigma = 0.34\)</span> nm (round values for an illustration).</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(r\)</span> in nm</th>
+<th><span class="math-inline">\((\sigma/r)^{12}\)</span></th>
+<th><span class="math-inline">\((\sigma/r)^{6}\)</span></th>
+<th><span class="math-inline">\(U_{LJ}\)</span> in kJ/mol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.30</td>
+<td>4.490</td>
+<td>2.119</td>
+<td><span class="math-inline">\(+4.74\)</span></td>
+</tr>
+<tr>
+<td>0.34</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0.3816 (the minimum, <span class="math-inline">\(2^{1/6}\sigma\)</span>)</td>
+<td>0.250</td>
+<td>0.500</td>
+<td><span class="math-inline">\(-0.50\)</span></td>
+</tr>
+<tr>
+<td>0.50</td>
+<td>0.0098</td>
+<td>0.0989</td>
+<td><span class="math-inline">\(-0.178\)</span></td>
+</tr>
+<tr>
+<td>1.00</td>
+<td><span class="math-inline">\(2.4\times10^{-6}\)</span></td>
+<td>0.0015</td>
+<td><span class="math-inline">\(-0.0031\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>First row: <span class="math-inline">\(4\times0.5\times(4.490 - 2.119) = 4.74\)</span> kJ/mol. Moving the atoms 0.04 nm closer than <span class="math-inline">\(\sigma\)</span> already costs 1.9 <span class="math-inline">\(k_BT\)</span>, so atoms rarely come closer than that. The minimum, at <span class="math-inline">\(r = 2^{1/6}\times0.34 = 0.382\)</span> nm, is only 0.2 <span class="math-inline">\(k_BT\)</span> deep: one contact is weak. At 1 nm one pair contributes 0.6 % of the well depth, but the number of pairs at that distance is large, which is why the cutoff needs a correction (<a href="07-boundaries-electrostatics.html">Module 7</a>).</p>
+<p><strong>Worked example: three sizes on the thermal scale.</strong> At 300 K: one dispersion contact of 0.5 kJ/mol is 0.2 <span class="math-inline">\(k_BT\)</span>. One hydrogen bond between two water molecules in the gas phase, 20 kJ/mol, is 8 <span class="math-inline">\(k_BT\)</span>. Two opposite unit charges 0.3 nm apart in vacuum, 463 kJ/mol, are 186 <span class="math-inline">\(k_BT\)</span>.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="05-force-field-form.html">Module 5</a>, The form of a force field: the Lennard-Jones and Coulomb terms, and the absence of a hydrogen-bond term.</li>
+<li><a href="06-force-field-parameters.html">Module 6</a>, Force-field parameters: how the strengths of these interactions are fitted, and the balance between protein-water and protein-protein attraction.</li>
+<li><a href="07-boundaries-electrostatics.html">Module 7</a>, Boundaries and electrostatics: where the short-range interactions can be cut off.</li>
+<li><a href="13-alchemical-free-energy.html">Module 13</a>, Alchemical free energy: softening the repulsive wall when atoms are made to appear or disappear.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: effective interactions that include the effect of the water.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Looking for the hydrogen bond or the hydrophobic effect as a term of the energy function. Neither is there. Both emerge from the terms that are. A second mistake is to dismiss dispersion because one contact is only a fraction of <span class="math-inline">\(k_BT\)</span>. A side chain buried in a protein has dozens of such contacts, and their sum is not small.</p>
+</div>
+<h2 id="diffusion">Diffusion, friction and viscosity</h2>
+<p>A molecule in a liquid is surrounded by neighbours that hit it from all sides, many times in each picosecond. Every hit changes its direction. Its path is a <strong>random walk</strong>, like that of a person who takes each step in a new random direction.</p>
+<p>After many steps the walker has on average gone nowhere, because steps to the left and to the right cancel. But the typical distance from the starting point keeps growing, slowly. This spreading is <strong>diffusion</strong>.</p>
+<p><span class="math-display">\[\left\langle \vert\mathbf r(t) - \mathbf r(0)\vert^2 \right\rangle = 6\,D\,t .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r(0)\)</span>, <span class="math-inline">\(\mathbf r(t)\)</span>: the position of the molecule at the start and after a time <span class="math-inline">\(t\)</span>.</li>
+<li><span class="math-inline">\(\vert\ \ \vert^2\)</span>: the squared length of the vector, here the squared distance travelled.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over many molecules or over many starting times. The left side is called the <strong>mean squared displacement</strong> (MSD).</li>
+<li><span class="math-inline">\(D\)</span>: the <strong>diffusion constant</strong>, in nm<span class="math-inline">\(^2\)</span>/ps. One nm<span class="math-inline">\(^2\)</span>/ps is <span class="math-inline">\(10^{-6}\)</span> m<span class="math-inline">\(^2\)</span>/s, or 0.01 cm<span class="math-inline">\(^2\)</span>/s.</li>
+<li>6: two for each of the three directions. Along one direction alone, <span class="math-inline">\(\langle(\Delta x)^2\rangle = 2Dt\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this. The <em>squared</em> distance grows in proportion to the time, so the distance grows with the square root of the time. Four times the time gives twice the distance, and to go ten times farther takes a hundred times longer. Diffusion is fast over the size of a molecule and slow over large distances.</p>
+<p>The formula holds for times that are long compared with the time between two collisions. Over a small fraction of a picosecond a molecule still flies straight, and the squared distance grows with the square of the time. This early part is called ballistic.</p>
+<p><strong>Friction.</strong> Drag an object through a liquid and the liquid resists. For slow motion the resisting force is proportional to the velocity.</p>
+<p><span class="math-display">\[\mathbf F_{drag} = -\zeta\,\mathbf v, \qquad D = \frac{k_BT}{\zeta} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf F_{drag}\)</span>: the friction force. The minus sign says that it points against the velocity.</li>
+<li><span class="math-inline">\(\zeta\)</span> (Greek zeta): the <strong>friction coefficient</strong>, in u/ps.</li>
+<li><span class="math-inline">\(\mathbf v\)</span>: the velocity of the object through the liquid.</li>
+<li><span class="math-inline">\(D\)</span>: the diffusion constant of the same object.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+</ul>
+</div>
+<p>The second formula is the <strong>Einstein relation</strong>. The collisions that slow down a moving molecule are the same collisions that kick a resting molecule around. Friction and diffusion are therefore two sides of one thing: strong friction means slow diffusion. In a Langevin thermostat the friction is given as a rate <span class="math-inline">\(\gamma = \zeta/m\)</span>, in ps<span class="math-inline">\(^{-1}\)</span>, where <span class="math-inline">\(m\)</span> is the mass of the atom (<a href="08-thermostats-barostats.html">Module 8</a>). Then <span class="math-inline">\(D = k_BT/(m\gamma)\)</span>.</p>
+<p><strong>Viscosity.</strong> The property of the liquid that sets the friction is its <strong>viscosity</strong>: how strongly it resists flowing. Honey has a high viscosity, water a low one. For a sphere that is much larger than the molecules of the liquid:</p>
+<p><span class="math-display">\[\zeta = 6\pi\eta R, \qquad D = \frac{k_BT}{6\pi\eta R} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\eta\)</span> (Greek eta): the viscosity of the liquid. For water at 25 °C it is <span class="math-inline">\(0.89\times10^{-3}\)</span> Pa s.</li>
+<li><span class="math-inline">\(R\)</span>: the radius of the sphere.</li>
+<li><span class="math-inline">\(6\pi\)</span>: a number that comes from the flow of the liquid around a sphere.</li>
+<li>The second formula is the <strong>Stokes-Einstein relation</strong>. It follows from putting the first formula into the Einstein relation.</li>
+</ul>
+</div>
+<p>Read it like this. A larger particle diffuses more slowly, and so does any particle in a more viscous liquid. For a protein the formula works well. For a molecule as small as the solvent it gives only a rough estimate.</p>
+<div class="box key">
+<p><strong>Worked example: how far does a water molecule get?</strong> The measured diffusion constant of water at 25 °C is <span class="math-inline">\(2.3\times10^{-9}\)</span> m<span class="math-inline">\(^2\)</span>/s, which is <span class="math-inline">\(2.3\times10^{-3}\)</span> nm<span class="math-inline">\(^2\)</span>/ps. The typical distance after a time <span class="math-inline">\(t\)</span> is <span class="math-inline">\(\sqrt{6Dt}\)</span>.</p>
+<ul>
+<li>After 1 ps: <span class="math-inline">\(\sqrt{6\times0.0023\times1} = 0.12\)</span> nm, less than the diameter of the molecule.</li>
+<li>After 1 ns: <span class="math-inline">\(\sqrt{6\times0.0023\times1000} = 3.7\)</span> nm.</li>
+<li>After 100 ns: <span class="math-inline">\(\sqrt{6\times0.0023\times10^5} = 37\)</span> nm. A hundred times the time, ten times the distance.</li>
+</ul>
+<p><strong>Worked example: a protein.</strong> Treat a protein as a sphere of radius 2 nm in water at 25 °C. In SI units, <span class="math-inline">\(k_BT = 1.380649\times10^{-23}\times298.15 = 4.116\times10^{-21}\)</span> J and <span class="math-inline">\(6\pi\eta R = 6\pi\times0.89\times10^{-3}\times2\times10^{-9} = 3.355\times10^{-11}\)</span> kg/s. So <span class="math-inline">\(D = 4.116\times10^{-21}/(3.355\times10^{-11}) = 1.23\times10^{-10}\)</span> m<span class="math-inline">\(^2\)</span>/s, which is <span class="math-inline">\(1.23\times10^{-4}\)</span> nm<span class="math-inline">\(^2\)</span>/ps, 19 times slower than water.</p>
+<p>To move by its own diameter, 4 nm, the protein needs <span class="math-inline">\(t = 4^2/(6\times1.23\times10^{-4}) = 21{,}700\)</span> ps, about 22 ns. To cross a cell of 10 µm (<span class="math-inline">\(10^4\)</span> nm) it needs <span class="math-inline">\((10^4)^2/(6\times1.23\times10^{-4}) = 1.4\times10^{11}\)</span> ps, which is 0.14 s.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="04-integrators.html">Module 4</a>, Integrators: integrators for equations of motion that contain friction and random forces.</li>
+<li><a href="06-force-field-parameters.html">Module 6</a>, Force-field parameters: water models differ in their diffusion constant and viscosity, and this changes the speed of everything dissolved in them.</li>
+<li><a href="08-thermostats-barostats.html">Module 8</a>, Thermostats and barostats: the Langevin thermostat, which adds friction and random kicks.</li>
+<li><a href="11-analysis-statistics.html">Module 11</a>, Analysis and statistics: the diffusion constant from the mean squared displacement in a trajectory.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: without explicit water the friction must be chosen, and it sets the time scale.</li>
+<li><a href="16-kinetics-msm.html">Module 16</a>, Kinetics and Markov state models: crossing a barrier against friction.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Reading the diffusion constant from the first picosecond of the mean squared displacement, where the motion is still ballistic. Fit the straight part at longer times. A second mistake is to compute displacements from coordinates that have been wrapped back into the periodic box, which makes molecules appear to jump (<a href="11-analysis-statistics.html">Module 11</a>). A note on vocabulary: the "diffusion models" of Modules 17 and 18 are machine-learning methods that borrow the mathematics of random walks. They do not simulate the diffusion of molecules.</p>
+</div>
+<h2 id="time-scales">Time and length scales of molecules</h2>
+<p>A simulation advances in steps of a few femtoseconds. The processes that a biologist cares about take from nanoseconds to seconds. Whether MD can answer a question depends first of all on where the process sits between these two ends. This section is a map of the sizes and the times.</p>
+<p><strong>Prefixes.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Factor</th>
+<th>As a time</th>
+<th>Number of 2 fs steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>milli (m)</td>
+<td><span class="math-inline">\(10^{-3}\)</span></td>
+<td>1 ms</td>
+<td><span class="math-inline">\(5\times10^{11}\)</span></td>
+</tr>
+<tr>
+<td>micro (µ)</td>
+<td><span class="math-inline">\(10^{-6}\)</span></td>
+<td>1 µs</td>
+<td><span class="math-inline">\(5\times10^{8}\)</span></td>
+</tr>
+<tr>
+<td>nano (n)</td>
+<td><span class="math-inline">\(10^{-9}\)</span></td>
+<td>1 ns</td>
+<td><span class="math-inline">\(5\times10^{5}\)</span></td>
+</tr>
+<tr>
+<td>pico (p)</td>
+<td><span class="math-inline">\(10^{-12}\)</span></td>
+<td>1 ps</td>
+<td>500</td>
+</tr>
+<tr>
+<td>femto (f)</td>
+<td><span class="math-inline">\(10^{-15}\)</span></td>
+<td>1 fs</td>
+<td>half a step</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lengths.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-H bond</td>
+<td>0.11 nm</td>
+</tr>
+<tr>
+<td>C-C single bond</td>
+<td>0.15 nm</td>
+</tr>
+<tr>
+<td>Hydrogen bond between two water molecules, O to O</td>
+<td>0.28 nm</td>
+</tr>
+<tr>
+<td>Diameter of a water molecule</td>
+<td>about 0.3 nm</td>
+</tr>
+<tr>
+<td>Distance between neighbouring C<span class="math-inline">\(\alpha\)</span> atoms in a protein</td>
+<td>0.38 nm</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\alpha\)</span>-helix</td>
+<td>0.15 nm along the axis for each residue, 0.54 nm for each turn</td>
+</tr>
+<tr>
+<td>Debye length at 0.15 M salt</td>
+<td>0.8 nm</td>
+</tr>
+<tr>
+<td>Usual cutoff for short-range interactions</td>
+<td>about 1 nm</td>
+</tr>
+<tr>
+<td>DNA double helix</td>
+<td>2 nm wide, 0.34 nm for each base pair</td>
+</tr>
+<tr>
+<td>Small folded protein (about 100 residues)</td>
+<td>3 to 4 nm across</td>
+</tr>
+<tr>
+<td>Lipid bilayer</td>
+<td>about 4 nm thick</td>
+</tr>
+<tr>
+<td>Simulation box for one protein in water</td>
+<td>5 to 15 nm along each edge</td>
+</tr>
+<tr>
+<td>Ribosome</td>
+<td>about 25 nm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Times.</strong> The table is the one of <a href="01-what-is-md.html">Module 1</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Typical time</th>
+<th>Steps at 2 fs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bond stretch (C-H)</td>
+<td>10 fs</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Water reorientation, hydrogen-bond lifetime</td>
+<td>1 to 10 ps</td>
+<td><span class="math-inline">\(5\times10^2\)</span> to <span class="math-inline">\(5\times10^3\)</span></td>
+</tr>
+<tr>
+<td>Side-chain rotamer flips at the surface</td>
+<td>10 ps to 1 ns</td>
+<td><span class="math-inline">\(5\times10^3\)</span> to <span class="math-inline">\(5\times10^5\)</span></td>
+</tr>
+<tr>
+<td>Loop motions, helix formation</td>
+<td>1 ns to 1 µs</td>
+<td><span class="math-inline">\(5\times10^5\)</span> to <span class="math-inline">\(5\times10^8\)</span></td>
+</tr>
+<tr>
+<td>Fast protein folding, small-ligand binding</td>
+<td>1 µs to 1 ms</td>
+<td><span class="math-inline">\(5\times10^8\)</span> to <span class="math-inline">\(5\times10^{11}\)</span></td>
+</tr>
+<tr>
+<td>Unbinding of a nanomolar complex</td>
+<td>seconds to hours</td>
+<td><span class="math-inline">\(5\times10^{14}\)</span> or more</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why the gap is so wide.</strong> There are two reasons. The first is that the time step is tied to the fastest motion in the system. A bond vibration has a period of about 10 fs (see <a href="#oscillator">The harmonic oscillator</a>), and the step must be several times shorter, however slow the process you are interested in.</p>
+<p>The second reason is that slow processes are slow because they must cross a free-energy barrier. The molecule moves about in one valley and runs against the barrier again and again. Only the rare attempts that happen to have enough energy get over it. The fraction of such attempts is a Boltzmann factor (see <a href="#temperature">Temperature and thermal energy</a>).</p>
+<p><span class="math-display">\[\text{rate} \approx \nu_0\,e^{-\Delta G^\ddagger/k_BT} .\]</span></p>
+<div class="legend">
+<ul>
+<li>rate: the number of crossings in each unit of time. Its inverse is the average waiting time for one crossing.</li>
+<li><span class="math-inline">\(\nu_0\)</span>: the attempt frequency, the number of attempts in each unit of time. The examples below take one attempt per picosecond as an illustration. <a href="16-kinetics-msm.html">Module 16</a> explains what sets it.</li>
+<li><span class="math-inline">\(\Delta G^\ddagger\)</span>: the height of the free-energy barrier above the valley. The double dagger marks the top of a barrier.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+</ul>
+</div>
+<p>Because the barrier sits in an exponent, the waiting time is extremely sensitive to it. At 300 K every additional 5.74 kJ/mol makes the process ten times slower.</p>
+<div class="box key">
+<p><strong>Worked example: barrier heights and waiting times.</strong> With <span class="math-inline">\(\nu_0 = 10^{12}\)</span> per second (one attempt per picosecond) and <span class="math-inline">\(T = 300\)</span> K:</p>
+<table>
+<thead>
+<tr>
+<th>Barrier</th>
+<th>In <span class="math-inline">\(k_BT\)</span></th>
+<th>Rate</th>
+<th>Waiting time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 kJ/mol</td>
+<td>4</td>
+<td><span class="math-inline">\(1.8\times10^{10}\)</span> s<span class="math-inline">\(^{-1}\)</span></td>
+<td>55 ps</td>
+</tr>
+<tr>
+<td>30 kJ/mol</td>
+<td>12</td>
+<td><span class="math-inline">\(6.0\times10^{6}\)</span> s<span class="math-inline">\(^{-1}\)</span></td>
+<td>170 ns</td>
+</tr>
+<tr>
+<td>50 kJ/mol</td>
+<td>20</td>
+<td><span class="math-inline">\(2.0\times10^{3}\)</span> s<span class="math-inline">\(^{-1}\)</span></td>
+<td>0.5 ms</td>
+</tr>
+<tr>
+<td>70 kJ/mol</td>
+<td>28</td>
+<td>0.65 s<span class="math-inline">\(^{-1}\)</span></td>
+<td>1.5 s</td>
+</tr>
+</tbody>
+</table>
+<p>First row: <span class="math-inline">\(10^{12}\times e^{-10/2.494} = 10^{12}\times0.0181 = 1.81\times10^{10}\)</span> s<span class="math-inline">\(^{-1}\)</span>, and <span class="math-inline">\(1/(1.81\times10^{10}\ \text{s}^{-1}) = 5.5\times10^{-11}\)</span> s, which is 55 ps. A barrier seven times higher gives a waiting time that is longer by a factor of <span class="math-inline">\(3\times10^{10}\)</span>.</p>
+<p><strong>Worked example: how many steps, how many atoms?</strong> One microsecond at 2 fs for each step is <span class="math-inline">\(10^{-6}/(2\times10^{-15}) = 5\times10^8\)</span> steps. On a computer that produces 100 ns per day (an illustration) that takes 10 days.</p>
+<p>Liquid water has 33.4 molecules per nm<span class="math-inline">\(^3\)</span>, about 100 atoms. A cubic box with an edge of 5 nm has a volume of 125 nm<span class="math-inline">\(^3\)</span> and holds about 4,200 water molecules, 12,500 atoms. With an edge of 10 nm it holds 33,400 molecules, 100,000 atoms. Doubling the edge multiplies the number of atoms by eight.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: the same table, and what a step costs.</li>
+<li><a href="04-integrators.html">Module 4</a>, Integrators: how long a time step can be.</li>
+<li><a href="07-boundaries-electrostatics.html">Module 7</a>, Boundaries and electrostatics: how large the box and the cutoff must be.</li>
+<li><a href="09-constraints.html">Module 9</a>, Constraints: longer steps by freezing the fastest motions.</li>
+<li><a href="10-running-a-simulation.html">Module 10</a>, Running a simulation: planning the length and the number of repeats.</li>
+<li><a href="11-analysis-statistics.html">Module 11</a>, Analysis and statistics: deciding whether a run was long enough.</li>
+<li><a href="14-enhanced-sampling.html">Module 14</a>, Enhanced sampling: methods that make barrier crossings more frequent.</li>
+<li><a href="15-coarse-grained.html">Module 15</a>, Coarse-grained models: larger systems and longer times by merging atoms.</li>
+<li><a href="16-kinetics-msm.html">Module 16</a>, Kinetics and Markov state models: rates from simulations.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Calling a run "long" because of its number of steps. A run of 500 ns is 250 million steps, and it is still shorter than a single event of a process that happens once in a microsecond. Compare the length of the run with the slowest process that matters for your question. And one observed transition is one event. It does not give a rate.</p>
+</div>
+<h2 id="waves">Waves and frequencies</h2>
+<p>Throw a stone into a pond and rings spread over the water. At one fixed place the surface goes up and down in time. At one fixed moment crests and troughs alternate in space. A <strong>wave</strong> is a pattern that repeats both in time and in space. Light, X-rays and sound are waves.</p>
+<p>Waves matter for MD in two ways. The experiments that test a simulation, spectroscopy and scattering, are described in the language of waves. And in a periodic simulation box, any function that repeats with the box can be built as a sum of waves that fit into the box (<a href="maths.html#fourier">Fourier series</a>).</p>
+<p><span class="math-display">\[y(x,t) = y_{\max}\cos(kx - \omega t), \qquad k = \frac{2\pi}{\lambda}, \qquad \omega = \frac{2\pi}{T_{period}} = 2\pi\nu .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(y\)</span>: the quantity that oscillates. For the pond it is the height of the water. For light it is the electric field.</li>
+<li><span class="math-inline">\(y_{\max}\)</span>: the amplitude, the largest value of <span class="math-inline">\(y\)</span>.</li>
+<li><span class="math-inline">\(x\)</span>, <span class="math-inline">\(t\)</span>: the position along the direction of travel, and the time.</li>
+<li><span class="math-inline">\(\lambda\)</span> (Greek lambda): the <strong>wavelength</strong>, the distance from one crest to the next.</li>
+<li><span class="math-inline">\(k\)</span>: the <strong>wave number</strong>, in radians per nm. It says how fast the wave repeats in space. Here <span class="math-inline">\(k\)</span> is not a spring constant. In three dimensions it becomes a vector <span class="math-inline">\(\mathbf k\)</span>, the wave vector, that points in the direction of travel.</li>
+<li><span class="math-inline">\(T_{period}\)</span>: the period, the time between two crests passing a fixed place.</li>
+<li><span class="math-inline">\(\nu\)</span> (Greek nu): the <strong>frequency</strong>, the number of crests that pass in each unit of time.</li>
+<li><span class="math-inline">\(\omega\)</span>: the angular frequency, in radians per unit of time.</li>
+</ul>
+</div>
+<p>The wave number does for space what the angular frequency does for time. A crest is a place where <span class="math-inline">\(kx - \omega t = 0\)</span>, that is <span class="math-inline">\(x = (\omega/k)\,t\)</span>. So a crest travels at the speed</p>
+<p><span class="math-display">\[v = \frac{\omega}{k} = \lambda\,\nu .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(v\)</span> (Latin letter): the speed of the wave.</li>
+<li><span class="math-inline">\(\omega\)</span>, <span class="math-inline">\(k\)</span>: its angular frequency and its wave number, as in the list above.</li>
+<li><span class="math-inline">\(\lambda\)</span>, <span class="math-inline">\(\nu\)</span> (Greek letters): its wavelength and its frequency.</li>
+<li>For light in vacuum the speed is always <span class="math-inline">\(c = 2.998\times10^{8}\)</span> m/s, so a long wavelength means a low frequency.</li>
+</ul>
+</div>
+<p><strong>Spectroscopy.</strong> A bond with partial charges on its two atoms is a small dipole, and when the bond vibrates the dipole oscillates. It absorbs light whose frequency matches its own. An infrared spectrum therefore shows the vibration frequencies of a molecule. Spectroscopists do not quote the frequency itself. They quote the <strong>wavenumber</strong> of the light.</p>
+<p><span class="math-display">\[\tilde\nu = \frac{1}{\lambda} = \frac{\nu}{c}, \qquad E = h\nu = hc\,\tilde\nu .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\tilde\nu\)</span> ("nu tilde"): the wavenumber, the number of wavelengths that fit into one centimetre. Its unit is cm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\lambda\)</span>: the wavelength of the light, in cm in this formula.</li>
+<li><span class="math-inline">\(c\)</span>: the speed of light, <span class="math-inline">\(2.998\times10^{10}\)</span> cm/s.</li>
+<li><span class="math-inline">\(E\)</span>: the energy of one quantum of light of this frequency (one photon).</li>
+<li><span class="math-inline">\(h\)</span>: Planck's constant.</li>
+</ul>
+</div>
+<p>Three conversions follow. A vibration with wavenumber <span class="math-inline">\(\tilde\nu\)</span> has the frequency <span class="math-inline">\(\nu = c\,\tilde\nu\)</span>. Its period in femtoseconds is 33,356 divided by the wavenumber in cm<span class="math-inline">\(^{-1}\)</span>. Its quantum of energy is 0.011963 kJ/mol times the wavenumber in cm<span class="math-inline">\(^{-1}\)</span>. On this scale the thermal energy at 300 K corresponds to 208.5 cm<span class="math-inline">\(^{-1}\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Wavenumber</th>
+<th>Period</th>
+<th>Quantum in <span class="math-inline">\(k_BT\)</span> at 300 K</th>
+<th>Example (typical value)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3,000 cm<span class="math-inline">\(^{-1}\)</span></td>
+<td>11 fs</td>
+<td>14</td>
+<td>stretch of a C-H bond</td>
+</tr>
+<tr>
+<td>1,650 cm<span class="math-inline">\(^{-1}\)</span></td>
+<td>20 fs</td>
+<td>7.9</td>
+<td>C=O stretch of the peptide group</td>
+</tr>
+<tr>
+<td>200 cm<span class="math-inline">\(^{-1}\)</span></td>
+<td>170 fs</td>
+<td>0.96</td>
+<td>a soft vibration of low frequency</td>
+</tr>
+<tr>
+<td>1 cm<span class="math-inline">\(^{-1}\)</span></td>
+<td>33 ps</td>
+<td>0.005</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="box key">
+<p><strong>Worked example: wavenumber, period and angular frequency.</strong> A vibration at 3,000 cm<span class="math-inline">\(^{-1}\)</span> has <span class="math-inline">\(\nu = 2.998\times10^{10}\times3000 = 8.99\times10^{13}\)</span> s<span class="math-inline">\(^{-1}\)</span>, which is 89.9 ps<span class="math-inline">\(^{-1}\)</span>. The period is <span class="math-inline">\(1/89.9 = 0.0111\)</span> ps, or 11.1 fs, and <span class="math-inline">\(\omega = 2\pi\times89.9 = 565\)</span> ps<span class="math-inline">\(^{-1}\)</span>. The light that it absorbs has a wavelength of <span class="math-inline">\(1/3000\)</span> cm, which is 3.33 µm, in the infrared. One quantum is <span class="math-inline">\(0.011963\times3000 = 35.9\)</span> kJ/mol, or 14.4 <span class="math-inline">\(k_BT\)</span> at 300 K.</p>
+<p>The other way round: the C-H stretch of Module 2 has <span class="math-inline">\(\omega = 551\)</span> ps<span class="math-inline">\(^{-1}\)</span>. Then <span class="math-inline">\(\nu = 551/2\pi = 87.7\)</span> ps<span class="math-inline">\(^{-1}\)</span>, which is <span class="math-inline">\(8.77\times10^{13}\)</span> s<span class="math-inline">\(^{-1}\)</span>, and <span class="math-inline">\(\tilde\nu = 8.77\times10^{13}/(2.998\times10^{10}) = 2{,}925\)</span> cm<span class="math-inline">\(^{-1}\)</span>.</p>
+<p><strong>Worked example: waves in a box.</strong> In a cubic box with an edge of <span class="math-inline">\(L = 5\)</span> nm, the waves that fit a whole number of times have the wavelengths <span class="math-inline">\(L\)</span>, <span class="math-inline">\(L/2\)</span>, <span class="math-inline">\(L/3\)</span> and so on. Their wave numbers are <span class="math-inline">\(2\pi/5 = 1.26\)</span> nm<span class="math-inline">\(^{-1}\)</span> and its multiples. These are the wave vectors of "reciprocal space" in <a href="07-boundaries-electrostatics.html">Module 7</a>. A structure that repeats every 0.3 nm, such as neighbouring molecules in a liquid, corresponds to <span class="math-inline">\(k = 2\pi/0.3 = 21\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</p>
+</div>
+<p><strong>Where the course uses it.</strong></p>
+<ul>
+<li><a href="01-what-is-md.html">Module 1</a>, What MD is: vibration frequencies in cm<span class="math-inline">\(^{-1}\)</span> compared with the thermal energy.</li>
+<li><a href="02-classical-mechanics.html">Module 2</a>, Classical mechanics: the frequencies of the normal modes of a molecule.</li>
+<li><a href="04-integrators.html">Module 4</a>, Integrators: from the period of the fastest vibration to the time step.</li>
+<li><a href="07-boundaries-electrostatics.html">Module 7</a>, Boundaries and electrostatics: the Ewald sum adds up waves in reciprocal space.</li>
+<li><a href="11-analysis-statistics.html">Module 11</a>, Analysis and statistics: comparing a simulation with scattering experiments.</li>
+</ul>
+<div class="box warn">
+<p><strong>A common mistake.</strong> Mixing up the three ways of stating how fast something oscillates: the frequency <span class="math-inline">\(\nu\)</span>, the angular frequency <span class="math-inline">\(\omega = 2\pi\nu\)</span>, and the wavenumber <span class="math-inline">\(\tilde\nu = \nu/c\)</span>. Check the unit: a value in ps<span class="math-inline">\(^{-1}\)</span> can be either of the first two, and cm<span class="math-inline">\(^{-1}\)</span> is always the third. A related trap is that the spectroscopist's wavenumber, <span class="math-inline">\(1/\lambda\)</span>, has no factor <span class="math-inline">\(2\pi\)</span>, while the wave number <span class="math-inline">\(k = 2\pi/\lambda\)</span> of this section has one.</p>
+</div>
+</article>
+
+<div class="prevnext"></div>
+<footer>Written for self-study. Linked videos, books and papers belong to their authors and publishers.</footer>
+</main>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="course.js"></script>
+<script defer src="demos2.js"></script>
+</body>
+</html>

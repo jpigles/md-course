@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li class="current" data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 4 of 18 &middot; about 6 hours</div><h1>Integrating the equations of motion</h1><p class="lede">Derive the Verlet family of integrators twice (from Taylor series and from the Liouville operator), and understand why a simple second-order method beats higher-order ones for molecular dynamics.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-problem">The problem</a></li><li><a href="#verlet-from-taylor-series">Verlet from Taylor series</a></li><li><a href="#velocity-verlet-from-the-liouville-operator">Velocity Verlet from the Liouville operator</a></li><li><a href="#how-large-can-the-time-step-be">How large can the time step be?</a></li><li><a href="#why-not-a-higher-order-method">Why not a higher-order method?</a></li><li><a href="#multiple-time-steps">Multiple time steps</a></li><li><a href="#stochastic-integrators">Stochastic integrators</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#the-problem">The problem</a></li><li><a href="#verlet-from-taylor-series">Verlet from Taylor series</a></li><li><a href="#velocity-verlet-from-the-liouville-operator">Velocity Verlet from the Liouville operator</a></li><li><a href="#how-large-can-the-time-step-be">How large can the time step be?</a></li><li><a href="#why-not-a-higher-order-method">Why not a higher-order method?</a></li><li><a href="#multiple-time-steps">Multiple time steps</a></li><li><a href="#stochastic-integrators">Stochastic integrators</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -35,59 +35,601 @@
 <li>describe multiple-time-step integration and its limits.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=pVudb6-_FaM" target="_blank" rel="noopener">Lecture 06, concept 09: Integration using the leap-frog algorithm updates x &amp; v</a><span class="res-meta">Erik Lindahl &middot; Video, 6 min, intro</span><span class="res-why">Explains leap-frog integration updating positions and velocities as in GROMACS.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=qT8pxV53FA4" target="_blank" rel="noopener">L-4 | Velocity Verlet Algorithm - Solving equations of motion | Molecular Dynamics</a><span class="res-meta">LearnWithVinay &middot; Video, 13 min, intro</span><span class="res-why">Walk through of the velocity Verlet algorithm for MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=g55QvpAev0I" target="_blank" rel="noopener">Verlet Integration</a><span class="res-meta">Leios &middot; Video, 3 min, intro</span><span class="res-why">Short visual introduction to Verlet integration.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=ii-N61PeeQU" target="_blank" rel="noopener">Lecture 3: The Velocity-Verlet Method</a><span class="res-meta">Brennon Shanks &middot; Video, 28 min, intermediate</span><span class="res-why">Derives the velocity Verlet method as used in MD codes.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=zLnIWwvfuo4" target="_blank" rel="noopener">RK4 and Symplectic Methods of Integration</a><span class="res-meta">Steve Spicklemire &middot; Video, 28 min, intermediate</span><span class="res-why">Compares RK4 with symplectic methods and shows the energy drift difference.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Uyg9asVcMOc" target="_blank" rel="noopener">Conservation of energy for symplectic methods</a><span class="res-meta">Melvin Leok &middot; Video, 18 min, advanced</span><span class="res-why">Why symplectic methods conserve a nearby energy over long times, which explains stable MD time steps.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>An MD program knows, at one instant, where every atom is and how fast it moves. From the positions it computes the force on every atom (Modules 5 to 7). The <strong>integrator</strong> is the short piece of code that turns "positions, velocities and forces now" into "positions and velocities a moment later". It is applied millions of times in a row, so small faults in it add up, and its properties decide whether a long run can be trusted.</p>
+<p>The module has four parts, in this order:</p>
+<ol>
+<li><strong>The rule.</strong> The Verlet rule and its two rewritings, velocity Verlet and leap-frog. They are derived step by step from a Taylor expansion and shown to give the same positions.</li>
+<li><strong>Why such a simple rule is so good.</strong> A second derivation, from the Liouville operator of Module 2, shows that the rule can be run backwards, keeps the volume of phase space, and conserves a "shadow" energy. This is the most abstract part.</li>
+<li><strong>How large the time step can be.</strong> The fastest vibration in the system sets a hard limit, and the usual choices of 1, 2 and 4 fs follow from it.</li>
+<li><strong>What else there is.</strong> Higher-order methods, several time steps at once, and integrators with random forces.</li>
+</ol>
+<p>If you are short of time, read "The problem", "Verlet from Taylor series" with its subsections and "How large can the time step be?". They are enough to choose a time step and to test it. The Liouville section explains why the method behaves so well and can wait for a second reading.</p>
+<p>One small example runs through the whole module: a mass on a spring, with numbers that you can check on a calculator.</p>
+<div class="box physics">
+<p><strong>Physics you need here: the harmonic oscillator.</strong> A mass <span class="math-inline">\(m\)</span> on a spring of stiffness <span class="math-inline">\(k\)</span> feels the force <span class="math-inline">\(F = -kx\)</span>, where <span class="math-inline">\(x\)</span> is its displacement from the rest position. Its acceleration is <span class="math-inline">\(a = F/m = -\omega^2x\)</span> with <span class="math-inline">\(\omega = \sqrt{k/m}\)</span>. The exact motion is a cosine wave. Started at <span class="math-inline">\(x_0\)</span> with no velocity, it is <span class="math-inline">\(x(t) = x_0\cos\omega t\)</span> and <span class="math-inline">\(v(t) = -\omega x_0\sin\omega t\)</span>. The number <span class="math-inline">\(\omega\)</span> is the <strong>angular frequency</strong>, in radians per unit of time, and one full oscillation takes the <strong>period</strong> <span class="math-inline">\(T_{period} = 2\pi/\omega\)</span>. The energy <span class="math-inline">\(\tfrac12mv^2 + \tfrac12kx^2\)</span> is constant.</p>
+<p>Every bond in a molecule behaves like this near its rest length (Module 2). That makes the oscillator the natural test of an integrator: the exact answer is known, so the numerical answer can be compared with it. In the examples below <span class="math-inline">\(m = 1\)</span> and <span class="math-inline">\(\omega = 1\)</span>, so the period is <span class="math-inline">\(2\pi\approx6.28\)</span> time units and the acceleration is <span class="math-inline">\(a = -x\)</span>. More in the <a href="physics.html#oscillator">primer</a>.</p>
+</div>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula is followed by a list that says what each letter in it means. The notation below first appears in this module. The general conventions (bold letters for vectors, dots for time derivatives, the sum sign) are in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(\Delta t\)</span></td>
+<td>The <strong>time step</strong>: the small interval of time by which the simulation advances at each step. Typically 1 to 4 fs, where 1 fs is <span class="math-inline">\(10^{-15}\)</span> s or 0.001 ps.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathbf r(t)\)</span>, <span class="math-inline">\(\mathbf v(t)\)</span>, <span class="math-inline">\(\mathbf a(t)\)</span></td>
+<td>Position, velocity and acceleration at the time <span class="math-inline">\(t\)</span>. The bracket says "at which time". It is not a multiplication. <span class="math-inline">\(\mathbf r(t+\Delta t)\)</span> is the position one step later and <span class="math-inline">\(\mathbf r(t-\Delta t)\)</span> the position one step earlier.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(t+\tfrac{\Delta t}{2}\)</span></td>
+<td>A <strong>half step</strong>: the instant halfway between two steps.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(O(\Delta t^4)\)</span></td>
+<td>"Terms of the size of <span class="math-inline">\(\Delta t^4\)</span> and smaller, which are left out." Explained in a box below.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(x_n\)</span></td>
+<td>The value of <span class="math-inline">\(x\)</span> after <span class="math-inline">\(n\)</span> steps, that is, at the time <span class="math-inline">\(n\,\Delta t\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(x'\)</span>, <span class="math-inline">\(v'\)</span></td>
+<td>In the formulas for one step, a prime marks the value <em>after</em> the step.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(e^{iL\Delta t}\)</span></td>
+<td>The <strong>propagator</strong> of Module 2: the operation "advance the system by a time <span class="math-inline">\(\Delta t\)</span>".</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\tilde H\)</span></td>
+<td>The "shadow" version of the Hamiltonian <span class="math-inline">\(H\)</span>.</td>
+</tr>
+<tr>
+<td>A formula in a frame</td>
+<td>A result to remember.</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Letters and words that mean two things in this module.</strong></p>
+<ul>
+<li><span class="math-inline">\(O\)</span> is the order symbol in <span class="math-inline">\(O(\Delta t^4)\)</span>, and the name of the friction-and-noise step in "BAOAB" (last section).</li>
+<li><span class="math-inline">\(i\)</span> is the label of an atom in sums such as <span class="math-inline">\(\sum_i\)</span>, and the imaginary unit (<span class="math-inline">\(i^2 = -1\)</span>) in <span class="math-inline">\(iL\)</span> and in <span class="math-inline">\(e^{i\theta n}\)</span>.</li>
+<li><span class="math-inline">\(n\)</span> counts steps in <span class="math-inline">\(x_n\)</span>. In the section on multiple time steps it is the number of short steps inside one long step.</li>
+<li><span class="math-inline">\(T_{period}\)</span> is the period of an oscillation. <span class="math-inline">\(T\)</span> in <span class="math-inline">\(k_BT\)</span> is the temperature. In the answer to question 2 of "Check yourself", a bare <span class="math-inline">\(T\)</span> is the period.</li>
+<li><span class="math-inline">\(\Delta t\)</span> (capital delta) is the time step. <span class="math-inline">\(\delta t\)</span> (small delta) is the shorter, inner time step of the multiple-time-step scheme.</li>
+<li><span class="math-inline">\(A\)</span> and <span class="math-inline">\(B\)</span> are any two operators in the maths boxes and in Exercise 4. In the Liouville section, <span class="math-inline">\(A\)</span> alone is also any quantity that depends on the state, as in <span class="math-inline">\(dA/dt = iL\,A\)</span>. In the last section A and B are the names of the drift and the kick.</li>
+<li><span class="math-inline">\(\mathbf b\)</span> (bold, small) is the third time derivative of the position.</li>
+<li>A prime in <span class="math-inline">\(x'\)</span> means "after one step". In the maths boxes the derivative of a function is written out as <span class="math-inline">\(df/dt\)</span> to avoid confusion.</li>
+<li>A tilde in <span class="math-inline">\(\tilde H\)</span> marks the shadow Hamiltonian. In Module 2 a tilde marked mass-weighted coordinates, and in <span class="math-inline">\(\tilde\nu\)</span> it marks a wavenumber.</li>
+<li>"Order" has two uses. A <em>second-order method</em> has an error proportional to <span class="math-inline">\(\Delta t^2\)</span>. In Module 2, a <em>first-order equation</em> was one that contains only first derivatives. In this module "order" always has the first meaning.</li>
+</ul>
+</div>
 <h2 id="the-problem">The problem</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="dOpKIWFDW0s" href="https://www.youtube.com/watch?v=dOpKIWFDW0s" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 6-Lecture 30</span><span class="sv-m">29 min · NPTEL / IIT Bombay</span></a><a class="sv" data-yt="_CTZDDFaE5A" href="https://www.youtube.com/watch?v=_CTZDDFaE5A" target="_blank" rel="noopener" title="MIT 3.320 Atomistic Computer Modeling of Materials"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 14 | MIT 3.320 Atomistic Computer Modeling of Materials</span><span class="sv-m">1 h 22 min · MIT OpenCourseWare (3.320)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="dOpKIWFDW0s" href="https://www.youtube.com/watch?v=dOpKIWFDW0s" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 6-Lecture 30</span><span class="sv-m">29 min · NPTEL / IIT Bombay</span></a><a class="sv" data-yt="_CTZDDFaE5A" href="https://www.youtube.com/watch?v=_CTZDDFaE5A" target="_blank" rel="noopener" title="MIT 3.320 Atomistic Computer Modeling of Materials"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 14 | MIT 3.320 Atomistic Computer Modeling of Materials</span><span class="sv-m">1 h 22 min · MIT OpenCourseWare (3.320)</span></a></div>
 
+<p>Newton's law (Module 2) says that the force on an atom fixes its acceleration, <span class="math-inline">\(\mathbf a = \mathbf F/m\)</span>. The acceleration is how fast the velocity of the atom is changing at this instant, and the velocity in turn is how fast the position is changing. So the law gives rates of change, and the positions themselves have to be worked out from them. An equation of this kind is called a differential equation. To "integrate the equations of motion" means to add up all these changes and obtain the positions and velocities as functions of time.</p>
+<div class="box maths">
+<p><strong>Maths you need here: a differential equation, and what "integrating" it means.</strong> An ordinary equation such as <span class="math-inline">\(2x = 6\)</span> asks for a number. A <strong>differential equation</strong> asks for a whole function, and the clue it gives is the rate at which that function changes. The simplest case is <span class="math-inline">\(dx/dt = v\)</span> with a constant <span class="math-inline">\(v\)</span>: "the position changes at the rate <span class="math-inline">\(v\)</span>". Its solution is <span class="math-inline">\(x(t) = x(0) + vt\)</span>. You can check it by differentiating: the derivative of <span class="math-inline">\(x(0) + vt\)</span> with respect to <span class="math-inline">\(t\)</span> is <span class="math-inline">\(v\)</span>.</p>
+<p>To <strong>integrate</strong> (or solve) a differential equation is to find the function from its rate of change. The starting values, here <span class="math-inline">\(x(0)\)</span>, must be given, because a rate of change says nothing about where the motion began. Newton's law contains the acceleration, the second derivative of the position, so it needs two starting values for every coordinate: a position and a velocity. The letters ODE stand for "ordinary differential equation", which means that there is one independent variable, here the time. More in the <a href="maths.html#ode">toolbox</a>.</p>
+</div>
+<p>For a single spring the adding up can be done with pen and paper, and the result is the cosine of the box in the plan section. For a protein in water it cannot be done. The force on each atom depends on the positions of thousands of other atoms, all of which are moving, and the forces are not simple functions of the positions (Module 5). No formula for the result exists.</p>
+<p>What remains is to advance in small steps. Assume that during a very short time <span class="math-inline">\(\Delta t\)</span> the forces change little, use them to move the atoms a little, compute the forces again, and repeat. The short time <span class="math-inline">\(\Delta t\)</span> is the <strong>time step</strong>. Each step makes a small error, because the forces do change during the step. The whole subject of this module is how to choose the rule for one step so that these errors do no harm over a long run.</p>
+<p>Some notation first. Write <span class="math-inline">\(t\)</span> for the present time, <span class="math-inline">\(\mathbf r(t)\)</span> for the positions of all atoms at that time, and <span class="math-inline">\(\mathbf v(t)\)</span> for their velocities. Then <span class="math-inline">\(\mathbf r(t+\Delta t)\)</span> and <span class="math-inline">\(\mathbf v(t+\Delta t)\)</span> are the positions and velocities one time step later.</p>
 <p>We need <span class="math-inline">\(\mathbf r(t+\Delta t)\)</span> and <span class="math-inline">\(\mathbf v(t+\Delta t)\)</span> from <span class="math-inline">\(\mathbf r(t)\)</span>, <span class="math-inline">\(\mathbf v(t)\)</span> and the forces. What makes MD different from most numerical ODE problems:</p>
 <ul>
 <li>the force evaluation is by far the most expensive part, so a method should need <strong>one force evaluation per step</strong>;</li>
 <li>we integrate for <span class="math-inline">\(10^7\)</span> to <span class="math-inline">\(10^{10}\)</span> steps, so <strong>long-time stability</strong> matters more than the accuracy of any single step;</li>
 <li>the system is chaotic, so reproducing the exact trajectory is impossible anyway (Module 2). What we need is correct statistics.</li>
 </ul>
+<p>Some words in this list need a comment.</p>
+<p>A <strong>force evaluation</strong> is one pass over all interacting atoms that yields the force on every atom. It takes most of the computer time of a step (Module 1). The cost of an integration method is therefore counted in force evaluations, and a method that needs two per step costs twice as much.</p>
+<p>The numbers of steps are large because the steps are short. With a time step of 2 fs, <span class="math-inline">\(10^7\)</span> steps cover 20 ns and <span class="math-inline">\(10^{10}\)</span> steps cover 20 µs. <strong>Long-time stability</strong> means that the errors of all these steps do not build up without limit. A method can be very accurate in each single step and still fail this test, as the section on higher-order methods shows.</p>
+<p><strong>Chaotic</strong> (Module 2) means that two trajectories which start almost at the same point move apart exponentially fast. After a few picoseconds the computed trajectory is no longer the true trajectory from the given starting point, whatever the method. <strong>Correct statistics</strong> means that averages over the trajectory (Module 3) come out right: the mean energy, the distribution of a distance, how often a conformation occurs. That is what MD is used for, and it is a different requirement from following one trajectory accurately.</p>
+<h3 id="the-simplest-rule-forward-euler-and-why-it-fails">The simplest rule, forward Euler, and why it fails</h3>
+<p>Before the good method, look at the most direct one. It shows what can go wrong. <strong>Forward Euler</strong> takes the velocity and the acceleration at the start of the step and pretends that they stay constant during the step:</p>
+<p><span class="math-display">\[\mathbf r(t+\Delta t) = \mathbf r(t) + \mathbf v(t)\,\Delta t,\qquad \mathbf v(t+\Delta t) = \mathbf v(t) + \mathbf a(t)\,\Delta t .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(t\)</span>: the present time.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(\mathbf r(t)\)</span>, <span class="math-inline">\(\mathbf v(t)\)</span>: the positions and velocities of the atoms now. The formula holds for every atom and for each of its three coordinates.</li>
+<li><span class="math-inline">\(\mathbf a(t)\)</span>: the accelerations now, <span class="math-inline">\(\mathbf F/m\)</span>, with the forces computed at the present positions.</li>
+<li><span class="math-inline">\(\mathbf r(t+\Delta t)\)</span>, <span class="math-inline">\(\mathbf v(t+\Delta t)\)</span>: the positions and velocities one step later, which the rule computes.</li>
+</ul>
+</div>
+<p>Read it as "new position = old position + velocity × time" and "new velocity = old velocity + acceleration × time". Try it on the oscillator of the plan section (<span class="math-inline">\(a = -x\)</span>), started at <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span>, with <span class="math-inline">\(\Delta t = 0.5\)</span>. The energy is <span class="math-inline">\(E = \tfrac12v^2 + \tfrac12x^2\)</span> and should stay at 0.5.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th><span class="math-inline">\(x\)</span></th>
+<th><span class="math-inline">\(v\)</span></th>
+<th>Energy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td><span class="math-inline">\(-0.5\)</span></td>
+<td>0.625</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.75</td>
+<td><span class="math-inline">\(-1\)</span></td>
+<td>0.781</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.25</td>
+<td><span class="math-inline">\(-1.375\)</span></td>
+<td>0.977</td>
+</tr>
+</tbody>
+</table>
+<p>The energy grows by a quarter at every step. This is no accident of the numbers chosen. Write <span class="math-inline">\(x'\)</span> and <span class="math-inline">\(v'\)</span> for the values after one step, so that <span class="math-inline">\(x' = x + v\,\Delta t\)</span> and <span class="math-inline">\(v' = v - \omega^2x\,\Delta t\)</span>, and compute the new energy:</p>
+<p><span class="math-display">\[E' = \tfrac12\left(v - \omega^2x\,\Delta t\right)^2 + \tfrac12\omega^2\left(x + v\,\Delta t\right)^2 = \left(1+\omega^2\Delta t^2\right)E .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x\)</span>, <span class="math-inline">\(v\)</span>: position and velocity of the oscillator before the step.</li>
+<li><span class="math-inline">\(\omega\)</span>: its angular frequency. The acceleration is <span class="math-inline">\(a = -\omega^2x\)</span>.</li>
+<li><span class="math-inline">\(E = \tfrac12v^2 + \tfrac12\omega^2x^2\)</span>: the energy before the step, for a mass of 1.</li>
+<li><span class="math-inline">\(E'\)</span>: the energy after the step, the same expression with <span class="math-inline">\(x'\)</span> and <span class="math-inline">\(v'\)</span>.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+</ul>
+</div>
+<p>The step between the two forms: multiply out the two squares. The mixed terms are <span class="math-inline">\(-\omega^2xv\,\Delta t\)</span> from the first square and <span class="math-inline">\(+\omega^2xv\,\Delta t\)</span> from the second, and they cancel. What is left is <span class="math-inline">\(\tfrac12v^2 + \tfrac12\omega^2x^2\)</span> plus the same expression multiplied by <span class="math-inline">\(\omega^2\Delta t^2\)</span>.</p>
+<p>So every Euler step multiplies the energy by a number larger than 1, for any time step. A smaller step slows the growth and does not stop it. With <span class="math-inline">\(\omega\Delta t = 0.01\)</span> the factor is 1.0001 per step, which looks harmless. After <span class="math-inline">\(10^6\)</span> steps, a short MD run, the energy has grown by <span class="math-inline">\(1.0001^{10^6}\approx 3\times10^{43}\)</span>.</p>
+<p>The reason is geometric. On a curved path the direction of motion changes during the step. Euler keeps going in the direction that was right at the start of the step, so it always leaves the curve on the outside. For the oscillator this turns the closed orbit into an outward spiral. The methods below avoid this by using the velocity from the <em>middle</em> of the step.</p>
 <h2 id="verlet-from-taylor-series">Verlet from Taylor series</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="g55QvpAev0I" href="https://www.youtube.com/watch?v=g55QvpAev0I" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Verlet Integration</span><span class="sv-m">3 min · Leios</span></a><a class="sv" data-yt="qT8pxV53FA4" href="https://www.youtube.com/watch?v=qT8pxV53FA4" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">L-4 | Velocity Verlet Algorithm - Solving equations of motion | Molecular Dynamics</span><span class="sv-m">13 min · LearnWithVinay</span></a><a class="sv" data-yt="ld5VABtBkF0" href="https://www.youtube.com/watch?v=ld5VABtBkF0" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 14: Numerical Methods-II</span><span class="sv-m">45 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="g55QvpAev0I" href="https://www.youtube.com/watch?v=g55QvpAev0I" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Verlet Integration</span><span class="sv-m">3 min · Leios</span></a><a class="sv" data-yt="qT8pxV53FA4" href="https://www.youtube.com/watch?v=qT8pxV53FA4" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">L-4 | Velocity Verlet Algorithm - Solving equations of motion | Molecular Dynamics</span><span class="sv-m">13 min · LearnWithVinay</span></a><a class="sv" data-yt="ld5VABtBkF0" href="https://www.youtube.com/watch?v=ld5VABtBkF0" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 14: Numerical Methods-II</span><span class="sv-m">45 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
-<p>Expand the position forward and backward in time:</p>
+<p>This section derives the rule on which all the integrators of this module are built. The idea is to write down two predictions, one for the position a short time ahead and one for the position a short time back, and to add them. The largest errors of the two predictions have opposite signs and cancel. The tool for making predictions over a short time is the Taylor expansion.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the Taylor expansion in time.</strong> Module 2 used the Taylor expansion to approximate the energy near a minimum. Here the same tool predicts the near future. If you know a smooth function <span class="math-inline">\(f\)</span> at a time <span class="math-inline">\(t\)</span>, and its derivatives at that time, then a short time <span class="math-inline">\(\Delta t\)</span> later</p>
+<p><span class="math-display">\[f(t+\Delta t) = f(t) + \frac{df}{dt}\,\Delta t + \frac12\frac{d^2f}{dt^2}\,\Delta t^2 + \frac16\frac{d^3f}{dt^3}\,\Delta t^3 + \dots\]</span></p>
+<p>All derivatives are taken at the time <span class="math-inline">\(t\)</span>. The first two terms say "keep going at the present rate". The third corrects for the fact that the rate itself is changing, the fourth for the change of that change, and so on. The numbers <span class="math-inline">\(\tfrac12\)</span> and <span class="math-inline">\(\tfrac16\)</span> are <span class="math-inline">\(1/(1\cdot2)\)</span> and <span class="math-inline">\(1/(1\cdot2\cdot3)\)</span>. The next one would be <span class="math-inline">\(\tfrac1{24}\)</span>.</p>
+<p>Example. Take <span class="math-inline">\(f(t) = \cos t\)</span> at <span class="math-inline">\(t = 0\)</span>. There <span class="math-inline">\(f = 1\)</span>, <span class="math-inline">\(df/dt = -\sin 0 = 0\)</span> and <span class="math-inline">\(d^2f/dt^2 = -\cos 0 = -1\)</span>. The first three terms give <span class="math-inline">\(\cos(0.1)\approx 1 + 0 - \tfrac12(0.1)^2 = 0.995\)</span>. The true value is <span class="math-inline">\(0.9950042\)</span>. More in the <a href="maths.html#taylor">toolbox</a>.</p>
+</div>
+<div class="box maths">
+<p><strong>Maths you need here: the order symbol.</strong> A Taylor series has to be cut off somewhere, and the terms that are left out are the error. <span class="math-inline">\(O(\Delta t^4)\)</span>, read "of order <span class="math-inline">\(\Delta t\)</span> to the fourth", stands for all of them together and says how large they are: roughly a constant times <span class="math-inline">\(\Delta t^4\)</span>, where the constant does not depend on <span class="math-inline">\(\Delta t\)</span>. The notation does not give the constant. What it tells you is how the error reacts when you change the step. For an error of order <span class="math-inline">\(\Delta t^4\)</span>, halving the step divides the error by <span class="math-inline">\(2^4 = 16\)</span>.</p>
+<p>Example. In the box above, <span class="math-inline">\(1 - \tfrac12\Delta t^2\)</span> approximates <span class="math-inline">\(\cos\Delta t\)</span> with an error of order <span class="math-inline">\(\Delta t^4\)</span>, because the first term left out is <span class="math-inline">\(\tfrac1{24}\Delta t^4\)</span>. With <span class="math-inline">\(\Delta t = 0.1\)</span> the error is <span class="math-inline">\(4.2\times10^{-6}\)</span>. With <span class="math-inline">\(\Delta t = 0.05\)</span> it is <span class="math-inline">\(2.6\times10^{-7}\)</span>, which is 16 times smaller. More in the <a href="maths.html#taylor">toolbox</a>.</p>
+</div>
+<p>For the position of an atom, the first derivative is the velocity and the second is the acceleration. Expand the position forward and backward in time:</p>
 <p><span class="math-display">\[\begin{aligned}
 \mathbf r(t+\Delta t) &amp;= \mathbf r(t) + \mathbf v(t)\Delta t + \tfrac12\mathbf a(t)\Delta t^2 + \tfrac16\mathbf b(t)\Delta t^3 + O(\Delta t^4)\\
 \mathbf r(t-\Delta t) &amp;= \mathbf r(t) - \mathbf v(t)\Delta t + \tfrac12\mathbf a(t)\Delta t^2 - \tfrac16\mathbf b(t)\Delta t^3 + O(\Delta t^4)
 \end{aligned}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(t\)</span>: the present time. <span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(\mathbf r(t)\)</span>: the position of an atom now. The formula holds for every atom and each coordinate.</li>
+<li><span class="math-inline">\(\mathbf r(t+\Delta t)\)</span>: its position one step in the future. <span class="math-inline">\(\mathbf r(t-\Delta t)\)</span>: its position one step in the past.</li>
+<li><span class="math-inline">\(\mathbf v(t)\)</span>: its velocity now, the first time derivative of the position.</li>
+<li><span class="math-inline">\(\mathbf a(t)\)</span>: its acceleration now, the second time derivative of the position.</li>
+<li><span class="math-inline">\(\mathbf b(t)\)</span>: the third time derivative of the position, that is, the rate at which the acceleration is changing.</li>
+<li><span class="math-inline">\(\tfrac12\)</span>, <span class="math-inline">\(\tfrac16\)</span>: the fixed numbers of the Taylor expansion (see the box).</li>
+<li><span class="math-inline">\(O(\Delta t^4)\)</span>: all the remaining terms, which contain <span class="math-inline">\(\Delta t^4\)</span> or higher powers.</li>
+</ul>
+</div>
+<p>The second line is the first with <span class="math-inline">\(\Delta t\)</span> replaced by <span class="math-inline">\(-\Delta t\)</span>. The odd powers, <span class="math-inline">\(\Delta t\)</span> and <span class="math-inline">\(\Delta t^3\)</span>, change sign. The even powers do not.</p>
 <p>Here <span class="math-inline">\(\mathbf b\)</span> is the third time derivative of the position. Add the two lines. The odd terms cancel:</p>
+<p><span class="math-display">\[\mathbf r(t+\Delta t) + \mathbf r(t-\Delta t) = 2\mathbf r(t) + \mathbf a(t)\,\Delta t^2 + O(\Delta t^4) .\]</span></p>
+<div class="legend">
+<ul>
+<li>All symbols: as in the list above. The left side is the sum of the position one step ahead and the position one step back.</li>
+</ul>
+</div>
+<p>The terms with <span class="math-inline">\(\mathbf v\)</span> and with <span class="math-inline">\(\mathbf b\)</span> appear once with a plus sign and once with a minus sign, and drop out. The terms with <span class="math-inline">\(\mathbf r(t)\)</span> appear twice. So do the terms with <span class="math-inline">\(\mathbf a\)</span>, and <span class="math-inline">\(\tfrac12 + \tfrac12 = 1\)</span>. Now subtract <span class="math-inline">\(\mathbf r(t-\Delta t)\)</span> from both sides:</p>
 <p><span class="math-display">\[\boxed{\mathbf r(t+\Delta t) = 2\mathbf r(t) - \mathbf r(t-\Delta t) + \mathbf a(t)\,\Delta t^2 + O(\Delta t^4)},\qquad \mathbf a = \mathbf F/m .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf F\)</span>: the force on the atom, computed from the positions at the time <span class="math-inline">\(t\)</span>.</li>
+<li><span class="math-inline">\(m\)</span>: the mass of the atom.</li>
+<li>The frame: this is the rule to remember.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
 <p>This is the original <strong>Verlet</strong> algorithm (1967). The error of one step is <span class="math-inline">\(O(\Delta t^4)\)</span>, and the accumulated error over a fixed time is <span class="math-inline">\(O(\Delta t^2)\)</span>: a second-order method. Velocities do not appear. If needed they come from the difference <span class="math-inline">\(\mathbf v(t) = [\mathbf r(t+\Delta t)-\mathbf r(t-\Delta t)]/2\Delta t\)</span>, one step late.</p>
+<p><strong>Read it like this.</strong> Rearrange the right side as <span class="math-inline">\(\mathbf r(t) + [\mathbf r(t) - \mathbf r(t-\Delta t)] + \mathbf a(t)\Delta t^2\)</span>. The square bracket is the displacement of the atom during the last step. So the rule says: repeat the last displacement, then correct it by the acceleration times <span class="math-inline">\(\Delta t^2\)</span>. With no force the atom repeats the same displacement for ever, which is motion in a straight line at constant speed. The force enters once, at the present positions, so the method needs one force evaluation per step.</p>
+<p>In numbers, for the oscillator (<span class="math-inline">\(a = -x\)</span>, <span class="math-inline">\(\Delta t = 0.5\)</span>): suppose the previous position was 0.875 and the present position is 1. The acceleration is <span class="math-inline">\(-1\)</span>, and the new position is <span class="math-inline">\(2\times1 - 0.875 + (-1)\times0.25 = 0.875\)</span>. One step on, the acceleration is <span class="math-inline">\(-0.875\)</span> and the new position is <span class="math-inline">\(2\times0.875 - 1 + (-0.875)\times0.25 = 0.53125\)</span>. The exact values are <span class="math-inline">\(\cos 0.5 = 0.8776\)</span> and <span class="math-inline">\(\cos 1 = 0.5403\)</span>.</p>
+<p><strong>The velocity formula.</strong> It comes from subtracting the two Taylor lines instead of adding them. Then the even terms cancel, and what is left is <span class="math-inline">\(\mathbf r(t+\Delta t) - \mathbf r(t-\Delta t) = 2\mathbf v(t)\Delta t\)</span> plus a term <span class="math-inline">\(\tfrac13\mathbf b(t)\Delta t^3\)</span> and smaller ones. Dividing by <span class="math-inline">\(2\Delta t\)</span> gives the formula in the text, with an error of order <span class="math-inline">\(\Delta t^2\)</span>.</p>
+<p>"One step late" means that the velocity at the time <span class="math-inline">\(t\)</span> needs the position at <span class="math-inline">\(t+\Delta t\)</span>. You know how fast the atoms were moving only after you have moved them on. That is awkward, because the kinetic energy and the temperature are computed from the velocities.</p>
+<p><strong>The first step.</strong> The rule needs two earlier positions, and at the start of a simulation there is only one set of positions, with velocities. The missing "previous" position is built from them with a Taylor expansion backwards, <span class="math-inline">\(\mathbf r(-\Delta t) = \mathbf r(0) - \mathbf v(0)\Delta t + \tfrac12\mathbf a(0)\Delta t^2\)</span>. For the oscillator started at rest at <span class="math-inline">\(x = 1\)</span> this is <span class="math-inline">\(1 - 0 - 0.125 = 0.875\)</span>, the value used above.</p>
+<h3 id="local-error-and-global-error">Local error and global error</h3>
+<p>The text above gave two different powers for the error of the Verlet rule, <span class="math-inline">\(\Delta t^4\)</span> and <span class="math-inline">\(\Delta t^2\)</span>. Both are right, because they answer different questions.</p>
+<p>The <strong>local error</strong> is the error made in one step that starts from exact values. The <strong>global error</strong> is the error that has built up at a fixed time, say after 10 ps, when many steps have been made. The global error is the one that matters. It is larger, because a shorter step means more steps: reaching a fixed time <span class="math-inline">\(t_{end}\)</span> takes <span class="math-inline">\(t_{end}/\Delta t\)</span> steps.</p>
+<p>For most methods one power of <span class="math-inline">\(\Delta t\)</span> is lost on the way. A local error of order <span class="math-inline">\(\Delta t^{p+1}\)</span>, where <span class="math-inline">\(p\)</span> is a whole number, made <span class="math-inline">\(t_{end}/\Delta t\)</span> times, gives a global error of order <span class="math-inline">\(\Delta t^p\)</span>. The <strong>order</strong> of a method is the power in its global error. Forward Euler has a local error of order <span class="math-inline">\(\Delta t^2\)</span> (the first Taylor term that it leaves out) and a global error of order <span class="math-inline">\(\Delta t\)</span>. It is a first-order method.</p>
+<p>The Verlet rule loses two powers. It stores no velocity: the velocity is hidden in the difference of two successive positions, divided by <span class="math-inline">\(\Delta t\)</span>. An error of the size <span class="math-inline">\(\Delta t^4\)</span> in one position is therefore the same as an error of the size <span class="math-inline">\(\Delta t^3\)</span> in the hidden velocity. Over <span class="math-inline">\(t_{end}/\Delta t\)</span> steps these velocity errors add up to the size <span class="math-inline">\(\Delta t^2\)</span>. A velocity that is wrong by that much for a fixed time gives a position that is wrong by the order <span class="math-inline">\(\Delta t^2\)</span>.</p>
+<p>The table shows all of this for the oscillator with <span class="math-inline">\(\omega = 1\)</span>, started at <span class="math-inline">\(x = 1\)</span> with <span class="math-inline">\(v = 0\)</span>, where the exact position is <span class="math-inline">\(\cos t\)</span>. The second column is the error of one Verlet step from exact earlier positions. The other two are the errors in the position at the time <span class="math-inline">\(t = 10\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(\Delta t\)</span></th>
+<th>One Verlet step</th>
+<th>Verlet at <span class="math-inline">\(t = 10\)</span></th>
+<th>Forward Euler at <span class="math-inline">\(t = 10\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.2</td>
+<td><span class="math-inline">\(-1.3\times10^{-4}\)</span></td>
+<td><span class="math-inline">\(9.2\times10^{-3}\)</span></td>
+<td><span class="math-inline">\(-1.57\)</span></td>
+</tr>
+<tr>
+<td>0.1</td>
+<td><span class="math-inline">\(-8.3\times10^{-6}\)</span></td>
+<td><span class="math-inline">\(2.3\times10^{-3}\)</span></td>
+<td><span class="math-inline">\(-0.57\)</span></td>
+</tr>
+<tr>
+<td>0.05</td>
+<td><span class="math-inline">\(-5.2\times10^{-7}\)</span></td>
+<td><span class="math-inline">\(5.7\times10^{-4}\)</span></td>
+<td><span class="math-inline">\(-0.24\)</span></td>
+</tr>
+<tr>
+<td>0.025</td>
+<td><span class="math-inline">\(-3.3\times10^{-8}\)</span></td>
+<td><span class="math-inline">\(1.4\times10^{-4}\)</span></td>
+<td><span class="math-inline">\(-0.11\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each time the step is halved, the one-step error of Verlet falls by a factor of 16 and its error at a fixed time by a factor of 4. The error of forward Euler falls by a factor between 2 and 3, which approaches 2 as the step gets smaller. Halving the step also doubles the number of force evaluations. A second-order method buys a fourfold gain in accuracy for a twofold cost.</p>
 <h3 id="velocity-verlet">Velocity Verlet</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="ii-N61PeeQU" href="https://www.youtube.com/watch?v=ii-N61PeeQU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 3: The Velocity-Verlet Method</span><span class="sv-m">28 min · Brennon Shanks</span></a><a class="sv" data-yt="1kER3-3x8VI" href="https://www.youtube.com/watch?v=1kER3-3x8VI" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">MD time propagation algorithm &amp; Velocity Verlet | Molecular simulations</span><span class="sv-m">17 min · The Computational Chemist</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="ii-N61PeeQU" href="https://www.youtube.com/watch?v=ii-N61PeeQU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 3: The Velocity-Verlet Method</span><span class="sv-m">28 min · Brennon Shanks</span></a><a class="sv" data-yt="1kER3-3x8VI" href="https://www.youtube.com/watch?v=1kER3-3x8VI" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">MD time propagation algorithm &amp; Velocity Verlet | Molecular simulations</span><span class="sv-m">17 min · The Computational Chemist</span></a></div>
 
+<p>The Verlet rule has three practical weaknesses. The velocities arrive one step late. The start needs a constructed "previous" position. And the rule adds a very small number, <span class="math-inline">\(\mathbf a\,\Delta t^2\)</span>, to a combination of two much larger ones, which wastes digits of the computer's arithmetic (see the part on round-off below).</p>
+<p>Velocity Verlet produces exactly the same positions and has none of these weaknesses. It stores the positions and the velocities at the same instant.</p>
 <p>The form used in practice carries positions and velocities at the same time (<a href="https://doi.org/10.1063/1.442716" class="cite" target="_blank" rel="noopener" title="Swope WC; Andersen HC; Berens PH; Wilson KR (1982). A computer simulation method for the calculation of equilibrium constants for the formation of physical clusters of molecules: Application to small water clusters. The Journal of Chemical Physics">Swope, Andersen, Berens and Wilson, 1982</a>):</p>
 <p><span class="math-display">\[\begin{aligned}
 \mathbf v(t+\tfrac{\Delta t}{2}) &amp;= \mathbf v(t) + \tfrac{\Delta t}{2}\,\mathbf a(t) &amp;&amp;\text{half kick}\\
 \mathbf r(t+\Delta t) &amp;= \mathbf r(t) + \Delta t\,\mathbf v(t+\tfrac{\Delta t}{2}) &amp;&amp;\text{drift}\\
 \mathbf v(t+\Delta t) &amp;= \mathbf v(t+\tfrac{\Delta t}{2}) + \tfrac{\Delta t}{2}\,\mathbf a(t+\Delta t) &amp;&amp;\text{half kick}
 \end{aligned}\]</span></p>
-<p>To see that it is the same algorithm, write the drift for two consecutive steps and subtract: you get <span class="math-inline">\(\mathbf r(t+\Delta t) - 2\mathbf r(t)+\mathbf r(t-\Delta t) = \Delta t\,[\mathbf v(t+\tfrac{\Delta t}{2}) - \mathbf v(t-\tfrac{\Delta t}{2})] = \mathbf a(t)\Delta t^2\)</span>.</p>
-<h3 id="leap-frog">Leap-frog</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="pVudb6-_FaM" href="https://www.youtube.com/watch?v=pVudb6-_FaM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 09: Integration using the leap-frog algorithm updates x &amp; v</span><span class="sv-m">6 min · Erik Lindahl</span></a></div>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf v(t+\tfrac{\Delta t}{2})\)</span>: the velocity at the <strong>half step</strong>, the instant halfway between <span class="math-inline">\(t\)</span> and <span class="math-inline">\(t+\Delta t\)</span>. It is an intermediate value, used in the second line and replaced in the third.</li>
+<li><span class="math-inline">\(\mathbf a(t)\)</span>: the acceleration at the start of the step, <span class="math-inline">\(\mathbf F/m\)</span> with the forces computed at the positions <span class="math-inline">\(\mathbf r(t)\)</span>.</li>
+<li><span class="math-inline">\(\mathbf a(t+\Delta t)\)</span>: the acceleration at the end of the step, from the forces at the new positions <span class="math-inline">\(\mathbf r(t+\Delta t)\)</span>.</li>
+<li><span class="math-inline">\(\tfrac{\Delta t}{2}\)</span>: half a time step.</li>
+<li>"half kick", "drift": the names of the three operations. They are labels and not part of the formulas.</li>
+<li>Other symbols: as in the lists above.</li>
+</ul>
+</div>
+<p>A <strong>kick</strong> changes the velocities with the forces and leaves the positions alone. A <strong>drift</strong> moves the positions with the velocities and leaves the velocities alone. (Both names were introduced in Module 2.) One step is three operations in a row:</p>
+<ol>
+<li><em>Half kick.</em> Advance the velocities by half a step with the present forces.</li>
+<li><em>Drift.</em> Move the positions by a full step with these half-step velocities.</li>
+<li><em>Half kick.</em> Compute the forces at the new positions and advance the velocities by the second half of the step.</li>
+</ol>
+<p>Compare this with forward Euler, which moved the positions with the velocity from the <em>start</em> of the step. Velocity Verlet moves them with the velocity from the <em>middle</em> of the step, which is a much better estimate of the average velocity during the step. The velocities are treated in the same spirit: half of their change uses the forces at the start and half uses the forces at the end.</p>
+<p>The forces are computed once per step, in operation 3. The acceleration <span class="math-inline">\(\mathbf a(t+\Delta t)\)</span> found there is kept, and serves as <span class="math-inline">\(\mathbf a(t)\)</span> in operation 1 of the next step. In Python the whole step is four lines:</p>
+<div class="code"><pre><span></span><code><span class="n">v</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">a</span>      <span class="c1"># half kick with the forces already known</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">v</span>            <span class="c1"># drift</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">force</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>       <span class="c1"># the one force evaluation of this step</span>
+<span class="n">v</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">a</span>      <span class="c1"># half kick with the new forces</span>
+</code></pre></div>
 
+<p>Here <code>force(x)</code> stands for whatever routine computes the forces from the positions.</p>
+<p><strong>A shorter way to write it.</strong> Insert the first line of the scheme into the second, and the first into the third. The half-step velocity disappears:</p>
+<p><span class="math-display">\[\begin{aligned}
+\mathbf r(t+\Delta t) &amp;= \mathbf r(t) + \mathbf v(t)\,\Delta t + \tfrac12\mathbf a(t)\,\Delta t^2\\
+\mathbf v(t+\Delta t) &amp;= \mathbf v(t) + \tfrac12\left[\mathbf a(t) + \mathbf a(t+\Delta t)\right]\Delta t
+\end{aligned}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\tfrac12[\mathbf a(t) + \mathbf a(t+\Delta t)]\)</span>: the average of the acceleration at the start and at the end of the step.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>Read the first line as the Taylor expansion of the position, kept up to the acceleration term. Forward Euler stopped one term earlier. Read the second line as "the velocity changes by the average acceleration times the time".</p>
+<p>To see that it is the same algorithm, write the drift for two consecutive steps and subtract: you get <span class="math-inline">\(\mathbf r(t+\Delta t) - 2\mathbf r(t)+\mathbf r(t-\Delta t) = \Delta t\,[\mathbf v(t+\tfrac{\Delta t}{2}) - \mathbf v(t-\tfrac{\Delta t}{2})] = \mathbf a(t)\Delta t^2\)</span>.</p>
+<p>Step by step:</p>
+<p><span class="math-display">\[\begin{aligned}
+\mathbf r(t+\Delta t) - \mathbf r(t) &amp;= \Delta t\,\mathbf v(t+\tfrac{\Delta t}{2}) &amp;&amp;\text{drift of the step from } t \text{ to } t+\Delta t\\
+\mathbf r(t) - \mathbf r(t-\Delta t) &amp;= \Delta t\,\mathbf v(t-\tfrac{\Delta t}{2}) &amp;&amp;\text{drift of the step before}\\
+\mathbf v(t+\tfrac{\Delta t}{2}) - \mathbf v(t-\tfrac{\Delta t}{2}) &amp;= \tfrac{\Delta t}{2}\,\mathbf a(t) + \tfrac{\Delta t}{2}\,\mathbf a(t) = \Delta t\,\mathbf a(t) &amp;&amp;\text{the two half kicks at the time } t
+\end{aligned}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf v(t-\tfrac{\Delta t}{2})\)</span>: the half-step velocity of the previous step, halfway between <span class="math-inline">\(t-\Delta t\)</span> and <span class="math-inline">\(t\)</span>.</li>
+<li>Other symbols: as in the lists above.</li>
+</ul>
+</div>
+<p>Subtract the second line from the first. The left side becomes <span class="math-inline">\(\mathbf r(t+\Delta t) - 2\mathbf r(t) + \mathbf r(t-\Delta t)\)</span> and the right side becomes <span class="math-inline">\(\Delta t\)</span> times the difference of the two half-step velocities. The third line gives that difference. Between the instants <span class="math-inline">\(t-\tfrac{\Delta t}{2}\)</span> and <span class="math-inline">\(t+\tfrac{\Delta t}{2}\)</span> the velocity receives two half kicks, the last operation of the earlier step and the first operation of the present one, and both use the same acceleration <span class="math-inline">\(\mathbf a(t)\)</span>. The result, <span class="math-inline">\(\mathbf a(t)\Delta t^2\)</span>, is the Verlet rule.</p>
+<p>The velocities agree as well. The two half kicks at the time <span class="math-inline">\(t\)</span> put <span class="math-inline">\(\mathbf v(t)\)</span> exactly in the middle between the two half-step velocities, and the sum of the two drift lines is <span class="math-inline">\(\mathbf r(t+\Delta t) - \mathbf r(t-\Delta t) = \Delta t\,[\mathbf v(t+\tfrac{\Delta t}{2}) + \mathbf v(t-\tfrac{\Delta t}{2})] = 2\Delta t\,\mathbf v(t)\)</span>. So the velocity of velocity Verlet is the velocity formula of the Verlet rule. The difference is that it is available at once.</p>
+<div class="box key">
+<p><strong>Worked example: three velocity Verlet steps by hand.</strong> The oscillator with <span class="math-inline">\(m = 1\)</span> and <span class="math-inline">\(\omega = 1\)</span>, so <span class="math-inline">\(a = -x\)</span>. Start at <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span>. Time step <span class="math-inline">\(\Delta t = 0.5\)</span>, which is about 12.6 steps per period.</p>
+<p><em>Step 1.</em> The acceleration at the start is <span class="math-inline">\(a = -1\)</span>.</p>
+<ol>
+<li>Half kick: <span class="math-inline">\(v = 0 + 0.25\times(-1) = -0.25\)</span>.</li>
+<li>Drift: <span class="math-inline">\(x = 1 + 0.5\times(-0.25) = 0.875\)</span>.</li>
+<li>New acceleration <span class="math-inline">\(a = -0.875\)</span>. Half kick: <span class="math-inline">\(v = -0.25 + 0.25\times(-0.875) = -0.46875\)</span>.</li>
+</ol>
+<p><em>Step 2.</em> Half kick: <span class="math-inline">\(v = -0.46875 + 0.25\times(-0.875) = -0.6875\)</span>. Drift: <span class="math-inline">\(x = 0.875 + 0.5\times(-0.6875) = 0.53125\)</span>. New acceleration <span class="math-inline">\(-0.53125\)</span>. Half kick: <span class="math-inline">\(v = -0.6875 + 0.25\times(-0.53125) = -0.82031\)</span>.</p>
+<p><em>Step 3.</em> Half kick: <span class="math-inline">\(v = -0.82031 + 0.25\times(-0.53125) = -0.95313\)</span>. Drift: <span class="math-inline">\(x = 0.53125 + 0.5\times(-0.95313) = 0.05469\)</span>. New acceleration <span class="math-inline">\(-0.05469\)</span>. Half kick: <span class="math-inline">\(v = -0.95313 + 0.25\times(-0.05469) = -0.96680\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Time</th>
+<th><span class="math-inline">\(x\)</span></th>
+<th><span class="math-inline">\(v\)</span></th>
+<th>Exact <span class="math-inline">\(x\)</span></th>
+<th>Exact <span class="math-inline">\(v\)</span></th>
+<th>Energy <span class="math-inline">\(\tfrac12v^2+\tfrac12x^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0.5000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.5</td>
+<td>0.87500</td>
+<td><span class="math-inline">\(-0.46875\)</span></td>
+<td>0.87758</td>
+<td><span class="math-inline">\(-0.47943\)</span></td>
+<td>0.4927</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.0</td>
+<td>0.53125</td>
+<td><span class="math-inline">\(-0.82031\)</span></td>
+<td>0.54030</td>
+<td><span class="math-inline">\(-0.84147\)</span></td>
+<td>0.4776</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.5</td>
+<td>0.05469</td>
+<td><span class="math-inline">\(-0.96680\)</span></td>
+<td>0.07074</td>
+<td><span class="math-inline">\(-0.99749\)</span></td>
+<td>0.4688</td>
+</tr>
+</tbody>
+</table>
+<p>The positions are those of the Verlet rule in the section above. The energy is not exactly constant. It dips while <span class="math-inline">\(x\)</span> moves towards zero, and it comes back up towards 0.5 whenever <span class="math-inline">\(x\)</span> approaches <span class="math-inline">\(+1\)</span> or <span class="math-inline">\(-1\)</span> again: it oscillates. Compare forward Euler with the same step, where the energy went 0.625, 0.781, 0.977 and kept rising.</p>
+<p>For a feeling of the scale: the C-H stretch of Module 2 has <span class="math-inline">\(\omega\approx551\)</span> ps<span class="math-inline">\(^{-1}\)</span>, so <span class="math-inline">\(\omega\Delta t = 0.5\)</span> corresponds to <span class="math-inline">\(\Delta t = 0.5/551\)</span> ps, about 0.9 fs.</p>
+</div>
+<h3 id="leap-frog">Leap-frog</h3>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="pVudb6-_FaM" href="https://www.youtube.com/watch?v=pVudb6-_FaM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 09: Integration using the leap-frog algorithm updates x &amp; v</span><span class="sv-m">6 min · Erik Lindahl</span></a></div>
+
+<p>Velocity Verlet touches the velocities twice in a row: the half kick that ends one step is followed at once by the half kick that begins the next, with the same forces. Leap-frog joins the two into one full kick. It is the same calculation with less bookkeeping.</p>
 <p>Merge the second half kick of one step with the first half kick of the next:</p>
 <p><span class="math-display">\[\mathbf v(t+\tfrac{\Delta t}{2}) = \mathbf v(t-\tfrac{\Delta t}{2}) + \Delta t\,\mathbf a(t),\qquad
 \mathbf r(t+\Delta t) = \mathbf r(t) + \Delta t\,\mathbf v(t+\tfrac{\Delta t}{2}).\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf v(t-\tfrac{\Delta t}{2})\)</span>: the velocity half a step before the time <span class="math-inline">\(t\)</span>, which was stored at the previous step.</li>
+<li><span class="math-inline">\(\mathbf v(t+\tfrac{\Delta t}{2})\)</span>: the velocity half a step after the time <span class="math-inline">\(t\)</span>, which is stored for the next step.</li>
+<li><span class="math-inline">\(\mathbf a(t)\)</span>: the acceleration at the time <span class="math-inline">\(t\)</span>, from the forces at the positions <span class="math-inline">\(\mathbf r(t)\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r(t)\)</span>, <span class="math-inline">\(\mathbf r(t+\Delta t)\)</span>: the positions at the start and at the end of the step.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+</ul>
+</div>
+<p>The first formula is the third line of the step-by-step derivation above: two half kicks with the same acceleration make one full kick. The second formula is the drift, unchanged. The velocity at the time <span class="math-inline">\(t\)</span> itself is never computed.</p>
 <p>Positions live on integer steps and velocities on half steps, "leaping" over each other. This is the default <code>integrator = md</code> in GROMACS. The trajectory of positions is identical to velocity Verlet. The only difference is bookkeeping: kinetic energy at time <span class="math-inline">\(t\)</span> must be estimated from the two neighbouring half-step velocities, which slightly changes the reported temperature and how thermostats and barostats are coupled.</p>
+<p>The table shows what the three schemes store for the oscillator of the worked example (<span class="math-inline">\(\Delta t = 0.5\)</span>). To start leap-frog from <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span>, the velocity is first moved back by half a kick, to <span class="math-inline">\(v(-0.25) = 0 - 0.25\times(-1) = 0.25\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>0</th>
+<th>0.25</th>
+<th>0.5</th>
+<th>0.75</th>
+<th>1.0</th>
+<th>1.25</th>
+<th>1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verlet, <span class="math-inline">\(x\)</span></td>
+<td>1</td>
+<td></td>
+<td>0.87500</td>
+<td></td>
+<td>0.53125</td>
+<td></td>
+<td>0.05469</td>
+</tr>
+<tr>
+<td>Velocity Verlet, <span class="math-inline">\(x\)</span></td>
+<td>1</td>
+<td></td>
+<td>0.87500</td>
+<td></td>
+<td>0.53125</td>
+<td></td>
+<td>0.05469</td>
+</tr>
+<tr>
+<td>Velocity Verlet, <span class="math-inline">\(v\)</span></td>
+<td>0</td>
+<td></td>
+<td><span class="math-inline">\(-0.46875\)</span></td>
+<td></td>
+<td><span class="math-inline">\(-0.82031\)</span></td>
+<td></td>
+<td><span class="math-inline">\(-0.96680\)</span></td>
+</tr>
+<tr>
+<td>Leap-frog, <span class="math-inline">\(x\)</span></td>
+<td>1</td>
+<td></td>
+<td>0.87500</td>
+<td></td>
+<td>0.53125</td>
+<td></td>
+<td>0.05469</td>
+</tr>
+<tr>
+<td>Leap-frog, <span class="math-inline">\(v\)</span></td>
+<td></td>
+<td><span class="math-inline">\(-0.25\)</span></td>
+<td></td>
+<td><span class="math-inline">\(-0.6875\)</span></td>
+<td></td>
+<td><span class="math-inline">\(-0.95313\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The three rows of positions are the same numbers. The leap-frog velocities are the half-step velocities of the worked example.</p>
+<p>The bookkeeping point in numbers. At the time 0.5 leap-frog knows the velocities <span class="math-inline">\(-0.25\)</span> (before) and <span class="math-inline">\(-0.6875\)</span> (after). Their average is <span class="math-inline">\(-0.46875\)</span>, the velocity Verlet value, with kinetic energy <span class="math-inline">\(\tfrac12\times0.46875^2 = 0.110\)</span>. The average of the two kinetic energies is <span class="math-inline">\(\tfrac12(0.0313 + 0.2363) = 0.134\)</span>. The two estimates differ by <span class="math-inline">\(\tfrac18ma^2\Delta t^2\)</span> for each coordinate, where <span class="math-inline">\(m\)</span> is the mass and <span class="math-inline">\(a\)</span> the acceleration at that time: a term of order <span class="math-inline">\(\Delta t^2\)</span>.</p>
+<p>The temperature is computed from the kinetic energy (Module 3), and thermostats and barostats (Module 8) act on the temperature and the pressure. The choice of estimate therefore shows up in both.</p>
 <h2 id="velocity-verlet-from-the-liouville-operator">Velocity Verlet from the Liouville operator</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="5OZO5GPuSJY" href="https://www.youtube.com/watch?v=5OZO5GPuSJY" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Liouville Formalism for Molecular Dynamics MD | Molecular Simulations</span><span class="sv-m">14 min · The Computational Chemist</span></a><a class="sv" data-yt="Uyg9asVcMOc" href="https://www.youtube.com/watch?v=Uyg9asVcMOc" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Conservation of energy for symplectic methods</span><span class="sv-m">18 min · Melvin Leok</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="5OZO5GPuSJY" href="https://www.youtube.com/watch?v=5OZO5GPuSJY" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Liouville Formalism for Molecular Dynamics MD | Molecular Simulations</span><span class="sv-m">14 min · The Computational Chemist</span></a><a class="sv" data-yt="Uyg9asVcMOc" href="https://www.youtube.com/watch?v=Uyg9asVcMOc" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Conservation of energy for symplectic methods</span><span class="sv-m">18 min · Melvin Leok</span></a></div>
 
+<p>The Taylor derivation gave the rule. It did not explain why the energy in the worked example swings back to its starting value, while with forward Euler it grows without limit. This section derives velocity Verlet a second time, in a way that shows where the good behaviour comes from. The idea is to cut the motion into two parts that can each be carried out exactly, and to alternate them.</p>
+<p>This is the most abstract section of the module. On a first reading three statements are enough. Velocity Verlet is "half kick, drift, half kick". Each of the three pieces is the exact motion of a simpler system. For that reason the method can be run backwards, keeps the volume of phase space, and conserves an energy very close to the true one.</p>
+<div class="box physics">
+<p><strong>Physics you need here: three ideas from Module 2.</strong></p>
+<ul>
+<li><strong>Phase space.</strong> The complete state of the system is the list of all positions and all momenta. Module 2 called this list <span class="math-inline">\(\Gamma\)</span>, one point in phase space. This module uses velocities in the place of momenta. Nothing changes by that, because the momentum of an atom is its mass times its velocity, <span class="math-inline">\(\mathbf p_i = m_i\mathbf v_i\)</span>.</li>
+<li><strong>The Hamiltonian</strong> <span class="math-inline">\(H = K + U\)</span> is the total energy, kinetic plus potential, written as a function of the state.</li>
+<li><strong>The Liouville operator</strong> <span class="math-inline">\(iL\)</span> is the rule that gives the rate of change of any quantity <span class="math-inline">\(A\)</span> that depends on the state: <span class="math-inline">\(dA/dt = iL\,A\)</span>. From it Module 2 built the <strong>propagator</strong> <span class="math-inline">\(e^{iLt}\)</span>, the operation "advance the system by a time <span class="math-inline">\(t\)</span>". The propagator is exact, and for a real system it cannot be computed. An integrator is an approximation to <span class="math-inline">\(e^{iL\Delta t}\)</span> that can be computed.</li>
+</ul>
+</div>
 <p>The Taylor derivation hides <em>why</em> the method is so good. The operator derivation (<a href="https://doi.org/10.1063/1.463137" class="cite" target="_blank" rel="noopener" title="Tuckerman M; Berne BJ; Martyna GJ (1992). Reversible multiple time scale molecular dynamics. The Journal of Chemical Physics">Tuckerman, Berne and Martyna, 1992</a>) shows it. From Module 2, the state evolves as <span class="math-inline">\(\Gamma(t) = e^{iLt}\Gamma(0)\)</span> with</p>
 <p><span class="math-display">\[iL = iL_r + iL_p,\qquad iL_r = \sum_i \mathbf v_i\cdot\frac{\partial}{\partial\mathbf r_i},\qquad iL_p = \sum_i \frac{\mathbf F_i}{m_i}\cdot\frac{\partial}{\partial\mathbf v_i}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Gamma(0)\)</span>, <span class="math-inline">\(\Gamma(t)\)</span>: the state of the system (all positions and velocities) at the start and after a time <span class="math-inline">\(t\)</span>.</li>
+<li><span class="math-inline">\(e^{iLt}\)</span>: the propagator, "advance by a time <span class="math-inline">\(t\)</span>".</li>
+<li><span class="math-inline">\(iL\)</span>: the Liouville operator. Treat it as one symbol. The <span class="math-inline">\(i\)</span> is the imaginary unit, kept by a convention from quantum mechanics, and <span class="math-inline">\(L\)</span> is not the Lagrangian.</li>
+<li><span class="math-inline">\(iL_r\)</span>: the position part of <span class="math-inline">\(iL\)</span>. It describes the change of the positions at the present velocities.</li>
+<li><span class="math-inline">\(iL_p\)</span>: the momentum part. It describes the change of the velocities under the present forces. Module 2 wrote it as <span class="math-inline">\(\sum_i\mathbf F_i\cdot\partial/\partial\mathbf p_i\)</span>, which is the same thing because <span class="math-inline">\(\mathbf p_i = m_i\mathbf v_i\)</span>.</li>
+<li><span class="math-inline">\(\sum_i\)</span>: a sum over all atoms <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\mathbf v_i\)</span>, <span class="math-inline">\(\mathbf F_i\)</span>, <span class="math-inline">\(m_i\)</span>: the velocity of atom <span class="math-inline">\(i\)</span>, the force on it, and its mass.</li>
+<li><span class="math-inline">\(\partial/\partial\mathbf r_i\)</span>, <span class="math-inline">\(\partial/\partial\mathbf v_i\)</span>: derivatives waiting for a function to act on. They ask "how does the function change when the position (or the velocity) of atom <span class="math-inline">\(i\)</span> is changed?"</li>
+<li>The dot between a vector and a derivative: a dot product, the sum over the <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span> components.</li>
+</ul>
+</div>
+<p>Read it like this. Apply <span class="math-inline">\(iL\)</span> to any quantity <span class="math-inline">\(A\)</span> and you get <span class="math-inline">\(\sum_i\mathbf v_i\cdot\partial A/\partial\mathbf r_i + \sum_i(\mathbf F_i/m_i)\cdot\partial A/\partial\mathbf v_i\)</span>. This is the chain rule: <span class="math-inline">\(A\)</span> changes because the positions change, at the rate <span class="math-inline">\(\mathbf v_i\)</span>, and because the velocities change, at the rate <span class="math-inline">\(\mathbf F_i/m_i\)</span>. The first sum is <span class="math-inline">\(iL_r\,A\)</span> and the second is <span class="math-inline">\(iL_p\,A\)</span>. For one particle on a line, <span class="math-inline">\(iL\)</span> applied to <span class="math-inline">\(x\)</span> gives <span class="math-inline">\(v\)</span> and applied to <span class="math-inline">\(v\)</span> gives <span class="math-inline">\(F/m\)</span>, which is Newton's law.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the exponential of a derivative is a shift.</strong> An <strong>operator</strong> is a rule that turns one function into another, for example "differentiate with respect to <span class="math-inline">\(x\)</span>", written <span class="math-inline">\(\partial/\partial x\)</span>. Module 2 defined the exponential of an operator by the same series as for a number, <span class="math-inline">\(e^{a} = 1 + a + \tfrac12a^2 + \tfrac16a^3 + \dots\)</span>, where the square of an operator means "apply it twice".</p>
+<p>Put the operator <span class="math-inline">\(c\,\partial/\partial x\)</span> in the exponent, with <span class="math-inline">\(c\)</span> a constant, and apply the series to a function <span class="math-inline">\(f(x)\)</span>:</p>
+<p><span class="math-display">\[e^{c\,\partial/\partial x}f(x) = f(x) + c\,\frac{\partial f}{\partial x} + \frac12c^2\frac{\partial^2 f}{\partial x^2} + \dots = f(x+c).\]</span></p>
+<p>The middle expression is the Taylor expansion of <span class="math-inline">\(f\)</span> around <span class="math-inline">\(x\)</span> with the step <span class="math-inline">\(c\)</span>, and that is <span class="math-inline">\(f(x+c)\)</span>. So this operator evaluates the function at a shifted place. Example with <span class="math-inline">\(f(x) = x^2\)</span>: the series gives <span class="math-inline">\(x^2 + c\cdot2x + \tfrac12c^2\cdot2 = x^2 + 2cx + c^2 = (x+c)^2\)</span>. It stops there because all higher derivatives of <span class="math-inline">\(x^2\)</span> are zero. More in the <a href="maths.html#operators">toolbox</a>.</p>
+</div>
 <p>Each piece alone is trivial to apply exactly. Because <span class="math-inline">\(e^{c\,\partial/\partial x}f(x) = f(x+c)\)</span> (Taylor's theorem), <span class="math-inline">\(e^{iL_r\Delta t}\)</span> shifts every position by <span class="math-inline">\(\mathbf v\Delta t\)</span> with velocities fixed (a drift), and <span class="math-inline">\(e^{iL_p\Delta t}\)</span> shifts every velocity by <span class="math-inline">\(\mathbf F\Delta t/m\)</span> with positions fixed (a kick).</p>
+<p>In more detail. In <span class="math-inline">\(e^{iL_r\Delta t}\)</span> the exponent is <span class="math-inline">\(\Delta t\sum_i\mathbf v_i\cdot\partial/\partial\mathbf r_i\)</span>. It has the form of the box, with the shift <span class="math-inline">\(c = \mathbf v_i\Delta t\)</span> for the position of atom <span class="math-inline">\(i\)</span>. The velocities count as constants here, because <span class="math-inline">\(iL_r\)</span> contains no derivative with respect to a velocity and so does not change them. The result is <span class="math-inline">\(\mathbf r_i\to\mathbf r_i + \mathbf v_i\Delta t\)</span>: flight in a straight line, as if all forces were switched off.</p>
+<p>In <span class="math-inline">\(e^{iL_p\Delta t}\)</span> the roles are exchanged. The shift is <span class="math-inline">\(c = \mathbf F_i\Delta t/m_i\)</span> for the velocity of atom <span class="math-inline">\(i\)</span>. It is a constant because the forces depend only on the positions, which this operator does not move. The result is <span class="math-inline">\(\mathbf v_i\to\mathbf v_i + \mathbf F_i\Delta t/m_i\)</span>: the velocities change as if the atoms were held in place.</p>
+<p>Neither piece is the true motion. In the true motion the atoms move and feel forces at the same time, and the forces change as the atoms move. The question is how to combine the two exact pieces into a good approximation of the true motion.</p>
+<div class="box maths">
+<p><strong>Maths you need here: operations that do not commute.</strong> Two operations <strong>commute</strong> when the order in which you apply them makes no difference. "Add 3" and "add 5" commute. "Add 3" and "multiply by 2" do not: starting from 1, add and then multiply gives <span class="math-inline">\((1+3)\times2 = 8\)</span>, multiply and then add gives <span class="math-inline">\(1\times2+3 = 5\)</span>.</p>
+<p>For two operators <span class="math-inline">\(A\)</span> and <span class="math-inline">\(B\)</span>, the difference between the two orders has a name, the <strong>commutator</strong>:</p>
+<p><span class="math-display">\[[A,B] = AB - BA .\]</span></p>
+<p><span class="math-inline">\(AB\)</span> means "apply <span class="math-inline">\(B\)</span> first, then <span class="math-inline">\(A\)</span>", because the operator written next to the function acts on it first. If the commutator is zero, the operators commute.</p>
+<p>For ordinary numbers <span class="math-inline">\(e^{a+b} = e^ae^b\)</span>. For operators this rule can be relied on only when they commute. When they do not, <span class="math-inline">\(e^{A+B}\)</span> ("do both at the same time") and <span class="math-inline">\(e^Ae^B\)</span> ("do one, then the other") are different, and the size of the difference is set by the commutator. More in the <a href="maths.html#operators">toolbox</a>.</p>
+</div>
 <p>The two operators do not commute, so <span class="math-inline">\(e^{(iL_r+iL_p)\Delta t} \ne e^{iL_r\Delta t}e^{iL_p\Delta t}\)</span>. The symmetric <strong>Trotter (Strang) splitting</strong> is accurate to second order:</p>
 <p><span class="math-display">\[e^{iL\Delta t} = e^{iL_p\Delta t/2}\;e^{iL_r\Delta t}\;e^{iL_p\Delta t/2} + O(\Delta t^3).\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(e^{iL\Delta t}\)</span>: the exact propagator for one time step. This is what we want and cannot compute.</li>
+<li><span class="math-inline">\(e^{iL_p\Delta t/2}\)</span>: a kick over half a time step.</li>
+<li><span class="math-inline">\(e^{iL_r\Delta t}\)</span>: a drift over a full time step.</li>
+<li>Writing the three next to each other: apply them one after the other.</li>
+<li><span class="math-inline">\(O(\Delta t^3)\)</span>: the error of one step, of order <span class="math-inline">\(\Delta t^3\)</span>.</li>
+<li><span class="math-inline">\(\ne\)</span> (in the sentence above): "is not equal to".</li>
+</ul>
+</div>
+<p>The drift and the kick do not commute because each one changes what the other one uses. The drift moves the positions, on which the forces depend. The kick changes the velocities, on which the drift depends. The oscillator shows it in two lines. Start at <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span>, with <span class="math-inline">\(a = -x\)</span> and <span class="math-inline">\(\Delta t = 0.5\)</span>.</p>
+<ul>
+<li>Drift first, then kick: the drift gives <span class="math-inline">\(x = 1 + 0.5\times0 = 1\)</span>, then the kick gives <span class="math-inline">\(v = 0 + 0.5\times(-1) = -0.5\)</span>. Result: <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = -0.5\)</span>.</li>
+<li>Kick first, then drift: the kick gives <span class="math-inline">\(v = -0.5\)</span>, then the drift gives <span class="math-inline">\(x = 1 + 0.5\times(-0.5) = 0.75\)</span>. Result: <span class="math-inline">\(x = 0.75\)</span>, <span class="math-inline">\(v = -0.5\)</span>.</li>
+</ul>
+<p>The exact answer is <span class="math-inline">\(x = 0.8776\)</span>, <span class="math-inline">\(v = -0.4794\)</span>. The two orders miss the exact position on opposite sides, by <span class="math-inline">\(+0.12\)</span> and by <span class="math-inline">\(-0.13\)</span>. The symmetric splitting, with half a kick before the drift and half a kick after it, gave <span class="math-inline">\(x = 0.875\)</span>, <span class="math-inline">\(v = -0.46875\)</span> in the worked example. The two one-sided errors nearly cancel.</p>
 <p>Read from right to left: half kick, drift, half kick. That is velocity Verlet. The derivation gives three properties for free. (Tuckerman, Berne and Martyna state the first, reversibility. The other two are standard results for integrators built from exact flows and are not discussed in their paper.)</p>
+<p>Why from right to left: in a product of operators the one written last, on the right, stands next to the state and acts first, in the same way that in <span class="math-inline">\(\sin(\cos x)\)</span> the cosine is applied first. Here the product is symmetric, so it reads the same in both directions. Its three factors are the three lines of the velocity Verlet scheme.</p>
+<p>"Accurate to second order" refers to the global error. The term <span class="math-inline">\(O(\Delta t^3)\)</span> is the error of one step in the positions and velocities together. One power is lost over a fixed time, as explained in the section on local and global error, which leaves <span class="math-inline">\(\Delta t^2\)</span>. This agrees with the Taylor derivation, as it must, because the algorithm is the same.</p>
+<details>
+<summary>Optional: why the symmetric product is better than the simple one</summary>
+<p>Write <span class="math-inline">\(A = iL_p\Delta t\)</span> and <span class="math-inline">\(B = iL_r\Delta t\)</span>, so that each is proportional to <span class="math-inline">\(\Delta t\)</span>. Expand every exponential with <span class="math-inline">\(e^{X} = 1 + X + \tfrac12X^2 + \dots\)</span> and keep the order of the factors, because <span class="math-inline">\(A\)</span> and <span class="math-inline">\(B\)</span> do not commute. The exact propagator is</p>
+<p><span class="math-display">\[e^{A+B} = 1 + (A+B) + \tfrac12\left(A^2 + AB + BA + B^2\right) + \dots\]</span></p>
+<p>The simple product is</p>
+<p><span class="math-display">\[e^{A}e^{B} = \left(1 + A + \tfrac12A^2\right)\left(1 + B + \tfrac12B^2\right) + \dots = 1 + (A+B) + \tfrac12\left(A^2 + 2AB + B^2\right) + \dots\]</span></p>
+<p>The two differ already in the terms with two factors: <span class="math-inline">\(\tfrac12(2AB) - \tfrac12(AB+BA) = \tfrac12(AB-BA) = \tfrac12[A,B]\)</span>. Two factors mean <span class="math-inline">\(\Delta t^2\)</span>. So the simple product has a one-step error of order <span class="math-inline">\(\Delta t^2\)</span> and is a first-order method.</p>
+<p>Now the symmetric product, to the same accuracy:</p>
+<p><span class="math-display">\[e^{A/2}e^{B}e^{A/2} = \left(1 + \tfrac12A + \tfrac18A^2\right)\left(1 + B + \tfrac12B^2\right)\left(1 + \tfrac12A + \tfrac18A^2\right) + \dots\]</span></p>
+<p>Collect the terms with two factors. <span class="math-inline">\(A^2\)</span> appears as <span class="math-inline">\(\tfrac18A^2\)</span> from each of the two outer brackets and as <span class="math-inline">\(\tfrac14A^2\)</span> from the product <span class="math-inline">\(\tfrac12A\cdot\tfrac12A\)</span>, together <span class="math-inline">\(\tfrac12A^2\)</span>. <span class="math-inline">\(AB\)</span> appears once, as <span class="math-inline">\(\tfrac12AB\)</span>, with the <span class="math-inline">\(A\)</span> taken from the left bracket. <span class="math-inline">\(BA\)</span> appears once, as <span class="math-inline">\(\tfrac12BA\)</span>, with the <span class="math-inline">\(A\)</span> taken from the right bracket. <span class="math-inline">\(B^2\)</span> appears as <span class="math-inline">\(\tfrac12B^2\)</span>.</p>
+<p>The sum is <span class="math-inline">\(\tfrac12(A^2 + AB + BA + B^2)\)</span>, exactly as in <span class="math-inline">\(e^{A+B}\)</span>. The commutator has cancelled, and the first disagreement comes with three factors, at the order <span class="math-inline">\(\Delta t^3\)</span>. Exercise 4 asks you to find those terms.</p>
+</details>
 <p><strong>1. Time-reversible.</strong> The product is symmetric, so applying it with <span class="math-inline">\(-\Delta t\)</span> exactly undoes a step.</p>
+<p>Here is why. A kick with a negative time undoes the kick with the positive time, because the positions, and therefore the forces, are the same in both. A drift with a negative time undoes a drift in the same way.</p>
+<p>Now follow a forward step, "half kick, drift, half kick", by a step with <span class="math-inline">\(-\Delta t\)</span>. The last half kick of the forward step meets the first half kick of the backward step, and the two cancel. That brings the two drifts next to each other, and they cancel. Then the two remaining half kicks cancel. Nothing is left, and the system is back where it started.</p>
+<p>The cancellation works only because the sequence is the same read forwards and backwards. In numbers: the worked example went from <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span> to <span class="math-inline">\(x = 0.875\)</span>, <span class="math-inline">\(v = -0.46875\)</span> in one step. A further step from there with <span class="math-inline">\(\Delta t = -0.5\)</span> returns <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span> exactly.</p>
+<p>Module 2 described the same property in another way: stop, reverse all velocities, continue with the usual positive step, and the system retraces its path. The two descriptions are equivalent. Forward Euler does not have the property. Its first step went from <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span> to <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = -0.5\)</span>, and an Euler step with <span class="math-inline">\(\Delta t = -0.5\)</span> from there lands on <span class="math-inline">\(x = 1.25\)</span>, <span class="math-inline">\(v = 0\)</span>.</p>
 <p><strong>2. Symplectic.</strong> A drift is the exact flow of the Hamiltonian <span class="math-inline">\(K\)</span> alone, and a kick is the exact flow of <span class="math-inline">\(U\)</span> alone. Each is therefore a symplectic map, and a composition of symplectic maps is symplectic. One visible consequence: a drift changes <span class="math-inline">\(\mathbf r\)</span> by a function of <span class="math-inline">\(\mathbf v\)</span> only, and a kick changes <span class="math-inline">\(\mathbf v\)</span> by a function of <span class="math-inline">\(\mathbf r\)</span> only, so each is a shear in phase space with Jacobian determinant exactly 1, and the numerical map preserves phase-space volume exactly, as the true dynamics does (Liouville's theorem). Symplectic is the stronger property: every symplectic map preserves volume, but not every volume-preserving map is symplectic.</p>
+<p>The words of this paragraph, one at a time.</p>
+<p>A <strong>map</strong> is a rule that takes each point of phase space to another point. One step of an integrator is a map: a state goes in and a state comes out. The <strong>flow</strong> of a Hamiltonian over a time <span class="math-inline">\(\Delta t\)</span> is the map that takes every state to the state it reaches after that time under Hamilton's equations (Module 2). The true motion is the flow of the full Hamiltonian <span class="math-inline">\(H = K + U\)</span>, where <span class="math-inline">\(K\)</span> is the kinetic and <span class="math-inline">\(U\)</span> the potential energy.</p>
+<p><em>The exact flows of <span class="math-inline">\(K\)</span> alone and of <span class="math-inline">\(U\)</span> alone.</em> Imagine a system whose energy is only kinetic. With no forces, Hamilton's equations make every atom fly in a straight line, and after a time <span class="math-inline">\(\Delta t\)</span> its position is <span class="math-inline">\(\mathbf r_i + \mathbf v_i\Delta t\)</span>, exactly: the drift. Now imagine a system whose energy is only the potential energy. Its positions do not change, and each momentum changes by <span class="math-inline">\(\mathbf F_i\Delta t\)</span>, exactly: the kick. Neither system exists in nature, but each piece of the integrator is a true Hamiltonian motion with no approximation in it.</p>
+<p><strong>Symplectic</strong> (Module 2) is the name for maps that keep the special structure which Hamilton's equations give to phase space. Every flow of a Hamiltonian is symplectic. Applying one symplectic map after another (a <em>composition</em>) gives a symplectic map again. So "half kick, drift, half kick" is symplectic, for any time step and any force field.</p>
+<div class="box maths">
+<p><strong>Maths you need here: a linear map, its matrix and its determinant.</strong> One step of an integrator takes a state <span class="math-inline">\((x, v)\)</span> to a new state <span class="math-inline">\((x', v')\)</span>. The map is <strong>linear</strong> when the new values are sums of multiples of the old ones:</p>
+<p><span class="math-display">\[x' = M_{11}\,x + M_{12}\,v,\qquad v' = M_{21}\,x + M_{22}\,v .\]</span></p>
+<p>The four numbers are collected in a table, the <strong>matrix</strong> of the map, and the two equations are written in one line as</p>
+<p><span class="math-display">\[\begin{pmatrix}x'\\ v'\end{pmatrix} = \begin{pmatrix} M_{11} &amp; M_{12}\\ M_{21} &amp; M_{22}\end{pmatrix}\begin{pmatrix}x\\ v\end{pmatrix}.\]</span></p>
+<p>The first row of the matrix gives <span class="math-inline">\(x'\)</span> and the second row gives <span class="math-inline">\(v'\)</span>. The <strong>determinant</strong> of the matrix is the number <span class="math-inline">\(M_{11}M_{22} - M_{12}M_{21}\)</span>. Its meaning is geometric: the map multiplies every area in the <span class="math-inline">\((x, v)\)</span> plane by this number. A determinant of 1 means that areas are kept. Example: a drift is <span class="math-inline">\(x' = x + v\,\Delta t\)</span>, <span class="math-inline">\(v' = v\)</span>, so the matrix has the entries 1, <span class="math-inline">\(\Delta t\)</span>, 0, 1 and the determinant is <span class="math-inline">\(1\times1 - \Delta t\times0 = 1\)</span>.</p>
+<p>For a map that is not linear, the same role is played by the matrix of the four partial derivatives <span class="math-inline">\(\partial x'/\partial x\)</span>, <span class="math-inline">\(\partial x'/\partial v\)</span>, <span class="math-inline">\(\partial v'/\partial x\)</span> and <span class="math-inline">\(\partial v'/\partial v\)</span>, called the <strong>Jacobian matrix</strong>. Its determinant, the Jacobian determinant, is the factor by which the map multiplies a small area around a given point. More in the <a href="maths.html#matrices">toolbox</a>.</p>
+</div>
+<p><em>Shear and volume.</em> The part of the symplectic property that can be pictured is the conservation of volume. For one particle on a line, phase space is the <span class="math-inline">\((x, v)\)</span> plane. A drift moves every point sideways by <span class="math-inline">\(v\,\Delta t\)</span>, so points higher up move further. A square of starting states becomes a slanted parallelogram with the same base and the same height, and so with the same area, like a deck of cards pushed sideways. Such a map is called a <strong>shear</strong>.</p>
+<p>A kick is a shear in the other direction. It moves every point up or down by an amount that depends on <span class="math-inline">\(x\)</span> only. In the language of the box, the Jacobian matrix of a drift has the entries 1, <span class="math-inline">\(\Delta t\)</span>, 0, 1, and that of a kick has the entries 1, 0, <span class="math-inline">\(\Delta t\,(da/dx)\)</span>, 1, where <span class="math-inline">\(da/dx\)</span> is the slope of the acceleration as a function of the position. Both determinants are exactly 1, whatever the force.</p>
+<p>Liouville's theorem (Module 2) says that the true motion keeps the volume of any cloud of states in phase space. The numerical map does the same, exactly, at every step. Forward Euler does not. For the oscillator its matrix has the entries 1, <span class="math-inline">\(\Delta t\)</span>, <span class="math-inline">\(-\omega^2\Delta t\)</span>, 1 and the determinant <span class="math-inline">\(1 + \omega^2\Delta t^2\)</span>, so every step inflates areas. This is the outward spiral again.</p>
+<p>On the last sentence of the paragraph: for one particle on a line, keeping the area and being symplectic are the same thing. With more degrees of freedom (independent coordinates: <span class="math-inline">\(3N\)</span> for <span class="math-inline">\(N\)</span> atoms), symplectic asks for more than keeping the total volume. Module 2 described the extra as the sum of the oriented areas in each coordinate-momentum plane. This extra is what leads to the third property.</p>
 <p><strong>3. A conserved shadow Hamiltonian.</strong> Each sub-step is the exact flow of a Hamiltonian (<span class="math-inline">\(K\)</span> or <span class="math-inline">\(U\)</span> alone). The Baker-Campbell-Hausdorff formula then shows that the product is the exact flow of a nearby Hamiltonian</p>
 <p><span class="math-display">\[\tilde H = H + \Delta t^2\,H_2 + \Delta t^4\,H_4+\dots\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\tilde H\)</span>: the <strong>shadow Hamiltonian</strong>, the energy function that the numerical trajectory conserves.</li>
+<li><span class="math-inline">\(H\)</span>: the true Hamiltonian, <span class="math-inline">\(K + U\)</span>, the energy you asked the program to conserve.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(H_2\)</span>, <span class="math-inline">\(H_4\)</span>: correction functions. Like <span class="math-inline">\(H\)</span>, they are functions of the positions and velocities, with a value at every state. They are fixed by the masses and the force field and do not depend on <span class="math-inline">\(\Delta t\)</span>.</li>
+<li>The dots: further terms with <span class="math-inline">\(\Delta t^6\)</span>, <span class="math-inline">\(\Delta t^8\)</span> and so on. Only even powers appear, because the splitting is symmetric.</li>
+</ul>
+</div>
 <p>The numerical trajectory conserves <span class="math-inline">\(\tilde H\)</span>, not <span class="math-inline">\(H\)</span> (up to effects that are exponentially small for small <span class="math-inline">\(\Delta t\)</span>). Since <span class="math-inline">\(\tilde H - H = O(\Delta t^2)\)</span> and is bounded, the true energy <strong>oscillates</strong> around a constant with amplitude <span class="math-inline">\(\propto\Delta t^2\)</span> and does not drift. A non-symplectic method has no such protection.</p>
+<p>In plain words: the numerical trajectory is the exact trajectory of a slightly different system. That system has an energy of its own, <span class="math-inline">\(\tilde H\)</span>, and the numerical trajectory conserves it. The energy that the program reports is <span class="math-inline">\(H\)</span>, which is <span class="math-inline">\(\tilde H\)</span> minus <span class="math-inline">\(\Delta t^2H_2\)</span> and the smaller terms. Along the numerical trajectory <span class="math-inline">\(\tilde H\)</span> stays constant, while <span class="math-inline">\(H_2\)</span> takes different values as the atoms move, within a limited range. So the reported energy wobbles inside a band whose width is proportional to <span class="math-inline">\(\Delta t^2\)</span> (the sign <span class="math-inline">\(\propto\)</span> means "proportional to"), and the band does not move.</p>
+<p>The <strong>Baker-Campbell-Hausdorff formula</strong> comes from the mathematics of operators. It answers this question: if <span class="math-inline">\(e^Ae^B\)</span> is not <span class="math-inline">\(e^{A+B}\)</span>, which single exponent <span class="math-inline">\(C\)</span> gives <span class="math-inline">\(e^Ae^B = e^C\)</span>? The answer is a series, <span class="math-inline">\(C = A + B + \tfrac12[A,B] + \dots\)</span>, in which every further term is built from commutators. Applied to the three factors of the splitting, it says that one velocity Verlet step is the exact propagator of a modified Liouville operator. Because the pieces are flows of Hamiltonians, the modified operator belongs to a Hamiltonian as well, and that Hamiltonian is <span class="math-inline">\(\tilde H\)</span>.</p>
+<p>The remark in brackets is small print. For a general system the series does not have to add up to a finite function. Cut off at a suitable term, it gives a quantity that is conserved up to a remainder which shrinks faster than any power of <span class="math-inline">\(\Delta t\)</span> as the step is reduced. For small steps that remainder is far smaller than the <span class="math-inline">\(\Delta t^2\)</span> wobble.</p>
+<p>"No such protection" is what forward Euler showed. Nothing ties its energy to a conserved quantity, and its errors, all of the same sign, add up step after step.</p>
 <div class="box key">
 <p><strong>Exact result for a harmonic oscillator.</strong> For <span class="math-inline">\(H = \tfrac12 v^2 + \tfrac12\omega^2x^2\)</span>, one velocity Verlet step is the linear map</p>
 <p><span class="math-display">\[\begin{pmatrix}x'\\ v'\end{pmatrix} = \begin{pmatrix} 1-\tfrac12\omega^2\Delta t^2 &amp; \Delta t\\ -\omega^2\Delta t\,(1-\tfrac14\omega^2\Delta t^2) &amp; 1-\tfrac12\omega^2\Delta t^2\end{pmatrix}\begin{pmatrix}x\\ v\end{pmatrix}.\]</span></p>
@@ -95,14 +637,96 @@
 <p><span class="math-display">\[\tilde H = \tfrac12 v^2 + \tfrac12\omega^2\left(1-\tfrac14\omega^2\Delta t^2\right)x^2 .\]</span></p>
 <p>The shadow Hamiltonian is an oscillator with a slightly softer spring. It only makes sense while the bracket is positive, which gives the stability limit below.</p>
 </div>
+<p>The symbols in the box: <span class="math-inline">\(x\)</span> and <span class="math-inline">\(v\)</span> are the position and the velocity before the step, <span class="math-inline">\(x'\)</span> and <span class="math-inline">\(v'\)</span> those after it. The mass is 1, <span class="math-inline">\(\omega\)</span> is the angular frequency of the oscillator and <span class="math-inline">\(\Delta t\)</span> the time step. The matrix notation is explained in the maths box above.</p>
+<p><strong>Where the matrix comes from.</strong> Carry out the three lines of velocity Verlet with the acceleration <span class="math-inline">\(a = -\omega^2x\)</span>:</p>
+<p><span class="math-display">\[\begin{aligned}
+v_{1/2} &amp;= v - \tfrac12\omega^2\Delta t\,x\\
+x' &amp;= x + \Delta t\,v_{1/2} = \left(1-\tfrac12\omega^2\Delta t^2\right)x + \Delta t\,v\\
+v' &amp;= v_{1/2} - \tfrac12\omega^2\Delta t\,x' = -\omega^2\Delta t\left(1-\tfrac14\omega^2\Delta t^2\right)x + \left(1-\tfrac12\omega^2\Delta t^2\right)v
+\end{aligned}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x\)</span>, <span class="math-inline">\(v\)</span>: position and velocity before the step.</li>
+<li><span class="math-inline">\(v_{1/2}\)</span>: the velocity at the half step, after the first half kick.</li>
+<li><span class="math-inline">\(x'\)</span>, <span class="math-inline">\(v'\)</span>: position and velocity after the step.</li>
+<li><span class="math-inline">\(\omega\)</span>: the angular frequency of the oscillator.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+</ul>
+</div>
+<p>The first line is the half kick. The second is the drift, with the first line inserted. The third is the second half kick with the new position: insert <span class="math-inline">\(v_{1/2}\)</span> and <span class="math-inline">\(x'\)</span>, and collect the terms with <span class="math-inline">\(x\)</span> and the terms with <span class="math-inline">\(v\)</span>. The numbers in front of <span class="math-inline">\(x\)</span> and <span class="math-inline">\(v\)</span> in the last two lines are the four entries of the matrix.</p>
+<p><strong>In numbers.</strong> With <span class="math-inline">\(\omega = 1\)</span> and <span class="math-inline">\(\Delta t = 0.5\)</span> the matrix has the entries 0.875, 0.5, <span class="math-inline">\(-0.46875\)</span>, 0.875. Applied to the state <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span> it gives <span class="math-inline">\(x' = 0.875\)</span>, <span class="math-inline">\(v' = -0.46875\)</span>, the first step of the worked example. Its determinant is <span class="math-inline">\(0.875\times0.875 - 0.5\times(-0.46875) = 0.765625 + 0.234375 = 1\)</span>.</p>
+<p>The shadow Hamiltonian is <span class="math-inline">\(\tilde H = \tfrac12v^2 + \tfrac12\times0.9375\,x^2\)</span>. At the start it is <span class="math-inline">\(0.46875\)</span>. After step 1 it is <span class="math-inline">\(\tfrac12\times0.46875^2 + \tfrac12\times0.9375\times0.875^2 = 0.10986 + 0.35889 = 0.46875\)</span>. After step 2 it is <span class="math-inline">\(0.33646 + 0.13229 = 0.46875\)</span>. It does not change, while the true energy in the table of the worked example does.</p>
+<p><strong>The softer spring and the limit.</strong> The spring constant of the oscillator is <span class="math-inline">\(\omega^2\)</span> (for a mass of 1). In <span class="math-inline">\(\tilde H\)</span> it is multiplied by the bracket <span class="math-inline">\(1-\tfrac14\omega^2\Delta t^2\)</span>, which is smaller than 1: a softer spring. The true energy and the shadow energy differ by <span class="math-inline">\(\tfrac18\omega^4\Delta t^2x^2\)</span>. This is the wobble of the previous paragraphs, proportional to <span class="math-inline">\(\Delta t^2\)</span>, largest when <span class="math-inline">\(x\)</span> is largest and zero when <span class="math-inline">\(x = 0\)</span>. In the worked example it is <span class="math-inline">\(0.03125\,x^2\)</span>, which is why the energy moved between 0.46875 and 0.5.</p>
+<p>When <span class="math-inline">\(\omega\Delta t\)</span> is larger than 2 the bracket is negative. Then <span class="math-inline">\(\tilde H\)</span> is <span class="math-inline">\(\tfrac12v^2\)</span> <em>minus</em> a multiple of <span class="math-inline">\(x^2\)</span>, and conserving it no longer keeps the motion in bounds: <span class="math-inline">\(x\)</span> and <span class="math-inline">\(v\)</span> can both grow without limit while their combination stays constant. That is the instability of the next section.</p>
 <div class="widget" data-widget="integrators"></div>
 
+<p>The demo runs forward Euler, velocity Verlet and the fourth-order Runge-Kutta method (explained in a later section) on this oscillator, started at <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span>, with a slider for the time step. Its default step is 0.5, the step of the worked example. With that step the Verlet energy stays between 0.9375 and 1 times the exact energy, however long the run, and the Euler energy grows by the factor 1.25 at every step. Move the slider beyond 2 to see velocity Verlet fail as well.</p>
 <h2 id="how-large-can-the-time-step-be">How large can the time step be?</h2>
+<p>A longer time step means fewer force evaluations for the same simulated time, so you want the longest step that works. There is a hard upper limit. Above it the positions grow without bound within a few steps. For a harmonic oscillator the limit can be computed exactly, and this section does so.</p>
+<p>The picture behind the limit is this. The integrator sees the motion only at separate instants, one per step. To follow an oscillation it needs several of these instants in every period, as a film needs several frames per turn of a wheel to show which way the wheel turns.</p>
+<p>The calculation uses the Verlet rule for the oscillator. Write <span class="math-inline">\(x_n\)</span> for the position after <span class="math-inline">\(n\)</span> steps. With the acceleration <span class="math-inline">\(a = -\omega^2x_n\)</span>, the rule <span class="math-inline">\(x_{n+1} = 2x_n - x_{n-1} + a\,\Delta t^2\)</span> becomes the recursion quoted below. The method is to try a solution that oscillates steadily, and to ask when such a solution exists. A steady oscillation is easiest to write with a complex exponential.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the complex exponential.</strong> The imaginary unit <span class="math-inline">\(i\)</span> is a number defined by <span class="math-inline">\(i^2 = -1\)</span>. Euler's formula connects the exponential function with the sine and the cosine:</p>
+<p><span class="math-display">\[e^{i\theta} = \cos\theta + i\sin\theta .\]</span></p>
+<p>For a real angle <span class="math-inline">\(\theta\)</span> this is a point on a circle of radius 1, at the angle <span class="math-inline">\(\theta\)</span>. Raising it to the power <span class="math-inline">\(n\)</span> turns it further round the circle, <span class="math-inline">\(e^{i\theta n} = \cos n\theta + i\sin n\theta\)</span>, and it never leaves the circle. So <span class="math-inline">\(x_n = e^{i\theta n}\)</span> is a compact way to write "an oscillation that advances by the angle <span class="math-inline">\(\theta\)</span> at every step and neither grows nor dies out". Two facts are used below. Multiplying powers adds the exponents, <span class="math-inline">\(e^{i\theta(n+1)} = e^{i\theta}e^{i\theta n}\)</span>. And</p>
+<p><span class="math-display">\[e^{i\theta} + e^{-i\theta} = 2\cos\theta ,\]</span></p>
+<p>because the two sine terms cancel. The actual position of the oscillator is the real part, <span class="math-inline">\(\cos n\theta\)</span>. The complex form is used because it makes the algebra shorter. More in the <a href="maths.html#complex">toolbox</a>.</p>
+</div>
 <p>Insert <span class="math-inline">\(x_n = e^{i\theta n}\)</span> into the Verlet recursion for the harmonic oscillator, <span class="math-inline">\(x_{n+1} - 2x_n + x_{n-1} = -\omega^2\Delta t^2 x_n\)</span>:</p>
 <p><span class="math-display">\[\cos\theta = 1 - \tfrac12\omega^2\Delta t^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(x_n\)</span>: the position of the oscillator after <span class="math-inline">\(n\)</span> steps. <span class="math-inline">\(x_{n+1}\)</span> and <span class="math-inline">\(x_{n-1}\)</span> are the positions one step later and one step earlier.</li>
+<li><span class="math-inline">\(\theta\)</span>: the angle, in radians, by which the numerical oscillation advances in one step. A full oscillation is <span class="math-inline">\(2\pi\)</span>.</li>
+<li><span class="math-inline">\(i\)</span>: the imaginary unit (here it is not the label of an atom).</li>
+<li><span class="math-inline">\(\omega\)</span>: the true angular frequency of the oscillator.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(\cos\)</span>: the cosine function.</li>
+</ul>
+</div>
+<p>The steps. Inserting the trial solution gives <span class="math-inline">\(e^{i\theta(n+1)} - 2e^{i\theta n} + e^{i\theta(n-1)} = -\omega^2\Delta t^2e^{i\theta n}\)</span>. Divide both sides by <span class="math-inline">\(e^{i\theta n}\)</span>, which leaves <span class="math-inline">\(e^{i\theta} - 2 + e^{-i\theta} = -\omega^2\Delta t^2\)</span>. By the second formula of the box the left side is <span class="math-inline">\(2\cos\theta - 2\)</span>. Divide by 2 and move the 1 to the right side.</p>
+<p>Read the result like this. The product <span class="math-inline">\(\omega\Delta t\)</span> is the angle through which the <em>true</em> oscillation turns during one step, and <span class="math-inline">\(\theta\)</span> is the angle through which the <em>numerical</em> one turns. For a small angle <span class="math-inline">\(\cos\theta\approx1-\tfrac12\theta^2\)</span> (the Taylor expansion of the cosine), so for a small step the formula says <span class="math-inline">\(\theta\approx\omega\Delta t\)</span>: the numerical oscillation keeps pace with the true one.</p>
 <p>A real <span class="math-inline">\(\theta\)</span> (a bounded oscillation) exists only if</p>
 <p><span class="math-display">\[\boxed{\omega\,\Delta t &lt; 2\qquad\Longleftrightarrow\qquad \Delta t &lt; \frac{T_{period}}{\pi}}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\omega\,\Delta t\)</span>: the angle, in radians, through which the true oscillation turns in one time step. It has no unit.</li>
+<li><span class="math-inline">\(\Longleftrightarrow\)</span>: "is the same statement as".</li>
+<li><span class="math-inline">\(T_{period}\)</span>: the period of the oscillation, <span class="math-inline">\(2\pi/\omega\)</span>.</li>
+<li><span class="math-inline">\(\pi\)</span>: the number 3.14159...</li>
+<li>The frame: the result to remember.</li>
+</ul>
+</div>
+<p>Where the condition comes from: the cosine of a real angle lies between <span class="math-inline">\(-1\)</span> and 1. The right side of the formula for <span class="math-inline">\(\cos\theta\)</span> is never above 1, so the only danger is that it falls below <span class="math-inline">\(-1\)</span>. The condition <span class="math-inline">\(1 - \tfrac12\omega^2\Delta t^2 &gt; -1\)</span> is <span class="math-inline">\(\omega^2\Delta t^2 &lt; 4\)</span>, which is <span class="math-inline">\(\omega\Delta t &lt; 2\)</span>. For the second form insert <span class="math-inline">\(\omega = 2\pi/T_{period}\)</span> and divide by <span class="math-inline">\(2\pi\)</span>, which gives <span class="math-inline">\(\Delta t/T_{period} &lt; 1/\pi\)</span>.</p>
+<p>In words: the method needs more than <span class="math-inline">\(\pi\approx3.14\)</span> steps per period, or it fails. (Exactly at <span class="math-inline">\(\omega\Delta t = 2\)</span> the amplitude can still grow, in proportion to the number of steps, so the limit itself is excluded.)</p>
 <p>Beyond this the solution grows exponentially. Below it, the numerical frequency is <span class="math-inline">\(\omega_{num} = \theta/\Delta t \approx \omega\,(1 + \omega^2\Delta t^2/24)\)</span>: slightly too fast.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\omega_{num}\)</span>: the angular frequency of the numerical oscillation. The oscillation advances by the angle <span class="math-inline">\(\theta\)</span> in the time <span class="math-inline">\(\Delta t\)</span>, so its frequency is <span class="math-inline">\(\theta/\Delta t\)</span>.</li>
+<li><span class="math-inline">\(\omega\)</span>: the true angular frequency.</li>
+<li><span class="math-inline">\(\approx\)</span>: "is approximately". The formula keeps the first correction and drops smaller ones.</li>
+</ul>
+</div>
+<p><em>Beyond the limit, in numbers.</em> Take <span class="math-inline">\(\omega\Delta t = 2.1\)</span>, only 5 % above the limit, and start at <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span>. The positions after successive steps are <span class="math-inline">\(-1.2\)</span>, <span class="math-inline">\(1.9\)</span>, <span class="math-inline">\(-3.4\)</span>, <span class="math-inline">\(6.3\)</span>, <span class="math-inline">\(-11.7\)</span>, <span class="math-inline">\(21.9\)</span>. The sign alternates and the size grows by a factor that settles at 1.88 per step. After ten steps the position is 272. When no real <span class="math-inline">\(\theta\)</span> exists, the solution has the form of a number larger than 1 in size raised to the power <span class="math-inline">\(n\)</span>, and that is exponential growth.</p>
+<p><em>Below the limit, in numbers.</em> With <span class="math-inline">\(\omega\Delta t = 0.5\)</span> the numerical frequency is <span class="math-inline">\(1.011\,\omega\)</span>, about 1 % too fast. With <span class="math-inline">\(\omega\Delta t = 0.1\)</span> it is <span class="math-inline">\(1.0004\,\omega\)</span>. A step five times shorter makes the error about 25 times smaller, as a term with <span class="math-inline">\(\Delta t^2\)</span> should.</p>
+<p>One possible confusion: the box in the previous section said that the conserved quantity <span class="math-inline">\(\tilde H\)</span> has a <em>softer</em> spring, which suggests a slower oscillation, and here the numerical oscillation is <em>faster</em>. Both statements are correct, because the function in the box is conserved by the numerical motion but does not, by itself, generate that motion. If it did, the frequency would be <span class="math-inline">\(\omega\sqrt{1-\tfrac14\omega^2\Delta t^2}\)</span>, which is too slow, and the true value is too fast.</p>
+<p>The Hamiltonian whose exact motion the numerical points follow is the function in the box multiplied by a constant slightly larger than 1. The constant is <span class="math-inline">\(1+\tfrac16\omega^2\Delta t^2\)</span> plus terms of order <span class="math-inline">\(\Delta t^4\)</span> (1.044 for <span class="math-inline">\(\omega\Delta t = 0.5\)</span>). A constant in front of a Hamiltonian changes neither the orbits nor what is conserved, and it makes the motion along the orbits faster by that factor. Multiplied out to the order <span class="math-inline">\(\Delta t^2\)</span>, the product is <span class="math-inline">\(\tfrac12\left(1+\tfrac16\omega^2\Delta t^2\right)v^2 + \tfrac12\omega^2\left(1-\tfrac1{12}\omega^2\Delta t^2\right)x^2\)</span>: a slightly softer spring together with a slightly lighter mass. The lighter mass wins, and the frequency is <span class="math-inline">\(\omega\,(1+\omega^2\Delta t^2/24)\)</span>, as found above.</p>
+<details>
+<summary>Optional: where the factor 1/24 comes from</summary>
+<p>Use the identity <span class="math-inline">\(1 - \cos\theta = 2\sin^2(\theta/2)\)</span>. The formula <span class="math-inline">\(\cos\theta = 1 - \tfrac12\omega^2\Delta t^2\)</span> becomes <span class="math-inline">\(2\sin^2(\theta/2) = \tfrac12\omega^2\Delta t^2\)</span>, that is,</p>
+<p><span class="math-display">\[\sin\frac{\theta}{2} = \frac{\omega\,\Delta t}{2} .\]</span></p>
+<p>This form shows the stability limit once more: a sine cannot be larger than 1, so <span class="math-inline">\(\omega\Delta t\)</span> cannot be larger than 2. For a small number <span class="math-inline">\(u\)</span>, the angle whose sine is <span class="math-inline">\(u\)</span> is <span class="math-inline">\(u + \tfrac16u^3 + \dots\)</span> (a Taylor expansion). With <span class="math-inline">\(u = \omega\Delta t/2\)</span> this gives <span class="math-inline">\(\theta/2\approx\omega\Delta t/2 + (\omega\Delta t)^3/48\)</span>, and so <span class="math-inline">\(\theta\approx\omega\Delta t\,[1 + (\omega\Delta t)^2/24]\)</span>. Dividing by <span class="math-inline">\(\Delta t\)</span> gives the numerical frequency.</p>
+</details>
+<h3 id="why-the-fastest-vibration-decides">Why the fastest vibration decides</h3>
+<p>All atoms are advanced with the same time step. A molecule near an energy minimum moves as a sum of normal modes, each one an independent harmonic oscillator with its own frequency (Module 2). The condition <span class="math-inline">\(\omega\Delta t &lt; 2\)</span> must hold for every one of them, and the mode with the highest frequency breaks it first. So the fastest vibration in the system sets the limit for everything.</p>
+<p>If the condition fails for a single mode, the amplitude of that mode grows at every step. The bond in question stretches further and further, the forces become huge, and the energy spreads to the neighbouring atoms. This is what is meant when a simulation is said to "blow up".</p>
+<p>The motions that interest you (a loop that opens, a ligand that leaves) take nanoseconds or longer and could be followed with far longer steps. They do not count. The price is set by the fastest motion present, whether you care about it or not. This is why so much effort goes into removing or slowing the fastest motions, as the table below shows.</p>
+<p>The fastest motions in a biomolecule are the stretching vibrations of bonds to hydrogen. Hydrogen is the lightest atom, and Module 2 showed that a small reduced mass gives a high frequency. For the C-H stretch computed there, <span class="math-inline">\(\omega\approx551\)</span> ps<span class="math-inline">\(^{-1}\)</span> and the period is 11.4 fs, so the stability limit is <span class="math-inline">\(2/\omega = 3.6\)</span> fs.</p>
+<h3 id="from-the-limit-to-the-time-steps-used-in-practice">From the limit to the time steps used in practice</h3>
+<p>The limit says where the method breaks down. The time steps in actual use are several times shorter, and the table below lists them. Its first row gives a vibration frequency in the unit used by spectroscopists.</p>
+<div class="box physics">
+<p><strong>Physics you need here: wavenumbers.</strong> Spectroscopists give the frequency of a vibration as a <strong>wavenumber</strong> <span class="math-inline">\(\tilde\nu\)</span> in cm<span class="math-inline">\(^{-1}\)</span>: the number of wavelengths of the matching infrared light that fit into one centimetre. The frequency is the speed of light times the wavenumber, <span class="math-inline">\(\nu = c\tilde\nu\)</span>, and the period is <span class="math-inline">\(1/\nu\)</span>. With <span class="math-inline">\(c = 2.998\times10^{10}\)</span> cm/s, a vibration at 3,000 cm<span class="math-inline">\(^{-1}\)</span> has the period <span class="math-inline">\(1/(2.998\times10^{10}\times3000)\)</span> s <span class="math-inline">\(= 1.11\times10^{-14}\)</span> s, about 11 fs. A higher wavenumber means a faster vibration. More in the <a href="physics.html#waves">primer</a>.</p>
+</div>
 <p>Stability is not accuracy. Real potentials are anharmonic, and energy must also flow correctly between modes, so in practice one uses 10 to 20 steps per period of the fastest motion:</p>
 <table>
 <thead>
@@ -135,40 +759,164 @@
 </tr>
 </tbody>
 </table>
+<p><em>Anharmonic</em> means "not exactly a parabola". The limit above was derived for a perfect spring, and real bonds, and still more the collisions between atoms, are not perfect springs. <em>Energy must flow between modes</em>: in a real molecule the vibrations exchange energy with each other, and the simulation has to reproduce this exchange to distribute the energy correctly.</p>
+<p>Both need a margin below the hard limit. Stability alone asks for a little more than 3 steps per period. The 10 to 20 steps used in practice are a margin of a factor of about 3 to 6.</p>
+<p>How to read the table. The second column is the period of the fastest motion that is still present, and the third is the time step in common use. Dividing one by the other gives the number of steps per period: 11 to 22 in the first row, about 10 in the second, 7.5 to 10 in the third. The third row sits at the lower end of the "10 to 20" quoted above the table, or slightly below it. The range is a rule of thumb and not a strict bound.</p>
+<ul>
+<li><em>First row.</em> All bonds are free to vibrate. X stands for any heavy atom, such as C, N or O.</li>
+<li><em>Second row.</em> The lengths of the bonds to hydrogen are held fixed by a constraint algorithm (Module 9). A bond of fixed length cannot vibrate, so this motion is gone, and the next fastest one sets the step.</li>
+<li><em>Third row.</em> Hydrogen mass repartitioning makes each hydrogen heavier and the atom it is bonded to lighter by the same amount, which slows the remaining motions of the hydrogens. Virtual-site hydrogens are not integrated at all: their positions are rebuilt at every step from the neighbouring heavy atoms. Both are explained in Module 9.</li>
+<li><em>Fourth row.</em> In a coarse-grained model such as Martini (Module 15) one bead stands for several atoms. The bonds between hydrogens and heavy atoms do not exist in the model, and the fastest motions that remain are much slower.</li>
+</ul>
 <p><strong>How to test your own choice.</strong> Run NVE (no thermostat) for a few hundred picoseconds and measure the drift of the total energy. Express it per atom, in units of <span class="math-inline">\(k_BT\)</span> per nanosecond, and compare it with what the developers of your MD program consider acceptable: the designers of the GROMACS pair-list scheme, for example, accept about 0.1 <span class="math-inline">\(k_BT\)</span> per nanosecond per atom (<a href="https://doi.org/10.1016/j.cpc.2013.06.003" class="cite" target="_blank" rel="noopener" title="Páll S; Hess B (2013). A flexible algorithm for calculating pair interactions on SIMD architectures. Computer Physics Communications">Páll and Hess 2013</a>), which is harmless once a thermostat is on. The fluctuation of the energy should fall by a factor of four when you halve the time step. If it does not, something other than the integrator (a cutoff discontinuity, loose constraint tolerance, neighbour-list buffer) is the source.</p>
+<h3 id="energy-drift-and-energy-fluctuation">Energy drift and energy fluctuation</h3>
+<p>The test in the paragraph above rests on the difference between two things that you can see in a plot of the total energy against time.</p>
+<ul>
+<li>A <strong>fluctuation</strong> is a rapid wobble of the energy around a constant level. Velocity Verlet must show one: the numerical trajectory conserves the shadow Hamiltonian <span class="math-inline">\(\tilde H\)</span>, and the true energy differs from it by an amount of order <span class="math-inline">\(\Delta t^2\)</span> that changes as the atoms move. The wobble does not grow with the length of the run.</li>
+<li>A <strong>drift</strong> is a slow, steady change of the level itself. It adds up in proportion to the simulated time. A run with a drift slowly heats up or cools down, and it no longer samples the system at one energy.</li>
+</ul>
+<p>To separate the two, fit a straight line to the total energy as a function of time. The slope of the line is the drift. The standard deviation of what is left after subtracting the line is the fluctuation.</p>
+<p><em>NVE</em> (Module 3) is a run with a fixed number of atoms, volume and energy, which means no thermostat and no barostat. The test has to be run this way, because a thermostat adds and removes energy on purpose and would hide a drift. This is also why a small drift is "harmless once a thermostat is on": the thermostat takes the surplus out as fast as it appears.</p>
+<p><em>The units.</em> The total energy grows with the size of the system, so the drift is divided by the number of atoms. It is compared with <span class="math-inline">\(k_BT\)</span>, the natural scale of thermal energy (Module 3), where <span class="math-inline">\(k_B\)</span> is the Boltzmann constant and <span class="math-inline">\(T\)</span> the temperature: 2.494 kJ/mol at 300 K. An example with invented numbers: in a system of 30,000 atoms the total energy rises by 50 kJ/mol in 500 ps. Per atom and per nanosecond this is <span class="math-inline">\(50/(30{,}000\times0.5) = 0.0033\)</span> kJ/mol, or <span class="math-inline">\(0.0033/2.494 = 0.0013\)</span> in units of <span class="math-inline">\(k_BT\)</span>, far below 0.1.</p>
+<p><em>The factor of four.</em> The fluctuation that comes from the integrator is proportional to <span class="math-inline">\(\Delta t^2\)</span>, so half the step gives a quarter of the fluctuation. The oscillator shows it. Over 30 periods the standard deviation of its energy is 0.01104 with <span class="math-inline">\(\Delta t = 0.5\)</span>, 0.00276 with <span class="math-inline">\(\Delta t = 0.25\)</span> and 0.00069 with <span class="math-inline">\(\Delta t = 0.125\)</span>: a factor of 4.0 each time.</p>
+<p>If your system does not show this factor, part of the energy error has another origin, one that does not follow the <span class="math-inline">\(\Delta t^2\)</span> rule. The paragraph names three:</p>
+<ul>
+<li>A <em>cutoff discontinuity</em>. Pair interactions are switched off beyond a cutoff distance (Module 7). If the energy jumps there, every pair that crosses the cutoff changes the total energy a little.</li>
+<li>A <em>loose constraint tolerance</em>. Constraint algorithms (Module 9) fix the bond lengths only up to a chosen accuracy.</li>
+<li>A <em>neighbour-list buffer</em> that is too small. The list of nearby pairs is rebuilt only every few steps (Module 7), and pairs that come within the cutoff between two rebuilds are missed.</li>
+</ul>
+<h3 id="round-off-error">Round-off error</h3>
+<p>There is a second kind of error, which has nothing to do with the size of the time step. A computer stores a number with a limited count of significant digits: about 7 in <strong>single precision</strong> and about 16 in <strong>double precision</strong>. Whatever does not fit is rounded away. In single precision <span class="math-inline">\(1 + 10^{-8}\)</span> is stored as exactly 1, so that this addition has no effect at all.</p>
+<p>This matters for integrators because every step adds a small change to a large number. Take an invented case of realistic size: an atom at the coordinate 5 nm, with an acceleration of 83 nm ps<span class="math-inline">\(^{-2}\)</span> (a force of 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> on a mass of 12 u) and a step of 0.002 ps. The Verlet term <span class="math-inline">\(a\,\Delta t^2\)</span> is <span class="math-inline">\(3.3\times10^{-4}\)</span> nm. In single precision, neighbouring numbers near 5 are <span class="math-inline">\(4.8\times10^{-7}\)</span> nm apart, so this term is added with only about three correct digits.</p>
+<p>The Verlet rule has a second problem of this kind. Its velocity is hidden in the difference of two positions that are almost equal, and the difference of two nearly equal numbers has few correct digits left. Velocity Verlet and leap-frog store the velocity in a variable of its own, with its full set of digits.</p>
+<p>Round-off errors are tiny, but they are made at every step and in every coordinate. Three consequences:</p>
+<ul>
+<li>They break the exact reversibility of the algorithm. A real program does not retrace its path when the velocities are reversed (Module 2).</li>
+<li>Together with chaos they make trajectories irreproducible in detail from one machine to another (Module 2).</li>
+<li>They can produce a slow energy drift that does not depend on <span class="math-inline">\(\Delta t\)</span> in the way the integrator's error does. A shorter step does not help, because more steps mean more rounding. The remedy is more digits: double precision throughout, or <strong>mixed precision</strong>, which uses double precision for the few operations that are most sensitive to rounding and single precision for the rest.</li>
+</ul>
 <h2 id="why-not-a-higher-order-method">Why not a higher-order method?</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="zLnIWwvfuo4" href="https://www.youtube.com/watch?v=zLnIWwvfuo4" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">RK4 and Symplectic Methods of Integration</span><span class="sv-m">28 min · Steve Spicklemire</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="zLnIWwvfuo4" href="https://www.youtube.com/watch?v=zLnIWwvfuo4" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">RK4 and Symplectic Methods of Integration</span><span class="sv-m">28 min · Steve Spicklemire</span></a></div>
 
+<p>Velocity Verlet is a second-order method: its error at a fixed time falls by a factor of 4 when the step is halved. Methods of fourth and higher order exist, whose error falls by a factor of 16 or more. It seems natural to use one of them and to take longer steps. This section explains why that does not pay in MD. The candidates are these.</p>
 <ul>
 <li><strong>Runge-Kutta 4</strong> needs four force evaluations per step. For the same cost you could take four Verlet steps. It is not symplectic: the energy drifts monotonically, as the demo shows.</li>
 <li><strong>Gear predictor-corrector</strong> methods use one force evaluation and are more accurate than Verlet at small <span class="math-inline">\(\Delta t\)</span>, but they are neither reversible nor symplectic and drift at the step sizes used in practice. They were common in the 1970s and 1980s and have disappeared from biomolecular codes.</li>
 <li><strong>Higher-order symplectic</strong> methods (Forest-Ruth, Yoshida) exist but need several force evaluations and do not allow a larger step for stiff molecular systems.</li>
 </ul>
 <p>The stiffness of bond vibrations limits <span class="math-inline">\(\Delta t\)</span> by stability, not by accuracy, so a higher order buys nothing.</p>
+<p>What the names mean:</p>
+<ul>
+<li>A <strong>Runge-Kutta</strong> method computes the forces at several trial points inside one step and combines the results. The classical fourth-order version, RK4, uses four trial points, and so four force evaluations.</li>
+<li>A <strong>predictor-corrector</strong> method stores the acceleration and some higher time derivatives. It predicts the new positions with a Taylor expansion, computes the forces there, and uses the difference between the predicted and the computed acceleration to correct the prediction.</li>
+<li><strong>Forest-Ruth</strong> and <strong>Yoshida</strong> are the names of splitting methods that chain more kicks and drifts, of specially chosen lengths, inside one step, so that more error terms cancel.</li>
+</ul>
+<p><em>Monotonically</em> means always in the same direction. The energy only goes down, or only up, and the change adds up over the run. On the oscillator with <span class="math-inline">\(\Delta t = 0.5\)</span>, each RK4 step multiplies the energy by 0.99979. That looks harmless. After 30 periods (377 steps) the energy has fallen to 0.924 of its starting value, and it keeps falling.</p>
+<p>Velocity Verlet with the same step is less accurate in each single step, and its energy stays between 0.9375 and 1 of the starting value for as long as you run.</p>
+<p>A system is called <strong>stiff</strong> when it contains motions on very different time scales and the fastest one dictates the step, although the interest is in the slow ones. A protein is stiff in this sense. Its bonds vibrate in about 10 fs, and the motions of interest take nanoseconds or more.</p>
+<p>The sentence after the list carries the argument. The step is capped at a fraction of the fastest period by <em>stability</em>, the hard limit of the previous section. A method of higher order improves the <em>accuracy</em> at a given step, and accuracy was not what limited the step.</p>
 <h2 id="multiple-time-steps">Multiple time steps</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="CRbC_-iGnZM" href="https://www.youtube.com/watch?v=CRbC_-iGnZM" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Multi time step algorithms with the Liouville formalism for molecular dynamics</span><span class="sv-m">14 min · The Computational Chemist</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="CRbC_-iGnZM" href="https://www.youtube.com/watch?v=CRbC_-iGnZM" target="_blank" rel="noopener" title="Molecular simulations | Molecular dynamics MD and Monte carlo MC"><span class="sv-play">&#9654;</span><span class="sv-t">Multi time step algorithms with the Liouville formalism for molecular dynamics</span><span class="sv-m">14 min · The Computational Chemist</span></a></div>
 
+<p>The time step is short because of the bonded vibrations. The force evaluation is expensive because of the many non-bonded pairs and the long-range electrostatics. The two facts concern different forces. Multiple-time-step integration uses this: it recomputes the fast-changing, cheap forces at every short step, and the slowly changing, expensive forces less often.</p>
+<p>Two terms in the next paragraph. <em>Bonded forces</em> come from bonds, angles and torsions (Module 5). <em>Reciprocal-space electrostatics</em> is the smooth, long-range part of the electrostatic forces, which the particle-mesh Ewald method (PME) computes on a grid (Module 7).</p>
 <p>Forces differ in how fast they change. Bonded forces change on the 10 fs scale, short-range non-bonded forces on the 100 fs scale, and the long-range (reciprocal-space) electrostatics more slowly still. Split <span class="math-inline">\(iL_p = iL_p^{fast} + iL_p^{slow}\)</span> and nest the Trotter splitting (r-RESPA):</p>
 <p><span class="math-display">\[e^{iL\Delta t} \approx e^{iL_p^{slow}\Delta t/2}\Big[e^{iL_p^{fast}\delta t/2}\,e^{iL_r\delta t}\,e^{iL_p^{fast}\delta t/2}\Big]^{n}e^{iL_p^{slow}\Delta t/2},\qquad \delta t = \Delta t/n .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(e^{iL\Delta t}\)</span>: the exact propagator for one outer time step, as in the earlier section.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the <strong>outer</strong> (long) time step, at which the slow forces are applied.</li>
+<li><span class="math-inline">\(\delta t\)</span> (small Greek delta): the <strong>inner</strong> (short) time step, equal to <span class="math-inline">\(\Delta t/n\)</span>.</li>
+<li><span class="math-inline">\(n\)</span>: the number of inner steps in one outer step, a whole number such as 2 or 4. Here <span class="math-inline">\(n\)</span> is not a step counter.</li>
+<li><span class="math-inline">\(iL_p^{fast}\)</span>: the kick operator that contains only the fast forces, for example the bonded ones.</li>
+<li><span class="math-inline">\(iL_p^{slow}\)</span>: the kick operator that contains only the slow forces. The two together are the <span class="math-inline">\(iL_p\)</span> of the earlier section.</li>
+<li><span class="math-inline">\(iL_r\)</span>: the drift operator, as before.</li>
+<li><span class="math-inline">\(e^{iL_p^{slow}\Delta t/2}\)</span>: a half kick with the slow forces over half an outer step.</li>
+<li><span class="math-inline">\([\ \dots\ ]^{n}\)</span>: apply the content of the square bracket <span class="math-inline">\(n\)</span> times in a row.</li>
+<li><span class="math-inline">\(\approx\)</span>: "is approximately".</li>
+</ul>
+</div>
+<p>Read it from the outside in. The square bracket is one velocity Verlet step of the length <span class="math-inline">\(\delta t\)</span> that uses only the fast forces. One outer step is then:</p>
+<ol>
+<li>a half kick with the slow forces, over <span class="math-inline">\(\Delta t/2\)</span>;</li>
+<li><span class="math-inline">\(n\)</span> short velocity Verlet steps with the fast forces only;</li>
+<li>a half kick with the slow forces at the new positions, over <span class="math-inline">\(\Delta t/2\)</span>.</li>
+</ol>
+<p>An example with round numbers: <span class="math-inline">\(\Delta t = 4\)</span> fs and <span class="math-inline">\(n = 2\)</span>, so <span class="math-inline">\(\delta t = 2\)</span> fs. In 4 fs of simulated time the fast forces are computed twice and the slow forces once. Plain velocity Verlet with a step of 2 fs would compute all forces twice. The name r-RESPA stands for "reversible reference system propagator algorithm".</p>
 <p>The cheap fast forces are evaluated every inner step, the expensive slow forces once per outer step. The scheme stays reversible and symplectic. Tuckerman, Berne and Martyna showed the reversibility, and showed on Lennard-Jones test systems that the scheme is more stable at large steps than the earlier, non-reversible RESPA. The resonance limit described next was worked out later. The catch is <strong>resonance</strong>: the slow force is applied as periodic impulses, and when the outer step approaches half the period of the fastest motion the impulses pump energy into it. With constrained bonds to hydrogen this limits the outer step to about 4 to 5 fs. GROMACS, NAMD, OpenMM and Desmond all offer some version of this (for example evaluating PME every second or third step).</p>
+<p>The scheme stays reversible and symplectic for the reasons given in the Liouville section. The product reads the same forwards and backwards, and every factor in it is an exact kick or an exact drift. (A Lennard-Jones test system is a set of particles that interact through the Lennard-Jones potential of Module 5, a standard simple model of a liquid.)</p>
+<p><strong>Resonance in plain words.</strong> Push a child on a swing at random moments and little happens. Push in step with the swing and every push adds to the motion. Resonance is this build-up, which occurs when a periodic push matches the rhythm of an oscillation.</p>
+<p>In the multiple-time-step scheme the slow force acts only at the ends of the outer steps, as a sudden kick once every <span class="math-inline">\(\Delta t\)</span>. That is the meaning of "periodic impulses". Between the kicks the fast vibrations run freely. The kick depends on the positions of the atoms, so it depends on where each vibration is in its cycle at that moment.</p>
+<p>After half a period a vibration has reversed both its displacement and its velocity. A kick that arrives then is reversed too, since for a small vibration the change of the slow force is proportional to the displacement. It therefore acts on the reversed motion as the previous kick acted on the original motion, and the small effects of successive kicks add up where otherwise they would average out. Half a period is the shortest interval at which this happens. This is why the limit is stated as half the period of the fastest motion.</p>
+<p>This rule places the resonance of one ideal oscillator. It does not by itself give the 4 to 5 fs quoted above: half of the "about 20 fs" in the table of time steps is about 10 fs. The lower figure used in practice is stated here without a derivation.</p>
+<div class="box key">
+<p><strong>Worked example: resonance in a toy model.</strong> Take one oscillator pulled by two springs: a fast one with <span class="math-inline">\(\omega = 1\)</span> (force <span class="math-inline">\(-x\)</span>) and a weak one with the force <span class="math-inline">\(-0.1\,x\)</span>, which plays the part of the slow force. Together they give an oscillation with the period <span class="math-inline">\(2\pi/\sqrt{1.1} = 5.99\)</span>, so half a period is 3.0. Integrate with the scheme above: the fast force in 20 inner steps per outer step, the weak force only in the two outer half kicks. Start at <span class="math-inline">\(x = 1\)</span>, <span class="math-inline">\(v = 0\)</span> and follow 100 outer steps.</p>
+<table>
+<thead>
+<tr>
+<th>Outer step <span class="math-inline">\(\Delta t\)</span></th>
+<th>Largest position reached</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td><span class="math-inline">\(1.6\times10^{6}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>With an outer step of 2.0 or 2.5 the oscillation keeps its size. With 3.0, half the period, every outer step multiplies the amplitude by about 1.16. The growth appears for outer steps between about 2.86 and 3.14. Shorter inner steps do not remove it, because the cause is the timing of the outer kicks.</p>
+</div>
 <h2 id="stochastic-integrators">Stochastic integrators</h2>
+<p>So far the equations of motion were Newton's, with nothing random in them. Many simulations add a thermostat to hold the temperature (Module 8), and one widely used thermostat, the Langevin thermostat, changes the equations of motion themselves. The integrator then has to handle a random term. The splitting idea of this module carries over.</p>
+<div class="box physics">
+<p><strong>Physics you need here: friction and random force.</strong> A Langevin thermostat treats each atom as if it moved through a fluid of much smaller, invisible particles. The fluid does two things. It slows the atom down with a <strong>friction</strong> force <span class="math-inline">\(-\gamma m\mathbf v\)</span>, opposite to the velocity <span class="math-inline">\(\mathbf v\)</span> and proportional to it, where <span class="math-inline">\(m\)</span> is the mass of the atom and <span class="math-inline">\(\gamma\)</span> the friction coefficient, in units of one over time. And it hits the atom with many small pushes in random directions, the <strong>random force</strong>. Friction removes kinetic energy and the random pushes add it. The size of the random force is chosen so that the two balance at the wanted temperature. The details are in Module 8. More in the <a href="physics.html#diffusion">primer</a>.</p>
+</div>
 <p>With a Langevin thermostat (Module 8) the equations of motion gain a friction term and a random force. The same splitting idea applies, with three pieces: B (kick), A (drift), O (the friction-plus-noise part, which can be solved exactly). <a href="https://doi.org/10.1093/amrx/abs010" class="cite" target="_blank" rel="noopener" title="Leimkuhler B; Matthews C (2012). Rational Construction of Stochastic Numerical Methods for Molecular Sampling. Applied Mathematics Research eXpress">Leimkuhler and Matthews</a> showed that the ordering <strong>BAOAB</strong> cancels the leading <span class="math-inline">\(\Delta t^2\)</span> error in averages of functions of the positions. At high friction its configurational error is up to two orders of magnitude smaller than that of the alternatives at the same <span class="math-inline">\(\Delta t\)</span>; at low friction the methods behave similarly. OpenMM's <code>LangevinMiddleIntegrator</code> uses a closely related "middle" discretisation with the same advantage.</p>
+<p><em>The letters.</em> A is the drift and B is the kick of the earlier sections, under new names. O acts on the velocities only. With the positions held fixed, friction shrinks each velocity and the random force adds a random amount to it. For this piece alone the result after a time <span class="math-inline">\(\Delta t\)</span> is known exactly: the old velocity is multiplied by <span class="math-inline">\(e^{-\gamma\Delta t}\)</span>, and a random number is added whose typical size is set by the temperature, the mass, <span class="math-inline">\(\gamma\)</span> and <span class="math-inline">\(\Delta t\)</span>.</p>
+<p><em>The name.</em> A splitting method is named by its pieces in the order in which they are applied. BAOAB is: half kick, half drift, the full O step, half drift, half kick. Take the O step out, and the two half drifts join into one full drift: what is left is the "half kick, drift, half kick" of velocity Verlet. The same five pieces can be put in other orders, and such orderings are among the "alternatives" of the paragraph above.</p>
+<p><em>Configurational.</em> A quantity that depends on the positions only, and not on the velocities, is called configurational: the potential energy, a distance between two atoms, the radius of a protein. Most of what is computed from MD is of this kind. The average of such a quantity over a simulation with a finite step is slightly wrong, with a leading error proportional to <span class="math-inline">\(\Delta t^2\)</span>. The statement of the paragraph is that for BAOAB the main part of this term cancels: what is left of it shrinks as the friction <span class="math-inline">\(\gamma\)</span> grows, so the error falls as <span class="math-inline">\(\Delta t^4\)</span> at high friction, and an error proportional to <span class="math-inline">\(\Delta t^2\)</span> remains at low friction, as for the alternatives. "Two orders of magnitude" means a factor of 100.</p>
+<p><em>High and low friction</em> refer to the size of <span class="math-inline">\(\gamma\)</span>. At high friction the fluid dominates and the atoms lose the memory of their velocity quickly. At low friction the motion is close to Newton's.</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. Why does the energy in velocity Verlet oscillate but not drift?</summary>
 <p>Because the algorithm is the exact solution of a slightly different Hamiltonian <span class="math-inline">\(\tilde H = H + O(\Delta t^2)\)</span>. <span class="math-inline">\(\tilde H\)</span> is conserved, so <span class="math-inline">\(H = \tilde H - O(\Delta t^2)\)</span> varies only by a bounded amount.</p>
+<p>Here <span class="math-inline">\(H\)</span> is the true Hamiltonian (the energy the program reports), <span class="math-inline">\(\tilde H\)</span> the shadow Hamiltonian, and <span class="math-inline">\(O(\Delta t^2)\)</span> a difference that is proportional to the square of the time step.</p>
 </details>
 <details>
 <summary>2. A flexible water model has an O-H stretch at 3,500 cm⁻¹. What is the largest stable time step, and what would you use?</summary>
 <p>Period <span class="math-inline">\(= 1/(c\tilde\nu) = 1/(2.998\times10^{10}\,\text{cm/s}\times3500\,\text{cm}^{-1}) = 9.5\)</span> fs. Stability limit <span class="math-inline">\(T/\pi = 3.0\)</span> fs. For accuracy use 0.5 fs (19 steps per period).</p>
+<p>Here <span class="math-inline">\(c\)</span> is the speed of light, <span class="math-inline">\(\tilde\nu\)</span> the wavenumber of the vibration (see the box on wavenumbers) and <span class="math-inline">\(T\)</span> the period.</p>
 </details>
 <details>
 <summary>3. Positions from leap-frog and velocity Verlet are identical. Why can the reported temperatures differ?</summary>
 <p>Leap-frog has velocities at half steps. The kinetic energy at step <span class="math-inline">\(t\)</span> is computed as the average of the kinetic energies at <span class="math-inline">\(t\pm\Delta t/2\)</span> (or from averaged velocities), which differs from the velocity Verlet on-step value by a term of order <span class="math-inline">\(\Delta t^2\)</span>.</p>
+<p>The sign <span class="math-inline">\(\pm\)</span> stands for the two instants half a step before and half a step after the time <span class="math-inline">\(t\)</span>. The two estimates named in the answer do not behave in the same way. The average of the two half-step kinetic energies is larger than the velocity Verlet value by <span class="math-inline">\(\tfrac18ma^2\Delta t^2\)</span> for each coordinate, where <span class="math-inline">\(m\)</span> is the mass and <span class="math-inline">\(a\)</span> the acceleration at the time <span class="math-inline">\(t\)</span>. This is the term of order <span class="math-inline">\(\Delta t^2\)</span>. The kinetic energy from the averaged velocities shows no difference in the plain scheme of this module (no thermostat, no constraints), because there the average of the two half-step velocities is exactly the velocity Verlet velocity at the time <span class="math-inline">\(t\)</span>.</p>
+<p>The numbers for the oscillator are in the leap-frog section.</p>
 </details>
 <details>
 <summary>4. Your NVE test shows the energy rising linearly, and halving Δt does not change the slope. What do you suspect?</summary>
 <p>Not the integrator, whose error scales with <span class="math-inline">\(\Delta t^2\)</span>. Likely causes: a truncated potential with a jump at the cutoff, a neighbour list updated too rarely (particles enter the cutoff unnoticed), too loose a constraint tolerance, or single-precision arithmetic (the OpenMM developers measured a clear drift in single precision for a system of only 24,000 atoms, which mixed precision removed).</p>
+</details>
+<details>
+<summary>5. Do one velocity Verlet step by hand: the oscillator with a = −x, started at x = 1, v = 0, with Δt = 0.2.</summary>
+<p>The acceleration at the start is <span class="math-inline">\(-1\)</span>. Half kick: <span class="math-inline">\(v = 0 + 0.1\times(-1) = -0.1\)</span>. Drift: <span class="math-inline">\(x = 1 + 0.2\times(-0.1) = 0.98\)</span>. The new acceleration is <span class="math-inline">\(-0.98\)</span>. Half kick: <span class="math-inline">\(v = -0.1 + 0.1\times(-0.98) = -0.198\)</span>. The exact values are <span class="math-inline">\(\cos 0.2 = 0.98007\)</span> and <span class="math-inline">\(-\sin 0.2 = -0.19867\)</span>.</p>
+</details>
+<details>
+<summary>6. You halve the time step of a second-order method. What happens to the error at a fixed simulated time, and to the cost?</summary>
+<p>The error falls by a factor of <span class="math-inline">\(2^2 = 4\)</span>. The cost doubles, because twice as many steps, and so twice as many force evaluations, are needed to reach the same time. For a first-order method such as forward Euler the error would fall only by a factor of 2 for the same doubling of the cost.</p>
+</details>
+<details>
+<summary>7. Start at x = 1, v = 0 with a = −x and Δt = 0.1. Apply a full drift and then a full kick. Then do it in the other order. What do you find?</summary>
+<p>Drift, then kick: <span class="math-inline">\(x = 1 + 0.1\times0 = 1\)</span>, then <span class="math-inline">\(v = 0 + 0.1\times(-1) = -0.1\)</span>. Kick, then drift: <span class="math-inline">\(v = -0.1\)</span>, then <span class="math-inline">\(x = 1 + 0.1\times(-0.1) = 0.99\)</span>. The two results differ by 0.01 in the position, which is <span class="math-inline">\(\Delta t^2\)</span>. The drift and the kick do not commute, and this is why a simple "one, then the other" splitting has a one-step error of order <span class="math-inline">\(\Delta t^2\)</span>.</p>
 </details>
 <h2 id="exercises">Exercises</h2>
 <ol>
@@ -177,6 +925,13 @@
 <li>In the Python code from Module 1, run with <span class="math-inline">\(\Delta t\)</span> = 0.001, 0.002, 0.004 and 0.008. Measure the standard deviation of the total energy and show on a log-log plot that it scales as <span class="math-inline">\(\Delta t^2\)</span>.</li>
 <li>Show by a Taylor expansion that <span class="math-inline">\(e^{A/2}e^{B}e^{A/2} = e^{A+B+O(3)}\)</span>, where the leading error terms are the double commutators <span class="math-inline">\([B,[B,A]]\)</span> and <span class="math-inline">\([A,[A,B]]\)</span>.</li>
 </ol>
+<p>Notes on the notation in the exercises:</p>
+<ul>
+<li><em>Exercise 1.</em> The box is the one with the exact result for the harmonic oscillator. Eigenvalues are explained in the <a href="maths.html#eigen">toolbox</a>. Here they are complex numbers, and "the unit circle" is the set of complex numbers of size 1. An eigenvalue outside it means that the map makes some state grow at every step.</li>
+<li><em>Exercise 2.</em> <span class="math-inline">\(\theta\)</span> is the angle of the pendulum and <span class="math-inline">\(\ddot\theta\)</span> its second time derivative.</li>
+<li><em>Exercise 3.</em> A log-log plot has logarithmic scales on both axes, so that a quantity proportional to <span class="math-inline">\(\Delta t^2\)</span> appears as a straight line of slope 2.</li>
+<li><em>Exercise 4.</em> <span class="math-inline">\(A\)</span> and <span class="math-inline">\(B\)</span> are any two operators, <span class="math-inline">\([A,B] = AB - BA\)</span> is their commutator, <span class="math-inline">\([B,[B,A]]\)</span> is the commutator of <span class="math-inline">\(B\)</span> with the commutator <span class="math-inline">\([B,A]\)</span>, and <span class="math-inline">\(O(3)\)</span> stands for terms with three or more factors of <span class="math-inline">\(A\)</span> and <span class="math-inline">\(B\)</span>.</li>
+</ul>
 <h2 id="read">Read</h2>
 <h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://doi.org/10.1007/3-540-30666-8" target="_blank" rel="noopener">Geometric Numerical Integration: Structure-Preserving Algorithms for Ordinary Differential Equations</a><span class="res-meta">Ernst Hairer, Christian Lubich, Gerhard Wanner · 2nd ed., 2006 · Springer</span><span class="res-why">Definitive mathematics of symplectic and time-reversible integrators and backward error analysis, the theory behind velocity Verlet.</span></li><li class="res"><a href="https://www.cambridge.org/gb/universitypress/subjects/physics/mathematical-methods/art-molecular-dynamics-simulation-2nd-edition" target="_blank" rel="noopener">The Art of Molecular Dynamics Simulation</a><span class="res-meta">D. C. Rapaport · 2nd ed., 2004 · Cambridge University Press</span><span class="res-why">Case-study book that builds MD programs step by step, good for students who want to write their own code.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li><li class="res"><a href="https://doi.org/10.1007/978-3-319-16375-8" target="_blank" rel="noopener">Molecular Dynamics: With Deterministic and Stochastic Numerical Methods</a><span class="res-meta">Ben Leimkuhler, Charles Matthews · 2015 · Springer</span><span class="res-why">The mathematically careful treatment of symplectic integrators, Langevin dynamics, thermostats and constraints.</span></li><li class="res"><a href="https://global.oup.com/booksites/content/9780198803195/" target="_blank" rel="noopener">Computer Simulation of Liquids</a><span class="res-meta">Michael P. Allen, Dominic J. Tildesley · 2nd ed., 2017 · Oxford University Press</span><span class="res-why">Classic practical MD/MC text with an official companion site of Fortran and Python example programs (also on GitHub).</span></li><li class="res"><a href="https://shop.elsevier.com/books/understanding-molecular-simulation/frenkel/978-0-323-90292-2" target="_blank" rel="noopener">Understanding Molecular Simulation: From Algorithms to Applications</a><span class="res-meta">Daan Frenkel, Berend Smit · 3rd ed., 2023 · Academic Press (Elsevier)</span><span class="res-why">The standard algorithm-level reference connecting statistical mechanics to working MD, free-energy and rare-event methods.</span><span class="res-why"><b>Where to read:</b> Ch. 2 Thermodynamics and Statistical Mechanics; Ch. 4 Molecular Dynamics Simulations; Ch. 5 Computer Experiments; Ch. 7 Molecular Dynamics in Various Ensembles; Ch. 8 Free Energy Calculations; Ch. 11 Long-Ranged Interactions; Ch. 15 Rare Events; Appendix G Statistical Errors; Appendix H Integration Schemes</span></li><li class="res"><a href="https://global.oup.com/academic/product/statistical-mechanics-theory-and-molecular-simulation-9780198825562" target="_blank" rel="noopener">Statistical Mechanics: Theory and Molecular Simulation</a><span class="res-meta">Mark E. Tuckerman · 2nd ed., 2023 · Oxford University Press</span><span class="res-why">Rigorous derivation of ensembles, extended-system thermostats/barostats, reversible integrators and enhanced sampling from Hamiltonian mechanics.</span><span class="res-why"><b>Where to read:</b> Ch. 17 covers machine learning (new in the 2nd edition).</span></li></ul>
 <h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/pages/lecture-notes/" target="_blank" rel="noopener">3.320 Atomistic Computer Modeling of Materials (SMA 5107), Spring 2005 lecture notes</a> <span class="tag free">free</span><span class="res-meta">MIT OpenCourseWare · Spring 2005 · MIT OpenCourseWare (CC BY-NC-SA 4.0)</span><span class="res-why">Graduate atomistic-modelling course with 25 lectures of notes; materials-oriented rather than biomolecular, so use selectively.</span></li><li class="res"><a href="http://www.nyu.edu/classes/tuckerman/stat.mech" target="_blank" rel="noopener">CHEM-GA 2600 Statistical Mechanics (NYU; formerly G25.2651) course page and lecture notes</a> <span class="tag free">free</span><span class="res-meta">Mark E. Tuckerman · current course page · New York University</span><span class="res-why">Author-hosted notes that derive MD algorithms, thermostats and barostats from first principles; linked from Tuckerman&#x27;s own teaching page.</span><span class="res-why"><b>Where to read:</b> Topics: Lagrangian and Hamiltonian mechanics, phase space and the Liouville theorem; ensembles; molecular dynamics, thermostats and barostats; Monte Carlo; enhanced sampling for free energies; linear response, Green-Kubo and Langevin equations.</span></li><li class="res"><a href="https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html" target="_blank" rel="noopener">CHE210D: Principles of modern molecular simulation methods (UCSB lecture notes, F19)</a> <span class="tag free">free</span><span class="res-meta">M. Scott Shell · Fall 2019 · UC Santa Barbara, Chemical Engineering</span><span class="res-why">Complete, free lecture-note set (18 lectures plus readings and Python/Fortran codes) that follows Frenkel and Smit.</span><span class="res-why"><b>Where to read:</b> Lecture notes: Classical force fields; Molecular dynamics; Computing properties; Simulations of bulk phases; Advanced molecular dynamics techniques; Free energies along reaction coordinates and biased sampling; Macroscopic free energies and reweighting; Advanced sampling; Coarse-graining and multiscale techniques; and the reading on simulation best practices.</span></li></ul>

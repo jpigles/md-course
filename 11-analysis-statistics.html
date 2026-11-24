@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li class="current" data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part III · Practice &middot; Module 11 of 18 &middot; about 8 hours</div><h1>Analysing trajectories and putting error bars on the results</h1><p class="lede">Compute the standard structural and dynamical observables, and above all estimate their statistical uncertainty from correlated data.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#before-any-analysis">Before any analysis</a></li><li><a href="#structural-observables">Structural observables</a></li><li><a href="#dynamical-observables">Dynamical observables</a></li><li><a href="#statistical-error-the-part-most-often-done-wrong">Statistical error: the part most often done wrong</a></li><li><a href="#collective-motions-principal-component-analysis">Collective motions: principal component analysis</a></li><li><a href="#free-energy-surfaces-from-histograms">Free-energy surfaces from histograms</a></li><li><a href="#comparing-with-experiment">Comparing with experiment</a></li><li><a href="#tools">Tools</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#a-trajectory-is-a-table-of-numbers">A trajectory is a table of numbers</a></li><li><a href="#before-any-analysis">Before any analysis</a></li><li><a href="#structural-observables">Structural observables</a></li><li><a href="#dynamical-observables">Dynamical observables</a></li><li><a href="#statistical-error-the-part-most-often-done-wrong">Statistical error: the part most often done wrong</a></li><li><a href="#collective-motions-principal-component-analysis">Collective motions: principal component analysis</a></li><li><a href="#free-energy-surfaces-from-histograms">Free-energy surfaces from histograms</a></li><li><a href="#comparing-with-experiment">Comparing with experiment</a></li><li><a href="#tools">Tools</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -36,53 +36,644 @@
 <li>run a principal component analysis and avoid its best-known pitfall.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=42-bolWBrBM" target="_blank" rel="noopener">How to Plot RMSD, RMSF, and RoG Directly from Simulation Trajectory</a><span class="res-meta">Bioinformatics Insights &middot; Video, 18 min, intro</span><span class="res-why">Practical RMSD, RMSF and radius of gyration plots from a trajectory.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=_v3WU0RAfRM" target="_blank" rel="noopener">MDAnalysis tutorial #1: introduction to Analysis module and RMSD calculations</a><span class="res-meta">Eugene&#x27;s Science Archive &middot; Video, 7 min, intro</span><span class="res-why">MDAnalysis tutorial on RMSD calculations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Tso29WxWWHg" target="_blank" rel="noopener">MDtraj Tutorials- (4)- RMSD analysis of protein MD trajectory</a><span class="res-meta">Mohamed shehata &middot; Video, 9 min, intro</span><span class="res-why">MDTraj tutorial on RMSD analysis.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=p3OUUnHXQjU" target="_blank" rel="noopener">Intro to Molecular Dynamics Trajectory Analysis using MDAnalysis</a><span class="res-meta">MDAnalysis team &middot; channel: mdanalysis &middot; Video, 101 min, intermediate</span><span class="res-why">Official 1.5 h intro to trajectory analysis with MDAnalysis.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=x39p_SrJLY4" target="_blank" rel="noopener">Exercise: Performing Analysis with MDTraj</a><span class="res-meta">SimbiosOpenMM &middot; Video, 25 min, intermediate</span><span class="res-why">Exercise on analysis with MDTraj.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=BACN9Ydiw5I" target="_blank" rel="noopener">09 Block Error Calculations in Simulations</a><span class="res-meta">SDU Odense &middot; channel: Videos Used in Teaching at SDU, Odense &middot; Video, 8 min, intermediate</span><span class="res-why">Block averaging error calculations in simulations.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=0KqCK0yG9T0" target="_blank" rel="noopener">Using block averages to calculate statistical errors in estimates of the ensemble average</a><span class="res-meta">Gareth Tribello &middot; Video, 20 min, intermediate</span><span class="res-why">Block averages for statistical errors in ensemble averages.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=X0vdXv7aTvk" target="_blank" rel="noopener">Lec 36: Radial Distribution Function</a><span class="res-meta">NPTEL IIT Guwahati &middot; Video, 58 min, intermediate</span><span class="res-why">Radial distribution function lecture.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>A finished simulation is a file of numbers: the positions of all atoms, written out every few picoseconds. Nothing in that file says "the protein is stable" or "this loop is flexible". Analysis turns the file into a few quantities that answer your question, and then states how far each quantity can be trusted.</p>
+<p>The second task is the one that is skipped most often. A number without an error bar cannot be compared with an experiment, with another force field or with a mutant, because you cannot tell a real difference from noise. Error bars are harder to get from a simulation than from a set of separate measurements, because every frame of a trajectory resembles the frame before it. Most of the mathematics in this module deals with that one fact.</p>
+<p>The module has four layers:</p>
+<ol>
+<li><strong>The trajectory and its preparation.</strong> What the file contains, and two repairs it needs before any number is computed from it.</li>
+<li><strong>Observables.</strong> The standard measures of structure (RMSD, RMSF, radius of gyration, contacts, the radial distribution function) and of motion (diffusion, time correlation functions): what each one is, how it is computed and what it tells you.</li>
+<li><strong>Error bars.</strong> Mean, standard deviation and standard error from the beginning, why correlated frames change the count of samples, and the practical methods: autocorrelation time, block averaging, the bootstrap, independent repeats, and the choice of what to discard as equilibration.</li>
+<li><strong>Maps and comparisons.</strong> Principal component analysis, free energies from histograms, and how to compute what an experiment measures.</li>
+</ol>
+<p>On a first reading, give layer 3 the most time. The formulas of layer 2 are definitions that a program evaluates for you. The reasoning of layer 3 is work you have to do yourself, for every number you report.</p>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula is followed by a list that says what each letter in it means. The table collects the notation that this module uses most. Each entry is explained at more length in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(A\)</span>, <span class="math-inline">\(A(t)\)</span></td>
+<td>Any <strong>observable</strong>: a single number computed from one frame, such as a distance or the radius of gyration. <span class="math-inline">\(A(t)\)</span> is its value in the frame at time <span class="math-inline">\(t\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\langle A\rangle\)</span></td>
+<td>Angle brackets: the <strong>average</strong> of <span class="math-inline">\(A\)</span>. In this module it is an average over the frames of the trajectory and, where the text says so, also over equivalent molecules.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\bar A\)</span></td>
+<td>A bar: the average computed from your finite set of frames. It is used when this must be told apart from the exact average <span class="math-inline">\(\langle A\rangle\)</span> that an infinitely long run would give.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\delta A\)</span></td>
+<td><span class="math-inline">\(A-\langle A\rangle\)</span>: the deviation of <span class="math-inline">\(A\)</span> from its average in one frame, positive in some frames and negative in others. This <span class="math-inline">\(\delta\)</span> is not a small step and not a delta function.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\lvert\mathbf v\rvert\)</span></td>
+<td>Bars around a vector: its length, <span class="math-inline">\(\sqrt{v_x^2+v_y^2+v_z^2}\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\sum_{i=1}^{N}\)</span>, <span class="math-inline">\(\sum_{k\ge1}\)</span></td>
+<td>Add up the expression that follows for every value of the label: from 1 to <span class="math-inline">\(N\)</span>, or for <span class="math-inline">\(k = 1, 2, 3\)</span> and so on.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\int_0^\infty\dots\,dt\)</span></td>
+<td>An integral: the area under the curve that follows, from <span class="math-inline">\(t=0\)</span> onwards.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\min_x\)</span></td>
+<td>The smallest value that the expression that follows can take when <span class="math-inline">\(x\)</span> is varied.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\to\)</span></td>
+<td>"Approaches", for long times or large distances.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\approx\)</span>, <span class="math-inline">\(\gg\)</span></td>
+<td>"Approximately equal to" and "much larger than".</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\ln\)</span></td>
+<td>The natural logarithm (explained where it is first used).</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Letters that mean two things in this module.</strong> Analysis borrows formulas from structural biology, liquid theory and statistics, and their letters collide.</p>
+<ul>
+<li><span class="math-inline">\(g\)</span>: with a distance in brackets, <span class="math-inline">\(g(r)\)</span> or <span class="math-inline">\(g_{AB}(r)\)</span>, it is the radial distribution function. Alone, <span class="math-inline">\(g\)</span> is the statistical inefficiency.</li>
+<li><span class="math-inline">\(N\)</span>: the number of atoms in the structural formulas, the number of frames in the statistical ones.</li>
+<li><span class="math-inline">\(t\)</span>: a time. But <span class="math-inline">\(\mathbf t\)</span> (bold) in the RMSD formula is a shift of the whole molecule, and <span class="math-inline">\(t_{n-1}\)</span> in the section on repeats is a factor from statistics. <span class="math-inline">\(t_0\)</span> is a starting time in the mean squared displacement and the length of the discarded part in the section on equilibration.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature in <span class="math-inline">\(k_BT\)</span>. <span class="math-inline">\(T_{sim}\)</span> is the length of the simulation.</li>
+<li><span class="math-inline">\(A\)</span>, <span class="math-inline">\(B\)</span>, <span class="math-inline">\(C\)</span>: <span class="math-inline">\(A\)</span> is an observable. A and B are also the two kinds of particle in <span class="math-inline">\(g_{AB}\)</span>, and <span class="math-inline">\(A\)</span>, <span class="math-inline">\(B\)</span>, <span class="math-inline">\(C\)</span> are the constants of the Karplus relation. <span class="math-inline">\(B_i\)</span> is a crystallographic B-factor. <span class="math-inline">\(C_{AA}(t)\)</span> is a time correlation function, <span class="math-inline">\(C_{ab}\)</span> a covariance matrix, and lower-case <span class="math-inline">\(c(t)\)</span> the normalised autocorrelation function.</li>
+<li><span class="math-inline">\(n\)</span>: a count of particles, a coordination number, or the number of repeated simulations.</li>
+<li><span class="math-inline">\(k\)</span>: a lag counted in frames in the statistical formulas, and the number of a principal component in <span class="math-inline">\(p_k\)</span>.</li>
+<li><span class="math-inline">\(R\)</span>: <span class="math-inline">\(\mathbf R\)</span> (bold) is a rotation, <span class="math-inline">\(R_g\)</span> the radius of gyration, <span class="math-inline">\(R_0\)</span> the Förster distance of a pair of dyes.</li>
+<li><span class="math-inline">\(s\)</span> and <span class="math-inline">\(S\)</span>: <span class="math-inline">\(s\)</span> is a standard deviation estimated from a few values, <span class="math-inline">\(S^2\)</span> an NMR order parameter.</li>
+</ul>
+<p>The lists under the formulas say which is meant each time.</p>
+</div>
+<h2 id="a-trajectory-is-a-table-of-numbers">A trajectory is a table of numbers</h2>
+<p>A trajectory file is a sequence of <strong>frames</strong>. One frame holds the three coordinates <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span>, <span class="math-inline">\(z\)</span> of every atom at one instant, together with the time and the size of the box. A system of 50,000 atoms saved every 10 ps for 100 ns gives 10,000 frames of 150,000 numbers each. Think of it as a table with 10,000 rows, one per frame, and 150,000 columns.</p>
+<p>Nobody reads such a table. An <strong>observable</strong> is a rule that reduces one row to a single number: the distance between two chosen atoms, the number of hydrogen bonds, the size of the protein. Applying the rule to every frame gives a <strong>time series</strong> <span class="math-inline">\(A_1, A_2, \dots, A_N\)</span>, one value per frame, where <span class="math-inline">\(N\)</span> is the number of frames. Everything in this module is done either to one frame (compute an observable) or to a time series (summarise it).</p>
+<p>The first summary of a time series is its average. <a href="03-statistical-mechanics.html">Module 3</a> gave the reason: an experiment measures an average over a huge number of molecules, and the ergodic hypothesis says that the average along a long enough trajectory equals it. The second summary is the size of the fluctuations around the average. Both are defined in the box.</p>
+<div class="box maths">
+<p><strong>Maths you need here: mean, variance and standard deviation.</strong> Take five values of a distance, in nm: 1.0, 1.2, 0.9, 1.1, 1.3.</p>
+<p>The <strong>mean</strong> is the sum divided by the count: <span class="math-inline">\((1.0+1.2+0.9+1.1+1.3)/5 = 1.1\)</span> nm. It is written <span class="math-inline">\(\langle A\rangle\)</span> or <span class="math-inline">\(\bar A\)</span>.</p>
+<p>The <strong>deviations</strong> from the mean are <span class="math-inline">\(-0.1\)</span>, <span class="math-inline">\(0.1\)</span>, <span class="math-inline">\(-0.2\)</span>, <span class="math-inline">\(0\)</span> and <span class="math-inline">\(0.2\)</span> nm. Their own mean is always zero, because the positive and the negative ones cancel, so it cannot measure the spread. Square them first, which makes all of them positive: 0.01, 0.01, 0.04, 0 and 0.04. The mean of the squares, <span class="math-inline">\(0.10/5 = 0.02\)</span> nm<span class="math-inline">\(^2\)</span>, is the <strong>variance</strong>, written <span class="math-inline">\(\langle\delta A^2\rangle\)</span> or <span class="math-inline">\(\sigma^2\)</span>.</p>
+<p>The square root of the variance, <span class="math-inline">\(\sqrt{0.02} = 0.14\)</span> nm, is the <strong>standard deviation</strong> <span class="math-inline">\(\sigma\)</span> (Greek sigma). It has the unit of the data, and it is the typical distance of one value from the mean. For data with a bell-shaped (Gaussian) distribution, about two thirds of the values lie within one <span class="math-inline">\(\sigma\)</span> of the mean and about 95 % within two.</p>
+<p>"Root mean square" (RMS), which appears in the names RMSD and RMSF, is the same recipe read from right to left: square, take the mean, take the root.</p>
+<p>One detail: when the mean was computed from the same few values, dividing the sum of squares by the count minus one (<span class="math-inline">\(0.10/4 = 0.025\)</span>, root 0.16 nm) gives a better estimate of the spread, and this version is written <span class="math-inline">\(s\)</span>. With thousands of frames the two versions agree, with five values they differ by 12 %. More in the <a href="maths.html#averages">toolbox</a>.</p>
+</div>
+<p>The standard deviation describes the molecule: how much the distance fluctuates. It does not say how well you know the mean. That is a different number, the standard error, and it is the subject of the section on statistical error.</p>
 <h2 id="before-any-analysis">Before any analysis</h2>
+<p>The raw trajectory contains two things that are real in the file and are not the motion you want to study: molecules cut by the box, and the tumbling of the whole solute.</p>
 <p>Two bookkeeping steps come first. <strong>Make molecules whole and centre the solute</strong>: periodic wrapping splits molecules across the box in the raw trajectory, and distances computed on such frames are wrong. <strong>Remove overall rotation and translation</strong> by least-squares fitting each frame to a reference when you want internal motion. The tools are <code>gmx trjconv</code>, MDAnalysis transformations, or <code>cpptraj autoimage</code>.</p>
+<h3 id="why-molecules-look-broken-in-the-raw-file">Why molecules look broken in the raw file</h3>
+<p>A simulation uses periodic boundary conditions (<a href="07-boundaries-electrostatics.html">Module 7</a>): the box is surrounded by copies of itself, and an atom that leaves through one face comes back in through the opposite one. The raw trajectory can store every atom at its position inside the central box, which is called "wrapped". A protein that has drifted across a face is then written with one part at one side of the box and the rest at the other side. The simulation is not wrong: together with its periodic copies the molecule is intact. A program that reads the stored coordinates and computes ordinary distances, however, sees a molecule torn in two.</p>
+<p>A small example. The box is 5 nm long, and two bonded atoms are stored at <span class="math-inline">\(x = 4.9\)</span> nm and <span class="math-inline">\(x = 0.2\)</span> nm, because the second one crossed the face and was wrapped. The stored coordinates give a distance of 4.7 nm. The real distance, through the face, is <span class="math-inline">\(0.2 + 5 - 4.9 = 0.3\)</span> nm.</p>
+<p>"Making a molecule whole" shifts atoms by whole box lengths until every molecule is in one piece. "Centring" then puts the solute in the middle of the box, with the solvent wrapped around it, so that pictures and distances to the solvent make sense.</p>
+<h3 id="why-the-overall-motion-is-removed">Why the overall motion is removed</h3>
+<p>A protein in water drifts and tumbles as a whole. If you compare the positions of its atoms in two frames directly, almost all of the difference comes from this rigid-body motion, and it says nothing about a change of shape. <strong>Fitting</strong> (also called superposition or alignment) moves and turns each frame as a rigid body until it lies as well as possible on a reference structure, usually the starting structure. "As well as possible" is meant in the least-squares sense of the box. The formula comes with the RMSD below.</p>
+<div class="box maths">
+<p><strong>Maths you need here: least squares.</strong> To fit something "in the least-squares sense" means: choose the adjustable quantities so that the sum of the squared mismatches is as small as possible.</p>
+<p>The smallest example: find the single number <span class="math-inline">\(c\)</span> that lies closest to the three values 1, 2 and 6. The sum of squared mismatches is <span class="math-inline">\((1-c)^2+(2-c)^2+(6-c)^2\)</span>. At its minimum the derivative with respect to <span class="math-inline">\(c\)</span> is zero: <span class="math-inline">\(-2(1-c)-2(2-c)-2(6-c) = 0\)</span>, which gives <span class="math-inline">\(3c = 9\)</span> and <span class="math-inline">\(c = 3\)</span>.</p>
+<p>That is the mean of the three values. So the mean is the least-squares fit of one number to a set of values, and a superposition is the least-squares fit of a rotation and a shift to a set of atoms. More in the <a href="maths.html#fitting">toolbox</a>.</p>
+</div>
+<p>Fit when the quantity depends on positions in space and you want the internal motion: RMSD, RMSF and principal component analysis. Do not fit for quantities that describe the motion of the whole molecule, such as its diffusion. Quantities built only from distances inside the molecule (the radius of gyration, contacts, hydrogen bonds) do not change when the molecule is turned or shifted, so they need no fit. They do need whole molecules.</p>
+<h3 id="where-periodic-boundaries-still-cause-errors-in-analysis">Where periodic boundaries still cause errors in analysis</h3>
+<p>Many wrong numbers in a first analysis come from the periodic box. The usual cases:</p>
+<ul>
+<li><strong>A sudden jump in a time series.</strong> If the RMSD, the radius of gyration or a distance inside a molecule jumps by something like a box length from one frame to the next, a molecule is broken. A protein does not change its size by nanometres between two saved frames.</li>
+<li><strong>Two molecules in different copies.</strong> A protein and its ligand, or the two chains of a complex, can each be whole and still be stored in different periodic copies. Their distance then looks like several nanometres although they are in contact. Make the complex whole as one unit, or use the <strong>minimum-image distance</strong>: the shortest distance between one molecule and any periodic copy of the other.</li>
+<li><strong>Distances longer than half the box.</strong> In a cubic box of edge <span class="math-inline">\(L\)</span>, a partner that is further away than <span class="math-inline">\(L/2\)</span> along an axis has a periodic copy that is closer. When the nearest copy is always taken, a spherical shell of radius larger than <span class="math-inline">\(L/2\)</span> is cut off by the faces of the box and is no longer complete, so a radial distribution function is computed only up to half the box edge. (A distance inside one whole molecule can be longer than <span class="math-inline">\(L/2\)</span> and is still correct.)</li>
+<li><strong>Diffusion.</strong> The mean squared displacement needs coordinates in which molecules are <em>not</em> wrapped back into the box (see the section on diffusion).</li>
+<li><strong>The order of the repairs.</strong> Do the periodic repairs first and the fit second. The fit rotates the coordinates, and after that the box no longer matches them.</li>
+</ul>
+<p>After the repairs, look at the trajectory in a molecular viewer before you compute anything.</p>
 <h2 id="structural-observables">Structural observables</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="whO1h7rAMSs" href="https://www.youtube.com/watch?v=whO1h7rAMSs" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 5 | RMSD, RMSF, SASA, Rg &amp; Hydrogen Bond Analysis Step-by-Step</span><span class="sv-m">19 min · Dr. H Ismail</span></a><a class="sv" data-yt="42-bolWBrBM" href="https://www.youtube.com/watch?v=42-bolWBrBM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">How to Plot RMSD, RMSF, and RoG Directly from Simulation Trajectory</span><span class="sv-m">18 min · Bioinformatics Insights</span></a><a class="sv" data-yt="UvH-h9i03rM" href="https://www.youtube.com/watch?v=UvH-h9i03rM" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 09: Structural Quantities</span><span class="sv-m">42 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="whO1h7rAMSs" href="https://www.youtube.com/watch?v=whO1h7rAMSs" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 5 | RMSD, RMSF, SASA, Rg &amp; Hydrogen Bond Analysis Step-by-Step</span><span class="sv-m">19 min · Dr. H Ismail</span></a><a class="sv" data-yt="42-bolWBrBM" href="https://www.youtube.com/watch?v=42-bolWBrBM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">How to Plot RMSD, RMSF, and RoG Directly from Simulation Trajectory</span><span class="sv-m">18 min · Bioinformatics Insights</span></a><a class="sv" data-yt="UvH-h9i03rM" href="https://www.youtube.com/watch?v=UvH-h9i03rM" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 09: Structural Quantities</span><span class="sv-m">42 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
+<p>A structural observable is computed from the positions in one frame. Each one compresses the frame into one number or a few, and each answers a different question:</p>
+<table>
+<thead>
+<tr>
+<th>Observable</th>
+<th>The question it answers</th>
+<th>One value per</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RMSD</td>
+<td>How far is this frame from a reference structure?</td>
+<td>frame</td>
+</tr>
+<tr>
+<td>RMSF</td>
+<td>How much does this atom move about its average position?</td>
+<td>atom</td>
+</tr>
+<tr>
+<td>Radius of gyration</td>
+<td>How compact is the molecule?</td>
+<td>frame</td>
+</tr>
+<tr>
+<td>Contacts, hydrogen bonds</td>
+<td>Which parts touch?</td>
+<td>frame (a count)</td>
+</tr>
+<tr>
+<td>Solvent-accessible surface area</td>
+<td>How much of the molecule can the solvent reach?</td>
+<td>frame</td>
+</tr>
+<tr>
+<td>Radial distribution function</td>
+<td>How are particles of one kind arranged around particles of another kind?</td>
+<td>distance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rmsd-how-far-from-a-reference">RMSD: how far from a reference</h3>
+<p>Lay the frame over a reference structure as well as you can. For each atom, measure how far it lies from its partner in the reference. Summarise these distances by their root mean square. The result is one number per frame that says how different the two structures are.</p>
 <p><strong>RMSD</strong>, the root mean square deviation from a reference structure after optimal superposition:</p>
 <p><span class="math-display">\[\mathrm{RMSD}(t) = \min_{\mathbf R,\mathbf t}\sqrt{\frac1N\sum_{i=1}^N\big|\mathbf R\,\mathbf r_i(t)+\mathbf t-\mathbf r_i^{ref}\big|^2}.\]</span></p>
-<p>The optimal rotation <span class="math-inline">\(\mathbf R\)</span> comes from the singular value decomposition of the <span class="math-inline">\(3\times3\)</span> covariance matrix of the two centred coordinate sets (the Kabsch algorithm). RMSD compresses 3N coordinates into one number: two very different structures can have the same RMSD from the reference. A plateau in RMSD shows the structure stopped drifting away from the start. It does not show that sampling has converged.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathrm{RMSD}(t)\)</span>: the result for the frame at time <span class="math-inline">\(t\)</span>, a length in nm (often reported in ångström, Å; 1 nm = 10 Å).</li>
+<li><span class="math-inline">\(N\)</span>: the number of atoms included, for example all backbone atoms or all C<span class="math-inline">\(\alpha\)</span> atoms. Here <span class="math-inline">\(N\)</span> is not the number of frames.</li>
+<li><span class="math-inline">\(i\)</span>: the label of one atom, from 1 to <span class="math-inline">\(N\)</span>. <span class="math-inline">\(\sum_{i=1}^N\)</span> adds up over these atoms.</li>
+<li><span class="math-inline">\(\mathbf r_i(t)\)</span>: the position of atom <span class="math-inline">\(i\)</span> in the frame at time <span class="math-inline">\(t\)</span>, a vector of three numbers.</li>
+<li><span class="math-inline">\(\mathbf r_i^{ref}\)</span>: the position of the same atom in the reference structure. "ref" is a label, not a power.</li>
+<li><span class="math-inline">\(\mathbf R\)</span>: a rotation, written as a <span class="math-inline">\(3\times3\)</span> matrix (a table of nine numbers). <span class="math-inline">\(\mathbf R\,\mathbf r_i\)</span> is the position of atom <span class="math-inline">\(i\)</span> after the whole frame has been turned.</li>
+<li><span class="math-inline">\(\mathbf t\)</span>: a shift (translation), one vector that is added to every atom. It is not a time.</li>
+<li><span class="math-inline">\(\big|\ \ \big|^2\)</span>: the squared length of the vector between the bars. Here it is the squared distance between atom <span class="math-inline">\(i\)</span>, after turning and shifting, and its reference position.</li>
+<li><span class="math-inline">\(\frac1N\sum\)</span> and <span class="math-inline">\(\sqrt{\ \ }\)</span>: the mean of the squared distances, and then its root.</li>
+<li><span class="math-inline">\(\min_{\mathbf R,\mathbf t}\)</span>: of all possible rotations and shifts, use the one that makes the result smallest. This is the "optimal superposition".</li>
+</ul>
+</div>
+<p>Read it like this, from the inside out. Turn the frame by <span class="math-inline">\(\mathbf R\)</span> and shift it by <span class="math-inline">\(\mathbf t\)</span>. For each atom take the squared distance to its reference position. Average over the atoms and take the root. Among all possible turns and shifts, keep the one that gives the smallest result.</p>
+<p>A small example: after the fit, three atoms lie 0.1, 0.2 and 0.2 nm from their reference positions. The RMSD is <span class="math-inline">\(\sqrt{(0.01+0.04+0.04)/3} = \sqrt{0.03} = 0.17\)</span> nm. Because the distances are squared before they are averaged, large deviations count more than small ones. Nine atoms that are off by 0.1 nm and one loop atom that is off by 1.0 nm give an RMSD of 0.33 nm, although the plain average deviation is 0.19 nm. The same RMSD can therefore come from a small change everywhere or from a large change in one place.</p>
+<p>How is the best fit found? The shift is the easy part: the best superposition puts the centre of the frame (the mean position of the chosen atoms) on the centre of the reference. Both sets of coordinates are therefore first "centred", which means that the centre is subtracted from every position.</p>
+<p>The optimal rotation <span class="math-inline">\(\mathbf R\)</span> comes from the singular value decomposition of the <span class="math-inline">\(3\times3\)</span> covariance matrix of the two centred coordinate sets (the Kabsch algorithm). That matrix is a table of nine numbers: for each pair of axes, such as <span class="math-inline">\(x\)</span> in the frame and <span class="math-inline">\(y\)</span> in the reference, the sum over the atoms of the product of the two coordinates. Singular value decomposition is a standard matrix operation, related to finding eigenvectors, that every numerical library provides. You will not do this by hand, because every analysis program does the fit for you.</p>
+<p>What you do choose is the set of atoms. A common practice is to fit on the backbone of the rigid part of a protein and then to compute the RMSD of a loop or a ligand without fitting again. The result tells you how the loop or the ligand moved relative to the rest.</p>
+<p>RMSD compresses 3N coordinates into one number: two very different structures can have the same RMSD from the reference. A plateau in RMSD shows the structure stopped drifting away from the start. It does not show that sampling has converged.</p>
+<p>The first statement has an everyday counterpart. Two towns that are both 100 km from yours can be 200 km from each other, one to the north and one to the south. A structure has <span class="math-inline">\(3N\)</span> coordinates, so it has far more "directions" than a map.</p>
+<p>For the second statement you need the word <strong>converged</strong>: sampling has converged when running longer would not change your averages, because all the relevant conformations have been visited many times and in the right proportions. A flat RMSD says only that the structure stays at about the same distance from the start. It may be wandering among many conformations at that distance, or it may be stuck in one.</p>
+<h3 id="rmsf-which-parts-move">RMSF: which parts move</h3>
+<p>The RMSD gives one number per frame, about the whole molecule. The RMSF gives one number per atom, about the whole trajectory: the typical distance of that atom from its own average position. In the language of the maths box above, it is the standard deviation of the position of the atom.</p>
 <p><strong>RMSF</strong>, the fluctuation of each atom about its mean position, <span class="math-inline">\(\mathrm{RMSF}_i = \sqrt{\langle|\mathbf r_i-\langle\mathbf r_i\rangle|^2\rangle}\)</span>. It shows which parts are flexible, and compares with crystallographic B-factors through <span class="math-inline">\(B_i = \tfrac{8\pi^2}{3}\mathrm{RMSF}_i^2\)</span>.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathrm{RMSF}_i\)</span>: the root mean square fluctuation of atom <span class="math-inline">\(i\)</span>, in nm. There is one value per atom. It is often reported per residue, using the C<span class="math-inline">\(\alpha\)</span> atom.</li>
+<li><span class="math-inline">\(\mathbf r_i\)</span>: the position of atom <span class="math-inline">\(i\)</span> in one frame, after the frame has been fitted to the reference.</li>
+<li><span class="math-inline">\(\langle\mathbf r_i\rangle\)</span> (inner brackets): the mean position of atom <span class="math-inline">\(i\)</span> over all frames.</li>
+<li><span class="math-inline">\(|\mathbf r_i-\langle\mathbf r_i\rangle|^2\)</span>: the squared distance of the atom from its mean position in one frame.</li>
+<li>The outer <span class="math-inline">\(\langle\ \rangle\)</span>: the average of that squared distance over all frames. The root comes last.</li>
+<li><span class="math-inline">\(B_i\)</span>: the crystallographic B-factor of atom <span class="math-inline">\(i\)</span> (see the box below).</li>
+<li><span class="math-inline">\(\tfrac{8\pi^2}{3}\)</span>: a pure number, 26.3.</li>
+</ul>
+</div>
+<p>The RMSF is computed in three passes over the trajectory. Fit every frame to the reference. Average the position of each atom over all frames. Then average the squared distance of the atom from that mean position and take the root. Without the fit, the result would measure the tumbling of the whole molecule.</p>
+<p>The usual picture is a plot of RMSF against residue number. It is low in the tightly packed parts of a protein and has peaks at loops and at the two ends of the chain.</p>
+<div class="box physics">
+<p><strong>Physics you need here: the crystallographic B-factor.</strong> An X-ray crystal structure reports, for each atom, a position and a B-factor (also called the temperature factor). In the electron density the atom is not a point. It is smeared over a small region, because the atom vibrates and because the many copies of the molecule in the crystal are not perfectly identical. The B-factor measures the size of the smear, in Å<span class="math-inline">\(^2\)</span>.</p>
+<p>Its relation to the fluctuation is the formula above: <span class="math-inline">\(B\)</span> is <span class="math-inline">\(\tfrac{8\pi^2}{3}\)</span> times the mean squared displacement of the atom from its mean position, and that mean squared displacement is the RMSF squared. An RMSF of 0.05 nm = 0.5 Å gives <span class="math-inline">\(B = 26.3\times0.5^2 = 6.6\)</span> Å<span class="math-inline">\(^2\)</span>. An RMSF of 0.1 nm = 1 Å gives 26.3 Å<span class="math-inline">\(^2\)</span>. Convert the RMSF to Å before you use the formula, because B-factors in structure files are in Å<span class="math-inline">\(^2\)</span>.</p>
+<p>Compare the pattern along the chain (which residues are high and which are low) more than the absolute values. A crystal also contains <em>static disorder</em>: copies of the molecule that are frozen in slightly different conformations, which raises <span class="math-inline">\(B\)</span> without any motion. A simulation in solution has none of that.</p>
+</div>
+<h3 id="radius-of-gyration-how-compact">Radius of gyration: how compact</h3>
+<p>The radius of gyration says how far the mass of a molecule is spread out around its centre. A compact globule has a small radius of gyration. The same chain stretched out has a large one.</p>
 <p><strong>Radius of gyration</strong>, the overall size:</p>
 <p><span class="math-display">\[R_g^2 = \frac{\sum_im_i|\mathbf r_i-\mathbf r_{cm}|^2}{\sum_im_i}.\]</span></p>
-<p>The main observable for disordered proteins, directly comparable with SAXS.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(R_g\)</span>: the radius of gyration, in nm. The formula gives its square, so take the root at the end.</li>
+<li><span class="math-inline">\(i\)</span>: the label of one atom. Both sums run over all atoms of the molecule, or of the part you selected.</li>
+<li><span class="math-inline">\(m_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>, in atomic mass units (u).</li>
+<li><span class="math-inline">\(\mathbf r_i\)</span>: the position of atom <span class="math-inline">\(i\)</span> in the frame.</li>
+<li><span class="math-inline">\(\mathbf r_{cm}\)</span>: the centre of mass of the molecule in that frame, the mass-weighted mean position <span class="math-inline">\(\sum_im_i\mathbf r_i/\sum_im_i\)</span>.</li>
+<li><span class="math-inline">\(|\mathbf r_i-\mathbf r_{cm}|^2\)</span>: the squared distance of atom <span class="math-inline">\(i\)</span> from the centre of mass.</li>
+<li><span class="math-inline">\(\sum_im_i\)</span> in the denominator: the total mass. Dividing by it turns the sum into a mass-weighted mean.</li>
+</ul>
+</div>
+<p>Read it like this: <span class="math-inline">\(R_g\)</span> is the root mean square distance of the atoms from the centre of mass, with each atom counted in proportion to its mass. Three examples with equal masses:</p>
+<ul>
+<li>Two atoms 1 nm apart. The centre is halfway, each atom is 0.5 nm from it, and <span class="math-inline">\(R_g = 0.5\)</span> nm.</li>
+<li>Three atoms on a line at 0, 1 and 2 nm. The centre is at 1 nm, the squared distances are 1, 0 and 1 nm<span class="math-inline">\(^2\)</span>, their mean is <span class="math-inline">\(2/3\)</span>, and <span class="math-inline">\(R_g = \sqrt{2/3} = 0.82\)</span> nm.</li>
+<li>A solid ball of uniform density and radius <span class="math-inline">\(R\)</span> has <span class="math-inline">\(R_g = \sqrt{3/5}\,R = 0.77R\)</span>. It is smaller than the radius because most of the mass lies inside, not at the surface. A globular protein that fills a ball of radius 2 nm therefore has <span class="math-inline">\(R_g\)</span> near 1.5 nm.</li>
+</ul>
+<p>For the same number of atoms, a more extended shape has a larger <span class="math-inline">\(R_g\)</span>. The radius of gyration depends only on distances inside the molecule, so it needs no fit to a reference. It does need a whole molecule.</p>
+<p>The main observable for disordered proteins, directly comparable with SAXS. A disordered protein has no single fold, so a distance from a reference structure means little for it. The average <span class="math-inline">\(R_g\)</span> and the shape of its distribution describe the whole set of conformations. SAXS is small-angle X-ray scattering: X-rays are scattered by the molecules in a solution, and the way the scattered intensity falls off at the smallest angles gives the average <span class="math-inline">\(R_g^2\)</span> of the molecules. So compare the experiment with the root of the average of <span class="math-inline">\(R_g^2\)</span> over the frames, not with the average of <span class="math-inline">\(R_g\)</span>. For a stricter comparison, compute the scattering curve itself, as in the table of the section "Comparing with experiment".</p>
+<h3 id="contacts-and-hydrogen-bonds">Contacts and hydrogen bonds</h3>
+<p>Many questions about a structure are questions about which parts touch: is this helix still packed against that sheet, is the ligand still in its pocket, how many hydrogen bonds hold the hairpin together. A contact turns a continuous distance into a yes or a no, which can be counted.</p>
 <p><strong>Contacts and hydrogen bonds.</strong> A contact is usually a pair of heavy atoms closer than 0.45 nm, or C<span class="math-inline">\(\alpha\)</span> atoms closer than 0.8 nm. A hydrogen bond is counted by geometry: donor-acceptor distance below 0.35 nm and hydrogen-donor-acceptor angle below 30°. The <strong>fraction of native contacts</strong> <span class="math-inline">\(Q\)</span> is the fraction of contacts present in a reference structure that are formed in a frame, and is the standard coordinate for folding and binding.</p>
+<p>A <strong>heavy atom</strong> is any atom other than hydrogen. The C<span class="math-inline">\(\alpha\)</span> atom is the central carbon of an amino-acid residue, one per residue, so a C<span class="math-inline">\(\alpha\)</span> contact is a contact between two residues. The count you get depends on the cut-off distance. State the cut-off, and use the same one for all the systems you compare.</p>
+<div class="box physics">
+<p><strong>Physics you need here: the hydrogen bond.</strong> A hydrogen atom bonded to nitrogen or oxygen carries a partial positive charge. When it points at another oxygen or nitrogen, which carries a partial negative charge, the two attract. The atom that holds the hydrogen is the <strong>donor</strong> (D), the atom it points at is the <strong>acceptor</strong> (A), and the arrangement D-H···A is a hydrogen bond. It is strongest when the three atoms lie nearly on a line. More in the <a href="physics.html#intermolecular">primer</a>.</p>
+<p>A simulation does not label hydrogen bonds. You decide afterwards, from the geometry of each frame, whether a donor and an acceptor count as bonded. The two conditions in the text do this. The distance condition says that D and A are close. The angle is measured at the donor, between the direction to its hydrogen and the direction to the acceptor: it is 0° when the hydrogen lies exactly on the line from D to A, and "below 30°" means that the hydrogen points nearly straight at the acceptor.</p>
+<p>The two numbers of the text are one common convention, not a law of nature. Other definitions in use have other cut-offs, or measure the angle at the hydrogen (donor-hydrogen-acceptor, which is near 180° for a straight bond). The number of hydrogen bonds you count depends on the definition, so state the one you used and use the same one for everything you compare.</p>
+</div>
+<p>For <span class="math-inline">\(Q\)</span>, first list the contacts in the reference structure. For a protein this is usually the <strong>native</strong> structure, the folded form found by experiment. Then count, in each frame, how many contacts of that list are present.</p>
+<p>If the reference has 100 contacts and 80 of them are present in a frame, <span class="math-inline">\(Q = 0.8\)</span>. <span class="math-inline">\(Q\)</span> runs from 0 (none of the reference contacts) to 1 (all of them). Contacts in the frame that are not on the list do not count.</p>
+<p>A "coordinate" in the last sentence of the definition is a single number that follows the progress of a process. For folding, <span class="math-inline">\(Q\)</span> rises from near 0 to near 1. For binding, the same count is made with the contacts between the two partners.</p>
+<h3 id="other-structural-measures">Other structural measures</h3>
 <p><strong>Solvent-accessible surface area</strong>, <strong>secondary structure</strong> (DSSP), and specific distances and dihedral angles complete the usual set.</p>
+<ul>
+<li><strong>Solvent-accessible surface area (SASA).</strong> Roll a sphere the size of a water molecule (a radius of about 0.14 nm is the usual choice) over the surface of the molecule. The area traced out by the centre of the sphere is the SASA, in nm<span class="math-inline">\(^2\)</span>. Per residue, it says whether the residue is buried or exposed. For a complex of two molecules, the area that binding hides from the solvent is the SASA of the two separate partners added together, minus the SASA of the complex.</li>
+<li><strong>Secondary structure.</strong> The local shape of the protein backbone: helix, strand, turn or irregular coil. DSSP is a widely used program that assigns one of these classes to every residue from the pattern of hydrogen bonds between backbone groups. Applied to every frame, it shows when and where a helix frays or a strand forms.</li>
+<li><strong>A specific distance.</strong> The distance between two chosen atoms, or between the centres of two groups, is the most direct way to follow one event, such as a salt bridge that opens or a ligand that leaves.</li>
+<li><strong>A dihedral angle.</strong> Four atoms bonded in a row, a-b-c-d, define the angle by which the bond c-d is rotated about the bond b-c relative to the bond a-b. It runs from <span class="math-inline">\(-180\)</span>° to 180°. The backbone angles <span class="math-inline">\(\phi\)</span> and <span class="math-inline">\(\psi\)</span> and the side-chain angles <span class="math-inline">\(\chi\)</span> are dihedral angles. Take care when you average an angle: <span class="math-inline">\(-179\)</span>° and 179° are two degrees apart, but their plain mean is 0°.</li>
+</ul>
 <h3 id="radial-distribution-function">Radial distribution function</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="FqqPhoyRCCM" href="https://www.youtube.com/watch?v=FqqPhoyRCCM" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 23: Calculation of Radial Distribution Function, TCF</span><span class="sv-m">40 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="X0vdXv7aTvk" href="https://www.youtube.com/watch?v=X0vdXv7aTvk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lec 36: Radial Distribution Function</span><span class="sv-m">58 min · NPTEL IIT Guwahati</span></a><a class="sv" data-yt="DMQifMiY_oI" href="https://www.youtube.com/watch?v=DMQifMiY_oI" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 7-Lecture 31</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a><a class="sv" data-yt="fw6feNSZ4jE" href="https://www.youtube.com/watch?v=fw6feNSZ4jE" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 8-Lecture 37</span><span class="sv-m">32 min · NPTEL / IIT Bombay</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="FqqPhoyRCCM" href="https://www.youtube.com/watch?v=FqqPhoyRCCM" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 23: Calculation of Radial Distribution Function, TCF</span><span class="sv-m">40 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="X0vdXv7aTvk" href="https://www.youtube.com/watch?v=X0vdXv7aTvk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lec 36: Radial Distribution Function</span><span class="sv-m">58 min · NPTEL IIT Guwahati</span></a><a class="sv" data-yt="DMQifMiY_oI" href="https://www.youtube.com/watch?v=DMQifMiY_oI" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 7-Lecture 31</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a><a class="sv" data-yt="fw6feNSZ4jE" href="https://www.youtube.com/watch?v=fw6feNSZ4jE" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 8-Lecture 37</span><span class="sv-m">32 min · NPTEL / IIT Bombay</span></a></div>
 
+<p>A liquid has no fixed structure, but it is not random either. Around any molecule, the neighbours keep preferred distances. The radial distribution function describes this average arrangement.</p>
+<p>The picture: sit on one particle of kind A, say a sodium ion. Draw a thin spherical shell of radius <span class="math-inline">\(r\)</span> around it and count the particles of kind B, say water oxygens, inside the shell. Average the count over all A particles and all frames. Then divide by the count you would expect if B were spread evenly through the box. The ratio is <span class="math-inline">\(g\)</span> at that distance.</p>
 <p>For particles of types A and B, <span class="math-inline">\(g_{AB}(r)\)</span> is the density of B at distance <span class="math-inline">\(r\)</span> from an A, divided by the bulk density of B:</p>
 <p><span class="math-display">\[g_{AB}(r) = \frac{\langle n_B(r,r+dr)\rangle}{4\pi r^2\,dr\;\rho_B}.\]</span></p>
-<p>It tends to 1 at large <span class="math-inline">\(r\)</span>. Peaks are solvation shells. The integral up to the first minimum gives the coordination number, <span class="math-inline">\(n = 4\pi\rho_B\int_0^{r_{min}}g(r)\,r^2dr\)</span>. And <span class="math-inline">\(w(r) = -k_BT\ln g(r)\)</span> is the potential of mean force between the two species (Module 3). <span class="math-inline">\(g(r)\)</span> is measured by X-ray and neutron scattering, which makes it a primary test of water and ion models.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(g_{AB}(r)\)</span>: the radial distribution function, a pure number with no unit. It is not the statistical inefficiency <span class="math-inline">\(g\)</span> of the later sections.</li>
+<li>A, B: two kinds of particle, for example sodium ions and water oxygens. They can be the same kind (oxygen around oxygen).</li>
+<li><span class="math-inline">\(r\)</span>: the distance from the central A particle, in nm.</li>
+<li><span class="math-inline">\(dr\)</span>: the thickness of the shell. In practice it is the bin width of a histogram of distances, a small fraction of an atomic diameter.</li>
+<li><span class="math-inline">\(n_B(r,r+dr)\)</span>: the number of B particles whose distance from the central A lies between <span class="math-inline">\(r\)</span> and <span class="math-inline">\(r+dr\)</span>, in one frame.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over all A particles and over all frames.</li>
+<li><span class="math-inline">\(4\pi r^2\,dr\)</span>: the volume of the shell, which is the surface area of a sphere, <span class="math-inline">\(4\pi r^2\)</span>, times the thickness.</li>
+<li><span class="math-inline">\(\rho_B\)</span> (Greek rho): the bulk number density of B, the number of B particles divided by the volume of the box, in nm<span class="math-inline">\(^{-3}\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this. The numerator is what you count. The denominator is what an evenly spread fluid would give: density times the volume of the shell. So <span class="math-inline">\(g = 1\)</span> means "as crowded as the average", <span class="math-inline">\(g = 2\)</span> means "twice as crowded", and <span class="math-inline">\(g = 0\)</span> means "never found here". At very short distances <span class="math-inline">\(g\)</span> is 0, because two atoms cannot overlap.</p>
+<p>A numerical example. Liquid water has about 33 molecules per nm<span class="math-inline">\(^3\)</span>. Take the shell between 0.27 and 0.29 nm around a water oxygen. Its volume is <span class="math-inline">\(4\pi\times0.28^2\times0.02 = 0.0197\)</span> nm<span class="math-inline">\(^3\)</span>, so an evenly spread fluid would put <span class="math-inline">\(33\times0.0197 = 0.65\)</span> oxygens in it. If the simulation finds, say, 1.6 on average, then <span class="math-inline">\(g = 1.6/0.65 = 2.5\)</span> at this distance.</p>
+<p>It tends to 1 at large <span class="math-inline">\(r\)</span>. Far from the central particle its influence is gone, and the density is the average one.</p>
+<p>Peaks are solvation shells. The first peak holds the nearest neighbours, which touch the central particle. After it comes a minimum, a distance at which a neighbour would fit neither in the first layer nor in the second. The second peak is the second layer, and each further peak is lower and broader than the one before.</p>
+<div class="box maths">
+<p><strong>Maths you need here: an integral as a sum of thin slices.</strong> The integral <span class="math-inline">\(\int_a^b f(r)\,dr\)</span> is what you get when you cut the range from <span class="math-inline">\(a\)</span> to <span class="math-inline">\(b\)</span> into thin slices of width <span class="math-inline">\(dr\)</span>, multiply the value of <span class="math-inline">\(f\)</span> in each slice by the width, and add up. Example: a ball of radius <span class="math-inline">\(R\)</span> is a set of nested shells, each of volume <span class="math-inline">\(4\pi r^2\,dr\)</span>. Adding them up gives <span class="math-inline">\(\int_0^R4\pi r^2\,dr = \tfrac43\pi R^3\)</span>, the volume of the ball. More in the <a href="maths.html#integral">toolbox</a>.</p>
+</div>
+<p>The integral up to the first minimum gives the coordination number, <span class="math-inline">\(n = 4\pi\rho_B\int_0^{r_{min}}g(r)\,r^2dr\)</span>.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(n\)</span>: the coordination number, the average number of B particles in the first shell around an A.</li>
+<li><span class="math-inline">\(r_{min}\)</span>: the distance of the first minimum of <span class="math-inline">\(g(r)\)</span>, the outer edge of the first shell.</li>
+<li><span class="math-inline">\(\int_0^{r_{min}}\dots dr\)</span>: add up over all thin shells from the centre out to <span class="math-inline">\(r_{min}\)</span>.</li>
+<li><span class="math-inline">\(g(r)\,r^2\)</span>: the radial distribution function times the factor <span class="math-inline">\(r^2\)</span> that comes from the volume of each shell.</li>
+<li><span class="math-inline">\(4\pi\rho_B\)</span>: the remaining constant factors of the shell volume and the bulk density.</li>
+</ul>
+</div>
+<p>The formula follows from the definition in one step. Multiply both sides of the definition by the denominator: the average number of B particles in one thin shell is <span class="math-inline">\(\rho_B\,g(r)\,4\pi r^2\,dr\)</span>. Adding this up over the shells from 0 to <span class="math-inline">\(r_{min}\)</span> gives <span class="math-inline">\(n\)</span>. A check: for an evenly spread fluid, <span class="math-inline">\(g = 1\)</span> everywhere, the integral is <span class="math-inline">\(r_{min}^3/3\)</span> and <span class="math-inline">\(n = \rho_B\times\tfrac43\pi r_{min}^3\)</span>, the density times the volume of a ball, as it must be.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the natural logarithm.</strong> The logarithm <span class="math-inline">\(\ln\)</span> undoes the exponential: if <span class="math-inline">\(y = e^x\)</span> then <span class="math-inline">\(x = \ln y\)</span>. Here <span class="math-inline">\(e = 2.718\)</span> is a fixed number, and <span class="math-inline">\(e^x\)</span> is that number raised to the power <span class="math-inline">\(x\)</span>. Three values to remember: <span class="math-inline">\(\ln 1 = 0\)</span>, <span class="math-inline">\(\ln 2 = 0.69\)</span>, <span class="math-inline">\(\ln 10 = 2.30\)</span>. The logarithm of a number above 1 is positive and that of a number between 0 and 1 is negative.</p>
+<p>Two rules do most of the work: <span class="math-inline">\(\ln(ab) = \ln a+\ln b\)</span> and <span class="math-inline">\(\ln(a/b) = \ln a-\ln b\)</span>. So <span class="math-inline">\(\ln 100 = 2\ln 10 = 4.61\)</span> and <span class="math-inline">\(\ln(1/2) = -0.69\)</span>. In this module the logarithm turns a ratio of probabilities into a difference of free energies. More in the <a href="maths.html#exp-log">toolbox</a>.</p>
+</div>
+<p>And <span class="math-inline">\(w(r) = -k_BT\ln g(r)\)</span> is the potential of mean force between the two species (Module 3).</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(w(r)\)</span>: the potential of mean force, in kJ/mol. It is the free energy of the pair as a function of their distance, with the positions of all other molecules averaged out, and it is zero at large distance.</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature, in kelvin. <span class="math-inline">\(k_BT = 2.494\)</span> kJ/mol at 300 K.</li>
+<li><span class="math-inline">\(\ln g(r)\)</span>: the natural logarithm of the radial distribution function at that distance.</li>
+<li>The minus sign: where the pair is found more often than average, the free energy is lower.</li>
+</ul>
+</div>
+<p>The reason for the logarithm is the Boltzmann rule of <a href="03-statistical-mechanics.html">Module 3</a>: the probability of an arrangement is proportional to <span class="math-inline">\(e^{-w/k_BT}\)</span>. Since <span class="math-inline">\(g\)</span> is the probability of the distance <span class="math-inline">\(r\)</span> relative to an even spread, <span class="math-inline">\(g(r) = e^{-w(r)/k_BT}\)</span>. Taking the logarithm of both sides gives <span class="math-inline">\(\ln g = -w/k_BT\)</span>, and multiplying by <span class="math-inline">\(-k_BT\)</span> gives the formula. In numbers, at 300 K: a peak with <span class="math-inline">\(g = 3\)</span> is a well of <span class="math-inline">\(-2.494\times\ln3 = -2.7\)</span> kJ/mol, a minimum with <span class="math-inline">\(g = 0.5\)</span> is a barrier of <span class="math-inline">\(+1.7\)</span> kJ/mol, and <span class="math-inline">\(g = 1\)</span> gives <span class="math-inline">\(w = 0\)</span>.</p>
+<p><span class="math-inline">\(g(r)\)</span> is measured by X-ray and neutron scattering, which makes it a primary test of water and ion models. A scattering experiment does not see single molecules. It sees the average arrangement of pairs of atoms, which is what <span class="math-inline">\(g(r)\)</span> describes.</p>
 <h2 id="dynamical-observables">Dynamical observables</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="3b6ZM21PmPU" href="https://www.youtube.com/watch?v=3b6ZM21PmPU" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">08 Calculation of Transport Coefficients</span><span class="sv-m">5 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="rWoV7HoufdA" href="https://www.youtube.com/watch?v=rWoV7HoufdA" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">10 Correlation functions</span><span class="sv-m">10 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="Mm1WfLi86-0" href="https://www.youtube.com/watch?v=Mm1WfLi86-0" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">11 Time Correlation Functions</span><span class="sv-m">5 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="nuAs_GlCdDU" href="https://www.youtube.com/watch?v=nuAs_GlCdDU" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 10: Dynamical Properties</span><span class="sv-m">29 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="3b6ZM21PmPU" href="https://www.youtube.com/watch?v=3b6ZM21PmPU" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">08 Calculation of Transport Coefficients</span><span class="sv-m">5 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="rWoV7HoufdA" href="https://www.youtube.com/watch?v=rWoV7HoufdA" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">10 Correlation functions</span><span class="sv-m">10 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="Mm1WfLi86-0" href="https://www.youtube.com/watch?v=Mm1WfLi86-0" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">11 Time Correlation Functions</span><span class="sv-m">5 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="nuAs_GlCdDU" href="https://www.youtube.com/watch?v=nuAs_GlCdDU" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 10: Dynamical Properties</span><span class="sv-m">29 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
+<p>A structural observable uses one frame at a time. You could shuffle the frames and get the same RMSF and the same <span class="math-inline">\(g(r)\)</span>. A dynamical observable asks how fast things change, so it compares frames that are a certain time apart, and the order of the frames and the time between them matter.</p>
+<h3 id="diffusion-how-far-molecules-travel">Diffusion: how far molecules travel</h3>
+<p>A molecule in a liquid collides with its neighbours all the time and changes direction at every collision. Its path is a <strong>random walk</strong>. A random walker does not get far: the distance from the starting point grows only as the square root of the time. The diffusion coefficient <span class="math-inline">\(D\)</span> measures how fast a molecule spreads in this way.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the random walk.</strong> A walker takes steps of length <span class="math-inline">\(a\)</span> along a line, each one to the left or to the right with equal probability. After <span class="math-inline">\(n\)</span> steps the position is the sum of the steps, <span class="math-inline">\(x_n = s_1+s_2+\dots+s_n\)</span>, where each <span class="math-inline">\(s_k\)</span> is <span class="math-inline">\(+a\)</span> or <span class="math-inline">\(-a\)</span>.</p>
+<p>Averaged over many walkers, <span class="math-inline">\(\langle x_n\rangle = 0\)</span>: there is no preferred direction. Now square the position. The square of a sum contains every step squared and every product of two different steps:</p>
+<p><span class="math-display">\[x_n^2 = \sum_k s_k^2 + \sum_{k\ne l}s_k s_l .\]</span></p>
+<p>Each <span class="math-inline">\(s_k^2\)</span> equals <span class="math-inline">\(a^2\)</span>. Each product <span class="math-inline">\(s_ks_l\)</span> of two different steps is <span class="math-inline">\(+a^2\)</span> or <span class="math-inline">\(-a^2\)</span> with equal probability, because the steps are independent, so its average is zero. What remains is <span class="math-inline">\(\langle x_n^2\rangle = n\,a^2\)</span>.</p>
+<p>The mean squared displacement grows in proportion to the number of steps, that is, to the time. The typical distance, <span class="math-inline">\(\sqrt{\langle x_n^2\rangle} = a\sqrt n\)</span>, grows only as the square root: 100 steps take the walker about 10 step lengths away, 400 steps about 20. A test with 10,000 walkers on a computer gave <span class="math-inline">\(\langle x_n^2\rangle = 100.5\,a^2\)</span> after 100 steps and <span class="math-inline">\(401\,a^2\)</span> after 400. More in the <a href="maths.html#random-numbers">toolbox</a> and the <a href="physics.html#diffusion">primer</a>.</p>
+</div>
 <p><strong>Diffusion.</strong> The mean squared displacement grows linearly at long times (Einstein relation):</p>
 <p><span class="math-display">\[\mathrm{MSD}(t) = \big\langle|\mathbf r(t_0+t)-\mathbf r(t_0)|^2\big\rangle \;\to\; 6Dt .\]</span></p>
-<p>Fit the linear part, not the short-time ballistic part. Equivalently, by the Green-Kubo relation, <span class="math-inline">\(D = \tfrac13\int_0^\infty\langle\mathbf v(0)\cdot\mathbf v(t)\rangle\,dt\)</span>. Use unwrapped coordinates.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathrm{MSD}(t)\)</span>: the mean squared displacement over a time interval of length <span class="math-inline">\(t\)</span>, in nm<span class="math-inline">\(^2\)</span>.</li>
+<li><span class="math-inline">\(t\)</span>: the length of the interval (the "lag time"). It is not the time since the start of the simulation.</li>
+<li><span class="math-inline">\(t_0\)</span>: the starting time of one interval (a "time origin").</li>
+<li><span class="math-inline">\(\mathbf r(t_0)\)</span>, <span class="math-inline">\(\mathbf r(t_0+t)\)</span>: the position of one molecule, usually its centre of mass, at the start and at the end of the interval.</li>
+<li><span class="math-inline">\(|\ \ |^2\)</span>: the squared length of the displacement between the two positions.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over all starting times <span class="math-inline">\(t_0\)</span> in the trajectory and over all molecules of the same kind.</li>
+<li><span class="math-inline">\(\to\)</span>: "approaches, when <span class="math-inline">\(t\)</span> is long".</li>
+<li><span class="math-inline">\(D\)</span>: the diffusion coefficient, in nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-1}\)</span>. In the units of the experimental literature, 1 nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-1}\)</span> = <span class="math-inline">\(10^{-2}\)</span> cm<span class="math-inline">\(^2\)</span> s<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(6\)</span>: two times the number of dimensions. Each of the directions <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span> contributes <span class="math-inline">\(2Dt\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this. For every pair of frames a time <span class="math-inline">\(t\)</span> apart, ask how far each molecule has moved, square the distance and average. Plot the result against <span class="math-inline">\(t\)</span>. At long times the plot is a straight line, and its slope is <span class="math-inline">\(6D\)</span>.</p>
+<p>The 6 comes from the random walk. In one dimension the maths box above gives <span class="math-inline">\(\langle x^2\rangle\)</span> proportional to the time, and the constant of proportionality is written <span class="math-inline">\(2D\)</span>, which defines <span class="math-inline">\(D\)</span>. The motions along <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span> are independent and their squared displacements add, so in three dimensions the mean squared displacement is <span class="math-inline">\(3\times2Dt = 6Dt\)</span>.</p>
+<p>A numerical example. Suppose the MSD of the molecules rises from 0.6 nm<span class="math-inline">\(^2\)</span> at <span class="math-inline">\(t = 50\)</span> ps to 3.0 nm<span class="math-inline">\(^2\)</span> at 250 ps. The slope is <span class="math-inline">\(2.4/200 = 0.012\)</span> nm<span class="math-inline">\(^2\)</span>/ps, so <span class="math-inline">\(D = 0.012/6 = 0.002\)</span> nm<span class="math-inline">\(^2\)</span>/ps, which is <span class="math-inline">\(2\times10^{-5}\)</span> cm<span class="math-inline">\(^2\)</span>/s (a round value of the order of that of liquid water at room temperature). With this <span class="math-inline">\(D\)</span>, a molecule moves by a root mean square distance of <span class="math-inline">\(\sqrt{6\times0.002\times1000} = 3.5\)</span> nm in one nanosecond.</p>
+<p>Fit the linear part, not the short-time ballistic part. "Ballistic" describes the first fraction of a picosecond, before the molecule has collided with anything. It flies in a straight line at its velocity <span class="math-inline">\(v\)</span>, its displacement is <span class="math-inline">\(vt\)</span>, and the MSD grows as <span class="math-inline">\(t^2\)</span>, a curve and not a line. A straight line fitted there gives a wrong <span class="math-inline">\(D\)</span>.</p>
+<p>At the longest lag times the MSD is also unusable, for a different reason: few intervals of that length fit into the trajectory, so the average is noisy. Fit a line by least squares over the range in between, and check on the plot that the MSD is straight there.</p>
+<p>Equivalently, by the Green-Kubo relation, <span class="math-inline">\(D = \tfrac13\int_0^\infty\langle\mathbf v(0)\cdot\mathbf v(t)\rangle\,dt\)</span>.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf v(0)\)</span>, <span class="math-inline">\(\mathbf v(t)\)</span>: the velocity of one molecule at a starting time, called 0, and a time <span class="math-inline">\(t\)</span> later.</li>
+<li><span class="math-inline">\(\mathbf v(0)\cdot\mathbf v(t)\)</span>: the dot product of the two velocities, <span class="math-inline">\(v_x(0)v_x(t)+v_y(0)v_y(t)+v_z(0)v_z(t)\)</span>. It is positive when the molecule still moves in roughly the same direction and negative when it has turned back.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over all starting times and all molecules. The averaged quantity is called the velocity autocorrelation function.</li>
+<li><span class="math-inline">\(\int_0^\infty\dots dt\)</span>: the area under that function.</li>
+<li><span class="math-inline">\(\tfrac13\)</span>: one over the number of dimensions.</li>
+</ul>
+</div>
+<p>In words: the diffusion coefficient is one third of the area under the velocity autocorrelation function. That function starts at the mean squared velocity and decays to zero as collisions erase the memory of the initial velocity. A molecule that keeps its direction for longer travels further before it turns, the area is larger, and <span class="math-inline">\(D\)</span> is larger. This route needs velocities saved every few femtoseconds, which ordinary trajectories do not contain, so the MSD is the usual route.</p>
+<details>
+<summary>Optional: why the two formulas for D agree</summary>
+<p>The displacement of a molecule is the integral of its velocity, <span class="math-inline">\(\mathbf r(t)-\mathbf r(0) = \int_0^t\mathbf v(t')\,dt'\)</span>. Squaring it means multiplying the integral by itself (as a dot product). Each of the two copies needs its own integration variable, <span class="math-inline">\(t'\)</span> and <span class="math-inline">\(t''\)</span>, and both run from 0 to <span class="math-inline">\(t\)</span>. The product is a double integral, and averaging gives</p>
+<p><span class="math-display">\[\mathrm{MSD}(t) = \int_0^t\!\!\int_0^t\langle\mathbf v(t')\cdot\mathbf v(t'')\rangle\,dt'\,dt'' .\]</span></p>
+<p>At equilibrium the average depends only on the time difference <span class="math-inline">\(s = |t'-t''|\)</span>. Write it as <span class="math-inline">\(C_v(s)\)</span>. For a given difference <span class="math-inline">\(s\)</span>, the earlier of the two times can lie anywhere between 0 and <span class="math-inline">\(t-s\)</span>, and either <span class="math-inline">\(t'\)</span> or <span class="math-inline">\(t''\)</span> can be the earlier one. Each value of <span class="math-inline">\(s\)</span> therefore occurs with the weight <span class="math-inline">\(2(t-s)\)</span>, so</p>
+<p><span class="math-display">\[\mathrm{MSD}(t) = 2\int_0^t(t-s)\,C_v(s)\,ds .\]</span></p>
+<p><span class="math-inline">\(C_v(s)\)</span> is zero except at short <span class="math-inline">\(s\)</span>. For <span class="math-inline">\(t\)</span> much longer than its decay time, <span class="math-inline">\(t-s\)</span> can be replaced by <span class="math-inline">\(t\)</span> where it matters, and the upper limit by infinity: <span class="math-inline">\(\mathrm{MSD}(t)\approx2t\int_0^\infty C_v(s)\,ds\)</span>. Setting this equal to <span class="math-inline">\(6Dt\)</span> and dividing both sides by <span class="math-inline">\(6t\)</span> gives <span class="math-inline">\(D = \tfrac13\int_0^\infty C_v(s)\,ds\)</span>.</p>
+</details>
+<p>Use unwrapped coordinates. Wrapping puts a molecule that leaves the box back in at the opposite face, so its stored position jumps by a box length, and a displacement computed from stored positions can never be larger than the box. Unwrapped coordinates follow the molecule continuously through the periodic copies. Unwrapping removes every jump of about a box length between consecutive frames, so the frames must be close enough in time that no molecule really moves half a box between two of them.</p>
+<h3 id="the-finite-size-correction">The finite-size correction</h3>
+<p>A molecule that moves through a liquid pushes solvent ahead of it and drags solvent along. This flow reaches far, and through it the motion of one molecule affects others at a distance. This is a <strong>hydrodynamic interaction</strong>. In a periodic box every molecule is surrounded by copies of itself that move in the same way, and the flow each one sets up is confined by the box. The net effect is that molecules diffuse more slowly than in an infinite liquid, and the smaller the box, the larger the effect.</p>
+<div class="box physics">
+<p><strong>Physics you need here: viscosity.</strong> The viscosity <span class="math-inline">\(\eta\)</span> (Greek eta) measures the resistance of a liquid to flow: honey has a high viscosity and water a low one. A liquid of high viscosity also slows the molecules that move through it, so a high viscosity goes with slow diffusion. The SI unit is the pascal second, Pa s. Water near room temperature has a viscosity close to <span class="math-inline">\(10^{-3}\)</span> Pa s. More in the <a href="physics.html#diffusion">primer</a>.</p>
+</div>
 <p>Diffusion in a periodic box is slowed by hydrodynamic interaction with the periodic images. For a cubic box of edge <span class="math-inline">\(L\)</span> and solvent viscosity <span class="math-inline">\(\eta\)</span> (<a href="https://doi.org/10.1021/jp0477147" class="cite" target="_blank" rel="noopener" title="Yeh IC; Hummer G (2004). System-Size Dependence of Diffusion Coefficients and Viscosities from Molecular Dynamics Simulations with Periodic Boundary Conditions. The Journal of Physical Chemistry B">Yeh and Hummer 2004</a>):</p>
 <p><span class="math-display">\[D_\infty = D_{PBC} + \frac{2.837\,k_BT}{6\pi\eta L}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(D_{PBC}\)</span>: the diffusion coefficient you measured in the periodic box, from the MSD. PBC stands for periodic boundary conditions.</li>
+<li><span class="math-inline">\(D_\infty\)</span>: the value for an infinitely large system, which is the one to compare with experiment.</li>
+<li><span class="math-inline">\(k_B\)</span>, <span class="math-inline">\(T\)</span>: the Boltzmann constant and the temperature. For this formula use SI units: <span class="math-inline">\(k_BT = 4.14\times10^{-21}\)</span> J at 300 K.</li>
+<li><span class="math-inline">\(\eta\)</span>: the viscosity of the solvent, in Pa s. Strictly it is the viscosity of the water model you simulate, which can differ from that of real water.</li>
+<li><span class="math-inline">\(L\)</span>: the edge length of the cubic box, in metres (1 nm = <span class="math-inline">\(10^{-9}\)</span> m).</li>
+<li><span class="math-inline">\(2.837\)</span>: a pure number that belongs to the cubic arrangement of the periodic copies.</li>
+<li><span class="math-inline">\(6\pi\)</span>: a numerical factor from the hydrodynamics of the solvent.</li>
+</ul>
+</div>
+<p>Read it like this: the correction is always positive, because the periodic box makes diffusion too slow. It is proportional to <span class="math-inline">\(1/L\)</span>, so doubling the box edge halves it. As written, it does not contain any property of the diffusing molecule: the same amount is added whatever the size of the measured diffusion coefficient, so in relative terms it matters more for whatever diffuses slowly. This is the leading term only. The same paper gives a further term that makes the correction smaller for a solute whose radius is not small compared with <span class="math-inline">\(L\)</span>, and it found a smaller correction than this formula for the charged solutes it tested (ions and a small RNA).</p>
+<p>The arithmetic for one case: <span class="math-inline">\(L = 3\)</span> nm and, say, <span class="math-inline">\(\eta = 0.85\times10^{-3}\)</span> Pa s (about the viscosity of water near 300 K). The correction is <span class="math-inline">\(2.837\times4.14\times10^{-21}/(6\pi\times0.85\times10^{-3}\times3\times10^{-9}) = 2.4\times10^{-10}\)</span> m<span class="math-inline">\(^2\)</span>/s, which is <span class="math-inline">\(2.4\times10^{-4}\)</span> nm<span class="math-inline">\(^2\)</span>/ps. Next to the diffusion coefficient of <span class="math-inline">\(2\times10^{-3}\)</span> nm<span class="math-inline">\(^2\)</span>/ps of the example above, that is 12 %.</p>
 <p>For water in a 3 nm box the correction is more than 10 %.</p>
+<h3 id="time-correlation-functions">Time correlation functions</h3>
+<p>The velocity autocorrelation function is one member of a family. For any observable you can ask how long it remembers its value: if the radius of gyration is above its average now, is it still above its average 100 ps later?</p>
 <p><strong>Time correlation functions.</strong> For any observable, <span class="math-inline">\(C_{AA}(t)=\langle\delta A(0)\,\delta A(t)\rangle\)</span> with <span class="math-inline">\(\delta A = A-\langle A\rangle\)</span>. Their decay gives relaxation times, and their integrals give transport coefficients. The rotational correlation function of N-H bond vectors gives NMR order parameters <span class="math-inline">\(S^2\)</span>.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(A\)</span>: the observable. <span class="math-inline">\(\langle A\rangle\)</span>: its mean over the trajectory.</li>
+<li><span class="math-inline">\(\delta A(0)\)</span>: the deviation of <span class="math-inline">\(A\)</span> from its mean at a starting time, called 0. <span class="math-inline">\(\delta A(t)\)</span>: its deviation a time <span class="math-inline">\(t\)</span> later.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span> around the product: the average over all starting times in the trajectory.</li>
+<li><span class="math-inline">\(C_{AA}(t)\)</span>: the time correlation function of <span class="math-inline">\(A\)</span> with itself, also called its autocorrelation function. The two subscripts name the two quantities that are multiplied. Its unit is the unit of <span class="math-inline">\(A\)</span> squared.</li>
+</ul>
+</div>
+<p>Read it like this: at <span class="math-inline">\(t = 0\)</span> the product is <span class="math-inline">\(\delta A^2\)</span> and its average is the variance of <span class="math-inline">\(A\)</span>. At short <span class="math-inline">\(t\)</span> the two deviations still have the same sign in most pairs of frames, the products are mostly positive, and <span class="math-inline">\(C_{AA}\)</span> is close to the variance. At long <span class="math-inline">\(t\)</span> the two deviations are unrelated, positive and negative products cancel, and <span class="math-inline">\(C_{AA}\)</span> is zero. The time this takes is the <strong>relaxation time</strong> of the observable: how long it remembers a fluctuation.</p>
+<div class="box maths">
+<p><strong>Maths you need here: exponential decay.</strong> The simplest decay is <span class="math-inline">\(e^{-t/\tau}\)</span>, where <span class="math-inline">\(\tau\)</span> (Greek tau) is a time. It equals 1 at <span class="math-inline">\(t = 0\)</span> and is multiplied by the same factor in every equal interval of time: 0.37 at <span class="math-inline">\(t = \tau\)</span>, 0.14 at <span class="math-inline">\(2\tau\)</span>, 0.05 at <span class="math-inline">\(3\tau\)</span>. So <span class="math-inline">\(\tau\)</span> is the time in which the function falls to 37 % (<span class="math-inline">\(1/e\)</span>) of its value, and after three times <span class="math-inline">\(\tau\)</span> almost nothing is left. The area under the curve from 0 to infinity is exactly <span class="math-inline">\(\tau\)</span>. More in the <a href="maths.html#exp-log">toolbox</a>.</p>
+</div>
+<p>A <strong>transport coefficient</strong> is a number that says how fast something is carried through a material: matter (the diffusion coefficient), momentum (the viscosity), heat (the thermal conductivity) or charge (the electrical conductivity). The Green-Kubo relations state that each of them is, apart from a constant factor, the time integral, the area under the curve, of an autocorrelation function measured in an ordinary equilibrium simulation. For diffusion the function is that of the velocity, as above. For the viscosity it is that of the shear stress in the liquid (the off-diagonal components of the pressure tensor). You do not have to push the system to measure how it responds to a push: the way its spontaneous fluctuations die away contains the same information.</p>
+<p>For the last sentence of the definition, take the N-H bond of one residue and describe its direction by a vector of length 1, <span class="math-inline">\(\hat{\boldsymbol\mu}\)</span>. After the overall tumbling of the protein has been removed by fitting, the rotational correlation function asks how similar the direction at time <span class="math-inline">\(t\)</span> is to the direction at time 0. The usual form is <span class="math-inline">\(\langle P_2(\hat{\boldsymbol\mu}(0)\cdot\hat{\boldsymbol\mu}(t))\rangle\)</span> with <span class="math-inline">\(P_2(x) = \tfrac12(3x^2-1)\)</span>, where <span class="math-inline">\(x\)</span> is the cosine of the angle between the two directions. <span class="math-inline">\(P_2\)</span> equals 1 when the two directions coincide, and it averages to 0 when the later direction is completely random, because the average of <span class="math-inline">\(x^2\)</span> is then <span class="math-inline">\(1/3\)</span>.</p>
+<p>For a residue in a folded protein this function starts at 1 and falls to a plateau. The height of the plateau is the <strong>order parameter</strong> <span class="math-inline">\(S^2\)</span>. A value near 1 means that the bond keeps its direction inside the molecule (a rigid residue). A value near 0 means that the bond can point anywhere (a very flexible residue). NMR relaxation experiments give <span class="math-inline">\(S^2\)</span> for each residue, so this is a residue-by-residue test of the fast motions in a simulation.</p>
 <h2 id="statistical-error-the-part-most-often-done-wrong">Statistical error: the part most often done wrong</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="e3Ygft3fjRg" href="https://www.youtube.com/watch?v=e3Ygft3fjRg" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 24: Estimation of Errors in Thermodynamic Quantities</span><span class="sv-m">42 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="8Y9dgl6jsBo" href="https://www.youtube.com/watch?v=8Y9dgl6jsBo" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 25: Estimation of Errors in Structural and Dynamical Quantities</span><span class="sv-m">35 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="e3Ygft3fjRg" href="https://www.youtube.com/watch?v=e3Ygft3fjRg" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 24: Estimation of Errors in Thermodynamic Quantities</span><span class="sv-m">42 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="8Y9dgl6jsBo" href="https://www.youtube.com/watch?v=8Y9dgl6jsBo" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 25: Estimation of Errors in Structural and Dynamical Quantities</span><span class="sv-m">35 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
-<p>A trajectory of <span class="math-inline">\(N\)</span> frames is not <span class="math-inline">\(N\)</span> independent measurements. Frames close in time are similar. The quantity that tells you how similar is the normalised autocorrelation function</p>
+<p>You have a time series and its mean. How far can that mean be from the true value, the one an infinitely long simulation would give? The answer is called the <strong>standard error</strong>, and the textbook way of computing it fails for simulation data. This section builds the correct estimate in three steps: the standard error of independent data, the reason why frames are not independent, and the correction for it. The practical methods follow.</p>
+<p>The essential parts are the difference between standard deviation and standard error, the framed formula, and block averaging. The derivation in the "Optional" block can be skipped on a first reading.</p>
+<h3 id="spread-of-the-data-and-uncertainty-of-the-mean">Spread of the data and uncertainty of the mean</h3>
+<p>Two numbers are easily confused.</p>
+<ul>
+<li>The <strong>standard deviation</strong> <span class="math-inline">\(\sigma_A\)</span> says how much <span class="math-inline">\(A\)</span> fluctuates from frame to frame. It is a property of the molecule. A longer simulation does not make it smaller. It only measures it better.</li>
+<li>The <strong>standard error</strong> <span class="math-inline">\(\mathrm{SE}(\bar A)\)</span> says how much the computed mean <span class="math-inline">\(\bar A\)</span> would change if you repeated the whole simulation. It is a property of your estimate. More data make it smaller.</li>
+</ul>
+<p>An everyday case: the heights of the adults in a city have a standard deviation of, say, 10 cm, however many people you measure. The mean height, though, is known to within 1 cm after 100 people and to within 0.1 cm after 10,000.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the standard error of the mean of independent values.</strong> Values are <strong>independent</strong> when knowing one of them tells you nothing about another. For <span class="math-inline">\(N\)</span> independent values with standard deviation <span class="math-inline">\(\sigma\)</span>, the standard error of their mean is</p>
+<p><span class="math-display">\[\mathrm{SE} = \frac{\sigma}{\sqrt N}.\]</span></p>
+<p>The reason is a rule about variances: the variance of a sum of independent quantities is the sum of their variances. The sum of the <span class="math-inline">\(N\)</span> values therefore has variance <span class="math-inline">\(N\sigma^2\)</span>. The mean is the sum divided by <span class="math-inline">\(N\)</span>, and dividing a quantity by <span class="math-inline">\(N\)</span> divides its variance by <span class="math-inline">\(N^2\)</span>. So the mean has variance <span class="math-inline">\(N\sigma^2/N^2 = \sigma^2/N\)</span>, and the square root is <span class="math-inline">\(\sigma/\sqrt N\)</span>.</p>
+<p>Example: a radius of gyration with <span class="math-inline">\(\sigma = 0.10\)</span> nm. From 100 independent values the mean is known to <span class="math-inline">\(0.10/\sqrt{100} = 0.010\)</span> nm, from 10,000 values to 0.001 nm. A hundred times more data buy a ten times smaller error.</p>
+<p>A result is reported as mean ± standard error, for example <span class="math-inline">\(1.50\pm0.01\)</span> nm. The mean of many independent values has a nearly Gaussian distribution, whatever the distribution of the single values (the central limit theorem). The true value then lies within one standard error of your mean in about two cases out of three, and within two standard errors in about 95 % of the cases. More in the <a href="maths.html#averages">toolbox</a>.</p>
+</div>
+<h3 id="why-successive-frames-are-not-independent">Why successive frames are not independent</h3>
+<p>A trajectory of <span class="math-inline">\(N\)</span> frames is not <span class="math-inline">\(N\)</span> independent measurements. Frames close in time are similar.</p>
+<p>The structure 10 ps after a given frame is almost the same structure, and the radius of gyration has hardly changed. If you know the value in one frame you can predict the next one almost exactly, so the second frame adds almost no new information. It is like reading an outdoor thermometer every second for an hour. You get 3,600 readings and know the temperature of that hour very well, but you know the average temperature of the month no better than from a single reading. Putting the number of frames into <span class="math-inline">\(\sigma/\sqrt N\)</span> therefore gives an error bar that is far too small, often by a factor of ten or more.</p>
+<p>To correct this you need a measure of how long the similarity lasts.</p>
+<p>The quantity that tells you how similar is the normalised autocorrelation function</p>
 <p><span class="math-display">\[c(t) = \frac{\langle\delta A(0)\,\delta A(t)\rangle}{\langle\delta A^2\rangle},\]</span></p>
-<p>which starts at 1 and decays to 0. With frames saved every <span class="math-inline">\(\Delta t_s\)</span>, the <strong>integrated autocorrelation time</strong> is the sum over the saved lags, <span class="math-inline">\(\tau_{int}=\Delta t_s\sum_{k\ge1}c(k\,\Delta t_s)\)</span> (for <span class="math-inline">\(\tau_{int}\gg\Delta t_s\)</span> this is the integral <span class="math-inline">\(\int_0^\infty c(t)\,dt\)</span>). Define the <strong>statistical inefficiency</strong></p>
+<p>which starts at 1 and decays to 0.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(A\)</span>: the observable whose time series you analyse.</li>
+<li><span class="math-inline">\(\delta A(0)\)</span>: the deviation of <span class="math-inline">\(A\)</span> from its mean in some frame, whose time is called 0. <span class="math-inline">\(\delta A(t)\)</span>: the deviation a time <span class="math-inline">\(t\)</span> later. The time difference <span class="math-inline">\(t\)</span> is called the <strong>lag</strong>.</li>
+<li><span class="math-inline">\(\langle\delta A(0)\,\delta A(t)\rangle\)</span>: the average of the product over all pairs of frames that are a time <span class="math-inline">\(t\)</span> apart. It is the function <span class="math-inline">\(C_{AA}(t)\)</span> of the previous section.</li>
+<li><span class="math-inline">\(\langle\delta A^2\rangle\)</span>: the variance of <span class="math-inline">\(A\)</span>, which is <span class="math-inline">\(\sigma_A^2\)</span>. It is the value of the numerator at <span class="math-inline">\(t = 0\)</span>.</li>
+<li><span class="math-inline">\(c(t)\)</span>: the normalised autocorrelation function, a pure number. "Normalised" means divided by its value at lag zero, so that it starts at 1.</li>
+</ul>
+</div>
+<p><strong>How to picture it.</strong> Draw the time series on two transparent sheets and lay one over the other. They match exactly: that is <span class="math-inline">\(c(0) = 1\)</span>. Now slide the upper sheet sideways by a lag <span class="math-inline">\(t\)</span> and compare each point with the point that is now under it. For a small shift the two curves still rise and fall together, and <span class="math-inline">\(c\)</span> stays near 1. For a shift longer than the memory of the observable, highs lie over lows as often as over highs, and <span class="math-inline">\(c\)</span> is near 0.</p>
+<p><strong>How to compute it</strong>, for a lag of <span class="math-inline">\(k\)</span> frames: subtract the mean from every value, multiply each deviation by the deviation <span class="math-inline">\(k\)</span> frames later, average the products, and divide by the variance.</p>
+<p><strong>A small example by hand.</strong> Twelve frames of a toy radius of gyration, in nm: 1.42, 1.45, 1.47, 1.44, 1.52, 1.55, 1.58, 1.54, 1.49, 1.47, 1.51, 1.56. The mean is 1.50 nm, and the deviations are <span class="math-inline">\(-0.08\)</span>, <span class="math-inline">\(-0.05\)</span>, <span class="math-inline">\(-0.03\)</span>, <span class="math-inline">\(-0.06\)</span>, <span class="math-inline">\(0.02\)</span>, <span class="math-inline">\(0.05\)</span>, <span class="math-inline">\(0.08\)</span>, <span class="math-inline">\(0.04\)</span>, <span class="math-inline">\(-0.01\)</span>, <span class="math-inline">\(-0.03\)</span>, <span class="math-inline">\(0.01\)</span>, <span class="math-inline">\(0.06\)</span>. Their mean square, the variance, is 0.00242 nm<span class="math-inline">\(^2\)</span>.</p>
+<p>For a lag of one frame there are eleven products of neighbours: <span class="math-inline">\((-0.08)\times(-0.05) = 0.0040\)</span>, <span class="math-inline">\((-0.05)\times(-0.03) = 0.0015\)</span>, and so on. Their average is 0.00132 nm<span class="math-inline">\(^2\)</span>, so <span class="math-inline">\(c = 0.00132/0.00242 = 0.55\)</span> at a lag of one frame. Neighbouring frames are more alike than chance would make them: low values come in runs, and so do high values.</p>
+<p><strong>A longer example</strong>, which the rest of this section uses. A toy series of 20,000 frames was generated on a computer with mean 1.50 nm, standard deviation 0.10 nm and an autocorrelation function that is known exactly, <span class="math-inline">\(e^{-k/50}\)</span> at a lag of <span class="math-inline">\(k\)</span> frames. (This is the model of the demo further down. The numbers quoted here come from one run of the same model in Python.) Its measured autocorrelation function:</p>
+<table>
+<thead>
+<tr>
+<th>Lag <span class="math-inline">\(k\)</span> (frames)</th>
+<th>Measured <span class="math-inline">\(c\)</span></th>
+<th>Exact <span class="math-inline">\(e^{-k/50}\)</span></th>
+<th>Sum of the measured <span class="math-inline">\(c\)</span> from lag 1 to lag <span class="math-inline">\(k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1.000</td>
+<td>1.000</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.835</td>
+<td>0.819</td>
+<td>9.1</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.632</td>
+<td>0.607</td>
+<td>19.9</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0.368</td>
+<td>0.368</td>
+<td>32.1</td>
+</tr>
+<tr>
+<td>100</td>
+<td>0.116</td>
+<td>0.135</td>
+<td>43.2</td>
+</tr>
+<tr>
+<td>150</td>
+<td>0.002</td>
+<td>0.050</td>
+<td>45.5</td>
+</tr>
+<tr>
+<td>200</td>
+<td>0.014</td>
+<td>0.018</td>
+<td>45.8</td>
+</tr>
+</tbody>
+</table>
+<p>The function falls to 0.37 at a lag of 50 frames. That lag is the <strong>correlation time</strong> of this series: the time after which the memory of a fluctuation has dropped to 37 %. Beyond about three correlation times the measured values are small and noisy.</p>
+<p>With frames saved every <span class="math-inline">\(\Delta t_s\)</span>, the <strong>integrated autocorrelation time</strong> is the sum over the saved lags, <span class="math-inline">\(\tau_{int}=\Delta t_s\sum_{k\ge1}c(k\,\Delta t_s)\)</span> (for <span class="math-inline">\(\tau_{int}\gg\Delta t_s\)</span> this is the integral <span class="math-inline">\(\int_0^\infty c(t)\,dt\)</span>).</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Delta t_s\)</span>: the time between two saved frames (the subscript s stands for "saved"), for example 10 ps. It is not the integration time step, which is a few femtoseconds.</li>
+<li><span class="math-inline">\(k\)</span>: the lag counted in frames, 1, 2, 3 and so on. <span class="math-inline">\(k\,\Delta t_s\)</span> is the same lag as a time.</li>
+<li><span class="math-inline">\(c(k\,\Delta t_s)\)</span>: the normalised autocorrelation function at that lag.</li>
+<li><span class="math-inline">\(\sum_{k\ge1}\)</span>: the sum over all lags from one frame upwards.</li>
+<li><span class="math-inline">\(\tau_{int}\)</span>: the integrated autocorrelation time, with the unit of time.</li>
+<li><span class="math-inline">\(\gg\)</span>: "much larger than".</li>
+</ul>
+</div>
+<p>Read it like this. Each term of the sum is the height of the curve <span class="math-inline">\(c\)</span> at one saved lag. Multiplying by <span class="math-inline">\(\Delta t_s\)</span> turns it into a bar of that width, so the sum is the area under the curve <span class="math-inline">\(c(t)\)</span>.</p>
+<p>For an exponential decay <span class="math-inline">\(e^{-t/\tau}\)</span> this area is <span class="math-inline">\(\tau\)</span>, so for such a function the integrated autocorrelation time and the correlation time are the same number. In the table the sum levels off near 46, so <span class="math-inline">\(\tau_{int}\)</span> is about 46 frames. The exact value for this model is 49.5 frames.</p>
+<p>In practice the sum has to be stopped once <span class="math-inline">\(c\)</span> has decayed into noise, because the noisy tail adds error and no information. The function in the code below stops at the first lag at which <span class="math-inline">\(c\)</span> is no longer positive.</p>
+<h3 id="from-correlation-time-to-error-bar">From correlation time to error bar</h3>
+<p>Define the <strong>statistical inefficiency</strong></p>
 <p><span class="math-display">\[g = 1+2\sum_{k\ge1}c(k\,\Delta t_s) = 1+\frac{2\tau_{int}}{\Delta t_s},\qquad N_{eff} = \frac{N}{g},\qquad
 \boxed{\mathrm{SE}(\bar A) = \frac{\sigma_A}{\sqrt{N_{eff}}}\approx\sigma_A\sqrt{\frac{2\tau_{int}}{T_{sim}}}}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(g\)</span>: the statistical inefficiency, the number of saved frames that are worth one independent sample. It is a pure number, 1 for independent frames and larger for correlated ones. It is not the radial distribution function.</li>
+<li><span class="math-inline">\(1+2\sum_{k\ge1}c\)</span>: the 1 stands for the frame itself. The sum collects the correlation with all later frames, and the factor 2 accounts for the earlier frames, which are correlated with it in the same way.</li>
+<li><span class="math-inline">\(N\)</span>: the number of frames in the series (here not the number of atoms).</li>
+<li><span class="math-inline">\(N_{eff}\)</span>: the effective number of independent samples.</li>
+<li><span class="math-inline">\(\bar A\)</span>: the mean of the <span class="math-inline">\(N\)</span> values. <span class="math-inline">\(\mathrm{SE}(\bar A)\)</span>: its standard error.</li>
+<li><span class="math-inline">\(\sigma_A\)</span>: the standard deviation of <span class="math-inline">\(A\)</span>, the spread of the data.</li>
+<li><span class="math-inline">\(T_{sim}\)</span>: the total simulated time that was analysed, <span class="math-inline">\(N\,\Delta t_s\)</span>.</li>
+<li><span class="math-inline">\(\tau_{int}\)</span>, <span class="math-inline">\(\Delta t_s\)</span>, <span class="math-inline">\(c\)</span>: as in the list above.</li>
+<li>The frame around the last formula marks it as the result to remember. It has no mathematical meaning.</li>
+</ul>
+</div>
 <p>(For a series of finite length <span class="math-inline">\(N\)</span> each term of the sum is weighted by <span class="math-inline">\(1-k/N\)</span>, as in the code below.) The last form shows what matters: the error depends on the simulated time in units of the correlation time, not on how many frames you saved. A 100 ns trajectory of an observable with <span class="math-inline">\(\tau_{int}\)</span> = 10 ns contains about five independent samples, whether you stored 1,000 frames or 1,000,000.</p>
+<p>Read the three formulas from left to right.</p>
+<ol>
+<li><span class="math-inline">\(g\)</span> converts frames into independent samples. If the frames are independent, <span class="math-inline">\(c\)</span> is zero at every lag from 1 upwards, and <span class="math-inline">\(g = 1\)</span>. If they are strongly correlated, the sum is large and so is <span class="math-inline">\(g\)</span>.</li>
+<li><span class="math-inline">\(N_{eff} = N/g\)</span> is the number of samples you really have.</li>
+<li>The standard error is the formula for independent data with <span class="math-inline">\(N\)</span> replaced by <span class="math-inline">\(N_{eff}\)</span>.</li>
+</ol>
+<p>The last form follows in two lines. When <span class="math-inline">\(\tau_{int}\)</span> is much longer than <span class="math-inline">\(\Delta t_s\)</span>, the 1 in <span class="math-inline">\(g\)</span> is negligible and <span class="math-inline">\(g\approx2\tau_{int}/\Delta t_s\)</span>. Then <span class="math-inline">\(N_{eff} = N/g\approx N\Delta t_s/2\tau_{int} = T_{sim}/2\tau_{int}\)</span>, because <span class="math-inline">\(N\Delta t_s\)</span> is the total time. In words: one independent sample for every <span class="math-inline">\(2\tau_{int}\)</span> of simulation. In the example of the text, 100 ns divided by <span class="math-inline">\(2\times10\)</span> ns is five.</p>
+<p>Three consequences. Saving frames more often does not help, because <span class="math-inline">\(N\)</span> and <span class="math-inline">\(g\)</span> grow together. Halving the error takes four times the simulated time, because of the square root. And an observable with a long correlation time has a large error however long the list of frames is.</p>
+<p>For the toy series, the exact <span class="math-inline">\(g\)</span> is 100. With 20,000 frames that makes <span class="math-inline">\(N_{eff} = 200\)</span> and a standard error of <span class="math-inline">\(0.10/\sqrt{200} = 0.0071\)</span> nm. The naive value, <span class="math-inline">\(0.10/\sqrt{20000} = 0.0007\)</span> nm, is ten times too small. The function <code>statistical_inefficiency</code> below, applied to the series, returned <span class="math-inline">\(g = 92\)</span>, so about 218 samples. With the standard deviation measured on this series, 0.1045 nm, that is again a standard error of <span class="math-inline">\(0.1045/\sqrt{218} = 0.0071\)</span> nm. The measured mean was 1.505 nm, 0.005 nm from the true 1.500 nm: less than one standard error away, as it should be most of the time.</p>
+<details>
+<summary>Optional: where the factor g comes from</summary>
+<p>Number the frames <span class="math-inline">\(i = 1,\dots,N\)</span> and write <span class="math-inline">\(A_i\)</span> for the value in frame <span class="math-inline">\(i\)</span>, <span class="math-inline">\(\delta A_i\)</span> for its deviation from the true mean <span class="math-inline">\(\langle A\rangle\)</span>, and <span class="math-inline">\(c_k\)</span> for <span class="math-inline">\(c(k\,\Delta t_s)\)</span>. The computed mean is <span class="math-inline">\(\bar A = \frac1N\sum_iA_i\)</span>, so its deviation from the true mean is <span class="math-inline">\(\frac1N\sum_i\delta A_i\)</span>. The variance of the computed mean is the average of the square of this deviation, taken over many imagined repetitions of the simulation. The square of a sum is a double sum over all pairs of frames:</p>
+<p><span class="math-display">\[\big\langle(\bar A-\langle A\rangle)^2\big\rangle = \frac1{N^2}\sum_{i=1}^N\sum_{j=1}^N\langle\delta A_i\,\delta A_j\rangle .\]</span></p>
+<p>By the definition of the autocorrelation function, <span class="math-inline">\(\langle\delta A_i\,\delta A_j\rangle = \sigma_A^2\,c_k\)</span> when the two frames are <span class="math-inline">\(k\)</span> frames apart. Now count the pairs. There are <span class="math-inline">\(N\)</span> pairs with <span class="math-inline">\(i = j\)</span>, for which <span class="math-inline">\(c_0 = 1\)</span>. There are <span class="math-inline">\(2(N-k)\)</span> pairs that are <span class="math-inline">\(k\)</span> frames apart: <span class="math-inline">\(N-k\)</span> choices of the earlier frame, times 2 because each pair appears in both orders. Therefore</p>
+<p><span class="math-display">\[\big\langle(\bar A-\langle A\rangle)^2\big\rangle = \frac{\sigma_A^2}{N^2}\Big[N+2\sum_{k=1}^{N-1}(N-k)\,c_k\Big] = \frac{\sigma_A^2}{N}\Big[1+2\sum_{k=1}^{N-1}\Big(1-\frac kN\Big)c_k\Big].\]</span></p>
+<p>The second step divides the bracket by <span class="math-inline">\(N\)</span>. The bracket on the right is <span class="math-inline">\(g\)</span>, including the weight <span class="math-inline">\(1-k/N\)</span> that the text mentions. When <span class="math-inline">\(N\)</span> is much larger than the lags at which <span class="math-inline">\(c_k\)</span> differs from zero, <span class="math-inline">\(k/N\)</span> is negligible there and the bracket becomes <span class="math-inline">\(1+2\sum_{k\ge1}c_k\)</span>. The standard error is the square root of the variance: <span class="math-inline">\(\sigma_A\sqrt{g/N} = \sigma_A/\sqrt{N_{eff}}\)</span>. For independent frames every <span class="math-inline">\(c_k\)</span> with <span class="math-inline">\(k\ge1\)</span> is zero, and the result is <span class="math-inline">\(\sigma_A/\sqrt N\)</span> again.</p>
+</details>
 <h3 id="block-averaging">Block averaging</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="BACN9Ydiw5I" href="https://www.youtube.com/watch?v=BACN9Ydiw5I" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">09 Block Error Calculations in Simulations</span><span class="sv-m">8 min · SDU Odense</span></a><a class="sv" data-yt="0KqCK0yG9T0" href="https://www.youtube.com/watch?v=0KqCK0yG9T0" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Using block averages to calculate statistical errors in estimates of the ensemble average</span><span class="sv-m">20 min · Gareth Tribello</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="BACN9Ydiw5I" href="https://www.youtube.com/watch?v=BACN9Ydiw5I" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">09 Block Error Calculations in Simulations</span><span class="sv-m">8 min · SDU Odense</span></a><a class="sv" data-yt="0KqCK0yG9T0" href="https://www.youtube.com/watch?v=0KqCK0yG9T0" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Using block averages to calculate statistical errors in estimates of the ensemble average</span><span class="sv-m">20 min · Gareth Tribello</span></a></div>
 
+<p>The autocorrelation route needs the function <span class="math-inline">\(c\)</span> out to long lags, where it is noisy. Block averaging reaches the same standard error without it. The idea: if single frames are not independent, group them into pieces that are long enough for the <em>pieces</em> to be independent, and apply <span class="math-inline">\(\sigma/\sqrt N\)</span> to the pieces.</p>
 <p>The practical method, described in detail by <a href="https://doi.org/10.1063/1.457480" class="cite" target="_blank" rel="noopener" title="Flyvbjerg H; Petersen HG (1989). Error estimates on averages of correlated data. The Journal of Chemical Physics">Flyvbjerg and Petersen (1989)</a>, who note that it was already part of the folklore of the simulation community. Cut the series into <span class="math-inline">\(M\)</span> consecutive blocks, average within each block, and treat the block averages as independent:</p>
 <p><span class="math-display">\[\mathrm{SE}_{block} = \frac{s(\text{block means})}{\sqrt M}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(M\)</span>: the number of blocks. Each block holds <span class="math-inline">\(N/M\)</span> consecutive frames.</li>
+<li>block means: the <span class="math-inline">\(M\)</span> averages, one per block.</li>
+<li><span class="math-inline">\(s(\text{block means})\)</span>: the standard deviation of those <span class="math-inline">\(M\)</span> numbers, in the version with <span class="math-inline">\(M-1\)</span> in the denominator (see the first maths box of this module).</li>
+<li><span class="math-inline">\(\sqrt M\)</span>: the square root of the number of blocks.</li>
+<li><span class="math-inline">\(\mathrm{SE}_{block}\)</span>: the resulting estimate of the standard error of the overall mean, for this choice of block length.</li>
+</ul>
+</div>
+<p>Read it like this. It is the formula <span class="math-inline">\(\sigma/\sqrt N\)</span> for independent data, applied to the block means in place of the frames. The overall mean is the mean of the block means, so if the block means are independent, this is its standard error.</p>
+<p>Step by step, with the twelve frames of the example above and blocks of four frames:</p>
+<ol>
+<li>The blocks are (1.42, 1.45, 1.47, 1.44), (1.52, 1.55, 1.58, 1.54) and (1.49, 1.47, 1.51, 1.56).</li>
+<li>Their means are 1.445, 1.5475 and 1.5075 nm.</li>
+<li>The mean of the three block means is 1.50 nm, the overall mean. Their deviations from it are <span class="math-inline">\(-0.055\)</span>, <span class="math-inline">\(0.0475\)</span> and <span class="math-inline">\(0.0075\)</span>. The sum of the squares is 0.00534. Divided by <span class="math-inline">\(M-1 = 2\)</span> it is 0.00267, and the root is <span class="math-inline">\(s = 0.052\)</span> nm.</li>
+<li><span class="math-inline">\(\mathrm{SE}_{block} = 0.052/\sqrt3 = 0.030\)</span> nm.</li>
+</ol>
+<p>With blocks of one frame, which is the naive calculation, <span class="math-inline">\(s = 0.051\)</span> nm over twelve values (with <span class="math-inline">\(12-1 = 11\)</span> in the denominator; the variance of 0.00242 nm<span class="math-inline">\(^2\)</span> quoted earlier has 12 in the denominator, and its root is 0.049 nm) and the standard error is <span class="math-inline">\(0.051/\sqrt{12} = 0.015\)</span> nm, half as large. Twelve frames and three blocks are far too few to trust either number. The steps are the same for twelve frames and for twelve million.</p>
 <p>Repeat for increasing block length. While blocks are shorter than the correlation time, the estimate rises. When it reaches a plateau, the blocks are independent and the plateau value is the standard error. <strong>If there is no plateau before you run out of blocks, the simulation is too short to give an error estimate</strong>: the largest value reached is only a lower bound on the true standard error, so the mean cannot be trusted either.</p>
+<p>Why the estimate rises: a short block with a high mean tends to be followed by another block with a high mean, because the observable has not had time to forget. Neighbouring block means are then correlated, and treating them as independent underestimates the error, as it did for single frames. The rise does not end at one correlation time. For an autocorrelation function that decays exponentially, the estimate is on average still about 40 % too low when the block length equals the correlation time, about 6 % too low at eight correlation times and about 2.5 % too low at twenty.</p>
+<p>Why it stops rising: once the blocks are much longer than the correlation time, two neighbouring blocks share their memory only through the few frames at their common border. Making the blocks longer still changes nothing on average, because the scatter <span class="math-inline">\(s\)</span> of the block means and <span class="math-inline">\(\sqrt M\)</span> then shrink by the same factor.</p>
+<p>The toy series of 20,000 frames, analysed with the function below:</p>
+<table>
+<thead>
+<tr>
+<th>Block length (frames)</th>
+<th>Number of blocks <span class="math-inline">\(M\)</span></th>
+<th><span class="math-inline">\(\mathrm{SE}_{block}\)</span> (nm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>20,000</td>
+<td>0.0007</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2,000</td>
+<td>0.0023</td>
+</tr>
+<tr>
+<td>50</td>
+<td>400</td>
+<td>0.0046</td>
+</tr>
+<tr>
+<td>100</td>
+<td>200</td>
+<td>0.0056</td>
+</tr>
+<tr>
+<td>200</td>
+<td>100</td>
+<td>0.0063</td>
+</tr>
+<tr>
+<td>400</td>
+<td>50</td>
+<td>0.0069</td>
+</tr>
+<tr>
+<td>500</td>
+<td>40</td>
+<td>0.0067</td>
+</tr>
+<tr>
+<td>1,000</td>
+<td>20</td>
+<td>0.0081</td>
+</tr>
+<tr>
+<td>2,000</td>
+<td>10</td>
+<td>0.0052</td>
+</tr>
+<tr>
+<td>4,000</td>
+<td>5</td>
+<td>0.0055</td>
+</tr>
+</tbody>
+</table>
+<p>The exact standard error for this model is 0.0071 nm. The estimate climbs steeply while the blocks are shorter than a few correlation times (50 frames here) and levels off near 0.007 nm from a block length of about 400 frames. With 20 blocks or fewer the values scatter: 0.0081, 0.0052, 0.0055. That scatter is not a new trend. A standard deviation estimated from <span class="math-inline">\(M\)</span> values is itself uncertain by a fraction of about <span class="math-inline">\(1/\sqrt{2(M-1)}\)</span>: 7 % for 100 blocks, 16 % for 20 blocks, 35 % for 5 blocks.</p>
+<p>So read the plateau where the blocks are long enough to be independent and still numerous enough, several tens, to give a stable value. Here the answer is 0.007 nm, ten times the naive 0.0007 nm. The same two numbers give the statistical inefficiency: divide the plateau value by the naive value and square the result, here about <span class="math-inline">\(10^2 = 100\)</span>.</p>
 <div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">block_average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n_blocks_list</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">160</span><span class="p">)):</span>
@@ -108,30 +699,233 @@
     <span class="k">return</span> <span class="n">g</span>
 </code></pre></div>
 
+<p>What the code does: in <code>block_average</code>, <code>m</code> is the number of frames per block, and frames left over at the end are dropped. <code>reshape(nb, m)</code> arranges the series as a table with one block per row, and <code>.mean(axis=1)</code> averages each row. <code>std(ddof=1)</code> is the standard deviation with <span class="math-inline">\(M-1\)</span> in the denominator. The function returns one pair (block length, standard error) for each number of blocks you ask for. Plot the second against the first and look for the plateau.</p>
+<p><code>statistical_inefficiency</code> follows the recipe for <span class="math-inline">\(c\)</span> given above. It subtracts the mean, computes <span class="math-inline">\(c\)</span> for a lag of <code>t</code> frames, and adds <span class="math-inline">\(2c\)</span> times the weight <span class="math-inline">\(1-t/n\)</span> to <span class="math-inline">\(g\)</span>, until <span class="math-inline">\(c\)</span> is no longer positive. From <span class="math-inline">\(g\)</span> you get the number of independent samples as <code>len(a) / g</code> and the standard error as <code>np.std(a) / np.sqrt(len(a) / g)</code>.</p>
+<p>The demo generates the toy series of this section with a correlation time of your choice and draws the block-averaging curve.</p>
 <div class="widget" data-widget="blockavg"></div>
 
+<h3 id="the-bootstrap">The bootstrap</h3>
+<p>Block averaging and <span class="math-inline">\(\sigma/\sqrt N\)</span> give the error of a mean. Many results are not plain means: a free-energy difference computed from the logarithm of a ratio of populations, a diffusion coefficient from a fitted slope, the position of a peak. For such a result there is often no ready formula for the error. The <strong>bootstrap</strong> replaces the formula by computation.</p>
+<p>The idea: you would like to repeat the whole study many times and see how much the result varies. You cannot, so you imitate the repetition by drawing new data sets from the data you have.</p>
+<ol>
+<li>Start from <span class="math-inline">\(n\)</span> independent pieces of data: independent simulations, or blocks that are long enough to be independent (use a block length at which the block-averaging curve of the previous section has reached its plateau).</li>
+<li>Draw <span class="math-inline">\(n\)</span> pieces at random <strong>with replacement</strong>: the same piece may be drawn twice and another not at all. This is one "resample".</li>
+<li>Compute your result from the resample exactly as you computed it from the real data.</li>
+<li>Repeat steps 2 and 3 a thousand times or more. The standard deviation of the collected results is the standard error of your result, and the range that holds the middle 95 % of them is a 95 % confidence interval.</li>
+</ol>
+<p>An example that was run for this lesson. Six independent simulations gave 12.1, 12.4, 11.8, 12.6, 12.0 and 12.3 (in kJ/mol, say). The mean is 12.2, the standard deviation <span class="math-inline">\(s\)</span> is 0.29, and the formula gives a standard error of <span class="math-inline">\(0.29/\sqrt6 = 0.118\)</span>. One resample was 12.3, 12.6, 12.0, 12.6, 12.3, 12.3, with mean 12.35. Another was 12.6, 12.6, 12.3, 12.4, 12.0, 11.8, with mean 12.28.</p>
+<p>The means of 10,000 resamples had a standard deviation of 0.109. That is close to the 0.118 of the formula and a little smaller, because with few pieces the bootstrap underestimates the error somewhat (for the mean of six values, by 9 %). The 95 % range of step 4 suffers more. Here it runs from 11.98 to 12.42, a half-width of 0.22, against 0.30 from the <span class="math-inline">\(t\)</span> factor of the section on independent repeats. In a test with sets of six Gaussian values, such a range held the true mean in about 87 % of the cases, not in 95 %. With only a few pieces, use the <span class="math-inline">\(t\)</span> interval for a mean and keep the bootstrap for results that have no formula.</p>
+<p>Two warnings. Resample independent pieces, never single correlated frames: resampling frames repeats the mistake of putting the number of frames into <span class="math-inline">\(\sigma/\sqrt N\)</span>. And the bootstrap cannot see what the data do not contain. If all your simulations are stuck in the same state, every resample agrees with every other, and the error bar is small and wrong.</p>
 <h3 id="independent-repeats">Independent repeats</h3>
-<p>The most reliable error bar comes from several independent simulations: compute the observable in each, and report the mean and the standard error across runs. Repeats also catch something no single-trajectory analysis can: a run that is trapped in a different state. With few repeats, report a confidence interval and not only a standard error: for <span class="math-inline">\(n\)</span> independent values the 95 % interval is the mean <span class="math-inline">\(\pm\,t_{n-1}\,s/\sqrt n\)</span>, and the factor <span class="math-inline">\(t\)</span> is large when <span class="math-inline">\(n\)</span> is small (4.3 for three repeats, 2.6 for six). With fewer than about ten values, show the individual points as well. If three runs give 12.1, 12.3 and 17.8, you have learned that there are at least two long-lived states and that none of the runs has sampled the transition between them.</p>
+<p>Every method so far tries to find out, from inside one trajectory, how many independent samples it contains. The alternative is to make the samples independent by construction.</p>
+<p>The most reliable error bar comes from several independent simulations: compute the observable in each, and report the mean and the standard error across runs.</p>
+<p>"Independent" means started with different random velocities, and for slow processes also from different starting structures (<a href="02-classical-mechanics.html">Module 2</a> explained why different velocities are enough for the fast motions). Each run gives one number, its own average over the part kept after equilibration. For <span class="math-inline">\(n\)</span> runs the standard error is <span class="math-inline">\(s/\sqrt n\)</span>, where <span class="math-inline">\(s\)</span> is the standard deviation of the <span class="math-inline">\(n\)</span> numbers. No autocorrelation function is needed.</p>
+<p>Repeats also catch something no single-trajectory analysis can: a run that is trapped in a different state. "Trapped" means that the run stays in one conformation for its whole length, because leaving it takes longer than the simulation.</p>
+<p>With few repeats, report a confidence interval and not only a standard error: for <span class="math-inline">\(n\)</span> independent values the 95 % interval is the mean <span class="math-inline">\(\pm\,t_{n-1}\,s/\sqrt n\)</span>, and the factor <span class="math-inline">\(t\)</span> is large when <span class="math-inline">\(n\)</span> is small (4.3 for three repeats, 2.6 for six).</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(n\)</span>: the number of independent simulations.</li>
+<li><span class="math-inline">\(s\)</span>: the standard deviation of the <span class="math-inline">\(n\)</span> values, with <span class="math-inline">\(n-1\)</span> in the denominator.</li>
+<li><span class="math-inline">\(s/\sqrt n\)</span>: the standard error of their mean.</li>
+<li><span class="math-inline">\(t_{n-1}\)</span>: Student's <span class="math-inline">\(t\)</span> factor for <span class="math-inline">\(n-1\)</span> "degrees of freedom". It is a number from a statistics table, or from <code>scipy.stats.t.ppf(0.975, n-1)</code>. It is not a time.</li>
+<li><span class="math-inline">\(\pm\)</span>: the interval runs from the mean minus the quantity that follows to the mean plus that quantity.</li>
+</ul>
+</div>
+<div class="box maths">
+<p><strong>Maths you need here: the confidence interval and the factor <span class="math-inline">\(t\)</span>.</strong> A 95 % confidence interval is a range produced by a recipe that captures the true value in 95 % of the cases in which the recipe is used. If the standard deviation were known exactly, the range would be the mean ± 1.96 standard errors. But <span class="math-inline">\(s\)</span> is itself estimated from <span class="math-inline">\(n\)</span> values, and with few values it can be much too small by chance. To keep the 95 % promise the range has to be widened, and the factor <span class="math-inline">\(t_{n-1}\)</span> says by how much.</p>
+<p>The factor is 4.30 for <span class="math-inline">\(n = 3\)</span>, 3.18 for <span class="math-inline">\(n = 4\)</span>, 2.78 for <span class="math-inline">\(n = 5\)</span>, 2.57 for <span class="math-inline">\(n = 6\)</span>, 2.26 for <span class="math-inline">\(n = 10\)</span>, 2.09 for <span class="math-inline">\(n = 20\)</span>, and 1.96 for very large <span class="math-inline">\(n\)</span>.</p>
+<p>Example: three runs give 12.1, 12.3 and 12.6. The mean is 12.33, <span class="math-inline">\(s = 0.25\)</span> and the standard error is <span class="math-inline">\(0.25/\sqrt3 = 0.15\)</span>. The 95 % interval is <span class="math-inline">\(12.33\pm4.30\times0.15\)</span>, that is <span class="math-inline">\(12.3\pm0.6\)</span>. More in the <a href="maths.html#averages">toolbox</a>.</p>
+</div>
+<p>With fewer than about ten values, show the individual points as well. If three runs give 12.1, 12.3 and 17.8, you have learned that there are at least two long-lived states and that none of the runs has sampled the transition between them.</p>
+<p>The arithmetic for these three values gives a mean of 14.1, <span class="math-inline">\(s = 3.2\)</span>, a standard error of 1.9 and a 95 % interval of ±8.0. "14 ± 8" hides the message. The three values are not scattered around a common mean: two agree to within 0.2, and the third lies about 5.6 away from them. A reader who sees the three points understands this at once, which is the reason for showing them.</p>
 <h3 id="equilibration-what-to-discard">Equilibration: what to discard</h3>
-<p>The start of a production run still remembers its preparation. Including it biases the average. Discarding too much wastes data. A principled choice (<a href="https://doi.org/10.1021/acs.jctc.5b00784" class="cite" target="_blank" rel="noopener" title="Chodera JD (2016). A Simple Method for Automated Equilibration Detection in Molecular Simulations. Journal of Chemical Theory and Computation">Chodera 2016</a>): for each candidate cut-off time <span class="math-inline">\(t_0\)</span>, compute the number of effectively independent samples <span class="math-inline">\(N_{eff}(t_0)\)</span> in the remainder, and choose the <span class="math-inline">\(t_0\)</span> that maximises it. In practice also look at the time series, and check that the result does not change when you discard twice as much.</p>
+<p>A simulation starts from a prepared structure: for example a crystal structure placed in a freshly built box of water, then heated and brought to the right pressure in short runs (<a href="10-running-a-simulation.html">Module 10</a>). That starting point is not a typical state of the system at the simulated temperature. The water has not yet settled around the protein, the volume of the box is still adjusting, and side chains still sit in their crystal positions. During the first part of the run the system relaxes towards the states in which it will spend the rest of the time. This relaxation is called <strong>equilibration</strong>, and the same word is used for the part of the trajectory that you throw away because of it.</p>
+<p>The start of a production run still remembers its preparation. Including it biases the average. Discarding too much wastes data.</p>
+<p>A <strong>bias</strong> is an error that pushes the result in one direction. Unlike the random error that the standard error measures, it does not average away within the run. Discarding data has the opposite cost: fewer independent samples and a larger standard error. The choice of the cut is a trade between the two.</p>
+<p>Three ways to see where equilibration ends:</p>
+<ul>
+<li><strong>Plot the time series.</strong> A drift at the start, followed by fluctuations about a steady level, is the sign. Do this for the observable you care about, because each observable has its own equilibration time.</li>
+<li><strong>Compare two halves.</strong> Split the data you intend to keep into a first and a second half and compare the two means. If they differ by much more than their standard errors, the series is still drifting.</li>
+<li><strong>Maximise the number of independent samples.</strong> This is the rule of the next paragraph.</li>
+</ul>
+<p>A principled choice (<a href="https://doi.org/10.1021/acs.jctc.5b00784" class="cite" target="_blank" rel="noopener" title="Chodera JD (2016). A Simple Method for Automated Equilibration Detection in Molecular Simulations. Journal of Chemical Theory and Computation">Chodera 2016</a>): for each candidate cut-off time <span class="math-inline">\(t_0\)</span>, compute the number of effectively independent samples <span class="math-inline">\(N_{eff}(t_0)\)</span> in the remainder, and choose the <span class="math-inline">\(t_0\)</span> that maximises it.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(t_0\)</span>: the length of the part discarded at the start, as a time or as a number of frames.</li>
+<li><span class="math-inline">\(N_{eff}(t_0)\)</span>: the number of frames that remain after the cut, divided by the statistical inefficiency <span class="math-inline">\(g\)</span> computed from those remaining frames.</li>
+</ul>
+</div>
+<p>Why there is a maximum: if you cut too little, the drift is still in the series. To the autocorrelation function a drift looks like one very slow fluctuation, so <span class="math-inline">\(g\)</span> is large and <span class="math-inline">\(N_{eff}\)</span> small. If you cut too much, <span class="math-inline">\(g\)</span> no longer changes and you only lose frames. The best cut lies in between.</p>
+<p>A test on the toy series, with a slow relaxation added to its start (0.40 nm at frame 0, decaying as <span class="math-inline">\(e^{-k/1000}\)</span> with the frame number <span class="math-inline">\(k\)</span>):</p>
+<table>
+<thead>
+<tr>
+<th>Discarded frames <span class="math-inline">\(t_0\)</span></th>
+<th>Mean of the rest (nm)</th>
+<th><span class="math-inline">\(g\)</span></th>
+<th><span class="math-inline">\(N_{eff}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1.525</td>
+<td>284</td>
+<td>70</td>
+</tr>
+<tr>
+<td>500</td>
+<td>1.518</td>
+<td>134</td>
+<td>145</td>
+</tr>
+<tr>
+<td>1,000</td>
+<td>1.515</td>
+<td>99</td>
+<td>192</td>
+</tr>
+<tr>
+<td>1,500</td>
+<td>1.511</td>
+<td>88</td>
+<td>210</td>
+</tr>
+<tr>
+<td>2,000</td>
+<td>1.511</td>
+<td>89</td>
+<td>202</td>
+</tr>
+<tr>
+<td>3,000</td>
+<td>1.513</td>
+<td>91</td>
+<td>188</td>
+</tr>
+<tr>
+<td>5,000</td>
+<td>1.508</td>
+<td>93</td>
+<td>161</td>
+</tr>
+<tr>
+<td>10,000</td>
+<td>1.503</td>
+<td>106</td>
+<td>94</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math-inline">\(N_{eff}\)</span> is largest for a cut near 1,500 frames, where the added relaxation has decayed to less than the size of the ordinary fluctuations. With nothing discarded the mean is 1.525 nm, of which 0.020 nm is bias from the first frames (the same series without the relaxation has a mean of 1.505 nm), and the series seems to hold only 70 independent samples.</p>
+<p>The two-halves test agrees. With no cut the two halves differ by 0.043 nm, about four times the standard error of either half (0.01 nm). After a cut of 2,000 frames they differ by 0.010 nm.</p>
+<p>In practice also look at the time series, and check that the result does not change when you discard twice as much. If doubling the discarded part moves the mean by more than its standard error, the first cut was too short.</p>
 <div class="box warn">
 <p><strong>You cannot prove convergence.</strong> Every test above detects correlation on time scales shorter than the trajectory. A process slower than the trajectory is invisible: all observables look flat and well converged within one state. Protect yourself with independent repeats from <em>different</em> starting structures, with physical knowledge of what the slow processes are likely to be, and by stating clearly what the simulation length can and cannot support.</p>
 </div>
+<p>An example of what the box describes. Suppose a loop flips between two conformations about once per microsecond, and you run 100 ns starting in the first one. The RMSD is flat, block averaging shows a clean plateau, and the number of independent samples is large. Every test is passed, and the second conformation is missing from every average. Nothing inside the trajectory can tell you so.</p>
 <h2 id="collective-motions-principal-component-analysis">Collective motions: principal component analysis</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="qcfV1z_UZLE" href="https://www.youtube.com/watch?v=qcfV1z_UZLE" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">15 Short Note on Principal Components Analysis of Simulation Trajectories</span><span class="sv-m">11 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="0pK0EWyinVo" href="https://www.youtube.com/watch?v=0pK0EWyinVo" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 7 | PCA (Principal Component Analysis) of MD Trajectory | Essential Dynamics</span><span class="sv-m">19 min · Dr. H Ismail</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="qcfV1z_UZLE" href="https://www.youtube.com/watch?v=qcfV1z_UZLE" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">15 Short Note on Principal Components Analysis of Simulation Trajectories</span><span class="sv-m">11 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="0pK0EWyinVo" href="https://www.youtube.com/watch?v=0pK0EWyinVo" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 7 | PCA (Principal Component Analysis) of MD Trajectory | Essential Dynamics</span><span class="sv-m">19 min · Dr. H Ismail</span></a></div>
 
+<p>A protein of 300 residues has 900 C<span class="math-inline">\(\alpha\)</span> coordinates, and all of them fluctuate. They do not fluctuate independently: neighbouring atoms move together, and sometimes whole domains do. Principal component analysis (PCA) looks for a small number of patterns of joint motion that account for most of the fluctuation.</p>
+<p>The picture in two dimensions: plot the <span class="math-inline">\(x\)</span> coordinate of one atom against the <span class="math-inline">\(x\)</span> coordinate of another, one point per frame. If the two atoms move together, the cloud of points is a stretched ellipse along the diagonal. The long axis of the ellipse is the direction in which the pair moves most. That direction is the first principal component, and the short axis is the second. PCA does the same for all <span class="math-inline">\(3N\)</span> coordinates at once.</p>
+<div class="box maths">
+<p><strong>Maths you need here: covariance.</strong> The variance says how much one quantity fluctuates. The <strong>covariance</strong> of two quantities says whether they fluctuate together. For each frame, multiply the deviation of the first quantity from its mean by the deviation of the second from its mean, and average the products. If the first is above its mean when the second is above its mean, the products are positive and so is the covariance. If one is high when the other is low, it is negative, and if the two are unrelated, positive and negative products cancel and it is near zero.</p>
+<p>Example: four frames with <span class="math-inline">\(x\)</span> = 1, 2, 3, 4 and <span class="math-inline">\(y\)</span> = 2, 3, 5, 6. The means are 2.5 and 4. The deviations of <span class="math-inline">\(x\)</span> are <span class="math-inline">\(-1.5\)</span>, <span class="math-inline">\(-0.5\)</span>, <span class="math-inline">\(0.5\)</span>, <span class="math-inline">\(1.5\)</span> and those of <span class="math-inline">\(y\)</span> are <span class="math-inline">\(-2\)</span>, <span class="math-inline">\(-1\)</span>, <span class="math-inline">\(1\)</span>, <span class="math-inline">\(2\)</span>. The products are 3, 0.5, 0.5 and 3, and their mean, the covariance, is 1.75. The covariance of a quantity with itself is its variance: 1.25 for <span class="math-inline">\(x\)</span> and 2.5 for <span class="math-inline">\(y\)</span>.</p>
+<p>Dividing the covariance by the two standard deviations gives the <strong>correlation coefficient</strong>, a pure number between <span class="math-inline">\(-1\)</span> and 1. Here it is <span class="math-inline">\(1.75/\sqrt{1.25\times2.5} = 0.99\)</span>: the two quantities move almost perfectly together. More in the <a href="maths.html#averages">toolbox</a>.</p>
+</div>
 <p>After fitting to a reference, build the covariance matrix of atomic positions,</p>
 <p><span class="math-display">\[C_{ab} = \big\langle(x_a-\langle x_a\rangle)(x_b-\langle x_b\rangle)\big\rangle,\]</span></p>
-<p>and diagonalise it. The eigenvectors with the largest eigenvalues are the directions of largest fluctuation, and a handful usually account for most of the motion ("essential dynamics"). That alone does not show that they are collective motions: for pure random diffusion in many dimensions the first three components already hold more than 80 % of the variance (<a href="https://doi.org/10.1103/PhysRevE.62.8438" class="cite" target="_blank" rel="noopener" title="Hess B (2000). Similarities between principal components of protein dynamics and random diffusion. Physical Review E">Hess 2000</a>). Projecting the trajectory on the first two gives a map of the conformations visited.</p>
+<p>and diagonalise it.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(a\)</span>, <span class="math-inline">\(b\)</span>: labels that run over the <span class="math-inline">\(3N\)</span> coordinates of the chosen atoms (<span class="math-inline">\(x\)</span> of atom 1, <span class="math-inline">\(y\)</span> of atom 1, <span class="math-inline">\(z\)</span> of atom 1, <span class="math-inline">\(x\)</span> of atom 2 and so on), not over the atoms. For 300 C<span class="math-inline">\(\alpha\)</span> atoms each label takes 900 values.</li>
+<li><span class="math-inline">\(x_a\)</span>: the value of coordinate <span class="math-inline">\(a\)</span> in one frame, after the fit.</li>
+<li><span class="math-inline">\(\langle x_a\rangle\)</span>: its average over all frames.</li>
+<li><span class="math-inline">\(x_a-\langle x_a\rangle\)</span>: the deviation of coordinate <span class="math-inline">\(a\)</span> from its average in one frame.</li>
+<li>The outer <span class="math-inline">\(\langle\ \rangle\)</span>: the average of the product over all frames.</li>
+<li><span class="math-inline">\(C_{ab}\)</span>: the covariance of the coordinates <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span>, in nm<span class="math-inline">\(^2\)</span>. All of them together form the covariance matrix, a table with <span class="math-inline">\(3N\)</span> rows and <span class="math-inline">\(3N\)</span> columns. The entries on the diagonal, <span class="math-inline">\(C_{aa}\)</span>, are the variances of the single coordinates.</li>
+</ul>
+</div>
+<p>The fit comes first because otherwise the largest "motion" in the data would be the tumbling of the whole molecule.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the eigenvectors of a covariance matrix.</strong> <a href="02-classical-mechanics.html">Module 2</a> introduced eigenvectors. A matrix multiplied by a vector gives another vector. For special vectors, the <strong>eigenvectors</strong> of the matrix, the result is the same vector multiplied by a number, the <strong>eigenvalue</strong>. To "diagonalise" a matrix is to find all its eigenvectors and eigenvalues, which a numerical library does for you.</p>
+<p>For a covariance matrix they have a direct meaning. The eigenvector with the largest eigenvalue is the direction along which the cloud of data points is most spread out, and its eigenvalue is the variance of the data along that direction.</p>
+<p>Example: two coordinates that each have variance 2 and that have covariance 1. To multiply a matrix by a vector, take each row of the matrix, multiply its entries by the entries of the vector, and add. The first row below gives <span class="math-inline">\(2\times1+1\times1 = 3\)</span>.</p>
+<p><span class="math-display">\[\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix} = \begin{pmatrix}3\\3\end{pmatrix} = 3\begin{pmatrix}1\\1\end{pmatrix},
+\qquad
+\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}1\\-1\end{pmatrix}.\]</span></p>
+<p>So <span class="math-inline">\((1,1)\)</span>, the pattern "both coordinates increase together", is an eigenvector with eigenvalue 3. And <span class="math-inline">\((1,-1)\)</span>, "one increases while the other decreases", is an eigenvector with eigenvalue 1. The total variance is <span class="math-inline">\(2+2 = 4\)</span>, which is also the sum of the eigenvalues. The first pattern holds three quarters of it, 75 %. More in the <a href="maths.html#eigen">toolbox</a>.</p>
+</div>
+<p>The eigenvectors with the largest eigenvalues are the directions of largest fluctuation, and a handful usually account for most of the motion ("essential dynamics").</p>
+<p>Here an eigenvector is a list of <span class="math-inline">\(3N\)</span> numbers, one displacement for each coordinate. It is a pattern in which every atom has a direction and a relative amplitude, such as two domains that close like a hinge. Each eigenvector is called a <strong>principal component</strong>, and its eigenvalue is the variance of the structure along that pattern, in nm<span class="math-inline">\(^2\)</span>. Sort the eigenvalues from the largest down and call them <span class="math-inline">\(\lambda_1\)</span>, <span class="math-inline">\(\lambda_2\)</span> and so on (Greek lambda). The fraction of the total fluctuation that component <span class="math-inline">\(k\)</span> accounts for is <span class="math-inline">\(\lambda_k\)</span> divided by the sum of all eigenvalues.</p>
+<p>To see where one frame lies along a component, project the frame on it:</p>
+<p><span class="math-display">\[p_k(t) = \sum_a v_{k,a}\,\big(x_a(t)-\langle x_a\rangle\big).\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(p_k(t)\)</span>: the projection of the frame at time <span class="math-inline">\(t\)</span> on principal component <span class="math-inline">\(k\)</span>, in nm. It says how far the structure is displaced along that pattern, in the positive or the negative sense.</li>
+<li><span class="math-inline">\(v_{k,a}\)</span>: entry <span class="math-inline">\(a\)</span> of eigenvector <span class="math-inline">\(k\)</span>. The eigenvector is scaled to length 1.</li>
+<li><span class="math-inline">\(x_a(t)-\langle x_a\rangle\)</span>: the deviation of coordinate <span class="math-inline">\(a\)</span> from its average in that frame.</li>
+<li><span class="math-inline">\(\sum_a\)</span>: the sum over all <span class="math-inline">\(3N\)</span> coordinates. The whole expression is the dot product of the eigenvector with the deviation of the frame.</li>
+</ul>
+</div>
+<p>Each projection is a time series like any other observable, and its statistics need the same care.</p>
+<p>That alone does not show that they are collective motions: for pure random diffusion in many dimensions the first three components already hold more than 80 % of the variance (<a href="https://doi.org/10.1103/PhysRevE.62.8438" class="cite" target="_blank" rel="noopener" title="Hess B (2000). Similarities between principal components of protein dynamics and random diffusion. Physical Review E">Hess 2000</a>).</p>
+<p>A <strong>collective motion</strong> is one in which many atoms move together in a concerted way. "Random diffusion in many dimensions" means that every coordinate performs its own random walk, independent of all the others. By construction it contains no collective motion at all, and PCA still reports a few dominant components. A few components that hold most of the variance are what PCA gives for any data that drift slowly.</p>
+<p>Projecting the trajectory on the first two gives a map of the conformations visited. Plot <span class="math-inline">\(p_1\)</span> against <span class="math-inline">\(p_2\)</span>, one point per frame. Regions with many points are conformations that the simulation visited often.</p>
+<h3 id="the-pitfall-cosines-from-a-random-walk">The pitfall: cosines from a random walk</h3>
 <p>The pitfall: a random walk in high dimensions, that is an unconverged simulation, produces first principal components that look like smooth half-cosines in time, and a projection that looks like a meaningful U-shaped pathway. Hess (<a href="https://doi.org/10.1103/PhysRevE.62.8438" class="cite" target="_blank" rel="noopener" title="Hess B (2000). Similarities between principal components of protein dynamics and random diffusion. Physical Review E">2000</a>) derived this for random diffusion and showed that cosine-shaped components appear in protein simulations that are too short. Hess (<a href="https://doi.org/10.1103/PhysRevE.65.031910" class="cite" target="_blank" rel="noopener" title="Hess B (2002). Convergence of sampling in protein simulations. Physical Review E">2002</a>) defined the cosine content of a component, from 0 (no cosine) to 1 (a perfect one). It is a negative indicator only: if your first component is a cosine of period twice the trajectory length, you are looking at diffusion, not at a functional motion, but a low cosine content proves nothing. A better check is to split the trajectory into parts and compare their principal components.</p>
-<p>Time-lagged independent component analysis (TICA, Module 16) is the related method that finds the <em>slowest</em> rather than the largest motions.</p>
+<p>Several terms in this paragraph need explaining.</p>
+<p><em>A half-cosine in time.</em> The projection <span class="math-inline">\(p_1(t)\)</span> follows <span class="math-inline">\(\cos(\pi t/T_{sim})\)</span>, where <span class="math-inline">\(T_{sim}\)</span> is the length of the trajectory. It starts at one extreme, ends at the opposite one, passes through zero once and never returns. This is what "a cosine of period twice the trajectory length" means: only half a wave fits into the run. Such a curve describes a system that is still drifting away from its start.</p>
+<p><em>The U shape.</em> A run of Exercise 4 in a smaller size (500 dimensions, 5,000 steps) shows it. The first three components held 60 %, 15 % and 7 % of the variance, 82 % together, and they followed cosines with one, two and three half-waves almost exactly.</p>
+<p>If <span class="math-inline">\(p_1\)</span> is a half-wave and <span class="math-inline">\(p_2\)</span> a full wave, the identity <span class="math-inline">\(\cos2\theta = 2\cos^2\theta-1\)</span> ties them together: after scaling both to run between <span class="math-inline">\(-1\)</span> and 1, <span class="math-inline">\(p_2 = 2p_1^2-1\)</span> (or its mirror image, since the sign of an eigenvector is arbitrary). That is a parabola. In the map of <span class="math-inline">\(p_1\)</span> against <span class="math-inline">\(p_2\)</span> the points trace a U, which looks like a pathway from one state through an intermediate to another. It is the signature of drift.</p>
+<p><em>A negative indicator.</em> A high cosine content is a reason to distrust a component. A low one is no proof that the sampling has converged. A <em>functional motion</em> is one that the protein uses to do its work, such as the opening of a binding site.</p>
+<p><em>Comparing parts.</em> Run the PCA on the first half and on the second half of the trajectory separately. If both halves sample the same collective motions, their first eigenvectors are similar: the dot product of two eigenvectors of length 1 is near 1 or <span class="math-inline">\(-1\)</span> for the same pattern and near 0 for unrelated ones. If the first eigenvectors of the two halves have little in common, the "motions" were made by drift.</p>
+<p>Time-lagged independent component analysis (TICA, Module 16) is the related method that finds the <em>slowest</em> rather than the largest motions. Largest and slowest are different things. A floppy chain end can have the largest amplitude and relax within a nanosecond, while a small rearrangement in a binding site can take microseconds.</p>
 <h2 id="free-energy-surfaces-from-histograms">Free-energy surfaces from histograms</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="yt6-v3jZals" href="https://www.youtube.com/watch?v=yt6-v3jZals" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">How to Generate Free Energy Landscape (FEL) from GROMACS MD Trajectory | PCA Analysis | Python</span><span class="sv-m">23 min · Dr. H Ismail</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="yt6-v3jZals" href="https://www.youtube.com/watch?v=yt6-v3jZals" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">How to Generate Free Energy Landscape (FEL) from GROMACS MD Trajectory | PCA Analysis | Python</span><span class="sv-m">23 min · Dr. H Ismail</span></a></div>
 
-<p>If a trajectory samples the equilibrium distribution, the free energy along any coordinate is <span class="math-inline">\(F(\xi) = -k_BT\ln P(\xi)\)</span>, from a histogram. This is only valid where transitions between the regions have been sampled many times. A beautiful two-dimensional free-energy map made from a single trajectory that crossed the barrier once is a picture of one trajectory. Modules 12 and 14 give the methods for the case that matters.</p>
+<p>A system at equilibrium visits each conformation in proportion to its probability. Counting how often a trajectory is found at each value of a coordinate therefore measures a probability, and a probability converts into a free energy.</p>
+<div class="box maths">
+<p><strong>Maths you need here: histograms and probability.</strong> Choose a coordinate, divide its range into bins of equal width, and count the frames that fall into each bin. That is a <strong>histogram</strong>. The count in a bin divided by the total number of frames is the <strong>probability</strong> <span class="math-inline">\(P\)</span> of that bin, and the probabilities of all bins add up to 1.</p>
+<p>Example: of 10,000 frames, 2,000 have a certain distance between 0.50 and 0.55 nm. The probability of that bin is 0.20. Dividing by the bin width gives the <strong>probability density</strong>, <span class="math-inline">\(0.20/0.05 = 4\)</span> nm<span class="math-inline">\(^{-1}\)</span>, which does not depend on the bin width you happened to choose.</p>
+<p>Bins that are too wide blur the features of the curve. Bins that are too narrow hold few frames each and give a noisy curve. More in the <a href="maths.html#probability">toolbox</a>.</p>
+</div>
+<div class="box physics">
+<p><strong>Physics you need here: populations and free energy.</strong> At a fixed temperature, a state of low free energy is populated more than a state of high free energy, and the rule is exponential: the probability of a state is proportional to <span class="math-inline">\(e^{-F/k_BT}\)</span>, where <span class="math-inline">\(F\)</span> is its free energy (<a href="03-statistical-mechanics.html">Module 3</a>). Unlike the potential energy, the free energy also counts in how many ways the rest of the system (the other parts of the molecule, the solvent) can arrange itself while the state is occupied. That is why populations follow <span class="math-inline">\(F\)</span> and not the energy alone. More in the <a href="physics.html#thermodynamics">primer</a>.</p>
+</div>
+<p>If a trajectory samples the equilibrium distribution, the free energy along any coordinate is <span class="math-inline">\(F(\xi) = -k_BT\ln P(\xi)\)</span>, from a histogram.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\xi\)</span> (Greek xi): the coordinate you chose, any single number computed from a frame: a distance, the radius of gyration, <span class="math-inline">\(Q\)</span>, a projection on a principal component. It is also called a collective variable (<a href="12-free-energy-pmf.html">Module 12</a>).</li>
+<li><span class="math-inline">\(P(\xi)\)</span>: the probability of finding the system at the value <span class="math-inline">\(\xi\)</span>, taken from the histogram.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the Boltzmann constant times the temperature, 2.494 kJ/mol at 300 K.</li>
+<li><span class="math-inline">\(\ln\)</span>: the natural logarithm.</li>
+<li><span class="math-inline">\(F(\xi)\)</span>: the free energy as a function of <span class="math-inline">\(\xi\)</span>, in kJ/mol, also called a free-energy profile or a potential of mean force. It is defined up to an additive constant, which is usually chosen so that the lowest point is zero.</li>
+</ul>
+</div>
+<p>"The equilibrium distribution" is the set of probabilities of all states at the simulated temperature. A trajectory "samples" it when it visits the states in those proportions.</p>
+<p>One trap: when <span class="math-inline">\(\xi\)</span> is the distance <span class="math-inline">\(r\)</span> between two particles, <span class="math-inline">\(F(r)\)</span> from a histogram is not the function <span class="math-inline">\(w(r)\)</span> of the section on the radial distribution function. The histogram of <span class="math-inline">\(r\)</span> still contains the shell volume <span class="math-inline">\(4\pi r^2\,dr\)</span>, which <span class="math-inline">\(g(r)\)</span> has divided out, so <span class="math-inline">\(F(r) = w(r)-2k_BT\ln r\)</span> plus a constant. <a href="12-free-energy-pmf.html">Module 12</a> explains this.</p>
+<p>The formula is the exponential rule solved for <span class="math-inline">\(F\)</span>. Start from <span class="math-inline">\(P(\xi)\propto e^{-F(\xi)/k_BT}\)</span>, where <span class="math-inline">\(\propto\)</span> means "is proportional to". Take the logarithm of both sides: <span class="math-inline">\(\ln P = -F/k_BT+\text{constant}\)</span>. Multiply by <span class="math-inline">\(-k_BT\)</span> and drop the constant. Only differences of <span class="math-inline">\(F\)</span> have a meaning, and they depend only on ratios of probabilities:</p>
+<p><span class="math-display">\[F(\xi_2)-F(\xi_1) = -k_BT\ln\frac{P(\xi_2)}{P(\xi_1)}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\xi_1\)</span>, <span class="math-inline">\(\xi_2\)</span>: two values of the coordinate, that is, two bins of the histogram.</li>
+<li><span class="math-inline">\(P(\xi_2)/P(\xi_1)\)</span>: the ratio of their probabilities, which equals the ratio of the numbers of frames in the two bins.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>Read it like this. Equal populations give a difference of zero. At 300 K, a bin with ten times fewer frames lies <span class="math-inline">\(k_BT\ln10 = 5.7\)</span> kJ/mol higher, a bin with a hundred times fewer lies 11.5 kJ/mol higher, and a bin with a thousand times fewer 17.2 kJ/mol. Two states populated 90 % and 10 % differ by <span class="math-inline">\(2.494\times\ln9 = 5.5\)</span> kJ/mol.</p>
+<p>This sets the range of a histogram. If the most populated bin holds 10,000 frames, a bin with a single frame lies <span class="math-inline">\(k_BT\ln10^4 = 23\)</span> kJ/mol above it. A plain trajectory cannot show free energies higher than that, and the top of the range rests on a handful of frames.</p>
+<p>This is only valid where transitions between the regions have been sampled many times. A beautiful two-dimensional free-energy map made from a single trajectory that crossed the barrier once is a picture of one trajectory. Modules 12 and 14 give the methods for the case that matters.</p>
+<p>The reason is counting. The relative population of two wells is known only if the system has gone back and forth between them many times, because each crossing is one independent answer to the question "which well?". With a single crossing, the ratio of the times spent in the two wells records only the moment at which the crossing happened to occur. Had it come later, the map would show different depths. Within one well, where the system moves about freely, the shape of the profile is reliable.</p>
+<p>The same counting gives an error estimate. A bin that the trajectory entered on <span class="math-inline">\(n\)</span> independent occasions has a population that is uncertain by a fraction of about <span class="math-inline">\(1/\sqrt n\)</span>, and its free energy is then uncertain by about <span class="math-inline">\(k_BT/\sqrt n\)</span>: 1.2 kJ/mol for four visits, 0.25 kJ/mol for a hundred. Here <span class="math-inline">\(n\)</span> counts separate visits, not frames. For an error bar on a whole profile, compute the profile in each of several blocks or independent runs and take the spread, or bootstrap over them.</p>
+<p>A two-dimensional map is made in the same way from a two-dimensional histogram. Divide the plane of two coordinates, for example <span class="math-inline">\(p_1\)</span> and <span class="math-inline">\(p_2\)</span>, into small squares, count the frames in each, and apply the formula. The valleys of the map are the states. Because the frames are spread over many more bins, a map needs far more data than a profile.</p>
+<p>"The case that matters" is a barrier too high to be crossed many times in a plain simulation. <a href="12-free-energy-pmf.html">Module 12</a> and <a href="14-enhanced-sampling.html">Module 14</a> describe simulations that are built to cross it.</p>
 <h2 id="comparing-with-experiment">Comparing with experiment</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="TlKg7luoRmY" href="https://www.youtube.com/watch?v=TlKg7luoRmY" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">12 Order Parameters</span><span class="sv-m">6 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="a15IlXIhz1k" href="https://www.youtube.com/watch?v=a15IlXIhz1k" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Kresten Lindorff-Larsen, 1.11.21- Interpreting experiments using simulations</span><span class="sv-m">1 h 27 min · Kresten Lindorff-Larsen</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="TlKg7luoRmY" href="https://www.youtube.com/watch?v=TlKg7luoRmY" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">12 Order Parameters</span><span class="sv-m">6 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="a15IlXIhz1k" href="https://www.youtube.com/watch?v=a15IlXIhz1k" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Kresten Lindorff-Larsen, 1.11.21- Interpreting experiments using simulations</span><span class="sv-m">1 h 27 min · Kresten Lindorff-Larsen</span></a></div>
 
+<p>An experiment does not measure coordinates. It measures a signal, such as the splitting of an NMR line, the intensity of scattered X-rays or the fraction of light passed from one dye to another. The signal depends on the coordinates through a formula that is known, or known approximately, and the experiment averages it over a huge number of molecules and over the measuring time. To compare, compute the same signal from every frame with that formula, and then average over the frames. The table lists the standard cases.</p>
 <table>
 <thead>
 <tr>
@@ -170,10 +964,30 @@
 </tr>
 </tbody>
 </table>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(^3J\)</span>: a scalar coupling, the splitting of an NMR line caused by a nucleus three bonds away, in hertz. Its size depends on the dihedral angle about the middle bond.</li>
+<li><span class="math-inline">\(\theta\)</span> (Greek theta): that dihedral angle. <span class="math-inline">\(\phi\)</span>: the backbone dihedral angle phi of the residue.</li>
+<li><span class="math-inline">\(A\)</span>, <span class="math-inline">\(B\)</span>, <span class="math-inline">\(C\)</span> in the Karplus relation: three empirical constants, in hertz, fitted for each kind of coupling. Here they are not observables.</li>
+<li><span class="math-inline">\(^3J_{HNH\alpha}\)</span>: the coupling between the amide hydrogen and the H<span class="math-inline">\(\alpha\)</span> of the same residue.</li>
+<li><span class="math-inline">\(S^2\)</span>: the order parameter of the section on time correlation functions, between 0 and 1.</li>
+<li>NOE: the nuclear Overhauser effect, an NMR signal between two hydrogen nuclei that are close in space. <span class="math-inline">\(r\)</span> is their distance in one frame.</li>
+<li><span class="math-inline">\(\langle r^{-6}\rangle^{-1/6}\)</span>: average <span class="math-inline">\(r^{-6}\)</span> over the frames, then raise the result to the power <span class="math-inline">\(-1/6\)</span>, which turns it back into a length. <span class="math-inline">\(\langle r^{-3}\rangle^{-1/3}\)</span> is built in the same way.</li>
+<li>SAXS: small-angle X-ray scattering (see the radius of gyration).</li>
+<li>FRET: the transfer of energy between two dyes attached to the molecule. <span class="math-inline">\(r\)</span> is the distance between the dyes in one frame. <span class="math-inline">\(R_0\)</span> is the Förster distance of the dye pair, the distance at which the efficiency is one half.</li>
+<li>B-factors: see the box in the section on RMSF.</li>
+</ul>
+</div>
 <p>Average the <strong>observable</strong>, not the structure: experimental signals are non-linear in the coordinates.</p>
+<p>"Non-linear" is the point. For a non-linear function, the function of the average differs from the average of the function. Take the square: the values 1 and 3 have the average 2, whose square is 4, but the average of their squares is <span class="math-inline">\((1+9)/2 = 5\)</span>.</p>
+<p>The NOE shows how large the effect can be. Such a signal is seen for hydrogens closer than roughly 0.5 nm.</p>
+<p>Suppose two hydrogens are 0.3 nm apart in 10 % of the frames and 1.0 nm apart in the other 90 %. Their mean distance is 0.93 nm, far too long for a signal. The NOE average is <span class="math-inline">\(\langle r^{-6}\rangle = 0.1\times0.3^{-6}+0.9\times1.0^{-6} = 138\)</span> nm<span class="math-inline">\(^{-6}\)</span>, and <span class="math-inline">\(138^{-1/6} = 0.44\)</span> nm, short enough for one. The few close frames dominate.</p>
+<p>"Averaging the structure" means averaging the coordinates over the frames first and computing the signal from that single average structure. It fails for the same reason, and for one more: the average structure is often not a possible structure. A side chain that flips between two positions has its averaged atoms in between, where they never are.</p>
+<p>The computed value is the mean of a time series, so it needs an error bar from the methods of this module. The formula that turns a structure into a signal has an uncertainty of its own (the Karplus constants, the chemical-shift predictors), which adds to the statistical error.</p>
 <h2 id="tools">Tools</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="_v3WU0RAfRM" href="https://www.youtube.com/watch?v=_v3WU0RAfRM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">MDAnalysis tutorial #1: introduction to Analysis module and RMSD calculations</span><span class="sv-m">7 min · Eugene&#x27;s Science Archive</span></a><a class="sv" data-yt="Tso29WxWWHg" href="https://www.youtube.com/watch?v=Tso29WxWWHg" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">MDtraj Tutorials- (4)- RMSD analysis of protein MD trajectory</span><span class="sv-m">9 min · Mohamed shehata</span></a><a class="sv" data-yt="x39p_SrJLY4" href="https://www.youtube.com/watch?v=x39p_SrJLY4" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Exercise: Performing Analysis with MDTraj</span><span class="sv-m">25 min · SimbiosOpenMM</span></a><a class="sv" data-yt="8ZhNuhBXB0o" href="https://www.youtube.com/watch?v=8ZhNuhBXB0o" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 4 | MD Simulation Analysis in VMD | RMSD Calculation &amp; Visualization</span><span class="sv-m">18 min · Dr. H Ismail</span></a><a class="sv" data-yt="p3OUUnHXQjU" href="https://www.youtube.com/watch?v=p3OUUnHXQjU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Intro to Molecular Dynamics Trajectory Analysis using MDAnalysis</span><span class="sv-m">1 h 41 min · MDAnalysis team</span></a><a class="sv" data-yt="MzVk6VO5dyc" href="https://www.youtube.com/watch?v=MzVk6VO5dyc" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 23: Common simulation &amp; visualisation tools</span><span class="sv-m">7 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="_v3WU0RAfRM" href="https://www.youtube.com/watch?v=_v3WU0RAfRM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">MDAnalysis tutorial #1: introduction to Analysis module and RMSD calculations</span><span class="sv-m">7 min · Eugene&#x27;s Science Archive</span></a><a class="sv" data-yt="Tso29WxWWHg" href="https://www.youtube.com/watch?v=Tso29WxWWHg" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">MDtraj Tutorials- (4)- RMSD analysis of protein MD trajectory</span><span class="sv-m">9 min · Mohamed shehata</span></a><a class="sv" data-yt="x39p_SrJLY4" href="https://www.youtube.com/watch?v=x39p_SrJLY4" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Exercise: Performing Analysis with MDTraj</span><span class="sv-m">25 min · SimbiosOpenMM</span></a><a class="sv" data-yt="8ZhNuhBXB0o" href="https://www.youtube.com/watch?v=8ZhNuhBXB0o" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 4 | MD Simulation Analysis in VMD | RMSD Calculation &amp; Visualization</span><span class="sv-m">18 min · Dr. H Ismail</span></a><a class="sv" data-yt="p3OUUnHXQjU" href="https://www.youtube.com/watch?v=p3OUUnHXQjU" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Intro to Molecular Dynamics Trajectory Analysis using MDAnalysis</span><span class="sv-m">1 h 41 min · MDAnalysis team</span></a><a class="sv" data-yt="MzVk6VO5dyc" href="https://www.youtube.com/watch?v=MzVk6VO5dyc" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 23: Common simulation &amp; visualisation tools</span><span class="sv-m">7 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
 
+<p>A standard analysis is short in practice. The example computes the backbone RMSD and the radius of gyration with the MDAnalysis library. It assumes that the molecules in the trajectory file have already been made whole.</p>
 <div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">MDAnalysis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mda</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">MDAnalysis.analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">rms</span>
 
@@ -186,11 +1000,20 @@
 <span class="n">rg</span> <span class="o">=</span> <span class="p">[</span><span class="n">ca</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">()</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">]</span>
 </code></pre></div>
 
+<p>Line by line:</p>
+<ul>
+<li><code>mda.Universe(...)</code> joins a topology file (which atoms exist and how they are bonded, here <code>md.tpr</code>) with coordinates: the trajectory <code>md.xtc</code> for <code>u</code>, the single structure <code>npt.gro</code> for the reference.</li>
+<li><code>rms.RMSD(u, ref, select="backbone").run()</code> goes through the frames, superimposes the backbone atoms of each frame on those of the reference, and evaluates the RMSD formula of this module.</li>
+<li><code>R.results.rmsd</code> is a table with one row per frame. Column 0 is the frame number, column 1 the time and column 2 the RMSD. The variable names record the units that MDAnalysis uses, picoseconds and ångström. Divide by 10 to get nm.</li>
+<li><code>u.select_atoms("name CA")</code> picks the C<span class="math-inline">\(\alpha\)</span> atoms. The last line steps through the trajectory: each pass of the loop loads the next frame, and <code>ca.radius_of_gyration()</code> is evaluated on that frame.</li>
+</ul>
+<p>The two results are time series. Pass them to <code>block_average</code> from this module to get the standard errors of their means.</p>
 <p>MDAnalysis and MDTraj are two widely used general Python libraries. The GROMACS tools (<code>gmx rms</code>, <code>rmsf</code>, <code>gyrate</code>, <code>rdf</code>, <code>hbond</code>, <code>msd</code>, <code>energy</code>, <code>analyze -ee</code> for block averaging) and AMBER's <code>cpptraj</code> cover the standard analyses. VMD, PyMOL, ChimeraX and NGLview display trajectories: always watch the trajectory before trusting any number computed from it.</p>
+<p>Watching takes minutes and catches what a single averaged number hides: a broken molecule, a ligand that has left its site, a domain that has unfolded.</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. A 200 ns trajectory was saved every 10 ps. The radius of gyration has a standard deviation of 0.10 nm and an integrated autocorrelation time of 5 ns. What is the standard error of its mean?</summary>
-<p><span class="math-inline">\(N = 20{,}000\)</span> frames, <span class="math-inline">\(g = 1+2\times5000/10 = 1001\)</span>, <span class="math-inline">\(N_{eff}\approx20\)</span>. SE <span class="math-inline">\(=0.10/\sqrt{20} = 0.022\)</span> nm. The naive <span class="math-inline">\(0.10/\sqrt{20000} = 0.0007\)</span> nm is too small by a factor of 32.</p>
+<p><span class="math-inline">\(N = 20{,}000\)</span> frames, <span class="math-inline">\(g = 1+2\times5000/10 = 1001\)</span>, <span class="math-inline">\(N_{eff}\approx20\)</span>. SE <span class="math-inline">\(=0.10/\sqrt{20} = 0.022\)</span> nm. (Here <span class="math-inline">\(N\)</span> is the number of frames, 200 ns divided by 10 ps, <span class="math-inline">\(g\)</span> is the statistical inefficiency with <span class="math-inline">\(\tau_{int} = 5000\)</span> ps and <span class="math-inline">\(\Delta t_s = 10\)</span> ps, and <span class="math-inline">\(N_{eff} = N/g\)</span>. The short form gives the same count: <span class="math-inline">\(T_{sim}/2\tau_{int} = 200/10 = 20\)</span> samples.) The naive <span class="math-inline">\(0.10/\sqrt{20000} = 0.0007\)</span> nm is too small by a factor of 32.</p>
 </details>
 <details>
 <summary>2. The backbone RMSD levels off at 0.2 nm after 20 ns. Is the simulation converged?</summary>
@@ -203,6 +1026,18 @@
 <details>
 <summary>4. Block averaging gives standard errors of 0.8, 1.5, 2.6 and 3.9 kJ/mol for blocks of 1, 5, 20 and 50 ns in a 200 ns run. What do you conclude?</summary>
 <p>There is no plateau: the error estimate is still growing at the longest block length for which you have a few blocks. The correlation time is comparable with or longer than the run, and neither the mean nor its error is reliable. Run longer or use enhanced sampling.</p>
+</details>
+<details>
+<summary>5. You extend a simulation from 100 ns to 400 ns. What happens to the standard deviation of the radius of gyration, and what to the standard error of its mean?</summary>
+<p>The standard deviation stays about the same. It is the size of the fluctuations of the molecule, and more data only measure it better. The standard error halves: the number of independent samples is proportional to the simulated time, and the error falls as one over its square root, <span class="math-inline">\(1/\sqrt4 = 1/2\)</span>. Both statements assume that the first 100 ns had already visited the relevant conformations.</p>
+</details>
+<details>
+<summary>6. After superposition, four atoms lie 0.1, 0.1, 0.1 and 0.5 nm from their reference positions. What is the RMSD, and why is it larger than the mean deviation?</summary>
+<p>The squared deviations are 0.01, 0.01, 0.01 and 0.25 nm<span class="math-inline">\(^2\)</span>. Their mean is <span class="math-inline">\(0.28/4 = 0.07\)</span> nm<span class="math-inline">\(^2\)</span> and the root is 0.26 nm. The mean deviation is 0.2 nm. The RMSD is larger because squaring gives the one large deviation more weight than the three small ones.</p>
+</details>
+<details>
+<summary>7. In a histogram of a distance at 300 K, the most populated bin holds 5,000 frames and another bin holds 50. What is the free-energy difference between them, and what else must you know before you trust it?</summary>
+<p>The ratio of the populations is 100, so the difference is <span class="math-inline">\(k_BT\ln100 = 2.494\times4.61 = 11.5\)</span> kJ/mol. Before trusting it you must know on how many separate occasions the trajectory entered the rare bin. Fifty consecutive frames are a single visit, and one visit gives no usable estimate of a population.</p>
 </details>
 <h2 id="exercises">Exercises</h2>
 <ol>

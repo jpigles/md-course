@@ -410,5 +410,22 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderMath(); initChrome(); initVideos();
     $$('.widget[data-widget]').forEach(h => { const f = WIDGETS[h.dataset.widget]; if (f) { try { f(h); } catch (e) { h.textContent = 'This demo could not start: ' + e.message; } } });
+    initSymbolFilter();
   });
+
+  // the page "List of symbols": filter the rows while the reader types
+  function initSymbolFilter() {
+    const box = document.getElementById('symFilter');
+    if (!box) return;
+    const rows = $$('table.symtab tbody tr'), groups = $$('.symgroup'), count = document.getElementById('symCount');
+    const apply = () => {
+      const q = box.value.trim().toLowerCase();
+      let n = 0;
+      rows.forEach(r => { const ok = !q || r.dataset.s.includes(q); r.hidden = !ok; if (ok) n++; });
+      groups.forEach(g => { g.hidden = !g.querySelector('tbody tr:not([hidden])'); });
+      if (count) count.textContent = q ? n + ' of ' + rows.length + ' entries' : rows.length + ' entries';
+    };
+    box.addEventListener('input', apply);
+    apply();
+  }
 })();

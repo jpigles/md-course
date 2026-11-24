@@ -13,14 +13,14 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li class="current"><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li class="current"><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><h1>How this course was checked</h1><p class="lede">An honest account of what was verified, how, what was found wrong and corrected, and what still rests on unverified knowledge.</p></div>
@@ -138,6 +138,138 @@
 <p>In the reference lists, a paper that was read carries the label <span class="tag read">read in full</span> or <span class="tag read">read in part</span>, with a line on what it is for and what to read in it.</p>
 <p><strong>What this does not cover.</strong> Twenty papers could not be read. Eleven are in American Chemical Society journals, whose site stopped serving files after the first dozen (it limits how many articles one reader may fetch in a short time): the Martini papers, force matching (Izvekov and Voth 2005), GROMACS 4, g_wham, Lennard-Jones PME, hydrogen mass repartitioning, TIP4P-D, FEP+ and the Markov-model review of Husic and Pande. Three are in Science, which the library proxy does not cover (the Anton simulations and the published BioEmu paper, whose preprint was read for Module 18). For six the library has no online copy or the publisher page offered no file: Ewald (1921), Kramers (1940), Kumar et al. (1992, WHAM), Miyamoto and Kollman (1992, SETTLE), Izrailev et al. (1999) and Dror et al. (2012). For these 20 only the bibliographic details were verified, and what the lessons say about them rests on textbook knowledge and on the referees' checks. Where a text was read as a preprint, the published article may differ.</p>
 <p><strong>Module 18</strong> was written the other way round: from evidence files built by reading the literature first, with a page reference for every number.</p>
+<h2 id="the-rewrite-that-made-the-lessons-self-contained">The rewrite that made the lessons self-contained</h2>
+<p>The first published version was correct but compressed. A reader reported three things: the lessons could not be followed without the videos, new physics and mathematics were not explained for someone who is not a physicist, and the letters in the formulas were not defined. In November 2026 all 18 lessons were rewritten to answer this, and three pages were added (the maths toolbox, the physics primer and the list of symbols).</p>
+<p><strong>What was added.</strong> Each section now opens in plain words. Every new idea from physics or mathematics is explained from the beginning where it is first needed, in a box of its own with a small worked example. Derivations give every step. Under every displayed formula a list says what each letter and sign means: 1,576 definitions in the 18 lessons. The lessons grew to between five and eight times their first length.</p>
+<p><strong>How the checked text was protected.</strong> The writers were told to keep every checked statement and to add around it. A program then compared each rewritten lesson with its checked original: every original equation, number, citation link, heading and lecture link had to be present, and the original sentences that were no longer present word for word were listed for the referee. No writer was allowed to add a statement about a paper, a program or a model from memory.</p>
+<p><strong>How the new text was checked.</strong> Each rewritten lesson went to an independent referee that had not written it, and the two background pages and the formula sheet went to four more: 22 referees in all. Each referee re-derived every added formula, recomputed every added number (often with a short program or a small simulation), read every symbol list against its formula, and compared every added statement about a named method with the reading notes or the full text of the cited paper. The referee of Module 10 compared each explanation of a GROMACS or OpenMM option with the official documentation.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Wrong</th>
+<th>Misleading</th>
+<th>Missing</th>
+<th>Unclear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18 lessons</td>
+<td>32</td>
+<td>141</td>
+<td>123</td>
+<td>115</td>
+</tr>
+<tr>
+<td>Maths toolbox and physics primer</td>
+<td>10</td>
+<td>21</td>
+<td>42</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Formula sheet</td>
+<td>2</td>
+<td>5</td>
+<td>17</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>"Missing" is mostly a symbol without a definition or a step without a reason. About 470 corrections were applied. The added derivations and numbers held up almost everywhere. The errors were in explanatory sentences and in incomplete symbol lists. Some examples of what was wrong in the new text:</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What the new text said</th>
+<th>Corrected to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module 2</td>
+<td>The demo "compares forward Euler with a symplectic method"</td>
+<td>That demo shows phase-space area with and without friction; the comparison is in Module 4</td>
+</tr>
+<tr>
+<td>Module 6</td>
+<td>"Each type of amino acid has its own correction map" (ff19SB)</td>
+<td>The map depends on the type of amino acid; the paper has 16 maps for 20 amino acids</td>
+</tr>
+<tr>
+<td>Module 8</td>
+<td>The coupling time of a Langevin thermostat is <span class="math-inline">\(1/\gamma\)</span></td>
+<td>The kinetic energy relaxes with <span class="math-inline">\(1/(2\gamma)\)</span>, twice as fast</td>
+</tr>
+<tr>
+<td>Module 11</td>
+<td>A bootstrap range from six values called a 95 % confidence interval</td>
+<td>It holds the true mean about 87 % of the time; use the <span class="math-inline">\(t\)</span> interval for few values</td>
+</tr>
+<tr>
+<td>Module 12</td>
+<td>The error rule <span class="math-inline">\(k_BT/\sqrt n\)</span> "holds for the joined profile"</td>
+<td>It gives only the scatter from bin to bin; the errors of the window constants add up along the profile</td>
+</tr>
+<tr>
+<td>Module 17</td>
+<td>The volume factor of a change of variables, inverted</td>
+<td>The factor of the inverse map</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Statements of the first version that this round corrected.</strong> The referees also read the original text again, and in Module 18 against its evidence files:</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What the published page said</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module 18</td>
+<td>GPCRmd: 191 systems, 0.41 ms</td>
+<td>0.41 ms is the total of the 615 simulations on the platform</td>
+</tr>
+<tr>
+<td>Module 18</td>
+<td>Removing the language model "costs about thirty times more", beside a gain of 0.07 in correlation</td>
+<td>Thirty times in mean squared error, not in correlation</td>
+</tr>
+<tr>
+<td>Module 18</td>
+<td>BioEmu finds 49 % of the open "apo" forms</td>
+<td>"Open" is not in the source and was removed</td>
+</tr>
+<tr>
+<td>Module 18</td>
+<td>"The headroom for learning is a few hundredths"</td>
+<td>About a tenth (0.09 to 0.12)</td>
+</tr>
+<tr>
+<td>Module 1</td>
+<td>The total energy wanders "because the force still has a small jump at the cutoff"</td>
+<td>Mostly because of the time step: halving it made the wander nearly four times smaller in a test run</td>
+</tr>
+<tr>
+<td>Module 16</td>
+<td><span class="math-inline">\(k_BT/h = 6.2\times10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span> at 300 K</td>
+<td><span class="math-inline">\(6.25\times10^{12}\)</span> s<span class="math-inline">\(^{-1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>What this does not cover.</strong></p>
+<ul>
+<li>The new explanations were written by an AI system and checked by other instances of an AI system. No human expert has read them.</li>
+<li>They are textbook material and were checked by derivation and computation, not against a textbook page by page.</li>
+<li>A few one-line definitions of named methods rest on general knowledge and not on a source read for this course: the ECC charge scaling, the linear interaction energy method, OPES, Gaussian accelerated MD, what DSSP does, the shadow contact map, and the columns that MDAnalysis returns.</li>
+<li>In Module 10 the input files <code>ions.mdp</code>, <code>nvt.mdp</code> and <code>npt.mdp</code> are new. Every setting was compared with the GROMACS documentation, but the files have not been run. The page says so next to them.</li>
+<li>The referees worked on the source text. That every formula displays correctly was tested separately, in a browser, for all pages.</li>
+<li>The length is deliberate. The cuts that the referees proposed were not made, because the reader asked for completeness.</li>
+</ul>
 <h2 id="the-references">The references</h2>
 <ul>
 <li><strong>Papers.</strong> Every DOI was looked up in Crossref twice, by two separate programs, and title, year and first author compared: 144 of 144 match. PubMed Central links were checked to point at the same DOI. The 60 references of Module 18 were checked against Crossref or the arXiv record.</li>
@@ -154,8 +286,8 @@
 <h2 id="the-simulations-in-the-pages">The simulations in the pages</h2>
 <p>The 17 in-page simulations were each started and checked for errors in a browser, on a wide and a narrow screen. The umbrella-sampling demo recovers the exact potential to about 0.2 <span class="math-inline">\(k_BT\)</span>, the Liouville demo conserves area to about a percent, and the free-energy demo reproduces the exact answer with the acceptance-ratio estimator. They are teaching toys in reduced units, not research code.</p>
 <h2 id="where-the-records-are">Where the records are</h2>
-<p>In the repository: the referees' reports (<code>research/review_part1.md</code> to <code>review_part3.md</code>), the lists the pages are built from, and the short annotation of each paper that was read (<code>research/paper_notes.json</code>).</p>
-<p>Kept offline with the course sources, not published: the full reading note for each paper (<code>research/paper_notes/</code>), the evidence files behind Module 18 (<code>research/sota_partA.md</code>, <code>sota_partB.md</code>), and the papers themselves. The notes quote the papers, and those passages and files belong to the publishers.</p>
+<p>In the repository: the referees' reports of the first version (<code>research/review_part1.md</code> to <code>review_part3.md</code>), the lists the pages are built from, the short annotation of each paper that was read (<code>research/paper_notes.json</code>), the lessons as they were before the rewrite (<code>research/modules_before_expand/</code>), and the rules and programs of the rewrite (<code>research/expand_brief.md</code>, <code>expand_review_brief.md</code>, <code>check_module.py</code>).</p>
+<p>Kept offline with the course sources, not published: the full reading note for each paper (<code>research/paper_notes/</code>), the evidence files behind Module 18 (<code>research/sota_partA.md</code>, <code>sota_partB.md</code>), the referee reports of the rewrite (<code>research/expand_review/</code>), and the papers themselves. The notes and reports quote the papers, and those passages and files belong to the publishers.</p>
 <p>If you find an error, it is most likely in a statement about a paper that could not be read. Check the paper.</p>
 </article>
 

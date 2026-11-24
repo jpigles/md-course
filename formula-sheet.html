@@ -13,19 +13,169 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li class="current"><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li class="current"><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><h1>Formula sheet</h1><p class="lede">The equations of the course on one page, with the module where each is derived.</p></div>
 
 <article>
+<p>This page collects the main equations of the course, grouped by topic, with the module where each one is derived. Under every block of formulas a list says in words what each formula computes and then what every letter in it stands for. Unless a list says otherwise, lengths are in nm, times in ps, masses in u (atomic mass units), energies in kJ/mol, charges in units of the elementary charge <span class="math-inline">\(e\)</span> and temperatures in K. Lengths, times, masses and energies in these units fit together without conversion factors, because 1 kJ/mol is 1 u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-2}\)</span>.</p>
+<div class="box warn">
+<p><strong>Letters that mean more than one thing on this page.</strong> There are more quantities than letters, so the same letter is used again in another section with another meaning. The list under each block says which meaning applies there. The main cases:</p>
+<table>
+<thead>
+<tr>
+<th>Letter</th>
+<th>Meanings on this page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(\lambda\)</span></td>
+<td>velocity scaling factor (Berendsen thermostat); Lagrange multiplier <span class="math-inline">\(\lambda_k\)</span> (constraints); coupling parameter from 0 to 1 (thermodynamic integration); eigenvalue (Markov models, TICA); Debye length <span class="math-inline">\(\lambda_D\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\sigma\)</span></td>
+<td>Lennard-Jones distance; constraint function <span class="math-inline">\(\sigma_k\)</span>; standard deviation (<span class="math-inline">\(\sigma_T\)</span>, and <span class="math-inline">\(\sigma\)</span> in the formula for the standard error); native contact distance <span class="math-inline">\(\sigma_{ij}\)</span> in a Gō model</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(k\)</span></td>
+<td>force constant (<span class="math-inline">\(k_b\)</span>, <span class="math-inline">\(k_\theta\)</span>, <span class="math-inline">\(k_n\)</span>, umbrella spring); wave vector <span class="math-inline">\(\mathbf k\)</span> (Ewald); a counting label (constraints, states, lags); rate constant (<span class="math-inline">\(k_{on}\)</span>, <span class="math-inline">\(k_{off}\)</span>, <span class="math-inline">\(k_{TST}\)</span>). <span class="math-inline">\(k_B\)</span> is always the Boltzmann constant</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(g\)</span></td>
+<td>radial distribution function <span class="math-inline">\(g(r)\)</span>; SHAKE correction <span class="math-inline">\(g\)</span>; statistical inefficiency <span class="math-inline">\(g_{stat}\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(w\)</span>, <span class="math-inline">\(W\)</span></td>
+<td>umbrella bias <span class="math-inline">\(w_i(\xi)\)</span>; hill height <span class="math-inline">\(w\)</span> (metadynamics); loss weights <span class="math-inline">\(w_E\)</span>, <span class="math-inline">\(w_F\)</span>; importance weight <span class="math-inline">\(w(\mathbf x)\)</span>; potential of mean force <span class="math-inline">\(W(\xi)\)</span>; work <span class="math-inline">\(W\)</span> (Jarzynski, Crooks)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\gamma\)</span></td>
+<td>friction rate (Langevin, Kramers); bias factor (metadynamics)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\xi\)</span></td>
+<td>collective variable; vector of random numbers <span class="math-inline">\(\boldsymbol\xi\)</span> (O step, Brownian dynamics); thermostat variable (Nosé-Hoover)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(T\)</span></td>
+<td>temperature; total simulated time <span class="math-inline">\(T_{sim}\)</span>; transition matrix <span class="math-inline">\(\mathbf T\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(P\)</span></td>
+<td>probability; pressure</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(Q\)</span></td>
+<td>partition function; thermostat "mass" (Nosé-Hoover)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\rho\)</span></td>
+<td>density of copies in phase space (Liouville); number density of particles</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\eta\)</span></td>
+<td>random force <span class="math-inline">\(\boldsymbol\eta\)</span> (Langevin); viscosity</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\varepsilon\)</span></td>
+<td>Lennard-Jones well depth; contact energy (Gō model); permittivity of vacuum <span class="math-inline">\(\varepsilon_0\)</span>; dielectric constants <span class="math-inline">\(\varepsilon_r\)</span>, <span class="math-inline">\(\varepsilon_{in}\)</span>, <span class="math-inline">\(\varepsilon_{out}\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(K\)</span></td>
+<td>kinetic energy; force constant in AMBER and CHARMM files; equilibrium constants <span class="math-inline">\(K_a\)</span>, <span class="math-inline">\(K_d\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(A\)</span></td>
+<td>Helmholtz free energy; the name of a state (A and B)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(N\)</span></td>
+<td>number of atoms; number of saved frames or samples</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(F\)</span></td>
+<td>force <span class="math-inline">\(\mathbf F\)</span>; free energy (<span class="math-inline">\(F_i\)</span> of a window, <span class="math-inline">\(F(s)\)</span> along a collective variable)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(C\)</span></td>
+<td>count matrix <span class="math-inline">\(C_{ij}\)</span>; covariance matrix <span class="math-inline">\(\mathbf C(\tau)\)</span>; heat capacity <span class="math-inline">\(C_V\)</span>; standard concentration <span class="math-inline">\(C^\circ\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(V\)</span></td>
+<td>volume; metadynamics bias <span class="math-inline">\(V(s,t)\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(M\)</span></td>
+<td>number of replicas; mapping <span class="math-inline">\(\mathbf M(\mathbf r)\)</span> from atoms to beads. An upright M in a unit, as in M<span class="math-inline">\(^{-1}\)</span> s<span class="math-inline">\(^{-1}\)</span>, is mol/L</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(R\)</span></td>
+<td>bead coordinates <span class="math-inline">\(\mathbf R\)</span>; Born radius <span class="math-inline">\(R_i\)</span>; gas constant in <span class="math-inline">\(RT\ln10\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(i\)</span></td>
+<td>a label for atoms, windows or states; the imaginary unit in <span class="math-inline">\(iL\)</span> and in <span class="math-inline">\(e^{i\mathbf k\cdot\mathbf r_j}\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(L\)</span></td>
+<td>box edge length; Liouville operator <span class="math-inline">\(iL\)</span>; loss <span class="math-inline">\(\mathcal L\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\theta\)</span></td>
+<td>bond angle; the parameters of a neural network</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\delta\)</span></td>
+<td>deviation from the mean (<span class="math-inline">\(\delta E\)</span>, <span class="math-inline">\(\delta V\)</span>); phase <span class="math-inline">\(\delta_n\)</span> of a torsion; Dirac delta function <span class="math-inline">\(\delta(\ )\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\tau\)</span></td>
+<td>coupling time <span class="math-inline">\(\tau_T\)</span>; autocorrelation time <span class="math-inline">\(\tau_{int}\)</span>; lag time of a Markov model</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(q\)</span></td>
+<td>a generalised coordinate (Hamilton's equations); a charge <span class="math-inline">\(q_i\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(s\)</span></td>
+<td>collective variable (metadynamics); bond vectors <span class="math-inline">\(\mathbf s\)</span>, <span class="math-inline">\(\mathbf s'\)</span> (SHAKE)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(n\)</span></td>
+<td>multiplicity of a torsion term; shift <span class="math-inline">\(\mathbf n\)</span> to a periodic copy and whole numbers <span class="math-inline">\(n_x\)</span>, <span class="math-inline">\(n_y\)</span>, <span class="math-inline">\(n_z\)</span> (Ewald); number of particles in a shell <span class="math-inline">\(n(r,r+dr)\)</span>; counts <span class="math-inline">\(n_i(\xi)\)</span> in a histogram bin (WHAM); the label of a sample (MBAR)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(u\)</span></td>
+<td>energy of one pair <span class="math-inline">\(u(r)\)</span> (pair force); atomistic potential energy <span class="math-inline">\(u(\mathbf r)\)</span> (coarse-graining); reduced potential <span class="math-inline">\(u_i(\mathbf x)\)</span> (MBAR). An upright u after a number is the atomic mass unit</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(p\)</span></td>
+<td>momentum (<span class="math-inline">\(\mathbf p_i\)</span>, <span class="math-inline">\(p\)</span>); probability density <span class="math-inline">\(p_X(\mathbf x)\)</span> of a generator (machine learning)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(v\)</span></td>
+<td>velocity <span class="math-inline">\(\mathbf v\)</span>; eigenvector <span class="math-inline">\(\mathbf v\)</span> (TICA)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(S\)</span></td>
+<td>structure factor <span class="math-inline">\(S(\mathbf k)\)</span> (Ewald); the number of umbrella windows or states (WHAM, MBAR)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(e\)</span></td>
+<td>the number 2.718, the base of the natural logarithm, in every exponential such as <span class="math-inline">\(e^{-\beta H}\)</span>; the elementary charge where it appears in a unit (kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>)</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="constants-and-conversions">Constants and conversions</h2>
 <table>
 <thead>
@@ -65,79 +215,592 @@
 </tr>
 </tbody>
 </table>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant. It converts a temperature into an energy. This course counts energies per mole of molecules, so the value is per mole and is the same number as the gas constant <span class="math-inline">\(R\)</span>. It appears wherever a temperature does: in <span class="math-inline">\(k_BT\)</span>, in <span class="math-inline">\(\beta=1/k_BT\)</span> and in the instantaneous temperature.</li>
+<li><span class="math-inline">\(k_BT\)</span> at 300 K: the thermal energy at room temperature (<span class="math-inline">\(T\)</span> is the absolute temperature in K). It is the yardstick for every energy on this page: a barrier or a well depth is large or small compared with <span class="math-inline">\(k_BT\)</span>.</li>
+<li><span class="math-inline">\(RT\ln10\)</span> at 298 K: the free-energy difference that corresponds to a factor of 10 in a binding constant or in a ratio of two populations. <span class="math-inline">\(R\)</span> is the gas constant (equal to <span class="math-inline">\(k_B\)</span> in per-mole units) and <span class="math-inline">\(\ln10=2.303\)</span>. With <span class="math-inline">\(\Delta G^\circ=-k_BT\ln(K_aC^\circ)\)</span>, a binder that is 10 times tighter has a <span class="math-inline">\(\Delta G^\circ\)</span> that is 5.71 kJ/mol more negative. This row is for 298 K, the row above for 300 K.</li>
+<li><span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span>: the Coulomb constant. <span class="math-inline">\(\varepsilon_0\)</span> is the permittivity of vacuum. Multiply <span class="math-inline">\(q_iq_j/r\)</span> by it, with the charges in units of <span class="math-inline">\(e\)</span> and the distance in nm, to get a Coulomb energy in kJ/mol. It is used in the force field, in the Ewald sum and in the Debye-Hückel and generalised Born formulas.</li>
+<li><span class="math-inline">\(C^\circ\)</span> and <span class="math-inline">\(V^\circ\)</span>: <span class="math-inline">\(C^\circ\)</span> is the standard concentration, 1 mol/L, which is 0.6022 molecules per nm<span class="math-inline">\(^3\)</span>. <span class="math-inline">\(V^\circ=1/C^\circ\)</span> is the volume that one molecule has to itself at that concentration. The small circle marks the standard state. They turn an association constant in nm<span class="math-inline">\(^3\)</span> into molar units and into <span class="math-inline">\(\Delta G^\circ\)</span> (free-energy section).</li>
+<li>Debye length: the distance over which dissolved salt screens an electrostatic interaction, written <span class="math-inline">\(\lambda_D\)</span> in the coarse-graining section. <span class="math-inline">\(I\)</span> is the ionic strength of the solution (Module 15). For a salt of singly charged ions such as NaCl it equals the salt concentration. <span class="math-inline">\(I[\text{M}]\)</span> means its value in mol/L, entered as a plain number. At 0.15 mol/L the Debye length is 0.79 nm.</li>
+<li><span class="math-inline">\(k=2K\)</span>: two ways of writing the energy of a spring. GROMACS writes <span class="math-inline">\(\tfrac12k(x-x_0)^2\)</span>, and AMBER and CHARMM parameter files write <span class="math-inline">\(K(x-x_0)^2\)</span> with no half, so <span class="math-inline">\(k=2K\)</span>. For a bond length, the factor 418.4 is 4.184 (kcal to kJ) times 100 (Å<span class="math-inline">\(^{-2}\)</span> to nm<span class="math-inline">\(^{-2}\)</span>). For an angle constant in kcal mol<span class="math-inline">\(^{-1}\)</span> rad<span class="math-inline">\(^{-2}\)</span> only the 4.184 applies, because radians are not converted. Example: <span class="math-inline">\(K=310\)</span> kcal mol<span class="math-inline">\(^{-1}\)</span> Å<span class="math-inline">\(^{-2}\)</span> becomes <span class="math-inline">\(k=2\times310\times418.4=259{,}408\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>.</li>
+</ul>
+</div>
 <h2 id="mechanics-module-2">Mechanics (Module 2)</h2>
 <p><span class="math-display">\[m_i\ddot{\mathbf r}_i=\mathbf F_i=-\nabla_iU\qquad
 H=\sum_i\frac{\mathbf p_i^2}{2m_i}+U(\mathbf r)\qquad
 \dot q=\frac{\partial H}{\partial p},\ \ \dot p=-\frac{\partial H}{\partial q}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: Newton's second law with a conservative force. Mass times acceleration equals the force, and the force is minus the slope of the potential energy.</li>
+<li>Second formula: the Hamiltonian, which is the total energy (kinetic plus potential) written with momenta.</li>
+<li>Third formula (a pair of equations): Hamilton's equations, the same motion written as two first-order equations.</li>
+<li><span class="math-inline">\(i\)</span>: the label of one atom, from 1 to <span class="math-inline">\(N\)</span> (the number of atoms). <span class="math-inline">\(\sum_i\)</span> means "add up over all atoms".</li>
+<li><span class="math-inline">\(m_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>, in u.</li>
+<li><span class="math-inline">\(\mathbf r_i\)</span>: the position of atom <span class="math-inline">\(i\)</span>, a vector <span class="math-inline">\((x_i,y_i,z_i)\)</span> in nm. <span class="math-inline">\(\mathbf r\)</span> without a label means all positions together.</li>
+<li><span class="math-inline">\(\ddot{\mathbf r}_i\)</span>: the acceleration of atom <span class="math-inline">\(i\)</span>. Each dot is one derivative with respect to time.</li>
+<li><span class="math-inline">\(\mathbf F_i\)</span>: the total force on atom <span class="math-inline">\(i\)</span>, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(U\)</span>: the potential energy, a function of all positions, in kJ/mol.</li>
+<li><span class="math-inline">\(\nabla_i\)</span>: the gradient with respect to the position of atom <span class="math-inline">\(i\)</span>, that is the three slopes <span class="math-inline">\((\partial/\partial x_i,\partial/\partial y_i,\partial/\partial z_i)\)</span>. The minus sign makes the force point towards lower energy.</li>
+<li><span class="math-inline">\(H\)</span>: the Hamiltonian, in kJ/mol.</li>
+<li><span class="math-inline">\(\mathbf p_i\)</span>: the momentum of atom <span class="math-inline">\(i\)</span>, equal to <span class="math-inline">\(m_i\dot{\mathbf r}_i\)</span> (mass times velocity). <span class="math-inline">\(\mathbf p_i^2\)</span> is short for <span class="math-inline">\(\mathbf p_i\cdot\mathbf p_i\)</span>, and <span class="math-inline">\(\mathbf p_i^2/2m_i\)</span> is the kinetic energy of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(q\)</span>, <span class="math-inline">\(p\)</span>: one coordinate and the momentum that belongs to it. There is one such pair of equations for every degree of freedom (Module 2 writes <span class="math-inline">\(q_k\)</span>, <span class="math-inline">\(p_k\)</span>). Here <span class="math-inline">\(q\)</span> is not a charge and <span class="math-inline">\(p\)</span> is not a probability.</li>
+<li><span class="math-inline">\(\dot q\)</span>, <span class="math-inline">\(\dot p\)</span>: their rates of change in time.</li>
+<li><span class="math-inline">\(\partial H/\partial p\)</span>, <span class="math-inline">\(\partial H/\partial q\)</span>: partial derivatives, the slope of <span class="math-inline">\(H\)</span> when only that one variable changes.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{Pair force: }\mathbf F_i=-\frac{du}{dr}\frac{\mathbf r_{ij}}{r_{ij}}\qquad
 \text{Liouville: }\nabla_\Gamma\cdot\dot\Gamma=0,\ \ \frac{\partial\rho}{\partial t}=-\{\rho,H\}\]</span></p>
+<div class="legend">
+<ul>
+<li>Pair force: the force on atom <span class="math-inline">\(i\)</span> from one other atom <span class="math-inline">\(j\)</span> when the energy of the pair depends only on their distance. The total force on atom <span class="math-inline">\(i\)</span> is the sum of this expression over all partners <span class="math-inline">\(j\)</span>. In Module 2 and in the virial equation of the next section the force from one partner is written <span class="math-inline">\(\mathbf F_{ij}\)</span>.</li>
+<li>Liouville, first formula: the flow of points in phase space is incompressible, so a cloud of starting conditions keeps its volume.</li>
+<li>Liouville, second formula: the Liouville equation, which says how a density of copies of the system changes in time.</li>
+<li><span class="math-inline">\(u\)</span>: the energy of one pair of atoms as a function of their distance <span class="math-inline">\(r\)</span>, for example the Lennard-Jones function. <span class="math-inline">\(du/dr\)</span> is its slope, taken at the present distance <span class="math-inline">\(r_{ij}\)</span>.</li>
+<li><span class="math-inline">\(r_{ij}\)</span> (not bold): the distance between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span> (bold): the vector <span class="math-inline">\(\mathbf r_i-\mathbf r_j\)</span>, which points from <span class="math-inline">\(j\)</span> to <span class="math-inline">\(i\)</span>. Divided by its length <span class="math-inline">\(r_{ij}\)</span> it is a vector of length 1 that gives only the direction.</li>
+<li><span class="math-inline">\(\Gamma\)</span> (capital gamma): one point in phase space, that is one complete set of positions and momenta of all atoms, <span class="math-inline">\(6N\)</span> numbers.</li>
+<li><span class="math-inline">\(\dot\Gamma\)</span>: the rate of change of that point, made of all the <span class="math-inline">\(\dot q\)</span> and <span class="math-inline">\(\dot p\)</span> of Hamilton's equations.</li>
+<li><span class="math-inline">\(\nabla_\Gamma\cdot\)</span>: the divergence in phase space. It measures whether the flow spreads out (positive) or closes in (negative). Zero means neither.</li>
+<li><span class="math-inline">\(\rho\)</span> (rho): here the density of copies of the system in phase space, a function of <span class="math-inline">\(\Gamma\)</span> and of the time <span class="math-inline">\(t\)</span>. It is not the number density of particles used in the sections on boundaries and on analysis.</li>
+<li><span class="math-inline">\(\partial\rho/\partial t\)</span>: the rate of change of that density at a fixed point of phase space.</li>
+<li><span class="math-inline">\(\{\rho,H\}\)</span>: the Poisson bracket, short for <span class="math-inline">\(\sum_k\big(\frac{\partial\rho}{\partial q_k}\frac{\partial H}{\partial p_k}-\frac{\partial\rho}{\partial p_k}\frac{\partial H}{\partial q_k}\big)\)</span>, where <span class="math-inline">\(k\)</span> runs over all degrees of freedom. <span class="math-inline">\(H\)</span> is the Hamiltonian.</li>
+</ul>
+</div>
 <h2 id="statistical-mechanics-module-3">Statistical mechanics (Module 3)</h2>
 <p><span class="math-display">\[P(\Gamma)=\frac{e^{-\beta H(\Gamma)}}{Q}\qquad
 Q=\frac{1}{N!\,\Lambda^{3N}}\int e^{-\beta U(\mathbf r)}d\mathbf r\qquad
 A=-k_BT\ln Q\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the canonical (Boltzmann) distribution, the probability of one microstate at a fixed temperature.</li>
+<li>Second formula: the classical partition function after the integrals over the momenta have been done.</li>
+<li>Third formula: the Helmholtz free energy from the partition function.</li>
+<li><span class="math-inline">\(\Gamma\)</span>: one microstate, a point in phase space (all positions and all momenta).</li>
+<li><span class="math-inline">\(P(\Gamma)\)</span>: the probability of the microstate <span class="math-inline">\(\Gamma\)</span> when the number of particles, the volume and the temperature are fixed. Here <span class="math-inline">\(P\)</span> is a probability, not the pressure. It is a probability per counted state, a pure number: <span class="math-inline">\(Q\)</span> counts one state for each cell of volume <span class="math-inline">\(h^{3N}\)</span> in phase space (<span class="math-inline">\(h\)</span> is Planck's constant, 0.399 kJ mol<span class="math-inline">\(^{-1}\)</span> ps) and counts the <span class="math-inline">\(N!\)</span> exchanges of identical particles as one state. The probability density per unit volume of phase space, which Module 3 uses for averages, is <span class="math-inline">\(e^{-\beta H}/(N!\,h^{3N}Q)\)</span>. That is <span class="math-inline">\(e^{-\beta H}\)</span> divided by its integral over all positions and momenta.</li>
+<li><span class="math-inline">\(H(\Gamma)\)</span>: the Hamiltonian, the total energy of that microstate.</li>
+<li><span class="math-inline">\(\beta\)</span> (beta): short for <span class="math-inline">\(1/k_BT\)</span>, with <span class="math-inline">\(k_B\)</span> the Boltzmann constant and <span class="math-inline">\(T\)</span> the temperature in K. At 300 K, <span class="math-inline">\(1/\beta=2.494\)</span> kJ/mol.</li>
+<li><span class="math-inline">\(e^{-\beta H}\)</span>: the Boltzmann factor. A state whose energy is higher by <span class="math-inline">\(k_BT\)</span> is less likely by a factor <span class="math-inline">\(e\approx2.7\)</span>.</li>
+<li><span class="math-inline">\(Q\)</span>: the partition function, the sum of the Boltzmann factors of all microstates. Dividing by it makes the probabilities add up to 1. It is a pure number. Here <span class="math-inline">\(Q\)</span> is not the thermostat "mass" of Module 8.</li>
+<li><span class="math-inline">\(N\)</span>: the number of particles. <span class="math-inline">\(N!\)</span> is the factorial <span class="math-inline">\(N(N-1)\cdots1\)</span>, which corrects for counting the same arrangement of identical particles more than once.</li>
+<li><span class="math-inline">\(\Lambda\)</span> (capital lambda): the thermal de Broglie wavelength, <span class="math-inline">\(h/\sqrt{2\pi mk_BT}\)</span>, a length (<span class="math-inline">\(h\)</span> is Planck's constant and <span class="math-inline">\(m\)</span> the mass of a particle). It is what remains of the integrals over the momenta: one factor <span class="math-inline">\(1/\Lambda\)</span> for each of the <span class="math-inline">\(3N\)</span> momentum components. The formula for <span class="math-inline">\(Q\)</span> is written for <span class="math-inline">\(N\)</span> identical particles of one mass.</li>
+<li><span class="math-inline">\(\int e^{-\beta U(\mathbf r)}d\mathbf r\)</span>: the configurational integral, called <span class="math-inline">\(Z\)</span> in Module 3. The integral runs over all positions of all atoms (<span class="math-inline">\(3N\)</span> variables).</li>
+<li><span class="math-inline">\(U(\mathbf r)\)</span>: the potential energy of the configuration <span class="math-inline">\(\mathbf r\)</span>.</li>
+<li><span class="math-inline">\(A\)</span>: the Helmholtz free energy, in kJ/mol. Here <span class="math-inline">\(A\)</span> is not the name of a state.</li>
+<li><span class="math-inline">\(\ln\)</span>: the natural logarithm.</li>
+</ul>
+</div>
 <p><span class="math-display">\[T_{inst}=\frac{2K}{N_{df}k_B}\qquad\frac{\sigma_T}{T}=\sqrt{\frac{2}{N_{df}}}\qquad
 C_V=\frac{\langle\delta E^2\rangle}{k_BT^2}\qquad\langle\delta V^2\rangle=k_BT\,V\kappa_T\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the instantaneous temperature, computed from the kinetic energy of one frame.</li>
+<li>Second formula: how much that temperature fluctuates in a correct constant-temperature simulation.</li>
+<li>Third formula: the heat capacity from the fluctuations of the energy.</li>
+<li>Fourth formula: the fluctuations of the volume at constant pressure, which are set by the compressibility.</li>
+<li><span class="math-inline">\(T_{inst}\)</span>: the temperature of one frame, in K.</li>
+<li><span class="math-inline">\(K\)</span>: the total kinetic energy, <span class="math-inline">\(\sum_i\tfrac12m_iv_i^2\)</span> with <span class="math-inline">\(v_i\)</span> the speed of atom <span class="math-inline">\(i\)</span>, in kJ/mol. Here <span class="math-inline">\(K\)</span> is not a force constant or an equilibrium constant.</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number of degrees of freedom, <span class="math-inline">\(3N-N_c-3\)</span> (see the section on constraints).</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\sigma_T\)</span>: the standard deviation of <span class="math-inline">\(T_{inst}\)</span> along the run. Here <span class="math-inline">\(\sigma\)</span> is a standard deviation, not a Lennard-Jones distance. <span class="math-inline">\(T\)</span> is the temperature of the simulation, which is the mean of <span class="math-inline">\(T_{inst}\)</span>. For 100,000 atoms without constraints the ratio is 0.26 %.</li>
+<li><span class="math-inline">\(C_V\)</span>: the heat capacity at constant volume, the energy needed to raise the temperature by one kelvin, in kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(E\)</span>: the total energy. <span class="math-inline">\(\delta E=E-\langle E\rangle\)</span> is its deviation from the mean, so <span class="math-inline">\(\langle\delta E^2\rangle\)</span> is the variance of the energy in a constant-temperature (NVT) simulation.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over the ensemble, in practice over the frames of a trajectory.</li>
+<li><span class="math-inline">\(V\)</span>: the volume of the box. <span class="math-inline">\(\langle\delta V^2\rangle\)</span> is the variance of the volume in a constant-pressure (NPT) simulation. On the right-hand side <span class="math-inline">\(V\)</span> is the mean volume.</li>
+<li><span class="math-inline">\(\kappa_T\)</span> (kappa): the isothermal compressibility, the relative decrease of the volume per unit of added pressure at constant temperature. For water it is <span class="math-inline">\(4.5\times10^{-5}\)</span> bar<span class="math-inline">\(^{-1}\)</span>, which is <span class="math-inline">\(7.47\times10^{-4}\)</span> nm<span class="math-inline">\(^3\)</span> mol kJ<span class="math-inline">\(^{-1}\)</span> in the units of this page (1 bar is 0.0602 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>).</li>
+</ul>
+</div>
 <p><span class="math-display">\[P=\frac{1}{3V}\Big\langle2K+\sum_{i&lt;j}\mathbf r_{ij}\cdot\mathbf F_{ij}\Big\rangle\qquad
 \frac{P_B}{P_A}=e^{-\beta\Delta A_{AB}}\qquad
 W(\xi)=-k_BT\ln P(\xi)\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the virial equation for the pressure.</li>
+<li>Second formula: the relative probability of two macrostates, which defines their free-energy difference.</li>
+<li>Third formula: the potential of mean force along a chosen coordinate.</li>
+<li><span class="math-inline">\(P\)</span> (first formula): the pressure. With <span class="math-inline">\(K\)</span> in kJ/mol and <span class="math-inline">\(V\)</span> in nm<span class="math-inline">\(^3\)</span> it comes out in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>, and 1 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span> is 16.6 bar. <span class="math-inline">\(P_A\)</span>, <span class="math-inline">\(P_B\)</span> and <span class="math-inline">\(P(\xi)\)</span> in the other two formulas are probabilities.</li>
+<li><span class="math-inline">\(V\)</span>: the volume of the box.</li>
+<li><span class="math-inline">\(K\)</span>: the total kinetic energy. The term <span class="math-inline">\(2K/3V\)</span> is the ideal-gas part of the pressure.</li>
+<li><span class="math-inline">\(\sum_{i&lt;j}\)</span>: a sum over all pairs of atoms, each pair counted once.</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span>: the vector from atom <span class="math-inline">\(j\)</span> to atom <span class="math-inline">\(i\)</span>. <span class="math-inline">\(\mathbf F_{ij}\)</span>: the force on atom <span class="math-inline">\(i\)</span> caused by atom <span class="math-inline">\(j\)</span>. The dot between them is the dot product, which gives a single number.</li>
+<li><span class="math-inline">\(\sum_{i&lt;j}\mathbf r_{ij}\cdot\mathbf F_{ij}\)</span>: the virial term, the contribution of the interactions. Attractive forces make it negative and lower the pressure, repulsive forces raise it.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over the trajectory.</li>
+<li><span class="math-inline">\(P_A\)</span>, <span class="math-inline">\(P_B\)</span>: the probabilities of finding the system in macrostate A or in macrostate B, for example "unbound" and "bound".</li>
+<li><span class="math-inline">\(\Delta A_{AB}\)</span>: the Helmholtz free energy of B minus that of A, in kJ/mol. The letter <span class="math-inline">\(A\)</span> is the free energy, and the subscripts A and B are the names of the states.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(\xi\)</span> (xi): a chosen coordinate computed from the atomic positions, such as a distance or an angle. In this formula it is not a random number or a thermostat variable.</li>
+<li><span class="math-inline">\(P(\xi)\)</span>: the probability density of finding the value <span class="math-inline">\(\xi\)</span> at equilibrium, whatever all the other coordinates are doing.</li>
+<li><span class="math-inline">\(W(\xi)\)</span>: the potential of mean force, the free energy as a function of <span class="math-inline">\(\xi\)</span>, in kJ/mol. It is defined up to an added constant. Here <span class="math-inline">\(W\)</span> is not work. When <span class="math-inline">\(\xi\)</span> is a distance <span class="math-inline">\(r\)</span>, this <span class="math-inline">\(W\)</span> still contains the geometric (Jacobian) term <span class="math-inline">\(-2k_BT\ln r\)</span>. The formula for <span class="math-inline">\(K_a\)</span> in the free-energy section needs the profile with that term removed, which Module 3 writes <span class="math-inline">\(w(r)\)</span> and Module 12 writes <span class="math-inline">\(W(r)\)</span>.</li>
+</ul>
+</div>
 <h2 id="integrators-module-4">Integrators (Module 4)</h2>
 <p><span class="math-display">\[\mathbf v\leftarrow\mathbf v+\tfrac{\Delta t}{2m}\mathbf F;\quad\mathbf r\leftarrow\mathbf r+\Delta t\,\mathbf v;\quad\mathbf F\leftarrow\mathbf F(\mathbf r);\quad\mathbf v\leftarrow\mathbf v+\tfrac{\Delta t}{2m}\mathbf F\]</span></p>
+<div class="legend">
+<ul>
+<li>The whole line: one step of the velocity Verlet algorithm. Four operations are done in this order for every atom: half kick, drift, new forces, half kick.</li>
+<li><span class="math-inline">\(\leftarrow\)</span>: "is replaced by". Compute the right-hand side with the present values and store the result in the variable on the left, like <code>=</code> in a program.</li>
+<li><span class="math-inline">\(\mathbf v\)</span>: the velocity of an atom, in nm/ps.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: its position, in nm.</li>
+<li><span class="math-inline">\(\mathbf F\)</span>: the force on it. <span class="math-inline">\(\mathbf F/m\)</span> is its acceleration.</li>
+<li><span class="math-inline">\(m\)</span>: its mass, in u.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step, usually 1 to 4 fs (0.001 to 0.004 ps) in an atomistic simulation.</li>
+<li><span class="math-inline">\(\tfrac{\Delta t}{2m}\mathbf F\)</span>: the change of the velocity during half a time step (the "half kick").</li>
+<li><span class="math-inline">\(\Delta t\,\mathbf v\)</span>: the distance moved in one time step at the present velocity (the "drift").</li>
+<li><span class="math-inline">\(\mathbf F(\mathbf r)\)</span>: the forces computed again from the new positions. This is the one force calculation of the step.</li>
+</ul>
+</div>
 <p><span class="math-display">\[e^{iL\Delta t}\approx e^{iL_p\Delta t/2}e^{iL_r\Delta t}e^{iL_p\Delta t/2}\qquad
 \text{stability: }\omega\Delta t&lt;2\qquad
 \tilde H=H+O(\Delta t^2)\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the splitting of the exact time-step operation into three pieces that can each be applied exactly. Read from right to left it is velocity Verlet: half kick, drift, half kick.</li>
+<li>Second formula: the stability limit of the time step.</li>
+<li>Third formula: the shadow Hamiltonian that the numerical trajectory conserves.</li>
+<li><span class="math-inline">\(iL\)</span>: the Liouville operator, the rule that gives the rate of change of any quantity along the motion. Treat <span class="math-inline">\(iL\)</span> as one symbol. The <span class="math-inline">\(i\)</span> is the imaginary unit and is there by convention. This <span class="math-inline">\(L\)</span> is not a box length.</li>
+<li><span class="math-inline">\(e^{iL\Delta t}\)</span>: the propagator, the operation "advance the whole system by one time step <span class="math-inline">\(\Delta t\)</span>".</li>
+<li><span class="math-inline">\(iL_r\)</span>: the part of <span class="math-inline">\(iL\)</span> that moves the positions at fixed velocities. <span class="math-inline">\(e^{iL_r\Delta t}\)</span> is a drift over a full step.</li>
+<li><span class="math-inline">\(iL_p\)</span>: the part that changes the velocities (momenta) under the forces at fixed positions. <span class="math-inline">\(e^{iL_p\Delta t/2}\)</span> is a kick over half a step.</li>
+<li><span class="math-inline">\(\approx\)</span>: the two sides differ by a term of order <span class="math-inline">\(\Delta t^3\)</span> in one step.</li>
+<li><span class="math-inline">\(\omega\)</span> (omega): the angular frequency of the fastest vibration in the system, in radians per ps. Its period is <span class="math-inline">\(2\pi/\omega\)</span>, so the condition says that <span class="math-inline">\(\Delta t\)</span> must be shorter than the period divided by <span class="math-inline">\(\pi\)</span>.</li>
+<li><span class="math-inline">\(H\)</span>: the true Hamiltonian (the total energy). <span class="math-inline">\(\tilde H\)</span>: the shadow Hamiltonian, a slightly different energy function, which velocity Verlet conserves.</li>
+<li><span class="math-inline">\(O(\Delta t^2)\)</span>: a term whose size is proportional to <span class="math-inline">\(\Delta t^2\)</span>. Halve the time step and it becomes four times smaller.</li>
+</ul>
+</div>
 <h2 id="force-field-modules-5-and-6">Force field (Modules 5 and 6)</h2>
 <p><span class="math-display">\[U=\sum_{b}\tfrac12k_b(r-r_0)^2+\sum_{a}\tfrac12k_\theta(\theta-\theta_0)^2+\sum_{d}\sum_nk_n[1+\cos(n\phi-\delta_n)]
 +\sum_{i&lt;j}\left\{4\varepsilon_{ij}\left[\left(\tfrac{\sigma_{ij}}{r}\right)^{12}-\left(\tfrac{\sigma_{ij}}{r}\right)^{6}\right]+\frac{q_iq_j}{4\pi\varepsilon_0r}\right\}\]</span></p>
+<div class="legend">
+<ul>
+<li>The whole formula: the potential energy of a classical additive force field, as a sum of bond, angle, torsion, Lennard-Jones and Coulomb terms. It is shortened: Module 5 has one more bonded sum, over the improper dihedrals, which keep four atoms in a plane. Module 5 derives every term, and Module 6 explains how the numbers in them (<span class="math-inline">\(k_b\)</span>, <span class="math-inline">\(k_\theta\)</span>, <span class="math-inline">\(k_n\)</span>, <span class="math-inline">\(\sigma_{ij}\)</span>, <span class="math-inline">\(\varepsilon_{ij}\)</span>, <span class="math-inline">\(q_i\)</span>) are chosen.</li>
+<li><span class="math-inline">\(U\)</span>: the total potential energy, in kJ/mol.</li>
+<li><span class="math-inline">\(\sum_b\)</span>, <span class="math-inline">\(\sum_a\)</span>, <span class="math-inline">\(\sum_d\)</span>: sums over all bonds, all angles and all proper dihedrals (torsions) listed in the topology.</li>
+<li><span class="math-inline">\(r\)</span> (first sum): the present length of the bond. <span class="math-inline">\(r_0\)</span>: its reference length, in nm. <span class="math-inline">\(k_b\)</span>: the bond force constant, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> (a few times <span class="math-inline">\(10^5\)</span> for covalent bonds).</li>
+<li><span class="math-inline">\(\theta\)</span> (theta): the present angle between two bonds that share an atom. <span class="math-inline">\(\theta_0\)</span>: its reference value. <span class="math-inline">\(k_\theta\)</span>: the angle force constant, typically 300 to 700 kJ mol<span class="math-inline">\(^{-1}\)</span> rad<span class="math-inline">\(^{-2}\)</span>, so <span class="math-inline">\(\theta-\theta_0\)</span> must be in radians. Here <span class="math-inline">\(\theta\)</span> is an angle, not the parameters of a neural network.</li>
+<li><span class="math-inline">\(\tfrac12\)</span>: the convention of GROMACS. AMBER and CHARMM parameter files leave it out (see the constants table).</li>
+<li><span class="math-inline">\(\phi\)</span> (phi): the dihedral angle of four atoms bonded in a row, the angle between the plane of the first three and the plane of the last three.</li>
+<li><span class="math-inline">\(n\)</span>: the multiplicity of a torsion term, the number of minima in a full turn (1, 2, 3, sometimes 4 or 6). <span class="math-inline">\(\sum_n\)</span> adds the terms of one dihedral.</li>
+<li><span class="math-inline">\(k_n\)</span>: the force constant of the term with multiplicity <span class="math-inline">\(n\)</span>, in kJ/mol. It is half the barrier height of that term. Module 5 writes it <span class="math-inline">\(k_{\phi,n}\)</span>.</li>
+<li><span class="math-inline">\(\delta_n\)</span>: the phase of that term, 0 or 180° in most force fields. Here <span class="math-inline">\(\delta\)</span> is not a delta function.</li>
+<li><span class="math-inline">\(\sum_{i&lt;j}\)</span>: a sum over all pairs of non-bonded atoms, each pair once. Atoms one or two bonds apart are left out, and pairs three bonds apart are scaled in some force fields.</li>
+<li><span class="math-inline">\(r\)</span> (last sum): the distance between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>, written <span class="math-inline">\(r_{ij}\)</span> in Module 5.</li>
+<li><span class="math-inline">\(\varepsilon_{ij}\)</span> (epsilon): the depth of the Lennard-Jones well for this pair, typically 0.1 to 1 kJ/mol.</li>
+<li><span class="math-inline">\(\sigma_{ij}\)</span> (sigma): the distance at which the Lennard-Jones energy of the pair is zero, the "size" of the pair, in nm.</li>
+<li>The term with the power 12 is the repulsion at short distance. The term with the power 6 is the dispersion attraction.</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>: the partial charges of the two atoms, in units of the elementary charge <span class="math-inline">\(e\)</span>.</li>
+<li><span class="math-inline">\(\varepsilon_0\)</span>: the permittivity of vacuum, with <span class="math-inline">\(1/(4\pi\varepsilon_0)=138.935\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>. It is a different quantity from the well depth <span class="math-inline">\(\varepsilon_{ij}\)</span>.</li>
+</ul>
+</div>
 <p><span class="math-display">\[r_{min}=2^{1/6}\sigma\qquad
 \text{Lorentz-Berthelot: }\sigma_{ij}=\tfrac12(\sigma_i+\sigma_j),\ \varepsilon_{ij}=\sqrt{\varepsilon_i\varepsilon_j}\qquad
 \text{harmonic fluctuation: }\sqrt{k_BT/k}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the distance at which the Lennard-Jones energy has its minimum.</li>
+<li>Lorentz-Berthelot: the combining rules, which build the parameters of a pair from the parameters of the two atom types.</li>
+<li>Harmonic fluctuation: the size of the thermal fluctuation of a coordinate held by a harmonic spring.</li>
+<li><span class="math-inline">\(r_{min}\)</span>: the distance of the Lennard-Jones minimum, where the energy is <span class="math-inline">\(-\varepsilon\)</span> and the force is zero. <span class="math-inline">\(2^{1/6}\approx1.122\)</span>.</li>
+<li><span class="math-inline">\(\sigma\)</span>: the Lennard-Jones distance, where the energy crosses zero.</li>
+<li><span class="math-inline">\(\sigma_i\)</span>, <span class="math-inline">\(\varepsilon_i\)</span>: the Lennard-Jones parameters stored for the atom type of atom <span class="math-inline">\(i\)</span>. <span class="math-inline">\(\sigma_{ij}\)</span>, <span class="math-inline">\(\varepsilon_{ij}\)</span>: the parameters used for the pair of atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>.</li>
+<li><span class="math-inline">\(\tfrac12(\sigma_i+\sigma_j)\)</span>: the arithmetic mean of the two distances. <span class="math-inline">\(\sqrt{\varepsilon_i\varepsilon_j}\)</span>: the geometric mean of the two well depths.</li>
+<li><span class="math-inline">\(k\)</span>: here the force constant of a harmonic term <span class="math-inline">\(\tfrac12k(x-x_0)^2\)</span>, for example <span class="math-inline">\(k_b\)</span> or <span class="math-inline">\(k_\theta\)</span>.</li>
+<li><span class="math-inline">\(k_B\)</span>, <span class="math-inline">\(T\)</span>: the Boltzmann constant and the temperature. <span class="math-inline">\(k_BT=2.494\)</span> kJ/mol at 300 K.</li>
+<li><span class="math-inline">\(\sqrt{k_BT/k}\)</span>: the standard deviation of the coordinate <span class="math-inline">\(x\)</span> at the temperature <span class="math-inline">\(T\)</span>. For a bond with <span class="math-inline">\(k_b=2.6\times10^5\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> it is 0.003 nm at 300 K.</li>
+</ul>
+</div>
 <h2 id="boundaries-and-electrostatics-module-7">Boundaries and electrostatics (Module 7)</h2>
 <p><span class="math-display">\[\Delta x\leftarrow\Delta x-L\,\mathrm{round}(\Delta x/L)\qquad r_c\le L/2\qquad
 U_{tail}=\tfrac83\pi N\rho\varepsilon\sigma^3\left[\tfrac13\left(\tfrac{\sigma}{r_c}\right)^9-\left(\tfrac{\sigma}{r_c}\right)^3\right]\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the minimum-image convention. It replaces a separation by the separation to the nearest periodic copy. The form given is for a rectangular box.</li>
+<li>Second formula: the largest cutoff that is consistent with it.</li>
+<li>Third formula: the tail correction, the Lennard-Jones energy that a cutoff leaves out.</li>
+<li><span class="math-inline">\(\Delta x\)</span>: the <span class="math-inline">\(x\)</span> component of the separation between two particles. The same operation is applied to <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>.</li>
+<li><span class="math-inline">\(\leftarrow\)</span>: "is replaced by".</li>
+<li><span class="math-inline">\(L\)</span>: the length of the box edge along that direction, in nm. In the second formula it is the shortest edge. Here <span class="math-inline">\(L\)</span> is not the Liouville operator.</li>
+<li><span class="math-inline">\(\mathrm{round}(\ )\)</span>: round to the nearest whole number. It counts by how many box lengths the separation is off.</li>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff distance beyond which pair interactions are not computed, usually 0.9 to 1.2 nm.</li>
+<li><span class="math-inline">\(U_{tail}\)</span>: the correction to the total energy, in kJ/mol. It assumes that the liquid is uniform beyond <span class="math-inline">\(r_c\)</span>.</li>
+<li><span class="math-inline">\(N\)</span>: the number of particles. <span class="math-inline">\(\rho\)</span> (rho): their number density, in particles per nm<span class="math-inline">\(^3\)</span>. Here <span class="math-inline">\(\rho\)</span> is not the phase-space density of Module 2.</li>
+<li><span class="math-inline">\(\varepsilon\)</span>, <span class="math-inline">\(\sigma\)</span>: the Lennard-Jones well depth and distance of the particles.</li>
+<li>The square bracket: the first term comes from the repulsion and the second from the attraction. For a cutoff larger than <span class="math-inline">\(\sigma\)</span> the second is the larger one, so <span class="math-inline">\(U_{tail}\)</span> is negative.</li>
+</ul>
+</div>
 <p><span class="math-display">\[U_{Ewald}=\frac{1}{4\pi\varepsilon_0}\left[\frac12\sum_{\mathbf n}{}^{'}\sum_{i,j}q_iq_j\frac{\mathrm{erfc}(\alpha|\mathbf r_{ij}+\mathbf n|)}{|\mathbf r_{ij}+\mathbf n|}+\frac{2\pi}{V}\sum_{\mathbf k\ne0}\frac{e^{-k^2/4\alpha^2}}{k^2}|S(\mathbf k)|^2-\frac{\alpha}{\sqrt\pi}\sum_iq_i^2\right],\qquad S(\mathbf k)=\sum_jq_je^{i\mathbf k\cdot\mathbf r_j}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the Ewald sum, the electrostatic energy of all charges in the box and in all its periodic copies. The three terms in the square bracket are the real-space term, the reciprocal-space term and the self term. For molecules, Module 7 adds a correction for the pairs that the force field excludes (atoms one or two bonds apart).</li>
+<li>Second formula: the structure factor, which is used in the reciprocal-space term.</li>
+<li><span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span>: the Coulomb constant, 138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>.</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>: the charges of atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>, in units of <span class="math-inline">\(e\)</span>.</li>
+<li><span class="math-inline">\(\mathbf n\)</span>: a vector that points from the box to one of its periodic copies (a whole number of box edges along each axis). <span class="math-inline">\(\mathbf n=0\)</span> is the box itself. Here <span class="math-inline">\(n\)</span> is not a multiplicity.</li>
+<li><span class="math-inline">\(\sum_{\mathbf n}{}^{'}\sum_{i,j}\)</span>: a sum over all copies and over all pairs of atoms. The prime means: leave out <span class="math-inline">\(i=j\)</span> when <span class="math-inline">\(\mathbf n=0\)</span>, so that no charge interacts with itself. The <span class="math-inline">\(\tfrac12\)</span> in front corrects for counting each pair twice.</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span>: the vector between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> in the box. <span class="math-inline">\(|\mathbf r_{ij}+\mathbf n|\)</span>: the distance between atom <span class="math-inline">\(j\)</span> and the image of atom <span class="math-inline">\(i\)</span> in the copy of the box shifted by <span class="math-inline">\(\mathbf n\)</span>. The bars mean "length of the vector".</li>
+<li><span class="math-inline">\(\mathrm{erfc}\)</span>: the complementary error function. <span class="math-inline">\(\mathrm{erfc}(x)\)</span> falls from 1 at <span class="math-inline">\(x=0\)</span> to nearly 0 for <span class="math-inline">\(x\)</span> above about 3, which makes the first term short-ranged.</li>
+<li><span class="math-inline">\(\alpha\)</span> (alpha): the Ewald splitting parameter, in nm<span class="math-inline">\(^{-1}\)</span>. It sets the width of the Gaussian charge clouds and so how the work is divided between the first two terms. The total does not depend on it.</li>
+<li><span class="math-inline">\(V\)</span>: the volume of the box.</li>
+<li><span class="math-inline">\(\mathbf k\)</span> (bold): a wave vector of the periodic box, <span class="math-inline">\(2\pi(n_x/L_x,n_y/L_y,n_z/L_z)\)</span> with whole numbers <span class="math-inline">\(n_x\)</span>, <span class="math-inline">\(n_y\)</span>, <span class="math-inline">\(n_z\)</span> and box edges <span class="math-inline">\(L_x\)</span>, <span class="math-inline">\(L_y\)</span>, <span class="math-inline">\(L_z\)</span>. <span class="math-inline">\(k\)</span> (not bold) is its length, in nm<span class="math-inline">\(^{-1}\)</span>. <span class="math-inline">\(\sum_{\mathbf k\ne0}\)</span> runs over all wave vectors except zero. Here <span class="math-inline">\(k\)</span> is not a force constant.</li>
+<li><span class="math-inline">\(e^{-k^2/4\alpha^2}\)</span>: a Gaussian factor that makes the sum over <span class="math-inline">\(\mathbf k\)</span> converge after a modest number of terms.</li>
+<li><span class="math-inline">\(S(\mathbf k)\)</span>: the structure factor, a complex number that describes how the charges are arranged at the wavelength that belongs to <span class="math-inline">\(\mathbf k\)</span>. <span class="math-inline">\(|S(\mathbf k)|^2\)</span> is its squared absolute value, a real number.</li>
+<li><span class="math-inline">\(e^{i\mathbf k\cdot\mathbf r_j}\)</span>: a complex exponential. In the exponent <span class="math-inline">\(i\)</span> is the imaginary unit (<span class="math-inline">\(i^2=-1\)</span>), not an atom label. <span class="math-inline">\(\mathbf k\cdot\mathbf r_j\)</span> is the dot product of the wave vector with the position of atom <span class="math-inline">\(j\)</span>.</li>
+<li><span class="math-inline">\(-\frac{\alpha}{\sqrt\pi}\sum_iq_i^2\)</span>: the self term. It removes the interaction of each charge with its own Gaussian cloud, which the reciprocal-space term contains.</li>
+</ul>
+</div>
 <h2 id="thermostats-and-barostats-module-8">Thermostats and barostats (Module 8)</h2>
 <p><span class="math-display">\[\text{Berendsen: }\lambda^2=1+\frac{\Delta t}{\tau_T}\left(\frac{T_0}{T}-1\right)\qquad
 \text{Langevin: }m\dot{\mathbf v}=\mathbf F-\gamma m\mathbf v+\sqrt{2\gamma mk_BT}\,\boldsymbol\eta\]</span></p>
+<div class="legend">
+<ul>
+<li>Berendsen: the factor by which all velocities are multiplied at each step so that the temperature relaxes towards its target.</li>
+<li>Langevin: the equation of motion of an atom with a friction force and a random force added to the force from the potential.</li>
+<li><span class="math-inline">\(\lambda\)</span> (lambda): here the velocity scaling factor, a pure number close to 1. The formula gives its square. It is not a Lagrange multiplier, a coupling parameter or an eigenvalue.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(\tau_T\)</span> (tau): the coupling time constant, in ps. A larger <span class="math-inline">\(\tau_T\)</span> means a weaker and slower coupling.</li>
+<li><span class="math-inline">\(T_0\)</span>: the target temperature. <span class="math-inline">\(T\)</span> (Berendsen): the instantaneous temperature at this step, written <span class="math-inline">\(T_{inst}\)</span> in the statistical mechanics section.</li>
+<li><span class="math-inline">\(m\)</span>: the mass of the atom. <span class="math-inline">\(\mathbf v\)</span>: its velocity. <span class="math-inline">\(\dot{\mathbf v}\)</span>: its acceleration.</li>
+<li><span class="math-inline">\(\mathbf F\)</span>: the force on the atom from the potential energy.</li>
+<li><span class="math-inline">\(\gamma\)</span> (gamma): here the friction rate, in ps<span class="math-inline">\(^{-1}\)</span> (Module 8 calls it the friction coefficient). <span class="math-inline">\(-\gamma m\mathbf v\)</span> is a friction force that opposes the motion. In explicit solvent <span class="math-inline">\(\gamma\)</span> is 0.1 to 1 ps<span class="math-inline">\(^{-1}\)</span>. It is not the bias factor of metadynamics.</li>
+<li><span class="math-inline">\(\boldsymbol\eta\)</span> (eta, bold): here a random force term, Gaussian white noise. Each of its components has mean zero and is uncorrelated with the other components and with its own value at any other time. It is not a viscosity.</li>
+<li><span class="math-inline">\(\sqrt{2\gamma mk_BT}\)</span>: the strength of the random force. It is tied to the friction so that the system settles at the temperature <span class="math-inline">\(T\)</span>.</li>
+<li><span class="math-inline">\(k_B\)</span>, <span class="math-inline">\(T\)</span> (Langevin): the Boltzmann constant and the temperature that the thermostat is set to.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{O step: }\mathbf v\leftarrow e^{-\gamma\Delta t}\mathbf v+\sqrt{\tfrac{k_BT}{m}(1-e^{-2\gamma\Delta t})}\,\boldsymbol\xi\qquad
 \text{Brownian: }d\mathbf r=\frac{D}{k_BT}\mathbf F\,dt+\sqrt{2D\,dt}\,\boldsymbol\xi\]</span></p>
+<div class="legend">
+<ul>
+<li>O step: the exact solution of the friction-plus-noise part of Langevin dynamics over one time step. Integrators such as BAOAB use it as one of their sub-steps.</li>
+<li>Brownian: the equation of Brownian (overdamped Langevin) dynamics, the limit of high friction. Positions are moved directly and velocities do not appear.</li>
+<li><span class="math-inline">\(\mathbf v\)</span>: the velocity of an atom. <span class="math-inline">\(\leftarrow\)</span>: "is replaced by".</li>
+<li><span class="math-inline">\(\gamma\)</span>: the friction rate, in ps<span class="math-inline">\(^{-1}\)</span>. <span class="math-inline">\(\Delta t\)</span>: the time step.</li>
+<li><span class="math-inline">\(e^{-\gamma\Delta t}\)</span>: the fraction of the old velocity that survives the friction during one step. With <span class="math-inline">\(\gamma=1\)</span> ps<span class="math-inline">\(^{-1}\)</span> and <span class="math-inline">\(\Delta t=0.002\)</span> ps it is 0.998.</li>
+<li><span class="math-inline">\(k_BT/m\)</span>: the variance of one velocity component at the temperature <span class="math-inline">\(T\)</span> (the Maxwell-Boltzmann distribution), with <span class="math-inline">\(m\)</span> the mass of the atom. The factor <span class="math-inline">\(1-e^{-2\gamma\Delta t}\)</span> is the share of this variance that the friction removes in one step, so the noise puts back what was lost.</li>
+<li><span class="math-inline">\(\boldsymbol\xi\)</span> (xi, bold): here a vector of three independent random numbers, each drawn from a Gaussian with mean 0 and variance 1, new for every atom at every step. It is not a collective variable.</li>
+<li><span class="math-inline">\(d\mathbf r\)</span>: the displacement of the atom during the small time <span class="math-inline">\(dt\)</span>.</li>
+<li><span class="math-inline">\(\mathbf F\)</span>: the force on the atom.</li>
+<li><span class="math-inline">\(D\)</span>: the diffusion coefficient of the atom, <span class="math-inline">\(D=k_BT/m\gamma\)</span>, in nm<span class="math-inline">\(^2\)</span>/ps. <span class="math-inline">\(D/k_BT\)</span> is the mobility, the velocity per unit of force.</li>
+<li><span class="math-inline">\(\sqrt{2D\,dt}\)</span>: the size of the random displacement along each axis during <span class="math-inline">\(dt\)</span>.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{Nosé-Hoover: }\dot{\mathbf p}_i=\mathbf F_i-\xi\mathbf p_i,\ \ \dot\xi=\frac1Q\Big(\sum_i\frac{\mathbf p_i^2}{m_i}-N_{df}k_BT_0\Big)\]</span></p>
+<div class="legend">
+<ul>
+<li>The two formulas: the Nosé-Hoover equations of motion. The first is Newton's law with an extra friction term. The second says how the friction variable responds to the kinetic energy.</li>
+<li><span class="math-inline">\(\mathbf p_i\)</span>: the momentum of atom <span class="math-inline">\(i\)</span>. <span class="math-inline">\(\dot{\mathbf p}_i\)</span>: its rate of change. <span class="math-inline">\(\mathbf F_i\)</span>: the force on atom <span class="math-inline">\(i\)</span>. <span class="math-inline">\(m_i\)</span>: its mass.</li>
+<li><span class="math-inline">\(\xi\)</span> (xi): here the thermostat variable, a friction coefficient in ps<span class="math-inline">\(^{-1}\)</span> that is itself a variable of the simulation. When the system is too hot it grows, and the friction cools the system. When the system is too cold it becomes negative and heats the system. It is not a collective variable or a random number.</li>
+<li><span class="math-inline">\(\dot\xi\)</span>: its rate of change.</li>
+<li><span class="math-inline">\(\sum_i\mathbf p_i^2/m_i\)</span>: twice the kinetic energy at this instant.</li>
+<li><span class="math-inline">\(N_{df}k_BT_0\)</span>: twice the kinetic energy that the system should have on average at the target temperature <span class="math-inline">\(T_0\)</span>, with <span class="math-inline">\(N_{df}\)</span> the number of degrees of freedom and <span class="math-inline">\(k_B\)</span> the Boltzmann constant.</li>
+<li><span class="math-inline">\(Q\)</span>: here the "mass" of the thermostat, an energy times a time squared (kJ mol<span class="math-inline">\(^{-1}\)</span> ps<span class="math-inline">\(^2\)</span>) and not a real mass. It sets how fast <span class="math-inline">\(\xi\)</span> responds: <span class="math-inline">\(Q=N_{df}k_BT_0\,\tau_T^2\)</span> with <span class="math-inline">\(\tau_T\)</span> the coupling time. It is not the partition function.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{Monte Carlo barostat: }P_{acc}=\min\{1,\exp[-\beta(\Delta U+P_0\Delta V)+N_{mol}\ln(V'/V)]\}\]</span></p>
+<div class="legend">
+<ul>
+<li>The formula: the probability of accepting a trial change of the box volume in a Monte Carlo barostat.</li>
+<li><span class="math-inline">\(P_{acc}\)</span>: the acceptance probability, between 0 and 1. <span class="math-inline">\(P_0\)</span>, with the subscript 0, is a pressure.</li>
+<li><span class="math-inline">\(\min\{1,x\}\)</span>: the smaller of 1 and <span class="math-inline">\(x\)</span>, so that the probability never exceeds 1.</li>
+<li><span class="math-inline">\(\exp[\ ]\)</span>: the exponential function, <span class="math-inline">\(e\)</span> to the power of the bracket.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(V\)</span>: the present volume. <span class="math-inline">\(V'\)</span>: the trial volume, which must be drawn uniformly in <span class="math-inline">\(V\)</span> for this formula (the old volume plus a random number spread evenly between a negative and a positive limit). <span class="math-inline">\(\Delta V=V'-V\)</span>.</li>
+<li><span class="math-inline">\(\Delta U\)</span>: the change of the potential energy when the box and the positions of the molecules are scaled to the trial volume.</li>
+<li><span class="math-inline">\(P_0\)</span>: the target pressure. <span class="math-inline">\(P_0\Delta V\)</span> is the work done against it (1 bar nm<span class="math-inline">\(^3\)</span> is 0.0602 kJ/mol).</li>
+<li><span class="math-inline">\(N_{mol}\)</span>: the number of centres that are scaled independently. It is the number of molecules when each molecule is moved as a rigid body.</li>
+<li><span class="math-inline">\(\ln(V'/V)\)</span>: the natural logarithm of the ratio of the two volumes. With the factor <span class="math-inline">\(N_{mol}\)</span> it accounts for the larger number of positions available to the molecules in a larger box.</li>
+</ul>
+</div>
 <h2 id="constraints-module-9">Constraints (Module 9)</h2>
 <p><span class="math-display">\[\sigma_k=|\mathbf r_{ij}|^2-d_k^2=0\qquad m_i\ddot{\mathbf r}_i=\mathbf F_i-\sum_k\lambda_k\nabla_i\sigma_k\qquad
 g\approx\frac{|\mathbf s'|^2-d^2}{2(m_i^{-1}+m_j^{-1})\,\mathbf s\cdot\mathbf s'}\qquad N_{df}=3N-N_c-3\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: a bond constraint written as an equation that must hold at all times.</li>
+<li>Second formula: Newton's law with the constraint forces added.</li>
+<li>Third formula: the SHAKE correction for one constraint.</li>
+<li>Fourth formula: the number of degrees of freedom that remain.</li>
+<li><span class="math-inline">\(k\)</span>: here the label of one constraint. <span class="math-inline">\(\sum_k\)</span> adds up over all constraints. It is not a force constant.</li>
+<li><span class="math-inline">\(\sigma_k\)</span>: here the constraint function of constraint <span class="math-inline">\(k\)</span>. It is zero when the bond has its prescribed length. It is not a Lennard-Jones distance or a standard deviation.</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span>: the vector <span class="math-inline">\(\mathbf r_i-\mathbf r_j\)</span> between the two atoms of the constrained bond. <span class="math-inline">\(|\mathbf r_{ij}|^2\)</span>: its length squared.</li>
+<li><span class="math-inline">\(d_k\)</span>: the prescribed length of bond <span class="math-inline">\(k\)</span>, in nm (<span class="math-inline">\(d\)</span> in the third formula, where there is only one bond).</li>
+<li><span class="math-inline">\(m_i\)</span>, <span class="math-inline">\(\ddot{\mathbf r}_i\)</span>, <span class="math-inline">\(\mathbf F_i\)</span>: the mass of atom <span class="math-inline">\(i\)</span>, its acceleration and the force on it from the force field.</li>
+<li><span class="math-inline">\(\lambda_k\)</span>: here the Lagrange multiplier of constraint <span class="math-inline">\(k\)</span>, an unknown number that is determined at every step so that the constraint holds. It is not a coupling parameter or an eigenvalue.</li>
+<li><span class="math-inline">\(\nabla_i\sigma_k\)</span>: the gradient of the constraint function with respect to the position of atom <span class="math-inline">\(i\)</span>. For a bond it is <span class="math-inline">\(2\mathbf r_{ij}\)</span>, so the constraint force <span class="math-inline">\(-\lambda_k\nabla_i\sigma_k\)</span> acts along the bond.</li>
+<li><span class="math-inline">\(g\)</span>: here the size of the SHAKE correction for one constraint, <span class="math-inline">\(g=2\lambda\Delta t^2\)</span> with <span class="math-inline">\(\Delta t\)</span> the time step. Its unit is a mass (u), so <span class="math-inline">\(g/m_i\)</span> is a pure number. The corrected positions are <span class="math-inline">\(\mathbf r_i=\mathbf r_i'-(g/m_i)\,\mathbf s\)</span> and <span class="math-inline">\(\mathbf r_j=\mathbf r_j'+(g/m_j)\,\mathbf s\)</span>, where the primes mark the positions after the unconstrained step. It is not <span class="math-inline">\(g(r)\)</span> or the statistical inefficiency.</li>
+<li><span class="math-inline">\(\mathbf s\)</span>: the bond vector at the start of the step, of length <span class="math-inline">\(d\)</span>. <span class="math-inline">\(\mathbf s'\)</span>: the bond vector after the unconstrained step. <span class="math-inline">\(\mathbf s\cdot\mathbf s'\)</span>: their dot product. Here <span class="math-inline">\(\mathbf s\)</span> is not a collective variable.</li>
+<li><span class="math-inline">\(m_i^{-1}+m_j^{-1}\)</span>: the sum of the inverse masses of the two atoms, <span class="math-inline">\(1/m_i+1/m_j\)</span>.</li>
+<li><span class="math-inline">\(\approx\)</span>: the formula neglects a small term in <span class="math-inline">\(g^2\)</span>. SHAKE therefore applies it repeatedly until all bond lengths are correct within a tolerance.</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number of degrees of freedom used to compute the temperature. <span class="math-inline">\(N\)</span>: the number of atoms. <span class="math-inline">\(N_c\)</span>: the number of constraints. The last 3 accounts for the conserved total momentum in a periodic box.</li>
+</ul>
+</div>
 <h2 id="analysis-and-errors-module-11">Analysis and errors (Module 11)</h2>
 <p><span class="math-display">\[g(r)=\frac{\langle n(r,r+dr)\rangle}{4\pi r^2dr\,\rho}\qquad\mathrm{MSD}(t)\to6Dt\qquad
 D_\infty=D_{PBC}+\frac{2.837\,k_BT}{6\pi\eta L}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the radial distribution function, the density of particles at a distance <span class="math-inline">\(r\)</span> from a chosen particle divided by the bulk density.</li>
+<li>Second formula: the Einstein relation, which gives the diffusion coefficient from the mean squared displacement.</li>
+<li>Third formula: the correction of a diffusion coefficient for the finite size of a periodic box.</li>
+<li><span class="math-inline">\(g(r)\)</span>: here the radial distribution function, a pure number that tends to 1 at large <span class="math-inline">\(r\)</span>. It is not the SHAKE correction or the statistical inefficiency.</li>
+<li><span class="math-inline">\(r\)</span>: the distance from the central particle. <span class="math-inline">\(dr\)</span>: the thickness of a thin shell.</li>
+<li><span class="math-inline">\(n(r,r+dr)\)</span>: the number of particles found in the shell between <span class="math-inline">\(r\)</span> and <span class="math-inline">\(r+dr\)</span> around one central particle.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over all central particles and all frames.</li>
+<li><span class="math-inline">\(4\pi r^2dr\)</span>: the volume of that shell.</li>
+<li><span class="math-inline">\(\rho\)</span>: the bulk number density of the particles that are counted, in particles per nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(\mathrm{MSD}(t)\)</span>: the mean squared displacement, the average of the squared distance that a particle has moved after a time <span class="math-inline">\(t\)</span>, in nm<span class="math-inline">\(^2\)</span>.</li>
+<li><span class="math-inline">\(\to\)</span>: "approaches at long times".</li>
+<li><span class="math-inline">\(D\)</span>: the diffusion coefficient, in nm<span class="math-inline">\(^2\)</span>/ps. The 6 is 2 times the 3 dimensions of space.</li>
+<li><span class="math-inline">\(D_{PBC}\)</span>: the diffusion coefficient measured in the periodic box. <span class="math-inline">\(D_\infty\)</span>: its value for an infinitely large system.</li>
+<li>2.837: a pure number that belongs to the cubic arrangement of the periodic copies. The formula holds for a cubic box only.</li>
+<li><span class="math-inline">\(k_BT\)</span>: the thermal energy.</li>
+<li><span class="math-inline">\(\eta\)</span> (eta): here the viscosity of the solvent. It is not the random force of Langevin dynamics. This formula needs care with units. Module 11 evaluates it in SI units: <span class="math-inline">\(k_BT=4.14\times10^{-21}\)</span> J at 300 K, <span class="math-inline">\(\eta\)</span> in Pa s and <span class="math-inline">\(L\)</span> in m, which gives <span class="math-inline">\(D\)</span> in m<span class="math-inline">\(^2\)</span>/s. With <span class="math-inline">\(k_BT\)</span> in kJ/mol, <span class="math-inline">\(L\)</span> in nm and <span class="math-inline">\(D\)</span> in nm<span class="math-inline">\(^2\)</span>/ps, the viscosity must be entered in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span> ps. 1 mPa s, about the viscosity of water at room temperature, is 602.2 of these units.</li>
+<li><span class="math-inline">\(L\)</span>: the edge length of the cubic box.</li>
+</ul>
+</div>
 <p><span class="math-display">\[g_{stat}=1+2\sum_{k\ge1}c(k\Delta t_s)=1+\frac{2\tau_{int}}{\Delta t_s}\qquad N_{eff}=\frac{N}{g_{stat}}\qquad\mathrm{SE}=\frac{\sigma}{\sqrt{N_{eff}}}\approx\sigma\sqrt{\frac{2\tau_{int}}{T_{sim}}}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the statistical inefficiency, the number of saved frames that are worth one independent sample.</li>
+<li>Second formula: the effective number of independent samples.</li>
+<li>Third formula: the standard error of the mean of a correlated time series.</li>
+<li><span class="math-inline">\(g_{stat}\)</span>: the statistical inefficiency, a pure number. Module 11 writes it <span class="math-inline">\(g\)</span>. It is not the radial distribution function <span class="math-inline">\(g(r)\)</span>.</li>
+<li><span class="math-inline">\(c(t)\)</span>: the normalised autocorrelation function of the observable. It is 1 at <span class="math-inline">\(t=0\)</span> and decays to 0 as the observable loses the memory of its earlier value.</li>
+<li><span class="math-inline">\(\Delta t_s\)</span>: the time between saved frames (not the time step <span class="math-inline">\(\Delta t\)</span> of the integrator).</li>
+<li><span class="math-inline">\(k\)</span>: here a counting label, the number of frames between two samples. <span class="math-inline">\(\sum_{k\ge1}\)</span> adds up over all lags <span class="math-inline">\(k\Delta t_s\)</span>.</li>
+<li><span class="math-inline">\(\tau_{int}\)</span> (tau): the integrated autocorrelation time, in the same unit as <span class="math-inline">\(\Delta t_s\)</span>. It is <span class="math-inline">\(\Delta t_s\)</span> times the sum over the lags, which is the area under the curve <span class="math-inline">\(c(t)\)</span>.</li>
+<li><span class="math-inline">\(N\)</span>: here the number of saved frames, not the number of atoms.</li>
+<li><span class="math-inline">\(N_{eff}\)</span>: the number of effectively independent samples.</li>
+<li><span class="math-inline">\(\mathrm{SE}\)</span>: the standard error of the mean of the observable. The second form, after <span class="math-inline">\(\approx\)</span>, holds when <span class="math-inline">\(\tau_{int}\)</span> is much longer than <span class="math-inline">\(\Delta t_s\)</span>.</li>
+<li><span class="math-inline">\(\sigma\)</span>: here the standard deviation of the observable over the trajectory.</li>
+<li><span class="math-inline">\(T_{sim}\)</span>: the total simulated time, <span class="math-inline">\(N\Delta t_s\)</span>. It is a time, not a temperature. A 100 ns run of an observable with <span class="math-inline">\(\tau_{int}=10\)</span> ns holds about five independent samples.</li>
+</ul>
+</div>
 <h2 id="free-energy-modules-12-and-13">Free energy (Modules 12 and 13)</h2>
 <p><span class="math-display">\[W(\xi)=-k_BT\ln P_i^b(\xi)-w_i(\xi)+F_i\qquad
 \text{WHAM: }P(\xi)=\frac{\sum_in_i(\xi)}{\sum_iN_ie^{-\beta[w_i(\xi)-F_i]}},\ \ e^{-\beta F_i}=\sum_\xi P(\xi)e^{-\beta w_i(\xi)}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the unbiased potential of mean force recovered from one umbrella window.</li>
+<li>WHAM, first formula: the best estimate of the unbiased distribution from all windows together.</li>
+<li>WHAM, second formula: the free energy of each window. Each of the two WHAM equations contains the unknown of the other, so they are solved by iteration.</li>
+<li><span class="math-inline">\(\xi\)</span> (xi): the collective variable, the coordinate along which the profile is computed (for example a distance in nm).</li>
+<li><span class="math-inline">\(W(\xi)\)</span>: the potential of mean force, in kJ/mol.</li>
+<li><span class="math-inline">\(i\)</span>: the label of a window, from 1 to <span class="math-inline">\(S\)</span> (the number of windows). <span class="math-inline">\(\sum_i\)</span> adds up over the windows.</li>
+<li><span class="math-inline">\(P_i^b(\xi)\)</span>: the distribution of <span class="math-inline">\(\xi\)</span> observed in window <span class="math-inline">\(i\)</span>. The superscript <span class="math-inline">\(b\)</span> means "biased".</li>
+<li><span class="math-inline">\(w_i(\xi)\)</span>: here the bias potential of window <span class="math-inline">\(i\)</span>, usually a spring <span class="math-inline">\(\tfrac12k(\xi-\xi_i)^2\)</span> centred at <span class="math-inline">\(\xi_i\)</span>. It is not a hill height or a weight.</li>
+<li><span class="math-inline">\(F_i\)</span>: the free energy of adding bias <span class="math-inline">\(i\)</span> to the system, one constant for each window, in kJ/mol. Here <span class="math-inline">\(F\)</span> is not a force.</li>
+<li><span class="math-inline">\(P(\xi)\)</span>: the unbiased probability of the bin at <span class="math-inline">\(\xi\)</span>.</li>
+<li><span class="math-inline">\(n_i(\xi)\)</span>: the number of samples from window <span class="math-inline">\(i\)</span> that fall in the bin at <span class="math-inline">\(\xi\)</span>.</li>
+<li><span class="math-inline">\(N_i\)</span>: the total number of samples in window <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(k_B\)</span>, <span class="math-inline">\(T\)</span>, <span class="math-inline">\(\beta\)</span>: the Boltzmann constant, the temperature, and <span class="math-inline">\(\beta=1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(\sum_\xi\)</span>: a sum over all bins of the histogram.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{MBAR: }f_i=-\ln\sum_{n}\frac{e^{-u_i(\mathbf x_n)}}{\sum_kN_ke^{f_k-u_k(\mathbf x_n)}}\qquad
 \text{window width: }\sqrt{k_BT/k}\]</span></p>
+<div class="legend">
+<ul>
+<li>MBAR: the equations for the free energies of all states (windows) at once, without a histogram. The unknowns appear on both sides, so they are solved by iteration.</li>
+<li>Window width: the width of the distribution of <span class="math-inline">\(\xi\)</span> in one umbrella window, which sets the spacing of the windows.</li>
+<li><span class="math-inline">\(f_i\)</span>: the free energy of state <span class="math-inline">\(i\)</span> divided by <span class="math-inline">\(k_BT\)</span>, <span class="math-inline">\(f_i=\beta F_i\)</span>, a pure number.</li>
+<li><span class="math-inline">\(n\)</span>: here the label of one sample. <span class="math-inline">\(\sum_n\)</span> runs over all samples from all windows pooled together, <span class="math-inline">\(n=1,\dots,N\)</span>.</li>
+<li><span class="math-inline">\(\mathbf x_n\)</span>: the configuration (all atomic positions) of sample <span class="math-inline">\(n\)</span>.</li>
+<li><span class="math-inline">\(u_i(\mathbf x)\)</span>: the reduced potential of state <span class="math-inline">\(i\)</span>, <span class="math-inline">\(\beta[U(\mathbf x)+w_i(\xi(\mathbf x))]\)</span>. It is the energy that the configuration would have in window <span class="math-inline">\(i\)</span>, bias included, divided by <span class="math-inline">\(k_BT\)</span>.</li>
+<li><span class="math-inline">\(k\)</span> (in the sum of the MBAR formula): a label that runs over all states, <span class="math-inline">\(k=1,\dots,S\)</span>. <span class="math-inline">\(N_k\)</span>: the number of samples drawn from state <span class="math-inline">\(k\)</span>. <span class="math-inline">\(f_k\)</span>, <span class="math-inline">\(u_k\)</span>: the free energy and the reduced potential of state <span class="math-inline">\(k\)</span>, defined as <span class="math-inline">\(f_i\)</span> and <span class="math-inline">\(u_i\)</span>.</li>
+<li><span class="math-inline">\(k\)</span> (in the window width): the spring constant of the umbrella bias, in kJ/mol per squared unit of <span class="math-inline">\(\xi\)</span>.</li>
+<li><span class="math-inline">\(\sqrt{k_BT/k}\)</span>: the standard deviation of <span class="math-inline">\(\xi\)</span> in a window where the potential of mean force is locally flat. With <span class="math-inline">\(k=1{,}000\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> at 300 K it is 0.05 nm.</li>
+</ul>
+</div>
 <p><span class="math-display">\[K_a=4\pi\int_{bound}r^2e^{-\beta W(r)}dr\ \ \big(W(r\to\infty)=0,\ \text{Jacobian removed}\big)\qquad\Delta G^\circ=-k_BT\ln(K_aC^\circ)\qquad K_d=1/K_a\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the association constant from a potential of mean force along the separation of the two partners.</li>
+<li>Second formula: the standard free energy of binding.</li>
+<li>Third formula: the dissociation constant.</li>
+<li><span class="math-inline">\(K_a\)</span>: the association constant. From this formula it comes out as a volume, in nm<span class="math-inline">\(^3\)</span> per molecule. Here <span class="math-inline">\(K\)</span> is not a kinetic energy.</li>
+<li><span class="math-inline">\(r\)</span>: the distance between the two partners, in nm.</li>
+<li><span class="math-inline">\(\int_{bound}\dots dr\)</span>: an integral over the distances that count as bound, from 0 to the end of the bound region.</li>
+<li><span class="math-inline">\(4\pi r^2\)</span>: the area of a sphere of radius <span class="math-inline">\(r\)</span>. It counts the positions available at that distance.</li>
+<li><span class="math-inline">\(W(r)\)</span>: the potential of mean force along <span class="math-inline">\(r\)</span>, in kJ/mol. The bracket gives two conditions. It is shifted so that it is zero at large separation. And the Jacobian is removed: the profile is <span class="math-inline">\(-k_BT\ln[P(r)/4\pi r^2]\)</span>, which is flat where the partners do not interact. It is the <span class="math-inline">\(W(\xi)\)</span> of the earlier blocks, taken along <span class="math-inline">\(\xi=r\)</span>, with <span class="math-inline">\(2k_BT\ln r\)</span> added. Module 3 writes this profile <span class="math-inline">\(w(r)\)</span>.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(C^\circ\)</span>: the standard concentration, 1 mol/L, equal to 0.6022 molecules per nm<span class="math-inline">\(^3\)</span>. <span class="math-inline">\(K_aC^\circ\)</span> is a pure number.</li>
+<li><span class="math-inline">\(\Delta G^\circ\)</span>: the standard free energy of binding, in kJ/mol. The circle marks the standard state. <span class="math-inline">\(G\)</span> is the Gibbs free energy, for constant pressure. <span class="math-inline">\(A\)</span> in the other formulas is the Helmholtz free energy, for constant volume. For binding in a liquid at 1 bar the two differ by a negligible amount (Module 12).</li>
+<li><span class="math-inline">\(K_d\)</span>: the dissociation constant. In molar units it is <span class="math-inline">\(1.661/K_a\)</span> with <span class="math-inline">\(K_a\)</span> in nm<span class="math-inline">\(^3\)</span>.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{FEP: }\Delta A=-k_BT\ln\langle e^{-\beta\Delta U}\rangle_A\qquad
 \text{TI: }\Delta A=\int_0^1\Big\langle\frac{\partial U}{\partial\lambda}\Big\rangle_\lambda d\lambda\qquad
 \text{BAR: }\sum_{A}\frac{1}{1+e^{\beta(\Delta U-\Delta A)}}=\sum_{B}\frac{1}{1+e^{-\beta(\Delta U-\Delta A)}}\]</span></p>
+<div class="legend">
+<ul>
+<li>FEP: free-energy perturbation (the Zwanzig formula). It gives the free-energy difference between two states A and B from a simulation of A alone.</li>
+<li>TI: thermodynamic integration. It gives the same difference as an integral along a path of intermediate states.</li>
+<li>BAR: the Bennett acceptance ratio. It is an equation for the same difference that uses simulations of both A and B and is solved for <span class="math-inline">\(\Delta A\)</span> by iteration.</li>
+<li><span class="math-inline">\(\Delta A\)</span>: the Helmholtz free energy of state B minus that of state A, in kJ/mol.</li>
+<li>A, B (as a subscript and under the sums): the names of the two states, for example two ligands.</li>
+<li><span class="math-inline">\(\Delta U\)</span>: the potential energy that a configuration would have in state B minus its energy in state A, <span class="math-inline">\(U_B-U_A\)</span>, computed for the same atomic positions.</li>
+<li><span class="math-inline">\(\langle\ \rangle_A\)</span>: the average over the configurations sampled in a simulation of state A.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(\lambda\)</span> (lambda): here the coupling parameter, a number that goes from 0 (state A) to 1 (state B) and labels the intermediate states. It is not a Lagrange multiplier, an eigenvalue or a scaling factor.</li>
+<li><span class="math-inline">\(U\)</span> (in TI): the potential energy at the given <span class="math-inline">\(\lambda\)</span>, for example <span class="math-inline">\((1-\lambda)U_A+\lambda U_B\)</span>. <span class="math-inline">\(\partial U/\partial\lambda\)</span>: its slope with respect to <span class="math-inline">\(\lambda\)</span> at fixed atomic positions.</li>
+<li><span class="math-inline">\(\langle\ \rangle_\lambda\)</span>: the average over a simulation run at that value of <span class="math-inline">\(\lambda\)</span>.</li>
+<li><span class="math-inline">\(\int_0^1\dots d\lambda\)</span>: the integral over <span class="math-inline">\(\lambda\)</span> from 0 to 1, in practice a numerical sum over the simulated values of <span class="math-inline">\(\lambda\)</span>.</li>
+<li><span class="math-inline">\(\sum_A\)</span>, <span class="math-inline">\(\sum_B\)</span>: sums over the configurations sampled in state A and in state B. The formula is for equal numbers of each.</li>
+<li><span class="math-inline">\(\dfrac{1}{1+e^{x}}\)</span>: the Fermi function. It weights each configuration by how plausible it would be as a member of the other state.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{Jarzynski: }\langle e^{-\beta W}\rangle=e^{-\beta\Delta A}\qquad\text{Crooks: }\frac{P_F(W)}{P_R(-W)}=e^{\beta(W-\Delta A)}\qquad
 \Delta\Delta G_{bind}=\Delta G_{complex}^{A\to B}-\Delta G_{free}^{A\to B}\qquad
 \Delta G^\circ_{bind}=\Delta G_{decouple}^{solvent}-\Delta G_{decouple}^{site}-\Delta G_{restr}^{\circ,\,release}\]</span></p>
+<div class="legend">
+<ul>
+<li>Jarzynski: an exact relation between the work of many fast, non-equilibrium switches from A to B and the equilibrium free-energy difference.</li>
+<li>Crooks: the relation between the distributions of the work in the forward process and in the reverse process.</li>
+<li>Third formula: a relative binding free energy from a thermodynamic cycle.</li>
+<li>Fourth formula: an absolute binding free energy by double decoupling.</li>
+<li><span class="math-inline">\(W\)</span>: here the work done on the system during one switch, in kJ/mol. It is not a potential of mean force.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: the average over many repetitions of the switch, each started from equilibrium in state A.</li>
+<li><span class="math-inline">\(\Delta A\)</span>: the free energy of state B minus that of state A.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(P_F(W)\)</span>: the probability density of obtaining the work <span class="math-inline">\(W\)</span> in the forward process (A to B). <span class="math-inline">\(P_R(-W)\)</span>: the probability density of obtaining the work <span class="math-inline">\(-W\)</span> in the reverse process (B to A).</li>
+<li><span class="math-inline">\(\Delta\Delta G_{bind}\)</span>: the binding free energy of B minus that of A, <span class="math-inline">\(\Delta G_{bind}(B)-\Delta G_{bind}(A)\)</span>. A negative value means that B binds more strongly.</li>
+<li><span class="math-inline">\(\Delta G_{complex}^{A\to B}\)</span>: the free energy of changing A into B alchemically in the complex. <span class="math-inline">\(\Delta G_{free}^{A\to B}\)</span>: the same change for the free molecule in solution.</li>
+<li><span class="math-inline">\(\Delta G^\circ_{bind}\)</span>: the standard binding free energy of one ligand.</li>
+<li><span class="math-inline">\(\Delta G_{decouple}^{solvent}\)</span>: the free energy of switching off the interactions of the ligand with its surroundings in bulk solvent. <span class="math-inline">\(\Delta G_{decouple}^{site}\)</span>: the same in the binding site, with the ligand held by restraints. It includes the free energy of switching these restraints on.</li>
+<li><span class="math-inline">\(\Delta G_{restr}^{\circ,\,release}\)</span>: the free energy of releasing the decoupled ligand from its restraints into the standard volume <span class="math-inline">\(V^\circ\)</span>. It is negative.</li>
+</ul>
+</div>
 <h2 id="enhanced-sampling-module-14">Enhanced sampling (Module 14)</h2>
 <p><span class="math-display">\[\text{Replica exchange: }P_{acc}=\min\{1,\exp[(\beta_i-\beta_j)(U_i-U_j)]\}\qquad M\propto\sqrt{N_{df}}\]</span></p>
+<div class="legend">
+<ul>
+<li>Replica exchange: the probability of accepting a swap of configurations between two replicas at different temperatures.</li>
+<li>Second formula: how the number of replicas needed grows with the size of the system, for a fixed range of temperatures. It is shortened: Module 14 gives <span class="math-inline">\(M\propto\sqrt{N_{df}}\,\ln(T_{max}/T_{min})\)</span>, with <span class="math-inline">\(T_{min}\)</span> and <span class="math-inline">\(T_{max}\)</span> the lowest and the highest temperature of the ladder.</li>
+<li><span class="math-inline">\(P_{acc}\)</span>: the acceptance probability. <span class="math-inline">\(\min\{1,x\}\)</span>: the smaller of 1 and <span class="math-inline">\(x\)</span>.</li>
+<li><span class="math-inline">\(i\)</span>, <span class="math-inline">\(j\)</span>: the labels of the two replicas.</li>
+<li><span class="math-inline">\(\beta_i\)</span>, <span class="math-inline">\(\beta_j\)</span>: <span class="math-inline">\(1/k_BT_i\)</span> and <span class="math-inline">\(1/k_BT_j\)</span>, with <span class="math-inline">\(T_i\)</span> and <span class="math-inline">\(T_j\)</span> the temperatures of the two replicas.</li>
+<li><span class="math-inline">\(U_i\)</span>, <span class="math-inline">\(U_j\)</span>: the potential energies of the configurations that replicas <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> hold before the swap, written <span class="math-inline">\(U(\mathbf x)\)</span> and <span class="math-inline">\(U(\mathbf x')\)</span> in Module 14. Both are computed with the same energy function.</li>
+<li><span class="math-inline">\(M\)</span>: here the number of replicas. It is not a mapping.</li>
+<li><span class="math-inline">\(\propto\)</span>: "is proportional to".</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number of degrees of freedom of the system.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\text{Well-tempered metadynamics: }w=w_0e^{-V(s,t)/k_B\Delta T},\ \ F(s)=-\frac{\gamma}{\gamma-1}V(s),\ \ \gamma=\frac{T+\Delta T}{T}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the height of the hill that is deposited at the time <span class="math-inline">\(t\)</span> in well-tempered metadynamics. It shrinks where bias has already been added.</li>
+<li>Second formula: the free energy from the converged bias.</li>
+<li>Third formula: the definition of the bias factor.</li>
+<li><span class="math-inline">\(s\)</span>: the collective variable (called <span class="math-inline">\(\xi\)</span> in the free-energy section). Here <span class="math-inline">\(s\)</span> is not a bond vector.</li>
+<li><span class="math-inline">\(t\)</span>: the time.</li>
+<li><span class="math-inline">\(V(s,t)\)</span>: here the bias potential built up so far, as a function of <span class="math-inline">\(s\)</span>, in kJ/mol. In the first formula it is taken at the present value of <span class="math-inline">\(s\)</span>. It is not a volume. <span class="math-inline">\(V(s)\)</span> in the second formula is the bias at the end of a converged run.</li>
+<li><span class="math-inline">\(w\)</span>: here the height of the Gaussian hill that is added now, in kJ/mol. <span class="math-inline">\(w_0\)</span>: the initial height, around 1 kJ/mol. It is not an umbrella bias or a weight.</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature of the simulation. <span class="math-inline">\(\Delta T\)</span>: a parameter with the unit of a temperature. The collective variable is sampled as if at the temperature <span class="math-inline">\(T+\Delta T\)</span>.</li>
+<li><span class="math-inline">\(\gamma\)</span> (gamma): here the bias factor, a pure number, typically 5 to 20. It is not a friction rate.</li>
+<li><span class="math-inline">\(F(s)\)</span>: the free energy as a function of <span class="math-inline">\(s\)</span>, in kJ/mol, up to an added constant. Here <span class="math-inline">\(F\)</span> is not a force.</li>
+</ul>
+</div>
 <h2 id="coarse-graining-module-15">Coarse-graining (Module 15)</h2>
 <p><span class="math-display">\[U_{CG}(\mathbf R)=-k_BT\ln\int d\mathbf r\,\delta(\mathbf M(\mathbf r)-\mathbf R)e^{-\beta u(\mathbf r)}\qquad
 \text{Gō contact: }\varepsilon\left[5\left(\tfrac{\sigma_{ij}}{r}\right)^{12}-6\left(\tfrac{\sigma_{ij}}{r}\right)^{10}\right]\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the ideal coarse-grained potential, the many-body potential of mean force of the beads.</li>
+<li>Gō contact: the energy of one native contact in a C<span class="math-inline">\(\alpha\)</span> structure-based (Gō) model.</li>
+<li><span class="math-inline">\(\mathbf R\)</span>: the coarse-grained coordinates, the positions of all beads. Here <span class="math-inline">\(R\)</span> is not a Born radius.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: the atomistic coordinates, the positions of all atoms.</li>
+<li><span class="math-inline">\(\mathbf M(\mathbf r)\)</span>: the mapping, the rule that computes the bead positions from the atom positions (for example the centre of mass of each group). It is not a number of replicas.</li>
+<li><span class="math-inline">\(\delta(\ )\)</span>: the Dirac delta function. It keeps only the atomistic configurations that map exactly onto the bead positions <span class="math-inline">\(\mathbf R\)</span>. Here <span class="math-inline">\(\delta\)</span> is not a phase.</li>
+<li><span class="math-inline">\(\int d\mathbf r\)</span>: the integral over all atomistic configurations.</li>
+<li><span class="math-inline">\(u(\mathbf r)\)</span>: the atomistic potential energy. <span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(U_{CG}(\mathbf R)\)</span>: the coarse-grained potential, in kJ/mol, defined up to an added constant. It is a free energy, so it depends on the temperature.</li>
+<li><span class="math-inline">\(\varepsilon\)</span> (Gō contact): the strength of one native contact. The depth of the well is <span class="math-inline">\(-\varepsilon\)</span>.</li>
+<li><span class="math-inline">\(\sigma_{ij}\)</span>: here the distance between residues <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> in the native structure. The minimum of the contact energy is exactly at <span class="math-inline">\(r=\sigma_{ij}\)</span>. This differs from the Lennard-Jones <span class="math-inline">\(\sigma\)</span>, where the energy is zero.</li>
+<li><span class="math-inline">\(r\)</span>: the present distance between beads <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>.</li>
+</ul>
+</div>
 <p><span class="math-display">\[U_{DH}=\frac{q_iq_j}{4\pi\varepsilon_0\varepsilon_rr}e^{-r/\lambda_D}\qquad
 \Delta G_{GB}=-\frac{1}{8\pi\varepsilon_0}\left(\frac{1}{\varepsilon_{in}}-\frac{1}{\varepsilon_{out}}\right)\sum_{i,j}\frac{q_iq_j}{\sqrt{r_{ij}^2+R_iR_je^{-r_{ij}^2/4R_iR_j}}}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the Debye-Hückel energy of two charges in a salt solution, a Coulomb energy that is weakened by the solvent and screened by the ions.</li>
+<li>Second formula: the generalised Born estimate of the polar part of the solvation free energy of a solute (called <span class="math-inline">\(\Delta G_{pol}\)</span> in Module 15).</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>: the charges, in units of <span class="math-inline">\(e\)</span>. <span class="math-inline">\(r\)</span>: their distance, in nm.</li>
+<li><span class="math-inline">\(\varepsilon_0\)</span>: the permittivity of vacuum, with <span class="math-inline">\(1/(4\pi\varepsilon_0)=138.935\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>.</li>
+<li><span class="math-inline">\(\varepsilon_r\)</span>: the relative dielectric constant of the solvent, a pure number (about 78 for water at 25 °C). It weakens the interaction by that factor.</li>
+<li><span class="math-inline">\(\lambda_D\)</span>: here the Debye length, in nm, the distance over which the ions screen the interaction. In water at 25 °C it is <span class="math-inline">\(0.304/\sqrt I\)</span> nm with the ionic strength <span class="math-inline">\(I\)</span> in mol/L. It is not a coupling parameter or an eigenvalue.</li>
+<li><span class="math-inline">\(e^{-r/\lambda_D}\)</span>: the screening factor. Here <span class="math-inline">\(e\)</span> is the base of the natural logarithm, not the elementary charge.</li>
+<li><span class="math-inline">\(\varepsilon_{in}\)</span>, <span class="math-inline">\(\varepsilon_{out}\)</span>: the dielectric constants inside the solute and of the solvent outside.</li>
+<li><span class="math-inline">\(\sum_{i,j}\)</span>: a sum over all ordered pairs of atoms. It includes each atom with itself (<span class="math-inline">\(i=j\)</span>), and every pair of different atoms appears twice, as <span class="math-inline">\((i,j)\)</span> and as <span class="math-inline">\((j,i)\)</span>. That is why the factor in front has <span class="math-inline">\(8\pi\)</span> where Coulomb's law has <span class="math-inline">\(4\pi\)</span>.</li>
+<li><span class="math-inline">\(r_{ij}\)</span>: the distance between atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>.</li>
+<li><span class="math-inline">\(R_i\)</span>, <span class="math-inline">\(R_j\)</span>: the Born radii of the two atoms, in nm. The Born radius of an atom measures how deeply it is buried in the solute. Here <span class="math-inline">\(R\)</span> is not a bead coordinate.</li>
+<li>The square root: the function called <span class="math-inline">\(f_{GB}\)</span> in Module 15. It equals <span class="math-inline">\(R_i\)</span> for <span class="math-inline">\(i=j\)</span> and tends to <span class="math-inline">\(r_{ij}\)</span> when the two atoms are far apart.</li>
+</ul>
+</div>
 <h2 id="kinetics-module-16">Kinetics (Module 16)</h2>
 <p><span class="math-display">\[K_d=\frac{k_{off}}{k_{on}}\qquad k_{TST}=\frac{\omega_0}{2\pi}e^{-\beta\Delta W^\ddagger}\qquad
 k_{Kramers}=\frac{\omega_0\omega_b}{2\pi\gamma}e^{-\beta\Delta W^\ddagger}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the dissociation constant as the ratio of the two rate constants of binding.</li>
+<li>Second formula: the rate of escape from a harmonic well according to transition state theory.</li>
+<li>Third formula: the Kramers rate for the same escape at high friction.</li>
+<li><span class="math-inline">\(K_d\)</span>: the dissociation constant, in mol/L.</li>
+<li><span class="math-inline">\(k_{off}\)</span>: the rate constant of dissociation, in s<span class="math-inline">\(^{-1}\)</span>. <span class="math-inline">\(1/k_{off}\)</span> is the residence time. <span class="math-inline">\(k_{on}\)</span>: the rate constant of association, in M<span class="math-inline">\(^{-1}\)</span> s<span class="math-inline">\(^{-1}\)</span>. Here <span class="math-inline">\(k\)</span> is a rate constant, not a force constant.</li>
+<li><span class="math-inline">\(k_{TST}\)</span>, <span class="math-inline">\(k_{Kramers}\)</span>: the rate of crossing the barrier, in crossings per unit of time.</li>
+<li><span class="math-inline">\(\omega_0\)</span> (omega): the angular frequency of the oscillation in the well. <span class="math-inline">\(\omega_0/2\pi\)</span> is the number of oscillations per unit of time.</li>
+<li><span class="math-inline">\(\omega_b\)</span>: the angular frequency that belongs to the curvature at the top of the barrier. Both frequencies are <span class="math-inline">\(\sqrt{|W''|/m}\)</span>, with <span class="math-inline">\(W''\)</span> the curvature (second derivative) of the profile at the minimum or at the top and <span class="math-inline">\(m\)</span> the mass that moves along the coordinate.</li>
+<li><span class="math-inline">\(\Delta W^\ddagger\)</span>: the height of the barrier, the potential of mean force at the top minus its value at the minimum, in kJ/mol. The double dagger marks the transition state.</li>
+<li><span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(\gamma\)</span> (gamma): here the friction rate, in 1/time, as in Langevin dynamics. The formula holds when <span class="math-inline">\(\gamma\)</span> is much larger than <span class="math-inline">\(\omega_b\)</span>. It is not the bias factor of metadynamics.</li>
+</ul>
+</div>
 <p><span class="math-display">\[\hat T_{ij}(\tau)=\frac{C_{ij}}{\sum_kC_{ik}}\qquad t_i=-\frac{\tau}{\ln|\lambda_i(\tau)|}\qquad\mathbf T(k\tau)\approx\mathbf T(\tau)^k\qquad
 \mathbf C(\tau)\mathbf v=\lambda\,\mathbf C(0)\mathbf v\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula: the estimate of the transition matrix of a Markov state model from counted transitions.</li>
+<li>Second formula: the implied time scale of a relaxation process.</li>
+<li>Third formula: the Chapman-Kolmogorov test.</li>
+<li>Fourth formula: the eigenvalue problem that TICA (time-lagged independent component analysis) solves.</li>
+<li><span class="math-inline">\(\tau\)</span> (tau): the lag time, the time interval over which transitions are counted.</li>
+<li><span class="math-inline">\(i\)</span>, <span class="math-inline">\(j\)</span>, <span class="math-inline">\(k\)</span>: labels of the discrete states in the first formula. In the second formula <span class="math-inline">\(i\)</span> numbers the eigenvalues. In the third formula <span class="math-inline">\(k\)</span> is a whole number of lag times.</li>
+<li><span class="math-inline">\(C_{ij}\)</span>: the number of times the system was seen in state <span class="math-inline">\(i\)</span> and, one lag time later, in state <span class="math-inline">\(j\)</span>. <span class="math-inline">\(\sum_kC_{ik}\)</span>: all transitions counted out of state <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\hat T_{ij}(\tau)\)</span>: the estimated probability of being in state <span class="math-inline">\(j\)</span> a time <span class="math-inline">\(\tau\)</span> after being in state <span class="math-inline">\(i\)</span>. The hat marks an estimate from data. Here <span class="math-inline">\(T\)</span> is not a temperature.</li>
+<li><span class="math-inline">\(\mathbf T(\tau)\)</span> (bold): the whole matrix of these probabilities. <span class="math-inline">\(\mathbf T(\tau)^k\)</span>: the matrix multiplied by itself <span class="math-inline">\(k\)</span> times. <span class="math-inline">\(\mathbf T(k\tau)\)</span>: the matrix estimated directly from the data at the longer lag <span class="math-inline">\(k\tau\)</span>. The test asks whether the two agree within the statistical error.</li>
+<li><span class="math-inline">\(\lambda_i(\tau)\)</span>: here the eigenvalue number <span class="math-inline">\(i\)</span> of <span class="math-inline">\(\mathbf T(\tau)\)</span>. The largest is <span class="math-inline">\(\lambda_1=1\)</span> and the others are smaller. The bars take the absolute value. It is not a coupling parameter.</li>
+<li><span class="math-inline">\(t_i\)</span>: the implied time scale of process <span class="math-inline">\(i\)</span>, the time over which that process relaxes. With <span class="math-inline">\(\tau=10\)</span> ns and <span class="math-inline">\(\lambda_2=0.95\)</span> it is 195 ns.</li>
+<li><span class="math-inline">\(\mathbf C(\tau)\)</span> (bold, fourth formula): the time-lagged covariance matrix of the features, with entries <span class="math-inline">\(\langle\delta x_a(t)\,\delta x_b(t+\tau)\rangle\)</span>, where <span class="math-inline">\(\delta x_a\)</span> is the deviation of feature <span class="math-inline">\(a\)</span> from its mean. <span class="math-inline">\(\mathbf C(0)\)</span>: the ordinary covariance matrix. This <span class="math-inline">\(\mathbf C\)</span> is not the count matrix <span class="math-inline">\(C_{ij}\)</span>.</li>
+<li><span class="math-inline">\(\mathbf v\)</span>: here an eigenvector, a combination of features that defines one TICA component. It is not a velocity.</li>
+<li><span class="math-inline">\(\lambda\)</span> (fourth formula): the eigenvalue that belongs to <span class="math-inline">\(\mathbf v\)</span>. The combinations with the largest eigenvalues are the ones that decorrelate most slowly.</li>
+</ul>
+</div>
 <h2 id="machine-learning-module-17">Machine learning (Module 17)</h2>
 <p><span class="math-display">\[E=\sum_iE_i(\text{environment within }r_c),\ \ \mathbf F_i=-\frac{\partial E}{\partial\mathbf r_i}\qquad
 \mathcal L=w_E\sum(E_\theta-E_{QM})^2+w_F\sum|\mathbf F_\theta-\mathbf F_{QM}|^2\qquad
 w(\mathbf x)\propto\frac{e^{-\beta U(\mathbf x)}}{p_X(\mathbf x)}\]</span></p>
+<div class="legend">
+<ul>
+<li>First formula (two equations): the energy of a machine-learned potential as a sum of atomic contributions, and the force as minus its gradient.</li>
+<li>Second formula: the loss that is minimised during training.</li>
+<li>Third formula: the importance weight of a configuration produced by a Boltzmann generator.</li>
+<li><span class="math-inline">\(E\)</span>: the total potential energy predicted by the model.</li>
+<li><span class="math-inline">\(E_i\)</span>: the contribution of atom <span class="math-inline">\(i\)</span>. It depends only on the positions and the elements of the atoms closer than <span class="math-inline">\(r_c\)</span>.</li>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff of the model, typically 0.4 to 0.6 nm.</li>
+<li><span class="math-inline">\(\mathbf F_i\)</span>: the force on atom <span class="math-inline">\(i\)</span>. <span class="math-inline">\(\partial E/\partial\mathbf r_i\)</span>: the gradient of the energy with respect to the position of atom <span class="math-inline">\(i\)</span>.</li>
+<li><span class="math-inline">\(\mathcal L\)</span>: the loss, the number that training makes as small as possible. It is not the Liouville operator.</li>
+<li><span class="math-inline">\(\theta\)</span> (theta): here all the adjustable parameters of the model. It is not an angle. <span class="math-inline">\(E_\theta\)</span>, <span class="math-inline">\(\mathbf F_\theta\)</span>: the energy and a force predicted by the model with the parameters <span class="math-inline">\(\theta\)</span>.</li>
+<li><span class="math-inline">\(E_{QM}\)</span>, <span class="math-inline">\(\mathbf F_{QM}\)</span>: the reference energy and force from a quantum-mechanical calculation.</li>
+<li>The first <span class="math-inline">\(\sum\)</span> runs over the reference configurations. The second runs over the configurations and over the atoms of each.</li>
+<li><span class="math-inline">\(|\ |^2\)</span>: the squared length of the difference between the two force vectors.</li>
+<li><span class="math-inline">\(w_E\)</span>, <span class="math-inline">\(w_F\)</span>: here the weights of the energy part and of the force part of the loss, set when the training is prepared.</li>
+<li><span class="math-inline">\(w(\mathbf x)\)</span>: here the importance weight of the generated configuration <span class="math-inline">\(\mathbf x\)</span>, used when averages are computed.</li>
+<li><span class="math-inline">\(\propto\)</span>: "is proportional to".</li>
+<li><span class="math-inline">\(U(\mathbf x)\)</span>: the potential energy of that configuration. <span class="math-inline">\(\beta\)</span>: <span class="math-inline">\(1/k_BT\)</span>.</li>
+<li><span class="math-inline">\(p_X(\mathbf x)\)</span>: the probability density with which the generator produces the configuration <span class="math-inline">\(\mathbf x\)</span>.</li>
+</ul>
+</div>
 </article>
 
 <div class="prevnext"></div>

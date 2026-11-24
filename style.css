@@ -126,7 +126,25 @@ blockquote p { margin: .3em 0; }
 .box.key { border-left: 4px solid var(--s3); }
 .box.warn { border-left: 4px solid var(--s4); background: var(--warn); }
 .box.goal { border-left: 4px solid var(--s1); background: var(--note); }
+.box.plain { border-left: 4px solid var(--s7); }
+.box.maths { border-left: 4px solid var(--s2); }
+.box.physics { border-left: 4px solid var(--s5); }
 .box > :first-child { margin-top: 0; } .box > :last-child { margin-bottom: 0; }
+/* the page that lists all symbols */
+.symfilter { position: sticky; top: 52px; z-index: 5; background: var(--page); padding: 10px 0 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.symfilter input { width: min(430px, 100%); padding: 8px 11px; border: 1px solid var(--axis); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit; }
+#symCount { color: var(--muted); font-size: 14px; }
+.symjump a { display: inline-block; margin: 0 8px 4px 0; text-decoration: none; }
+table.symtab td.sym { min-width: 90px; }
+table.symtab td.where { min-width: 150px; font-size: 14px; }
+.symgroup[hidden], table.symtab tr[hidden] { display: none; }
+/* the list under a formula that says what each letter means */
+.legend { margin: .2em 0 1.4em; padding: 8px 16px 9px 14px; border-left: 3px solid var(--axis); background: var(--surface); border-radius: 0 8px 8px 0; font-size: 15.5px; }
+.legend::before { content: "What each symbol means"; display: block; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; margin-bottom: 3px; }
+.legend ul { margin: 0; padding-left: 0; list-style: none; }
+.legend li { margin: 3px 0; line-height: 1.5; }
+.legend > :last-child { margin-bottom: 0; }
+.legend p { margin: 4px 0; }
 .box h4 { margin-top: 0; color: var(--ink); }
 
 details { margin: .8em 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
@@ -211,6 +229,7 @@ footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--line); c
   .toc ol { columns: 1; }
   .w-row { grid-template-columns: 1fr; }
   .toplinks { gap: 10px; font-size: 14px; }
+  .toplinks a.wide { display: none; }
 }
 @media print {
   .topbar, .sidebar, .prevnext, .donebox, .widget .w-controls { display: none; }

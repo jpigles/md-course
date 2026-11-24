@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li class="current" data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part III · Practice &middot; Module 10 of 18 &middot; about 8 hours</div><h1>Running a simulation from a PDB file to a production trajectory</h1><p class="lede">Carry out the full workflow (prepare, solvate, neutralise, minimise, equilibrate, produce) in GROMACS and in OpenMM, knowing what every step and every setting is for.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#the-workflow-at-a-glance">The workflow at a glance</a></li><li><a href="#step-1-the-starting-structure">Step 1: the starting structure</a></li><li><a href="#steps-2-to-4-topology-box-water-ions">Steps 2 to 4: topology, box, water, ions</a></li><li><a href="#step-5-energy-minimisation">Step 5: energy minimisation</a></li><li><a href="#steps-6-and-7-equilibration">Steps 6 and 7: equilibration</a></li><li><a href="#step-8-production-an-annotated-input-file">Step 8: production, an annotated input file</a></li><li><a href="#planning-length-repeats-output-cost">Planning: length, repeats, output, cost</a></li><li><a href="#what-goes-wrong">What goes wrong</a></li><li><a href="#what-to-report">What to report</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#the-workflow-at-a-glance">The workflow at a glance</a></li><li><a href="#step-1-the-starting-structure">Step 1: the starting structure</a></li><li><a href="#steps-2-to-4-topology-box-water-ions">Steps 2 to 4: topology, box, water, ions</a></li><li><a href="#step-5-energy-minimisation">Step 5: energy minimisation</a></li><li><a href="#steps-6-and-7-equilibration">Steps 6 and 7: equilibration</a></li><li><a href="#step-8-production-an-annotated-input-file">Step 8: production, an annotated input file</a></li><li><a href="#planning-length-repeats-output-cost">Planning: length, repeats, output, cost</a></li><li><a href="#what-goes-wrong">What goes wrong</a></li><li><a href="#what-to-report">What to report</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -36,11 +36,148 @@
 <li>recognise the common failures and list what a methods section must report.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/playlist?list=PLIQSdwcnidzDEmO9AI7JDZi9bG2u1IvYv" target="_blank" rel="noopener">GROMACS: Molecular Dynamics Simulations from Start to Finish</a><span class="res-meta">Dr. H Ismail &middot; Playlist, 19 videos, intro</span><span class="res-why">Series from install to production and analysis of GROMACS simulations.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLGL4XGw8noUxYZ-JrAob4hpVGCAhKGesk" target="_blank" rel="noopener">Sep2012 OpenMM Workshop -- September 6-7, 2012</a><span class="res-meta">OpenMM developers (Stanford Simbios) &middot; channel: SimbiosOpenMM &middot; Playlist, 9 videos, intermediate</span><span class="res-why">2012 OpenMM workshop with introductions and hands-on sessions.</span></li><li class="res"><a href="https://www.youtube.com/playlist?list=PLGL4XGw8noUwrh16gsC9H_D03fED3IcHo" target="_blank" rel="noopener">Mar2014 OpenMM Workshop - March 30 - April 1, 2014</a><span class="res-meta">OpenMM developers (Stanford Simbios) &middot; channel: SimbiosOpenMM &middot; Playlist, 10 videos, intermediate</span><span class="res-why">2014 OpenMM workshop covering MD workflows and analysis.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=8oGZn1NdvbY" target="_blank" rel="noopener">GROMACS Tutorial 1: Lysozyme in water</a><span class="res-meta">GROMACS &middot; Video, 33 min, intro</span><span class="res-why">Official GROMACS lysozyme in water tutorial.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=EFtbEkuJ9tk" target="_blank" rel="noopener">Introduction to Molecular Dynamics Workflows and Tools</a><span class="res-meta">SimbiosOpenMM &middot; Video, 28 min, intro</span><span class="res-why">Introduction to MD workflows and tools with OpenMM.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=hbQ_dfgWPc8" target="_blank" rel="noopener">Introduction to Running Simulations with OpenMM</a><span class="res-meta">SimbiosOpenMM &middot; Video, 19 min, intro</span><span class="res-why">How to run simulations with OpenMM.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=xS4r2bLATvo" target="_blank" rel="noopener">Intro to Running Molecular Dynamics Simulations with NAMD (links to each section in description)</a><span class="res-meta">Gianmarc Grazioli &middot; Video, 110 min, intro</span><span class="res-why">Long introduction to running MD with NAMD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=F-SsbOw2YrM" target="_blank" rel="noopener">Molecular Dynamics Simulation Using Free GPU on Google Colab | GROMACS/OpenMM Tutorial for Beginners</a><span class="res-meta">Dr. H Ismail &middot; Video, 32 min, intro</span><span class="res-why">Running GROMACS or OpenMM MD on free Colab GPUs.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=IArpsQsZ95U" target="_blank" rel="noopener">NAMD Tutorial #1 - Simulation of a Simple Protein</a><span class="res-meta">Narogen &middot; Video, 17 min, intro</span><span class="res-why">NAMD tutorial on simulating a simple protein.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=GRH81ABCq54" target="_blank" rel="noopener">Protein-Membrane Simulation Setup | CHARMM-GUI to GROMACS Molecular Dynamics Tutorial</a><span class="res-meta">Omixium &middot; Video, 37 min, intermediate</span><span class="res-why">Protein-membrane setup with CHARMM-GUI feeding GROMACS.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Ck7EMuIStpM" target="_blank" rel="noopener">Ligand Parameterization for MD using CHARMM-GUI | Ligand Topology Generation | AmberTools | GROMACS</a><span class="res-meta">Dr. H Ismail &middot; Video, 18 min, intermediate</span><span class="res-why">Ligand parameterisation with CHARMM-GUI.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=EVcw-w-Lcnk" target="_blank" rel="noopener">OpenMM + Martini3 Tutorial: Simulating Proteins in Membrane Systems (Coarse-grained MD)</a><span class="res-meta">Neurosnap &middot; Video, 7 min, intermediate</span><span class="res-why">OpenMM with Martini 3 for coarse-grained protein simulations.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>The earlier modules took an MD program apart: the force field (<a href="05-force-field-form.html">Module 5</a>, <a href="06-force-field-parameters.html">Module 6</a>), the periodic box and the electrostatics (<a href="07-boundaries-electrostatics.html">Module 7</a>), the thermostat and the barostat (<a href="08-thermostats-barostats.html">Module 8</a>), the constraints (<a href="09-constraints.html">Module 9</a>) and the integrator that moves the atoms (<a href="04-integrators.html">Module 4</a>). This module puts the parts together. You start from a file of atomic coordinates taken from a database, and you end with a trajectory that can be analysed.</p>
+<p>There is no new theory here and there are no derivations. What the module adds is the reason for each step of the standard recipe. A recipe followed without its reasons works until something unusual happens, and then you cannot tell which step failed. So for every step the text answers the same three questions:</p>
+<ol>
+<li>What is physically being done to the system?</li>
+<li>What goes wrong if the step is skipped?</li>
+<li>How do you tell that it worked?</li>
+</ol>
+<p>The module has four layers:</p>
+<ol>
+<li><strong>Build the system</strong> (steps 1 to 4). Turn an experimental structure into a complete, chemically sensible model in a box of salt water.</li>
+<li><strong>Relax it</strong> (steps 5 to 7). Remove the damage done by building, then bring the system to the temperature and the density of the experiment.</li>
+<li><strong>Run and plan</strong> (step 8 and the planning section). The production run, with every line of its input explained, in two programs: GROMACS and OpenMM.</li>
+<li><strong>Diagnose and report.</strong> The common failures, and what a reader needs in order to repeat your work.</li>
+</ol>
+<p>The commands and input files are shown exactly as you would type them. After each block, a table explains every option and names the module in which the idea behind it was introduced. The few formulas are arithmetic: how many ions, how large a box, how many steps.</p>
+<h3 id="how-to-read-the-commands-and-the-files">How to read the commands and the files</h3>
+<p>GROMACS is a collection of command-line tools. Each one is started by typing <code>gmx</code>, then the name of the tool, then its options. OpenMM is a Python library: you write a short script and run it. The conventions below are enough to read every block in this module.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gmx editconf -d 1.2</code></td>
+<td>Run the GROMACS tool called <code>editconf</code>. An option starts with a dash and is followed by its value: here the option <code>-d</code> gets the value 1.2. An option without a value, such as <code>-ignh</code>, switches something on.</td>
+</tr>
+<tr>
+<td><code>-f</code>, <code>-o</code>, <code>-p</code></td>
+<td>Wherever they appear in this module, <code>-f</code> is an input file (the structure, or for <code>gmx grompp</code> the parameter file), <code>-o</code> is the file that is written, and <code>-p</code> is the topology. The other letters change from tool to tool.</td>
+</tr>
+<tr>
+<td><code># text</code></td>
+<td>A comment in a shell or Python block. The computer ignores it.</td>
+</tr>
+<tr>
+<td><code>; text</code></td>
+<td>A comment in a GROMACS input file.</td>
+</tr>
+<tr>
+<td><code>name = value</code></td>
+<td>One setting in a GROMACS parameter file.</td>
+</tr>
+<tr>
+<td><code>a &amp;&amp; b</code></td>
+<td>Shell syntax: run command <code>a</code>, then run command <code>b</code> only if <code>a</code> ended without an error.</td>
+</tr>
+<tr>
+<td><code>125_000</code></td>
+<td>In Python, the number 125000. The underscore only makes long numbers easier to read.</td>
+</tr>
+<tr>
+<td><code>2.4 * unit.nanometer</code></td>
+<td>In OpenMM every quantity carries its unit. This is 2.4 nm.</td>
+</tr>
+</tbody>
+</table>
+<p>The workflow passes the system from one file to the next. These are the file types you will meet:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.pdb</code></td>
+<td>A <strong>structure file</strong> in the format of the Protein Data Bank: one line per atom, with the name of the atom, the residue it belongs to and its three coordinates.</td>
+</tr>
+<tr>
+<td><code>.gro</code></td>
+<td>The GROMACS structure file: the coordinates of every atom, and the size and shape of the box.</td>
+</tr>
+<tr>
+<td><code>.top</code></td>
+<td>The <strong>topology</strong>: which atoms the system contains, which are bonded to which, and the force-field parameters of each atom (type, charge, mass). It contains no coordinates (<a href="06-force-field-parameters.html">Module 6</a>).</td>
+</tr>
+<tr>
+<td><code>.mdp</code></td>
+<td>The run parameters: a list of <code>name = value</code> settings that say what kind of run to do.</td>
+</tr>
+<tr>
+<td><code>.tpr</code></td>
+<td>The run input file. One tool packs structure, topology and parameters into this single file, and the simulation engine reads it.</td>
+</tr>
+<tr>
+<td><code>.cpt</code></td>
+<td>A <strong>checkpoint</strong>: the complete state of a run at one instant, from which the run can be continued.</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Names that mean two things in this module.</strong> The option <code>-c</code> means "centre the solute" in <code>gmx editconf</code> and "the file with the starting coordinates" in <code>gmx grompp</code>. The setting <code>nsteps</code> is the largest number of steps allowed in a minimisation and the exact number of steps taken in an MD run. Among the symbols, <span class="math-inline">\(k\)</span> is the spring constant of a restraint, while <span class="math-inline">\(k_B\)</span> is the Boltzmann constant. <span class="math-inline">\(c\)</span> is a concentration, and has nothing to do with the speed of light. <span class="math-inline">\(h\)</span> is the step length of the minimiser: it is neither a time step nor Planck's constant. <span class="math-inline">\(T\)</span> is a temperature and <span class="math-inline">\(t\)</span> is a time. The letter <span class="math-inline">\(N\)</span> with a subscript counts different things each time: ion pairs, water molecules, frames, degrees of freedom.</p>
+<p>The letter <span class="math-inline">\(e\)</span> is the charge of a proton where a net charge is given "in units of <span class="math-inline">\(e\)</span>", and the number 2.718 in <span class="math-inline">\(e^{-t/\tau}\)</span>. The word "padding" is the distance from the solute to the box face in the text and in <code>gmx editconf -d</code>, and the distance from the solute to its nearest periodic copy, twice as much, in the <code>padding</code> argument of OpenMM.</p>
+</div>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula in this course is followed by a list that says what each letter in it means. The notation below is new in this module. The general conventions (bold letters for vectors, bars for lengths, angle brackets for averages) are in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mol/L, M, mM</td>
+<td>A concentration: moles of a substance per litre of solution. M is short for mol/L, and 1 mM is 0.001 mol/L.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(N_A\)</span></td>
+<td>Avogadro's number, <span class="math-inline">\(6.022\times10^{23}\)</span>: the number of particles in one mole.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(a\leftarrow b\)</span></td>
+<td>"Replace <span class="math-inline">\(a\)</span> by <span class="math-inline">\(b\)</span>." An update that the program carries out, not an equation to be solved.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\vert\mathbf F\vert_{max}\)</span></td>
+<td>The largest force on any single atom at this moment.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\max(a,b)\)</span></td>
+<td>The larger of the two numbers <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\approx\)</span></td>
+<td>"Is approximately equal to."</td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-workflow-at-a-glance">The workflow at a glance</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="EFtbEkuJ9tk" href="https://www.youtube.com/watch?v=EFtbEkuJ9tk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Molecular Dynamics Workflows and Tools</span><span class="sv-m">28 min · SimbiosOpenMM</span></a><a class="sv" data-yt="ZKNUR5Uz2r0" href="https://www.youtube.com/watch?v=ZKNUR5Uz2r0" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Basis of molecular dynamics simulations - Part II</span><span class="sv-m">34 min · BioExcel</span></a><a class="sv" data-yt="HPk5SiEqFIM" href="https://www.youtube.com/watch?v=HPk5SiEqFIM" target="_blank" rel="noopener" title="Advanced Thermodynamics and Molecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 45: Practical aspects of molecular simulations</span><span class="sv-m">32 min · NPTEL / IIT Roorkee</span></a><a class="sv" data-yt="_CYsaBhAEeA" href="https://www.youtube.com/watch?v=_CYsaBhAEeA" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 04: Molecular dynamics simulations of real proteins</span><span class="sv-m">2 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="EFtbEkuJ9tk" href="https://www.youtube.com/watch?v=EFtbEkuJ9tk" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Molecular Dynamics Workflows and Tools</span><span class="sv-m">28 min · SimbiosOpenMM</span></a><a class="sv" data-yt="ZKNUR5Uz2r0" href="https://www.youtube.com/watch?v=ZKNUR5Uz2r0" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Basis of molecular dynamics simulations - Part II</span><span class="sv-m">34 min · BioExcel</span></a><a class="sv" data-yt="HPk5SiEqFIM" href="https://www.youtube.com/watch?v=HPk5SiEqFIM" target="_blank" rel="noopener" title="Advanced Thermodynamics and Molecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 45: Practical aspects of molecular simulations</span><span class="sv-m">32 min · NPTEL / IIT Roorkee</span></a><a class="sv" data-yt="_CYsaBhAEeA" href="https://www.youtube.com/watch?v=_CYsaBhAEeA" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 04: Molecular dynamics simulations of real proteins</span><span class="sv-m">2 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
 
+<p>An MD program needs three things before it can take one step: the position of every atom, a rule that gives the force on every atom, and the conditions of the run (temperature, pressure, length). Steps 1 to 4 of the table produce the positions and the rule. Steps 5 to 8 are four runs of the same engine under different conditions, each starting where the one before stopped. Step 9 is the subject of <a href="11-analysis-statistics.html">Module 11</a>.</p>
 <table>
 <thead>
 <tr>
@@ -107,22 +244,83 @@
 </tr>
 </tbody>
 </table>
-<h2 id="step-1-the-starting-structure">Step 1: the starting structure</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="YQ8eRyScuyk" href="https://www.youtube.com/watch?v=YQ8eRyScuyk" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Constant pH molecular dynamics in GROMACS</span><span class="sv-m">19 min · BioExcel</span></a><a class="sv" data-yt="RvvSvC8YyVo" href="https://www.youtube.com/watch?v=RvvSvC8YyVo" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">Master Molecular Modeling: Complete Guide to Building DNA, RNA, Lipids, Proteins &amp; More in Avogadro</span><span class="sv-m">23 min · Dr. H Ismail</span></a></div>
-
-<p>A simulation can only be as good as its starting model. Go through this list every time.</p>
+<p>The order follows from what each step needs. Water cannot be added before the box exists. Ions cannot be counted before the charge of the solute is known, and that charge is fixed by the protonation states of step 1 and the force field of step 2. Heating a system that still has overlapping atoms makes it fly apart, so minimisation comes before any dynamics. And a barostat acting on a system that is not yet at its temperature rescales the box violently, so the constant-volume stage comes before the constant-pressure one.</p>
+<p>Several words of the table are used in the rest of the module:</p>
 <ul>
-<li><strong>Source.</strong> A crystal or cryo-EM structure, an NMR model, or a prediction (AlphaFold and similar). For a predicted complex, the interface may be wrong in ways that MD will not repair on accessible time scales.</li>
-<li><strong>Missing atoms and residues.</strong> Crystal structures lack hydrogens and often lack flexible loops and side chains. Build missing side chains (PDBFixer, MODELLER, Swiss-PdbViewer, CHARMM-GUI). For a missing loop either model it or cap the chain ends, and say which.</li>
-<li><strong>Alternate conformations.</strong> Keep one (usually the A conformer).</li>
-<li><strong>Termini.</strong> Decide between charged termini (NH<span class="math-inline">\(_3^+\)</span>, COO<span class="math-inline">\(^-\)</span>) and neutral caps (acetyl, N-methylamide). A fragment cut from a longer protein should be capped, otherwise you create charges that do not exist in the real molecule.</li>
-<li><strong>Disulfide bonds.</strong> Make sure they are declared in the topology.</li>
-<li><strong>Protonation states.</strong> The force field needs one fixed protonation state per residue. At pH 7, Asp and Glu are deprotonated, Lys and Arg protonated. <strong>Histidine</strong> (pK<span class="math-inline">\(_a\)</span> near 6 to 6.5) is the difficult one: it can be neutral with the proton on N<span class="math-inline">\(\delta\)</span> (HID) or N<span class="math-inline">\(\varepsilon\)</span> (HIE), or doubly protonated and positive (HIP). Choose by inspecting hydrogen-bond partners or with a pK<span class="math-inline">\(_a\)</span> predictor (PROPKA, H++). Buried Asp, Glu, Lys and Cys can also have shifted pK<span class="math-inline">\(_a\)</span> values. If the science depends on pH, plan simulations in each relevant protonation state.</li>
-<li><strong>Ligands, cofactors, ions, structural waters.</strong> Keep those that matter and get parameters for anything non-standard from a compatible general force field (Module 6). Metal sites need special care.</li>
+<li>The <strong>solute</strong> is the molecule you want to study: the protein, with anything bound to it. The <strong>solvent</strong> is what is added around it, that is, water and ions.</li>
+<li>A <strong>force field</strong> is the formula and the list of parameters that give the potential energy <span class="math-inline">\(U\)</span> for any arrangement of the atoms (<a href="05-force-field-form.html">Module 5</a>). A <strong>water model</strong> is the force-field description of one water molecule: its geometry, its charges and its Lennard-Jones parameters (<a href="06-force-field-parameters.html">Module 6</a>).</li>
+<li>The <strong>box</strong> is the volume that is simulated. It is periodic: surrounded on all sides by copies of itself, so that there is no surface (<a href="07-boundaries-electrostatics.html">Module 7</a>). "Bulk-like" means "as in the middle of a large volume of liquid, far from any wall".</li>
+<li>A <strong>clash</strong> is a pair of atoms that sit closer together than two real atoms can. <strong>Energy minimisation</strong> moves the atoms downhill in potential energy until the forces are small. A run "explodes" when atoms receive forces so large that they fly apart and the program stops.</li>
+<li><strong>Equilibration</strong> is the first part of a simulation, during which the system loses the memory of how it was built. Its data are not used for results.</li>
+<li><strong>Production</strong> is the run whose data you keep and analyse.</li>
+<li><strong>Restraints</strong> are extra springs, added to the force field for a while, that hold chosen atoms near chosen positions. The "fixed solute" of step 6 is a solute held by such springs. It is not frozen.</li>
 </ul>
-<h2 id="steps-2-to-4-topology-box-water-ions">Steps 2 to 4: topology, box, water, ions</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="8oGZn1NdvbY" href="https://www.youtube.com/watch?v=8oGZn1NdvbY" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial 1: Lysozyme in water</span><span class="sv-m">33 min · GROMACS</span></a><a class="sv" data-yt="Kbq6Gf9m2T8" href="https://www.youtube.com/watch?v=Kbq6Gf9m2T8" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">Lysozyme in Water using GROMACS on Windows (WSL) | MD Simulation Tutorial for Beginners: Part 8</span><span class="sv-m">43 min · Dr. H Ismail</span></a><a class="sv" data-yt="GRH81ABCq54" href="https://www.youtube.com/watch?v=GRH81ABCq54" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Protein-Membrane Simulation Setup | CHARMM-GUI to GROMACS Molecular Dynamics Tutorial</span><span class="sv-m">37 min · Omixium</span></a><a class="sv" data-yt="nKYrzrwaRmc" href="https://www.youtube.com/watch?v=nKYrzrwaRmc" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 7-Lecture 33</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a><a class="sv" data-yt="zCTGd5xYwoQ" href="https://www.youtube.com/watch?v=zCTGd5xYwoQ" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 8-Lecture 36</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a></div>
+<div class="box physics">
+<p><strong>Physics you need here: NVE, NVT and NPT.</strong> The letters name what is held fixed during a run. <span class="math-inline">\(N\)</span> is the number of atoms, <span class="math-inline">\(V\)</span> the volume of the box, <span class="math-inline">\(T\)</span> the temperature, <span class="math-inline">\(P\)</span> the pressure and <span class="math-inline">\(E\)</span> the total energy.</p>
+<ul>
+<li><strong>NVE</strong>: nothing is controlled. The atoms follow Newton's law and the total energy stays constant (<a href="02-classical-mechanics.html">Module 2</a>).</li>
+<li><strong>NVT</strong>: the box is fixed and a <strong>thermostat</strong> is switched on. A thermostat is an addition to the equations of motion that feeds kinetic energy into the atoms or takes it out, so that the temperature fluctuates around a target value.</li>
+<li><strong>NPT</strong>: thermostat and <strong>barostat</strong> are both on. A barostat changes the size of the box, and moves the atoms with it, so that the pressure fluctuates around a target value. The volume is then free to find its own value.</li>
+</ul>
+<p>In statistical mechanics each of these is called an <em>ensemble</em> (<a href="03-statistical-mechanics.html">Module 3</a>). Experiments in a test tube are done at fixed temperature and pressure, so production runs are usually NPT. The algorithms are the subject of <a href="08-thermostats-barostats.html">Module 8</a>. For what temperature and pressure mean for a collection of atoms, see the primer on <a href="physics.html#temperature">temperature</a> and on <a href="physics.html#pressure">pressure</a>.</p>
+</div>
+<h2 id="step-1-the-starting-structure">Step 1: the starting structure</h2>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="YQ8eRyScuyk" href="https://www.youtube.com/watch?v=YQ8eRyScuyk" target="_blank" rel="noopener" title="2021 BioExcel Summer School on Biomolecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Constant pH molecular dynamics in GROMACS</span><span class="sv-m">19 min · BioExcel</span></a><a class="sv" data-yt="RvvSvC8YyVo" href="https://www.youtube.com/watch?v=RvvSvC8YyVo" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">Master Molecular Modeling: Complete Guide to Building DNA, RNA, Lipids, Proteins &amp; More in Avogadro</span><span class="sv-m">23 min · Dr. H Ismail</span></a></div>
 
+<p><em>What is done.</em> You turn a file from a structure database into a complete and chemically correct model: every atom present, every chemical choice made.</p>
+<p><em>If it is skipped.</em> The tools of step 2 stop with an error when an atom they expect is missing. Or, worse, they build something that runs but is a different molecule from the one you meant, for example with a charge where the real protein has none. No later step repairs that.</p>
+<p><em>How to tell that it worked.</em> Step 2 builds the topology without errors, the net charge of the model is the whole number you expect from your choices, and the structure looks right in a molecular viewer.</p>
+<p>A <strong>structure file</strong> lists atoms, one per line: the name of the atom, the residue it belongs to (a residue is one amino acid of the chain), the chain, and three coordinates. The usual format is PDB, named after the Protein Data Bank, the public archive of experimentally determined structures. Each entry has a four-character code, such as 1AKI for the lysozyme of exercise 1. Such a file records where an experiment found atoms. It was not written as the input of a simulation, and this step closes the gap between the two.</p>
+<p>A simulation can only be as good as its starting model. Go through this list every time. Each of the seven items is given first in its short form and then explained.</p>
+<p><strong>Source.</strong> A crystal or cryo-EM structure, an NMR model, or a prediction (AlphaFold and similar). For a predicted complex, the interface may be wrong in ways that MD will not repair on accessible time scales.</p>
+<p>The three experimental methods give different things. X-ray crystallography gives the positions of the heavier atoms (carbon, nitrogen, oxygen, sulfur) of molecules packed in a crystal. Cryo-electron microscopy (cryo-EM) builds a three-dimensional map from many images of frozen molecules. NMR measures distances between atoms in solution and gives a bundle of models that all agree with the data: start from one of them, or from several in separate runs. A prediction is computed from the amino-acid sequence and is not a measurement.</p>
+<p>The warning about predicted complexes is about time scales. An <em>interface</em> is the surface where the two molecules of a complex touch. If the prediction has placed one partner wrongly, correcting it means rearranging the whole interface. That is a slow, collective motion, which takes far longer than the nanoseconds to microseconds that a simulation covers (<a href="01-what-is-md.html">Module 1</a>). The run then shows a complex that looks stable and is wrong.</p>
+<p><strong>Missing atoms and residues.</strong> Crystal structures lack hydrogens and often lack flexible loops and side chains. Build missing side chains (PDBFixer, MODELLER, Swiss-PdbViewer, CHARMM-GUI). For a missing loop either model it or cap the chain ends, and say which.</p>
+<p>Hydrogen has a single electron, and X-rays are scattered by electrons, so hydrogens are invisible in most crystal structures. That is no problem: the tools of step 2 add every hydrogen from the known chemistry of each residue. A loop or a side chain is missing for another reason. It was moving or disordered in the crystal, so no definite position could be recorded. The force field cannot leave atoms out: it describes each residue by a template with a fixed list of atoms (<a href="06-force-field-parameters.html">Module 6</a>), and a residue with atoms missing does not match its template.</p>
+<p>A missing loop leaves the chain in two pieces. If you do nothing, each piece gets a charged end where the real protein has an ordinary peptide bond. The two honest choices are to model the loop (its conformation is then a guess) or to <em>cap</em> the two loose ends with small neutral groups, as described under Termini below. "Say which" means: write it in your methods section.</p>
+<p><strong>Alternate conformations.</strong> Keep one (usually the A conformer).</p>
+<p>In a well-resolved crystal a side chain is sometimes seen in two positions, because different copies of the protein in the crystal have it in different places. The file then lists the same atoms twice, labelled A and B. A simulated molecule has each atom once, so one set has to be chosen. If the two positions differ in a region that matters for your question, that is a reason for a second simulation.</p>
+<p><strong>Termini.</strong> Decide between charged termini (NH<span class="math-inline">\(_3^+\)</span>, COO<span class="math-inline">\(^-\)</span>) and neutral caps (acetyl, N-methylamide). A fragment cut from a longer protein should be capped, otherwise you create charges that do not exist in the real molecule.</p>
+<p>A protein chain has two ends. The N-terminus ends in an amino group and the C-terminus in a carboxyl group. In water at neutral pH the amino group carries an extra proton and a charge of <span class="math-inline">\(+1\)</span>, and the carboxyl group has lost its proton and has a charge of <span class="math-inline">\(-1\)</span>. That is the right model for the true ends of a complete protein. When you simulate only a fragment, say residues 50 to 120 of a larger protein, its ends are artificial: in the real molecule the chain continues there with an uncharged peptide bond.</p>
+<p>A <strong>cap</strong> is a small neutral group that imitates the continuing chain. The acetyl group (CH<span class="math-inline">\(_3\)</span>-CO-) goes on the N-terminal side and the N-methylamide group (-NH-CH<span class="math-inline">\(_3\)</span>) on the C-terminal side.</p>
+<p><strong>Disulfide bonds.</strong> Make sure they are declared in the topology.</p>
+<p>A disulfide bond is a covalent bond between the sulfur atoms of two cysteine residues, which can be far apart in the sequence. The structure file shows the two sulfur atoms close together, about 0.2 nm apart, but the simulation knows only the bonds that are listed in the topology. In a classical force field that list is fixed when the system is built and never changes during the run (<a href="05-force-field-form.html">Module 5</a>). A disulfide that is not declared is therefore two separate cysteines for the whole simulation, and nothing holds them together. After step 2, check that the bond is in the topology.</p>
+<p><strong>Protonation states.</strong> The force field needs one fixed protonation state per residue.</p>
+<p>Several amino-acid side chains can bind or release a proton, the nucleus of a hydrogen atom, written H<span class="math-inline">\(^+\)</span>. The <strong>protonation state</strong> of a residue says whether the proton is on or off, and so whether the side chain is charged. In reality protons hop on and off all the time. In a classical force field they cannot, because bonds are never made or broken during a run. So you choose one state for each residue before the run, and the residue keeps it.</p>
+<div class="box physics">
+<p><strong>Physics you need here: pH, pK<span class="math-inline">\(_a\)</span> and the fraction protonated.</strong> The pH measures how many free protons the solution contains: the lower the pH, the more protons, and the more acidic the solution. Each group that can bind a proton has a pK<span class="math-inline">\(_a\)</span>, the pH at which it carries the proton exactly half of the time. Below its pK<span class="math-inline">\(_a\)</span> a group is mostly protonated, above it mostly deprotonated. The fraction of the time it carries the proton is</p>
+<p><span class="math-display">\[f_{prot} = \frac{1}{1 + 10^{\,\mathrm{pH} - \mathrm{p}K_a}} .\]</span></p>
+<p>Here <span class="math-inline">\(f_{prot}\)</span> is the fraction protonated, a number between 0 and 1. The exponent is the difference between the pH of the solution and the pK<span class="math-inline">\(_a\)</span> of the group. Each unit of that difference changes the ratio of the two forms by a factor of 10.</p>
+<p>Three examples at pH 7, with round pK<span class="math-inline">\(_a\)</span> values chosen for illustration:</p>
+<ul>
+<li>A carboxylic acid such as the Asp side chain, with a pK<span class="math-inline">\(_a\)</span> of 4: <span class="math-inline">\(f_{prot} = 1/(1+10^{3}) = 0.001\)</span>. It is deprotonated and carries a charge of <span class="math-inline">\(-1\)</span>.</li>
+<li>An amine such as the Lys side chain, with a pK<span class="math-inline">\(_a\)</span> of 10.5: <span class="math-inline">\(f_{prot} = 1/(1+10^{-3.5}) = 0.9997\)</span>. It is protonated and carries a charge of <span class="math-inline">\(+1\)</span>.</li>
+<li>A histidine with a pK<span class="math-inline">\(_a\)</span> of 6.5: <span class="math-inline">\(f_{prot} = 1/(1+10^{0.5}) = 0.24\)</span>. With a pK<span class="math-inline">\(_a\)</span> of 6 the result is <span class="math-inline">\(1/(1+10^{1}) = 0.09\)</span>. Neither form can be neglected, which is why histidine needs a decision.</li>
+</ul>
+<p>How an equilibrium of this kind is related to a free energy is explained in the <a href="physics.html#equilibrium">primer</a>.</p>
+</div>
+<p>At pH 7, Asp and Glu are deprotonated, Lys and Arg protonated. These four are several units away from their pK<span class="math-inline">\(_a\)</span> at pH 7, so the choice is safe unless the surroundings shift the pK<span class="math-inline">\(_a\)</span> strongly. Asp and Glu then carry a charge of <span class="math-inline">\(-1\)</span> each, and Lys and Arg a charge of <span class="math-inline">\(+1\)</span> each.</p>
+<p><strong>Histidine</strong> (pK<span class="math-inline">\(_a\)</span> near 6 to 6.5) is the difficult one: it can be neutral with the proton on N<span class="math-inline">\(\delta\)</span> (HID) or N<span class="math-inline">\(\varepsilon\)</span> (HIE), or doubly protonated and positive (HIP). The histidine side chain ends in a five-membered ring with two nitrogen atoms, called N<span class="math-inline">\(\delta\)</span> and N<span class="math-inline">\(\varepsilon\)</span> after their positions along the side chain. Either nitrogen can carry a hydrogen, or both can. That gives three states: two neutral ones that differ only in which nitrogen has the hydrogen, and a positive one with both.</p>
+<p>HID, HIE and HIP are the residue names used for the three states in AMBER-family force fields. With a pK<span class="math-inline">\(_a\)</span> so close to 7, the charged form is present a sizeable part of the time: 24 % or 9 % in the two examples of the box. The surroundings in the protein can push the balance either way.</p>
+<p>Choose by inspecting hydrogen-bond partners or with a pK<span class="math-inline">\(_a\)</span> predictor (PROPKA, H++). A hydrogen bond needs a donor, an N-H or O-H group, and an acceptor, an N or O atom that does not carry that hydrogen. Look at what sits next to each ring nitrogen in the structure. A nitrogen that faces an acceptor, such as a backbone C=O group, should carry the hydrogen. A nitrogen that faces a donor should not.</p>
+<p>A pK<span class="math-inline">\(_a\)</span> predictor is a program that estimates the pK<span class="math-inline">\(_a\)</span> of every such group from the structure around it, so that you can apply the formula of the box residue by residue.</p>
+<p>Buried Asp, Glu, Lys and Cys can also have shifted pK<span class="math-inline">\(_a\)</span> values. A charge is stabilised by water, whose molecules turn their dipoles towards it (<a href="physics.html#electrostatics">primer</a>). In the dry interior of a protein that stabilisation is missing, so a buried group tends to prefer its neutral form: the pK<span class="math-inline">\(_a\)</span> of a buried acid goes up and that of a buried base goes down. A nearby charge of the opposite sign does the reverse and stabilises the charged form (Check yourself 4 is an example).</p>
+<p>If the science depends on pH, plan simulations in each relevant protonation state. A standard simulation has no pH setting. The pH enters only through the protonation states chosen at this step. So "the same protein at pH 5 and at pH 7" means two systems that differ in their protonation states, each built and simulated separately.</p>
+<p><strong>Ligands, cofactors, ions, structural waters.</strong> Keep those that matter and get parameters for anything non-standard from a compatible general force field (Module 6). Metal sites need special care.</p>
+<p>A structure file often contains more than the protein. A <em>ligand</em> is a small molecule bound to it, such as a drug or a substrate. A <em>cofactor</em> is a non-protein group that the protein needs for its function, such as a haem group. <em>Structural waters</em> are water molecules seen at fixed positions in the crystal, often buried in the protein and hydrogen-bonded to it. Crystals also contain molecules that are present only because they were in the crystallisation solution, and those are removed.</p>
+<p>A protein force field has templates for the standard amino acids and none for a drug molecule. The parameters of such a molecule come from a <em>general force field</em>, built to be combined with one particular protein force field (<a href="06-force-field-parameters.html">Module 6</a>). Metal ions are difficult for another reason: a metal ion bound in a protein polarises its neighbours and partly shares electrons with them, and a model of fixed point charges describes that poorly (<a href="05-force-field-form.html">Module 5</a> lists what fixed charges leave out).</p>
+<h2 id="steps-2-to-4-topology-box-water-ions">Steps 2 to 4: topology, box, water, ions</h2>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="8oGZn1NdvbY" href="https://www.youtube.com/watch?v=8oGZn1NdvbY" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial 1: Lysozyme in water</span><span class="sv-m">33 min · GROMACS</span></a><a class="sv" data-yt="Kbq6Gf9m2T8" href="https://www.youtube.com/watch?v=Kbq6Gf9m2T8" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">Lysozyme in Water using GROMACS on Windows (WSL) | MD Simulation Tutorial for Beginners: Part 8</span><span class="sv-m">43 min · Dr. H Ismail</span></a><a class="sv" data-yt="GRH81ABCq54" href="https://www.youtube.com/watch?v=GRH81ABCq54" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Protein-Membrane Simulation Setup | CHARMM-GUI to GROMACS Molecular Dynamics Tutorial</span><span class="sv-m">37 min · Omixium</span></a><a class="sv" data-yt="nKYrzrwaRmc" href="https://www.youtube.com/watch?v=nKYrzrwaRmc" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 7-Lecture 33</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a><a class="sv" data-yt="zCTGd5xYwoQ" href="https://www.youtube.com/watch?v=zCTGd5xYwoQ" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 8-Lecture 36</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a></div>
+
+<p><em>What is done.</em> Four operations, each by one tool. The force field is applied to the structure, which gives the topology (step 2). A periodic box is defined around the molecule and filled with water (step 3). Some of the water molecules are replaced by ions (step 4).</p>
+<p><em>If it is skipped.</em> Without a topology there are no forces at all. Without water the protein is in a vacuum, where nothing weakens the attraction between its charged groups, and the structure distorts. Without ions, a charged solute leaves a net charge in the box, and the Ewald method of <a href="07-boundaries-electrostatics.html">Module 7</a> then adds an artificial background charge that distorts the results.</p>
+<p><em>How to tell that it worked.</em> Each tool ends without an error and the final system has zero net charge. The numbers of water molecules and ions agree with your own estimate (the formulas are below). A viewer shows the solute in the middle of a box of water, with ions scattered through it.</p>
+<p>Three words first.</p>
+<ul>
+<li><strong>Topology.</strong> The structure file says where the atoms are. The topology says what they are: the type, the charge and the mass of each atom, and the lists of bonds, angles and torsions between them. The tool that writes it matches every residue of your structure to a template of the force field (<a href="06-force-field-parameters.html">Module 6</a>). It adds the hydrogens at the same time, because the template says how many each atom has.</li>
+<li><strong>To solvate</strong> is to surround the solute with solvent. Here every water molecule is present as three atoms ("explicit" water).</li>
+<li><strong>To neutralise</strong> is to add ions until the charges of all atoms in the box add up to zero.</li>
+</ul>
 <p>With GROMACS (a force field that ships with every version is used here; current ones such as ff14SB, ff19SB and CHARMM36m are available as ports):</p>
 <div class="code"><pre><span></span><code><span class="c1"># topology: applies the force field, adds hydrogens</span>
 gmx<span class="w"> </span>pdb2gmx<span class="w"> </span>-f<span class="w"> </span>protein.pdb<span class="w"> </span>-o<span class="w"> </span>processed.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-ff<span class="w"> </span>amber99sb-ildn<span class="w"> </span>-water<span class="w"> </span>tip3p<span class="w"> </span>-ignh
@@ -138,18 +336,288 @@ gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </sp
 gmx<span class="w"> </span>genion<span class="w"> </span>-s<span class="w"> </span>ions.tpr<span class="w"> </span>-o<span class="w"> </span>ions.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-pname<span class="w"> </span>NA<span class="w"> </span>-nname<span class="w"> </span>CL<span class="w"> </span>-neutral<span class="w"> </span>-conc<span class="w"> </span><span class="m">0</span>.15
 </code></pre></div>
 
+<p>A force field "ships with" the program when its parameter files are installed together with it. A "port" is a conversion of the parameter files of a force field into the file format of another program, here GROMACS.</p>
+<h3 id="the-five-commands-option-by-option">The five commands, option by option</h3>
+<table>
+<thead>
+<tr>
+<th>Command or option</th>
+<th>What it does</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gmx pdb2gmx</code></td>
+<td>Step 2. Applies the force field to the structure and adds the hydrogens.</td>
+<td><a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>-f protein.pdb</code></td>
+<td>The cleaned structure of step 1.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-o processed.gro</code></td>
+<td>The structure that is written, now with all its hydrogens.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-p topol.top</code></td>
+<td>The topology that is written. The later commands that take <code>-p topol.top</code> read this file or update it.</td>
+<td><a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>-ff amber99sb-ildn</code></td>
+<td>The force field.</td>
+<td><a href="05-force-field-form.html">5</a>, <a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>-water tip3p</code></td>
+<td>The water model: TIP3P, a model with three sites, one on each atom.</td>
+<td><a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>-ignh</code></td>
+<td>Ignore the hydrogens that are already in the input file. Every hydrogen is then one that the tool places itself.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>gmx editconf</code></td>
+<td>Step 3, first half. Defines the box.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>-f processed.gro</code>, <code>-o boxed.gro</code></td>
+<td>The structure that is read, and the same structure written with a box around it.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>Put the solute in the centre of the box.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-d 1.2</code></td>
+<td>The padding: at least 1.2 nm between the solute and the faces of the box.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>-bt dodecahedron</code></td>
+<td>The box type, a rhombic dodecahedron. Of the three box shapes of Module 7 it needs the least volume: 29 % less than a cube for the same distance between copies.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>gmx solvate</code></td>
+<td>Step 3, second half. Fills the box with water.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-cp boxed.gro</code></td>
+<td>The solute in its box.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-cs spc216.gro</code></td>
+<td>The water to fill it with.</td>
+<td><a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>-o solvated.gro</code>, <code>-p topol.top</code></td>
+<td>The solvated structure that is written, and the topology, which is updated with the water that was added.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>gmx grompp</code></td>
+<td>Packs parameters (<code>-f</code>), structure (<code>-c</code>) and topology (<code>-p</code>) into a run input file (<code>-o</code>). It is here only because the next tool takes a <code>.tpr</code> file as its input. No simulation is run from <code>ions.tpr</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>gmx genion</code></td>
+<td>Step 4. Replaces water molecules by ions.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>-s ions.tpr</code></td>
+<td>The system to which the ions are added.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-o ions.gro</code>, <code>-p topol.top</code></td>
+<td>The structure with ions that is written, and the topology, updated again.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-pname NA</code>, <code>-nname CL</code></td>
+<td>The names of the positive and the negative ion: sodium and chloride.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-neutral</code></td>
+<td>Add the ions needed to bring the net charge of the box to zero.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>-conc 0.15</code></td>
+<td>Add salt up to a concentration of 0.15 mol/L.</td>
+<td>this section</td>
+</tr>
+</tbody>
+</table>
+<p>The file <code>ions.mdp</code> has one job: to let <code>gmx grompp</code> build the <code>.tpr</code> file that <code>gmx genion</code> needs. No run is made from it. It is the minimisation file <code>em.mdp</code> of Step 5 with one change, <code>coulombtype = Cut-off</code>:</p>
+<div class="code"><pre><span></span><code>; ions.mdp : only used to build ions.tpr for gmx genion, never run
+integrator    = steep
+emtol         = 1000.0
+emstep        = 0.01
+nsteps        = 50000
+cutoff-scheme = Verlet
+coulombtype   = Cut-off     ; plain cutoff: the box still has a net charge at this point
+rcoulomb      = 1.0
+rvdw          = 1.0
+</code></pre></div>
+
+<p>The reason for the change: with <code>coulombtype = PME</code> and a solute that still has a net charge, <code>gmx grompp</code> gives a warning about the net charge, and a warning stops it from writing the output. Neutralising the box is what the next command is for, so at this one step a plain cutoff is used. The other lines are explained with <code>em.mdp</code> in Step 5.</p>
+<p>When <code>gmx genion</code> runs, it stops and asks which group of molecules it may replace by ions. Choose the group of the water molecules, which GROMACS calls <code>SOL</code>.</p>
+<p>(The status of this file and of the two equilibration files further down is stated in the box under "The equilibration input files".)</p>
+<h3 id="how-large-is-the-box">How large is the box?</h3>
+<p>The box decides the cost of everything that follows, because most of the atoms in it are water (<a href="06-force-field-parameters.html">Module 6</a> puts water at 80 to 90 % of the atoms). Two numbers fix its size: the largest dimension of the solute and the <strong>padding</strong>, the layer of solvent you leave between the solute and the box face.</p>
+<p>The solute tumbles during the run, so its longest dimension can point in any direction. The box must leave the padding on both sides of that dimension:</p>
+<p><span class="math-display">\[d_{image} = D + 2\,d_{pad}, \qquad V_{box} = f\,d_{image}^{3} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(D\)</span>: the largest dimension of the solute, the longest distance between two of its atoms, in nm.</li>
+<li><span class="math-inline">\(d_{pad}\)</span>: the padding, in nm. It is the value given to <code>-d</code>.</li>
+<li><span class="math-inline">\(d_{image}\)</span>: the image distance, the distance from any point of the box to its nearest copy in a neighbouring box, in nm.</li>
+<li><span class="math-inline">\(V_{box}\)</span>: the volume of the box, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(f\)</span>: a number that depends on the shape of the box. It is 1 for a cube, 0.77 for a truncated octahedron and 0.71 for a rhombic dodecahedron (the table of <a href="07-boundaries-electrostatics.html">Module 7</a>).</li>
+<li>The exponent 3: the image distance cubed.</li>
+</ul>
+</div>
+<p>Read it like this. The solute and its nearest copy are separated by at least <span class="math-inline">\(2\,d_{pad}\)</span> of solvent. That gap must stay larger than the cutoff of the interactions (the distance, about 1 nm, beyond which the program no longer computes the interaction of two atoms pair by pair, <a href="07-boundaries-electrostatics.html">Module 7</a>), or the solute feels its own copy, which is an artefact of the box and exists in no experiment. Module 7 gives the practical rule: 1.0 to 1.2 nm of solvent on each side. The volume grows with the <em>cube</em> of the image distance, so a little more padding costs a lot of water.</p>
+<p>A worked number. Take a small protein with <span class="math-inline">\(D = 4\)</span> nm (a round value for illustration) and <span class="math-inline">\(d_{pad} = 1.2\)</span> nm. Then <span class="math-inline">\(d_{image} = 4 + 2\times1.2 = 6.4\)</span> nm. A cubic box has <span class="math-inline">\(6.4^3 = 262\)</span> nm<span class="math-inline">\(^3\)</span>, and a rhombic dodecahedron has <span class="math-inline">\(0.71\times262 = 186\)</span> nm<span class="math-inline">\(^3\)</span>. Raising the padding to 1.4 nm gives <span class="math-inline">\(d_{image} = 6.8\)</span> nm and a volume 20 % larger, because <span class="math-inline">\((6.8/6.4)^3 = 1.20\)</span>.</p>
+<p>The number of water molecules follows from the volume that is left for them. Liquid water has 33.4 molecules per nm<span class="math-inline">\(^3\)</span> (<a href="01-what-is-md.html">Module 1</a>):</p>
+<p><span class="math-display">\[N_{water} \approx 33.4\ \text{nm}^{-3}\times\left(V_{box} - V_{solute}\right) .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(N_{water}\)</span>: the number of water molecules in the box. Each one is three atoms.</li>
+<li>33.4 nm<span class="math-inline">\(^{-3}\)</span>: the number of molecules in one cubic nanometre of liquid water.</li>
+<li><span class="math-inline">\(V_{box}\)</span>: the volume of the box, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(V_{solute}\)</span>: the volume taken up by the solute itself, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(\approx\)</span>: an estimate. The real count depends on how the water packs against the solute.</li>
+</ul>
+</div>
+<p>In the example, say the protein fills 30 nm<span class="math-inline">\(^3\)</span>. The dodecahedron then holds about <span class="math-inline">\(33.4\times(186-30) = 5{,}200\)</span> water molecules, which is 15,600 atoms. The cube would hold <span class="math-inline">\(33.4\times(262-30) = 7{,}700\)</span> molecules, or 23,100 atoms. The choice of box shape alone removes a third of the water.</p>
+<h3 id="what-solvating-does">What solvating does</h3>
+<p>A solvation tool does not build liquid water molecule by molecule. It starts from a small box of water that was simulated beforehand until it had the structure of the liquid. That is what "equilibrated" means in the comment of the command block. Copies of this small box are stacked until they cover your box, and every water molecule that would overlap the solute or stick out of the box is left out.</p>
+<p>"3-site" means that the water molecule has three interaction sites, one on each atom. "Generic" means that the stored positions are not tied to one particular three-site model. The parameters come from the water model you chose in step 2. The starting positions are close enough for any of them, and the equilibration of steps 6 and 7 corrects the rest.</p>
+<p>The result is a box of water that has never seen this solute. Next to the protein there are small gaps, some molecules are a little too close to it, and none is oriented towards its charged and polar groups. Steps 5 to 7 exist to repair this.</p>
+<h3 id="counter-ions-salt-and-ionic-strength">Counter-ions, salt and ionic strength</h3>
+<p>Step 4 adds ions for two separate reasons.</p>
+<p><strong>To neutralise.</strong> Add up the charges of all atoms of the solute and you get its net charge, a whole number such as <span class="math-inline">\(-6\)</span> or <span class="math-inline">\(+3\)</span> in units of the proton charge <span class="math-inline">\(e\)</span>. A periodic box with a net charge is a problem, because every one of its infinitely many copies carries the same charge. The Ewald method then silently spreads the opposite charge evenly over the whole box, and that artificial background distorts pressure and free energies (the warning box of <a href="07-boundaries-electrostatics.html">Module 7</a>). A real solution is neutral, so the right repair is the physical one: add as many ions of the opposite sign as the solute has net charges. These are the <strong>counter-ions</strong>.</p>
+<p><strong>To have salt.</strong> A protein in a cell or in a buffer is surrounded by dissolved salt. The ions gather around charges of the opposite sign and weaken the electrostatic forces between charged groups at a distance. This is called screening (<a href="physics.html#electrostatics">primer</a>). Without salt, charged groups attract and repel each other more strongly and over longer distances than they do in the experiment you want to compare with.</p>
+<p>The quantity that measures how strongly a salt solution screens is the <strong>ionic strength</strong>:</p>
+<p><span class="math-display">\[I = \tfrac12\sum_i c_i\,z_i^{2} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(I\)</span>: the ionic strength, in mol/L.</li>
+<li><span class="math-inline">\(\sum_i\)</span>: a sum over the kinds of ion in the solution. For table salt there are two kinds, Na<span class="math-inline">\(^+\)</span> and Cl<span class="math-inline">\(^-\)</span>.</li>
+<li><span class="math-inline">\(c_i\)</span>: the concentration of ion kind <span class="math-inline">\(i\)</span>, in mol/L.</li>
+<li><span class="math-inline">\(z_i\)</span>: the charge number of that ion: <span class="math-inline">\(+1\)</span> for Na<span class="math-inline">\(^+\)</span>, <span class="math-inline">\(-1\)</span> for Cl<span class="math-inline">\(^-\)</span>, <span class="math-inline">\(+2\)</span> for Ca<span class="math-inline">\(^{2+}\)</span>. It is squared, so the sign drops out and a doubly charged ion counts four times.</li>
+<li><span class="math-inline">\(\tfrac12\)</span>: a convention. It makes <span class="math-inline">\(I\)</span> equal to the salt concentration for a salt such as NaCl.</li>
+</ul>
+</div>
+<p>Read it like this. For 0.15 mol/L of NaCl there is 0.15 mol/L of Na<span class="math-inline">\(^+\)</span> and 0.15 mol/L of Cl<span class="math-inline">\(^-\)</span>, so <span class="math-inline">\(I = \tfrac12(0.15\times1 + 0.15\times1) = 0.15\)</span> mol/L. For a salt of two singly charged ions the ionic strength and the concentration are the same number, which is why this module uses the two words for the same thing. They differ for other salts: 0.10 mol/L of CaCl<span class="math-inline">\(_2\)</span> has 0.10 mol/L of Ca<span class="math-inline">\(^{2+}\)</span> and 0.20 mol/L of Cl<span class="math-inline">\(^-\)</span>, and <span class="math-inline">\(I = \tfrac12(0.10\times4 + 0.20\times1) = 0.30\)</span> mol/L. "Physiological" in the workflow table means about 0.15 mol/L.</p>
+<h3 id="from-a-concentration-to-a-number-of-ions">From a concentration to a number of ions</h3>
+<p>A concentration says how many moles there are in a litre. A simulation needs a number of ions in a box measured in nm<span class="math-inline">\(^3\)</span>. The conversion takes two facts. One mole is <span class="math-inline">\(N_A = 6.022\times10^{23}\)</span> particles, and one litre is a cube of 0.1 m, or <span class="math-inline">\(10^8\)</span> nm, on each side, which makes <span class="math-inline">\(10^{24}\)</span> nm<span class="math-inline">\(^3\)</span>. A concentration of 1 mol/L is therefore <span class="math-inline">\(6.022\times10^{23}/10^{24} = 0.6022\)</span> particles per nm<span class="math-inline">\(^3\)</span>, and</p>
+<p><span class="math-display">\[N_{s} = 0.6022\;c\;V .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(N_s\)</span>: the number of ion pairs of salt to add. One pair is one Na<span class="math-inline">\(^+\)</span> and one Cl<span class="math-inline">\(^-\)</span>.</li>
+<li><span class="math-inline">\(c\)</span>: the salt concentration you want, in mol/L.</li>
+<li><span class="math-inline">\(V\)</span>: the volume of the box, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li>0.6022: Avogadro's number times the number of litres in one nm<span class="math-inline">\(^3\)</span>, that is, <span class="math-inline">\(6.022\times10^{23}\times10^{-24}\)</span>. Its unit is nm<span class="math-inline">\(^{-3}\)</span> per mol/L.</li>
+</ul>
+</div>
+<p>The counter-ions come on top of the salt:</p>
+<p><span class="math-display">\[N_{\text{Na}} = N_s + \max(0,\,-Q), \qquad N_{\text{Cl}} = N_s + \max(0,\,Q) .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(N_{\text{Na}}\)</span>, <span class="math-inline">\(N_{\text{Cl}}\)</span>: the numbers of sodium and chloride ions in the finished box.</li>
+<li><span class="math-inline">\(Q\)</span>: the net charge of the solute in units of <span class="math-inline">\(e\)</span>, a whole number. It is negative for a solute with more negative than positive groups.</li>
+<li><span class="math-inline">\(\max(0,x)\)</span>: the larger of 0 and <span class="math-inline">\(x\)</span>. It equals <span class="math-inline">\(x\)</span> when <span class="math-inline">\(x\)</span> is positive and 0 otherwise.</li>
+<li><span class="math-inline">\(N_s\)</span>: the number of ion pairs of salt, from the formula above.</li>
+</ul>
+</div>
+<p>Read it like this. A solute with <span class="math-inline">\(Q = -6\)</span> gets 6 extra Na<span class="math-inline">\(^+\)</span> and no extra Cl<span class="math-inline">\(^-\)</span>. The total charge of the box is then <span class="math-inline">\(-6 + (N_s + 6) - N_s = 0\)</span>. A solute with <span class="math-inline">\(Q = +3\)</span> gets 3 extra Cl<span class="math-inline">\(^-\)</span>.</p>
+<p>A worked number, for the example box of 186 nm<span class="math-inline">\(^3\)</span> at 0.15 mol/L: <span class="math-inline">\(N_s = 0.6022\times0.15\times186 = 16.8\)</span>, so 17 pairs. If that protein has <span class="math-inline">\(Q = -6\)</span>, the box gets 23 Na<span class="math-inline">\(^+\)</span> and 17 Cl<span class="math-inline">\(^-\)</span>.</p>
 <p><strong>How many ions?</strong> A concentration of 0.15 mol/L is <span class="math-inline">\(0.15\times0.6022 = 0.0903\)</span> ion pairs per nm<span class="math-inline">\(^3\)</span>. A box of 500 nm<span class="math-inline">\(^3\)</span> needs 45 Na<span class="math-inline">\(^+\)</span> and 45 Cl<span class="math-inline">\(^-\)</span>, plus counter-ions for the net charge of the solute. Equivalently, one ion pair per <span class="math-inline">\(55.5/0.15 = 370\)</span> water molecules. In small boxes the number of ions is small, so the realised concentration is coarse-grained: one ion pair more or less in a 100 nm<span class="math-inline">\(^3\)</span> box changes it by 17 mM.</p>
+<p>Three remarks on this paragraph.</p>
+<p><em>The first route</em> is the formula above: <span class="math-inline">\(0.0903\times500 = 45.2\)</span>, rounded to 45 pairs.</p>
+<p><em>The second route</em> counts water molecules instead of volume. A litre of water weighs about 1,000 g and a mole of water weighs 18 g, so water is a 55.5 mol/L solution of itself. A salt concentration of 0.15 mol/L then means 0.15 ion pairs for every 55.5 water molecules, which is one pair per 370.</p>
+<p>The two routes do not give quite the same number. For the 5,200 water molecules of the example box, the second gives <span class="math-inline">\(5{,}200/370 = 14\)</span> pairs, and the first gave 17. The first counts the volume of the solute as if it were solution. That is the remark at the end of the answer to Check yourself 1.</p>
+<p>So the word "equivalently" holds for the solution itself: 0.0903 pairs per nm<span class="math-inline">\(^3\)</span> and one pair per 370 water molecules are the same statement, because <span class="math-inline">\(33.4/0.0903 = 370\)</span>. The two counts differ only when the first is multiplied by a volume that includes the solute. The option <code>-conc</code> of <code>gmx genion</code> follows the first route: its documentation says that the number of ions is computed from the volume of the box.</p>
+<p><em>Coarse-grained</em> means here that the concentration can only change in steps, because you cannot add half an ion. A box of 100 nm<span class="math-inline">\(^3\)</span> needs <span class="math-inline">\(0.0903\times100 = 9.03\)</span> pairs. With 9 pairs the concentration is 149 mM, with 10 pairs it is 166 mM, and nothing in between is possible.</p>
+<p>Make these estimates before you build, and compare them with what the tools report. If the numbers are far apart, look for the reason before going on: a wrong box type, a wrong padding, or a net charge you did not expect.</p>
+<p>The calculator below does the arithmetic for numbers that you choose. It uses the rules of this section: the box volume from the size of the solute and the padding, 33.4 water molecules per nm<span class="math-inline">\(^3\)</span>, and 0.0602 ion pairs per nm<span class="math-inline">\(^3\)</span> for each 100 mM of salt. It applies the last rule to the volume of the water, <span class="math-inline">\(V_{box} - V_{solute}\)</span>, as the second route does. For the example of this section (a longest dimension of 4 nm, a padding of 1.2 nm, a protein of 25 kDa) it therefore shows 14 ion pairs, where the formula with the whole box volume gave 17.</p>
 <div class="widget" data-widget="syscalc"></div>
 
 <h2 id="step-5-energy-minimisation">Step 5: energy minimisation</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="OCcxxddYrDg" href="https://www.youtube.com/watch?v=OCcxxddYrDg" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.2 - Energy Minimization</span><span class="sv-m">8 min · TMP Chem</span></a><a class="sv" data-yt="WvkSCxLqkxY" href="https://www.youtube.com/watch?v=WvkSCxLqkxY" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.3 - Steepest Descent</span><span class="sv-m">7 min · TMP Chem</span></a><a class="sv" data-yt="AyFXfAhwVBQ" href="https://www.youtube.com/watch?v=AyFXfAhwVBQ" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.4 - Conjugate Gradient</span><span class="sv-m">5 min · TMP Chem</span></a><a class="sv" data-yt="Y_IAolv3ZZg" href="https://www.youtube.com/watch?v=Y_IAolv3ZZg" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 16: Energy minimisation avoids clashes, which avoids crashes</span><span class="sv-m">5 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="OCcxxddYrDg" href="https://www.youtube.com/watch?v=OCcxxddYrDg" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.2 - Energy Minimization</span><span class="sv-m">8 min · TMP Chem</span></a><a class="sv" data-yt="WvkSCxLqkxY" href="https://www.youtube.com/watch?v=WvkSCxLqkxY" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.3 - Steepest Descent</span><span class="sv-m">7 min · TMP Chem</span></a><a class="sv" data-yt="AyFXfAhwVBQ" href="https://www.youtube.com/watch?v=AyFXfAhwVBQ" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.4 - Conjugate Gradient</span><span class="sv-m">5 min · TMP Chem</span></a><a class="sv" data-yt="Y_IAolv3ZZg" href="https://www.youtube.com/watch?v=Y_IAolv3ZZg" target="_blank" rel="noopener" title="Molecular Biophysics - all lectures as concepts"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 16: Energy minimisation avoids clashes, which avoids crashes</span><span class="sv-m">5 min · Erik Lindahl (KTH/Stockholm Univ.)</span></a></div>
 
+<p><em>What is done.</em> Every atom is moved a small distance, again and again, in the direction that lowers the potential energy, until no atom feels a large force. No velocities and no time are involved.</p>
+<p><em>If it is skipped.</em> The first MD step throws the overlapping atoms apart at enormous speed, and the run stops with an error within a few steps.</p>
+<p><em>How to tell that it worked.</em> The potential energy has fallen and levelled off, and the largest force on any atom is below the limit you set.</p>
 <p>The freshly built system has overlapping atoms: water placed too close to the protein, hydrogens added in idealised positions. The Lennard-Jones repulsion there is enormous, and the first MD step would give those atoms huge velocities. Minimisation moves the system downhill to the nearest local minimum of <span class="math-inline">\(U\)</span>.</p>
+<p>The three sentences of that paragraph are explained in turn.</p>
+<h3 id="why-there-are-overlaps-and-why-they-are-fatal">Why there are overlaps, and why they are fatal</h3>
+<p>The water came from a pre-built box and was not arranged around this protein. The hydrogens were placed with standard bond lengths and angles ("idealised positions"), without regard to what else is nearby. So here and there two atoms sit closer than two real atoms can.</p>
+<p>Two atoms repel each other when their electron clouds overlap. The Lennard-Jones term of the force field describes this with an energy that grows as <span class="math-inline">\(1/r^{12}\)</span> when the distance <span class="math-inline">\(r\)</span> between the atoms shrinks (<a href="05-force-field-form.html">Module 5</a>). A twelfth power is very steep. Bring two atoms to half their distance and this energy is multiplied by <span class="math-inline">\(2^{12} = 4096\)</span>. The force, which is the slope of the energy, grows faster still.</p>
+<p>Now see what such a force does in one time step. An atom that starts at rest and feels a constant force <span class="math-inline">\(F\)</span> moves, during a time <span class="math-inline">\(\Delta t\)</span>, a distance</p>
+<p><span class="math-display">\[\Delta x \approx \tfrac12\,\frac{F}{m}\,\Delta t^{2} .\]</span></p>
+<div class="legend">
 <ul>
-<li><strong>Steepest descent.</strong> Move every atom along its force: <span class="math-inline">\(\mathbf r\leftarrow\mathbf r + h\,\mathbf F/|\mathbf F|_{max}\)</span>, increasing the step <span class="math-inline">\(h\)</span> after a successful step and decreasing it after a failed one. Robust far from a minimum, slow close to it. The right choice for removing clashes.</li>
-<li><strong>Conjugate gradient and L-BFGS.</strong> Use information from previous steps to choose better directions. Faster near a minimum. Needed when you want a tightly converged minimum, for example before normal-mode analysis.</li>
+<li><span class="math-inline">\(\Delta x\)</span>: the distance the atom moves during one time step, in nm.</li>
+<li><span class="math-inline">\(F\)</span>: the force on the atom, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(m\)</span>: the mass of the atom, in atomic mass units (u). Hydrogen is about 1 u.</li>
+<li><span class="math-inline">\(F/m\)</span>: the acceleration of the atom (Newton's second law, <a href="02-classical-mechanics.html">Module 2</a>). It comes out in nm ps<span class="math-inline">\(^{-2}\)</span> without any conversion factor, because 1 kJ/mol is 1 u nm<span class="math-inline">\(^2\)</span> ps<span class="math-inline">\(^{-2}\)</span>.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step, in ps. A step of 2 fs is 0.002 ps.</li>
+<li><span class="math-inline">\(\tfrac12\)</span> and the square: the rule for motion at constant acceleration. The velocity grows in proportion to the time, and the distance covered is the average velocity times the time.</li>
+<li><span class="math-inline">\(\approx\)</span>: an estimate. It ignores the velocity the atom already has and the change of the force during the step.</li>
 </ul>
+</div>
+<p>Read it like this, for a hydrogen atom (<span class="math-inline">\(m = 1\)</span> u) and a step of 2 fs. With a force of 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> the atom moves <span class="math-inline">\(\tfrac12\times1000\times0.002^2 = 0.002\)</span> nm. That is the same size as the 0.003 nm it moves in one step from its thermal velocity at 300 K, so the integrator can handle it.</p>
+<p>With a force one hundred times larger, which a bad overlap can produce, the atom moves 0.2 nm in one step. That is twice the length of a bond to hydrogen. The atom lands on top of other atoms, the forces there are larger again, and the next step is worse. This runaway is what "explode" means.</p>
+<h3 id="downhill-and-where-it-stops">Downhill, and where it stops</h3>
+<p>The potential energy <span class="math-inline">\(U\)</span> is a function of all the coordinates. Module 2 pictured it as a landscape of hills and valleys, with the force on the system pointing downhill. A <strong>local minimum</strong> is the bottom of one valley: every small move away from it raises the energy, and all forces are zero there. The <strong>global minimum</strong> is the bottom of the deepest valley of all.</p>
+<p>A minimiser behaves like a ball that rolls downhill with so much friction that it stops in the first hollow it meets. It never climbs over a ridge, so where it stops depends on where it started. The energy of a protein in water has an enormous number of local minima, and the minimiser finds the one nearest to the structure you built. For removing clashes nothing more is needed.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the gradient, and what "downhill" means with many atoms.</strong> <span class="math-inline">\(U\)</span> depends on the three coordinates of every atom. The <strong>gradient</strong> of <span class="math-inline">\(U\)</span> is the list of its slopes with respect to each coordinate in turn, the others held fixed. As a vector it points in the direction in which <span class="math-inline">\(U\)</span> rises fastest. The force is minus the gradient, so the force points in the direction in which <span class="math-inline">\(U\)</span> falls fastest. Moving every atom a short distance along its own force therefore lowers <span class="math-inline">\(U\)</span>.</p>
+<p>A small example with two coordinates: <span class="math-inline">\(U = x^2 + 4y^2\)</span> at the point <span class="math-inline">\((1, 1)\)</span>, where <span class="math-inline">\(U = 5\)</span>. The slopes are <span class="math-inline">\(2x = 2\)</span> and <span class="math-inline">\(8y = 8\)</span>, so the force is <span class="math-inline">\((-2, -8)\)</span>. Divide by the largest component, 8, and take a step of length 0.1: the point moves by <span class="math-inline">\((-0.025, -0.1)\)</span> to <span class="math-inline">\((0.975, 0.9)\)</span>. There <span class="math-inline">\(U = 0.975^2 + 4\times0.9^2 = 4.19\)</span>, lower than before. More in the <a href="maths.html#gradient">toolbox</a>.</p>
+</div>
+<h3 id="the-two-families-of-minimiser">The two families of minimiser</h3>
+<p><strong>Steepest descent.</strong> Move every atom along its force: <span class="math-inline">\(\mathbf r\leftarrow\mathbf r + h\,\mathbf F/|\mathbf F|_{max}\)</span>, increasing the step <span class="math-inline">\(h\)</span> after a successful step and decreasing it after a failed one. Robust far from a minimum, slow close to it. The right choice for removing clashes.</p>
+<p>Written for one atom, the update is</p>
+<p><span class="math-display">\[\mathbf r_i \leftarrow \mathbf r_i + h\,\frac{\mathbf F_i}{|\mathbf F|_{max}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\mathbf r_i\)</span>: the position of atom <span class="math-inline">\(i\)</span>, a vector, in nm. The formula in the sentence above leaves out the label <span class="math-inline">\(i\)</span> and means "for every atom".</li>
+<li><span class="math-inline">\(\leftarrow\)</span>: replace what is on the left by what is on the right.</li>
+<li><span class="math-inline">\(\mathbf F_i\)</span>: the force on atom <span class="math-inline">\(i\)</span>, a vector. It is minus the gradient of <span class="math-inline">\(U\)</span> with respect to the position of that atom.</li>
+<li><span class="math-inline">\(|\mathbf F|_{max}\)</span>: the size of the largest force on any atom at this moment. The bars mean "length of the vector".</li>
+<li><span class="math-inline">\(h\)</span>: the step length, in nm. It is the distance moved by the atom with the largest force. Its first value is the setting <code>emstep</code>.</li>
+</ul>
+</div>
+<p>Read it like this. Dividing by the largest force turns the forces into relative sizes between 0 and 1. The atom with the largest force moves exactly a distance <span class="math-inline">\(h\)</span>. An atom that feels a tenth of that force moves <span class="math-inline">\(h/10\)</span>, and each atom moves in the direction of its own force. With <code>emstep = 0.01</code> the worst atom moves 0.01 nm in the first step, about a tenth of a bond length.</p>
+<p>A step is <em>successful</em> when the potential energy comes out lower. The next step is then tried with a larger <span class="math-inline">\(h\)</span>. A step has <em>failed</em> when the energy went up: the atoms moved too far and climbed the opposite wall of the valley. The step is then discarded, and a shorter one is tried from the same place. Because of this test the method cannot run away, which is what "robust" means.</p>
+<p>It is slow near a minimum because the bottom of a valley is usually long and narrow. The steepest direction then points across the valley, and the path zigzags from wall to wall and makes little progress along the floor.</p>
+<p><strong>Conjugate gradient and L-BFGS.</strong> Use information from previous steps to choose better directions. Faster near a minimum. Needed when you want a tightly converged minimum, for example before normal-mode analysis.</p>
+<p>Both methods remember the forces of earlier steps. From the way the force changed between steps they estimate the curvature of the valley, and they aim along its floor. Normal-mode analysis (<a href="02-classical-mechanics.html">Module 2</a>) describes the vibrations of a molecule by expanding <span class="math-inline">\(U\)</span> to second order around a minimum, and that expansion assumes that the forces are zero to high accuracy. Starting an MD run needs no such accuracy.</p>
+<h3 id="when-to-stop-and-what-minimisation-is-not">When to stop, and what minimisation is not</h3>
 <p>Convergence criterion: the maximum force on any atom below about 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> is enough to start MD. Minimisation does not find the global minimum and does not "relax" the structure in any thermodynamic sense: it is a 0 K operation that only removes strain.</p>
+<p>A <em>convergence criterion</em> is the rule that decides when the minimiser may stop. The estimate above shows why this value is enough: at 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span> the force moves even the lightest atom no further in one step than its thermal motion does.</p>
+<p>"A 0 K operation" needs a word. Temperature measures the kinetic energy of the atoms (<a href="03-statistical-mechanics.html">Module 3</a>). A minimiser has no velocities, so its result is a system without thermal motion, which is a system at absolute zero. <em>Strain</em> means the local distortions left by building: overlaps, stretched bonds, bent angles.</p>
+<p>A real protein at 300 K is never at a minimum of <span class="math-inline">\(U\)</span>. It moves all the time between a huge number of minima. Which shapes it prefers is decided by the free energy, which also counts how many arrangements are available (<a href="physics.html#thermodynamics">primer</a>). A minimised structure therefore says nothing about which conformation is stable.</p>
+<h3 id="the-input-file-line-by-line">The input file, line by line</h3>
 <div class="code"><pre><span></span><code>; em.mdp
 integrator    = steep
 emtol         = 1000.0      ; stop when the largest force is below this (kJ/mol/nm)
@@ -161,23 +629,344 @@ rcoulomb      = 1.0
 rvdw          = 1.0
 </code></pre></div>
 
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>integrator = steep</code></td>
+<td>Do a steepest-descent minimisation. The setting is called <code>integrator</code> because the same line chooses the MD algorithm in the other input files.</td>
+<td>this section</td>
+</tr>
+<tr>
+<td><code>emtol = 1000.0</code></td>
+<td>The convergence criterion: stop when the largest force on any atom is below 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</td>
+<td>this section</td>
+</tr>
+<tr>
+<td><code>emstep = 0.01</code></td>
+<td>The first value of the step length <span class="math-inline">\(h\)</span>: 0.01 nm.</td>
+<td>this section</td>
+</tr>
+<tr>
+<td><code>nsteps = 50000</code></td>
+<td>The largest number of steps allowed. The run ends earlier if <code>emtol</code> is reached.</td>
+<td>this section</td>
+</tr>
+<tr>
+<td><code>cutoff-scheme = Verlet</code></td>
+<td>Keep a buffered list of neighbouring atoms, so that not every pair of atoms has to be tested at every step.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>coulombtype = PME</code></td>
+<td>Compute the electrostatic forces with particle-mesh Ewald, which includes all periodic copies of the box.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>rcoulomb = 1.0</code></td>
+<td>The cutoff of the short-range (real-space) part of the Ewald sum: 1.0 nm.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>rvdw = 1.0</code></td>
+<td>The cutoff of the Lennard-Jones interaction: 1.0 nm.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+</tbody>
+</table>
+<p>The last four lines say how the forces are computed, and they have the same values as in the production file of step 8. The minimiser should go downhill on the same energy that the MD run will use.</p>
+<p>Check two things afterwards. First, plot the potential energy against the step number (exercise 1): it should fall steeply and then level off. In a box that is mostly water the final value is a large negative number, because the attraction between the water molecules outweighs everything else.</p>
+<p>Second, find out why the run stopped. If the largest force fell below <code>emtol</code>, the minimisation converged. If the run stopped for another reason, for example because it used up <code>nsteps</code>, the largest force may still be far above the limit. Then look at the atom that carries it, because that is where the structure has a problem.</p>
 <h2 id="steps-6-and-7-equilibration">Steps 6 and 7: equilibration</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="WU_8wdSSZC8" href="https://www.youtube.com/watch?v=WU_8wdSSZC8" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 21: MD Initialization of Positions, Velocities</span><span class="sv-m">27 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="3T5-m-FNR8Y" href="https://www.youtube.com/watch?v=3T5-m-FNR8Y" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 22: MD Equilibration</span><span class="sv-m">21 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="WU_8wdSSZC8" href="https://www.youtube.com/watch?v=WU_8wdSSZC8" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 21: MD Initialization of Positions, Velocities</span><span class="sv-m">27 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="3T5-m-FNR8Y" href="https://www.youtube.com/watch?v=3T5-m-FNR8Y" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 22: MD Equilibration</span><span class="sv-m">21 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
+<p><em>What is done.</em> Two short MD runs. The first gives the atoms velocities and brings the system to the target temperature in a box of fixed size. The second lets the size of the box change until the density is right. In both, springs hold the solute near its starting structure.</p>
+<p><em>If it is skipped.</em> A production run started straight from the minimised structure spends its first part far from equilibrium: cold, at the wrong density, with water that has not adapted to the solute. In the mild case the first part of your data is biased. In the bad case the barostat reacts to a meaningless pressure and deforms the box, or the unsettled solvent pushes the solute out of shape.</p>
+<p><em>How to tell that it worked.</em> The temperature and the density, plotted against time, have each reached a plateau and fluctuate around it.</p>
 <p>The minimised system is at 0 K with a density that is slightly wrong and water that is not adapted to the solute. Equilibration brings it to the target temperature and pressure without damaging the structure you prepared.</p>
+<p>That sentence names three defects.</p>
+<ul>
+<li><em>At 0 K.</em> The minimised structure has positions and no velocities.</li>
+<li><em>A density that is slightly wrong.</em> Water molecules were left out wherever they would have overlapped the solute, which leaves thin gaps. And the pre-built water was not prepared with your water model at your temperature. The box holds slightly too few molecules for its volume.</li>
+<li><em>Water that is not adapted to the solute.</em> Near a protein, water molecules turn towards charged groups and form hydrogen bonds with polar ones. The pre-built water was arranged as in pure water.</li>
+</ul>
+<p>A system is at <strong>equilibrium</strong> when the averages of its properties (temperature, density, energy) no longer change with time. The properties still fluctuate from instant to instant.</p>
+<h3 id="holding-the-solute-in-place">Holding the solute in place</h3>
 <p><strong>Position restraints.</strong> During equilibration the heavy atoms of the solute are tied to their starting positions with harmonic springs, <span class="math-inline">\(U_{restr} = \tfrac12k|\mathbf r-\mathbf r_{ref}|^2\)</span> with <span class="math-inline">\(k\)</span> = 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> (fluctuations of about 0.05 nm). The solvent relaxes around the solute while the solute keeps its shape.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{restr}\)</span>: the restraint energy of one atom, in kJ/mol. It is added to the force-field energy <span class="math-inline">\(U\)</span> for as long as the restraints are on.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: the present position of the atom.</li>
+<li><span class="math-inline">\(\mathbf r_{ref}\)</span>: its reference position, the point the spring pulls it towards. It is the position the atom has in the reference structure given to the run.</li>
+<li><span class="math-inline">\(|\mathbf r-\mathbf r_{ref}|\)</span>: the distance between the two, in nm. The bars mean "length of the vector".</li>
+<li><span class="math-inline">\(k\)</span>: the spring constant, the stiffness of the spring, in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>.</li>
+<li><span class="math-inline">\(\tfrac12\)</span> and the square: the energy of a harmonic spring, as in <a href="02-classical-mechanics.html">Module 2</a>. Twice the displacement costs four times the energy.</li>
+</ul>
+</div>
+<p>Read the formula like this, with <span class="math-inline">\(k = 1{,}000\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>. An atom 0.05 nm from its reference position has a restraint energy of <span class="math-inline">\(\tfrac12\times1000\times0.05^2 = 1.25\)</span> kJ/mol, half of the thermal energy <span class="math-inline">\(k_BT = 2.494\)</span> kJ/mol at 300 K. At 0.1 nm the energy is 5 kJ/mol, twice <span class="math-inline">\(k_BT\)</span>. At 0.2 nm it is 20 kJ/mol, eight times <span class="math-inline">\(k_BT\)</span>. So an atom moves freely over a few hundredths of a nanometre and is held firmly beyond that.</p>
+<p>The "fluctuations of about 0.05 nm" can be computed. For an atom held only by this spring, the typical displacement along one direction is</p>
+<p><span class="math-display">\[\sqrt{\langle \Delta x^{2}\rangle} = \sqrt{\frac{k_BT}{k}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Delta x\)</span>: the displacement of the atom from its reference position along one direction (<span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> or <span class="math-inline">\(z\)</span>), in nm.</li>
+<li><span class="math-inline">\(\langle\ \rangle\)</span>: an average over time.</li>
+<li><span class="math-inline">\(\sqrt{\langle\Delta x^2\rangle}\)</span>: the root-mean-square displacement, the typical size of the fluctuation.</li>
+<li><span class="math-inline">\(k_B\)</span>: the Boltzmann constant, 0.0083145 kJ mol<span class="math-inline">\(^{-1}\)</span> K<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(T\)</span>: the temperature, in K. At 300 K, <span class="math-inline">\(k_BT = 2.494\)</span> kJ/mol.</li>
+<li><span class="math-inline">\(k\)</span>: the spring constant of the restraint.</li>
+</ul>
+</div>
+<p>The formula comes from equipartition (<a href="03-statistical-mechanics.html">Module 3</a>, and in words in the <a href="physics.html#temperature">primer</a>). Every term of the energy that is a square, such as <span class="math-inline">\(\tfrac12k\,\Delta x^2\)</span>, holds on average <span class="math-inline">\(\tfrac12k_BT\)</span>. Setting <span class="math-inline">\(\tfrac12k\langle\Delta x^2\rangle = \tfrac12k_BT\)</span> and dividing both sides by <span class="math-inline">\(\tfrac12k\)</span> gives <span class="math-inline">\(\langle\Delta x^2\rangle = k_BT/k\)</span>. With <span class="math-inline">\(k = 1{,}000\)</span> the result is <span class="math-inline">\(\sqrt{2.494/1000} = 0.050\)</span> nm. A stiffer spring gives smaller fluctuations, and a higher temperature larger ones.</p>
+<p>What the restraints are for: in the first picoseconds the water is far from equilibrium and pushes on the solute unevenly. The springs keep the solute in the shape you prepared while the water settles around it. They act on the <em>heavy atoms</em>, which are all atoms except hydrogen, and they are removed before production.</p>
+<p>Do not confuse a restraint with a constraint (<a href="09-constraints.html">Module 9</a>). A constraint fixes a bond length exactly and removes that motion from the system. A restraint is an extra energy term: the atom still moves, and the spring pulls it back.</p>
+<h3 id="the-two-stages">The two stages</h3>
 <p><strong>NVT stage (about 100 ps).</strong> Velocities are drawn from the Maxwell-Boltzmann distribution, the thermostat takes the system to 300 K at fixed volume. Check: the temperature reaches the target and fluctuates about it.</p>
+<p>The <strong>Maxwell-Boltzmann distribution</strong> says how fast atoms move at a given temperature (<a href="03-statistical-mechanics.html">Module 3</a>). Each of the three velocity components of an atom is a random number from a bell-shaped (Gaussian) distribution centred on zero, with a width of <span class="math-inline">\(\sqrt{k_BT/m}\)</span>, where <span class="math-inline">\(m\)</span> is the mass of the atom. At 300 K that width is about 1.6 nm/ps for hydrogen and 0.46 nm/ps for carbon. "Drawn" means that the program produces random numbers with this distribution and uses them as starting velocities. Different random numbers give a different, equally valid start (see Repeats in the planning section).</p>
+<p>The thermostat still has work to do after that. The atoms start at the bottom of a valley of <span class="math-inline">\(U\)</span>. As soon as they move they climb its walls, and kinetic energy turns into potential energy. For a system of ideal springs exactly half is converted, so without a thermostat the temperature would fall towards 150 K. The thermostat supplies the difference over the first picoseconds.</p>
+<p>How large should the fluctuations of the temperature be? Module 3 gives the standard deviation of the instantaneous temperature:</p>
+<p><span class="math-display">\[\sigma_T = T\,\sqrt{\frac{2}{N_{df}}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\sigma_T\)</span>: the standard deviation of the instantaneous temperature, in K. It is the typical distance of the temperature from its average at any moment.</li>
+<li><span class="math-inline">\(T\)</span>: the target temperature, in K.</li>
+<li><span class="math-inline">\(N_{df}\)</span>: the number of degrees of freedom, the number of independent ways the atoms can move. It is three per atom, minus one for each constraint, minus three (<a href="09-constraints.html">Module 9</a>).</li>
+</ul>
+</div>
+<p>Read it like this. For a system with, say, <span class="math-inline">\(N_{df} = 60{,}000\)</span> at 300 K, <span class="math-inline">\(\sigma_T = 300\times\sqrt{2/60000} = 1.7\)</span> K. The plot should show a noisy line around 300 K that moves up and down by a kelvin or two. A larger system gives a quieter line. A perfectly flat line is a sign of a wrong thermostat setting, as Module 8 explains.</p>
 <p><strong>NPT stage (100 ps to a few ns).</strong> The barostat is switched on and the box volume adjusts. Check: the density rises to a plateau, close to 1,000 kg/m<span class="math-inline">\(^3\)</span> for a dilute aqueous system (the exact value depends on the water model). For membranes, large complexes or anything built by hand, extend this stage and release the restraints gradually (for example 1,000, then 100, then 10 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span>).</p>
+<p>The density is the mass in the box divided by the volume of the box. The number of atoms is fixed, so the density can change only through the volume. The box starts a little too large for the water it holds, the barostat shrinks it, and the density rises until it stops at the value that the force field gives at 1 bar. A <em>dilute aqueous system</em> is one that is mostly water. In the units of MD, 1 u/nm<span class="math-inline">\(^3\)</span> is 1.6605 kg/m<span class="math-inline">\(^3\)</span>, so pure water with 33.4 molecules of 18.015 u in each nm<span class="math-inline">\(^3\)</span> has <span class="math-inline">\(33.4\times18.015\times1.6605 = 999\)</span> kg/m<span class="math-inline">\(^3\)</span>.</p>
+<p>The check uses the density and not the pressure for a reason given in Module 8. Water is nearly incompressible, so a tiny change of volume is a large change of pressure, and the instantaneous pressure of a small box swings by several hundred bar from step to step. The pressure is a noisy gauge. The density settles much faster.</p>
+<p>Releasing the restraints gradually has a plain meaning in terms of the fluctuation formula above. With <span class="math-inline">\(k\)</span> = 1,000, 100 and 10 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> the typical displacement per direction is 0.05, 0.16 and 0.50 nm. Each stage lets the atoms move about three times further than the one before (<span class="math-inline">\(\sqrt{10} = 3.2\)</span>), so the solute is handed over to the force field in steps.</p>
+<p>Why NVT first and NPT second is the subject of Check yourself 2. In short: the pressure is computed from the kinetic energy and from the <em>virial</em>, a sum over pairs of atoms of the force between them times their distance (<a href="08-thermostats-barostats.html">Module 8</a>). Right after minimisation the first part is zero and the second reflects a strained, freshly built structure. A barostat that acts on such a pressure changes the box for the wrong reason.</p>
+<h3 id="the-four-runs-as-commands">The four runs as commands</h3>
 <div class="code"><pre><span></span><code>gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>em.mdp<span class="w">  </span>-c<span class="w"> </span>ions.gro<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>em.tpr<span class="w">                     </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>em
 gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>nvt.mdp<span class="w"> </span>-c<span class="w"> </span>em.gro<span class="w">  </span>-r<span class="w"> </span>em.gro<span class="w">  </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>nvt.tpr<span class="w">          </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>nvt
 gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>npt.mdp<span class="w"> </span>-c<span class="w"> </span>nvt.gro<span class="w"> </span>-r<span class="w"> </span>nvt.gro<span class="w"> </span>-t<span class="w"> </span>nvt.cpt<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>npt.tpr<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>npt
 gmx<span class="w"> </span>grompp<span class="w"> </span>-f<span class="w"> </span>md.mdp<span class="w">  </span>-c<span class="w"> </span>npt.gro<span class="w"> </span>-t<span class="w"> </span>npt.cpt<span class="w"> </span>-p<span class="w"> </span>topol.top<span class="w"> </span>-o<span class="w"> </span>md.tpr<span class="w">           </span><span class="o">&amp;&amp;</span><span class="w"> </span>gmx<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>md
 </code></pre></div>
 
-<h2 id="step-8-production-an-annotated-input-file">Step 8: production, an annotated input file</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="P9pyJmbK3tM" href="https://www.youtube.com/watch?v=P9pyJmbK3tM" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 2 | Protein-Ligand Complex MD Simulations Step-by-Step</span><span class="sv-m">41 min · Dr. H Ismail</span></a><a class="sv" data-yt="xS4r2bLATvo" href="https://www.youtube.com/watch?v=xS4r2bLATvo" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Intro to Running Molecular Dynamics Simulations with NAMD (links to each section in description)</span><span class="sv-m">1 h 50 min · Gianmarc Grazioli</span></a><a class="sv" data-yt="IArpsQsZ95U" href="https://www.youtube.com/watch?v=IArpsQsZ95U" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">NAMD Tutorial #1 - Simulation of a Simple Protein</span><span class="sv-m">17 min · Narogen</span></a><a class="sv" data-yt="sSVME8caRCM" href="https://www.youtube.com/watch?v=sSVME8caRCM" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 8-Lecture 40</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a></div>
+<p>The four lines are minimisation, NVT, NPT and production, and they have the same pattern: pack the input, then run it.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gmx grompp ... -o nvt.tpr</code></td>
+<td>Pack the parameters (<code>-f</code>), the starting structure (<code>-c</code>) and the topology (<code>-p</code>) into the run input file <code>nvt.tpr</code>.</td>
+</tr>
+<tr>
+<td><code>gmx mdrun -deffnm nvt</code></td>
+<td>Run it. <code>mdrun</code> is the simulation engine. <code>-deffnm nvt</code> gives all its files the base name <code>nvt</code>: it reads <code>nvt.tpr</code> and writes, among others, the final structure <code>nvt.gro</code> and the checkpoint <code>nvt.cpt</code>.</td>
+</tr>
+<tr>
+<td><code>-c em.gro</code></td>
+<td>Start from the last structure of the stage before. Each line starts where the previous one ended.</td>
+</tr>
+<tr>
+<td><code>-r em.gro</code></td>
+<td>The reference positions <span class="math-inline">\(\mathbf r_{ref}\)</span> of the position restraints. The option is present in the two equilibration lines and absent from the production line, where the solute is free.</td>
+</tr>
+<tr>
+<td><code>-t nvt.cpt</code></td>
+<td>Also read the checkpoint of the stage before, which holds the velocities. The NPT run and the production run continue the motion. They do not draw new velocities.</td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>Start the run only if <code>gmx grompp</code> reported no error.</td>
+</tr>
+</tbody>
+</table>
+<p>To look at what a run produced, use <code>gmx energy</code>. For example, <code>gmx energy -f nvt.edr -o temperature.xvg</code> reads the energy file of the NVT run (<code>nvt.edr</code>, written by <code>mdrun</code>), lists the quantities stored in it, asks which one you want (temperature, pressure, density, potential energy and others) and writes it as a table against time. These are the plots behind the checks of the two stages.</p>
+<h3 id="the-equilibration-input-files">The equilibration input files</h3>
+<p>The files <code>nvt.mdp</code> and <code>npt.mdp</code> differ from the production file of the next section in four ways. Both runs are short, and both have the position restraints on. The NVT file has no barostat and asks for new velocities. The NPT file has the barostat on and continues from the NVT checkpoint. Here they are in full. Every line that also occurs in <code>md.mdp</code> has the same value there and is explained in the next section, so only the lines that differ are explained here.</p>
+<div class="box warn">
+<p><strong>Status of these files.</strong> <code>em.mdp</code> and <code>md.mdp</code> were checked when the course was first written. <code>ions.mdp</code>, <code>nvt.mdp</code> and <code>npt.mdp</code> were added later. Every setting in them was compared with the GROMACS documentation (the page on <code>.mdp</code> options), but the three files have not yet been run for this course. If <code>gmx grompp</code> prints a warning or an error with one of them, read it: it names the setting it objects to.</p>
+</div>
+<div class="code"><pre><span></span><code>; nvt.mdp : equilibration at constant volume, 100 ps, solute restrained
+define                  = -DPOSRES      ; switch on the position restraints of posre.itp
 
+integrator              = md            ; leap-frog (Module 4)
+dt                      = 0.002         ; 2 fs, needs constrained bonds to H
+nsteps                  = 50000         ; 50,000 x 2 fs = 100 ps
+
+nstxout-compressed      = 5000          ; write positions every 10 ps
+nstenergy               = 500           ; write energies every 1 ps (for the temperature plot)
+nstlog                  = 500
+
+continuation            = no            ; first MD run: bring the bonds to H to their fixed lengths
+constraint-algorithm    = lincs         ; Module 9
+constraints             = h-bonds
+lincs-iter              = 1
+lincs-order             = 4
+
+cutoff-scheme           = Verlet        ; buffered neighbour list (Module 7)
+rvdw                    = 1.0           ; Lennard-Jones cutoff (nm)
+vdw-modifier            = Potential-shift
+DispCorr                = EnerPres      ; tail correction for energy and pressure
+
+coulombtype             = PME           ; particle-mesh Ewald (Module 7)
+rcoulomb                = 1.0
+pme-order               = 4
+fourierspacing          = 0.12
+
+tcoupl                  = V-rescale     ; stochastic velocity rescaling (Module 8)
+tc-grps                 = Protein Non-Protein
+tau-t                   = 0.1  0.1      ; ps
+ref-t                   = 300  300      ; K
+
+pcoupl                  = no            ; no barostat: the box is fixed (NVT)
+
+pbc                     = xyz
+gen-vel                 = yes           ; draw velocities from the Maxwell-Boltzmann distribution
+gen-temp                = 300           ; at this temperature (K)
+gen-seed                = -1            ; seed of the random numbers; -1 = a new seed at every gmx grompp
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Line of <code>nvt.mdp</code></th>
+<th>What it means</th>
+<th>In <code>md.mdp</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>define = -DPOSRES</code></td>
+<td>Switch on the position restraints: the topology then includes the file <code>posre.itp</code>.</td>
+<td>absent</td>
+</tr>
+<tr>
+<td><code>nsteps = 50000</code></td>
+<td>50,000 steps of 2 fs: 100 ps.</td>
+<td>longer</td>
+</tr>
+<tr>
+<td><code>nstenergy = 500</code>, <code>nstlog = 500</code></td>
+<td>Write the energies every 1 ps, so that the temperature plot has 100 points.</td>
+<td>every 10 ps</td>
+</tr>
+<tr>
+<td><code>continuation = no</code></td>
+<td>This is the first MD run. The minimisation was done without constraints, so the program first brings the bonds to hydrogen to their fixed lengths.</td>
+<td><code>yes</code></td>
+</tr>
+<tr>
+<td><code>pcoupl = no</code></td>
+<td>No barostat: the box keeps its size. This one line stands in the place of the pressure lines of <code>md.mdp</code>.</td>
+<td><code>C-rescale</code></td>
+</tr>
+<tr>
+<td><code>gen-vel = yes</code></td>
+<td>Draw new velocities.</td>
+<td><code>no</code></td>
+</tr>
+<tr>
+<td><code>gen-temp = 300</code></td>
+<td>The temperature, in K, of the Maxwell-Boltzmann distribution from which they are drawn.</td>
+<td>absent</td>
+</tr>
+<tr>
+<td><code>gen-seed = -1</code></td>
+<td>The seed of the random numbers. With <span class="math-inline">\(-1\)</span> the program picks a new seed each time <code>gmx grompp</code> is run. A whole number of your choice makes the start reproducible.</td>
+<td>absent</td>
+</tr>
+</tbody>
+</table>
+<div class="code"><pre><span></span><code>; npt.mdp : equilibration at constant pressure, 100 ps, solute restrained
+define                  = -DPOSRES      ; position restraints still on
+
+integrator              = md            ; leap-frog (Module 4)
+dt                      = 0.002         ; 2 fs, needs constrained bonds to H
+nsteps                  = 50000         ; 50,000 x 2 fs = 100 ps
+
+nstxout-compressed      = 5000          ; write positions every 10 ps
+nstenergy               = 500           ; write energies every 1 ps (for the density plot)
+nstlog                  = 500
+
+continuation            = yes           ; continue from the NVT equilibration
+constraint-algorithm    = lincs         ; Module 9
+constraints             = h-bonds
+lincs-iter              = 1
+lincs-order             = 4
+
+cutoff-scheme           = Verlet        ; buffered neighbour list (Module 7)
+rvdw                    = 1.0           ; Lennard-Jones cutoff (nm)
+vdw-modifier            = Potential-shift
+DispCorr                = EnerPres      ; tail correction for energy and pressure
+
+coulombtype             = PME           ; particle-mesh Ewald (Module 7)
+rcoulomb                = 1.0
+pme-order               = 4
+fourierspacing          = 0.12
+
+tcoupl                  = V-rescale     ; stochastic velocity rescaling (Module 8)
+tc-grps                 = Protein Non-Protein
+tau-t                   = 0.1  0.1      ; ps
+ref-t                   = 300  300      ; K
+
+pcoupl                  = C-rescale     ; stochastic cell rescaling (Module 8)
+pcoupltype              = isotropic
+tau-p                   = 2.0           ; ps
+ref-p                   = 1.0           ; bar
+compressibility         = 4.5e-5        ; of water, bar^-1
+refcoord-scaling        = all           ; the reference positions of the restraints follow the box
+
+pbc                     = xyz
+gen-vel                 = no            ; velocities come from the NVT checkpoint
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Line of <code>npt.mdp</code></th>
+<th>What it means</th>
+<th>Compared with <code>nvt.mdp</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>continuation = yes</code></td>
+<td>The run continues the NVT run. The bonds to hydrogen already have their fixed lengths.</td>
+<td>was <code>no</code></td>
+</tr>
+<tr>
+<td><code>pcoupl = C-rescale</code> and the four lines after it</td>
+<td>The barostat is on, with the same settings as in <code>md.mdp</code>.</td>
+<td>was <code>pcoupl = no</code></td>
+</tr>
+<tr>
+<td><code>refcoord-scaling = all</code></td>
+<td>When the barostat rescales the box, the reference positions of the restraints are rescaled with it. With the default, <code>no</code>, the reference positions stay where they were while the box changes around them, and the documentation warns that the pressure may then be ill defined.</td>
+<td>new</td>
+</tr>
+<tr>
+<td><code>gen-vel = no</code></td>
+<td>Do not draw velocities again. They are read from <code>nvt.cpt</code>, which is given with <code>-t</code>.</td>
+<td>was <code>yes</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where the restraints come from.</strong> In GROMACS the restraints are prepared at step 2. Besides the topology, <code>gmx pdb2gmx</code> writes a file <code>posre.itp</code> with the list of restrained atoms and the spring constant, 1,000 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-2}\)</span> unless you ask for another value. The topology includes that file only when the name <code>POSRES</code> is defined, so the restraints are off unless the parameter file contains the line <code>define = -DPOSRES</code>. That line is in <code>nvt.mdp</code> and <code>npt.mdp</code> and absent from <code>md.mdp</code>. The reference positions are the coordinates of the file given to <code>gmx grompp</code> with <code>-r</code>.</p>
+<p><strong>Where the velocities and the seed are set.</strong> The velocities are drawn once, by <code>gmx grompp</code>, when it builds <code>nvt.tpr</code>. Three lines of <code>nvt.mdp</code> control this: <code>gen-vel</code>, <code>gen-temp</code> and <code>gen-seed</code>. The NPT and production files have <code>gen-vel = no</code> and take their velocities from the checkpoint given with <code>-t</code>. So a repeat with new velocities (Exercise 2) starts at the NVT stage: give <code>gen-seed</code> a different whole number for each repeat, and run NVT, NPT and production once for each. In OpenMM the same is done with a second argument of <code>setVelocitiesToTemperature</code>, a random seed: <code>sim.context.setVelocitiesToTemperature(300 * unit.kelvin, 1)</code>, then with <code>2</code>, then with <code>3</code>, gives three reproducible repeats.</p>
+<p><strong>Continuing a run that was interrupted.</strong> The command is <code>gmx mdrun -deffnm md -cpi md.cpt</code>. The option <code>-cpi</code> continues from the state stored in the checkpoint. If no checkpoint file is found, the program starts from the first step, so the same command can be used for the first job and for every later one.</p>
+<h2 id="step-8-production-an-annotated-input-file">Step 8: production, an annotated input file</h2>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="P9pyJmbK3tM" href="https://www.youtube.com/watch?v=P9pyJmbK3tM" target="_blank" rel="noopener" title="GROMACS: Molecular Dynamics Simulations from Start to Finish"><span class="sv-play">&#9654;</span><span class="sv-t">GROMACS Tutorial Part 2 | Protein-Ligand Complex MD Simulations Step-by-Step</span><span class="sv-m">41 min · Dr. H Ismail</span></a><a class="sv" data-yt="xS4r2bLATvo" href="https://www.youtube.com/watch?v=xS4r2bLATvo" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Intro to Running Molecular Dynamics Simulations with NAMD (links to each section in description)</span><span class="sv-m">1 h 50 min · Gianmarc Grazioli</span></a><a class="sv" data-yt="IArpsQsZ95U" href="https://www.youtube.com/watch?v=IArpsQsZ95U" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">NAMD Tutorial #1 - Simulation of a Simple Protein</span><span class="sv-m">17 min · Narogen</span></a><a class="sv" data-yt="sSVME8caRCM" href="https://www.youtube.com/watch?v=sSVME8caRCM" target="_blank" rel="noopener" title="Computational Chemistry and Classical Molecular Dynamics"><span class="sv-play">&#9654;</span><span class="sv-t">Week 8-Lecture 40</span><span class="sv-m">28 min · NPTEL / IIT Bombay</span></a></div>
+
+<p><em>What is done.</em> The same kind of run as the NPT equilibration, without restraints and much longer. From here on the data are kept. The run must be done under exactly the conditions you will report, because every setting below is part of the model.</p>
+<p><em>How to tell that it worked.</em> The run reaches its last step, or stops at the time limit of the job and continues from its checkpoint. Temperature and density stay on the plateaus reached during equilibration. The molecule looks intact when you watch the trajectory. Whether the <em>results</em> can be trusted is a different question, the one of <a href="11-analysis-statistics.html">Module 11</a>.</p>
 <p>Every line below refers to a module of this course. Settings are for an AMBER-family force field; a CHARMM force field needs <code>rvdw = 1.2</code>, <code>rvdw-switch = 1.0</code>, <code>vdw-modifier = Force-switch</code>, <code>rcoulomb = 1.2</code> and, following the GROMACS recommendation for CHARMM36, <code>DispCorr = no</code>.</p>
+<p>The second sentence is a reminder that the cutoff settings belong to the force field. The parameters of a force field were fitted with one particular treatment of the Lennard-Jones interaction near the cutoff, and they are only valid with that treatment. Module 7 gives the example: CHARMM force fields were parameterised with a force switch from 1.0 to 1.2 nm.</p>
 <div class="code"><pre><span></span><code>; md.mdp : production, NPT, 100 ns
 integrator              = md            ; leap-frog (Module 4)
 dt                      = 0.002         ; 2 fs, needs constrained bonds to H
@@ -218,9 +1007,270 @@ pbc                     = xyz
 gen-vel                 = no            ; velocities come from the checkpoint
 </code></pre></div>
 
+<p>The file has eight groups of lines, separated by empty lines. They are taken one at a time below.</p>
+<h3 id="how-long-the-run-is">How long the run is</h3>
+<p>The first group fixes the length of the run. The simulated time is the number of steps times the length of one step:</p>
+<p><span class="math-display">\[t_{sim} = n_{steps}\times\Delta t .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(t_{sim}\)</span>: the simulated time, the stretch of time in the life of the molecule that the run covers.</li>
+<li><span class="math-inline">\(n_{steps}\)</span>: the number of integration steps, the setting <code>nsteps</code>.</li>
+<li><span class="math-inline">\(\Delta t\)</span>: the time step, the setting <code>dt</code>, in ps.</li>
+</ul>
+</div>
+<p>Read it like this. <span class="math-inline">\(50{,}000{,}000\times2\)</span> fs <span class="math-inline">\(= 100{,}000{,}000\)</span> fs, which is 100 ns. Turned around, the number of steps for a wanted length is <span class="math-inline">\(n_{steps} = t_{sim}/\Delta t\)</span>: an equilibration stage of 100 ps at 2 fs per step is 50,000 steps. The same product gives every output interval of the file: 5,000 steps of 2 fs are 10,000 fs, or 10 ps.</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>integrator = md</code></td>
+<td>Run molecular dynamics with the leap-frog algorithm. At every step it computes the forces, uses them to update the velocities, and uses the new velocities to update the positions.</td>
+<td><a href="04-integrators.html">4</a></td>
+</tr>
+<tr>
+<td><code>dt = 0.002</code></td>
+<td>The time step: 0.002 ps, or 2 fs. A step should be 10 to 20 times shorter than the period of the fastest motion in the system. With the bonds to hydrogen held rigid (the <code>constraints</code> line below) that period is about 20 fs, which allows 2 fs.</td>
+<td><a href="04-integrators.html">4</a>, <a href="09-constraints.html">9</a></td>
+</tr>
+<tr>
+<td><code>nsteps = 50000000</code></td>
+<td>The number of steps.</td>
+<td>this section</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-is-written-to-disk">What is written to disk</h3>
+<p>A <strong>trajectory</strong> is the record of the run: the positions of the atoms, saved at regular intervals. Each saved set of positions is called a <strong>frame</strong>. The run computes 50 million sets of positions and keeps one in every 5,000, so the trajectory has <span class="math-inline">\(50{,}000{,}000/5{,}000 = 10{,}000\)</span> frames.</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nstxout-compressed = 5000</code></td>
+<td>Every 5,000 steps (10 ps), write the positions of the atoms to the trajectory file. "Compressed" means that they are stored with reduced precision, which saves disk space.</td>
+<td>this section</td>
+</tr>
+<tr>
+<td><code>nstenergy = 5000</code></td>
+<td>Every 10 ps, write the energies and the related quantities (temperature, pressure, density) to the energy file. The plots of exercise 1 are made from them.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>nstlog = 5000</code></td>
+<td>Every 10 ps, write the energies to the log file, a text file that records the progress of the run.</td>
+<td>this section</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trajectory formats</strong> differ in three ways: what they store for each frame (positions only, or velocities and forces as well), how precisely they store it, and which programs can read them. The two that appear in this module both store positions: the compressed GROMACS trajectory written by <code>nstxout-compressed</code>, and the DCD file written by the OpenMM script below. Positions at reduced precision are all that structural analysis needs. They are not enough to continue a run. That is the job of the checkpoint, which holds the complete state at full precision.</p>
+<h3 id="continuation-and-constraints">Continuation and constraints</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>continuation = yes</code></td>
+<td>This run continues an earlier one. The starting structure comes with velocities and already has its constrained bonds at the right lengths, so the program must not adjust it before the first step.</td>
+<td>this section</td>
+</tr>
+<tr>
+<td><code>constraint-algorithm = lincs</code></td>
+<td>The algorithm that keeps the constrained bonds at their fixed lengths: LINCS.</td>
+<td><a href="09-constraints.html">9</a></td>
+</tr>
+<tr>
+<td><code>constraints = h-bonds</code></td>
+<td>Which bonds are held at fixed length: every bond that involves a hydrogen atom. These bonds have the fastest vibrations in the system, with a period near 10 fs. Removing them is what allows the 2 fs step.</td>
+<td><a href="09-constraints.html">9</a></td>
+</tr>
+<tr>
+<td><code>lincs-iter = 1</code></td>
+<td>The number of final correction steps in LINCS.</td>
+<td><a href="09-constraints.html">9</a></td>
+</tr>
+<tr>
+<td><code>lincs-order = 4</code></td>
+<td>The order of the series that LINCS uses in place of a matrix inversion: the highest power of the coupling matrix that is kept.</td>
+<td><a href="09-constraints.html">9</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lennard-jones-interactions">Lennard-Jones interactions</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cutoff-scheme = Verlet</code></td>
+<td>Keep a buffered list of neighbouring atoms, so that not every pair has to be tested at every step.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>rvdw = 1.0</code></td>
+<td>Compute the Lennard-Jones interaction only for pairs of atoms closer than 1.0 nm.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>vdw-modifier = Potential-shift</code></td>
+<td>Shift the Lennard-Jones energy by a constant so that it is exactly zero at the cutoff. The energy then has no jump when a pair crosses the cutoff.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>DispCorr = EnerPres</code></td>
+<td>Add the average effect of the attraction that was cut off beyond 1.0 nm to the energy and to the pressure. Without this correction the density comes out too low.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="electrostatics">Electrostatics</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>coulombtype = PME</code></td>
+<td>Particle-mesh Ewald. The Coulomb interaction with all periodic copies is split into a short-range part, computed pair by pair, and a smooth long-range part, computed on a grid.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>rcoulomb = 1.0</code></td>
+<td>The cutoff of the short-range part, in nm. Nothing is thrown away beyond it: the rest of the interaction is in the grid part.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>pme-order = 4</code></td>
+<td>The order of the interpolation that spreads each charge over the grid points near it.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>fourierspacing = 0.12</code></td>
+<td>The largest spacing allowed between grid points, in nm. A finer grid is more accurate and slower.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="temperature">Temperature</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tcoupl = V-rescale</code></td>
+<td>The thermostat: stochastic velocity rescaling. It gives the kinetic energy the correct distribution and disturbs the motion very little.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>tc-grps = Protein Non-Protein</code></td>
+<td>Two groups of atoms, each with its own thermostat: the protein, and everything else (water and ions). Neither group can then stay warmer or colder than the target while the average looks right. Module 8 adds the condition that each group must be large.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>tau-t = 0.1  0.1</code></td>
+<td>The coupling time of each group, in ps: how quickly a deviation of the temperature is removed. One value for each group.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>ref-t = 300  300</code></td>
+<td>The target temperature of each group, in K.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>coupling time</strong> <span class="math-inline">\(\tau\)</span> has a concrete meaning for a thermostat or barostat of this kind. A deviation of the average from its target decays as <span class="math-inline">\(e^{-t/\tau}\)</span>, where <span class="math-inline">\(t\)</span> is the time that has passed and <span class="math-inline">\(e = 2.718\)</span> is the base of the exponential function (<a href="maths.html#exp-log">toolbox</a>). After one coupling time about 37 % of it is left (<span class="math-inline">\(e^{-1} = 0.37\)</span>). A short coupling time corrects fast and interferes more with the natural motion.</p>
+<h3 id="pressure">Pressure</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pcoupl = C-rescale</code></td>
+<td>The barostat: stochastic cell rescaling.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>pcoupltype = isotropic</code></td>
+<td>One scale factor for all three directions of the box. The box changes its size and keeps its shape, which is right for a protein in water.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>tau-p = 2.0</code></td>
+<td>The coupling time of the barostat, in ps.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>ref-p = 1.0</code></td>
+<td>The target pressure, in bar.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>compressibility = 4.5e-5</code></td>
+<td>The compressibility of water, in bar<span class="math-inline">\(^{-1}\)</span>: the relative change of volume per bar of pressure. The barostat uses it to turn a difference in pressure into a change of the box volume.</td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="box-and-velocities">Box and velocities</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it means</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pbc = xyz</code></td>
+<td>Periodic boundary conditions in all three directions.</td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>gen-vel = no</code></td>
+<td>Do not draw new velocities. They are read from the checkpoint of the NPT stage, so the motion continues without a break.</td>
+<td>this section</td>
+</tr>
+</tbody>
+</table>
 <h3 id="the-same-workflow-in-openmm">The same workflow in OpenMM</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="hbQ_dfgWPc8" href="https://www.youtube.com/watch?v=hbQ_dfgWPc8" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Running Simulations with OpenMM</span><span class="sv-m">19 min · SimbiosOpenMM</span></a><a class="sv" data-yt="AlWsbbdUNC0" href="https://www.youtube.com/watch?v=AlWsbbdUNC0" target="_blank" rel="noopener" title="Mar2014 OpenMM Workshop - March 30 - April 1, 2014"><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Running Simulations with OpenMM</span><span class="sv-m">13 min · OpenMM developers (Stanford Simbios)</span></a><a class="sv" data-yt="yLnjbjtRgdg" href="https://www.youtube.com/watch?v=yLnjbjtRgdg" target="_blank" rel="noopener" title="Sep2012 OpenMM Workshop -- September 6-7, 2012"><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to the OpenMM API</span><span class="sv-m">35 min · OpenMM developers (Stanford Simbios)</span></a><a class="sv" data-yt="71snkHHku1c" href="https://www.youtube.com/watch?v=71snkHHku1c" target="_blank" rel="noopener" title="Sep2012 OpenMM Workshop -- September 6-7, 2012"><span class="sv-play">&#9654;</span><span class="sv-t">Customizing Forces and Integrators with OpenMM</span><span class="sv-m">20 min · OpenMM developers (Stanford Simbios)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="hbQ_dfgWPc8" href="https://www.youtube.com/watch?v=hbQ_dfgWPc8" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Running Simulations with OpenMM</span><span class="sv-m">19 min · SimbiosOpenMM</span></a><a class="sv" data-yt="AlWsbbdUNC0" href="https://www.youtube.com/watch?v=AlWsbbdUNC0" target="_blank" rel="noopener" title="Mar2014 OpenMM Workshop - March 30 - April 1, 2014"><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to Running Simulations with OpenMM</span><span class="sv-m">13 min · OpenMM developers (Stanford Simbios)</span></a><a class="sv" data-yt="yLnjbjtRgdg" href="https://www.youtube.com/watch?v=yLnjbjtRgdg" target="_blank" rel="noopener" title="Sep2012 OpenMM Workshop -- September 6-7, 2012"><span class="sv-play">&#9654;</span><span class="sv-t">Introduction to the OpenMM API</span><span class="sv-m">35 min · OpenMM developers (Stanford Simbios)</span></a><a class="sv" data-yt="71snkHHku1c" href="https://www.youtube.com/watch?v=71snkHHku1c" target="_blank" rel="noopener" title="Sep2012 OpenMM Workshop -- September 6-7, 2012"><span class="sv-play">&#9654;</span><span class="sv-t">Customizing Forces and Integrators with OpenMM</span><span class="sv-m">20 min · OpenMM developers (Stanford Simbios)</span></a></div>
 
+<p>OpenMM runs the same steps from one Python script. There are no intermediate files: the structure, the topology and the settings are Python objects in memory. Read the script in four parts: build the system (steps 1 to 4), choose the physics (what the <code>.mdp</code> file did), minimise and equilibrate (steps 5 to 7), and produce (step 8).</p>
 <div class="code"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">openmm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openmm</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">unit</span>
 
@@ -258,18 +1308,252 @@ gen-vel                 = no            ; velocities come from the checkpoint
 <span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">25_000_000</span><span class="p">)</span>                                     <span class="c1"># 100 ns</span>
 </code></pre></div>
 
+<p><strong>Part 1: build the system.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+<th>In the GROMACS version</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import ...</code></td>
+<td>Load the library. <code>mm</code> is the engine, <code>app</code> holds the tools that read files and build systems, <code>unit</code> holds the units.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>app.PDBFile("protein.pdb")</code></td>
+<td>Read the cleaned structure file of step 1.</td>
+<td><code>-f protein.pdb</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>app.ForceField(...)</code></td>
+<td>Load the force field. The first file holds the parameters of the solute, the second those of the water model and of the ions.</td>
+<td><code>-ff</code>, <code>-water</code></td>
+<td><a href="05-force-field-form.html">5</a>, <a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>app.Modeller(...)</code></td>
+<td>Make a model that can be edited: its topology (which atoms and bonds) and its positions.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>model.addHydrogens(ff, pH=7.0)</code></td>
+<td>Add the hydrogens. The pH decides the protonation state that each residue gets. This is the protonation decision of step 1, made by the program for the pH you give. The cases that needed thought in step 1 still need your check.</td>
+<td><code>gmx pdb2gmx</code></td>
+<td>this module</td>
+</tr>
+<tr>
+<td><code>model.addSolvent(...)</code></td>
+<td>Steps 3 and 4 in one call: build a rhombic dodecahedron, fill it with water, add the counter-ions that neutralise the solute, and add salt for an ionic strength of 0.15 mol/L.</td>
+<td><code>gmx editconf</code>, <code>gmx solvate</code>, <code>gmx genion</code></td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+</tbody>
+</table>
+<p>The comment in the script about the padding compares two ways of measuring the same box. In the notation of the box-size formula, the GROMACS option <code>-d</code> is the distance from the solute to the box face, <span class="math-inline">\(d_{pad}\)</span>. The OpenMM argument <code>padding</code> is the distance from the solute to its nearest copy, <span class="math-inline">\(2\,d_{pad}\)</span>. So <code>padding=2.4</code> nm and <code>-d 1.2</code> describe the same box, with one difference of detail: for the size of the solute GROMACS takes the largest distance between two of its atoms, and OpenMM takes the diameter of a sphere that encloses it, which can be a little larger.</p>
+<p><strong>Part 2: choose the physics.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+<th>In the GROMACS version</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ff.createSystem(...)</code></td>
+<td>Apply the force field to the model. The result, <code>system</code>, is the topology in OpenMM's form: every atom with its parameters, and every force that acts.</td>
+<td><code>gmx pdb2gmx</code>, and the <code>.mdp</code> lines below</td>
+<td><a href="06-force-field-parameters.html">6</a></td>
+</tr>
+<tr>
+<td><code>nonbondedMethod=app.PME</code></td>
+<td>Electrostatics with particle-mesh Ewald.</td>
+<td><code>coulombtype = PME</code></td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>nonbondedCutoff=1.0 * unit.nanometer</code></td>
+<td>The cutoff of the direct, pair-by-pair interactions: 1.0 nm.</td>
+<td><code>rcoulomb</code>, <code>rvdw</code></td>
+<td><a href="07-boundaries-electrostatics.html">7</a></td>
+</tr>
+<tr>
+<td><code>constraints=app.HBonds</code></td>
+<td>Hold every bond to a hydrogen at fixed length.</td>
+<td><code>constraints = h-bonds</code></td>
+<td><a href="09-constraints.html">9</a></td>
+</tr>
+<tr>
+<td><code>hydrogenMass=4 * unit.amu</code></td>
+<td>Hydrogen mass repartitioning (HMR). Each hydrogen bonded to a heavy atom gets a mass of 4 u, and the extra mass is taken from that atom. The hydrogens of rigid water molecules keep their mass. The fastest remaining motions become slower, which allows a step of 4 fs.</td>
+<td>not used</td>
+<td><a href="09-constraints.html">9</a></td>
+</tr>
+<tr>
+<td><code>mm.MonteCarloBarostat(1 * unit.bar, 300 * unit.kelvin)</code></td>
+<td>The barostat. Every few steps it proposes a random change of the volume and accepts or rejects it. The first number is the target pressure. The temperature is needed for the acceptance rule.</td>
+<td><code>pcoupl</code>, <code>ref-p</code></td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>mm.LangevinMiddleIntegrator(...)</code></td>
+<td>Integrator and thermostat in one. Langevin dynamics adds a friction force and a random force to every atom. The three numbers are the target temperature (300 K), the friction coefficient (1 ps<span class="math-inline">\(^{-1}\)</span>) and the time step (0.004 ps, or 4 fs).</td>
+<td><code>integrator</code>, <code>tcoupl</code>, <code>ref-t</code>, <code>dt</code></td>
+<td><a href="04-integrators.html">4</a>, <a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>app.Simulation(...)</code></td>
+<td>Tie topology, system and integrator together into one object that can run.</td>
+<td><code>gmx grompp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sim.context.setPositions(model.positions)</code></td>
+<td>Give the starting coordinates.</td>
+<td><code>-c</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part 3: minimise and equilibrate.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+<th>In the GROMACS version</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sim.minimizeEnergy()</code></td>
+<td>Step 5, energy minimisation.</td>
+<td>the <code>em</code> line</td>
+<td>this module</td>
+</tr>
+<tr>
+<td><code>sim.context.setVelocitiesToTemperature(300 * unit.kelvin)</code></td>
+<td>Draw velocities from the Maxwell-Boltzmann distribution at 300 K.</td>
+<td>the NVT stage</td>
+<td><a href="03-statistical-mechanics.html">3</a></td>
+</tr>
+<tr>
+<td><code>sim.step(125_000)</code></td>
+<td>Run 125,000 steps. At 4 fs per step that is 500,000 fs, or 500 ps. Nothing is written yet, because no reporter has been attached.</td>
+<td>the <code>nvt</code> and <code>npt</code> lines</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part 4: produce.</strong> A <em>reporter</em> is an object that writes something to a file at regular intervals.</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+<th>In the GROMACS version</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app.DCDReporter("traj.dcd", 2500)</code></td>
+<td>From now on, write the positions to a trajectory file every 2,500 steps. At 4 fs per step that is 10 ps.</td>
+<td><code>nstxout-compressed</code></td>
+<td>this module</td>
+</tr>
+<tr>
+<td><code>app.StateDataReporter("log.csv", 2500, ...)</code></td>
+<td>Every 10 ps, add a line to a table with the quantities that are switched on: the step number, the potential energy, the temperature, the density and the speed of the run.</td>
+<td><code>nstenergy</code>, <code>nstlog</code></td>
+<td><a href="08-thermostats-barostats.html">8</a></td>
+</tr>
+<tr>
+<td><code>app.CheckpointReporter("state.chk", 250_000)</code></td>
+<td>Every 250,000 steps, which is 1 ns, save a checkpoint from which the run can be continued.</td>
+<td>the <code>.cpt</code> file</td>
+<td>this module</td>
+</tr>
+<tr>
+<td><code>sim.step(25_000_000)</code></td>
+<td>Run 25,000,000 steps. At 4 fs per step that is 100 ns, with <span class="math-inline">\(25{,}000{,}000/2{,}500 = 10{,}000\)</span> frames.</td>
+<td><code>nsteps</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The two versions do the same workflow with different, equally defensible choices (the protocol table of <a href="08-thermostats-barostats.html">Module 8</a> lists both). The OpenMM script uses a 4 fs step with heavier hydrogens where the GROMACS file uses 2 fs. It uses a Langevin thermostat and a Monte Carlo barostat where the GROMACS file uses velocity rescaling and cell rescaling. Its equilibration is one stage of 500 ps with the barostat on from the start. The two versions also load different force-field and water-model files (compare <code>-ff amber99sb-ildn -water tip3p</code> with the two file names in the script), so they do not simulate exactly the same model.</p>
+<p>Read the script as a second, shorter example of the workflow, and not as a line-by-line translation of the GROMACS files. A run made with one is not a repeat of a run made with the other.</p>
 <p>This short script skips the restrained equilibration stages. For real work add position restraints with a <code>CustomExternalForce</code> for the first stage and remove them before production.</p>
+<p>A <code>CustomExternalForce</code> is OpenMM's way to add an energy term that depends on the position of each atom separately, through a formula that you write. The restraint energy of the equilibration section, a spring between each heavy atom and its reference position, is such a term. In a periodic box the OpenMM documentation advises writing the formula with its function <code>periodicdistance</code>, because the position that the formula receives can be that of any periodic copy of the atom.</p>
 <h2 id="planning-length-repeats-output-cost">Planning: length, repeats, output, cost</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="EsKsPEdYksE" href="https://www.youtube.com/watch?v=EsKsPEdYksE" target="_blank" rel="noopener" title="Advanced Thermodynamics and Molecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 47: MD simulations - efficiency and parallelization, sampling and averaging</span><span class="sv-m">44 min · NPTEL / IIT Roorkee</span></a><a class="sv" data-yt="F-SsbOw2YrM" href="https://www.youtube.com/watch?v=F-SsbOw2YrM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Molecular Dynamics Simulation Using Free GPU on Google Colab | GROMACS/OpenMM Tutorial for Beginners</span><span class="sv-m">32 min · Dr. H Ismail</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="EsKsPEdYksE" href="https://www.youtube.com/watch?v=EsKsPEdYksE" target="_blank" rel="noopener" title="Advanced Thermodynamics and Molecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 47: MD simulations - efficiency and parallelization, sampling and averaging</span><span class="sv-m">44 min · NPTEL / IIT Roorkee</span></a><a class="sv" data-yt="F-SsbOw2YrM" href="https://www.youtube.com/watch?v=F-SsbOw2YrM" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Molecular Dynamics Simulation Using Free GPU on Google Colab | GROMACS/OpenMM Tutorial for Beginners</span><span class="sv-m">32 min · Dr. H Ismail</span></a></div>
 
+<p>A production run costs days of computer time. Before you start one, decide four things: how long to run, how many times, what to write to disk, and how to split the run into jobs. A test run of five minutes answers the practical ones.</p>
+<p><strong>How long?</strong> Long enough to see the slowest process relevant to your question many times, which you often do not know in advance. Start by listing the time scales (Module 1) and deciding what you can and cannot claim.</p>
+<p>A simulation reports only on events that happen during it, and to say how often something happens you must see it many times. One opening of a loop in 100 ns shows that the loop can open. It does not tell you how often it does. If the process you care about is slower than your run, the run describes the fluctuations around the starting structure and nothing more, and that is then the only claim you can make.</p>
+<p><strong>Repeats.</strong> Three to five independent runs from different initial velocities are worth more than one run of the same total length: they give an honest error bar (Module 11). To find out whether the result depends on the starting structure, start some of the runs from different conformations.</p>
+<p>A <strong>repeat</strong>, also called a <strong>replica</strong>, is another simulation of the same system that differs only in its starting velocities. A computer has no true randomness. Its "random" numbers are a fixed sequence computed from a starting number, the <strong>seed</strong> (<a href="maths.html#random-numbers">toolbox</a>). The same seed gives the same velocities, and a different seed gives a different and equally valid set. Because the motion of many atoms is chaotic (<a href="02-classical-mechanics.html">Module 2</a>), two runs that differ only in their velocities are on different paths within picoseconds.</p>
+<p>One run gives one answer and no measure of how much that answer owes to chance. Several runs give several answers, and their spread is the error bar. For <span class="math-inline">\(n\)</span> independent runs,</p>
+<p><span class="math-display">\[\mathrm{SE} = \frac{s}{\sqrt{n}} .\]</span></p>
+<div class="legend">
 <ul>
-<li><strong>How long?</strong> Long enough to see the slowest process relevant to your question many times, which you often do not know in advance. Start by listing the time scales (Module 1) and deciding what you can and cannot claim.</li>
-<li><strong>Repeats.</strong> Three to five independent runs from different initial velocities are worth more than one run of the same total length: they give an honest error bar (Module 11). To find out whether the result depends on the starting structure, start some of the runs from different conformations.</li>
-<li><strong>Output frequency.</strong> Saving every 10 to 100 ps is enough for most structural analysis. Saving more often than the correlation time of your observable only fills disks. If you do not need the water, save only the solute (<code>compressed-x-grps</code> in GROMACS).</li>
-<li><strong>Benchmark first.</strong> Run 5 minutes and read the performance in ns/day from the log before submitting a long job. Size the job's time limit from the measured speed.</li>
-<li><strong>Checkpoints.</strong> Long runs must be restartable: <code>gmx mdrun -cpi</code> continues exactly from the last checkpoint, and OpenMM's checkpoint reporter does the same. Chain short jobs if the cluster favours them.</li>
+<li><span class="math-inline">\(\mathrm{SE}\)</span>: the standard error of the mean, the uncertainty of the average over the runs.</li>
+<li><span class="math-inline">\(s\)</span>: the standard deviation of the <span class="math-inline">\(n\)</span> results, a measure of how much the runs differ from each other. It is computed with <span class="math-inline">\(n-1\)</span> in the denominator (<a href="maths.html#averages">toolbox</a>), which is what gives 0.04 nm in the example below.</li>
+<li><span class="math-inline">\(n\)</span>: the number of independent runs.</li>
 </ul>
+</div>
+<p>Read it like this. Say three runs give an average radius of gyration (a measure of the overall size of the molecule, <a href="11-analysis-statistics.html">Module 11</a>) of 1.52, 1.48 and 1.56 nm (invented numbers). The mean is 1.52 nm, the standard deviation is 0.04 nm, and the standard error is <span class="math-inline">\(0.04/\sqrt3 = 0.023\)</span> nm, so you report <span class="math-inline">\(1.52\pm0.02\)</span> nm. With one run you would have had one of the three numbers and no idea of the 0.04. More in the <a href="maths.html#averages">toolbox</a> and in <a href="11-analysis-statistics.html">Module 11</a>.</p>
+<p>Repeats from one structure share that structure. If the molecule has a second shape that it reaches only once in a microsecond, five short repeats will most likely all miss it, and their small spread will look reassuring. That is the reason for the last sentence of the item: start some runs from different conformations.</p>
+<p><strong>Output frequency.</strong> Saving every 10 to 100 ps is enough for most structural analysis. Saving more often than the correlation time of your observable only fills disks. If you do not need the water, save only the solute (<code>compressed-x-grps</code> in GROMACS).</p>
+<p>The <em>correlation time</em> of a quantity is the time over which it keeps a memory of its value (<a href="11-analysis-statistics.html">Module 11</a>). Two frames closer together than that carry nearly the same information. The number of frames and the disk space follow from</p>
+<p><span class="math-display">\[N_{frames} = \frac{t_{sim}}{t_{out}}, \qquad \text{size} \approx N_{frames}\times N_{atoms}\times 12\ \text{bytes} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(N_{frames}\)</span>: the number of frames in the trajectory.</li>
+<li><span class="math-inline">\(t_{sim}\)</span>: the simulated time.</li>
+<li><span class="math-inline">\(t_{out}\)</span>: the time between two saved frames, in the same unit as <span class="math-inline">\(t_{sim}\)</span>.</li>
+<li><span class="math-inline">\(N_{atoms}\)</span>: the number of atoms that are saved in each frame.</li>
+<li>12 bytes: three coordinates of 4 bytes each, the size of one atom in an uncompressed frame. Compressed formats need less.</li>
+<li>size: the disk space taken by the trajectory, in bytes (<span class="math-inline">\(10^9\)</span> bytes are 1 GB).</li>
+<li><span class="math-inline">\(\approx\)</span>: an estimate. Each frame also holds a few more numbers, such as the time and the box.</li>
+</ul>
+</div>
+<p>Read it like this. A run of 100 ns saved every 10 ps has <span class="math-inline">\(100{,}000/10 = 10{,}000\)</span> frames. With 50,000 atoms (a round number) that is <span class="math-inline">\(10{,}000\times50{,}000\times12 = 6\times10^9\)</span> bytes, or 6 GB. Halving the interval doubles the size. Saving only a solute of 5,000 atoms takes 0.6 GB: most of the atoms are water, which is why leaving the water out saves so much.</p>
+<p><strong>Benchmark first.</strong> Run 5 minutes and read the performance in ns/day from the log before submitting a long job. Size the job's time limit from the measured speed.</p>
+<p>The speed of a run is given in <strong>ns/day</strong>: nanoseconds of simulated time per day of real time. It depends on the number of atoms, on the hardware and on the settings, and it cannot be guessed. The real time that a run needs is</p>
+<p><span class="math-display">\[t_{wall} = \frac{t_{sim}}{S} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(t_{wall}\)</span>: the real time the run takes, in days. It is called wall-clock time, the time that passes on the clock on the wall.</li>
+<li><span class="math-inline">\(t_{sim}\)</span>: the simulated time, in ns.</li>
+<li><span class="math-inline">\(S\)</span>: the speed, in ns/day.</li>
+</ul>
+</div>
+<p>Read it like this. Say the test gives 80 ns/day (an invented value). A run of 100 ns then takes <span class="math-inline">\(100/80 = 1.25\)</span> days, or 30 hours. On a cluster that allows 24 hours per job, one job delivers 80 ns, so the run needs two jobs. The five-minute test itself covers <span class="math-inline">\(80\times5/1440 = 0.28\)</span> ns (a day has 1,440 minutes), which is about 139,000 steps of 2 fs and enough for a steady reading.</p>
+<p><strong>Checkpoints.</strong> Long runs must be restartable: <code>gmx mdrun -cpi</code> continues exactly from the last checkpoint, and OpenMM's checkpoint reporter does the same. Chain short jobs if the cluster favours them.</p>
+<p>Jobs end before the run is finished for ordinary reasons: the time limit is reached, or a machine fails. A <strong>checkpoint</strong> holds everything needed to go on as if nothing had happened: positions, velocities, the box, and the internal variables of the thermostat and the barostat, all at full precision. A trajectory frame cannot do this, because it holds positions only, at reduced precision. <code>-cpi</code> is the option of <code>gmx mdrun</code> that tells it to continue from a checkpoint. To <em>chain</em> jobs is to submit several short jobs one after the other, each continuing from the checkpoint that the one before left.</p>
+<p>In OpenMM the reporter only writes the file. To continue, a new script builds the same <code>Simulation</code> object and loads the checkpoint with <code>sim.loadCheckpoint("state.chk")</code> before it calls <code>sim.step</code>. The OpenMM documentation sets two limits. The continued run is meant to be identical to an uninterrupted one, but this is not guaranteed. And a checkpoint can be read only on the same hardware and with the same OpenMM version that wrote it.</p>
 <h2 id="what-goes-wrong">What goes wrong</h2>
+<p>Most failed runs fail in one of a few ways, and the error message names the symptom, not the cause. Some words of the table need a definition first.</p>
+<ul>
+<li>A <strong>LINCS warning</strong> is printed when a constrained bond has rotated by more than 30° in one step (<a href="09-constraints.html">Module 9</a>). Bonds do not turn that fast in a healthy run.</li>
+<li>"Particle moved more than the cutoff" says that an atom travelled an impossibly long way in a single step.</li>
+<li><strong>NaN</strong> stands for "not a number". It is what a computer returns for a calculation that has no answer, such as zero divided by zero. Once one coordinate is NaN, every energy is. These first three symptoms are the same event seen at different moments: the explosion described in step 5.</li>
+<li>A <strong>vacuum bubble</strong> is a region of the box without water. Under a barostat the box shrinks quickly to close it.</li>
+<li><strong>RMSD</strong> is the root-mean-square deviation: a typical distance between the atoms now and the same atoms in a reference structure (the square root of the average of the squared distances), after the two structures have been laid on top of each other (<a href="11-analysis-statistics.html">Module 11</a>). An RMSD that "levels off" has stopped growing.</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -316,16 +1600,34 @@ gen-vel                 = no            ; velocities come from the checkpoint
 </tr>
 </tbody>
 </table>
+<h3 id="periodic-images-in-the-output">Periodic images in the output</h3>
+<p>The third row puzzles almost everyone once. The simulation box is surrounded by copies of itself, and an atom that leaves through one face comes back in through the opposite face (<a href="07-boundaries-electrostatics.html">Module 7</a>). A program can store each atom at its position inside the one central box. A protein that has drifted across a face is then written with some of its atoms at one side of the box and the rest at the other side. A viewer that draws the bonds shows long lines across the box, or a protein in two pieces.</p>
+<p>Nothing is wrong with the simulation. With periodic boundaries each atom interacts with the nearest copy of every other atom, so for the forces the molecule was whole all the time. The repair is made on the trajectory file after the run.</p>
+<p>The command in the table rewrites the trajectory molecule by molecule. The option <code>-pbc mol</code> puts the centre of mass of every molecule inside the box, so that a molecule is moved as a whole, and <code>-center</code> puts the group you choose, here the protein, in the middle of the box. Written out with its files the command is, for example, <code>gmx trjconv -s md.tpr -f md.xtc -o md_centred.xtc -pbc mol -center</code>: <code>-pbc mol</code> requires the run input file (<code>-s</code>). If a molecule still appears broken, the documentation offers <code>-pbc whole</code>, which only makes broken molecules whole.</p>
+<p>The fifth row is the opposite case, a real problem that looks harmless. If the box is too small, the solute comes within the cutoff of its own copy and feels it. The command in that row reports the shortest distance between the solute and its periodic images during the run. That distance must stay larger than the cutoff (<a href="07-boundaries-electrostatics.html">Module 7</a>).</p>
+<h3 id="how-to-use-the-table">How to use the table</h3>
+<p>Work backwards through the workflow. A crash in production usually comes from the equilibration, and a crash in equilibration usually from the building. Look at the structure in a viewer before you change a setting: a clash, a missing atom or a hole in the water is often visible at once. And do not make the warning go away by loosening the setting that printed it. Module 9 makes the point for LINCS: the algorithm is reporting the problem and is rarely its cause.</p>
 <h2 id="what-to-report">What to report</h2>
 <p>A reader must be able to repeat your simulation. State: source and preparation of the structure, protonation states and how they were chosen; force field, water model and ion parameters with versions; box shape and size, number of atoms, salt concentration; minimisation and equilibration protocol; integrator and time step, constraints, mass repartitioning; cutoffs, long-range electrostatics and dispersion treatment; thermostat and barostat with coupling constants; length and number of repeats, what was discarded as equilibration; software and version; where the input files and trajectories can be obtained.</p>
+<p>The list follows the workflow: step 1, then steps 2 to 4, then steps 5 to 7, then the production input file line by line, then the planning. If you kept your input files, writing it is short work. Some of its words:</p>
+<ul>
+<li><em>Ion parameters</em> are the force-field parameters of the ions, which are specific to the water model (<a href="06-force-field-parameters.html">Module 6</a>).</li>
+<li><em>Mass repartitioning</em> is the hydrogen mass repartitioning of <a href="09-constraints.html">Module 9</a>.</li>
+<li>The <em>dispersion treatment</em> is what is done about the Lennard-Jones attraction beyond the cutoff, the <code>DispCorr</code> line.</li>
+<li><em>Coupling constants</em> are the coupling times <code>tau-t</code> and <code>tau-p</code>.</li>
+<li><em>Discarded as equilibration</em> refers to the first part of the production run, which you leave out of the analysis if the quantity you measure was still drifting there (<a href="11-analysis-statistics.html">Module 11</a>).</li>
+</ul>
+<p>All of this is needed because the settings are part of the model. Two simulations of the same protein with different water models, cutoffs or thermostats are two different models. A reader who cannot tell which one you ran cannot compare your result with anything.</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. Your solvated box is 7 × 7 × 7 nm and the protein has a net charge of −6. How many Na⁺ and Cl⁻ for 150 mM?</summary>
 <p>Volume 343 nm<span class="math-inline">\(^3\)</span> gives <span class="math-inline">\(343\times0.0903 = 31\)</span> ion pairs. Add 6 extra Na<span class="math-inline">\(^+\)</span> to neutralise: 37 Na<span class="math-inline">\(^+\)</span> and 31 Cl<span class="math-inline">\(^-\)</span>. (Strictly, the volume available to the solvent is slightly smaller than the box.)</p>
+<p>In the symbols of this module: <span class="math-inline">\(N_s = 0.6022\,c\,V\)</span> with <span class="math-inline">\(c = 0.15\)</span> mol/L and <span class="math-inline">\(V = 343\)</span> nm<span class="math-inline">\(^3\)</span>, then <span class="math-inline">\(N_{\text{Na}} = N_s + 6\)</span> and <span class="math-inline">\(N_{\text{Cl}} = N_s\)</span> because the net charge is <span class="math-inline">\(Q = -6\)</span>.</p>
 </details>
 <details>
 <summary>2. Why equilibrate at constant volume before switching on the barostat?</summary>
 <p>Right after minimisation the kinetic energy is zero and the virial is unrepresentative, so the instantaneous pressure is far from equilibrium. A barostat acting on that would rescale the box violently. Bringing the system to temperature first makes the pressure meaningful.</p>
+<p>(The virial is the part of the pressure that comes from the forces: a sum over pairs of atoms of the force between them times their distance. "Unrepresentative" means that it reflects the strained, freshly built structure and says little about the liquid at 300 K.)</p>
 </details>
 <details>
 <summary>3. What does the energy minimiser not do?</summary>
@@ -334,6 +1636,19 @@ gen-vel                 = no            ; velocities come from the checkpoint
 <details>
 <summary>4. A histidine sits next to an aspartate in your binding interface. Which protonation state would you consider?</summary>
 <p>The doubly protonated, positively charged form (HIP) is stabilised by the nearby negative charge, which raises the histidine pK<span class="math-inline">\(_a\)</span>. Run a pK<span class="math-inline">\(_a\)</span> prediction, and if the result is near the experimental pH, simulate both states.</p>
+<p>(A higher pK<span class="math-inline">\(_a\)</span> means that the group holds its proton up to a higher pH. With the formula of step 1, a histidine whose pK<span class="math-inline">\(_a\)</span> is raised from 6.5 to 7.5 is protonated 76 % of the time at pH 7 instead of 24 %.)</p>
+</details>
+<details>
+<summary>5. You want a run of 250 ns with a time step of 4 fs and one frame every 20 ps. Which numbers do you set, and how many frames do you get?</summary>
+<p>Use <span class="math-inline">\(n_{steps} = t_{sim}/\Delta t\)</span> with both times in ps. The run needs <span class="math-inline">\(250{,}000/0.004 = 62{,}500{,}000\)</span> steps. One frame every 20 ps is one frame every <span class="math-inline">\(20/0.004 = 5{,}000\)</span> steps. The trajectory has <span class="math-inline">\(250{,}000/20 = 12{,}500\)</span> frames. A step of 4 fs needs hydrogen mass repartitioning as well as constrained bonds to hydrogen (Module 9).</p>
+</details>
+<details>
+<summary>6. In the viewer, half of your protein is at the left edge of the box and the other half at the right edge. Has the simulation failed?</summary>
+<p>No. The box is periodic, and the atoms were stored at their positions inside one box. The protein has drifted across a face, so the file shows it in two parts. For the forces it was whole all the time, because each atom interacts with the nearest copy of its neighbours. Rewrite the trajectory so that molecules are in one piece before you analyse it or look at it.</p>
+</details>
+<details>
+<summary>7. Why can a run be continued exactly from a checkpoint and not from the last frame of the trajectory?</summary>
+<p>A frame holds positions only, at reduced precision. To continue the same motion the program also needs the velocities and the internal variables of the thermostat and the barostat, at full precision. The checkpoint holds all of these. Starting from a frame with newly drawn velocities is possible and gives a valid simulation. It is then a new start.</p>
 </details>
 <h2 id="exercises">Exercises</h2>
 <ol>

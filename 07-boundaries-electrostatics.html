@@ -13,18 +13,18 @@
 <header class="topbar">
   <button class="menu-btn" id="menuBtn" aria-label="Open the module list">&#9776;</button>
   <a class="brand" href="index.html">Molecular Dynamics <span>a course from Newton to free energies</span></a>
-  <nav class="toplinks"><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
+  <nav class="toplinks"><a class="wide" href="maths.html">Maths</a><a class="wide" href="physics.html">Physics</a><a class="wide" href="symbols.html">Symbols</a><a href="library.html">Library</a><a href="formula-sheet.html">Formula sheet</a>
   <button id="themeBtn" class="theme-btn" aria-label="Switch between light and dark">&#9680;</button></nav>
 </header>
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="progress"><div class="progress-bar"><div id="progressFill"></div></div><span id="progressText"></span></div>
   <ol class="modlist"><li data-slug="01-what-is-md"><a href="01-what-is-md.html"><span class="tick"></span><span class="n">1</span>What MD is</a></li><li data-slug="02-classical-mechanics"><a href="02-classical-mechanics.html"><span class="tick"></span><span class="n">2</span>Classical mechanics</a></li><li data-slug="03-statistical-mechanics"><a href="03-statistical-mechanics.html"><span class="tick"></span><span class="n">3</span>Statistical mechanics</a></li><li data-slug="04-integrators"><a href="04-integrators.html"><span class="tick"></span><span class="n">4</span>Integrators</a></li><li data-slug="05-force-field-form"><a href="05-force-field-form.html"><span class="tick"></span><span class="n">5</span>Force fields: the terms</a></li><li data-slug="06-force-field-parameters"><a href="06-force-field-parameters.html"><span class="tick"></span><span class="n">6</span>Force fields: parameters</a></li><li class="current" data-slug="07-boundaries-electrostatics"><a href="07-boundaries-electrostatics.html"><span class="tick"></span><span class="n">7</span>Boundaries and Ewald</a></li><li data-slug="08-thermostats-barostats"><a href="08-thermostats-barostats.html"><span class="tick"></span><span class="n">8</span>Thermostats and barostats</a></li><li data-slug="09-constraints"><a href="09-constraints.html"><span class="tick"></span><span class="n">9</span>Constraints</a></li><li data-slug="10-running-a-simulation"><a href="10-running-a-simulation.html"><span class="tick"></span><span class="n">10</span>Running a simulation</a></li><li data-slug="11-analysis-statistics"><a href="11-analysis-statistics.html"><span class="tick"></span><span class="n">11</span>Analysis and statistics</a></li><li data-slug="12-free-energy-pmf"><a href="12-free-energy-pmf.html"><span class="tick"></span><span class="n">12</span>PMF, umbrella, WHAM</a></li><li data-slug="13-alchemical-free-energy"><a href="13-alchemical-free-energy.html"><span class="tick"></span><span class="n">13</span>Alchemical free energy</a></li><li data-slug="14-enhanced-sampling"><a href="14-enhanced-sampling.html"><span class="tick"></span><span class="n">14</span>Enhanced sampling</a></li><li data-slug="15-coarse-grained"><a href="15-coarse-grained.html"><span class="tick"></span><span class="n">15</span>Coarse-grained models</a></li><li data-slug="16-kinetics-msm"><a href="16-kinetics-msm.html"><span class="tick"></span><span class="n">16</span>Kinetics and Markov models</a></li><li data-slug="17-machine-learning"><a href="17-machine-learning.html"><span class="tick"></span><span class="n">17</span>Machine-learned potentials</a></li><li data-slug="18-ml-trained-on-md"><a href="18-ml-trained-on-md.html"><span class="tick"></span><span class="n">18</span>ML trained on MD: state of the art</a></li></ol>
-  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
+  <ul class="extralist"><li><a href="index.html">Course home</a></li><li><a href="maths.html">Maths toolbox</a></li><li><a href="physics.html">Physics primer</a></li><li><a href="symbols.html">List of symbols</a></li><li><a href="toy-data.html">Toy data</a></li><li><a href="projects.html">Projects</a></li><li><a href="formula-sheet.html">Formula sheet</a></li><li><a href="library.html">Library: videos, books, papers</a></li><li><a href="sources.html">How it was checked</a></li></ul>
 </aside>
 <main class="content">
 <div class="hero"><div class="eyebrow">Part II · The engine &middot; Module 7 of 18 &middot; about 7 hours</div><h1>Periodic boundaries, cutoffs and Ewald summation</h1><p class="lede">Simulate a small box that behaves like bulk liquid, cut the short-range interactions correctly, and derive the Ewald sum that makes long-range electrostatics exact.</p></div>
-<nav class="toc"><b>In this module</b><ol><li><a href="#watch-first">Watch first</a></li><li><a href="#periodic-boundary-conditions">Periodic boundary conditions</a></li><li><a href="#cutting-off-short-range-interactions">Cutting off short-range interactions</a></li><li><a href="#why-electrostatics-cannot-be-cut-off">Why electrostatics cannot be cut off</a></li><li><a href="#ewald-summation">Ewald summation</a></li><li><a href="#reaction-field">Reaction field</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
+<nav class="toc"><b>In this module</b><ol><li><a href="#lectures-for-this-module">Lectures for this module</a></li><li><a href="#the-plan-of-this-module">The plan of this module</a></li><li><a href="#periodic-boundary-conditions">Periodic boundary conditions</a></li><li><a href="#cutting-off-short-range-interactions">Cutting off short-range interactions</a></li><li><a href="#why-electrostatics-cannot-be-cut-off">Why electrostatics cannot be cut off</a></li><li><a href="#ewald-summation">Ewald summation</a></li><li><a href="#reaction-field">Reaction field</a></li><li><a href="#check-yourself">Check yourself</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#read">Read</a></li><li><a href="#key-papers">Key papers</a></li></ol></nav>
 <article>
 <div class="box goal">
 <h4 id="after-this-module-you-can">After this module you can</h4>
@@ -36,24 +36,128 @@
 <li>read the non-bonded section of an input file and know what each setting does.</li>
 </ul>
 </div>
-<h2 id="watch-first">Watch first</h2>
+<h2 id="lectures-for-this-module">Lectures for this module</h2>
+<p>The lesson below is written to be complete on its own. These lectures are a second explanation of the same material, for when you want to hear it from a lecturer.</p>
 <h4>Periodic boundaries, cutoffs, neighbour lists</h4>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=gVVqjmTAJGI" target="_blank" rel="noopener">Lecture 06, concept 15: Periodic boundary conditions</a><span class="res-meta">Erik Lindahl &middot; Video, 5 min, intro</span><span class="res-why">Short concept video on periodic boundary conditions.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=x20QP1x3U7c" target="_blank" rel="noopener">Periodic Boundary Conditions PBC for Molecular Dynamics MD &amp; Molecular Monte Carlo MC</a><span class="res-meta">The Computational Chemist &middot; Video, 8 min, intro</span><span class="res-why">Periodic boundary conditions in MD and Monte Carlo.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=IpdTtx98AWQ" target="_blank" rel="noopener">Molecular Dynamics - chapter 3: Periodic Boundary Conditions, Temperature and Pressure</a><span class="res-meta">MoBioChem &middot; Video, 32 min, intro</span><span class="res-why">Chapter on PBC, temperature and pressure in MD.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=Wbzopzywt-Q" target="_blank" rel="noopener">The Geometry of Space: Periodic Boundary Conditions</a><span class="res-meta">The MD Guy &middot; Video, 5 min, intro</span><span class="res-why">Visual short video on the geometry of periodic boundary conditions.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=2jONY8utsZo" target="_blank" rel="noopener">Periodic Boundary Condition | Molecular simulations</a><span class="res-meta">LearnWithVinay &middot; Video, 18 min, intro</span><span class="res-why">Longer walk through of PBC in molecular simulations.</span></li></ul>
 <h4>Ewald summation and PME</h4>
 <ul class="reslist"><li class="res"><a href="https://www.youtube.com/watch?v=SSmIMof0KvA" target="_blank" rel="noopener">Ewald Method | PME PPPME SPME | Molecular Dynamics MD | Molecular Monte Carlo MC</a><span class="res-meta">The Computational Chemist &middot; Video, 21 min, intermediate</span><span class="res-why">Ewald method and PME variants for long-range electrostatics.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=YPryFf7MQTg" target="_blank" rel="noopener">Electrostatic Algorithms</a><span class="res-meta">ESPResSo Simulation Package &middot; Video, 53 min, advanced</span><span class="res-why">Longer lecture on electrostatic algorithms including Ewald and mesh methods.</span></li><li class="res"><a href="https://www.youtube.com/watch?v=VWsMUaA7UWw" target="_blank" rel="noopener">Charm++ Workshop 2017, Day 2, David Hardy</a><span class="res-meta">David Hardy (Charm++ Workshop) &middot; channel: Charm++ &middot; Video, 28 min, advanced</span><span class="res-why">Talk on fast electrostatics algorithms and their GPU implementation in NAMD.</span></li></ul>
+<h2 id="the-plan-of-this-module">The plan of this module</h2>
+<p>A force field (Module 5) gives the energy of a pair of atoms as a function of the distance between them. Before a program can add those pair energies up, two practical questions need an answer.</p>
+<p>First, the box holds between ten thousand and a million atoms, while a single drop of solution holds about <span class="math-inline">\(10^{21}\)</span> molecules. How do you make so few atoms behave like the inside of the drop? Second, every atom interacts with every other atom. Which pairs can be left out, and what has to be done about the pairs that cannot?</p>
+<p>The module answers in four layers:</p>
+<ol>
+<li><strong>Periodic boundaries.</strong> The box is surrounded by copies of itself, so that it has no surface.</li>
+<li><strong>Cutoffs for the Lennard-Jones interaction.</strong> This interaction fades quickly with distance, so pairs further apart than about 1 nm are skipped. The cut has three side effects that must be repaired, and neighbour lists make it cheap to find the pairs that remain.</li>
+<li><strong>Why charges cannot be treated the same way, and the Ewald sum.</strong> The interaction between charges fades too slowly for a cutoff. Ewald summation rewrites the sum over all periodic copies as two sums that both converge quickly.</li>
+<li><strong>What programs do with it.</strong> Particle-mesh Ewald (PME), the settings in an input file, and a cheaper alternative called the reaction field.</li>
+</ol>
+<p>The Ewald section is the heaviest mathematics of the course so far. On a first reading it is enough to follow it up to the interactive demo (the idea of the split), read the table that summarises the terms, and go on to PME. The derivation of each term is marked, and you can come back to it later.</p>
+<h3 id="how-to-read-the-formulas">How to read the formulas</h3>
+<p>Every displayed formula is followed by a list that says what each letter in it means. The notation below appears for the first time in this module. The general conventions (bold letters for vectors, the sum sign, bars) are explained in the <a href="maths.html#notation">maths toolbox</a>.</p>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(x \leftarrow \dots\)</span></td>
+<td>"Replace <span class="math-inline">\(x\)</span> by what stands on the right." An instruction for a program: the new value of <span class="math-inline">\(x\)</span> is computed from the old one.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathrm{round}(x)\)</span></td>
+<td>The whole number nearest to <span class="math-inline">\(x\)</span>. <span class="math-inline">\(\mathrm{round}(0.4)=0\)</span>, <span class="math-inline">\(\mathrm{round}(0.6)=1\)</span>, <span class="math-inline">\(\mathrm{round}(-0.9)=-1\)</span>.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(r^{-6}\)</span></td>
+<td>The same as <span class="math-inline">\(1/r^6\)</span>. A negative power means "one divided by".</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\propto\)</span></td>
+<td>"Is proportional to."</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(O(N)\)</span>, <span class="math-inline">\(O(N^2)\)</span></td>
+<td>"Of order <span class="math-inline">\(N\)</span>", "of order <span class="math-inline">\(N^2\)</span>". It says how the cost of a calculation grows with the number of atoms <span class="math-inline">\(N\)</span>. With <span class="math-inline">\(O(N)\)</span>, twice as many atoms cost twice as much. With <span class="math-inline">\(O(N^2)\)</span> they cost four times as much.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\sum_{\mathbf n}\)</span></td>
+<td>A sum over all the periodic copies of the box.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\sum{}^{'}\)</span></td>
+<td>A prime on a sum sign: some terms are left out. Which ones is stated under the formula.</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\tilde\rho(\mathbf k)\)</span></td>
+<td>A tilde over a letter, with <span class="math-inline">\(\mathbf k\)</span> in brackets: the amount of the wave <span class="math-inline">\(\mathbf k\)</span> contained in the function <span class="math-inline">\(\rho\)</span> (its Fourier coefficient, explained in the Ewald section).</td>
+</tr>
+</tbody>
+</table>
+<div class="box warn">
+<p><strong>Letters that mean two things in this module.</strong> The lists under the formulas say which meaning applies each time.</p>
+<ul>
+<li><span class="math-inline">\(\rho\)</span> is the number of particles per volume in the Lennard-Jones sections, and the electric charge per volume in the Ewald section.</li>
+<li><span class="math-inline">\(\varepsilon\)</span> alone is the depth of the Lennard-Jones energy well. With a subscript (<span class="math-inline">\(\varepsilon_0\)</span>, <span class="math-inline">\(\varepsilon_r\)</span>, <span class="math-inline">\(\varepsilon_{rf}\)</span>) it is an electrical quantity, a permittivity or dielectric constant.</li>
+<li><span class="math-inline">\(i\)</span> is the label of an atom, as in <span class="math-inline">\(q_i\)</span>. In an exponent such as <span class="math-inline">\(e^{i\mathbf k\cdot\mathbf r_j}\)</span> it is the imaginary unit, the number whose square is <span class="math-inline">\(-1\)</span>.</li>
+<li><span class="math-inline">\(e\)</span> is the base of the exponential, 2.718, in formulas such as <span class="math-inline">\(e^{-k^2/4\alpha^2}\)</span>. In running text it is also the unit of charge, the charge of one proton.</li>
+<li><span class="math-inline">\(\mathbf n\)</span> in bold is the shift from the box to one of its copies. <span class="math-inline">\(n_x\)</span>, <span class="math-inline">\(n_y\)</span>, <span class="math-inline">\(n_z\)</span> are whole numbers that count how many times a wave fits into the box.</li>
+<li><span class="math-inline">\(k\)</span> and <span class="math-inline">\(\mathbf k\)</span> are a wave vector in the Ewald section. <span class="math-inline">\(k_{rf}\)</span> in the last section is an unrelated constant of the reaction-field formula.</li>
+</ul>
+</div>
 <h2 id="periodic-boundary-conditions">Periodic boundary conditions</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="gVVqjmTAJGI" href="https://www.youtube.com/watch?v=gVVqjmTAJGI" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 15: Periodic boundary conditions</span><span class="sv-m">5 min · Erik Lindahl</span></a><a class="sv" data-yt="x20QP1x3U7c" href="https://www.youtube.com/watch?v=x20QP1x3U7c" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Periodic Boundary Conditions PBC for Molecular Dynamics MD &amp; Molecular Monte Carlo MC</span><span class="sv-m">8 min · The Computational Chemist</span></a><a class="sv" data-yt="J3aB9xp1YIE" href="https://www.youtube.com/watch?v=J3aB9xp1YIE" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.7 - Boundary Conditions</span><span class="sv-m">7 min · TMP Chem</span></a><a class="sv" data-yt="Wbzopzywt-Q" href="https://www.youtube.com/watch?v=Wbzopzywt-Q" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">The Geometry of Space: Periodic Boundary Conditions</span><span class="sv-m">5 min · The MD Guy</span></a><a class="sv" data-yt="IpdTtx98AWQ" href="https://www.youtube.com/watch?v=IpdTtx98AWQ" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Molecular Dynamics - chapter 3: Periodic Boundary Conditions, Temperature and Pressure</span><span class="sv-m">32 min · MoBioChem</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="gVVqjmTAJGI" href="https://www.youtube.com/watch?v=gVVqjmTAJGI" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 06, concept 15: Periodic boundary conditions</span><span class="sv-m">5 min · Erik Lindahl</span></a><a class="sv" data-yt="x20QP1x3U7c" href="https://www.youtube.com/watch?v=x20QP1x3U7c" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Periodic Boundary Conditions PBC for Molecular Dynamics MD &amp; Molecular Monte Carlo MC</span><span class="sv-m">8 min · The Computational Chemist</span></a><a class="sv" data-yt="J3aB9xp1YIE" href="https://www.youtube.com/watch?v=J3aB9xp1YIE" target="_blank" rel="noopener" title="Molecular Dynamics / Monte Carlo"><span class="sv-play">&#9654;</span><span class="sv-t">Computational Chemistry 3.7 - Boundary Conditions</span><span class="sv-m">7 min · TMP Chem</span></a><a class="sv" data-yt="Wbzopzywt-Q" href="https://www.youtube.com/watch?v=Wbzopzywt-Q" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">The Geometry of Space: Periodic Boundary Conditions</span><span class="sv-m">5 min · The MD Guy</span></a><a class="sv" data-yt="IpdTtx98AWQ" href="https://www.youtube.com/watch?v=IpdTtx98AWQ" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Molecular Dynamics - chapter 3: Periodic Boundary Conditions, Temperature and Pressure</span><span class="sv-m">32 min · MoBioChem</span></a></div>
 
-<p>A simulation box holds <span class="math-inline">\(10^4\)</span> to <span class="math-inline">\(10^6\)</span> atoms. If it had walls, a large fraction of the molecules would sit at a surface: in a cube of 10,000 water molecules about a quarter are in the outermost molecular layer. To imitate bulk solution we remove the surface by making the box <strong>periodic</strong>: it is surrounded by an infinite lattice of identical copies. A particle that leaves through one face enters through the opposite face with the same velocity.</p>
+<p>A molecule at the surface of a liquid is in a different situation from one deep inside. It has neighbours on one side only, so it feels different forces and moves differently. Experiments on solutions measure the inside, which is called the <strong>bulk</strong>: in a glass of water fewer than one molecule in ten million is at the surface. A simulation is far from that situation.</p>
+<p>A simulation box holds <span class="math-inline">\(10^4\)</span> to <span class="math-inline">\(10^6\)</span> atoms. If it had walls, a large fraction of the molecules would sit at a surface: in a cube of 10,000 water molecules about a quarter are in the outermost molecular layer.</p>
+<p>The arithmetic is short. 10,000 molecules packed into a cube make <span class="math-inline">\(10000^{1/3}\approx 21.5\)</span> molecules along each edge. Strip one layer from every face and a cube of 19.5 molecules per edge is left, which holds <span class="math-inline">\(19.5^3\approx 7400\)</span> molecules. The other 2,600, about a quarter, formed the outer layer. With a million molecules the edge is 100 molecules, the inner cube holds <span class="math-inline">\(98^3 = 941{,}192\)</span>, and 6 % are still at the surface.</p>
+<p>To imitate bulk solution we remove the surface by making the box <strong>periodic</strong>: it is surrounded by an infinite lattice of identical copies. A particle that leaves through one face enters through the opposite face with the same velocity.</p>
+<p>Some old video games work in the same way: a ship that flies off the right edge of the screen comes back in at the left edge. The comparison stops at one point. In the game the copies are only a rule for the edges. In a simulation the atoms near a face of the box interact with the atoms of the neighbouring copy, as if that copy were really there.</p>
+<p>Three words are used from here on:</p>
+<ul>
+<li>A <strong>lattice</strong> is a regular arrangement that repeats in all directions, like the squares of graph paper continued in three dimensions.</li>
+<li>An <strong>image</strong> of a particle is its copy in one of the other boxes. If the box edge along <span class="math-inline">\(x\)</span> has the length <span class="math-inline">\(L_x\)</span> and the particle is at <span class="math-inline">\(x\)</span>, its images are at <span class="math-inline">\(x+L_x\)</span>, <span class="math-inline">\(x-L_x\)</span>, <span class="math-inline">\(x+2L_x\)</span> and so on, and likewise along <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>.</li>
+<li>The <strong>central box</strong> is the one whose particles the program stores. All images of a particle move together with it, so <span class="math-inline">\(N\)</span> positions are enough to describe the whole infinite system.</li>
+</ul>
+<p>When a particle leaves the central box, one of its images enters at the same moment through the opposite face. The number of particles in the box therefore stays <span class="math-inline">\(N\)</span>. There are no walls and no surface, and every molecule has other molecules on all sides. The price is that nothing larger than the box can exist in the system, which has consequences listed at the end of this section.</p>
 <h3 id="the-minimum-image-convention">The minimum-image convention</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="pzM7ju9DNtM" href="https://www.youtube.com/watch?v=pzM7ju9DNtM" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">06 Periodic Boundary Conditions and Minimum Image Convention</span><span class="sv-m">8 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="AbidqaoH7Wo" href="https://www.youtube.com/watch?v=AbidqaoH7Wo" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">07 Algorithm for Periodic Boundary Conditions</span><span class="sv-m">2 min · SDU Odense (biomolecular simulation)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="pzM7ju9DNtM" href="https://www.youtube.com/watch?v=pzM7ju9DNtM" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">06 Periodic Boundary Conditions and Minimum Image Convention</span><span class="sv-m">8 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="AbidqaoH7Wo" href="https://www.youtube.com/watch?v=AbidqaoH7Wo" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">07 Algorithm for Periodic Boundary Conditions</span><span class="sv-m">2 min · SDU Odense (biomolecular simulation)</span></a></div>
 
+<p>Every particle now has infinitely many images. When the program computes the interaction of particle <span class="math-inline">\(i\)</span> with particle <span class="math-inline">\(j\)</span>, which image of <span class="math-inline">\(j\)</span> should it take? For an interaction that fades quickly with distance, only the closest one matters.</p>
 <p>Each particle interacts with the <strong>nearest image</strong> of every other particle. For a rectangular box with edges <span class="math-inline">\(L_x,L_y,L_z\)</span>:</p>
 <p><span class="math-display">\[\Delta x \leftarrow \Delta x - L_x\,\mathrm{round}\!\left(\frac{\Delta x}{L_x}\right)\]</span></p>
-<p>and the same for <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>. This is the line <code>d -= L * np.round(d / L)</code> in the Module 1 code. It is consistent with a cutoff <span class="math-inline">\(r_c\)</span> only if</p>
+<p>and the same for <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>. This is the line <code>d -= L * np.round(d / L)</code> in the Module 1 code.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\Delta x\)</span>: the <span class="math-inline">\(x\)</span> component of the separation of two particles, <span class="math-inline">\(x_i - x_j\)</span>, computed from the coordinates as the program stores them. In nm.</li>
+<li><span class="math-inline">\(L_x\)</span>: the length of the box edge along <span class="math-inline">\(x\)</span>, in nm. <span class="math-inline">\(L_y\)</span> and <span class="math-inline">\(L_z\)</span> are the edges along <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>.</li>
+<li><span class="math-inline">\(\Delta x/L_x\)</span>: the same separation counted in box lengths instead of nm.</li>
+<li><span class="math-inline">\(\mathrm{round}(\ )\)</span>: the nearest whole number. Here it gives the separation in box lengths, rounded to the nearest whole number.</li>
+<li><span class="math-inline">\(\leftarrow\)</span>: "replace the left side by the right side". The line is an instruction that changes <span class="math-inline">\(\Delta x\)</span>.</li>
+</ul>
+</div>
+<p>Read it like this: count how many whole box lengths separate the two stored positions, and take that many box lengths away. What is left is the separation between particle <span class="math-inline">\(i\)</span> and the closest image of particle <span class="math-inline">\(j\)</span>. After the replacement <span class="math-inline">\(\Delta x\)</span> always lies between <span class="math-inline">\(-L_x/2\)</span> and <span class="math-inline">\(+L_x/2\)</span>, so no pair is ever counted as more than half a box apart along any axis.</p>
+<p>An example with numbers. Take <span class="math-inline">\(L_x = 3\)</span> nm, particle <span class="math-inline">\(i\)</span> at <span class="math-inline">\(x_i = 0.2\)</span> nm and particle <span class="math-inline">\(j\)</span> at <span class="math-inline">\(x_j = 2.9\)</span> nm. The stored separation is <span class="math-inline">\(\Delta x = 0.2 - 2.9 = -2.7\)</span> nm. In box lengths that is <span class="math-inline">\(-2.7/3 = -0.9\)</span>, which rounds to <span class="math-inline">\(-1\)</span>. The new value is <span class="math-inline">\(\Delta x = -2.7 - 3\times(-1) = +0.3\)</span> nm.</p>
+<p>In words: the stored particle <span class="math-inline">\(j\)</span> is 2.7 nm to the right of <span class="math-inline">\(i\)</span>, but its image in the box on the left sits at <span class="math-inline">\(2.9 - 3 = -0.1\)</span> nm, only 0.3 nm from <span class="math-inline">\(i\)</span>. A second pair with <span class="math-inline">\(\Delta x = 1.2\)</span> nm gives <span class="math-inline">\(1.2/3 = 0.4\)</span>, which rounds to 0, and nothing is changed: the stored particle is already the closest image.</p>
+<p>The convention goes together with a <strong>cutoff</strong>: a distance <span class="math-inline">\(r_c\)</span> beyond which a pair is not computed at all (the subject of the next section). It is consistent with a cutoff <span class="math-inline">\(r_c\)</span> only if</p>
 <p><span class="math-display">\[r_c \le \tfrac12 L_{min},\]</span></p>
 <p>so that at most one image of each neighbour lies inside the cutoff sphere.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff distance, in nm. Pairs further apart than <span class="math-inline">\(r_c\)</span> are skipped. Typical values are 0.9 to 1.2 nm.</li>
+<li><span class="math-inline">\(L_{min}\)</span>: the shortest of the three box edges <span class="math-inline">\(L_x\)</span>, <span class="math-inline">\(L_y\)</span>, <span class="math-inline">\(L_z\)</span>.</li>
+<li><span class="math-inline">\(\le\)</span>: "is smaller than or equal to".</li>
+<li><span class="math-inline">\(\tfrac12\)</span>: one half.</li>
+</ul>
+</div>
+<p>The <strong>cutoff sphere</strong> of a particle is the sphere of radius <span class="math-inline">\(r_c\)</span> around it: everything inside is computed, everything outside is ignored. Two images of the same neighbour are at least one box edge apart, that is, at least <span class="math-inline">\(L_{min}\)</span>. A sphere of radius <span class="math-inline">\(r_c\)</span> is <span class="math-inline">\(2r_c\)</span> wide, so if <span class="math-inline">\(2r_c\)</span> is no larger than the box it cannot hold two of them.</p>
+<p>Here is what goes wrong otherwise. Take <span class="math-inline">\(L_x = 3\)</span> nm again and a cutoff of 1.8 nm, which is more than half the box. A neighbour at <span class="math-inline">\(\Delta x = +1.4\)</span> nm has another image at <span class="math-inline">\(1.4 - 3 = -1.6\)</span> nm. Both are inside the cutoff sphere, but the minimum-image rule returns only the first, and the second interaction is lost.</p>
+<p>The condition forbids this case. With a cutoff of 1.0 to 1.2 nm it asks for a box of at least 2.0 to 2.4 nm. Boxes that hold a solvated protein are larger than that for other reasons, given next.</p>
 <h3 id="box-shape-and-size">Box shape and size</h3>
+<p>Most of the atoms in a simulation of a protein belong to the water around it, so the amount of water decides the cost. This section is about how little water you can use without letting the protein notice that it lives in a periodic system.</p>
 <p>A protein is roughly spherical, so a cube wastes water in its corners. Space-filling shapes that are closer to a sphere need less solvent for the same distance between periodic images:</p>
 <table>
 <thead>
@@ -81,79 +185,688 @@
 </tr>
 </tbody>
 </table>
-<p>Codes implement these as triclinic cells. Rules for the size:</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(d\)</span>: the image distance, the distance between the centre of the box and the centre of the nearest copy, in nm. For a cube it is the edge length.</li>
+<li><span class="math-inline">\(d^3\)</span>: the volume of a cube with that edge, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(0.77\)</span> and <span class="math-inline">\(0.71\)</span>: pure numbers from the geometry of the two shapes, <span class="math-inline">\(4/(3\sqrt3)\)</span> and <span class="math-inline">\(\sqrt2/2\)</span>.</li>
+</ul>
+</div>
+<p>A shape is <strong>space-filling</strong> when copies of it stack without gaps. Cubes do, and spheres do not, which is why a sphere itself cannot be used. A truncated octahedron is a cube with its eight corners cut off, which leaves 14 faces. A rhombic dodecahedron has 12 identical diamond-shaped faces. Both stack without gaps.</p>
+<p>Read the table with an example. For <span class="math-inline">\(d = 8\)</span> nm the cube has a volume of <span class="math-inline">\(8^3 = 512\)</span> nm<span class="math-inline">\(^3\)</span>. Liquid water has about 33 molecules per nm<span class="math-inline">\(^3\)</span>, so the cube holds about 17,000 water molecules. The rhombic dodecahedron with the same <span class="math-inline">\(d\)</span> has <span class="math-inline">\(0.71\times512\approx 360\)</span> nm<span class="math-inline">\(^3\)</span> and about 12,000 water molecules. That is 5,000 molecules fewer to compute at every step, with the protein as far from its nearest copy as before.</p>
+<p>Codes implement these as triclinic cells. A <strong>triclinic cell</strong> is a box whose three edges need not be at right angles, a brick pushed sideways. Any periodic arrangement can be described by three edge vectors, so one general kind of box covers the cube and both shapes of the table. For this reason a system that was set up as a rhombic dodecahedron can look like a slanted brick in a viewer. The two pictures show the same periodic system with a different outline drawn around it.</p>
+<p>Rules for the size:</p>
 <ul>
 <li>The solute must never see its own image: the shortest distance between the solute and any periodic copy must stay larger than the cutoff at all times. In practice, leave at least 1.0 to 1.2 nm of solvent between the solute and each box face (so at least 2.0 nm between copies).</li>
 <li>An elongated or flexible molecule can rotate or extend. Size the box for the longest dimension it can reach, or check the minimum image distance during the run (<code>gmx mindist -pi</code>).</li>
 <li>For binding or unbinding simulations the box must hold the separated state with both partners out of range of each other and of all images.</li>
 </ul>
+<p>The <strong>solute</strong> is the molecule you study, for example the protein, and the <strong>solvent</strong> is the water and ions around it. "Seeing its own image" means that an atom of the protein comes within the cutoff of an atom of a copy of the same protein. The protein would then interact directly with itself, which no single protein in a dilute solution does. The arithmetic of the first rule: 1.0 nm of water between the protein and the face, and another 1.0 nm between that face and the copy behind it, makes 2.0 nm between the two. The command in the second rule is a GROMACS tool that reports this distance for each frame of a trajectory.</p>
 <p>Periodicity does have artefacts: no fluctuation with a wavelength longer than the box exists, diffusion is slowed by hydrodynamic interaction with the images (a correction is given in Module 11), and a charged solute interacts with its copies.</p>
+<p>An <strong>artefact</strong> is a feature of the result that comes from the method and not from the system. The three named here, in words:</p>
+<ul>
+<li><em>No long waves.</em> A slow ripple, for example the bending of a membrane or a variation of density from place to place, must fit a whole number of times into the box. Ripples longer than the box are missing.</li>
+<li><em>Slower diffusion.</em> Diffusion is the random wandering of a molecule through the liquid. A moving molecule drags the liquid around it along. In a periodic box that flow meets the flows around the images of the same molecule, and the net effect is to hold the molecule back.</li>
+<li><em>Interaction of charges with their copies.</em> The interaction between charges reaches very far, as the second half of this module shows, so a solute with a net charge feels its own images even in a large box.</li>
+</ul>
 <h2 id="cutting-off-short-range-interactions">Cutting off short-range interactions</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="JQPHMpR37Co" href="https://www.youtube.com/watch?v=JQPHMpR37Co" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">04 Non-bonded Cutoffs (switch, shift, plain)</span><span class="sv-m">11 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="y-jUCgk4rCI" href="https://www.youtube.com/watch?v=y-jUCgk4rCI" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 11: Trunctation of Potentials</span><span class="sv-m">40 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="hi7gvv-I-0o" href="https://www.youtube.com/watch?v=hi7gvv-I-0o" target="_blank" rel="noopener" title="Advanced Thermodynamics and Molecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 43: Saving CPU time: short range and long range interactions</span><span class="sv-m">36 min · NPTEL / IIT Roorkee</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="JQPHMpR37Co" href="https://www.youtube.com/watch?v=JQPHMpR37Co" target="_blank" rel="noopener" title="Molecular Dynamics Simulations of Biomolecules"><span class="sv-play">&#9654;</span><span class="sv-t">04 Non-bonded Cutoffs (switch, shift, plain)</span><span class="sv-m">11 min · SDU Odense (biomolecular simulation)</span></a><a class="sv" data-yt="y-jUCgk4rCI" href="https://www.youtube.com/watch?v=y-jUCgk4rCI" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 11: Trunctation of Potentials</span><span class="sv-m">40 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="hi7gvv-I-0o" href="https://www.youtube.com/watch?v=hi7gvv-I-0o" target="_blank" rel="noopener" title="Advanced Thermodynamics and Molecular Simulations"><span class="sv-play">&#9654;</span><span class="sv-t">Lecture 43: Saving CPU time: short range and long range interactions</span><span class="sv-m">36 min · NPTEL / IIT Roorkee</span></a></div>
 
-<p>The Lennard-Jones attraction falls as <span class="math-inline">\(r^{-6}\)</span>, fast enough to truncate at <span class="math-inline">\(r_c\)</span> = 0.9 to 1.2 nm. Three issues arise.</p>
-<p><strong>1. The jump at the cutoff.</strong> Plain truncation makes <span class="math-inline">\(U\)</span> discontinuous at <span class="math-inline">\(r_c\)</span>, so the force has a delta-function spike and energy is not conserved. Remedies:</p>
+<p>With periodic boundaries each atom has an unlimited number of partners: all other atoms and all their images. A program can compute only a limited number of pairs per step. This section shows that for one kind of interaction the distant pairs can be left out, and what has to be repaired afterwards.</p>
+<p>The interaction in question is the Lennard-Jones energy of Module 5. As a reminder:</p>
+<p><span class="math-display">\[U_{LJ}(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^{6}\right]\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{LJ}(r)\)</span>: the Lennard-Jones energy of one pair of atoms, in kJ/mol.</li>
+<li><span class="math-inline">\(r\)</span>: the distance between the two atoms, in nm.</li>
+<li><span class="math-inline">\(\sigma\)</span>: the distance at which the energy is zero, the "size" of the pair. A few tenths of a nanometre.</li>
+<li><span class="math-inline">\(\varepsilon\)</span>: the depth of the energy well. Module 5 gives 0.1 to 1 kJ/mol as typical. This <span class="math-inline">\(\varepsilon\)</span> is not the electrical <span class="math-inline">\(\varepsilon_0\)</span> that appears later.</li>
+<li><span class="math-inline">\((\sigma/r)^{12}\)</span>: the repulsion at short distance. <span class="math-inline">\(-(\sigma/r)^{6}\)</span>: the attraction at larger distance, called dispersion.</li>
+</ul>
+</div>
+<p>At distances of a few <span class="math-inline">\(\sigma\)</span> the repulsive term is negligible, and what remains is the attraction <span class="math-inline">\(-4\varepsilon(\sigma/r)^6\)</span>. The Lennard-Jones attraction falls as <span class="math-inline">\(r^{-6}\)</span>, fast enough to truncate at <span class="math-inline">\(r_c\)</span> = 0.9 to 1.2 nm.</p>
+<p>A number shows how fast. With <span class="math-inline">\(\sigma = 0.3\)</span> nm, a pair at <span class="math-inline">\(r = 1.0\)</span> nm has <span class="math-inline">\((\sigma/r)^6 = 0.3^6 = 0.00073\)</span>, so its energy is <span class="math-inline">\(-0.0029\,\varepsilon\)</span>: three thousandths of the well depth. Doubling the distance divides the energy by <span class="math-inline">\(2^6 = 64\)</span>.</p>
+<p>"Fast enough" needs an argument, though, because the number of distant partners is large. The argument counts the partners shell by shell.</p>
+<div class="box maths">
+<p><strong>Maths you need here: adding up over spherical shells.</strong> Draw a sphere of radius <span class="math-inline">\(r\)</span> around one atom, and a slightly larger one of radius <span class="math-inline">\(r+dr\)</span>. The space between them is a thin <strong>shell</strong>. The surface of a sphere is <span class="math-inline">\(4\pi r^2\)</span>, so the volume of the shell is <span class="math-inline">\(4\pi r^2\,dr\)</span>. If the liquid holds <span class="math-inline">\(\rho\)</span> atoms per unit volume, the shell holds <span class="math-inline">\(4\pi r^2\rho\,dr\)</span> atoms. Example: for <span class="math-inline">\(r = 1\)</span> nm, <span class="math-inline">\(dr = 0.1\)</span> nm and <span class="math-inline">\(\rho = 33\)</span> nm<span class="math-inline">\(^{-3}\)</span>, the shell has a volume of <span class="math-inline">\(4\pi\times1^2\times0.1 = 1.26\)</span> nm<span class="math-inline">\(^3\)</span> and holds about 42 molecules.</p>
+<p>The number of partners in a shell grows as <span class="math-inline">\(r^2\)</span>. To get the total energy of the atom with all partners beyond <span class="math-inline">\(r_c\)</span>, multiply the number in each shell by the pair energy <span class="math-inline">\(u(r)\)</span> at that distance and add up all shells. Adding up infinitely many thin slices is an <a href="maths.html#integral">integral</a>:</p>
+<p><span class="math-display">\[\int_{r_c}^{\infty} 4\pi r^2\rho\; u(r)\,dr .\]</span></p>
+<p>One rule of integration is all that is needed. For a power <span class="math-inline">\(n\)</span> larger than 1,</p>
+<p><span class="math-display">\[\int_{r_c}^{\infty}\frac{dr}{r^{n}} = \frac{1}{(n-1)\,r_c^{\,n-1}} ,\]</span></p>
+<p>a finite number that gets smaller when <span class="math-inline">\(r_c\)</span> gets larger. For <span class="math-inline">\(n = 4\)</span> it is <span class="math-inline">\(1/(3r_c^3)\)</span>. For <span class="math-inline">\(n = 1\)</span> or smaller the integral has no finite value: the sum keeps growing however far you go.</p>
+</div>
+<p>Apply this to the attraction, <span class="math-inline">\(u(r) = -4\varepsilon\sigma^6/r^6\)</span>. Each shell contributes <span class="math-inline">\(4\pi r^2\rho\)</span> partners times an energy proportional to <span class="math-inline">\(r^{-6}\)</span>, so the contribution of a shell is proportional to <span class="math-inline">\(r^2\times r^{-6} = r^{-4}\)</span>. The shells get more populated as <span class="math-inline">\(r^2\)</span>, but the pair energy drops as <span class="math-inline">\(r^{-6}\)</span> and wins.</p>
+<p>The rule above with <span class="math-inline">\(n = 4\)</span> gives a finite total, proportional to <span class="math-inline">\(1/r_c^3\)</span>. So the sum over all distant partners exists and is small, and cutting it off is a controlled approximation. Keep this argument in mind: for charges it will fail.</p>
+<p>Three issues arise.</p>
+<p><strong>1. The jump at the cutoff.</strong> Plain truncation makes <span class="math-inline">\(U\)</span> discontinuous at <span class="math-inline">\(r_c\)</span>, so the force has a delta-function spike and energy is not conserved.</p>
+<p>Plain truncation means: use <span class="math-inline">\(U_{LJ}(r)\)</span> when <span class="math-inline">\(r\)</span> is smaller than <span class="math-inline">\(r_c\)</span>, and zero otherwise. At <span class="math-inline">\(r_c\)</span> the energy then steps from the small negative value <span class="math-inline">\(U_{LJ}(r_c)\)</span> straight to zero. "Discontinuous" is the word for a function with such a step.</p>
+<p>The force is minus the slope of the energy (Module 2). A step is a slope that is infinitely steep over a distance of zero width, and the matching force is an infinitely strong push that lasts for no time. That object is the <a href="maths.html#delta">delta function</a> of the sentence above.</p>
+<p>A program computes forces only once per time step and never meets the spike. So when a pair moves across <span class="math-inline">\(r_c\)</span>, its potential energy changes by <span class="math-inline">\(U_{LJ}(r_c)\)</span> and the kinetic energy does not change to compensate. The total energy makes a small jump at every crossing, and there are very many crossings.</p>
+<p>Remedies:</p>
 <ul>
 <li><strong>Potential shift</strong>: use <span class="math-inline">\(U(r)-U(r_c)\)</span> inside the cutoff. The energy is continuous, the force is unchanged inside and still jumps to zero at <span class="math-inline">\(r_c\)</span> (a small jump). This is the GROMACS default.</li>
 <li><strong>Force switch or potential switch</strong>: multiply by a smooth function that takes the force (or potential) to zero between <span class="math-inline">\(r_{sw}\)</span> and <span class="math-inline">\(r_c\)</span>. CHARMM force fields were parameterised with a force switch from 1.0 to 1.2 nm, and membrane properties in particular depend on using it.</li>
 </ul>
+<p>Written out, the shifted potential is</p>
+<p><span class="math-display">\[U_{shift}(r) = \begin{cases} U_{LJ}(r) - U_{LJ}(r_c) &amp; \text{for } r &lt; r_c \\ 0 &amp; \text{for } r \ge r_c \end{cases}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{shift}(r)\)</span>: the pair energy that the program uses, in kJ/mol.</li>
+<li><span class="math-inline">\(U_{LJ}(r)\)</span>: the Lennard-Jones energy of the pair at the distance <span class="math-inline">\(r\)</span>.</li>
+<li><span class="math-inline">\(U_{LJ}(r_c)\)</span>: the same function evaluated at the cutoff. It is one fixed number for each kind of pair.</li>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff distance.</li>
+<li>The brace: "use the upper line in the first case and the lower line in the second".</li>
+</ul>
+</div>
+<p>Read it like this: the whole curve inside the cutoff is lifted by the small amount that makes it arrive at exactly zero at <span class="math-inline">\(r_c\)</span>. Lifting a curve by a constant does not change its slope, so the force inside the cutoff is the same as before. At <span class="math-inline">\(r_c\)</span> the force drops from its small value there to zero. With <span class="math-inline">\(\sigma = 0.3\)</span> nm and <span class="math-inline">\(r_c = 1.0\)</span> nm that value is <span class="math-inline">\(0.017\,\varepsilon\)</span> per nm, which is why the list calls the jump small. The Python code of Module 1 does the same thing in its line <code>shift = 4 * (rc ** -12 - rc ** -6)</code>.</p>
+<p>A <strong>switch</strong> goes one step further and removes the jump in the force as well. The switching function is equal to 1 up to the distance <span class="math-inline">\(r_{sw}\)</span> where switching starts, and falls smoothly to 0 at <span class="math-inline">\(r_c\)</span>. A potential switch multiplies the energy by it. A force switch changes the force so that it goes smoothly to zero, and the energy that belongs to that force follows from it.</p>
+<p>"Parameterised with" means that the numbers of the force field were fitted while this treatment was in use. The treatment of the cutoff is then part of the model, and changing it changes the results.</p>
+<p>The second issue uses two terms. The <strong>number density</strong> <span class="math-inline">\(\rho\)</span> is the number of particles per unit volume, <span class="math-inline">\(N/V\)</span> for <span class="math-inline">\(N\)</span> particles in a box of volume <span class="math-inline">\(V\)</span>. The <strong>radial distribution function</strong> <span class="math-inline">\(g(r)\)</span> (Module 11) compares the density of particles found at the distance <span class="math-inline">\(r\)</span> from a given particle with the average density <span class="math-inline">\(\rho\)</span>. Close to a particle <span class="math-inline">\(g(r)\)</span> has peaks, the shells of neighbours. Further out it settles at 1, which means "as many particles as in a liquid without any structure".</p>
 <p><strong>2. The neglected tail.</strong> Beyond <span class="math-inline">\(r_c\)</span> the liquid is nearly uniform (<span class="math-inline">\(g(r)\approx1\)</span>), so the missing energy can be added analytically. For <span class="math-inline">\(N\)</span> particles of number density <span class="math-inline">\(\rho\)</span>:</p>
 <p><span class="math-display">\[U_{tail} = \frac{N\rho}{2}\int_{r_c}^{\infty}4\pi r^2\,U_{LJ}(r)\,dr
 = \frac{8}{3}\pi N\rho\,\varepsilon\sigma^3\left[\frac13\left(\frac{\sigma}{r_c}\right)^{9}-\left(\frac{\sigma}{r_c}\right)^{3}\right].\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{tail}\)</span>: the Lennard-Jones energy of all pairs further apart than <span class="math-inline">\(r_c\)</span>, for the whole system, in kJ/mol. The "tail" is the part of the energy curve beyond the cutoff.</li>
+<li><span class="math-inline">\(N\)</span>: the number of particles in the box.</li>
+<li><span class="math-inline">\(\rho\)</span>: the number density, particles per nm<span class="math-inline">\(^3\)</span> (here not a charge density).</li>
+<li><span class="math-inline">\(\int_{r_c}^{\infty}\dots\,dr\)</span>: add up the contributions of all shells from <span class="math-inline">\(r_c\)</span> outwards.</li>
+<li><span class="math-inline">\(4\pi r^2\,dr\)</span>: the volume of the shell at distance <span class="math-inline">\(r\)</span> (see the box above).</li>
+<li><span class="math-inline">\(U_{LJ}(r)\)</span>: the Lennard-Jones pair energy, with its parameters <span class="math-inline">\(\varepsilon\)</span> (well depth, kJ/mol) and <span class="math-inline">\(\sigma\)</span> (size, nm).</li>
+<li><span class="math-inline">\(\tfrac12\)</span> in <span class="math-inline">\(N\rho/2\)</span>: every pair would otherwise be counted twice, once from each of its two particles.</li>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff distance, in nm.</li>
+<li><span class="math-inline">\(\pi\)</span>: the number 3.14159.</li>
+</ul>
+</div>
+<p>"Analytically" means with a formula worked out on paper, in place of a sum over pairs done by the computer. The steps from the middle expression to the right one:</p>
+<ol>
+<li><em>One particle.</em> The shell at distance <span class="math-inline">\(r\)</span> holds <span class="math-inline">\(4\pi r^2\rho\,dr\)</span> particles (uniform liquid, <span class="math-inline">\(g = 1\)</span>), each with the energy <span class="math-inline">\(U_{LJ}(r)\)</span>. Adding up the shells gives the energy of one particle with everything beyond the cutoff, <span class="math-inline">\(\rho\int_{r_c}^{\infty}4\pi r^2\,U_{LJ}(r)\,dr\)</span>.</li>
+<li><em>All particles.</em> Multiply by <span class="math-inline">\(N\)</span>, and divide by 2 because each pair has been counted from both ends. That is the middle expression.</li>
+<li><em>Insert the Lennard-Jones formula.</em> The integrand becomes <span class="math-inline">\(16\pi\varepsilon\,(\sigma^{12}r^{-10} - \sigma^{6}r^{-4})\)</span>, because <span class="math-inline">\(r^2\times r^{-12} = r^{-10}\)</span> and <span class="math-inline">\(r^2\times r^{-6} = r^{-4}\)</span>.</li>
+<li><em>Integrate each power</em> with the rule of the box: <span class="math-inline">\(\int_{r_c}^\infty r^{-10}dr = 1/(9r_c^9)\)</span> and <span class="math-inline">\(\int_{r_c}^\infty r^{-4}dr = 1/(3r_c^3)\)</span>. The integral is <span class="math-inline">\(16\pi\varepsilon\sigma^3\left[\tfrac19(\sigma/r_c)^9 - \tfrac13(\sigma/r_c)^3\right]\)</span>.</li>
+<li><em>Collect the factors.</em> Multiplying by <span class="math-inline">\(N\rho/2\)</span> and taking a factor <span class="math-inline">\(\tfrac13\)</span> out of the bracket gives the right-hand side.</li>
+</ol>
+<p>Read it like this. The bracket is negative, because <span class="math-inline">\((\sigma/r_c)^3\)</span> is much larger than <span class="math-inline">\(\tfrac13(\sigma/r_c)^9\)</span> when <span class="math-inline">\(r_c\)</span> is a few <span class="math-inline">\(\sigma\)</span>. The correction lowers the energy: it restores attraction that the cutoff removed. It grows with the density and shrinks as <span class="math-inline">\(1/r_c^3\)</span> when the cutoff is made longer.</p>
+<p>A number, with round values chosen as an illustration: <span class="math-inline">\(\sigma = 0.3\)</span> nm, <span class="math-inline">\(\varepsilon = 0.6\)</span> kJ/mol, <span class="math-inline">\(\rho = 33\)</span> nm<span class="math-inline">\(^{-3}\)</span> and <span class="math-inline">\(r_c = 1.0\)</span> nm. Then <span class="math-inline">\((\sigma/r_c)^3 = 0.027\)</span>, the term with the ninth power is negligible, and <span class="math-inline">\(U_{tail}/N = \tfrac83\pi\times33\times0.6\times0.027\times(-0.027) = -0.12\)</span> kJ/mol per particle. That looks small next to the thermal energy <span class="math-inline">\(k_BT = 2.5\)</span> kJ/mol at 300 K (Boltzmann's constant <span class="math-inline">\(k_B\)</span> times the temperature <span class="math-inline">\(T\)</span>, Module 3). For 10,000 particles it adds up to <span class="math-inline">\(-1200\)</span> kJ/mol, and its effect on the pressure is larger still.</p>
 <p>There is a matching correction to the pressure. It is negative (the missing attraction pulls the system together), so leaving it out gives a density that is too low. In GROMACS this is <code>DispCorr = EnerPres</code>. It assumes a homogeneous system, so it is not appropriate for membranes and interfaces, where Lennard-Jones PME (a lattice sum for the <span class="math-inline">\(r^{-6}\)</span> term) is the rigorous alternative.</p>
+<p>Some explanation of these four sentences. The pressure of a liquid has a part that comes from the forces between the particles (the virial of Module 3), and attractive forces lower it. Exercise 2 gives the formula of the correction. With the illustrative numbers above it comes to about <span class="math-inline">\(-8\)</span> kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>, which is about <span class="math-inline">\(-130\)</span> bar (1 kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span> is 16.6 bar).</p>
+<p>A run at constant pressure (Module 8) adjusts the box until the pressure matches the target. If the attraction of the tail is missing, the computed pressure is too high, the box grows, and the density ends up too low.</p>
+<p>The setting name reads "dispersion correction for energy and pressure". <strong>Homogeneous</strong> means that the average density is the same everywhere, which is what step 1 of the derivation assumed. In a membrane the lipid tails and the water have different densities and different Lennard-Jones parameters, so one average <span class="math-inline">\(\rho\)</span> describes neither. A <strong>lattice sum</strong> is a sum over all periodic images, like the Ewald sum derived below for charges.</p>
 <p><strong>3. Finding the neighbours.</strong> Testing all <span class="math-inline">\(N(N-1)/2\)</span> pairs each step to find those within <span class="math-inline">\(r_c\)</span> would itself cost <span class="math-inline">\(O(N^2)\)</span>.</p>
+<p>The count: each of the <span class="math-inline">\(N\)</span> atoms can pair with <span class="math-inline">\(N-1\)</span> others, and dividing by 2 avoids counting the pair <span class="math-inline">\(i\)</span>-<span class="math-inline">\(j\)</span> again as <span class="math-inline">\(j\)</span>-<span class="math-inline">\(i\)</span>. For <span class="math-inline">\(N = 100{,}000\)</span> that is <span class="math-inline">\(5\times10^9\)</span> distances to compute at every step.</p>
+<p>Yet few of those pairs are within the cutoff. Water has about 100 atoms per nm<span class="math-inline">\(^3\)</span>, so a sphere of radius 1.0 nm, with a volume of <span class="math-inline">\(\tfrac43\pi\times1.0^3 = 4.2\)</span> nm<span class="math-inline">\(^3\)</span>, holds about 420 atoms. The pairs that matter number <span class="math-inline">\(100{,}000\times420/2 = 2\times10^7\)</span>, about 240 times fewer. The cutoff has made the energy cheap, and the search for the pairs has become the expensive part.</p>
 <h3 id="neighbour-lists">Neighbour lists</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="OURKkL8XqDo" href="https://www.youtube.com/watch?v=OURKkL8XqDo" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 19: Neighbour List</span><span class="sv-m">43 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="OURKkL8XqDo" href="https://www.youtube.com/watch?v=OURKkL8XqDo" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 19: Neighbour List</span><span class="sv-m">43 min · Prof. Ethayaraja Mani (IIT Madras)</span></a></div>
 
+<p>Atoms in a liquid move slowly compared with the length of a time step, so an atom has almost the same neighbours now as it had ten steps ago. A neighbour list uses this: find the neighbours once, write them down, and reuse the list for a number of steps.</p>
 <ul>
 <li><strong>Verlet list.</strong> For each atom keep a list of all atoms within <span class="math-inline">\(r_l = r_c + \delta\)</span>, where <span class="math-inline">\(\delta\)</span> is the "skin" or buffer. Use the list for many steps. It is guaranteed to stay valid until some atom has moved more than <span class="math-inline">\(\delta/2\)</span>, because only then can a pair that was outside <span class="math-inline">\(r_l\)</span> come inside <span class="math-inline">\(r_c\)</span>.</li>
 <li><strong>Cell list.</strong> Divide the box into cells of edge at least <span class="math-inline">\(r_l\)</span>. Neighbours of an atom can only be in its own cell or the 26 around it. Building the Verlet list this way costs <span class="math-inline">\(O(N)\)</span>.</li>
 </ul>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff distance of the interaction, in nm.</li>
+<li><span class="math-inline">\(\delta\)</span>: the skin, an extra margin (say 0.1 nm) added so that the list stays correct while the atoms move.</li>
+<li><span class="math-inline">\(r_l\)</span>: the radius used when the list is built, <span class="math-inline">\(r_c + \delta\)</span>.</li>
+<li><span class="math-inline">\(\delta/2\)</span>: half the skin. It is the distance each of two atoms may travel before the pair can have closed a gap of <span class="math-inline">\(\delta\)</span>.</li>
+<li><span class="math-inline">\(O(N)\)</span>: the cost grows in proportion to the number of atoms <span class="math-inline">\(N\)</span>.</li>
+</ul>
+</div>
+<p>Why <span class="math-inline">\(\delta/2\)</span>. A pair that is not on the list was further apart than <span class="math-inline">\(r_c+\delta\)</span> when the list was built. To come within <span class="math-inline">\(r_c\)</span> the two atoms must reduce their distance by more than <span class="math-inline">\(\delta\)</span>. In the worst case they fly straight towards each other, and each needs to cover <span class="math-inline">\(\delta/2\)</span>. As long as no atom has moved that far, no pair is missing.</p>
+<p>A number. A water molecule at 300 K has a mean thermal speed of about 0.6 nm/ps (from the Maxwell-Boltzmann distribution of Module 3). In a time step of 2 fs it covers about 0.0012 nm. With a skin of <span class="math-inline">\(\delta = 0.1\)</span> nm it would need about 40 steps in a straight line to cover <span class="math-inline">\(\delta/2 = 0.05\)</span> nm, and in a liquid it does not move in a straight line. So one list serves for some tens of steps, and during those steps the program computes only the pairs on the list.</p>
+<p>Building the list still requires finding all pairs within <span class="math-inline">\(r_l\)</span>, and the cell list does that without testing all pairs. The 26 cells around a cell are its neighbours in a block of <span class="math-inline">\(3\times3\times3 = 27\)</span> cells, minus the cell itself. Because a cell is at least <span class="math-inline">\(r_l\)</span> wide, an atom further away than the neighbouring cells is certainly further away than <span class="math-inline">\(r_l\)</span>. Sorting the atoms into cells takes one pass over the atoms.</p>
+<p>Then each atom is compared only with the atoms of 27 cells, a number that depends on the density and on <span class="math-inline">\(r_l\)</span> and not on the size of the system. With 100 atoms per nm<span class="math-inline">\(^3\)</span> and <span class="math-inline">\(r_l = 1.1\)</span> nm that is <span class="math-inline">\(27\times100\times1.1^3\approx3600\)</span> candidates per atom, whether the box holds ten thousand atoms or ten million. The total work is that number times <span class="math-inline">\(N\)</span>.</p>
 <p>Modern codes build on these ideas. GROMACS sorts the atoms on a grid into small clusters of fixed size and keeps a buffered list of cluster pairs, so that SIMD instructions or a GPU can process whole clusters together (<a href="https://doi.org/10.1016/j.cpc.2013.06.003" class="cite" target="_blank" rel="noopener" title="Páll S; Hess B (2013). A flexible algorithm for calculating pair interactions on SIMD architectures. Computer Physics Communications">Páll and Hess 2013</a>). It chooses the buffer automatically from the temperature and the allowed energy drift (<code>verlet-buffer-tolerance</code>). You rarely set this by hand, but you should recognise that a too-small buffer or too-infrequent update shows up as energy drift.</p>
+<p>The words of this paragraph:</p>
+<ul>
+<li>A <strong>cluster</strong> is a small group of atoms that lie close together. The list stores pairs of clusters in place of pairs of atoms.</li>
+<li><strong>SIMD instructions</strong> ("single instruction, multiple data") are processor instructions that do the same arithmetic on several numbers at once. A <strong>GPU</strong> is a graphics card, which does the same on thousands of numbers at once. Both are fast only when the data come in regular blocks, which is what clusters of fixed size provide.</li>
+<li>A <strong>buffered</strong> list is a list with a skin <span class="math-inline">\(\delta\)</span>, as above.</li>
+<li><strong>Energy drift</strong> is a slow, steady change of the total energy in a run that should conserve it (Module 2). Here it has a direct cause: if the skin is too small or the list is kept for too long, some pairs come within <span class="math-inline">\(r_c\)</span> without being on the list. Their interaction is missing until the next update and then appears suddenly, and each such event changes the total energy a little.</li>
+</ul>
 <h2 id="why-electrostatics-cannot-be-cut-off">Why electrostatics cannot be cut off</h2>
-<p>The Coulomb energy falls as <span class="math-inline">\(1/r\)</span>, while the number of charges in a shell at distance <span class="math-inline">\(r\)</span> grows as <span class="math-inline">\(r^2\)</span>. The contribution of each shell grows with distance unless positive and negative charges cancel, so the sum over all periodic images is only <strong>conditionally convergent</strong>: its value depends on the order of summation. A plain cutoff at 1 nm discards interactions that are individually large (two unit charges at 1 nm: 139 kJ/mol) and leaves a net charge inside every cutoff sphere. The known artefacts include artificial layering of water at the cutoff distance, wrong ion-ion distributions, distorted DNA and unstable proteins, and wrong dielectric properties.</p>
+<p>The second non-bonded interaction of a force field is the one between charges. The shell argument that justified the Lennard-Jones cutoff gives the opposite answer here. This section explains why, and what goes wrong in a simulation that cuts the interaction off anyway.</p>
+<div class="box physics">
+<p><strong>Physics you need here: charge and Coulomb's law.</strong> In a force field every atom carries a fixed <strong>partial charge</strong>, a positive or negative number given in units of the proton charge <span class="math-inline">\(e\)</span> (Module 5). Two charges <span class="math-inline">\(q_i\)</span> and <span class="math-inline">\(q_j\)</span> at a distance <span class="math-inline">\(r\)</span> have the Coulomb energy</p>
+<p><span class="math-display">\[U_C(r) = \frac{q_iq_j}{4\pi\varepsilon_0\,r} = 138.935\ \frac{q_iq_j}{r}\ \text{kJ/mol}\qquad(q \text{ in } e,\ r \text{ in nm}).\]</span></p>
+<p>Here <span class="math-inline">\(\varepsilon_0\)</span> is the permittivity of vacuum, a constant of nature that fixes the strength of the electric interaction. In the units of MD the combination <span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span> is the number 138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>. Two charges of the same sign have a positive energy that falls when they move apart, so they repel. Two charges of opposite sign attract.</p>
+<p>The energy falls as <span class="math-inline">\(1/r\)</span>: at twice the distance it is half as large. Compare that with the Lennard-Jones attraction, which at twice the distance is 64 times smaller. More in the <a href="physics.html#electrostatics">primer</a>.</p>
+</div>
+<p>The Coulomb energy falls as <span class="math-inline">\(1/r\)</span>, while the number of charges in a shell at distance <span class="math-inline">\(r\)</span> grows as <span class="math-inline">\(r^2\)</span>.</p>
+<p>Put the two together as in the previous section. A shell holds a number of charges proportional to <span class="math-inline">\(r^2\)</span>, each with an energy proportional to <span class="math-inline">\(1/r\)</span>, so the contribution of a shell is proportional to <span class="math-inline">\(r^2\times r^{-1} = r\)</span>. It grows with distance. If all charges had the same sign, the sum of the shells out to a distance <span class="math-inline">\(R\)</span> would grow as <span class="math-inline">\(R^2\)</span> and never settle. The two interactions side by side:</p>
+<table>
+<thead>
+<tr>
+<th>Interaction</th>
+<th>Energy of one pair</th>
+<th>Partners in a shell</th>
+<th>Contribution of a shell</th>
+<th>Sum of all shells beyond <span class="math-inline">\(r_c\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lennard-Jones attraction</td>
+<td><span class="math-inline">\(\propto r^{-6}\)</span></td>
+<td><span class="math-inline">\(\propto r^{2}\)</span></td>
+<td><span class="math-inline">\(\propto r^{-4}\)</span></td>
+<td>finite, <span class="math-inline">\(\propto 1/r_c^3\)</span></td>
+</tr>
+<tr>
+<td>Coulomb</td>
+<td><span class="math-inline">\(\propto r^{-1}\)</span></td>
+<td><span class="math-inline">\(\propto r^{2}\)</span></td>
+<td><span class="math-inline">\(\propto r\)</span></td>
+<td>no finite value</td>
+</tr>
+</tbody>
+</table>
+<p>The contribution of each shell grows with distance unless positive and negative charges cancel, so the sum over all periodic images is only <strong>conditionally convergent</strong>: its value depends on the order of summation.</p>
+<p>A solution as a whole is neutral, so every distant shell holds positive and negative charges in almost equal amounts. Their contributions are both large and almost cancel. The result is a small difference between two very large numbers, and a sum of that kind behaves in a way that finite sums never do.</p>
+<div class="box maths">
+<p><strong>Maths you need here: sums whose value depends on the order.</strong> When you add finitely many numbers, the order does not matter. With infinitely many it can. Take</p>
+<p><span class="math-display">\[1 - \tfrac12 + \tfrac13 - \tfrac14 + \tfrac15 - \tfrac16 + \dots = \ln 2 = 0.693 .\]</span></p>
+<p>Here <span class="math-inline">\(\ln\)</span> is the natural <a href="maths.html#exp-log">logarithm</a>. Now add the same numbers in another order, one positive term followed by two negative ones:</p>
+<p><span class="math-display">\[1 - \tfrac12 - \tfrac14 + \tfrac13 - \tfrac16 - \tfrac18 + \tfrac15 - \dots = \tfrac12\ln 2 = 0.347 .\]</span></p>
+<p>Every term of the first sum appears exactly once in the second, and the result is half as large. This can happen when the positive terms alone add up to infinity and the negative terms alone to minus infinity. The result is then a balance between two infinite amounts, and it depends on how fast you take terms from each.</p>
+<p>Such a sum is called <strong>conditionally convergent</strong>. A sum whose terms add up to a finite number even when all signs are made positive is <strong>absolutely convergent</strong>, and its value is the same in any order. The Lennard-Jones tail is of the second kind. The Coulomb sum is of the first.</p>
+</div>
+<p>For the periodic system, "the order of summation" means the order in which the copies of the box are added. You can add them in growing spheres around the central box, or in growing slabs, and the answers differ. Physically, each order builds a very large crystal of a different outer shape, and the charges on the surface of that crystal act back on the inside however large it gets. A method for electrostatics has to fix this choice. Ewald summation does, in a way described under "tin-foil" below.</p>
+<p>A plain cutoff at 1 nm discards interactions that are individually large (two unit charges at 1 nm: 139 kJ/mol) and leaves a net charge inside every cutoff sphere.</p>
+<p>A <strong>unit charge</strong> is a charge of <span class="math-inline">\(1\,e\)</span>, for example a sodium ion. The number comes from the formula in the box: <span class="math-inline">\(138.935\times1\times1/1.0 = 139\)</span> kJ/mol, which is 56 times <span class="math-inline">\(k_BT\)</span> at 300 K. At the same distance the Lennard-Jones energy of a pair, with the illustrative numbers of the previous section, is about 0.002 kJ/mol. So the cutoff that removed almost nothing from the Lennard-Jones energy removes very large terms here.</p>
+<p>The <strong>net charge</strong> of a region is the sum of all charges inside it. A water molecule is neutral as a whole, with a negative partial charge on the oxygen and positive ones on the hydrogens. The cutoff sphere of an atom cuts through the molecules at its edge: the oxygen of a molecule can be inside while one of its hydrogens is outside. The charges inside the sphere then do not add up to zero, and the atom at the centre feels a net charge that does not exist in the real liquid.</p>
+<p>The known artefacts include artificial layering of water at the cutoff distance, wrong ion-ion distributions, distorted DNA and unstable proteins, and wrong dielectric properties.</p>
+<p>"Ion-ion distributions" are the radial distribution functions <span class="math-inline">\(g(r)\)</span> between ions, which say how often two ions are found at each distance. "Dielectric properties" describe how strongly the liquid weakens the interaction between charges, explained in the box below.</p>
 <p>Two approaches are used. <strong>Reaction field</strong> treats everything beyond the cutoff as a dielectric continuum (see the end of this module). <strong>Ewald summation</strong> computes the full periodic sum exactly, and is the standard for atomistic simulation.</p>
+<div class="box physics">
+<p><strong>Physics you need here: dielectrics and the dielectric constant.</strong> A <strong>dielectric</strong> is a material that does not conduct electricity but responds to charges. A water molecule has a positive and a negative end (it has a <strong>dipole</strong>), and near a charge the molecules turn so that the end of opposite sign points towards it. This response is called <strong>polarisation</strong>. The turned molecules partly cancel the effect of the charge, so two charges inside the material interact more weakly than in vacuum. This weakening is called <strong>screening</strong>.</p>
+<p>The factor by which the interaction is weakened is the <strong>dielectric constant</strong> <span class="math-inline">\(\varepsilon_r\)</span> (also called relative permittivity), a pure number:</p>
+<p><span class="math-display">\[U_C(r) = \frac{q_iq_j}{4\pi\varepsilon_0\,\varepsilon_r\,r} .\]</span></p>
+<p>Vacuum has <span class="math-inline">\(\varepsilon_r = 1\)</span> and liquid water about 80. A <strong>continuum</strong> description forgets the single molecules and treats the material as a uniform medium with this one number. A simulation that contains the water molecules explicitly uses <span class="math-inline">\(\varepsilon_r = 1\)</span> in the formula, because the molecules do the screening themselves (Module 5).</p>
+<p>A <strong>conductor</strong>, such as a metal, contains charges that move freely until they cancel a field completely. It behaves like a dielectric with an infinitely large <span class="math-inline">\(\varepsilon_r\)</span>. More in the primer, under <a href="physics.html#electrostatics">Coulomb's law</a> and <a href="physics.html#dipoles">dipoles</a>.</p>
+</div>
 <h2 id="ewald-summation">Ewald summation</h2>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="SSmIMof0KvA" href="https://www.youtube.com/watch?v=SSmIMof0KvA" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Ewald Method | PME PPPME SPME | Molecular Dynamics MD | Molecular Monte Carlo MC</span><span class="sv-m">21 min · The Computational Chemist</span></a><a class="sv" data-yt="DnOTgjUZxbE" href="https://www.youtube.com/watch?v=DnOTgjUZxbE" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 20: Electrostatic Interactions</span><span class="sv-m">42 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="YPryFf7MQTg" href="https://www.youtube.com/watch?v=YPryFf7MQTg" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Electrostatic Algorithms</span><span class="sv-m">53 min · ESPResSo Simulation Package</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="SSmIMof0KvA" href="https://www.youtube.com/watch?v=SSmIMof0KvA" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Ewald Method | PME PPPME SPME | Molecular Dynamics MD | Molecular Monte Carlo MC</span><span class="sv-m">21 min · The Computational Chemist</span></a><a class="sv" data-yt="DnOTgjUZxbE" href="https://www.youtube.com/watch?v=DnOTgjUZxbE" target="_blank" rel="noopener" title="Principles of Molecular Dynamics Simulation, Prof. Ethayaraja Mani, IIT Madras"><span class="sv-play">&#9654;</span><span class="sv-t">Lec 20: Electrostatic Interactions</span><span class="sv-m">42 min · Prof. Ethayaraja Mani (IIT Madras)</span></a><a class="sv" data-yt="YPryFf7MQTg" href="https://www.youtube.com/watch?v=YPryFf7MQTg" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Electrostatic Algorithms</span><span class="sv-m">53 min · ESPResSo Simulation Package</span></a></div>
 
+<p>The task of this section is to compute the electrostatic energy of the periodic system exactly: every charge with every other charge and with all the images. Done directly, the sum converges slowly and only conditionally. Ewald summation gets its value by rearranging it into two sums that both converge quickly.</p>
+<p>The idea in one sentence: write <span class="math-inline">\(1/r\)</span> as the sum of a part that is sharp but short-ranged and a part that is long-ranged but smooth. The first part is summed over nearby pairs with a cutoff, like the Lennard-Jones energy. The second is summed as a small number of waves.</p>
+<p>The section has five steps: the sum we want, the trick, the three terms of the result one by one, the total with its corrections, and the choice of the parameter <span class="math-inline">\(\alpha\)</span>. For a first reading, the first two steps and the summary table under "The total" are the essential ones.</p>
+<h3 id="the-sum-we-want">The sum we want</h3>
 <p>We want the electrostatic energy of <span class="math-inline">\(N\)</span> charges in a box of volume <span class="math-inline">\(V\)</span> with all periodic images <span class="math-inline">\(\mathbf n\)</span> (in units where <span class="math-inline">\(1/4\pi\varepsilon_0=1\)</span>; multiply by 138.935 for kJ/mol with nm and <span class="math-inline">\(e\)</span>):</p>
 <p><span class="math-display">\[U = \frac12\sum_{\mathbf n}{}^{'}\sum_{i,j}\frac{q_iq_j}{|\mathbf r_{ij}+\mathbf n|},\]</span></p>
 <p>where the prime means <span class="math-inline">\(i\neq j\)</span> when <span class="math-inline">\(\mathbf n=0\)</span>.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U\)</span>: the total Coulomb energy of the periodic system, counted for one box.</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>: the charges of atoms <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span>, in units of <span class="math-inline">\(e\)</span>.</li>
+<li><span class="math-inline">\(\sum_{i,j}\)</span>: a double sum. <span class="math-inline">\(i\)</span> runs over all <span class="math-inline">\(N\)</span> charges of the central box, and so does <span class="math-inline">\(j\)</span>.</li>
+<li><span class="math-inline">\(\mathbf r_{ij}\)</span>: the vector from charge <span class="math-inline">\(j\)</span> to charge <span class="math-inline">\(i\)</span> inside the central box, <span class="math-inline">\(\mathbf r_i-\mathbf r_j\)</span>.</li>
+<li><span class="math-inline">\(\mathbf n\)</span>: a <strong>lattice vector</strong>, the shift that leads from the central box to one of its copies. For a rectangular box it is <span class="math-inline">\((aL_x, bL_y, cL_z)\)</span> with whole numbers <span class="math-inline">\(a\)</span>, <span class="math-inline">\(b\)</span>, <span class="math-inline">\(c\)</span> that can be positive, negative or zero. <span class="math-inline">\(\mathbf n = 0\)</span> is the central box itself.</li>
+<li><span class="math-inline">\(\sum_{\mathbf n}\)</span>: a sum over all copies, without end.</li>
+<li><span class="math-inline">\(|\mathbf r_{ij}+\mathbf n|\)</span>: the distance between charge <span class="math-inline">\(j\)</span> and the image of charge <span class="math-inline">\(i\)</span> in the copy <span class="math-inline">\(\mathbf n\)</span>. The bars mean "length of the vector".</li>
+<li>The prime on the sum: in the central box (<span class="math-inline">\(\mathbf n=0\)</span>) the terms with <span class="math-inline">\(i = j\)</span> are left out, because a charge does not interact with itself. In the other boxes <span class="math-inline">\(i=j\)</span> stays in: a charge does interact with its own images.</li>
+<li><span class="math-inline">\(\tfrac12\)</span>: every pair appears twice in the double sum, once as <span class="math-inline">\((i,j)\)</span> and once as <span class="math-inline">\((j,i)\)</span>.</li>
+</ul>
+</div>
+<p>About the units. The constant <span class="math-inline">\(1/4\pi\varepsilon_0\)</span> would stand in front of every formula of this section, so it is left out to keep them short. The energies then come out in units of <span class="math-inline">\(e^2\)</span>/nm, and you multiply by 138.935 at the end to get kJ/mol. For example, two unit charges 1 nm apart have <span class="math-inline">\(q_iq_j/r = 1\)</span> in these units, which is 138.935 kJ/mol.</p>
+<p>This is the sum that the previous section showed to be conditionally convergent. Adding it term by term is both slow and ambiguous. The rest of the section replaces it by something that can be computed.</p>
+<div class="box physics">
+<p><strong>Physics you need here: charge density, potential and Poisson's equation.</strong> Three ideas are used from here on.</p>
+<p>A <strong>charge density</strong> <span class="math-inline">\(\rho(\mathbf r)\)</span> describes charge that is spread out in space and does not sit at points. It is the amount of charge per unit volume near the point <span class="math-inline">\(\mathbf r\)</span>. A "charge cloud" is a charge density. Its total charge is the integral of <span class="math-inline">\(\rho\)</span> over all space.</p>
+<p>The <strong>electrostatic potential</strong> <span class="math-inline">\(\phi(\mathbf r)\)</span> is the energy that a test charge of <span class="math-inline">\(+1\)</span> would have at the point <span class="math-inline">\(\mathbf r\)</span> because of all the other charges. A charge <span class="math-inline">\(q\)</span> placed there has the energy <span class="math-inline">\(q\,\phi(\mathbf r)\)</span>. In the units of this section a point charge <span class="math-inline">\(q_j\)</span> creates the potential <span class="math-inline">\(q_j/r\)</span> at the distance <span class="math-inline">\(r\)</span>, and the potentials of several charges add.</p>
+<p><strong>Poisson's equation</strong>, <span class="math-inline">\(\nabla^2\phi = -4\pi\rho\)</span>, connects the two: if you know the charge density everywhere, it determines the potential. The Laplacian <span class="math-inline">\(\nabla^2\phi\)</span> is the sum of the second derivatives of <span class="math-inline">\(\phi\)</span> along <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>. It measures how much <span class="math-inline">\(\phi\)</span> at a point differs from its average over the points around it. You will not have to solve this equation. One fact is used later: for a wave, taking the Laplacian is the same as multiplying by a number.</p>
+<p>One consequence is used several times. Seen from outside, a round cloud of total charge <span class="math-inline">\(q\)</span> creates the same potential as a point charge <span class="math-inline">\(q\)</span> at its centre. More in the toolbox under <a href="maths.html#divergence">divergence and Laplacian</a> and in the <a href="physics.html#electrostatics">primer</a>.</p>
+</div>
+<h3 id="the-trick-wrap-every-charge-in-a-cloud">The trick: wrap every charge in a cloud</h3>
+<p>The function <span class="math-inline">\(1/r\)</span> is difficult for two reasons at the same time. At short distance it is sharp: it changes steeply and becomes infinite at <span class="math-inline">\(r = 0\)</span>. At long distance it decays slowly.</p>
+<p>A sharp function is handled well pair by pair, if it is also short-ranged. A slowly decaying function is handled well as a sum of waves, if it is also smooth. <span class="math-inline">\(1/r\)</span> is neither short-ranged nor smooth, so neither method works on its own.</p>
+<p>Nature offers a hint. A neutral atom is a positive nucleus inside a negative cloud of electrons, and from a distance it exerts almost no electric force, because the cloud cancels the nucleus. Ewald summation does the same thing artificially to every charge of the system. The clouds are a device of the calculation and not part of the physics, so they must be taken out again at the end.</p>
 <p><strong>The trick.</strong> Around each point charge <span class="math-inline">\(q_i\)</span>, add a Gaussian cloud of charge <span class="math-inline">\(-q_i\)</span> with width set by a parameter <span class="math-inline">\(\alpha\)</span>,</p>
 <p><span class="math-display">\[\rho_i^{G}(\mathbf r) = -q_i\left(\frac{\alpha^2}{\pi}\right)^{3/2}e^{-\alpha^2|\mathbf r-\mathbf r_i|^2},\]</span></p>
-<p>and then subtract the same clouds again. This splits the problem into two easy pieces:</p>
+<p>and then subtract the same clouds again.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\rho_i^{G}(\mathbf r)\)</span>: the charge density of the cloud placed around charge <span class="math-inline">\(i\)</span>, at the point <span class="math-inline">\(\mathbf r\)</span>. The <span class="math-inline">\(G\)</span> stands for Gaussian. This <span class="math-inline">\(\rho\)</span> is a charge per volume, not a number density.</li>
+<li><span class="math-inline">\(\mathbf r\)</span>: any point in space. <span class="math-inline">\(\mathbf r_i\)</span>: the position of charge <span class="math-inline">\(i\)</span>, which is the centre of its cloud.</li>
+<li><span class="math-inline">\(|\mathbf r-\mathbf r_i|\)</span>: the distance of the point from that centre.</li>
+<li><span class="math-inline">\(q_i\)</span>: the point charge. The minus sign gives the cloud the opposite sign, and its total charge is <span class="math-inline">\(-q_i\)</span>.</li>
+<li><span class="math-inline">\(\alpha\)</span>: the <strong>splitting parameter</strong> (also called the Ewald parameter), in nm<span class="math-inline">\(^{-1}\)</span>. Its inverse <span class="math-inline">\(1/\alpha\)</span> sets the width of the cloud: a large <span class="math-inline">\(\alpha\)</span> means a narrow cloud. A typical value is 3 nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(e^{-\alpha^2|\mathbf r-\mathbf r_i|^2}\)</span>: the bell shape. It is 1 at the centre, 0.37 at the distance <span class="math-inline">\(1/\alpha\)</span>, and practically zero beyond a few times <span class="math-inline">\(1/\alpha\)</span>.</li>
+<li><span class="math-inline">\((\alpha^2/\pi)^{3/2}\)</span>: the factor that makes the total charge of the cloud come out as exactly <span class="math-inline">\(-q_i\)</span> (see the box below).</li>
+<li><span class="math-inline">\(\pi\)</span>: the number 3.14159.</li>
+</ul>
+</div>
+<div class="box maths">
+<p><strong>Maths you need here: the Gaussian in three dimensions.</strong> The function <span class="math-inline">\(e^{-\alpha^2x^2}\)</span> is the bell curve, also called a Gaussian. Its area is known: <span class="math-inline">\(\int_{-\infty}^{\infty}e^{-\alpha^2x^2}dx = \sqrt\pi/\alpha\)</span>.</p>
+<p>In three dimensions, <span class="math-inline">\(e^{-\alpha^2(x^2+y^2+z^2)}\)</span> is the product of three such bells, one for each of <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>. Its integral over all space is therefore <span class="math-inline">\((\sqrt\pi/\alpha)^3 = (\pi/\alpha^2)^{3/2}\)</span>. Multiplying the bell by <span class="math-inline">\((\alpha^2/\pi)^{3/2}\)</span>, the inverse of that number, gives a cloud whose total is exactly 1. That is the factor in the formula above.</p>
+<p>The width of the bell is described by its standard deviation along each axis, <span class="math-inline">\(1/(\alpha\sqrt2)\)</span>. For <span class="math-inline">\(\alpha = 3.12\)</span> nm<span class="math-inline">\(^{-1}\)</span> that is 0.23 nm, about the size of an atom. More in the <a href="maths.html#gaussian">toolbox</a>.</p>
+</div>
+<p>Adding a cloud and taking it away again changes nothing: the total charge distribution is what it was. But the three ingredients can now be grouped differently,</p>
+<p><span class="math-display">\[\text{point charges} = \big(\text{point charges} + \text{clouds of } {-q_i}\big) + \big(\text{clouds of } {+q_i}\big).\]</span></p>
+<div class="legend">
+<ul>
+<li>Point charges: the real charges <span class="math-inline">\(q_i\)</span> of the atoms, each at its position <span class="math-inline">\(\mathbf r_i\)</span>.</li>
+<li>Clouds of <span class="math-inline">\(-q_i\)</span>: the Gaussian screening clouds of the formula above, one around each charge.</li>
+<li>Clouds of <span class="math-inline">\(+q_i\)</span>: the same clouds with the sign reversed. They undo the screening clouds, so that the right side adds up to the left side.</li>
+</ul>
+</div>
+<p>This splits the problem into two easy pieces:</p>
 <ul>
 <li><strong>Point charges plus screening clouds.</strong> Seen from a distance, each charge with its cloud is neutral, so its potential dies off quickly. This part is short-ranged and can be summed directly with a cutoff.</li>
 <li><strong>Minus the clouds.</strong> A smooth, periodic charge distribution. Smooth periodic functions have rapidly converging Fourier series, so this part is summed in reciprocal space.</li>
 </ul>
+<p>Some comments on the two pieces. In the first, the round cloud of total charge <span class="math-inline">\(-q_i\)</span> looks from outside like a point charge <span class="math-inline">\(-q_i\)</span> at the same place, and cancels the <span class="math-inline">\(+q_i\)</span> that sits there. "From a distance" means a few cloud widths, which is less than a nanometre. Inside the cloud the cancellation is incomplete, and that remainder is the short-ranged interaction.</p>
+<p>In the second piece, "minus the clouds" are the clouds of <span class="math-inline">\(+q_i\)</span>: bells with the same sign as the point charges they belong to. This distribution has no sharp points, and it repeats from box to box because the charges do. A <strong>Fourier series</strong> writes a periodic function as a sum of waves, and <strong>reciprocal space</strong> is the name for working with those waves. Both are explained further down, where they are used.</p>
+<h3 id="the-error-function-and-the-split-of-1r">The error function and the split of 1/r</h3>
+<p>The split of the charges into two groups becomes a split of the function <span class="math-inline">\(1/r\)</span> into two functions. To write them down, one new function is needed.</p>
+<div class="box maths">
+<p><strong>Maths you need here: the error function.</strong> The area under the bell curve <span class="math-inline">\(e^{-t^2}\)</span> between 0 and <span class="math-inline">\(x\)</span> cannot be written with the usual functions (powers, exponentials, sines). It has therefore been given a name of its own, the <strong>error function</strong>:</p>
+<p><span class="math-display">\[\mathrm{erf}(x) = \frac{2}{\sqrt\pi}\int_0^x e^{-t^2}\,dt , \qquad \mathrm{erfc}(x) = 1 - \mathrm{erf}(x).\]</span></p>
+<p>The factor <span class="math-inline">\(2/\sqrt\pi\)</span> is chosen so that <span class="math-inline">\(\mathrm{erf}(x)\)</span> tends to 1 when <span class="math-inline">\(x\)</span> becomes large. So <span class="math-inline">\(\mathrm{erf}\)</span> starts at 0, rises, and levels off at 1. The <strong>complementary error function</strong> <span class="math-inline">\(\mathrm{erfc}\)</span> is what is missing to 1: it starts at 1 and falls to 0, and for large <span class="math-inline">\(x\)</span> it falls about as fast as <span class="math-inline">\(e^{-x^2}\)</span>, much faster than any power of <span class="math-inline">\(1/x\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(x\)</span></th>
+<th>0</th>
+<th>0.5</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(\mathrm{erf}(x)\)</span></td>
+<td>0</td>
+<td>0.520</td>
+<td>0.843</td>
+<td>0.9953</td>
+<td>0.99998</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathrm{erfc}(x)\)</span></td>
+<td>1</td>
+<td>0.480</td>
+<td>0.157</td>
+<td>0.0047</td>
+<td>0.000022</td>
+</tr>
+</tbody>
+</table>
+<p>For small <span class="math-inline">\(x\)</span> the bell is close to 1 over the whole range of the integral, so <span class="math-inline">\(\mathrm{erf}(x)\approx 2x/\sqrt\pi\)</span>. Every numerical library has both functions (in Python, <code>math.erf</code> and <code>math.erfc</code>). More in the <a href="maths.html#gaussian">toolbox</a>.</p>
+</div>
 <p>The split is the identity</p>
 <p><span class="math-display">\[\frac1r = \underbrace{\frac{\mathrm{erfc}(\alpha r)}{r}}_{\text{short-ranged}} + \underbrace{\frac{\mathrm{erf}(\alpha r)}{r}}_{\text{smooth, long-ranged}},\]</span></p>
 <p>because <span class="math-inline">\(q\,\mathrm{erf}(\alpha r)/r\)</span> is the potential of a Gaussian charge cloud.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(r\)</span>: the distance from a charge, in nm.</li>
+<li><span class="math-inline">\(1/r\)</span>: the potential of a point charge of <span class="math-inline">\(+1\)</span> at that distance, in the units of this section. It is the Coulomb interaction that has to be split.</li>
+<li><span class="math-inline">\(\alpha\)</span>: the splitting parameter, in nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\alpha r\)</span>: the distance measured in units of <span class="math-inline">\(1/\alpha\)</span>, a pure number.</li>
+<li><span class="math-inline">\(\mathrm{erf}\)</span>, <span class="math-inline">\(\mathrm{erfc}\)</span>: the error function and the complementary error function of the box above.</li>
+<li><span class="math-inline">\(\mathrm{erfc}(\alpha r)/r\)</span>: the potential of the unit charge together with its screening cloud.</li>
+<li><span class="math-inline">\(\mathrm{erf}(\alpha r)/r\)</span>: the potential of a cloud of <span class="math-inline">\(+1\)</span> alone.</li>
+<li><span class="math-inline">\(q\)</span> (in the sentence under the formula): the total charge of a cloud.</li>
+<li>The braces underneath only attach the two names. They are not part of the formula.</li>
+</ul>
+</div>
+<p>As a piece of algebra the identity says little: <span class="math-inline">\(\mathrm{erfc} + \mathrm{erf} = 1\)</span> by definition, so the two fractions add up to <span class="math-inline">\(1/r\)</span> for any value of <span class="math-inline">\(\alpha\)</span>. What matters is the physical meaning of each fraction. A Gaussian cloud of total charge <span class="math-inline">\(q\)</span> creates the potential <span class="math-inline">\(q\,\mathrm{erf}(\alpha r)/r\)</span> at the distance <span class="math-inline">\(r\)</span> from its centre. A point charge <span class="math-inline">\(q\)</span> with a screening cloud of <span class="math-inline">\(-q\)</span> around it therefore creates <span class="math-inline">\(q/r - q\,\mathrm{erf}(\alpha r)/r = q\,\mathrm{erfc}(\alpha r)/r\)</span>.</p>
+<p>Read the two parts through their limits:</p>
+<ul>
+<li><em>Far away</em> (<span class="math-inline">\(\alpha r\)</span> large). <span class="math-inline">\(\mathrm{erf}\)</span> is 1, so the cloud alone gives <span class="math-inline">\(q/r\)</span>, the potential of a point charge. Its shape no longer matters. <span class="math-inline">\(\mathrm{erfc}\)</span> is 0, so the charge with its screening cloud gives nothing.</li>
+<li><em>Close by</em> (<span class="math-inline">\(r\)</span> towards 0). <span class="math-inline">\(\mathrm{erf}(\alpha r)\approx2\alpha r/\sqrt\pi\)</span>, so <span class="math-inline">\(\mathrm{erf}(\alpha r)/r\)</span> tends to the finite number <span class="math-inline">\(2\alpha/\sqrt\pi\)</span>. The cloud has no infinite peak at its centre, and that is the meaning of "smooth". The infinite peak of <span class="math-inline">\(1/r\)</span> is entirely in the <span class="math-inline">\(\mathrm{erfc}\)</span> part.</li>
+</ul>
+<p>In numbers, for <span class="math-inline">\(\alpha = 3.12\)</span> nm<span class="math-inline">\(^{-1}\)</span> (all three columns in nm<span class="math-inline">\(^{-1}\)</span>; multiply by 138.935 for the energy of two unit charges in kJ/mol):</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(r\)</span> (nm)</th>
+<th><span class="math-inline">\(1/r\)</span></th>
+<th><span class="math-inline">\(\mathrm{erfc}(\alpha r)/r\)</span></th>
+<th><span class="math-inline">\(\mathrm{erf}(\alpha r)/r\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>10.0</td>
+<td>6.59</td>
+<td>3.41</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>3.33</td>
+<td>0.62</td>
+<td>2.71</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>2.00</td>
+<td>0.055</td>
+<td>1.95</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>1.00</td>
+<td>0.00001</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<p>At 1.0 nm the short-ranged part has dropped to a hundred-thousandth of the full interaction, so it can be cut off there. The smooth part never exceeds <span class="math-inline">\(2\alpha/\sqrt\pi = 3.52\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</p>
+<details>
+<summary>Optional: checking that erf(αr)/r is the potential of a Gaussian cloud</summary>
+<p>Exercise 4 asks you to derive this by solving Poisson's equation. Here is the check in the other direction: insert <span class="math-inline">\(\phi = q\,\mathrm{erf}(\alpha r)/r\)</span> into the equation and see that the Gaussian comes out.</p>
+<p>For a function that depends only on the distance <span class="math-inline">\(r\)</span> from the centre, the Laplacian is <span class="math-inline">\(\nabla^2\phi = \dfrac1r\dfrac{d^2}{dr^2}(r\phi)\)</span>. Here <span class="math-inline">\(r\phi = q\,\mathrm{erf}(\alpha r)\)</span>.</p>
+<p><em>First derivative.</em> By its definition, the derivative of <span class="math-inline">\(\mathrm{erf}(x)\)</span> is <span class="math-inline">\(\tfrac{2}{\sqrt\pi}e^{-x^2}\)</span>. With <span class="math-inline">\(x=\alpha r\)</span> the chain rule adds a factor <span class="math-inline">\(\alpha\)</span>: <span class="math-inline">\(\dfrac{d}{dr}\,q\,\mathrm{erf}(\alpha r) = q\,\dfrac{2\alpha}{\sqrt\pi}\,e^{-\alpha^2r^2}\)</span>.</p>
+<p><em>Second derivative.</em> Differentiating <span class="math-inline">\(e^{-\alpha^2r^2}\)</span> gives <span class="math-inline">\(-2\alpha^2r\,e^{-\alpha^2r^2}\)</span>, so <span class="math-inline">\(\dfrac{d^2}{dr^2}\,q\,\mathrm{erf}(\alpha r) = -q\,\dfrac{4\alpha^3r}{\sqrt\pi}\,e^{-\alpha^2r^2}\)</span>.</p>
+<p><em>Divide by <span class="math-inline">\(r\)</span>.</em> <span class="math-inline">\(\nabla^2\phi = -q\,\dfrac{4\alpha^3}{\sqrt\pi}\,e^{-\alpha^2r^2}\)</span>.</p>
+<p><em>Compare.</em> Poisson's equation asks for <span class="math-inline">\(-4\pi\rho\)</span>, and for a cloud of charge <span class="math-inline">\(q\)</span> that is <span class="math-inline">\(-4\pi q\,(\alpha^2/\pi)^{3/2}e^{-\alpha^2r^2}\)</span>. Since <span class="math-inline">\(4\pi(\alpha^2/\pi)^{3/2} = 4\pi\alpha^3/\pi^{3/2} = 4\alpha^3/\sqrt\pi\)</span>, the two sides agree.</p>
+</details>
+<p>In the demo you can move <span class="math-inline">\(\alpha\)</span> and the cutoff and see how the two parts share the interaction between them.</p>
 <div class="widget" data-widget="ewald"></div>
 
+<h3 id="the-real-space-term">The real-space term</h3>
+<p>The first piece is the interaction of every charge with the other charges as they look through their screening clouds. It is called the real-space term because it is computed in ordinary space, from positions and distances, in contrast to the reciprocal space of waves used for the second piece.</p>
 <p><strong>Real-space term.</strong> The screened interaction, summed over pairs within the cutoff:</p>
 <p><span class="math-display">\[U_{real} = \frac12\sum_{\mathbf n}{}^{'}\sum_{i,j}q_iq_j\,\frac{\mathrm{erfc}(\alpha|\mathbf r_{ij}+\mathbf n|)}{|\mathbf r_{ij}+\mathbf n|}.\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{real}\)</span>: the real-space part of the Coulomb energy.</li>
+<li><span class="math-inline">\(\mathrm{erfc}(\alpha|\mathbf r_{ij}+\mathbf n|)\)</span>: the complementary error function, evaluated at the distance between charge <span class="math-inline">\(j\)</span> and the image of charge <span class="math-inline">\(i\)</span> in the copy <span class="math-inline">\(\mathbf n\)</span>, multiplied by <span class="math-inline">\(\alpha\)</span>.</li>
+<li>Other symbols (<span class="math-inline">\(\tfrac12\)</span>, <span class="math-inline">\(\sum_{\mathbf n}\)</span> with its prime, <span class="math-inline">\(\sum_{i,j}\)</span>, <span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>, <span class="math-inline">\(\mathbf r_{ij}\)</span>, <span class="math-inline">\(\mathbf n\)</span>, the bars): as in the list under "The sum we want".</li>
+</ul>
+</div>
+<p>Read it like this: it is the sum we started from, with <span class="math-inline">\(1/r\)</span> replaced by <span class="math-inline">\(\mathrm{erfc}(\alpha r)/r\)</span>. The sum over the copies <span class="math-inline">\(\mathbf n\)</span> is still there, but the factor <span class="math-inline">\(\mathrm{erfc}\)</span> makes every term beyond about 1 nm negligible. With a cutoff of at most half the box, each pair contributes at most once, through its nearest image, and the images of a charge itself are too far away to contribute. What a program evaluates is</p>
+<p><span class="math-display">\[U_{real} \approx \sum_{i&lt;j,\; r_{ij}&lt;r_c} q_iq_j\,\frac{\mathrm{erfc}(\alpha r_{ij})}{r_{ij}} .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(\sum_{i&lt;j,\; r_{ij}&lt;r_c}\)</span>: a sum over all pairs of charges, each pair counted once, and only pairs closer than the cutoff. Counting each pair once replaces the factor <span class="math-inline">\(\tfrac12\)</span>.</li>
+<li><span class="math-inline">\(r_{ij}\)</span>: the distance between charges <span class="math-inline">\(i\)</span> and <span class="math-inline">\(j\)</span> after the minimum-image convention.</li>
+<li><span class="math-inline">\(r_c\)</span>: the real-space cutoff.</li>
+<li><span class="math-inline">\(\approx\)</span>: "approximately equal". The terms beyond the cutoff are dropped.</li>
+<li>Other symbols: as in the list above.</li>
+</ul>
+</div>
+<p>This is a pair sum with a cutoff, of the same kind as the Lennard-Jones sum, and programs compute both in the same loop over the same neighbour list. The size of what is dropped is set by <span class="math-inline">\(\mathrm{erfc}(\alpha r_c)\)</span>. With <span class="math-inline">\(\alpha = 3.12\)</span> nm<span class="math-inline">\(^{-1}\)</span> and <span class="math-inline">\(r_c = 1.0\)</span> nm it is <span class="math-inline">\(10^{-5}\)</span>, so two unit charges at the cutoff have a real-space energy of <span class="math-inline">\(138.935\times10^{-5} = 0.0014\)</span> kJ/mol, against 139 kJ/mol for the full interaction.</p>
+<h3 id="the-reciprocal-space-term">The reciprocal-space term</h3>
+<p>The second piece is the energy of the charges in the potential of the smooth clouds of <span class="math-inline">\(+q_i\)</span>. It is long-ranged, so no cutoff in distance is possible. But it is smooth and periodic, and such a function is described economically by waves. Two tools are needed before the formulas.</p>
+<div class="box maths">
+<p><strong>Maths you need here: Fourier series and wave vectors.</strong> Take a function <span class="math-inline">\(f(x)\)</span> that repeats after a length <span class="math-inline">\(L\)</span>, so that <span class="math-inline">\(f(x+L) = f(x)\)</span>. A <strong>Fourier series</strong> builds it from waves that each fit a whole number of times into <span class="math-inline">\(L\)</span>:</p>
+<p><span class="math-display">\[f(x) = a_0 + \sum_{n=1}^{\infty}\left[a_n\cos\!\left(\frac{2\pi n x}{L}\right) + b_n\sin\!\left(\frac{2\pi n x}{L}\right)\right].\]</span></p>
+<p>The whole number <span class="math-inline">\(n\)</span> counts how many full waves fit into <span class="math-inline">\(L\)</span>, so the wavelength is <span class="math-inline">\(L/n\)</span>. The numbers <span class="math-inline">\(a_n\)</span> and <span class="math-inline">\(b_n\)</span> say how much of each wave the function contains. They are its <strong>Fourier coefficients</strong>, and <span class="math-inline">\(a_0\)</span> is the average of <span class="math-inline">\(f\)</span>. Example: <span class="math-inline">\(f(x) = 3 + 2\cos(2\pi x/L)\)</span> has two coefficients that are not zero, <span class="math-inline">\(a_0 = 3\)</span> and <span class="math-inline">\(a_1 = 2\)</span>.</p>
+<p>It is convenient to write <span class="math-inline">\(k = 2\pi n/L\)</span>, the <strong>wave number</strong>, so that the wave is <span class="math-inline">\(\cos(kx)\)</span>. Its unit is one over a length (nm<span class="math-inline">\(^{-1}\)</span>), and a large <span class="math-inline">\(k\)</span> means a short wavelength <span class="math-inline">\(\lambda\)</span>, because <span class="math-inline">\(\lambda = 2\pi/k\)</span>. In three dimensions a wave can have <span class="math-inline">\(n_x\)</span> periods along <span class="math-inline">\(x\)</span>, <span class="math-inline">\(n_y\)</span> along <span class="math-inline">\(y\)</span> and <span class="math-inline">\(n_z\)</span> along <span class="math-inline">\(z\)</span>, and its three wave numbers form the <strong>wave vector</strong> <span class="math-inline">\(\mathbf k = 2\pi(n_x/L_x,\ n_y/L_y,\ n_z/L_z)\)</span>. The wave vector points in the direction in which the wave runs, and its length is <span class="math-inline">\(2\pi/\lambda\)</span>.</p>
+<p>A function can be described by its value at every point, or by its coefficient for every wave. The two descriptions hold the same information. The first is called <strong>real space</strong>. The second is called <strong>reciprocal space</strong> (the unit of <span class="math-inline">\(k\)</span> is the reciprocal of a length), or Fourier space, or <span class="math-inline">\(k\)</span>-space.</p>
+<p><em>Why a smooth function needs few waves.</em> A wave cannot draw details much finer than its wavelength. To build a bump of width <span class="math-inline">\(w\)</span> you need wavelengths down to about <span class="math-inline">\(w\)</span>, and shorter ones add almost nothing. A bell 0.3 nm wide needs wavelengths down to about 0.3 nm, which means <span class="math-inline">\(k\)</span> up to about <span class="math-inline">\(2\pi/0.3\approx20\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</p>
+<p>A point charge has no width at all, so it needs every wavelength, however short, and its series never ends. This is why Ewald summation replaces points by clouds. More in the <a href="maths.html#fourier">toolbox</a>.</p>
+</div>
+<div class="box maths">
+<p><strong>Maths you need here: the complex exponential.</strong> A wave needs a cosine and a sine. The <strong>complex exponential</strong> carries both in one symbol:</p>
+<p><span class="math-display">\[e^{i\theta} = \cos\theta + i\sin\theta .\]</span></p>
+<p>Here <span class="math-inline">\(i\)</span> is the imaginary unit, defined by <span class="math-inline">\(i^2 = -1\)</span> (not the label of an atom), and <span class="math-inline">\(\theta\)</span> is any angle in radians. A complex number <span class="math-inline">\(z = a + ib\)</span> has a real part <span class="math-inline">\(a\)</span> and an imaginary part <span class="math-inline">\(b\)</span>. Its size squared is <span class="math-inline">\(\vert z\vert^2 = a^2 + b^2\)</span>, a real number that is never negative. Its complex conjugate is <span class="math-inline">\(z^{*} = a - ib\)</span>, and <span class="math-inline">\(z\,z^{*} = \vert z\vert^2\)</span>.</p>
+<p>Examples: <span class="math-inline">\(e^{i\cdot0} = 1\)</span>, <span class="math-inline">\(e^{i\pi/2} = i\)</span>, <span class="math-inline">\(e^{i\pi} = -1\)</span> and <span class="math-inline">\(e^{2\pi i} = 1\)</span>. For any angle, <span class="math-inline">\(\vert e^{i\theta}\vert^2 = \cos^2\theta + \sin^2\theta = 1\)</span>.</p>
+<p>In the formulas below, every complex exponential can be replaced by its cosine and its sine, and the energy at the end is an ordinary real number. The complex notation keeps the formulas short. More in the <a href="maths.html#complex">toolbox</a>.</p>
+</div>
 <p><strong>Reciprocal-space term.</strong> The Gaussian clouds form a periodic density with Fourier coefficients <span class="math-inline">\(\tilde\rho(\mathbf k) = S(\mathbf k)\,e^{-k^2/4\alpha^2}\)</span>, where the <strong>structure factor</strong> is</p>
 <p><span class="math-display">\[S(\mathbf k) = \sum_{j=1}^Nq_j\,e^{i\mathbf k\cdot\mathbf r_j},\qquad \mathbf k = 2\pi\left(\frac{n_x}{L_x},\frac{n_y}{L_y},\frac{n_z}{L_z}\right).\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(S(\mathbf k)\)</span>: the structure factor, one complex number for each wave vector. It measures how strongly the arrangement of the charges follows the wave <span class="math-inline">\(\mathbf k\)</span>.</li>
+<li><span class="math-inline">\(\mathbf k\)</span>: a wave vector, in nm<span class="math-inline">\(^{-1}\)</span>. Its length is written <span class="math-inline">\(k\)</span>, and <span class="math-inline">\(k^2 = k_x^2+k_y^2+k_z^2\)</span>.</li>
+<li><span class="math-inline">\(n_x\)</span>, <span class="math-inline">\(n_y\)</span>, <span class="math-inline">\(n_z\)</span>: whole numbers (positive, negative or zero), the number of periods of the wave along each box edge. They are not the components of the lattice vector <span class="math-inline">\(\mathbf n\)</span>.</li>
+<li><span class="math-inline">\(L_x\)</span>, <span class="math-inline">\(L_y\)</span>, <span class="math-inline">\(L_z\)</span>: the box edges, in nm. <span class="math-inline">\(2\pi\)</span>: the angle of one full turn, in radians.</li>
+<li><span class="math-inline">\(\sum_{j=1}^N\)</span>: a sum over all <span class="math-inline">\(N\)</span> charges of the central box.</li>
+<li><span class="math-inline">\(q_j\)</span>: the charge of atom <span class="math-inline">\(j\)</span>. <span class="math-inline">\(\mathbf r_j\)</span>: its position.</li>
+<li><span class="math-inline">\(\mathbf k\cdot\mathbf r_j\)</span>: the <a href="maths.html#dot-product">dot product</a> <span class="math-inline">\(k_xx_j+k_yy_j+k_zz_j\)</span>. It is the phase of the wave at the position of charge <span class="math-inline">\(j\)</span>, an angle in radians.</li>
+<li><span class="math-inline">\(e^{i\mathbf k\cdot\mathbf r_j}\)</span>: the complex exponential of that angle, <span class="math-inline">\(\cos(\mathbf k\cdot\mathbf r_j) + i\sin(\mathbf k\cdot\mathbf r_j)\)</span>. Here <span class="math-inline">\(i\)</span> is the imaginary unit.</li>
+<li><span class="math-inline">\(\tilde\rho(\mathbf k)\)</span> (in the sentence above the formula): the Fourier coefficient of the charge density of the clouds for the wave <span class="math-inline">\(\mathbf k\)</span>.</li>
+<li><span class="math-inline">\(e^{-k^2/4\alpha^2}\)</span>: a Gaussian factor in <span class="math-inline">\(k\)</span>. It is close to 1 for long waves (small <span class="math-inline">\(k\)</span>) and close to 0 for short ones. <span class="math-inline">\(\alpha\)</span> is the splitting parameter.</li>
+</ul>
+</div>
+<p>Read <span class="math-inline">\(S(\mathbf k)\)</span> like this: every charge votes with the value of the wave at its own position, weighted by its charge. If the positive charges sit on the crests of the wave and the negative charges in its troughs, the votes add up and <span class="math-inline">\(S\)</span> is large. If the charges are placed without any relation to the wave, the votes cancel and <span class="math-inline">\(S\)</span> is close to zero.</p>
+<p>A small example. In a box of length <span class="math-inline">\(L\)</span> along <span class="math-inline">\(x\)</span>, put a charge <span class="math-inline">\(+1\)</span> at <span class="math-inline">\(x = 0\)</span> and a charge <span class="math-inline">\(-1\)</span> at <span class="math-inline">\(x = L/2\)</span>. For the wave with one period along <span class="math-inline">\(x\)</span>, which has <span class="math-inline">\(k = 2\pi/L\)</span>, the phases <span class="math-inline">\(kx\)</span> at the two charges are 0 and <span class="math-inline">\(\pi\)</span>, so <span class="math-inline">\(S = e^{i\cdot0} - e^{i\pi} = 1-(-1) = 2\)</span>. The charges follow this wave perfectly. For the wave with two periods the phases are 0 and <span class="math-inline">\(2\pi\)</span>, and <span class="math-inline">\(S = 1 - 1 = 0\)</span>: this wave has a crest at both charges and cannot tell them apart.</p>
+<p>The clouds in question are the clouds of <span class="math-inline">\(+q_j\)</span>. The factor <span class="math-inline">\(e^{-k^2/4\alpha^2}\)</span> is the effect of smearing each point into a bell: long waves do not notice the smearing, and short waves are wiped out by it. In a program the complex numbers disappear, because the only thing needed is <span class="math-inline">\(\vert S(\mathbf k)\vert^2 = \big[\sum_jq_j\cos(\mathbf k\cdot\mathbf r_j)\big]^2 + \big[\sum_jq_j\sin(\mathbf k\cdot\mathbf r_j)\big]^2\)</span>.</p>
+<p>From the density of the clouds to the energy takes two more steps: from the density to the potential, and from the potential to the energy.</p>
 <p>Poisson's equation <span class="math-inline">\(\nabla^2\phi = -4\pi\rho\)</span> is algebraic in Fourier space, <span class="math-inline">\(\tilde\phi(\mathbf k) = 4\pi\tilde\rho(\mathbf k)/k^2\)</span>, which gives the potential <span class="math-inline">\(\phi_G\)</span> of the smooth clouds. The energy of the point charges in that potential, <span class="math-inline">\(\tfrac12\sum_iq_i\,\phi_G(\mathbf r_i)\)</span>, then becomes</p>
 <p><span class="math-display">\[U_{recip} = \frac{2\pi}{V}\sum_{\mathbf k\neq0}\frac{e^{-k^2/4\alpha^2}}{k^2}\,\big|S(\mathbf k)\big|^2 .\]</span></p>
 <p>The Gaussian factor makes the sum converge after a modest number of <span class="math-inline">\(\mathbf k\)</span> vectors.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{recip}\)</span>: the reciprocal-space part of the Coulomb energy, the energy of the point charges in the potential of the smooth clouds.</li>
+<li><span class="math-inline">\(V\)</span>: the volume of the box, <span class="math-inline">\(L_xL_yL_z\)</span>, in nm<span class="math-inline">\(^3\)</span>.</li>
+<li><span class="math-inline">\(\sum_{\mathbf k\neq0}\)</span>: a sum over all allowed wave vectors except <span class="math-inline">\(\mathbf k = 0\)</span> (the case <span class="math-inline">\(n_x=n_y=n_z=0\)</span>, discussed under "The total").</li>
+<li><span class="math-inline">\(k^2\)</span>: the squared length of the wave vector, in nm<span class="math-inline">\(^{-2}\)</span>.</li>
+<li><span class="math-inline">\(e^{-k^2/4\alpha^2}/k^2\)</span>: the weight of each wave. The <span class="math-inline">\(1/k^2\)</span> comes from Poisson's equation and the Gaussian from the smearing.</li>
+<li><span class="math-inline">\(\big|S(\mathbf k)\big|^2\)</span>: the squared size of the structure factor, a real number that is never negative.</li>
+<li><span class="math-inline">\(\phi\)</span>, <span class="math-inline">\(\tilde\phi(\mathbf k)\)</span> (in the sentence above the formula): the electrostatic potential and its Fourier coefficient for the wave <span class="math-inline">\(\mathbf k\)</span>. <span class="math-inline">\(\phi_G\)</span> is the potential created by all the clouds of <span class="math-inline">\(+q_j\)</span> together.</li>
+<li><span class="math-inline">\(2\pi\)</span>: a pure number that collects the <span class="math-inline">\(4\pi\)</span> of Poisson's equation and the <span class="math-inline">\(\tfrac12\)</span> of the energy.</li>
+<li><span class="math-inline">\(\nabla^2\)</span>, <span class="math-inline">\(\rho\)</span> (in the sentence above the formula): the Laplacian and the charge density of the clouds, as in the box on Poisson's equation.</li>
+<li>Other symbols (<span class="math-inline">\(\alpha\)</span>, <span class="math-inline">\(\mathbf k\)</span>, <span class="math-inline">\(S(\mathbf k)\)</span>, <span class="math-inline">\(\tilde\rho(\mathbf k)\)</span>, the base <span class="math-inline">\(e\)</span> of the exponential): as in the list above.</li>
+</ul>
+</div>
+<p>"Algebraic" means "solved by ordinary division". Poisson's equation contains second derivatives, and differentiating a wave twice gives the same wave back, multiplied by <span class="math-inline">\(-k^2\)</span>. So for each wave separately the equation reads <span class="math-inline">\(-k^2\tilde\phi = -4\pi\tilde\rho\)</span>, and dividing by <span class="math-inline">\(-k^2\)</span> solves it. No differential equation is left, which is the reason for going to reciprocal space.</p>
+<p>Read <span class="math-inline">\(U_{recip}\)</span> like this: every wave contributes the squared strength with which the charges follow it, times a weight. The weight falls quickly with <span class="math-inline">\(k\)</span>. For <span class="math-inline">\(\alpha = 3.12\)</span> nm<span class="math-inline">\(^{-1}\)</span> the Gaussian factor is 0.53 at <span class="math-inline">\(k = 5\)</span> nm<span class="math-inline">\(^{-1}\)</span>, 0.077 at 10, 0.0031 at 15 and 0.00003 at 20, and the <span class="math-inline">\(1/k^2\)</span> lowers the weight further. So the sum can stop near <span class="math-inline">\(k = 20\)</span> nm<span class="math-inline">\(^{-1}\)</span>, a wavelength of 0.3 nm, which is the estimate of the box on Fourier series.</p>
+<p>How many waves is that? As an illustration, stop where the Gaussian factor has fallen to <span class="math-inline">\(10^{-5}\)</span>, which is at <span class="math-inline">\(k = 21.2\)</span> nm<span class="math-inline">\(^{-1}\)</span>. In a cubic box with an edge of 8 nm the allowed values of each component of <span class="math-inline">\(\mathbf k\)</span> are <span class="math-inline">\(2\pi/8 = 0.79\)</span> nm<span class="math-inline">\(^{-1}\)</span> apart. A sphere of radius 21.2 nm<span class="math-inline">\(^{-1}\)</span> in <span class="math-inline">\(k\)</span>-space then holds about 82,000 wave vectors, and because <span class="math-inline">\(\mathbf k\)</span> and <span class="math-inline">\(-\mathbf k\)</span> give the same term, about 41,000 have to be computed. That is the "modest number": it is finite, and no sum over distant images is left.</p>
+<details>
+<summary>Optional: where the reciprocal-space formula comes from</summary>
+<p>Four steps. The convention used here: a function with the periodicity of the box is written as <span class="math-inline">\(f(\mathbf r) = \frac1V\sum_{\mathbf k}\tilde f(\mathbf k)\,e^{-i\mathbf k\cdot\mathbf r}\)</span>, and its coefficients are <span class="math-inline">\(\tilde f(\mathbf k) = \int_V f(\mathbf r)\,e^{i\mathbf k\cdot\mathbf r}\,d^3r\)</span>, an integral over the volume of the box. Other texts, and the <a href="maths.html#fourier">toolbox</a> of this course, put the minus sign in the other exponent, and the toolbox also puts the factor <span class="math-inline">\(1/V\)</span> (in one dimension <span class="math-inline">\(1/L\)</span>) into the coefficient. The energy at the end is the same.</p>
+<p><strong>Step 1: the coefficients of the cloud density.</strong> The clouds of <span class="math-inline">\(+q_j\)</span> have the density <span class="math-inline">\(\rho_G(\mathbf r) = \sum_jq_j\,G(\mathbf r-\mathbf r_j)\)</span>, repeated in every copy of the box, where <span class="math-inline">\(G(\mathbf r) = (\alpha^2/\pi)^{3/2}e^{-\alpha^2r^2}\)</span> is a cloud of total charge 1. Integrating the periodic density over one box gives the same result as integrating the clouds of the central box over all space. (The part of a cloud that sticks out of the box is replaced by an equal part of an image cloud that sticks in, and the wave has the same value at both places.) With the substitution <span class="math-inline">\(\mathbf s = \mathbf r-\mathbf r_j\)</span>,</p>
+<p><span class="math-display">\[\tilde\rho(\mathbf k) = \sum_jq_j\,e^{i\mathbf k\cdot\mathbf r_j}\int G(\mathbf s)\,e^{i\mathbf k\cdot\mathbf s}\,d^3s = S(\mathbf k)\,e^{-k^2/4\alpha^2}.\]</span></p>
+<p>The last integral is a standard result: the wave content of a bell of width <span class="math-inline">\(1/\alpha\)</span> is again a bell, of width <span class="math-inline">\(2\alpha\)</span> in <span class="math-inline">\(k\)</span>. A narrow cloud (large <span class="math-inline">\(\alpha\)</span>) contains a wide range of waves, and a wide cloud a narrow range.</p>
+<p><strong>Step 2: Poisson's equation, wave by wave.</strong> Insert the series for <span class="math-inline">\(\phi_G\)</span> and for <span class="math-inline">\(\rho_G\)</span> into <span class="math-inline">\(\nabla^2\phi = -4\pi\rho\)</span>. Differentiating <span class="math-inline">\(e^{-i\mathbf k\cdot\mathbf r}\)</span> twice with respect to <span class="math-inline">\(x\)</span> multiplies it by <span class="math-inline">\((-ik_x)^2 = -k_x^2\)</span>, so the Laplacian multiplies each wave by <span class="math-inline">\(-k^2\)</span>. Comparing the two sides wave by wave gives <span class="math-inline">\(-k^2\tilde\phi_G(\mathbf k) = -4\pi\tilde\rho(\mathbf k)\)</span>, that is, <span class="math-inline">\(\tilde\phi_G(\mathbf k) = 4\pi\tilde\rho(\mathbf k)/k^2\)</span>. For <span class="math-inline">\(\mathbf k = 0\)</span> the division is not possible, and that term is left out.</p>
+<p><strong>Step 3: the potential at the position of charge <span class="math-inline">\(i\)</span>.</strong> Put the coefficients back into the series:</p>
+<p><span class="math-display">\[\phi_G(\mathbf r_i) = \frac1V\sum_{\mathbf k\neq0}\frac{4\pi}{k^2}\,e^{-k^2/4\alpha^2}\,S(\mathbf k)\,e^{-i\mathbf k\cdot\mathbf r_i}.\]</span></p>
+<p><strong>Step 4: the energy.</strong> Multiply by <span class="math-inline">\(q_i\)</span>, sum over <span class="math-inline">\(i\)</span> and take half. The half is the <span class="math-inline">\(\tfrac12\)</span> of the sum we started from: each pair would otherwise be counted twice. The sum over <span class="math-inline">\(i\)</span> meets only the last factor, and <span class="math-inline">\(\sum_iq_i\,e^{-i\mathbf k\cdot\mathbf r_i}\)</span> is the complex conjugate <span class="math-inline">\(S(\mathbf k)^{*}\)</span>. With <span class="math-inline">\(S\,S^{*} = \vert S\vert^2\)</span>,</p>
+<p><span class="math-display">\[U_{recip} = \frac12\sum_iq_i\,\phi_G(\mathbf r_i) = \frac{1}{2V}\sum_{\mathbf k\neq0}\frac{4\pi}{k^2}\,e^{-k^2/4\alpha^2}\,S(\mathbf k)\,S(\mathbf k)^{*} ,\]</span></p>
+<p>and <span class="math-inline">\(4\pi/2 = 2\pi\)</span> gives the formula of the main text.</p>
+</details>
+<h3 id="the-self-term">The self term</h3>
 <p><strong>Self term.</strong> The reciprocal sum includes the interaction of each point charge with its own Gaussian cloud, which is not physical. Remove it:</p>
 <p><span class="math-display">\[U_{self} = -\frac{\alpha}{\sqrt\pi}\sum_iq_i^2 .\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{self}\)</span>: the correction that removes the energy of each charge in the potential of its own cloud.</li>
+<li><span class="math-inline">\(\alpha\)</span>: the splitting parameter, in nm<span class="math-inline">\(^{-1}\)</span>.</li>
+<li><span class="math-inline">\(\sqrt\pi\)</span>: the square root of <span class="math-inline">\(\pi\)</span>, 1.772.</li>
+<li><span class="math-inline">\(\sum_i\)</span>: a sum over all <span class="math-inline">\(N\)</span> charges.</li>
+<li><span class="math-inline">\(q_i^2\)</span>: the square of the charge of atom <span class="math-inline">\(i\)</span>. It is positive for either sign of the charge, so <span class="math-inline">\(U_{self}\)</span> is always negative.</li>
+</ul>
+</div>
+<p>Where it comes from. The reciprocal term was computed as "all point charges in the potential of all clouds", and "all clouds" includes the cloud that was placed around charge <span class="math-inline">\(i\)</span> itself. In the split of the charges, that cloud exists only to undo the screening cloud of charge <span class="math-inline">\(i\)</span>. Its interaction with its own point charge has no counterpart in the sum we want.</p>
+<p>Its size follows from a result above. The potential of the cloud of charge <span class="math-inline">\(q_i\)</span> at its own centre is the limit of <span class="math-inline">\(q_i\,\mathrm{erf}(\alpha r)/r\)</span> for <span class="math-inline">\(r\)</span> towards 0, which is <span class="math-inline">\(2\alpha q_i/\sqrt\pi\)</span>. The energy of charge <span class="math-inline">\(q_i\)</span> in that potential, with the factor <span class="math-inline">\(\tfrac12\)</span> that the reciprocal term carries, is <span class="math-inline">\(\tfrac12\times q_i\times2\alpha q_i/\sqrt\pi = \alpha q_i^2/\sqrt\pi\)</span>. Summing over the charges and changing the sign, to remove it, gives the formula.</p>
+<p>Read it like this: the term is large, and it is a constant. For <span class="math-inline">\(\alpha = 3.12\)</span> nm<span class="math-inline">\(^{-1}\)</span> a unit charge contributes <span class="math-inline">\(-3.12/1.772 = -1.76\)</span> in the units of this section, which is <span class="math-inline">\(-245\)</span> kJ/mol. It does not depend on where the atoms are, so it creates no force. It only sets the zero of the energy correctly, and it makes the total independent of <span class="math-inline">\(\alpha\)</span>.</p>
+<h3 id="the-total-and-what-else-is-in-it">The total, and what else is in it</h3>
 <p><strong>Total.</strong></p>
 <p><span class="math-display">\[\boxed{U_{Coulomb} = U_{real} + U_{recip} + U_{self}\;(+\;U_{excl}\;+\;U_{surface})}\]</span></p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{Coulomb}\)</span>: the electrostatic energy of the periodic system, for one box. It is the value of the sum we started from.</li>
+<li><span class="math-inline">\(U_{real}\)</span>, <span class="math-inline">\(U_{recip}\)</span>, <span class="math-inline">\(U_{self}\)</span>: the three terms derived above.</li>
+<li><span class="math-inline">\(U_{excl}\)</span>, <span class="math-inline">\(U_{surface}\)</span>: two corrections explained below. The round brackets mark them as additions to the basic three-term formula.</li>
+<li>The frame around the formula marks it as the main result.</li>
+</ul>
+</div>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What it is</th>
+<th>How it is computed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(U_{real}\)</span></td>
+<td>Point charges seen through their screening clouds</td>
+<td>Pair loop with the cutoff <span class="math-inline">\(r_c\)</span>, on the same neighbour list as Lennard-Jones</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(U_{recip}\)</span></td>
+<td>Point charges in the potential of the smooth clouds</td>
+<td>Sum over waves <span class="math-inline">\(\mathbf k\)</span> (with PME: a grid and a fast Fourier transform)</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(U_{self}\)</span></td>
+<td>Removes each charge's interaction with its own cloud</td>
+<td>A constant, computed once</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(U_{excl}\)</span></td>
+<td>Removes the smooth part for pairs that should not interact</td>
+<td>Loop over the excluded pairs</td>
+</tr>
+<tr>
+<td><span class="math-inline">\(U_{surface}\)</span></td>
+<td>Depends on what surrounds the infinite lattice</td>
+<td>Zero with the usual choice</td>
+</tr>
+</tbody>
+</table>
 <p>Two further corrections appear in practice. Pairs excluded by the topology (1-2 and 1-3 neighbours) are present in the reciprocal sum and must be subtracted, <span class="math-inline">\(U_{excl} = -\sum_{excl}q_iq_j\,\mathrm{erf}(\alpha r_{ij})/r_{ij}\)</span>. The <span class="math-inline">\(\mathbf k=0\)</span> term is omitted, which corresponds to surrounding the infinite lattice with a conductor ("tin-foil" boundary conditions, <span class="math-inline">\(U_{surface}=0\)</span>) and, for a system with net charge, to adding a uniform neutralising background.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{excl}\)</span>: the correction for excluded pairs.</li>
+<li><span class="math-inline">\(\sum_{excl}\)</span>: a sum over all excluded pairs of atoms, each pair once.</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>: the charges of the two atoms of the pair. <span class="math-inline">\(r_{ij}\)</span>: their distance.</li>
+<li><span class="math-inline">\(\mathrm{erf}(\alpha r_{ij})/r_{ij}\)</span>: the smooth part of the split, with the splitting parameter <span class="math-inline">\(\alpha\)</span>.</li>
+<li><span class="math-inline">\(\mathbf k = 0\)</span>: the wave vector with <span class="math-inline">\(n_x=n_y=n_z=0\)</span>, the "wave" that is the same everywhere.</li>
+<li><span class="math-inline">\(U_{surface}\)</span>: the surface term, explained below.</li>
+</ul>
+</div>
+<p><strong>Excluded pairs.</strong> In a force field, atoms joined by one bond (1-2) or by two bonds (1-3) have no non-bonded interaction with each other, because the bond and angle terms already describe them (Module 5). The <strong>topology</strong> is the list of atoms and bonds of the system, which defines these pairs. In the real-space term the program leaves such a pair out of the loop. In the reciprocal term it cannot: <span class="math-inline">\(S(\mathbf k)\)</span> is built from all charges together, and no single pair can be taken out of it. The smooth part of the interaction of each excluded pair is therefore inside <span class="math-inline">\(U_{recip}\)</span> and has to be subtracted by hand.</p>
+<p><strong>The <span class="math-inline">\(\mathbf k = 0\)</span> term.</strong> In the formula for <span class="math-inline">\(U_{recip}\)</span> the weight contains <span class="math-inline">\(1/k^2\)</span>, which is infinite at <span class="math-inline">\(k = 0\)</span>. The quantity it multiplies, <span class="math-inline">\(S(0) = \sum_jq_j\)</span>, is the total charge of the box, and for a neutral system it is zero. Zero times infinity has no definite value. This is the place where the conditional convergence of the original sum has gone: the missing value depends on the shape of the very large crystal and on the material around it.</p>
+<p>Leaving the term out is a definite choice. It corresponds to a crystal surrounded by a conductor, which cancels the field of any charge on the surface of the crystal. Aluminium foil is a conductor, hence the name "tin-foil". With another surrounding, for example vacuum, an extra energy <span class="math-inline">\(U_{surface}\)</span> appears. It depends on the total dipole moment of the box, <span class="math-inline">\(\sum_iq_i\mathbf r_i\)</span>, and on the dielectric constant of the surrounding material, and it is zero for a conductor.</p>
+<p><strong>Net charge.</strong> If the charges of the box do not add up to zero, <span class="math-inline">\(S(0)\)</span> is not zero and the <span class="math-inline">\(\mathbf k=0\)</span> term would be infinite: an endless lattice of charged boxes has an infinite energy. Leaving the term out removes the average charge density from the calculation. That has the same effect as spreading a charge of the opposite sign evenly over the whole box, so that the total is zero again. This is the "uniform neutralising background". With a net charge the three terms alone are no longer independent of <span class="math-inline">\(\alpha\)</span>: the background adds one more constant, <span class="math-inline">\(-\pi\big(\sum_iq_i\big)^2/(2\alpha^2V)\)</span> with the box volume <span class="math-inline">\(V\)</span>, which creates no force on the atoms. The warning box in the PME section says what the background does to the results.</p>
+<h3 id="choosing-where-the-work-goes">Choosing α: where the work goes</h3>
 <p>The result does not depend on <span class="math-inline">\(\alpha\)</span>. A large <span class="math-inline">\(\alpha\)</span> (narrow Gaussians) makes the real-space sum converge within a short cutoff and pushes work into reciprocal space, and the reverse. With the best balance, classical Ewald scales as <span class="math-inline">\(O(N^{3/2})\)</span>.</p>
+<p>The first sentence can be seen in numbers. Take eight ions of charge <span class="math-inline">\(+1\)</span> and <span class="math-inline">\(-1\)</span> arranged as in rock salt, in a cubic box of edge 2 with nearest neighbours at the distance 1 (the system of Exercise 3, in the units of this section). The three terms for three values of <span class="math-inline">\(\alpha\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(\alpha\)</span></th>
+<th><span class="math-inline">\(U_{real}\)</span></th>
+<th><span class="math-inline">\(U_{recip}\)</span></th>
+<th><span class="math-inline">\(U_{self}\)</span></th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td><span class="math-inline">\(-2.49\)</span></td>
+<td><span class="math-inline">\(0.01\)</span></td>
+<td><span class="math-inline">\(-4.51\)</span></td>
+<td><span class="math-inline">\(-6.99\)</span></td>
+</tr>
+<tr>
+<td>2.0</td>
+<td><span class="math-inline">\(-0.11\)</span></td>
+<td><span class="math-inline">\(2.15\)</span></td>
+<td><span class="math-inline">\(-9.03\)</span></td>
+<td><span class="math-inline">\(-6.99\)</span></td>
+</tr>
+<tr>
+<td>3.0</td>
+<td><span class="math-inline">\(-0.0005\)</span></td>
+<td><span class="math-inline">\(6.55\)</span></td>
+<td><span class="math-inline">\(-13.54\)</span></td>
+<td><span class="math-inline">\(-6.99\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each term changes strongly and the total does not move. <span class="math-inline">\(\alpha\)</span> is a parameter of the method and not of the physics: it decides how the same energy is shared between the sums.</p>
+<p>What <span class="math-inline">\(\alpha\)</span> does change is the work. The real-space sum must go out to the distance where <span class="math-inline">\(\mathrm{erfc}(\alpha r)\)</span> is negligible, and that distance is proportional to <span class="math-inline">\(1/\alpha\)</span>. The reciprocal sum must go up to the wave vector where <span class="math-inline">\(e^{-k^2/4\alpha^2}\)</span> is negligible, and that wave vector is proportional to <span class="math-inline">\(\alpha\)</span>. As an illustration, ask for <span class="math-inline">\(10^{-5}\)</span> in both:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math-inline">\(\alpha\)</span> (nm<span class="math-inline">\(^{-1}\)</span>)</th>
+<th>Real-space cutoff, <span class="math-inline">\(3.12/\alpha\)</span> (nm)</th>
+<th>Largest <span class="math-inline">\(k\)</span>, <span class="math-inline">\(6.79\,\alpha\)</span> (nm<span class="math-inline">\(^{-1}\)</span>)</th>
+<th>Shortest wavelength, <span class="math-inline">\(2\pi/k\)</span> (nm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0</td>
+<td>1.56</td>
+<td>13.6</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>3.12</td>
+<td>1.00</td>
+<td>21.2</td>
+<td>0.30</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>0.62</td>
+<td>33.9</td>
+<td>0.19</td>
+</tr>
+</tbody>
+</table>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(3.12\)</span>: the value of <span class="math-inline">\(x\)</span> at which <span class="math-inline">\(\mathrm{erfc}(x) = 10^{-5}\)</span>. The cutoff must satisfy <span class="math-inline">\(\alpha r_c = 3.12\)</span>.</li>
+<li><span class="math-inline">\(6.79\)</span>: the value of <span class="math-inline">\(k/\alpha\)</span> at which <span class="math-inline">\(e^{-k^2/4\alpha^2} = 10^{-5}\)</span>, equal to <span class="math-inline">\(2\sqrt{\ln 10^5}\)</span>.</li>
+<li><span class="math-inline">\(2\pi/k\)</span>: the wavelength of the wave with wave number <span class="math-inline">\(k\)</span>.</li>
+</ul>
+</div>
+<p>A longer cutoff means more pairs: their number grows as <span class="math-inline">\(r_c^3\)</span>. A larger <span class="math-inline">\(k\)</span> means more waves: their number grows as the cube of the largest <span class="math-inline">\(k\)</span>. Moving <span class="math-inline">\(\alpha\)</span> shifts the cost from one sum to the other, and somewhere in between the total cost is lowest.</p>
+<p>The last sentence of the paragraph above is about how that lowest cost grows with the size of the system. <span class="math-inline">\(O(N^{3/2})\)</span> means that 100 times more atoms cost <span class="math-inline">\(100^{3/2} = 1000\)</span> times more. That is better than the <span class="math-inline">\(O(N^2)\)</span> of a sum over all pairs, where the factor would be 10,000, but it is far from the <span class="math-inline">\(O(N)\)</span> of the Lennard-Jones part.</p>
+<details>
+<summary>Optional: where the power 3/2 comes from</summary>
+<p>Keep the density and the accuracy fixed and let the number of atoms <span class="math-inline">\(N\)</span> grow.</p>
+<p><em>Real space.</em> The cutoff is proportional to <span class="math-inline">\(1/\alpha\)</span>, and each atom has a number of neighbours proportional to <span class="math-inline">\(r_c^3\)</span>, that is, to <span class="math-inline">\(1/\alpha^3\)</span>. The cost is <span class="math-inline">\(T_{real} = A\,N/\alpha^3\)</span>, with a constant <span class="math-inline">\(A\)</span>.</p>
+<p><em>Reciprocal space.</em> Wave vectors are needed up to a largest <span class="math-inline">\(k\)</span> proportional to <span class="math-inline">\(\alpha\)</span>. The allowed wave vectors are <span class="math-inline">\(2\pi/L\)</span> apart in each direction, so the number inside a sphere of that radius is proportional to <span class="math-inline">\(V\alpha^3\)</span>, and at fixed density <span class="math-inline">\(V\)</span> is proportional to <span class="math-inline">\(N\)</span>. Each wave vector needs <span class="math-inline">\(S(\mathbf k)\)</span>, a sum over <span class="math-inline">\(N\)</span> charges. The cost is <span class="math-inline">\(T_{recip} = B\,N^2\alpha^3\)</span>, with a constant <span class="math-inline">\(B\)</span>.</p>
+<p><em>The best <span class="math-inline">\(\alpha\)</span>.</em> The total <span class="math-inline">\(T = A\,N/\alpha^3 + B\,N^2\alpha^3\)</span> has a first part that falls with <span class="math-inline">\(\alpha\)</span> and a second that rises. It is lowest where its derivative with respect to <span class="math-inline">\(\alpha\)</span> is zero: <span class="math-inline">\(-3AN/\alpha^4 + 3BN^2\alpha^2 = 0\)</span>, which gives <span class="math-inline">\(\alpha^6 = A/(BN)\)</span>, or <span class="math-inline">\(\alpha^3 = \sqrt{A/(BN)}\)</span>.</p>
+<p><em>The cost at that <span class="math-inline">\(\alpha\)</span>.</em> Inserting it, <span class="math-inline">\(T_{real} = AN\sqrt{BN/A} = \sqrt{AB}\,N^{3/2}\)</span> and <span class="math-inline">\(T_{recip} = BN^2\sqrt{A/(BN)} = \sqrt{AB}\,N^{3/2}\)</span>. The two parts are equal, and the total is <span class="math-inline">\(2\sqrt{AB}\,N^{3/2}\)</span>.</p>
+</details>
 <h3 id="particle-mesh-ewald">Particle-mesh Ewald</h3>
-<div class="secvideos"><span class="sv-label">Watch for this part</span><a class="sv" data-yt="VWsMUaA7UWw" href="https://www.youtube.com/watch?v=VWsMUaA7UWw" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Charm++ Workshop 2017, Day 2, David Hardy</span><span class="sv-m">28 min · David Hardy (Charm++ Workshop)</span></a></div>
+<div class="secvideos"><span class="sv-label">Lectures on this part (optional)</span><a class="sv" data-yt="VWsMUaA7UWw" href="https://www.youtube.com/watch?v=VWsMUaA7UWw" target="_blank" rel="noopener" title=""><span class="sv-play">&#9654;</span><span class="sv-t">Charm++ Workshop 2017, Day 2, David Hardy</span><span class="sv-m">28 min · David Hardy (Charm++ Workshop)</span></a></div>
 
-<p>Computing <span class="math-inline">\(S(\mathbf k)\)</span> directly costs <span class="math-inline">\(N\)</span> operations for each of many <span class="math-inline">\(\mathbf k\)</span> vectors. <strong>PME</strong> replaces it. The original method of <a href="https://doi.org/10.1063/1.464397" class="cite" target="_blank" rel="noopener" title="Darden T; York D; Pedersen L (1993). Particle mesh Ewald: An N ⋅log( N ) method for Ewald sums in large systems. The Journal of Chemical Physics">Darden, York and Pedersen 1993</a> interpolated the reciprocal-space pair potential and its gradient with Lagrange polynomials on a grid. The smooth version of <a href="https://doi.org/10.1063/1.470117" class="cite" target="_blank" rel="noopener" title="Essmann U; Perera L; Berkowitz ML; Darden T; Lee H; Pedersen LG (1995). A smooth particle mesh Ewald method. The Journal of Chemical Physics">Essmann et al. 1995</a> is the one in use today, and it interpolates the structure factor itself with B-splines:</p>
+<p>The real-space term costs about as much as the Lennard-Jones term, because it uses the same pairs. The reciprocal term is the expensive one, and this section shows how programs make it cheap.</p>
+<p>Computing <span class="math-inline">\(S(\mathbf k)\)</span> directly costs <span class="math-inline">\(N\)</span> operations for each of many <span class="math-inline">\(\mathbf k\)</span> vectors. <strong>PME</strong> replaces it.</p>
+<p>Numbers show the problem. The 8 nm box of the example above, filled with water, holds about 50,000 atoms. Each of the 41,000 wave vectors needs a sum over all of them: <span class="math-inline">\(41{,}000\times50{,}000 = 2\times10^9\)</span> operations per step. The real-space loop of the same system has about <span class="math-inline">\(50{,}000\times420/2 = 10^7\)</span> pairs. The reciprocal term would need two hundred times more operations than the real-space loop.</p>
+<p>The name says how PME gets around this. "Particle" stands for the charges and "mesh" is another word for a grid. The charges are moved onto a regular grid, because for data on a regular grid there is an algorithm that computes all Fourier coefficients at once. Two tools are needed.</p>
+<div class="box maths">
+<p><strong>Maths you need here: interpolation on a grid, Lagrange polynomials and B-splines.</strong> A <strong>grid</strong> is a regular set of points, like the corners of the squares on graph paper. <strong>Interpolation</strong> estimates the value of a function between the grid points from its values at the grid points.</p>
+<p>The simplest kind is linear: join two neighbouring grid values by a straight line. At a fraction <span class="math-inline">\(u\)</span> of the way from the first point to the second, the estimate is <span class="math-inline">\((1-u)f_0 + uf_1\)</span>, where <span class="math-inline">\(f_0\)</span> and <span class="math-inline">\(f_1\)</span> are the two grid values. Example: <span class="math-inline">\(f_0 = 2\)</span>, <span class="math-inline">\(f_1 = 4\)</span> and <span class="math-inline">\(u = 0.3\)</span> give <span class="math-inline">\(0.7\times2 + 0.3\times4 = 2.6\)</span>. The numbers <span class="math-inline">\(1-u\)</span> and <span class="math-inline">\(u\)</span> are called <strong>weights</strong>, and they add up to 1.</p>
+<p>Interpolation with <strong>Lagrange polynomials</strong> of order <span class="math-inline">\(p\)</span> takes the <span class="math-inline">\(p\)</span> nearest grid points and uses the one polynomial of degree <span class="math-inline">\(p-1\)</span> that passes through all <span class="math-inline">\(p\)</span> values. For <span class="math-inline">\(p = 2\)</span> this is the straight line above, for <span class="math-inline">\(p = 4\)</span> a cubic curve. The pieces do not join smoothly at the places where the set of nearest points changes.</p>
+<p>A <strong>B-spline</strong> of order <span class="math-inline">\(p\)</span> is a smooth, bell-shaped weight function. It is made of polynomial pieces of degree <span class="math-inline">\(p-1\)</span>, joined so that the function and its first <span class="math-inline">\(p-2\)</span> derivatives have no jumps. Because the slope of a B-spline has no jumps, a quantity built from B-splines can be differentiated to give a force without jumps.</p>
+<p>Order 4 is the cubic B-spline. It gives four weights, for the four nearest grid points along a line. At <span class="math-inline">\(u = 0.3\)</span> they are 0.057, 0.590, 0.348 and 0.005, which add up to 1.</p>
+<p>The same weights work in both directions. They read a function that lives on the grid at the position of a particle (interpolation). And they distribute something that the particle carries, such as its charge, over the grid points around it (spreading).</p>
+</div>
+<div class="box maths">
+<p><strong>Maths you need here: the fast Fourier transform.</strong> Suppose a function is known at <span class="math-inline">\(M\)</span> points of a regular grid. Such data can contain <span class="math-inline">\(M\)</span> different waves, so there are <span class="math-inline">\(M\)</span> Fourier coefficients to compute. Each coefficient is a sum over all <span class="math-inline">\(M\)</span> grid points, and the direct calculation costs <span class="math-inline">\(M\times M = M^2\)</span> operations.</p>
+<p>The <strong>fast Fourier transform</strong> (FFT) is an algorithm that delivers all <span class="math-inline">\(M\)</span> coefficients in about <span class="math-inline">\(M\log_2M\)</span> operations. It splits the problem into two halves, each half into two halves again, and reuses the partial results. <span class="math-inline">\(\log_2M\)</span> is the number of times <span class="math-inline">\(M\)</span> can be halved before 1 is reached: <span class="math-inline">\(\log_2 1024 = 10\)</span>, and <span class="math-inline">\(\log_2 10^6\approx20\)</span>. It grows so slowly that <span class="math-inline">\(M\log M\)</span> is close to proportional to <span class="math-inline">\(M\)</span>.</p>
+<p>Example: for <span class="math-inline">\(M = 300{,}000\)</span> grid points, <span class="math-inline">\(M^2 = 9\times10^{10}\)</span> and <span class="math-inline">\(M\log_2M = 5.5\times10^6\)</span>, sixteen thousand times less. The same algorithm run backwards, the inverse FFT, goes from the coefficients back to the values on the grid. The FFT works only for data on a regular grid, and atoms are not on a grid. That is the reason for the spreading step of PME. More in the toolbox under <a href="maths.html#fourier">Fourier series and transforms</a> and <a href="maths.html#exp-log">logarithms</a>.</p>
+</div>
+<p>The original method of <a href="https://doi.org/10.1063/1.464397" class="cite" target="_blank" rel="noopener" title="Darden T; York D; Pedersen L (1993). Particle mesh Ewald: An N ⋅log( N ) method for Ewald sums in large systems. The Journal of Chemical Physics">Darden, York and Pedersen 1993</a> interpolated the reciprocal-space pair potential and its gradient with Lagrange polynomials on a grid. The smooth version of <a href="https://doi.org/10.1063/1.470117" class="cite" target="_blank" rel="noopener" title="Essmann U; Perera L; Berkowitz ML; Darden T; Lee H; Pedersen LG (1995). A smooth particle mesh Ewald method. The Journal of Chemical Physics">Essmann et al. 1995</a> is the one in use today, and it interpolates the structure factor itself with B-splines:</p>
 <ol>
 <li>Spread each charge onto a regular 3D grid using B-spline interpolation (order 4 touches <span class="math-inline">\(4^3=64\)</span> grid points per charge).</li>
 <li>Fast Fourier transform the gridded charge density: <span class="math-inline">\(O(M\log M)\)</span> for <span class="math-inline">\(M\)</span> grid points.</li>
 <li>Multiply by the influence function <span class="math-inline">\(e^{-k^2/4\alpha^2}/k^2\)</span>, corrected for the B-spline spreading.</li>
 <li>Transform back to get the potential on the grid, and obtain the forces by differentiating the same B-splines analytically. The reciprocal force is then the exact gradient of the approximate energy, so energy is conserved, but momentum is conserved only to within the force error (one reason why codes remove centre-of-mass motion).</li>
 </ol>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(M\)</span>: the number of grid points in the box, the product of the numbers along <span class="math-inline">\(x\)</span>, <span class="math-inline">\(y\)</span> and <span class="math-inline">\(z\)</span>.</li>
+<li><span class="math-inline">\(O(M\log M)\)</span>: the cost grows as <span class="math-inline">\(M\)</span> times the logarithm of <span class="math-inline">\(M\)</span>, which is close to proportional to <span class="math-inline">\(M\)</span>.</li>
+<li><span class="math-inline">\(4^3 = 64\)</span>: four grid points along each of the three directions.</li>
+<li><span class="math-inline">\(k\)</span>: the length of a wave vector. <span class="math-inline">\(\alpha\)</span>: the splitting parameter.</li>
+<li><span class="math-inline">\(e^{-k^2/4\alpha^2}/k^2\)</span>: the weight of each wave in the formula for <span class="math-inline">\(U_{recip}\)</span>.</li>
+</ul>
+</div>
+<p>The four steps in more words, with the 8 nm box as the example:</p>
+<p><strong>Step 1, spreading.</strong> With grid points 0.12 nm apart, an edge of 8 nm needs at least <span class="math-inline">\(8/0.12 = 67\)</span> points, and the whole box about <span class="math-inline">\(67^3\approx300{,}000\)</span>. Each charge is shared out among the <span class="math-inline">\(4\times4\times4\)</span> grid points nearest to it. The weight of a grid point is the product of three one-dimensional B-spline weights, one for each direction. The weights of one charge add up to 1, so no charge is lost. The result is the "gridded charge density": one number at each grid point.</p>
+<p><strong>Step 2, the transform.</strong> One FFT gives the Fourier coefficients of the gridded density for all the waves that the grid can represent. These coefficients take the place of <span class="math-inline">\(S(\mathbf k)\)</span>. The cost is about <span class="math-inline">\(5\times10^6\)</span> operations, against <span class="math-inline">\(2\times10^9\)</span> for the direct sums.</p>
+<p><strong>Step 3, the influence function.</strong> Each coefficient is multiplied by the weight <span class="math-inline">\(e^{-k^2/4\alpha^2}/k^2\)</span> that appeared in <span class="math-inline">\(U_{recip}\)</span>. The <span class="math-inline">\(1/k^2\)</span> solves Poisson's equation, and the Gaussian accounts for the clouds. The correction is needed because spreading a charge over 64 grid points blurs it a little, in addition to the intended Gaussian blur. For B-splines the effect of that extra blur on each wave is known, so it can be largely compensated wave by wave.</p>
+<p><strong>Step 4, back to the particles.</strong> The inverse FFT turns the coefficients into the potential of the smooth clouds at every grid point. The potential at an atom is read off the grid with the same 64 weights. The force on the atom is its charge times the slope of that potential, with a minus sign, and the slope is obtained from the formula for the derivative of the B-spline weights. "Analytically" means exactly that: by formula, without taking differences of neighbouring grid values.</p>
+<p>Step 4 contains two statements about conservation. The energy computed on the grid is an approximation of <span class="math-inline">\(U_{recip}\)</span>. The forces are the exact derivative of that approximate energy with respect to the positions of the atoms. An integrator conserves energy when the forces are the gradient of the energy function in use (Module 2), whether or not that function is itself an approximation, so energy is conserved.</p>
+<p>Momentum is a different matter. It is conserved when the force of atom <span class="math-inline">\(j\)</span> on atom <span class="math-inline">\(i\)</span> is exactly minus the force of <span class="math-inline">\(i\)</span> on <span class="math-inline">\(j\)</span> (Newton's third law, Module 2). Forces that pass through a grid obey this only approximately. The sum of all forces is then a small remainder in place of zero, and the system as a whole can slowly pick up speed unless the program removes that motion.</p>
 <p>The cost is <span class="math-inline">\(O(N\log N)\)</span>, and on current hardware PME is typically a sizeable part of the run time (how large depends on what is offloaded to the GPU). The settings that matter:</p>
 <table>
 <thead>
@@ -186,15 +899,124 @@
 </tr>
 </tbody>
 </table>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(O(N\log N)\)</span>: the cost grows as the number of atoms <span class="math-inline">\(N\)</span> times its logarithm.</li>
+<li><span class="math-inline">\(\alpha\)</span>: the splitting parameter, in nm<span class="math-inline">\(^{-1}\)</span>. <span class="math-inline">\(r_c\)</span>: the real-space cutoff, the value of <code>rcoulomb</code>.</li>
+<li><span class="math-inline">\(\mathrm{erfc}(\alpha r_c)\)</span>: the complementary error function at the cutoff. It is the fraction of the bare interaction <span class="math-inline">\(1/r_c\)</span> that the real-space term still has there.</li>
+</ul>
+</div>
+<p>Where <span class="math-inline">\(N\log N\)</span> comes from: spreading and reading back cost 64 operations per charge, which is proportional to <span class="math-inline">\(N\)</span>. The grid spacing is fixed, so the number of grid points <span class="math-inline">\(M\)</span> is proportional to the volume and therefore to <span class="math-inline">\(N\)</span>, and the FFT costs <span class="math-inline">\(M\log M\)</span>. The real-space part has a fixed cutoff and costs <span class="math-inline">\(O(N)\)</span> with a neighbour list. Going from 10,000 to 1,000,000 atoms multiplies the cost by about 150, where classical Ewald would give a factor 1000. "Offloaded to the GPU" means computed on the graphics card and not on the processor.</p>
+<p>The four settings, row by row:</p>
+<ul>
+<li><code>rcoulomb</code> is the <span class="math-inline">\(r_c\)</span> of the real-space term.</li>
+<li><code>fourierspacing</code> is an upper limit for the distance between neighbouring grid points. The program chooses the number of grid points along each edge so that the spacing is no larger than this.</li>
+<li><code>pme-order</code> is the order <span class="math-inline">\(p\)</span> of the B-splines. With 4, each charge is spread over 4 grid points in each direction.</li>
+<li><code>ewald-rtol</code> is the value that <span class="math-inline">\(\mathrm{erfc}(\alpha r_c)\)</span> must have. You never set <span class="math-inline">\(\alpha\)</span> yourself. You choose the cutoff and this tolerance, and <span class="math-inline">\(\alpha\)</span> follows.</li>
+</ul>
 <p>With <span class="math-inline">\(r_c = 1.0\)</span> nm and a tolerance of <span class="math-inline">\(10^{-5}\)</span>, <span class="math-inline">\(\alpha = 3.12\)</span> nm<span class="math-inline">\(^{-1}\)</span>. Cutoff and grid spacing can be scaled together at constant accuracy to shift load between the CPU or GPU real-space part and the FFT, and GROMACS does this automatically at the start of a run.</p>
+<p>The number follows from the error function: <span class="math-inline">\(\mathrm{erfc}(x) = 10^{-5}\)</span> at <span class="math-inline">\(x = 3.12\)</span>, so <span class="math-inline">\(\alpha = 3.12/r_c\)</span>. A cutoff of 1.2 nm gives <span class="math-inline">\(\alpha = 2.60\)</span> nm<span class="math-inline">\(^{-1}\)</span>.</p>
+<p>The scaling works like this. Make the cutoff 1.2 times longer at the same tolerance. <span class="math-inline">\(\alpha\)</span> becomes 1.2 times smaller and the Gaussian clouds 1.2 times wider. A wider cloud is described by longer waves, so the grid can be 1.2 times coarser, for example 0.144 nm in place of 0.12 nm, without loss of accuracy.</p>
+<p>The grid then has <span class="math-inline">\(1.2^3 = 1.7\)</span> times fewer points, and the real-space loop has 1.7 times more pairs. The energy is as accurate as before, and work has moved from the FFT to the pair loop. Which division is fastest depends on the machine, which is why the program settles it at the start of a run.</p>
 <div class="box warn">
 <p><strong>Net charge.</strong> With Ewald, a system with net charge is silently neutralised by a uniform background charge. The simulation runs, but the background distorts pressure and free energies, especially in systems with regions of different dielectric constant (membranes). Always add counter-ions to make the system neutral. For free-energy calculations that change the net charge, see the finite-size corrections in Module 13.</p>
 </div>
+<p>The background is the consequence of leaving out the <span class="math-inline">\(\mathbf k = 0\)</span> term, as explained under "The total". <strong>Counter-ions</strong> are ions of the opposite sign, for example sodium or chloride, that you add to the solvent until the charges of the box add up to zero. They differ from the background in one respect: real ions stay in the water, and the background is spread evenly over everything, including the inside of a membrane, where ions would not be. A <strong>finite-size correction</strong> is a term that removes the effect of the limited box and of the background from a computed free energy.</p>
+<h3 id="reading-the-non-bonded-part-of-an-input-file">Reading the non-bonded part of an input file</h3>
+<p><a href="10-running-a-simulation.html">Module 10</a> contains a complete input file for a production run. Its non-bonded lines are the following. The format is that of a GROMACS parameter file, and the text after a semicolon is a comment.</p>
+<div class="code"><pre><span></span><code>cutoff-scheme           = Verlet        ; buffered neighbour list (Module 7)
+rvdw                    = 1.0           ; Lennard-Jones cutoff (nm)
+vdw-modifier            = Potential-shift
+DispCorr                = EnerPres      ; tail correction for energy and pressure
+
+coulombtype             = PME           ; particle-mesh Ewald (Module 7)
+rcoulomb                = 1.0
+pme-order               = 4
+fourierspacing          = 0.12
+</code></pre></div>
+
+<p>Every line corresponds to a part of this module:</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it controls</th>
+<th>Where it is explained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cutoff-scheme = Verlet</code></td>
+<td>Pairs are found with a neighbour list that has a skin</td>
+<td>Neighbour lists</td>
+</tr>
+<tr>
+<td><code>rvdw = 1.0</code></td>
+<td>The cutoff <span class="math-inline">\(r_c\)</span> of the Lennard-Jones interaction, in nm</td>
+<td>Cutting off short-range interactions</td>
+</tr>
+<tr>
+<td><code>vdw-modifier = Potential-shift</code></td>
+<td>The Lennard-Jones energy is shifted so that it is zero at the cutoff</td>
+<td>Issue 1, the jump at the cutoff</td>
+</tr>
+<tr>
+<td><code>DispCorr = EnerPres</code></td>
+<td>The tail correction is added to the energy and the pressure</td>
+<td>Issue 2, the neglected tail</td>
+</tr>
+<tr>
+<td><code>coulombtype = PME</code></td>
+<td>The Coulomb energy is computed by particle-mesh Ewald</td>
+<td>Particle-mesh Ewald</td>
+</tr>
+<tr>
+<td><code>rcoulomb = 1.0</code></td>
+<td>The cutoff of the real-space term, in nm</td>
+<td>The real-space term</td>
+</tr>
+<tr>
+<td><code>pme-order = 4</code></td>
+<td>Cubic B-splines for spreading and interpolation</td>
+<td>Particle-mesh Ewald</td>
+</tr>
+<tr>
+<td><code>fourierspacing = 0.12</code></td>
+<td>The largest allowed distance between grid points, in nm</td>
+<td>Particle-mesh Ewald</td>
+</tr>
+</tbody>
+</table>
+<p>For a CHARMM force field Module 10 gives <code>rvdw = 1.2</code>, <code>rvdw-switch = 1.0</code> and <code>vdw-modifier = Force-switch</code> in place of the shift, together with <code>rcoulomb = 1.2</code> and <code>DispCorr = no</code>. The first three are the force switch from 1.0 to 1.2 nm of issue 1.</p>
 <h2 id="reaction-field">Reaction field</h2>
+<p>Ewald summation repairs the cutoff by adding everything that lies beyond it. The reaction field keeps the cutoff and repairs it more cheaply. It fills the space beyond the cutoff with a uniform material that responds to the charges inside, where a plain cutoff leaves that space empty.</p>
 <p>A cheaper alternative assumes that beyond <span class="math-inline">\(r_c\)</span> the medium is a continuum with dielectric constant <span class="math-inline">\(\varepsilon_{rf}\)</span>. Its polarisation creates a field that acts back on the charges inside:</p>
 <p><span class="math-display">\[U_{RF}(r) = \frac{q_iq_j}{4\pi\varepsilon_0\varepsilon_r}\left[\frac1r + k_{rf}\,r^2 - c_{rf}\right],\qquad
 k_{rf} = \frac{1}{r_c^3}\,\frac{\varepsilon_{rf}-\varepsilon_r}{2\varepsilon_{rf}+\varepsilon_r},\qquad c_{rf}=\frac{1}{r_c}+k_{rf}r_c^2 .\]</span></p>
-<p>The force goes smoothly to zero at <span class="math-inline">\(r_c\)</span> when <span class="math-inline">\(\varepsilon_{rf}=\infty\)</span>. It is a pair interaction with a cutoff, so it is fast and simple to parallelise. GROMOS force fields were developed with it, and the Martini coarse-grained model (Module 15) uses it. It is less accurate than PME for strongly inhomogeneous or highly charged systems such as nucleic acids.</p>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(U_{RF}(r)\)</span>: the energy of a pair of charges at the distance <span class="math-inline">\(r\)</span> in the reaction-field method, for <span class="math-inline">\(r\)</span> smaller than <span class="math-inline">\(r_c\)</span>. Beyond <span class="math-inline">\(r_c\)</span> it is zero.</li>
+<li><span class="math-inline">\(q_i\)</span>, <span class="math-inline">\(q_j\)</span>: the two charges, in units of <span class="math-inline">\(e\)</span>.</li>
+<li><span class="math-inline">\(1/(4\pi\varepsilon_0)\)</span>: the Coulomb constant, 138.935 kJ mol<span class="math-inline">\(^{-1}\)</span> nm <span class="math-inline">\(e^{-2}\)</span>. In this formula it is written out, unlike in the Ewald section.</li>
+<li><span class="math-inline">\(\varepsilon_r\)</span>: the dielectric constant used inside the cutoff sphere. It is 1 for an atomistic force field with explicit water (Module 5).</li>
+<li><span class="math-inline">\(\varepsilon_{rf}\)</span>: the dielectric constant assumed for the continuum beyond the cutoff. Both are pure numbers, and neither is the Lennard-Jones <span class="math-inline">\(\varepsilon\)</span>.</li>
+<li><span class="math-inline">\(1/r\)</span>: the direct Coulomb interaction of the pair.</li>
+<li><span class="math-inline">\(k_{rf}\,r^2\)</span>: the effect of the reaction field. <span class="math-inline">\(k_{rf}\)</span> is a constant in nm<span class="math-inline">\(^{-3}\)</span> (not a wave vector).</li>
+<li><span class="math-inline">\(c_{rf}\)</span>: a constant in nm<span class="math-inline">\(^{-1}\)</span> that shifts the energy so that it is zero at the cutoff.</li>
+<li><span class="math-inline">\(r_c\)</span>: the cutoff distance, in nm.</li>
+</ul>
+</div>
+<p>The words of the sentence above the formula were defined in the box on dielectrics: a continuum is a material without single molecules, and its polarisation is the turning of its dipoles in response to charges. A <strong>field</strong> is the force that a charge of <span class="math-inline">\(+1\)</span> would feel at a given place. The charges inside the cutoff sphere polarise the material outside, and the polarised material in turn produces a field inside the sphere. This response is the <strong>reaction field</strong>.</p>
+<p>The force goes smoothly to zero at <span class="math-inline">\(r_c\)</span> when <span class="math-inline">\(\varepsilon_{rf}=\infty\)</span>. Three checks on the formula show this and a little more:</p>
+<ul>
+<li><em>At the cutoff the energy is zero.</em> Insert <span class="math-inline">\(r = r_c\)</span> in the bracket: <span class="math-inline">\(1/r_c + k_{rf}r_c^2 - c_{rf}\)</span>, which is zero by the definition of <span class="math-inline">\(c_{rf}\)</span>. So the energy has no step at <span class="math-inline">\(r_c\)</span>, as with the potential shift.</li>
+<li><em>The force is weakened towards the cutoff.</em> The force is minus the slope of the energy, so it is proportional to <span class="math-inline">\(1/r^2 - 2k_{rf}\,r\)</span>. The first part is Coulomb's force. The second part works against it and grows with <span class="math-inline">\(r\)</span>.</li>
+<li><em>With a conductor outside, the force reaches zero.</em> For <span class="math-inline">\(\varepsilon_{rf}=\infty\)</span> the fraction <span class="math-inline">\((\varepsilon_{rf}-\varepsilon_r)/(2\varepsilon_{rf}+\varepsilon_r)\)</span> becomes <span class="math-inline">\(\tfrac12\)</span>, so <span class="math-inline">\(k_{rf} = 1/(2r_c^3)\)</span>. At <span class="math-inline">\(r = r_c\)</span> the force is then proportional to <span class="math-inline">\(1/r_c^2 - 2r_c/(2r_c^3) = 0\)</span>.</li>
+</ul>
+<p>A number. Take <span class="math-inline">\(r_c = 1.0\)</span> nm, <span class="math-inline">\(\varepsilon_r = 1\)</span> and <span class="math-inline">\(\varepsilon_{rf} = \infty\)</span>, so that <span class="math-inline">\(k_{rf} = 0.5\)</span> nm<span class="math-inline">\(^{-3}\)</span> and <span class="math-inline">\(c_{rf} = 1.5\)</span> nm<span class="math-inline">\(^{-1}\)</span>. For two unit charges at <span class="math-inline">\(r = 0.5\)</span> nm the bracket is <span class="math-inline">\(2 + 0.125 - 1.5 = 0.625\)</span> nm<span class="math-inline">\(^{-1}\)</span> and the energy <span class="math-inline">\(138.935\times0.625 = 87\)</span> kJ/mol, against 278 kJ/mol for plain Coulomb. Most of that difference is the constant <span class="math-inline">\(c_{rf}\)</span>, which creates no force.</p>
+<p>The force itself is proportional to <span class="math-inline">\(1/r^2 - 2k_{rf}\,r = 4 - 0.5 = 3.5\)</span> nm<span class="math-inline">\(^{-2}\)</span> in place of 4, about 12 % weaker. With <span class="math-inline">\(\varepsilon_{rf} = 80\)</span> in place of infinity the fraction is <span class="math-inline">\(79/161 = 0.49\)</span>, and almost nothing changes.</p>
+<p>It is a pair interaction with a cutoff, so it is fast and simple to parallelise. GROMOS force fields were developed with it, and the Martini coarse-grained model (Module 15) uses it. It is less accurate than PME for strongly inhomogeneous or highly charged systems such as nucleic acids.</p>
+<p>To <strong>parallelise</strong> a calculation is to divide it over many processors. A pair interaction with a cutoff needs only the atoms close by, so each processor can work on its own region of the box. A <strong>coarse-grained</strong> model represents a group of atoms by one particle. The method assumes the same uniform material beyond the cutoff of every atom. In an <strong>inhomogeneous</strong> system, for example a membrane in water, what lies beyond the cutoff differs from place to place, and the assumption is poor.</p>
 <h2 id="check-yourself">Check yourself</h2>
 <details>
 <summary>1. A protein is 6 nm long in its most extended conformation and you use a 1.2 nm cutoff. What is the minimum box edge for a cubic box if it can tumble freely?</summary>
@@ -212,6 +1034,18 @@ k_{rf} = \frac{1}{r_c^3}\,\frac{\varepsilon_{rf}-\varepsilon_r}{2\varepsilon_{rf
 <summary>4. You forget the dispersion correction in a liquid simulation at constant pressure. What changes?</summary>
 <p>The missing long-range attraction makes the pressure too high at a given density, so at fixed pressure the box expands. The density comes out too low, by up to a few percent with short cutoffs, and the potential energy is too high.</p>
 </details>
+<details>
+<summary>5. A box has an edge of 4 nm along <span class="math-inline">\(x\)</span>. Particle <span class="math-inline">\(i\)</span> is at <span class="math-inline">\(x_i = 3.7\)</span> nm and particle <span class="math-inline">\(j\)</span> at <span class="math-inline">\(x_j = 0.4\)</span> nm. What separation does the minimum-image convention give?</summary>
+<p>The stored separation is <span class="math-inline">\(\Delta x = 3.7 - 0.4 = 3.3\)</span> nm. In box lengths that is <span class="math-inline">\(3.3/4 = 0.825\)</span>, which rounds to 1. The new value is <span class="math-inline">\(3.3 - 4\times1 = -0.7\)</span> nm. The closest image of <span class="math-inline">\(j\)</span> is the one in the next box to the right, at <span class="math-inline">\(0.4 + 4 = 4.4\)</span> nm, which is 0.7 nm from <span class="math-inline">\(i\)</span>.</p>
+</details>
+<details>
+<summary>6. Use the shell argument to say why the Lennard-Jones attraction can be cut off and the Coulomb interaction cannot.</summary>
+<p>The number of partners in a shell at the distance <span class="math-inline">\(r\)</span> grows as <span class="math-inline">\(r^2\)</span>. For the Lennard-Jones attraction the pair energy falls as <span class="math-inline">\(r^{-6}\)</span>, so a shell contributes as <span class="math-inline">\(r^{-4}\)</span>, and the sum over all shells beyond the cutoff <span class="math-inline">\(r_c\)</span> is finite and small, proportional to <span class="math-inline">\(1/r_c^3\)</span>. For charges the pair energy falls only as <span class="math-inline">\(r^{-1}\)</span>, so a shell contributes as <span class="math-inline">\(r\)</span>. Distant shells then count more than near ones, and only the cancellation between positive and negative charges keeps the sum finite. A cutoff destroys that cancellation.</p>
+</details>
+<details>
+<summary>7. You change the real-space cutoff from 1.0 to 1.2 nm and keep the tolerance at <span class="math-inline">\(10^{-5}\)</span>. What happens to <span class="math-inline">\(\alpha\)</span>, and what can you do with the PME grid?</summary>
+<p><span class="math-inline">\(\alpha\)</span> is fixed by <span class="math-inline">\(\mathrm{erfc}(\alpha r_c) = 10^{-5}\)</span>, which means <span class="math-inline">\(\alpha r_c = 3.12\)</span>. So <span class="math-inline">\(\alpha\)</span> falls from 3.12 to <span class="math-inline">\(3.12/1.2 = 2.60\)</span> nm<span class="math-inline">\(^{-1}\)</span>. The Gaussian clouds become 1.2 times wider, and the grid spacing can be raised by the same factor, for example from 0.12 to 0.144 nm. The grid then has <span class="math-inline">\(1.2^3 = 1.7\)</span> times fewer points, the real-space loop has 1.7 times more pairs, and the accuracy stays the same.</p>
+</details>
 <h2 id="exercises">Exercises</h2>
 <ol>
 <li>Add a Verlet neighbour list with a skin to the Python code of Module 1. Measure the speed-up for 1,000 atoms and check that energy conservation is unchanged.</li>
@@ -219,6 +1053,15 @@ k_{rf} = \frac{1}{r_c^3}\,\frac{\varepsilon_{rf}-\varepsilon_r}{2\varepsilon_{rf
 <li>Implement the classical Ewald sum for the NaCl crystal (8 ions in a cubic cell). Reproduce the Madelung constant 1.7476 and show the result is independent of <span class="math-inline">\(\alpha\)</span> once both sums are converged.</li>
 <li>Prove that the potential of a spherical Gaussian charge distribution of total charge <span class="math-inline">\(q\)</span> is <span class="math-inline">\(q\,\mathrm{erf}(\alpha r)/r\)</span> by solving Poisson's equation in spherical coordinates.</li>
 </ol>
+<div class="legend">
+<ul>
+<li><span class="math-inline">\(P_{tail}\)</span> (exercise 2): the correction to the pressure for the Lennard-Jones interactions beyond the cutoff. With <span class="math-inline">\(\rho\)</span> in nm<span class="math-inline">\(^{-3}\)</span> and <span class="math-inline">\(\varepsilon\)</span> in kJ/mol it comes out in kJ mol<span class="math-inline">\(^{-1}\)</span> nm<span class="math-inline">\(^{-3}\)</span>.</li>
+<li><span class="math-inline">\(\rho\)</span>: the number density. <span class="math-inline">\(\varepsilon\)</span>, <span class="math-inline">\(\sigma\)</span>: the Lennard-Jones well depth and size. <span class="math-inline">\(r_c\)</span>: the cutoff.</li>
+<li>The virial (exercise 2): the part of the pressure that comes from the forces between the particles (Module 3).</li>
+<li>The Madelung constant (exercise 3): the Coulomb energy of the crystal for each pair of one positive and one negative ion, divided by <span class="math-inline">\(-q^2/d\)</span>, where <span class="math-inline">\(q\)</span> is the charge of an ion and <span class="math-inline">\(d\)</span> the distance between nearest neighbours (in units where <span class="math-inline">\(1/4\pi\varepsilon_0 = 1\)</span>). Eight ions are four pairs, so the total energy of the cell is <span class="math-inline">\(-4\times1.7476\,q^2/d\)</span>.</li>
+<li><span class="math-inline">\(q\)</span>, <span class="math-inline">\(\alpha\)</span>, <span class="math-inline">\(r\)</span> (exercise 4): the total charge of the cloud, the splitting parameter and the distance from the centre of the cloud.</li>
+</ul>
+</div>
 <h2 id="read">Read</h2>
 <h4>Textbooks</h4><ul class='reslist'><li class="res"><a href="https://www.cambridge.org/gb/universitypress/subjects/physics/mathematical-methods/art-molecular-dynamics-simulation-2nd-edition" target="_blank" rel="noopener">The Art of Molecular Dynamics Simulation</a><span class="res-meta">D. C. Rapaport · 2nd ed., 2004 · Cambridge University Press</span><span class="res-why">Case-study book that builds MD programs step by step, good for students who want to write their own code.</span></li><li class="res"><a href="https://books.google.com/books?vid=ISBN9780582382107" target="_blank" rel="noopener">Molecular Modelling: Principles and Applications</a><span class="res-meta">Andrew R. Leach · 2nd ed., 2001 · Prentice Hall (Pearson)</span><span class="res-why">Broad, readable introduction to force fields, energy minimisation, MD and Monte Carlo with biomolecular examples.</span></li><li class="res"><a href="https://doi.org/10.1007/978-1-4419-6351-2" target="_blank" rel="noopener">Molecular Modeling and Simulation: An Interdisciplinary Guide</a><span class="res-meta">Tamar Schlick · 2nd ed., 2010 · Springer</span><span class="res-why">Biomolecule-focused text covering force fields, minimisation, MD integration and long-range electrostatics with a mathematical flavour.</span></li><li class="res"><a href="https://global.oup.com/booksites/content/9780198803195/" target="_blank" rel="noopener">Computer Simulation of Liquids</a><span class="res-meta">Michael P. Allen, Dominic J. Tildesley · 2nd ed., 2017 · Oxford University Press</span><span class="res-why">Classic practical MD/MC text with an official companion site of Fortran and Python example programs (also on GitHub).</span></li><li class="res"><a href="https://shop.elsevier.com/books/understanding-molecular-simulation/frenkel/978-0-323-90292-2" target="_blank" rel="noopener">Understanding Molecular Simulation: From Algorithms to Applications</a><span class="res-meta">Daan Frenkel, Berend Smit · 3rd ed., 2023 · Academic Press (Elsevier)</span><span class="res-why">The standard algorithm-level reference connecting statistical mechanics to working MD, free-energy and rare-event methods.</span><span class="res-why"><b>Where to read:</b> Ch. 2 Thermodynamics and Statistical Mechanics; Ch. 4 Molecular Dynamics Simulations; Ch. 5 Computer Experiments; Ch. 7 Molecular Dynamics in Various Ensembles; Ch. 8 Free Energy Calculations; Ch. 11 Long-Ranged Interactions; Ch. 15 Rare Events; Appendix G Statistical Errors; Appendix H Integration Schemes</span></li></ul>
 <h4>Free notes and open courses</h4><ul class='reslist'><li class="res"><a href="https://livecomsjournal.org/index.php/livecoms/article/view/v1i1e5957" target="_blank" rel="noopener">Best Practices for Foundations in Molecular Simulations</a> <span class="tag free">free</span><span class="res-meta">Efrem Braun, Justin Gilmer, Heather B. Mayes, David L. Mobley, Jacob I. Monroe, Samarjeet Prasad, Daniel M. Zuckerman · 2018, Article v1.0 · Living Journal of Computational Molecular Science (LiveCoMS, open access)</span><span class="res-why">First-stop checklist for setting up and reporting a simulation correctly.</span></li><li class="res"><a href="https://sites.engineering.ucsb.edu/~shell/che210d/assignments.html" target="_blank" rel="noopener">CHE210D: Principles of modern molecular simulation methods (UCSB lecture notes, F19)</a> <span class="tag free">free</span><span class="res-meta">M. Scott Shell · Fall 2019 · UC Santa Barbara, Chemical Engineering</span><span class="res-why">Complete, free lecture-note set (18 lectures plus readings and Python/Fortran codes) that follows Frenkel and Smit.</span><span class="res-why"><b>Where to read:</b> Lecture notes: Classical force fields; Molecular dynamics; Computing properties; Simulations of bulk phases; Advanced molecular dynamics techniques; Free energies along reaction coordinates and biased sampling; Macroscopic free energies and reweighting; Advanced sampling; Coarse-graining and multiscale techniques; and the reading on simulation best practices.</span></li></ul>
