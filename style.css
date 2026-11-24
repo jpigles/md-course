@@ -126,7 +126,7 @@ blockquote p { margin: .3em 0; }
 .box.key { border-left: 4px solid var(--s3); }
 .box.warn { border-left: 4px solid var(--s4); background: var(--warn); }
 .box.goal { border-left: 4px solid var(--s1); background: var(--note); }
-a.btn { display: inline-block; padding: 9px 16px; border-radius: 6px; background: var(--s1); color: #fff; text-decoration: none; font-weight: 600; }
+a.btn { display: inline-block; margin: 0 8px 8px 0; padding: 9px 16px; border-radius: 6px; background: var(--s1); color: #fff; text-decoration: none; font-weight: 600; }
 a.btn:hover { filter: brightness(1.1); }
 .box.plain { border-left: 4px solid var(--s7); }
 .box.maths { border-left: 4px solid var(--s2); }

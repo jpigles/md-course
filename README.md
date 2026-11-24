@@ -20,6 +20,7 @@ A self-study course on how molecular dynamics simulations work: the equations of
 |---|---|
 | `*.html`, `style.css`, `course.js` | The built site, served by GitHub Pages from the repository root |
 | `src/modules/*.md` | The source of every page: Markdown with LaTeX maths |
+| `notebooks/md_lysozyme_gromacs.ipynb` | A notebook for Google Colab that runs the GROMACS commands and the five parameter files of Module 10 for real, on lysozyme with a GPU ([open in Colab](https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_gromacs.ipynb)). `build_notebook_gromacs.py` writes it and takes the parameter files from the lesson source |
 | `notebooks/md_lysozyme_openmm.ipynb` | A notebook for Google Colab that runs the workflow of Module 10 for real: lysozyme in water with OpenMM on a GPU ([open in Colab](https://colab.research.google.com/github/jpigles/md-course/blob/main/notebooks/md_lysozyme_openmm.ipynb)). `build_notebook.py` writes it, `run_local_test.py` runs it in a shortened form |
 | `src/build.py` | Turns the sources and the research lists into the HTML pages |
 | `src/style.css`, `src/course.js`, `src/demos2.js` | Stylesheet and the interactive demos |
